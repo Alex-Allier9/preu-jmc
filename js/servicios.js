@@ -272,38 +272,6 @@ function initRequirementCardEffects() {
     }
 }
 
-// Función para manejar el scroll específico de servicios
-function initServicesScrollEffects() {
-    let lastScrollY = window.scrollY;
-    
-    const servicesScrollHandler = debounce(function() {
-        const scrollY = window.scrollY;
-        const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
-        
-        // Efecto parallax suave en las secciones de background
-        const backgroundElements = document.querySelectorAll('.mountain-background, .secondary-background');
-        backgroundElements.forEach(bg => {
-            const translateY = scrollY * 0.3;
-            bg.style.transform = `translateX(-50%) translateY(${translateY}px)`;
-        });
-        
-        // Efecto especial en las cards cuando se hace scroll hacia arriba
-        if (scrollDirection === 'up') {
-            const visibleCards = document.querySelectorAll('.service-feature-card:hover, .practical-card:hover');
-            visibleCards.forEach(card => {
-                card.style.transform = 'translateY(-12px)';
-                setTimeout(() => {
-                    card.style.transform = 'translateY(-8px)';
-                }, 200);
-            });
-        }
-        
-        lastScrollY = scrollY;
-    }, 10);
-    
-    window.addEventListener('scroll', servicesScrollHandler, { passive: true });
-}
-
 // Función para manejar información adicional de las modalidades de pago
 function initPaymentInfoToggle() {
     const paymentItems = document.querySelectorAll('.payment-item');
@@ -397,28 +365,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPaymentInfoToggle();
     initComplementaryServiceLists();
     // initServicesReadingProgress(); - ELIMINADA, usar solo barra global
-    
-    // Event listeners específicos de servicios
-    
-    // Smooth scroll mejorado para los pasos del proceso
-    document.querySelectorAll('a[href^="#proceso"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-                
-                // Destacar temporalmente el paso
-                target.style.background = 'rgba(65, 182, 230, 0.1)';
-                setTimeout(() => {
-                    target.style.background = 'rgba(255, 255, 255, 0.75)';
-                }, 2000);
-            }
-        });
-    });
+
     
     // Efecto especial cuando se hace click en "CONTACTAR AHORA"
     const ctaButton = document.querySelector('.cta-button');
