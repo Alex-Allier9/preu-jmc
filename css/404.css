@@ -1,0 +1,480 @@
+/* ======================================
+   404.CSS - ESTILOS ESPECÍFICOS DE LA PÁGINA 404
+   ====================================== */
+
+/* Sección principal 404 */
+.error-404 {
+    height: 100vh;
+    background: linear-gradient(rgba(243, 217, 66, 0.3), rgba(243, 217, 66, 0.3)),
+        url('../media/images/404/daniel-hohe-1VgmgXW3Yuk-unsplash.jpg') center/cover;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Contenido del error */
+.error-content {
+    max-width: 800px;
+    padding: 2rem;
+    z-index: 2;
+    text-align: center;
+    justify-self: center;
+}
+
+/* Efecto Glitch para el número 404 con italic */
+.glitch {
+    position: relative;
+    color: var(--negro);
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(16rem, 30vw, 40rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: var(--title-letter-spacing);
+    margin-bottom: 2rem;
+    animation: glitchItalic 4s infinite ease-in-out;
+}
+
+/* Animación italic para todo el glitch */
+@keyframes glitchItalic {
+    0% { font-style: italic; }           /* 500ms italic */
+    10% { font-style: normal; }          /* 300ms normal */
+    11% { font-style: italic; }          /* 200ms italic */
+    14% { font-style: normal; }          /* resto normal */
+    100% { font-style: normal; }
+}
+
+.line {
+    display: inline-block;
+}
+
+.line:not(:first-child) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Generamos los keyframes para cada línea individualmente - versión original */
+.line:nth-child(1) {
+    animation: clip 3000ms 0ms linear infinite, glitch1 500ms 0ms linear infinite;
+}
+
+.line:nth-child(2) {
+    animation: clip 3000ms -300ms linear infinite, glitch2 500ms -100ms linear infinite;
+}
+
+.line:nth-child(3) {
+    animation: clip 3000ms -600ms linear infinite, glitch3 500ms -200ms linear infinite;
+}
+
+.line:nth-child(4) {
+    animation: clip 3000ms -900ms linear infinite, glitch4 500ms -300ms linear infinite;
+}
+
+.line:nth-child(5) {
+    animation: clip 3000ms -1200ms linear infinite, glitch5 500ms -400ms linear infinite;
+}
+
+.line:nth-child(6) {
+    animation: clip 3000ms -1500ms linear infinite, glitch6 500ms -500ms linear infinite;
+}
+
+.line:nth-child(7) {
+    animation: clip 3000ms -1800ms linear infinite, glitch7 500ms -600ms linear infinite;
+}
+
+.line:nth-child(8) {
+    animation: clip 3000ms -2100ms linear infinite, glitch8 500ms -700ms linear infinite;
+}
+
+.line:nth-child(9) {
+    animation: clip 3000ms -2400ms linear infinite, glitch9 500ms -800ms linear infinite;
+}
+
+/* Keyframes de glitch individuales con colores de JMC - versión original */
+@keyframes glitch1 {
+    0%, 80% { transform: translateX(0); color: var(--negro); }
+    85% { transform: translateX(-3px); color: var(--azul-principal); }
+    90% { transform: translateX(2px); color: var(--amarillo); }
+    95% { transform: translateX(-1px); color: var(--rojo); }
+    100% { transform: translateX(0); color: var(--negro); }
+}
+
+@keyframes glitch2 {
+    0%, 80% { transform: translateX(0); color: var(--negro); }
+    85% { transform: translateX(4px); color: var(--amarillo); }
+    90% { transform: translateX(-2px); color: var(--azul-principal); }
+    95% { transform: translateX(3px); color: var(--negro); }
+    100% { transform: translateX(0); color: var(--negro); }
+}
+
+@keyframes glitch3 {
+    0%, 80% { transform: translateX(0); color: var(--negro); }
+    85% { transform: translateX(-2px); color: var(--rojo); }
+    90% { transform: translateX(5px); color: var(--azul-principal); }
+    95% { transform: translateX(-4px); color: var(--amarillo); }
+    100% { transform: translateX(0); color: var(--negro); }
+}
+
+@keyframes glitch4 {
+    0%, 80% { transform: translateX(0); color: var(--negro); }
+    85% { transform: translateX(1px); color: var(--azul-principal); }
+    90% { transform: translateX(-3px); color: var(--rojo); }
+    95% { transform: translateX(2px); color: var(--amarillo); }
+    100% { transform: translateX(0); color: var(--negro); }
+}
+
+@keyframes glitch5 {
+    0%, 80% { transform: translateX(0); color: var(--negro); }
+    85% { transform: translateX(-4px); color: var(--amarillo); }
+    90% { transform: translateX(1px); color: var(--azul-principal); }
+    95% { transform: translateX(-2px); color: var(--negro); }
+    100% { transform: translateX(0); color: var(--negro); }
+}
+
+@keyframes glitch6 {
+    0%, 80% { transform: translateX(0); color: var(--negro); }
+    85% { transform: translateX(3px); color: var(--rojo); }
+    90% { transform: translateX(-1px); color: var(--amarillo); }
+    95% { transform: translateX(4px); color: var(--azul-principal); }
+    100% { transform: translateX(0); color: var(--negro); }
+}
+
+@keyframes glitch7 {
+    0%, 80% { transform: translateX(0); color: var(--negro); }
+    85% { transform: translateX(-1px); color: var(--azul-principal); }
+    90% { transform: translateX(3px); color: var(--rojo); }
+    95% { transform: translateX(-5px); color: var(--amarillo); }
+    100% { transform: translateX(0); color: var(--negro); }
+}
+
+@keyframes glitch8 {
+    0%, 80% { transform: translateX(0); color: var(--negro); }
+    85% { transform: translateX(2px); color: var(--amarillo); }
+    90% { transform: translateX(-4px); color: var(--azul-principal); }
+    95% { transform: translateX(1px); color: var(--rojo); }
+    100% { transform: translateX(0); color: var(--negro); }
+}
+
+@keyframes glitch9 {
+    0%, 80% { transform: translateX(0); color: var(--negro); }
+    85% { transform: translateX(-3px); color: var(--rojo); }
+    90% { transform: translateX(4px); color: var(--amarillo); }
+    95% { transform: translateX(-2px); color: var(--azul-principal); }
+    100% { transform: translateX(0); color: var(--negro); }
+}
+
+/* Animación de clip universal */
+@keyframes clip {
+    0% {
+        clip-path: polygon(0 100%, 100% 100%, 100% 120%, 0 120%);
+    }
+    100% {
+        clip-path: polygon(0 -20%, 100% -20%, 100% 0%, 0 0);
+    }
+}
+
+/* Mensaje de error con efecto italic sutil */
+.error-message {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--negro);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.crazy-text {
+    outline: none;
+    text-align: center;
+    display: inline-block;
+    animation: subtleItalic 3s infinite ease-in-out;
+}
+
+.crazy-text * {
+    animation: subtleItalic 3s infinite ease-in-out;
+    display: inline-block;
+}
+
+/* Animación sutil - principalmente en normal */
+@keyframes subtleItalic {
+    0% { font-style: normal; }           /* 500ms normal */
+    10% { font-style: italic; }          /* 300ms italic */
+    11% { font-style: normal; }          /* 200ms normal */
+    14% { font-style: italic; }          /* resto italic */
+    100% { font-style: italic; }
+}
+
+/* Botón de error */
+.error-button {
+    background: var(--azul-principal);
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 3.125rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(65, 182, 230, 0.3);
+}
+
+.error-button:hover {
+    background: var(--azul-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(65, 182, 230, 0.4);
+}
+
+.error-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(65, 182, 230, 0.3);
+}
+
+/* ======================================
+   RESPONSIVE ESPECÍFICO DE 404
+   ====================================== */
+
+/* Tablet */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    .error-404 {
+        grid-template-columns: 1fr 1fr; /* Mantener grid 2x1 */
+    }
+    
+    .error-content {
+        padding: 1.5rem;
+    }
+    
+    .glitch {
+        font-size: clamp(12rem, 24vw, 30rem);
+        margin-bottom: 1.5rem;
+    }
+    
+    .error-message {
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        margin-bottom: 2rem;
+    }
+    
+    .error-button {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 53rem) {
+    .error-404 {
+        height: 100vh;
+        background-position: center center;
+        background-size: cover;
+        display: flex; /* Cambiar a flex en mobile */
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .error-content {
+        padding: 1rem;
+        justify-self: auto; /* Reset grid properties */
+    }
+    
+    .glitch {
+        font-size: clamp(8rem, 40vw, 16rem);
+        margin-bottom: 1rem;
+    }
+    
+    .error-message {
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        margin-bottom: 1.8rem;
+        padding: 0 1rem;
+    }
+    
+    .error-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+    }
+    
+    /* Reducir intensidad de animaciones en mobile */
+    .line:nth-child(n) {
+        animation-duration: 4000ms, 750ms;
+    }
+    
+    .crazy-text {
+        animation-duration: 4s;
+    }
+    
+    .glitch {
+        animation-duration: 5s;
+    }
+}
+
+/* Mobile muy pequeño */
+@media (max-width: 360px) {
+    .error-content {
+        padding: 0.5rem;
+    }
+    
+    .glitch {
+        font-size: clamp(6rem, 35vw, 10rem);
+    }
+    
+    .error-message {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .error-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Animaciones más suaves en pantallas muy pequeñas */
+    .line:nth-child(n) {
+        animation-duration: 5000ms, 1000ms;
+    }
+    
+    .crazy-text {
+        animation-duration: 4s;
+    }
+    
+    .glitch {
+        animation-duration: 6s;
+    }
+}
+
+/* ======================================
+   ANIMACIONES DE ENTRADA
+   ====================================== */
+
+/* Animación de entrada para el glitch */
+.glitch.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.glitch.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animación de entrada para el mensaje crazy */
+.error-message.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out 0.3s;
+}
+
+.error-message.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animación de entrada para el botón */
+.error-button.fade-in {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    transition: all 0.2s ease-out 0.2s;
+}
+
+.error-button.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Pausar animaciones hasta que sean visibles */
+.glitch:not(.visible) .line {
+    animation-play-state: paused;
+}
+
+.crazy-text:not(.visible) {
+    animation-play-state: paused;
+}
+
+/* Activar animaciones cuando se hace visible */
+.glitch.visible .line {
+    animation-play-state: running;
+}
+
+.error-message.visible .crazy-text {
+    animation-play-state: running;
+}
+
+/* ======================================
+   OPTIMIZACIONES DE PERFORMANCE
+   ====================================== */
+
+/* Usar will-change para optimizar animaciones */
+.glitch, .line {
+    will-change: transform, color, clip-path, font-style;
+}
+
+.crazy-text {
+    will-change: font-style;
+}
+
+/* Reducir animaciones para usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .line {
+        animation-duration: 8s, 1000ms !important;
+        animation-iteration-count: 3 !important;
+    }
+    
+    .crazy-text {
+        animation-duration: 6s !important;
+        animation-iteration-count: 2 !important;
+    }
+    
+    .glitch {
+        animation-duration: 10s !important;
+        animation-iteration-count: 2 !important;
+    }
+}
+
+/* Pausar animaciones cuando el elemento no es visible */
+.glitch:not(.visible) .line,
+.glitch:not(.visible),
+.error-message:not(.visible) .crazy-text {
+    animation-play-state: paused;
+}
+
+/* Optimización para GPU */
+.line, .crazy-text {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* ======================================
+   MEJORAS VISUALES
+   ====================================== */
+
+/* Sombra suave para el contenido */
+.error-content::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    right: -20%;
+    bottom: -20%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Efecto de parallax sutil en el fondo */
+@media (prefers-reduced-motion: no-preference) {
+    .error-404 {
+        background-attachment: fixed;
+    }
+}
+
+/* Asegurar que el footer no se superponga */
+.error-404 + .footer {
+    position: relative;
+    z-index: 1;
+}

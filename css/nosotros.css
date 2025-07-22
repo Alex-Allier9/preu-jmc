@@ -1,0 +1,240 @@
+/* ======================================
+   NOSOTROS.CSS - ESTILOS ESPECÍFICOS DE LA PÁGINA
+   ====================================== */
+
+/* Background images - ESPECÍFICO DE NOSOTROS */
+.mountain-background {
+    background-image: url('../media/images/nosotros/cristina-gottardi-9TaYFMMapbA-unsplash.jpg');
+}
+
+.secondary-background {
+    background-image: url('../media/images/nosotros/annie-spratt-R2OQShb3nmk-unsplash.jpg');
+}
+
+/* Hero section background - ESPECÍFICO DE NOSOTROS */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('../media/images/nosotros/redd-francisco-gdQnsMbhkUs-unsplash.jpg') center/cover;
+}
+
+/* CTA section background - ESPECÍFICO DE NOSOTROS */
+.cta {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('../media/images/nosotros/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
+}
+
+/* ======================================
+   LAYOUT ESPECÍFICO DE NOSOTROS
+   ====================================== */
+
+/* Secciones con fondos semitransparentes y márgenes específicos */
+.about,
+.mvp-section,
+.stats,
+.results,
+.values-section,
+.commitment-section,
+.process {
+    background: rgba(255, 255, 255, 0.75);
+    margin-left: 8.33%;
+    margin-right: 8.33%;
+    margin-bottom: 6rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+/* Márgenes superiores específicos */
+.about {
+    margin-top: 6rem;
+}
+
+.values-section {
+    margin-top: 6rem;
+}
+
+/* ======================================
+   GRIDS ESPECÍFICOS DE NOSOTROS
+   ====================================== */
+
+/* Mission Vision Purpose Grid - ESPECÍFICO DE NOSOTROS */
+.mvp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.mvp-card {
+    padding: 2rem;
+    text-align: center;
+}
+
+.mvp-card h3 {
+    color: var(--azul-principal);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.mvp-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Stats Grid - ESPECÍFICO DE NOSOTROS */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.stat-card {
+    padding: 2.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    min-height: 200px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-number {
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    color: var(--azul-principal);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1;
+    letter-spacing: var(--title-letter-spacing);
+}
+
+.stat-number.red {
+    color: var(--rojo);
+}
+
+.stat-card p {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* About card con hover específico */
+.about-card {
+    padding: 3rem;
+    margin: 2rem 0;
+    cursor: pointer;
+}
+
+.about-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* ======================================
+   RESPONSIVE ESPECÍFICO DE NOSOTROS
+   ====================================== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    /* MVP grid específico para nosotros */
+    .mvp-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem;
+    }
+
+    /* El tercer card toma el ancho completo */
+    .mvp-grid .mvp-card:nth-child(3) {
+        grid-column: span 2;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    /* Stats grid comportamiento específico */
+    .stats-grid, .results .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* Stat numbers responsive */
+    .stat-number {
+        font-size: 3.75rem;
+    }
+    
+    /* Ocultar extras si los hay */
+    .stats-grid .stat-card:nth-child(n+5),
+    .results .stats-grid .stat-card:nth-child(n+5) {
+        display: none;
+    }
+}
+
+/* Mobile (hasta 767px) */
+@media (max-width: 53rem) {
+    /* Márgenes móviles específicos */
+    .about,
+    .mvp-section,
+    .stats,
+    .results,
+    .values-section,
+    .commitment-section,
+    .process {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 3rem;
+    }
+
+    .values-section,
+    .about {
+        margin-top: 3rem;
+    }
+
+    /* MVP grid móvil */
+    .mvp-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+        padding: 0 1rem 2rem 1rem !important;
+    }
+
+    /* Reset el ancho completo para móvil */
+    .mvp-grid .mvp-card:nth-child(3) {
+        grid-column: auto;
+        max-width: 100%;
+    }
+
+    /* Ajustar padding de cards en móvil */
+    .mvp-card {
+        padding: 1.5rem !important;
+    }
+
+    /* Stats grid móvil específico */
+    .stats-grid, .results .stats-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+        padding: 0 1rem 2rem 1rem !important;
+    }
+    
+    /* Mostrar todas las cards en columna única */
+    .stats-grid .stat-card:nth-child(n+5),
+    .results .stats-grid .stat-card:nth-child(n+5) {
+        display: flex;
+    }
+}
+
+/* ======================================
+   MÓVIL PEQUEÑO (opcional)
+   ====================================== */
+
+@media (max-width: 360px) {
+    .mvp-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .mvp-card p {
+        font-size: 1rem;
+    }
+}
