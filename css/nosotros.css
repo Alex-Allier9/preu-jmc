@@ -33,8 +33,7 @@
 .stats,
 .results,
 .values-section,
-.commitment-section,
-.process {
+.commitment-section {
     background: rgba(255, 255, 255, 0.75);
     margin-left: 8.33%;
     margin-right: 8.33%;
@@ -181,8 +180,7 @@
     .stats,
     .results,
     .values-section,
-    .commitment-section,
-    .process {
+    .commitment-section {
         margin-left: 5%;
         margin-right: 5%;
         margin-bottom: 3rem;

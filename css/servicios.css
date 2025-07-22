@@ -1,48 +1,48 @@
 /* ======================================
-   TEMPLATE.CSS - TEMPLATE BASE PARA NUEVAS PÁGINAS
+   SERVICIOS.CSS - PÁGINA DE SERVICIOS JMC
    ====================================== */
 
 /* ======================================
-   BACKGROUND IMAGES - ESPECÍFICO DE TEMPLATE
+   BACKGROUND IMAGES - ESPECÍFICO DE SERVICIOS
    ====================================== */
 
-/* CAMBIAR: Reemplazar con las imágenes específicas de la página */
+/* Fondo principal con montañas para las primeras secciones */
 .mountain-background {
-    background-image: url('../media/images/template/background-primary.jpg');
+    background-image: url('../media/images/servicios/mountain-background.jpg');
 }
 
+/* Fondo secundario para secciones posteriores */
 .secondary-background {
-    background-image: url('../media/images/template/background-secondary.jpg');
+    background-image: url('../media/images/servicios/secondary-background.jpg');
 }
 
 /* ======================================
-   HERO SECTION BACKGROUND - ESPECÍFICO DE TEMPLATE
+   HERO SECTION BACKGROUND - ESPECÍFICO DE SERVICIOS
    ====================================== */
 
-/* CAMBIAR: Reemplazar con la imagen del hero específica */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url('../media/images/template/hero-background.jpg') center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../media/images/servicios/hero-servicios.jpg') center/cover;
 }
 
 /* ======================================
-   CTA SECTION BACKGROUND - ESPECÍFICO DE TEMPLATE
+   CTA SECTION BACKGROUND - ESPECÍFICO DE SERVICIOS
    ====================================== */
 
-/* CAMBIAR: Reemplazar con la imagen del CTA específica */
 .cta {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url('../media/images/template/cta-background.jpg') center/cover;
+        url('../media/images/servicios/cta-servicios.jpg') center/cover;
 }
 
 /* ======================================
-   LAYOUT ESPECÍFICO DE TEMPLATE - BASADO EN NOSOTROS
+   LAYOUT ESPECÍFICO DE SERVICIOS
    ====================================== */
 
-/* Secciones con fondos semitransparentes y márgenes específicos - IGUAL QUE NOSOTROS */
+/* Secciones con fondos semitransparentes y márgenes específicos */
 .first-section,
 .second-section,
-.third-section {
+.third-section,
+.fourth-section {
     background: rgba(255, 255, 255, 0.75);
     margin-left: 8.33%;
     margin-right: 8.33%;
@@ -51,19 +51,21 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2;
+    padding: 3rem;
 }
 
-/* Márgenes superiores específicos - IGUAL QUE NOSOTROS */
+/* Márgenes superiores específicos */
 .first-section {
     margin-top: 6rem;
 }
 
-.third-section {
+.third-section,
+.fourth-section {
     margin-top: 6rem;
 }
 
 /* ======================================
-   SECCIÓN AZUL - IGUAL QUE METHODOLOGY
+   SECCIÓN AZUL - REQUISITOS
    ====================================== */
 
 .blue-section {
@@ -76,7 +78,7 @@
 }
 
 /* ======================================
-   SECCIÓN REGULAR - FONDO BLANCO
+   SECCIÓN REGULAR - INFORMACIÓN PRÁCTICA
    ====================================== */
 
 .regular-section {
@@ -86,6 +88,286 @@
 
 .regular-section .section-title {
     color: var(--azul-oscuro);
+}
+
+/* ======================================
+   CARDS ESPECÍFICAS DE SERVICIOS
+   ====================================== */
+
+/* Base styles for all cards */
+.service-feature-card,
+.requisito-card,
+.complementary-card,
+.financial-card,
+.practical-card {
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for all cards */
+.service-feature-card:hover,
+.requisito-card:hover,
+.complementary-card:hover,
+.financial-card:hover,
+.practical-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Service Feature Cards - Características del servicio principal */
+.service-feature-card {
+    background: 
+        linear-gradient(white, white) padding-box,
+        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
+    border: 9px solid transparent;
+}
+
+.service-feature-card h3 {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    font-size: 1.3rem;
+}
+
+.service-feature-card p {
+    position: relative;
+    z-index: 1;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.service-icon {
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.service-icon .material-symbols-rounded {
+    color: var(--azul-oscuro);
+}
+
+/* Requisito Cards - Para los requisitos de ingreso */
+.requisito-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.requisito-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.requisito-icon {
+    margin-bottom: 2rem;
+}
+
+.requisito-icon .material-symbols-rounded {
+    color: var(--amarillo);
+}
+
+.requisito-card h3 {
+    color: var(--amarillo);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.requisito-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: white;
+}
+
+/* Complementary Cards - Para servicios complementarios */
+.complementary-card {
+    background: rgba(255, 255, 255, 0.9);
+    text-align: left;
+}
+
+.complementary-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.complementary-icon {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.complementary-icon .material-symbols-rounded {
+    color: var(--azul-principal);
+}
+
+.complementary-card h3 {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.complementary-card p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--negro);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.complementary-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.complementary-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--gris-claro);
+    color: var(--azul-oscuro);
+    font-weight: 500;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.complementary-card li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--azul-principal);
+    font-weight: bold;
+}
+
+.complementary-card li:last-child {
+    border-bottom: none;
+}
+
+/* Financial Cards - Para apoyo financiero */
+.financial-card {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.financial-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.financial-icon {
+    margin-bottom: 2rem;
+}
+
+.financial-icon .material-symbols-rounded {
+    color: var(--azul-principal);
+}
+
+.financial-card h3 {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.financial-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--negro);
+}
+
+/* Practical Cards - Para información práctica */
+.practical-card {
+    background: rgba(255, 255, 255, 0.9);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.practical-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.practical-icon {
+    margin-bottom: 1.5rem;
+}
+
+.practical-icon .material-symbols-rounded {
+    color: var(--azul-principal);
+}
+
+.practical-card h3 {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.practical-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--negro);
+}
+
+/* Payment Details Section */
+.payment-details {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.payment-details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.payment-details h3 {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.payment-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.payment-item {
+    background: rgba(65, 182, 230, 0.05);
+    padding: 1.2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--azul-principal);
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+}
+
+.payment-item strong {
+    color: var(--azul-oscuro);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Content Intro - Para textos introductorios */
+.content-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+.content-intro p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--negro);
 }
 
 /* ======================================
@@ -100,7 +382,7 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 2rem auto;
 }
 
 .content-card:hover {
@@ -120,213 +402,188 @@
     margin-bottom: 0;
 }
 
-/* Content Intro - Para textos introductorios */
-.content-intro {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding: 0 2rem;
-}
-
-.content-intro p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: var(--negro);
-}
-
-/* Example Cards - Para cards de ejemplo */
-.example-card {
-    background: 
-        linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
-    border: 9px solid transparent;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.example-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.example-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
-}
-
-.example-card p {
-    position: relative;
-    z-index: 1;
-    font-size: 1.05rem;
-    line-height: 1.6;
-}
-
-.example-icon {
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-}
-
-.example-icon .material-symbols-rounded {
-    color: var(--azul-oscuro);
-}
-
-/* Feature Cards - Para características */
-.feature-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.feature-icon {
-    margin-bottom: 2rem;
-}
-
-.feature-icon .material-symbols-rounded {
-    color: var(--azul-principal);
-}
-
-.feature-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.feature-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--negro);
-}
-
-/* Info Cards - Para información general */
-.info-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.info-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.info-icon {
-    margin-bottom: 2rem;
-}
-
-.info-icon .material-symbols-rounded {
-    color: var(--amarillo);
-}
-
-.info-card h3 {
-    color: var(--amarillo);
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.info-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: white;
-}
-
 /* ======================================
-   RESPONSIVE ESPECÍFICO DE TEMPLATE - BASADO EN NOSOTROS
+   RESPONSIVE ESPECÍFICO DE SERVICIOS
    ====================================== */
 
-/* Tablet (768px - 1024px) - IGUAL QUE NOSOTROS */
+/* Tablet (768px - 1024px) */
 @media (max-width: 82rem) and (min-width: 53.0625rem) {
-    /* Example grid específico para tablet */
-    .card-grid-3 .example-card:nth-child(3) {
-        grid-column: span 2;
-        max-width: 80%;
-        margin: 0 auto;
-    }
-
-    /* Feature grid comportamiento específico */
-    .card-grid-2 {
-        grid-template-columns: repeat(2, 1fr);
+    /* Secciones en tablet */
+    .first-section,
+    .second-section,
+    .third-section,
+    .fourth-section {
+        padding: 2.5rem;
     }
     
-    /* Info grid comportamiento específico */
-    .card-grid-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
+    /* Payment info grid en tablet */
+    .payment-info {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Ajustar complementary cards */
+    .complementary-card {
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Ajustar practical cards en tablet */
+    .practical-card {
+        min-height: 180px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .practical-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* Grids específicos en tablet */
+    .first-section .card-grid-3 {
+        gap: 2rem;
+        margin-bottom: 2rem; /* Added consistent spacing */
+    }
+    
+    .third-section .card-grid-2 {
+        gap: 2.5rem;
     }
 }
 
-/* Mobile (hasta 767px) - EXACTAMENTE IGUAL QUE NOSOTROS */
+/* Mobile (hasta 767px) */
 @media (max-width: 53rem) {
-    /* Márgenes móviles específicos - IGUAL QUE NOSOTROS */
+    /* Márgenes móviles específicos */
     .first-section,
     .second-section,
-    .third-section {
+    .third-section,
+    .fourth-section {
         margin-left: 5%;
         margin-right: 5%;
         margin-bottom: 3rem;
+        padding: 2rem;
     }
 
     .first-section {
         margin-top: 3rem;
     }
 
-    .third-section {
+    .third-section,
+    .fourth-section {
         margin-top: 3rem;
+    }
+
+    /* Grids específicos en móvil */
+    .first-section .card-grid-3,
+    .blue-section .card-grid-3,
+    .third-section .card-grid-2,
+    .fourth-section .card-grid-3 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        padding: 0 !important;
+        margin-bottom: 2rem; /* Added consistent spacing */
     }
 
     /* Cards específicas móvil */
     .content-card {
         padding: 2rem;
-        margin: 0 1rem;
+        margin: 0 0 2rem 0; /* Added consistent spacing */
     }
 
     .content-intro {
-        padding: 0 1rem;
+        padding: 0;
     }
 
-    /* Grid adjustments for mobile */
-    .card-grid-3 .example-card:nth-child(3) {
-        grid-column: auto;
-        max-width: 100%;
-    }
-
-    /* Ajustar padding de cards en móvil */
-    .example-card,
-    .feature-card,
-    .info-card {
+    /* Ajustar todas las cards en móvil */
+    .service-feature-card,
+    .requisito-card,
+    .complementary-card,
+    .financial-card,
+    .practical-card {
         padding: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+        width: 100%;
+    }
+
+    /* Payment details en móvil */
+    .payment-details {
+        padding: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .payment-info {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+
+    .payment-item {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+
+    /* Complementary cards específicas móvil */
+    .complementary-card h3 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .complementary-card p {
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    /* Lista items en móvil */
+    .complementary-card li {
+        text-align: center;
+        padding-left: 0;
+        font-size: 0.95rem;
+    }
+
+    .complementary-card li:before {
+        position: static;
+        margin-right: 0.5rem;
+    }
+
+    /* Practical cards específicas móvil */
+    .practical-card {
+        min-height: 160px;
+    }
+
+    .practical-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .practical-card p {
+        font-size: 0.95rem;
     }
 }
 
 /* ======================================
-   MÓVIL PEQUEÑO (opcional)
+   MÓVIL PEQUEÑO (hasta 360px)
    ====================================== */
 
 @media (max-width: 360px) {
-    .example-card h3,
-    .feature-card h3,
-    .info-card h3 {
+    .service-feature-card h3,
+    .requisito-card h3,
+    .financial-card h3,
+    .practical-card h3 {
         font-size: 1.1rem;
     }
 
-    .example-card p,
-    .feature-card p,
-    .info-card p {
+    .service-feature-card p,
+    .requisito-card p,
+    .financial-card p,
+    .practical-card p {
         font-size: 1rem;
+    }
+
+    .complementary-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .payment-details {
+        padding: 1.5rem;
+    }
+
+    .payment-details h3 {
+        font-size: 1.3rem;
     }
 }

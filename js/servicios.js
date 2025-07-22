@@ -1,67 +1,220 @@
 /* ======================================
-   TEMPLATE.JS - TEMPLATE BASE PARA NUEVAS PÁGINAS
+   SERVICIOS.JS - PÁGINA DE SERVICIOS JMC
    ====================================== */
 
 // ======================================
-// FUNCIONES ESPECÍFICAS DE LA PÁGINA
+// FUNCIONES ESPECÍFICAS DE LA PÁGINA DE SERVICIOS
 // ======================================
 
-// Ejemplo: Función para manejar interacciones específicas de cards
-function initTemplateCardInteractions() {
-    // Ejemplo de interacción específica con content cards
-    const contentCards = document.querySelectorAll('.content-card');
+// ======================================
+// FUNCIONES ESPECÍFICAS DE LA PÁGINA DE SERVICIOS
+// ======================================
+
+// Función para registrar cards de servicios en el sistema global
+function registerServicesCardsInGlobalSystem() {
+    // Asegurar que todas las cards de servicios estén en el sistema global de efectos
+    const serviciosCardConfigs = [
+        {
+            selector: '.service-feature-card',
+            hasIcon: true
+        },
+        {
+            selector: '.requisito-card',
+            hasIcon: true,
+            hoverBackground: 'rgba(255, 255, 255, 0.15)',
+            restoreBackground: 'rgba(255, 255, 255, 0.1)'
+        },
+        {
+            selector: '.complementary-card',
+            hasIcon: true
+        },
+        {
+            selector: '.financial-card',
+            hasIcon: true
+        },
+        {
+            selector: '.practical-card',
+            hasIcon: true
+        }
+    ];
+
+    // Aplicar efectos estándar uniformes
+    const standardHover = {
+        transform: 'translateY(-8px)',
+        boxShadow: '0 15px 40px rgba(0, 0, 0, 0.15)'
+    };
     
-    if (contentCards.length === 0) return;
-    
-    contentCards.forEach(card => {
-        // Ejemplo: Agregar efecto de click
-        card.addEventListener('click', function() {
-            console.log('Content card clicked:', this);
+    const standardRestore = {
+        transform: 'translateY(0)',
+        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+    };
+
+    serviciosCardConfigs.forEach(config => {
+        document.querySelectorAll(config.selector).forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                // Efecto estándar para todas
+                this.style.transform = standardHover.transform;
+                this.style.boxShadow = standardHover.boxShadow;
+                
+                // Backgrounds específicos si los tienen
+                if (config.hoverBackground) {
+                    this.style.background = config.hoverBackground;
+                }
+                
+                // Efecto de iconos si los tienen
+                if (config.hasIcon) {
+                    const iconContainer = this.querySelector('.service-icon, .requisito-icon, .complementary-icon, .financial-icon, .practical-icon');
+                    const icon = this.querySelector('.material-symbols-rounded');
+                    if (iconContainer && icon) {
+                        iconContainer.style.transform = 'scale(1.1)';
+                        icon.style.transform = 'scale(1.1)';
+                    }
+                }
+            });
             
-            // Ejemplo de animación de click
+            card.addEventListener('mouseleave', function() {
+                // Restaurar efecto estándar
+                this.style.transform = standardRestore.transform;
+                this.style.boxShadow = standardRestore.boxShadow;
+                
+                // Restaurar backgrounds específicos
+                if (config.restoreBackground) {
+                    this.style.background = config.restoreBackground;
+                }
+                
+                // Restaurar iconos
+                if (config.hasIcon) {
+                    const iconContainer = this.querySelector('.service-icon, .requisito-icon, .complementary-icon, .financial-icon, .practical-icon');
+                    const icon = this.querySelector('.material-symbols-rounded');
+                    if (iconContainer && icon) {
+                        iconContainer.style.transform = 'scale(1)';
+                        icon.style.transform = 'scale(1)';
+                    }
+                }
+            });
+        });
+    });
+}
+// Función para manejar interacciones con las cards de proceso
+function initProcessStepInteractions() {
+    const processCards = document.querySelectorAll('.proceso-card-full');
+    
+    if (processCards.length === 0) return;
+    
+    processCards.forEach((card, index) => {
+        // Efecto de click mejorado para las cards del proceso
+        card.addEventListener('click', function() {
+            console.log('Process step clicked:', index + 1);
+            
+            // Animación de click específica
             this.style.transform = 'translateY(-5px) scale(0.98)';
             setTimeout(() => {
                 this.style.transform = 'translateY(-8px) scale(1)';
             }, 150);
+            
+            // Efecto en el icono del proceso
+            const stepIcon = this.querySelector('.process-step-icon');
+            if (stepIcon) {
+                stepIcon.style.transform = 'scale(1.15)';
+                setTimeout(() => {
+                    stepIcon.style.transform = 'scale(1.1)';
+                }, 200);
+            }
+        });
+        
+        // Efecto hover específico para información adicional
+        card.addEventListener('mouseenter', function() {
+            const meta = this.querySelector('.card-meta');
+            if (meta) {
+                meta.style.opacity = '1';
+                meta.style.transform = 'translateY(0)';
+            }
         });
     });
 }
 
-// Ejemplo: Función para manejar formularios específicos (si los hay)
-function initTemplateFormHandlers() {
-    // Ejemplo de manejo de formulario específico de la página
-    const templateForm = document.querySelector('.template-form');
+// Función para manejar el formulario de consulta rápida (si se agrega en el futuro)
+function initQuickConsultationForm() {
+    const quickForm = document.querySelector('.quick-consultation-form');
     
-    if (!templateForm) return;
+    if (!quickForm) return;
     
-    templateForm.addEventListener('submit', function(e) {
+    quickForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Ejemplo de validación y manejo
+        // Obtener datos del formulario
         const formData = new FormData(this);
-        console.log('Form submitted:', Object.fromEntries(formData));
+        const consultationData = Object.fromEntries(formData);
         
-        // Aquí iría la lógica específica del formulario
+        console.log('Quick consultation submitted:', consultationData);
+        
+        // Simular envío exitoso
+        showConsultationSuccess();
     });
 }
 
-// Ejemplo: Función para manejar animaciones específicas de la página
-function initTemplateAnimations() {
-    // Ejemplo: Animación específica para feature cards
-    const featureCards = document.querySelectorAll('.feature-card');
+// Función para mostrar mensaje de éxito en consulta
+function showConsultationSuccess() {
+    // Crear mensaje de éxito temporal
+    const successMessage = document.createElement('div');
+    successMessage.className = 'consultation-success';
+    successMessage.innerHTML = `
+        <div class="success-content">
+            <span class="material-symbols-rounded">check_circle</span>
+            <p>¡Consulta enviada exitosamente! Te contactaremos pronto.</p>
+        </div>
+    `;
     
-    if (featureCards.length === 0) return;
+    // Estilos para el mensaje
+    successMessage.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 10000;
+        background: var(--azul-principal);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    `;
     
-    // Crear observer específico para feature cards
-    const featureObserver = new IntersectionObserver((entries) => {
+    document.body.appendChild(successMessage);
+    
+    // Animación de entrada
+    setTimeout(() => {
+        successMessage.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Remover después de 4 segundos
+    setTimeout(() => {
+        successMessage.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            document.body.removeChild(successMessage);
+        }, 300);
+    }, 4000);
+}
+
+// Función para manejar animaciones específicas de las cards de servicios - SIMPLIFICADA
+function initServiceCardAnimations() {
+    const serviceCards = document.querySelectorAll('.service-feature-card, .complementary-card, .practical-card, .financial-card, .requisito-card');
+    
+    if (serviceCards.length === 0) return;
+    
+    // Crear observer específico para cards de servicios con animación escalonada
+    const serviceObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // Animación escalonada para feature cards
+                // Animación escalonada más dramática para servicios
                 setTimeout(() => {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0) scale(1)';
-                }, index * 200);
-                featureObserver.unobserve(entry.target);
+                }, index * 150);
+                serviceObserver.unobserve(entry.target);
             }
         });
     }, {
@@ -70,208 +223,266 @@ function initTemplateAnimations() {
     });
     
     // Inicializar estado y observar
-    featureCards.forEach(card => {
+    serviceCards.forEach(card => {
         card.style.opacity = '0';
-        card.style.transform = 'translateY(30px) scale(0.9)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        featureObserver.observe(card);
+        card.style.transform = 'translateY(40px) scale(0.9)';
+        card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        serviceObserver.observe(card);
     });
 }
 
-// Ejemplo: Función para manejar contadores específicos (si los hay)
-function initTemplateCounters() {
-    const templateCounters = document.querySelectorAll('.template-counter');
+// Función para efectos específicos de requisitos - SIMPLIFICADA (efectos principales en sistema global)
+function initRequirementCardEffects() {
+    const reqCards = document.querySelectorAll('.requisito-card');
     
-    if (templateCounters.length === 0) return;
+    if (reqCards.length === 0) return;
     
-    templateCounters.forEach(counter => {
-        const target = counter.textContent;
+    // Solo agregar el efecto de pulso adicional (el hover principal está en sistema global)
+    reqCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const icon = this.querySelector('.material-symbols-rounded');
+            if (icon) {
+                // Crear efecto de pulso adicional
+                icon.style.animation = 'pulse 0.6s ease-in-out';
+            }
+        });
         
-        if (!isNaN(target.replace('+', '').replace('%', ''))) {
-            counter.textContent = '0';
-            
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Usar la función global animateValue
-                        animateValue(counter, 0, parseInt(target.replace('+', '').replace('%', '')), 1500, target);
-                        counterObserver.unobserve(counter);
-                    }
-                });
-            });
-            
-            counterObserver.observe(counter);
-        }
-    });
-}
-
-// Ejemplo: Función para manejar modales o lightboxes específicos
-function initTemplateLightbox() {
-    // Ejemplo de implementación de lightbox específico para la página
-    const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
-    
-    if (lightboxTriggers.length === 0) return;
-    
-    // Crear lightbox element
-    const lightbox = document.createElement('div');
-    lightbox.className = 'template-lightbox';
-    lightbox.innerHTML = `
-        <div class="lightbox-content">
-            <span class="close-lightbox">&times;</span>
-            <div class="lightbox-body">
-                <!-- Contenido del lightbox -->
-            </div>
-        </div>
-    `;
-    document.body.appendChild(lightbox);
-    
-    // Estilos para el lightbox
-    const lightboxStyles = `
-        <style>
-        .template-lightbox {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .template-lightbox .lightbox-content {
-            position: relative;
-            margin: auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 600px;
-            background: white;
-            border-radius: 15px;
-            text-align: center;
-        }
-        
-        .template-lightbox .close-lightbox {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            color: var(--negro);
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .template-lightbox .close-lightbox:hover {
-            color: var(--azul-principal);
-        }
-        </style>
-    `;
-    document.head.insertAdjacentHTML('beforeend', lightboxStyles);
-    
-    // Funcionalidad del lightbox
-    function openLightbox(content) {
-        lightbox.querySelector('.lightbox-body').innerHTML = content;
-        lightbox.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeLightbox() {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-    
-    // Event listeners
-    lightboxTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function() {
-            const content = this.getAttribute('data-lightbox-content') || 'Contenido del lightbox';
-            openLightbox(content);
+        card.addEventListener('mouseleave', function() {
+            const icon = this.querySelector('.material-symbols-rounded');
+            if (icon) {
+                icon.style.animation = 'none';
+            }
         });
     });
     
-    lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
-    
-    lightbox.addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeLightbox();
+    // Agregar keyframes para el efecto de pulso
+    const pulseKeyframes = `
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
-    });
+    `;
     
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && lightbox.style.display === 'flex') {
-            closeLightbox();
+    if (!document.querySelector('#pulse-animation')) {
+        const style = document.createElement('style');
+        style.id = 'pulse-animation';
+        style.textContent = pulseKeyframes;
+        document.head.appendChild(style);
+    }
+}
+
+// Función para manejar el scroll específico de servicios
+function initServicesScrollEffects() {
+    let lastScrollY = window.scrollY;
+    
+    const servicesScrollHandler = debounce(function() {
+        const scrollY = window.scrollY;
+        const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
+        
+        // Efecto parallax suave en las secciones de background
+        const backgroundElements = document.querySelectorAll('.mountain-background, .secondary-background');
+        backgroundElements.forEach(bg => {
+            const translateY = scrollY * 0.3;
+            bg.style.transform = `translateX(-50%) translateY(${translateY}px)`;
+        });
+        
+        // Efecto especial en las cards cuando se hace scroll hacia arriba
+        if (scrollDirection === 'up') {
+            const visibleCards = document.querySelectorAll('.service-feature-card:hover, .practical-card:hover');
+            visibleCards.forEach(card => {
+                card.style.transform = 'translateY(-12px)';
+                setTimeout(() => {
+                    card.style.transform = 'translateY(-8px)';
+                }, 200);
+            });
         }
+        
+        lastScrollY = scrollY;
+    }, 10);
+    
+    window.addEventListener('scroll', servicesScrollHandler, { passive: true });
+}
+
+// Función para manejar información adicional de las modalidades de pago
+function initPaymentInfoToggle() {
+    const paymentItems = document.querySelectorAll('.payment-item');
+    
+    if (paymentItems.length === 0) return;
+    
+    paymentItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Efecto visual al hacer click
+            this.style.transform = 'scale(0.98)';
+            this.style.background = 'rgba(65, 182, 230, 0.15)';
+            
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+                this.style.background = 'rgba(65, 182, 230, 0.05)';
+            }, 200);
+            
+            console.log('Payment info clicked:', this.querySelector('strong').textContent);
+        });
+        
+        // Efecto hover mejorado
+        item.addEventListener('mouseenter', function() {
+            this.style.borderLeftColor = '#F4DA40';
+            this.style.transform = 'translateX(5px)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.borderLeftColor = '#41B6E6';
+            this.style.transform = 'translateX(0)';
+        });
     });
 }
 
-// Ejemplo: Función para manejar filtros o tabs (si los hay)
-function initTemplateFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const filterableItems = document.querySelectorAll('.filterable-item');
+// Función para manejar efectos de las listas en servicios complementarios
+function initComplementaryServiceLists() {
+    const listItems = document.querySelectorAll('.complementary-card li');
     
-    if (filterButtons.length === 0 || filterableItems.length === 0) return;
+    if (listItems.length === 0) return;
     
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remover active de todos los botones
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Agregar active al botón clickeado
-            this.classList.add('active');
-            
-            const filter = this.getAttribute('data-filter');
-            
-            filterableItems.forEach(item => {
-                if (filter === 'all' || item.classList.contains(filter)) {
-                    item.style.display = 'block';
-                    item.style.opacity = '1';
-                    item.style.transform = 'scale(1)';
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
+    listItems.forEach((item, index) => {
+        // Animación escalonada de aparición
+        const listObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
                     setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }, index * 100);
+                    listObserver.unobserve(entry.target);
                 }
             });
         });
+        
+        // Estado inicial
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-20px)';
+        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        listObserver.observe(item);
+        
+        // Efecto hover individual
+        item.addEventListener('mouseenter', function() {
+            this.style.color = 'var(--azul-principal)';
+            this.style.paddingLeft = '2rem';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.color = 'var(--azul-oscuro)';
+            this.style.paddingLeft = '1.5rem';
+        });
     });
 }
+
+// Función para crear un indicador de progreso de lectura específico de servicios
+// ELIMINADA - Usar solo la barra global con gradiente
 
 // ======================================
 // FUNCIÓN DE INICIALIZACIÓN PRINCIPAL
 // ======================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Template page initialized');
+    console.log('Servicios page initialized');
     
-    // Inicializar todas las funciones específicas de la página
-    initTemplateCardInteractions();
-    initTemplateFormHandlers();
-    initTemplateAnimations();
-    initTemplateCounters();
-    initTemplateLightbox();
-    initTemplateFilters();
+    // Inicializar todas las funciones específicas de servicios
+    registerServicesCardsInGlobalSystem();
+    initProcessStepInteractions();
+    initQuickConsultationForm();
+    initServiceCardAnimations();
+    initRequirementCardEffects();
+    initServicesScrollEffects();
+    initPaymentInfoToggle();
+    initComplementaryServiceLists();
+    // initServicesReadingProgress(); - ELIMINADA, usar solo barra global
     
-    // Ejemplo: Manejar eventos específicos de la página
-    // (estos son ejemplos, se pueden eliminar si no se necesitan)
+    // Event listeners específicos de servicios
     
-    // Ejemplo: Scroll específico de la página
-    window.addEventListener('scroll', debounce(function() {
-        // Ejemplo de funcionalidad específica en scroll
-        const scrollPosition = window.scrollY;
+    // Smooth scroll mejorado para los pasos del proceso
+    document.querySelectorAll('a[href^="#proceso"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Destacar temporalmente el paso
+                target.style.background = 'rgba(65, 182, 230, 0.1)';
+                setTimeout(() => {
+                    target.style.background = 'rgba(255, 255, 255, 0.75)';
+                }, 2000);
+            }
+        });
+    });
+    
+    // Efecto especial cuando se hace click en "CONTACTAR AHORA"
+    const ctaButton = document.querySelector('.cta-button');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function(e) {
+            // Efecto de ondas
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                background: rgba(244, 218, 64, 0.5);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: rippleEffect 0.6s ease-out;
+                pointer-events: none;
+            `;
+            
+            const rect = this.getBoundingClientRect();
+            ripple.style.left = (e.clientX - rect.left - 50) + 'px';
+            ripple.style.top = (e.clientY - rect.top - 50) + 'px';
+            
+            this.style.position = 'relative';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                this.removeChild(ripple);
+            }, 600);
+        });
         
-        // Aquí iría lógica específica de scroll si se necesita
-        // Por ejemplo: parallax effects, sticky elements específicos, etc.
-    }, 50));
+        // Agregar keyframes para el efecto de ondas
+        const rippleKeyframes = `
+            @keyframes rippleEffect {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        
+        if (!document.querySelector('#ripple-animation')) {
+            const style = document.createElement('style');
+            style.id = 'ripple-animation';
+            style.textContent = rippleKeyframes;
+            document.head.appendChild(style);
+        }
+    }
     
-    // Ejemplo: Resize específico de la página
+    // Resize específico para ajustar elementos de servicios
     window.addEventListener('resize', debounce(function() {
-        // Ejemplo de funcionalidad específica en resize
-        // Por ejemplo: recalcular posiciones, ajustar layouts específicos, etc.
+        // Reajustar grids en caso de cambio de tamaño
+        const practicalCards = document.querySelectorAll('.practical-card');
+        const isMobile = window.innerWidth <= 768;
+        
+        practicalCards.forEach(card => {
+            if (isMobile) {
+                card.style.minHeight = '160px';
+            } else {
+                card.style.minHeight = '200px';
+            }
+        });
     }, 100));
     
     // Log de éxito
-    console.log('Template page: All functionality loaded successfully');
+    console.log('Servicios page: All functionality loaded successfully');
+    console.log('Process steps, payment info, and service cards are interactive');
 });
