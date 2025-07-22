@@ -989,6 +989,11 @@ html {
         text-align: center;
     }
     
+    /* CORREGIDO - Contact items centrados en mobile */
+    .contact-item {
+        justify-content: center;
+    }
+    
     .footer-nav-link {
         text-align: center;
         justify-content: center;
