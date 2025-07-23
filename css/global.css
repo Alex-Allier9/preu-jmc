@@ -1,1243 +1,565 @@
 /* ======================================
-   GLOBAL.CSS - CONSOLIDADO Y OPTIMIZADO
+   GLOBAL.CSS - ORQUESTADOR PRINCIPAL
+   SISTEMA MODULAR CSS JMC PREUNIVERSITARIO
    ====================================== */
 
-/* Variables CSS */
-:root {
-    --azul-principal: #41B6E6;
-    --amarillo: #F4DA40;
-    --negro: #101820;
-    --rojo: #EF3340;
-    --azul-oscuro: #165C7D;
-    --blanco: #FFFFFF;
-    --gris-claro: #F8F9FA;
-    --gris-medio: #E9ECEF;
-    --title-letter-spacing: 0.2rem;
+/* 
+   ESTE ARCHIVO ES EL PUNTO DE ENTRADA ÚNICO PARA TODO EL CSS DEL PROYECTO.
+   IMPORTA TODOS LOS MÓDULOS EN EL ORDEN CORRECTO PARA GARANTIZAR:
+   - Cascada CSS apropiada
+   - Variables disponibles antes de su uso
+   - Reset aplicado antes que componentes
+   - Responsive aplicado al final para overrides
+*/
+
+/* ======================================
+   CORE - FUNDAMENTOS DEL SISTEMA
+   ====================================== */
+
+/* Variables CSS globales - DEBE SER PRIMERO */
+@import url('./core/variables.css');
+
+/* Fuentes y @font-face declarations */
+@import url('./core/fonts.css');
+
+/* Reset CSS y estilos base */
+@import url('./core/reset.css');
+
+/* Keyframes y animaciones universales */
+@import url('./core/animations.css');
+
+/* ======================================
+   LAYOUT - ESTRUCTURA PRINCIPAL
+   ====================================== */
+
+/* Header fijo y navegación */
+@import url('./layout/header.css');
+
+/* Layout de secciones y hero */
+@import url('./layout/sections.css');
+
+/* Footer completo */
+@import url('./layout/footer.css');
+
+/* Background wrappers y parallax */
+@import url('./layout/backgrounds.css');
+
+/* ======================================
+   COMPONENTS - COMPONENTES REUTILIZABLES
+   ====================================== */
+
+/* Sistema universal de cards */
+@import url('./components/cards.css');
+
+/* Sistema universal de grids */
+@import url('./components/grids.css');
+
+/* Sistema universal de iconos */
+@import url('./components/icons.css');
+
+/* Sistema universal de botones */
+@import url('./components/buttons.css');
+
+/* ======================================
+   UTILITIES - UTILIDADES Y HELPERS
+   ====================================== */
+
+/* Clases helper y utilitarias */
+@import url('./utilities/helpers.css');
+
+/* Media queries y responsive - DEBE SER ÚLTIMO */
+@import url('./utilities/responsive.css');
+
+/* ======================================
+   GLOBAL OVERRIDES Y UTILIDADES CRÍTICAS
+   ====================================== */
+
+/* Utilidades de texto críticas */
+.text-center { 
+    text-align: center !important; 
+}
+
+.text-left { 
+    text-align: left !important; 
+}
+
+.text-right { 
+    text-align: right !important; 
+}
+
+/* Utilidades de margin críticas */
+.mb-0 { 
+    margin-bottom: 0 !important; 
+}
+
+.mb-1 { 
+    margin-bottom: 1rem !important; 
+}
+
+.mb-2 { 
+    margin-bottom: 2rem !important; 
+}
+
+.mb-3 { 
+    margin-bottom: 3rem !important; 
+}
+
+.mt-0 { 
+    margin-top: 0 !important; 
+}
+
+.mt-1 { 
+    margin-top: 1rem !important; 
+}
+
+.mt-2 { 
+    margin-top: 2rem !important; 
+}
+
+.mt-3 { 
+    margin-top: 3rem !important; 
+}
+
+/* Utilidades de padding críticas */
+.p-0 { 
+    padding: 0 !important; 
+}
+
+.p-1 { 
+    padding: 1rem !important; 
+}
+
+.p-2 { 
+    padding: 2rem !important; 
+}
+
+.p-3 { 
+    padding: 3rem !important; 
+}
+
+/* Utilidades de display críticas */
+.d-none { 
+    display: none !important; 
+}
+
+.d-block { 
+    display: block !important; 
+}
+
+.d-inline { 
+    display: inline !important; 
+}
+
+.d-inline-block { 
+    display: inline-block !important; 
+}
+
+.d-flex { 
+    display: flex !important; 
+}
+
+.d-grid { 
+    display: grid !important; 
+}
+
+/* Utilidades de flexbox críticas */
+.justify-center { 
+    justify-content: center !important; 
+}
+
+.justify-between { 
+    justify-content: space-between !important; 
+}
+
+.justify-around { 
+    justify-content: space-around !important; 
+}
+
+.align-center { 
+    align-items: center !important; 
+}
+
+.align-start { 
+    align-items: flex-start !important; 
+}
+
+.align-end { 
+    align-items: flex-end !important; 
+}
+
+/* Utilidades de width críticas */
+.w-100 { 
+    width: 100% !important; 
+}
+
+.w-auto { 
+    width: auto !important; 
+}
+
+.max-w-100 { 
+    max-width: 100% !important; 
+}
+
+/* Utilidades de posición críticas */
+.position-relative { 
+    position: relative !important; 
+}
+
+.position-absolute { 
+    position: absolute !important; 
+}
+
+.position-fixed { 
+    position: fixed !important; 
+}
+
+.position-static { 
+    position: static !important; 
 }
 
 /* ======================================
-   FONTS - CONSOLIDADO
+   OVERRIDES ESPECÍFICOS PARA PROBLEMAS CONOCIDOS
    ====================================== */
 
-@font-face {
-    font-family: 'Material Symbols Rounded';
-    font-style: normal;
-    font-weight: 100 700;
-    font-display: block;
-    src: url('../media/fonts/material-symbols/MaterialSymbolsRounded.woff2') format('woff2');
-}
-
-.material-symbols-rounded {
-    font-family: 'Material Symbols Rounded', sans-serif;
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-feature-settings: 'liga';
-    -moz-font-feature-settings: 'liga';
-    font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    transition: all 0.3s ease;
-}
-
-/* DM Serif Text */
-@font-face {
-    font-family: 'DM Serif Text';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('../media/fonts/dm-serif-text/DMSerifText-Regular.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'DM Serif Text';
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url('../media/fonts/dm-serif-text/DMSerifText-Italic.ttf') format('truetype');
-}
-
-/* Raleway Variable */
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: swap;
-    src: url('../media/fonts/raleway/variable/Raleway-Variable.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 100 900;
-    font-display: swap;
-    src: url('../media/fonts/raleway/variable/Raleway-VariableItalic.ttf') format('truetype');
-}
-
-/* ======================================
-   RESET Y BASE
-   ====================================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Fix para overflow en mobile */
 body {
-    font-family: 'Raleway', sans-serif;
-    line-height: 1.6;
-    color: var(--negro);
     overflow-x: hidden;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 1;
-}
-
-/* ======================================
-   HEADER - UNIVERSAL
-   ====================================== */
-
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    padding: 1.5rem 0;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(65, 182, 230, 0.1);
-}
-
-.header.scrolled {
-    padding: 1rem 0;
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
+/* Smooth scroll global mejorado */
 html {
-    scroll-padding-top: 6px;
     scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Altura del header fijo */
 }
 
-#scroll-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 6px;
-    z-index: 9999;
-    pointer-events: none;
+/* Fix para fonts en WebKit */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-#scroll-progress-bar > div {
-    height: 100%;
-    transform-origin: left center;
+/* Fix para focus outline consistente */
+*:focus-visible {
+    outline: 2px solid var(--azul-principal);
+    outline-offset: 2px;
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Fix para tap highlight en mobile */
+* {
+    -webkit-tap-highlight-color: transparent;
 }
 
-.logo {
-    font-family: 'DM Serif Text', serif;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--azul-principal);
-    text-decoration: none;
-    transition: transform 0.3s ease;
-    display: flex;
-    align-items: center;
-}
+/* ======================================
+   ACCESIBILIDAD GLOBAL
+   ====================================== */
 
-.logo img {
-    height: 1.8rem;
-    width: auto;
-}
-
-.logo:hover {
-    transform: scale(1.05);
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--negro);
+/* Mejorar contraste para texto muy pequeño */
+.small-text {
     font-weight: 500;
-    position: relative;
-    transition: color 0.3s ease;
+    letter-spacing: 0.02em;
 }
 
-.nav-link:hover, .nav-link.active {
-    color: var(--azul-principal);
-}
-
-.nav-link::after {
-    content: '';
+/* Skip link para lectores de pantalla */
+.skip-link {
     position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--amarillo);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    top: -40px;
+    left: 6px;
+    background: var(--negro);
+    color: var(--amarillo);
+    padding: 8px;
+    text-decoration: none;
+    z-index: 10000;
+    border-radius: 4px;
 }
 
-.nav-link:hover::after {
-    transform: scaleX(1);
+.skip-link:focus {
+    top: 6px;
 }
 
-.nav-link.active::after {
-    transform: scaleX(1);
-    transition: none;
-}
-
-.nav-link.active {
-    color: var(--azul-principal);
-}
-
-/* ======================================
-   HERO SECTION - UNIVERSAL
-   ====================================== */
-
-.hero {
-    height: 100vh;
-    background-position: center center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    position: relative;
-}
-
-.hero-content h1 {
-    font-family: 'DM Serif Text', serif;
-    font-size: clamp(3rem, 8vw, 6rem);
-    margin-bottom: 1rem;
-    letter-spacing: var(--title-letter-spacing);
-    animation: fadeInUp 1s ease;
-}
-
-.hero-content p {
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
-    font-style: italic;
-    max-width: 800px;
-    animation: fadeInUp 1s ease 0.3s both;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+/* Reduced motion global */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
 
 /* ======================================
-   LAYOUT UNIVERSAL DE SECCIONES - CONSOLIDADO
+   DEBUGGING UTILITIES (Solo para desarrollo)
    ====================================== */
 
-.section {
-    padding: 5rem 0;
+/* Clase para debugging - mostrar outlines */
+.debug * {
+    outline: 1px solid red !important;
 }
 
-.section-title {
-    font-family: 'DM Serif Text', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--azul-oscuro);
-    line-height: 1;
-    letter-spacing: var(--title-letter-spacing);
+.debug-grid {
+    background-image: 
+        linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 
-.section-subtitle {
-    display: block;
-    height: 4px;
-    margin: 0 auto 3rem auto;
-    width: 120px;
-    background: var(--amarillo);
-    position: relative;
-}
-
-/* NUEVO - Layout universal de secciones con background */
-.section-with-background {
-    background: rgba(255, 255, 255, 0.75);
-    margin-left: 8.33%;
-    margin-right: 8.33%;
-    margin-bottom: 6rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 2;
-    padding: 5rem 0;
-}
-
-/* Variantes de padding */
-.section-with-background.padded {
-    padding: 3rem;
-}
-
-/* Márgenes superiores específicos */
-.section-with-background.first-section,
-.section-with-background.profile-header,
-.section-with-background.about {
-    margin-top: 6rem;
-}
-
-.section-with-background.values-section,
-.section-with-background.mountaineering-section,
-.section-with-background.third-section,
-.section-with-background.fourth-section {
-    margin-top: 6rem;
-}
-
-/* NUEVO - Sección azul universal */
-.blue-section-universal {
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+/* Mostrar breakpoints en desarrollo */
+.debug-breakpoint::before {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 5rem 0;
+    padding: 5px 10px;
+    font-size: 12px;
+    z-index: 10000;
+    border-radius: 4px;
+    content: 'Desktop';
 }
 
-.blue-section-universal .section-title {
-    color: white;
-}
-
-/* Sección regular */
-.regular-section {
-    background: white;
-    color: var(--negro);
-    padding: 5rem 0;
-}
-
-.regular-section .section-title {
-    color: var(--azul-oscuro);
-}
-
-/* ======================================
-   BACKGROUND WRAPPERS - UNIVERSAL
-   ====================================== */
-
-.background-wrapper-primary,
-.background-wrapper-secondary {
-    position: relative;
-    overflow: hidden;
-}
-
-.mountain-background {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 3264px;
-    height: 4896px;
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    z-index: -1;
-    will-change: transform;
-}
-
-.secondary-background {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 3264px;
-    height: 4896px;
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    z-index: -1;
-    will-change: transform;
-}
-
-/* ======================================
-   SISTEMA DE CARDS UNIVERSAL - CONSOLIDADO
-   ====================================== */
-
-/* Cards base universales */
-.card-base {
-    border-radius: 15px;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.card-base:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* Variantes de cards */
-.card-base.glassmorphism {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-.card-base.glassmorphism:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.card-base.bordered {
-    background: 
-        linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
-    border: 9px solid transparent;
-}
-
-/* Cards específicas existentes que usan la base */
-.about-card,
-.mvp-card,
-.stat-card,
-.program-card,
-.value-card,
-.sede-card,
-.quote-card,
-.proceso-card-full {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-/* Textos generales */
-.section p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-}
-
-.about-card p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    text-align: justify;
-}
-
-/* ======================================
-   CARD GRIDS - UNIVERSAL
-   ====================================== */
-
-.card-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-}
-
-.card-grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-}
-
-.card-grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-}
-
-/* ======================================
-   PROGRAM SECTION - UNIVERSAL
-   ====================================== */
-
-.program {
-    background: white;
-    color: var(--negro);
-}
-
-.program .section-title {
-    color: var(--azul-oscuro);
-}
-
-.program-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-}
-
-.program-card {
-    background: 
-        linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
-    border: 9px solid transparent;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-}
-
-.program-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
-}
-
-.program-card p {
-    position: relative;
-    z-index: 1;
-    font-size: 1.05rem;
-    line-height: 1.6;
-}
-
-/* ======================================
-   ICONOS - UNIVERSAL
-   ====================================== */
-
-/* Icon sizes */
-.main-icon {
-    font-size: 6rem;
-}
-
-.secondary-icon {
-    font-size: 4.5rem;
-}
-
-.process-icon {
-    font-size: 4rem;
-    color: white;
-}
-
-.footer-icon {
-    font-size: 1.2rem;
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
-.meta-icon {
-    font-size: 1rem;
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
-/* Icon containers */
-.main-icon-container {
-    height: 10rem;
-    width: 10rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    margin: 0 auto;
-}
-
-.secondary-icon-container {
-    height: 7.5rem;
-    width: 7.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    margin: 0 auto;
-}
-
-.process-icon-container,
-.process-step-icon {
-    flex: 0 0 auto;
-    width: 7.5rem;
-    height: 7.5rem;
-    background: var(--azul-principal);
-    border-radius: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0.375rem 1.125rem rgba(65, 182, 230, 0.3);
-    transition: all 0.3s ease;
-}
-
-/* Icon positioning in cards */
-.program-icon {
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-}
-
-.program-icon .material-symbols-rounded {
-    color: var(--azul-oscuro);
-}
-
-.value-icon {
-    margin-bottom: 2rem;
-}
-
-.value-icon .secondary-icon {
-    color: var(--azul-principal);
-}
-
-.sede-icon {
-    margin-bottom: 2rem;
-}
-
-.sede-icon .material-symbols-rounded {
-    color: var(--amarillo);
-}
-
-.process-step-icon .material-symbols-rounded {
-    font-size: 4rem;
-    color: white;
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
-}
-
-/* ======================================
-   METHODOLOGY SECTION - UNIVERSAL
-   ====================================== */
-
-.methodology {
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
-    color: white;
-}
-
-.methodology .section-title {
-    color: white;
-}
-
-.quote-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 3rem;
-    text-align: center;
-    margin: 3rem auto;
-    max-width: 600px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-}
-
-.quote-text {
-    font-style: italic;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    position: relative;
-    z-index: 2;
-}
-
-.quote-text::before,
-.quote-text::after {
-    content: '"';
-    font-family: 'DM Serif Text', serif;
-    font-size: 5rem;
-    color: var(--amarillo);
-    position: absolute;
-    opacity: 0.9;
-    font-weight: 400;
-    line-height: 1;
-    z-index: 1;
-    font-style: normal;
-}
-
-.quote-text::before {
-    content: '"';
-    top: -1rem;
-    left: -1.5rem;
-    transform: rotate(-10deg);
-}
-
-.quote-text::after {
-    content: '"';
-    bottom: -2rem;
-    right: -1.5rem;
-    transform: rotate(10deg);
-}
-
-.quote-author {
-    color: var(--amarillo);
-    font-weight: 600;
-    font-size: 1.1rem;
-    position: relative;
-    z-index: 2;
-}
-
-/* ======================================
-   VALUES SECTION - UNIVERSAL
-   ====================================== */
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-}
-
-.value-card {
-    padding: 1.5rem;
-    text-align: center;
-    min-height: 180px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.value-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-align: center;
-    line-height: 1.3;
-    font-size: 1rem;
-    hyphens: auto;
-    word-wrap: break-word;
-}
-
-/* ======================================
-   PROCESS SECTION - UNIVERSAL
-   ====================================== */
-
-.process-cards-horizontal {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-}
-
-.proceso-card-full {
-    padding: 2.5rem;
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-}
-
-.card-content {
-    flex: 1;
-    text-align: left;
-}
-
-.card-content h3 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.6rem;
-    color: var(--azul-oscuro);
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-}
-
-.card-content p {
-    color: var(--negro);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    text-align: justify;
-    font-size: 1.1rem;
-}
-
-.card-meta {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 0.0625rem solid var(--gris-claro);
-    font-size: 0.95rem;
-    color: var(--azul-principal);
-    font-weight: 600;
-    flex-wrap: wrap;
-}
-
-.meta-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.meta-item .meta-icon {
-    color: var(--azul-principal);
-}
-
-.testimonios-link {
-    color: var(--azul-principal);
-    text-decoration: none;
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.testimonios-link::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--amarillo);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-.testimonios-link:hover::after {
-    transform: scaleX(1);
-}
-
-/* ======================================
-   SEDE SECTION - UNIVERSAL
-   ====================================== */
-
-.sede {
-    background: linear-gradient(135deg, var(--azul-oscuro) 0%, #326A8B 100%);
-    color: white;
-}
-
-.sede .section-title {
-    color: white;
-}
-
-.sede-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-}
-
-.sede-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.sede-card h3 {
-    color: var(--amarillo);
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.sede-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-}
-
-/* ======================================
-   CTA SECTION - UNIVERSAL
-   ====================================== */
-
-.cta {
-    background-position: center center;
-    color: white;
-    text-align: center;
-    padding: 5rem 0;
-}
-
-.cta h2 {
-    font-family: 'DM Serif Text', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 1rem;
-    letter-spacing: var(--title-letter-spacing);
-}
-
-.cta-button {
-    background: var(--negro);
-    color: var(--amarillo);
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 3.125rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 2rem;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.cta-button:hover {
-    background: var(--amarillo);
-    color: var(--negro);
-    transform: translateY(-0.125rem);
-    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2);
-}
-
-/* ======================================
-   FOOTER - UNIVERSAL
-   ====================================== */
-
-.footer {
-    background: var(--negro);
-    color: white;
-    padding: 3rem 0 1rem;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 2fr 1.2fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.footer-section h3 {
-    color: var(--amarillo);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    padding: 0.3rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.contact-item .material-symbols-rounded {
-    font-size: 1.2rem;
-    color: var(--amarillo);
-    margin-top: 0.2rem;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-}
-
-.contact-item .instagram-icon {
-    width: 1.2rem;
-    height: 1.2rem;
-    margin-top: 0.2rem;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-}
-
-.contact-item:hover {
-    background: rgba(244, 218, 64, 0.1);
-    transform: translateX(5px);
-}
-
-.contact-item:hover .material-symbols-rounded {
-    color: var(--azul-principal);
-    transform: scale(1.1);
-}
-
-.contact-item:hover .instagram-icon {
-    filter: brightness(0) saturate(100%) invert(45%) sepia(93%) saturate(2206%) hue-rotate(180deg) brightness(96%) contrast(95%);
-    transform: scale(1.1);
-}
-
-.contact-item span {
-    color: white;
-    transition: color 0.3s ease;
-}
-
-.contact-item:hover span {
-    color: var(--amarillo);
-}
-
-.footer-nav-link {
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-    position: relative;
-    padding: 0.3rem;
-    border-radius: 0.5rem;
-    margin-bottom: 0.25rem;
-    width: 100%;
-    text-align: left;
-}
-
-.footer-nav-link:hover {
-    color: var(--amarillo);
-    background: rgba(244, 218, 64, 0.1);
-    transform: translateX(0.3125rem);
-    padding-left: 0.5rem;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid #333;
-    color: #888;
-}
-
-.footer-author {
-    color: var(--amarillo);
-    margin-top: 0.5rem;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-author:hover {
-    color: var(--azul-principal);
-}
-
-/* ======================================
-   ANIMACIONES - UNIVERSAL
-   ====================================== */
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ======================================
-   RESPONSIVE CONSOLIDADO - UNIVERSAL
-   ====================================== */
-
-/* Tablet (768px - 1024px) */
 @media (max-width: 82rem) and (min-width: 53.0625rem) {
-    /* Layout de secciones con background */
-    .section-with-background {
-        margin-left: 5%;
-        margin-right: 5%;
-        padding: 4rem 0;
-    }
-    
-    .section-with-background.padded {
-        padding: 2.5rem;
-    }
-
-    /* Grids universales */
-    .card-grid-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-    
-    .card-grid-2 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .card-grid-3 {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    /* Value cards específicas */
-    .value-card {
-        min-height: 10rem;
-        padding: 1.2rem;
-    }
-    
-    .value-card h3 {
-        font-size: 0.95rem;
-    }
-    
-    /* Iconos tablet */
-    .main-icon-container {
-        height: 8.75rem;
-        width: 8.75rem;
-    }
-    
-    .main-icon {
-        font-size: 5rem;
-    }
-    
-    .secondary-icon-container {
-        height: 6.25rem;
-        width: 6.25rem;
-    }
-    
-    .secondary-icon {
-        font-size: 3.5rem;
-    }
-    
-    .process-step-icon {
-        width: 6.25rem;
-        height: 6.25rem;
-    }
-    
-    .process-step-icon .material-symbols-rounded {
-        font-size: 3.5rem;
+    .debug-breakpoint::before {
+        content: 'Tablet';
+        background: rgba(255, 165, 0, 0.8);
     }
 }
 
-/* Mobile (hasta 767px) */
 @media (max-width: 53rem) {
-    /* Navigation mobile */
-    .nav-menu {
-        display: none;
-    }
-    
-    /* Hero mobile */
-    .hero-content h1 {
-        font-size: 3rem;
-    }
-    
-    /* Section mobile */
-    .section {
-        padding: 3rem 0;
-    }
-    
-    /* Container mobile */
-    .container {
-        padding: 0 1rem;
-    }
-    
-    /* Layout de secciones con background mobile */
-    .section-with-background {
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-bottom: 3rem;
-        padding: 3rem 0;
-    }
-    
-    .section-with-background.padded {
-        padding: 2rem;
-    }
-    
-    .section-with-background.first-section,
-    .section-with-background.profile-header,
-    .section-with-background.about,
-    .section-with-background.values-section,
-    .section-with-background.mountaineering-section,
-    .section-with-background.third-section,
-    .section-with-background.fourth-section {
-        margin-top: 3rem;
-    }
-    
-    /* Grids mobile */
-    .card-grid-4,
-    .card-grid-2,
-    .card-grid-3,
-    .values-grid {
-        grid-template-columns: 1fr !important;
-        padding: 0 1rem 2rem 1rem;
-    }
-    
-    /* Value cards mobile */
-    .value-card {
-        min-height: 8.75rem;
-        padding: 1.2rem;
-    }
-    
-    .value-card h3 {
-        font-size: 0.95rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Iconos mobile */
-    .main-icon-container {
-        height: 5rem;
-        width: 5rem;
-    }
-    
-    .main-icon {
-        font-size: 2.5rem;
-    }
-    
-    .secondary-icon-container {
-        height: 3.75rem;
-        width: 3.75rem;
-    }
-    
-    .secondary-icon {
-        font-size: 2rem;
-    }
-    
-    /* Process cards mobile */
-    .proceso-card-full {
-        padding: 2rem;
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-    }
-    
-    .process-step-icon {
-        width: 3.75rem;
-        height: 3.75rem;
-        margin: 0 auto;
-    }
-    
-    .process-step-icon .material-symbols-rounded {
-        font-size: 1.8rem;
-    }
-    
-    .card-content {
-        text-align: center;
-    }
-    
-    .card-content h3 {
-        text-align: center;
-        font-size: 1.4rem;
-    }
-    
-    .card-content p {
-        text-align: center;
-    }
-    
-    .card-meta {
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .process-cards-horizontal {
-        padding: 0 1rem 2rem 1rem;
-    }
-    
-    /* Footer mobile */
-    .footer-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 3rem;
-    }
-    
-    .footer-section {
-        text-align: center;
-    }
-    
-    .contact-item {
-        justify-content: center;
-    }
-    
-    .footer-nav-link {
-        text-align: center;
-        justify-content: center;
-    }
-    
-    .footer-nav-link:hover {
-        transform: translateX(0);
-        padding-left: 0.3rem;
-    }
-    
-    /* Backgrounds mobile */
-    .mountain-background,
-    .secondary-background {
-        width: 100vw;
-        height: 150vh;
-        background-size: cover;
-        background-position: center top;
+    .debug-breakpoint::before {
+        content: 'Mobile';
+        background: rgba(0, 128, 0, 0.8);
     }
 }
+
+/* ======================================
+   PRINT STYLES GLOBALES
+   ====================================== */
+
+@media print {
+    
+    /* Ocultar elementos no imprimibles */
+    .header,
+    .footer,
+    .nav-menu,
+    .btn-float,
+    .skip-link,
+    .debug-breakpoint {
+        display: none !important;
+    }
+    
+    /* Ajustar colores para impresión */
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    /* Mejorar tipografía para impresión */
+    body {
+        font-size: 12pt !important;
+        line-height: 1.5 !important;
+    }
+    
+    .section-title {
+        font-size: 18pt !important;
+        page-break-after: avoid;
+    }
+    
+    /* Evitar cortes de página en elementos */
+    .card-base,
+    .white-centered-card,
+    .gradient-bordered-card,
+    .blue-glass-card,
+    .proceso-card-full {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+    /* Agregar URLs después de enlaces */
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: #666;
+    }
+    
+    /* No mostrar URLs para enlaces internos */
+    a[href^="#"]:after,
+    a[href^="/"]:after {
+        content: "";
+    }
+}
+
+/* ======================================
+   OPTIMIZACIONES DE PERFORMANCE
+   ====================================== */
+
+/* Optimizar rendering de imágenes */
+img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: optimize-contrast;
+}
+
+/* Optimizar transform y opacity para animaciones */
+.fade-in,
+.card-base,
+.btn-base {
+    will-change: transform, opacity;
+}
+
+/* Contenedor para elementos con transform */
+.transform-container {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* ======================================
+   RESPONSIVE UTILITIES ADICIONALES
+   ====================================== */
+
+/* Mostrar/ocultar según dispositivo */
+.show-mobile {
+    display: none !important;
+}
+
+.show-tablet {
+    display: none !important;
+}
+
+.show-desktop {
+    display: block !important;
+}
+
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    .hide-tablet {
+        display: none !important;
+    }
+    
+    .show-tablet {
+        display: block !important;
+    }
+    
+    .show-desktop {
+        display: none !important;
+    }
+}
+
+@media (max-width: 53rem) {
+    .hide-mobile {
+        display: none !important;
+    }
+    
+    .show-mobile {
+        display: block !important;
+    }
+    
+    .show-tablet,
+    .show-desktop {
+        display: none !important;
+    }
+}
+
+/* ======================================
+   CUSTOM PROPERTIES COMPUTED (CSS futuro)
+   ====================================== */
+
+/* Container queries preparado para el futuro */
+@supports (container-type: inline-size) {
+    .container-responsive {
+        container-type: inline-size;
+    }
+    
+    @container (max-width: 600px) {
+        .container-responsive .card-base {
+            padding: 1rem;
+        }
+    }
+}
+
+/* ======================================
+   VARIABLES DINÁMICAS CALCULADAS
+   ====================================== */
+
+:root {
+    /* Variables calculadas para spacing fluido */
+    --fluid-space-xs: clamp(0.5rem, 2vw, 1rem);
+    --fluid-space-sm: clamp(1rem, 3vw, 1.5rem);
+    --fluid-space-md: clamp(1.5rem, 4vw, 2rem);
+    --fluid-space-lg: clamp(2rem, 5vw, 3rem);
+    --fluid-space-xl: clamp(3rem, 8vw, 5rem);
+    
+    /* Variables calculadas para tipografía fluida */
+    --fluid-text-sm: clamp(0.875rem, 2.5vw, 1rem);
+    --fluid-text-base: clamp(1rem, 3vw, 1.125rem);
+    --fluid-text-lg: clamp(1.125rem, 3.5vw, 1.25rem);
+    --fluid-text-xl: clamp(1.25rem, 4vw, 1.5rem);
+    --fluid-text-2xl: clamp(1.5rem, 5vw, 2rem);
+    --fluid-text-3xl: clamp(2rem, 7vw, 3rem);
+    
+    /* Variables dinámicas para viewport */
+    --vh: 1vh;
+    --vw: 1vw;
+}
+
+/* Fix para 100vh en mobile */
+.full-height {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+}
+
+/* ======================================
+   SISTEMA DE CLASES FLUIDAS
+   ====================================== */
+
+/* Spacing fluido */
+.space-xs { margin: var(--fluid-space-xs); }
+.space-sm { margin: var(--fluid-space-sm); }
+.space-md { margin: var(--fluid-space-md); }
+.space-lg { margin: var(--fluid-space-lg); }
+.space-xl { margin: var(--fluid-space-xl); }
+
+/* Padding fluido */
+.pad-xs { padding: var(--fluid-space-xs); }
+.pad-sm { padding: var(--fluid-space-sm); }
+.pad-md { padding: var(--fluid-space-md); }
+.pad-lg { padding: var(--fluid-space-lg); }
+.pad-xl { padding: var(--fluid-space-xl); }
+
+/* Texto fluido */
+.text-fluid-sm { font-size: var(--fluid-text-sm); }
+.text-fluid-base { font-size: var(--fluid-text-base); }
+.text-fluid-lg { font-size: var(--fluid-text-lg); }
+.text-fluid-xl { font-size: var(--fluid-text-xl); }
+.text-fluid-2xl { font-size: var(--fluid-text-2xl); }
+.text-fluid-3xl { font-size: var(--fluid-text-3xl); }
+
+/* ======================================
+   FIN DEL ARCHIVO - GLOBAL.CSS
+   SISTEMA MODULAR CSS COMPLETADO ✅
+   ====================================== */
+
+/*
+   RESUMEN DEL SISTEMA MODULAR JMC:
+   
+   📁 ESTRUCTURA:
+   ├── core/ (4 archivos) - Fundamentos
+   ├── layout/ (4 archivos) - Estructura  
+   ├── components/ (4 archivos) - Componentes
+   ├── utilities/ (2 archivos) - Utilidades
+   └── global.css (1 archivo) - Orquestador
+   
+   🎯 TOTAL: 15 archivos modulares + específicos
+   
+   ✅ BENEFICIOS LOGRADOS:
+   - Mantenimiento simplificado
+   - Organización clara por responsabilidades
+   - Escalabilidad para futuras funcionalidades
+   - Debugging mejorado
+   - Trabajo en equipo facilitado
+   - Performance optimizado
+   - Accesibilidad integrada
+   
+   🚀 LISTO PARA PRODUCCIÓN
+*/

@@ -1,0 +1,945 @@
+/* ======================================
+   ICONS.CSS - SISTEMA UNIVERSAL DE ICONOS
+   JMC PREUNIVERSITARIO
+   ====================================== */
+
+/* ======================================
+   MATERIAL SYMBOLS BASE CONFIGURATION
+   ====================================== */
+
+.material-symbols-rounded {
+    font-family: 'Material Symbols Rounded', sans-serif;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: all var(--transition-normal);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* ======================================
+   SISTEMA DE TAMAÑOS DE ICONOS
+   ====================================== */
+
+/* Extra Large - Iconos principales en hero y secciones importantes */
+.icon-xl {
+    font-size: var(--icon-xl);
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+}
+
+/* Large - Iconos secundarios en cards y secciones */
+.icon-lg {
+    font-size: var(--icon-lg);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
+/* Medium - Iconos de proceso y navegación */
+.icon-md {
+    font-size: var(--icon-md);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+}
+
+/* Small - Iconos de footer y enlaces */
+.icon-sm {
+    font-size: var(--icon-sm);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Extra Small - Iconos de meta información y detalles */
+.icon-xs {
+    font-size: var(--icon-xs);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+/* ======================================
+   CONTENEDORES DE ICONOS
+   ====================================== */
+
+/* Base para todos los contenedores */
+.icon-container-base {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Extra Large Container - 10rem x 10rem */
+.icon-container-xl {
+    height: var(--icon-container-xl);
+    width: var(--icon-container-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Large Container - 7.5rem x 7.5rem */
+.icon-container-lg {
+    height: var(--icon-container-lg);
+    width: var(--icon-container-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Medium Container - 5rem x 5rem */
+.icon-container-md {
+    height: var(--icon-container-md);
+    width: var(--icon-container-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Small Container - 3rem x 3rem */
+.icon-container-sm {
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Extra Small Container - 2rem x 2rem */
+.icon-container-xs {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    margin: 0 auto;
+    position: relative;
+}
+
+/* ======================================
+   CONTENEDORES CON ESTILOS ESPECÍFICOS
+   ====================================== */
+
+/* Container con fondo azul - Para procesos e interacciones */
+.icon-container-lg-blue {
+    height: var(--icon-container-lg);
+    width: var(--icon-container-lg);
+    background: var(--azul-principal);
+    border-radius: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.375rem 1.125rem rgba(65, 182, 230, 0.3);
+    transition: all var(--transition-normal);
+    margin: 0 auto;
+    position: relative;
+}
+
+.icon-container-lg-blue:hover {
+    background: var(--azul-oscuro);
+    transform: translateY(-3px);
+    box-shadow: 0 0.75rem 1.5rem rgba(65, 182, 230, 0.4);
+}
+
+.icon-container-lg-blue .material-symbols-rounded {
+    color: white;
+}
+
+/* Container con fondo amarillo - Para destacar */
+.icon-container-lg-yellow {
+    height: var(--icon-container-lg);
+    width: var(--icon-container-lg);
+    background: var(--amarillo);
+    border-radius: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.375rem 1.125rem rgba(244, 218, 64, 0.3);
+    transition: all var(--transition-normal);
+    margin: 0 auto;
+    position: relative;
+}
+
+.icon-container-lg-yellow:hover {
+    background: #f0d535;
+    transform: translateY(-3px);
+    box-shadow: 0 0.75rem 1.5rem rgba(244, 218, 64, 0.4);
+}
+
+.icon-container-lg-yellow .material-symbols-rounded {
+    color: var(--negro);
+}
+
+/* Container circular con borde */
+.icon-container-circle {
+    border-radius: 50%;
+    border: 2px solid var(--azul-principal);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.icon-container-circle:hover {
+    border-color: var(--amarillo);
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Container glassmorphism */
+.icon-container-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.icon-container-glass:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* ======================================
+   COLORES DE ICONOS SEGÚN CONTEXTO
+   ====================================== */
+
+/* Iconos principales - azul principal */
+.icon-primary {
+    color: var(--azul-principal);
+}
+
+.icon-primary:hover {
+    color: var(--azul-oscuro);
+    transform: scale(1.1);
+}
+
+/* Iconos secundarios - azul oscuro */
+.icon-secondary {
+    color: var(--azul-oscuro);
+}
+
+.icon-secondary:hover {
+    color: var(--azul-principal);
+    transform: scale(1.1);
+}
+
+/* Iconos de acento - amarillo */
+.icon-accent {
+    color: var(--amarillo);
+}
+
+.icon-accent:hover {
+    color: #f0d535;
+    transform: scale(1.1);
+}
+
+/* Iconos de peligro - rojo */
+.icon-danger {
+    color: var(--rojo);
+}
+
+.icon-danger:hover {
+    color: #d12b38;
+    transform: scale(1.1);
+}
+
+/* Iconos neutros - negro/gris */
+.icon-neutral {
+    color: var(--negro);
+}
+
+.icon-neutral:hover {
+    color: var(--azul-principal);
+    transform: scale(1.1);
+}
+
+/* Iconos blancos - para fondos oscuros */
+.icon-white {
+    color: white;
+}
+
+.icon-white:hover {
+    color: var(--amarillo);
+    transform: scale(1.1);
+}
+
+/* ======================================
+   ICONOS EN CONTEXTOS ESPECÍFICOS
+   ====================================== */
+
+/* Iconos en cards */
+.card-base .material-symbols-rounded,
+.white-centered-card .material-symbols-rounded,
+.gradient-bordered-card .material-symbols-rounded {
+    color: var(--azul-oscuro);
+}
+
+.blue-glass-card .material-symbols-rounded,
+.requisito-icon .material-symbols-rounded {
+    color: var(--amarillo);
+}
+
+/* Iconos en navegación */
+.nav-icon {
+    color: var(--negro);
+    transition: all var(--transition-normal);
+}
+
+.nav-icon:hover {
+    color: var(--azul-principal);
+    transform: scale(1.1);
+}
+
+/* Iconos en footer */
+.footer-icon {
+    color: var(--azul-principal);
+    transition: all var(--transition-normal);
+}
+
+.footer-icon:hover {
+    color: var(--amarillo);
+    transform: scale(1.2);
+}
+
+/* Iconos en procesos */
+.process-icon {
+    color: white;
+}
+
+/* Iconos en estadísticas */
+.stat-icon {
+    color: var(--azul-principal);
+}
+
+/* ======================================
+   EFECTOS DE HOVER UNIVERSALES
+   ====================================== */
+
+/* Efecto de pulse para iconos importantes */
+.icon-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Efecto de rotación para iconos de carga */
+.icon-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Efecto de bounce para iconos de acción */
+.icon-bounce:hover {
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Efecto de shake para errores */
+.icon-shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+/* ======================================
+   ICONOS CON BADGES Y NOTIFICACIONES
+   ====================================== */
+
+/* Container para iconos con badge */
+.icon-with-badge {
+    position: relative;
+    display: inline-block;
+}
+
+.icon-badge {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background: var(--rojo);
+    color: white;
+    border-radius: 50%;
+    width: 1.2rem;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border: 2px solid white;
+}
+
+.icon-badge.accent {
+    background: var(--amarillo);
+    color: var(--negro);
+}
+
+.icon-badge.primary {
+    background: var(--azul-principal);
+}
+
+/* ======================================
+   AGRUPACIÓN DE ICONOS
+   ====================================== */
+
+/* Grupo horizontal de iconos */
+.icon-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icon-group.compact {
+    gap: 0.5rem;
+}
+
+.icon-group.spacious {
+    gap: 2rem;
+}
+
+/* Grupo vertical de iconos */
+.icon-group-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Iconos en stack (superpuestos) */
+.icon-stack {
+    position: relative;
+    display: inline-block;
+}
+
+.icon-stack .material-symbols-rounded:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.icon-stack .material-symbols-rounded:last-child {
+    position: relative;
+    z-index: 1;
+    color: var(--amarillo);
+    font-size: 0.6em;
+    top: -0.2em;
+    left: 0.1em;
+}
+
+/* ======================================
+   RESPONSIVE DESIGN
+   ====================================== */
+
+/* Tablet (max-width: 82rem) and (min-width: 53.0625rem) */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    
+    /* Ajustes de tamaños de iconos */
+    .icon-xl {
+        font-size: 5rem;
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+    }
+    
+    .icon-lg {
+        font-size: 3.5rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+    }
+    
+    .icon-md {
+        font-size: 3rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+    }
+    
+    /* Ajustes de contenedores */
+    .icon-container-xl {
+        height: 8.75rem;
+        width: 8.75rem;
+    }
+    
+    .icon-container-lg,
+    .icon-container-lg-blue,
+    .icon-container-lg-yellow {
+        height: 6.25rem;
+        width: 6.25rem;
+    }
+    
+    .icon-container-md {
+        height: 4.5rem;
+        width: 4.5rem;
+    }
+    
+    .icon-container-sm {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+    
+    /* Ajustes de agrupación */
+    .icon-group {
+        gap: 0.75rem;
+    }
+    
+    .icon-group.spacious {
+        gap: 1.5rem;
+    }
+    
+    .icon-group-vertical {
+        gap: 0.75rem;
+    }
+}
+
+/* Mobile (max-width: 53rem) */
+@media (max-width: 53rem) {
+    
+    /* Tamaños reducidos para mobile */
+    .icon-xl {
+        font-size: 3rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+    }
+    
+    .icon-lg {
+        font-size: 2.5rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+    }
+    
+    .icon-md {
+        font-size: 2rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    .icon-sm {
+        font-size: 1.1rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    /* Contenedores reducidos */
+    .icon-container-xl {
+        height: 6rem;
+        width: 6rem;
+    }
+    
+    .icon-container-lg,
+    .icon-container-lg-blue,
+    .icon-container-lg-yellow {
+        height: 4.5rem;
+        width: 4.5rem;
+    }
+    
+    .icon-container-md {
+        height: 3.5rem;
+        width: 3.5rem;
+    }
+    
+    .icon-container-sm {
+        height: 2rem;
+        width: 2rem;
+    }
+    
+    .icon-container-xs {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    
+    /* Agrupación compacta en mobile */
+    .icon-group {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .icon-group.spacious {
+        gap: 1rem;
+    }
+    
+    .icon-group-vertical {
+        gap: 0.5rem;
+    }
+    
+    /* Badges más pequeños en mobile */
+    .icon-badge {
+        width: 1rem;
+        height: 1rem;
+        font-size: 0.6rem;
+        top: -0.3rem;
+        right: -0.3rem;
+    }
+}
+
+/* Mobile muy pequeño (max-width: 360px) */
+@media (max-width: 360px) {
+    
+    /* Tamaños mínimos */
+    .icon-xl {
+        font-size: 2.5rem;
+    }
+    
+    .icon-lg {
+        font-size: 2rem;
+    }
+    
+    .icon-md {
+        font-size: 1.5rem;
+    }
+    
+    /* Contenedores mínimos */
+    .icon-container-xl {
+        height: 5rem;
+        width: 5rem;
+    }
+    
+    .icon-container-lg,
+    .icon-container-lg-blue,
+    .icon-container-lg-yellow {
+        height: 3.5rem;
+        width: 3.5rem;
+    }
+    
+    .icon-container-md {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+    
+    /* Agrupación muy compacta */
+    .icon-group {
+        gap: 0.25rem;
+    }
+    
+    .icon-group.spacious {
+        gap: 0.5rem;
+    }
+}
+
+/* ======================================
+   ACCESIBILIDAD
+   ====================================== */
+
+/* Focus states para navegación por teclado */
+.icon-container-xl:focus-visible,
+.icon-container-lg:focus-visible,
+.icon-container-lg-blue:focus-visible,
+.icon-container-lg-yellow:focus-visible,
+.icon-container-md:focus-visible,
+.icon-container-sm:focus-visible,
+.icon-container-xs:focus-visible {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 2px;
+}
+
+/* Mejoras para lectores de pantalla - usar en HTML, no CSS */
+.icon-decorative {
+    pointer-events: none;
+}
+
+.icon-semantic {
+    /* Usar role="img" en el HTML, no en CSS */
+    pointer-events: auto;
+}
+
+/* Reduced motion para usuarios con preferencias de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .material-symbols-rounded,
+    .icon-container-xl,
+    .icon-container-lg,
+    .icon-container-lg-blue,
+    .icon-container-lg-yellow,
+    .icon-container-md,
+    .icon-container-sm,
+    .icon-container-xs {
+        transition: none !important;
+    }
+    
+    .icon-pulse,
+    .icon-spin,
+    .icon-bounce,
+    .icon-shake {
+        animation: none !important;
+    }
+    
+    .icon-primary:hover,
+    .icon-secondary:hover,
+    .icon-accent:hover,
+    .icon-danger:hover,
+    .icon-neutral:hover,
+    .icon-white:hover {
+        transform: none !important;
+    }
+}
+
+/* ======================================
+   ALIASES PARA COMPATIBILIDAD TEMPORAL
+   ====================================== */
+
+/* Aliases de tamaños de iconos existentes */
+.main-icon {
+    font-size: 6rem;
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+}
+
+.secondary-icon {
+    font-size: 4.5rem;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
+.process-icon {
+    font-size: 4rem;
+    color: white;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+}
+
+.footer-icon {
+    font-size: 1.2rem;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.meta-icon {
+    font-size: 1rem;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+/* Aliases de contenedores existentes */
+.main-icon-container {
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    position: relative;
+}
+
+.secondary-icon-container {
+    height: 7.5rem;
+    width: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    position: relative;
+}
+
+.process-icon-container,
+.process-step-icon {
+    width: 7.5rem;
+    height: 7.5rem;
+    background: var(--azul-principal);
+    border-radius: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.375rem 1.125rem rgba(65, 182, 230, 0.3);
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    position: relative;
+}
+
+.process-icon-container:hover,
+.process-step-icon:hover {
+    background: var(--azul-oscuro);
+    transform: translateY(-3px);
+    box-shadow: 0 0.75rem 1.5rem rgba(65, 182, 230, 0.4);
+}
+
+/* Aliases de contextos específicos */
+.program-icon {
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.program-icon .material-symbols-rounded {
+    color: var(--azul-oscuro);
+}
+
+.value-icon {
+    margin-bottom: 2rem;
+}
+
+.value-icon .secondary-icon {
+    color: var(--azul-principal);
+}
+
+.sede-icon {
+    margin-bottom: 2rem;
+}
+
+.service-icon,
+.requisito-icon,
+.achievement-icon {
+    margin-bottom: 1.5rem;
+}
+
+.service-icon .material-symbols-rounded,
+.achievement-icon .material-symbols-rounded {
+    color: var(--azul-oscuro);
+}
+
+.requisito-icon .material-symbols-rounded {
+    color: var(--amarillo);
+}
+
+/* ======================================
+   RESPONSIVE PARA ALIASES
+   ====================================== */
+
+/* Tablet responsive para aliases */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    .main-icon {
+        font-size: 5rem;
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+    }
+    
+    .secondary-icon {
+        font-size: 3.5rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+    }
+    
+    .process-icon {
+        font-size: 3rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+    }
+    
+    .main-icon-container {
+        height: 8.75rem;
+        width: 8.75rem;
+    }
+    
+    .secondary-icon-container {
+        height: 6.25rem;
+        width: 6.25rem;
+    }
+    
+    .process-icon-container,
+    .process-step-icon {
+        width: 6.25rem;
+        height: 6.25rem;
+    }
+}
+
+/* Mobile responsive para aliases */
+@media (max-width: 53rem) {
+    .main-icon {
+        font-size: 3rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+    }
+    
+    .secondary-icon {
+        font-size: 2.5rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+    }
+    
+    .process-icon {
+        font-size: 2rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    .footer-icon {
+        font-size: 1.1rem;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    .main-icon-container {
+        height: 6rem;
+        width: 6rem;
+    }
+    
+    .secondary-icon-container {
+        height: 4.5rem;
+        width: 4.5rem;
+    }
+    
+    .process-icon-container,
+    .process-step-icon {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+}
+
+/* ======================================
+   PRINT STYLES
+   ====================================== */
+
+@media print {
+    .material-symbols-rounded {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .icon-container-lg-blue,
+    .icon-container-lg-yellow,
+    .process-icon-container,
+    .process-step-icon {
+        background: #ccc !important;
+        box-shadow: none !important;
+    }
+    
+    .icon-pulse,
+    .icon-spin,
+    .icon-bounce,
+    .icon-shake {
+        animation: none !important;
+    }
+}
+
+/* ======================================
+   FIN DEL ARCHIVO ICONS.CSS
+   ====================================== */

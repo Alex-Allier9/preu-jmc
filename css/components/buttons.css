@@ -1,0 +1,1026 @@
+/* ======================================
+   BUTTONS.CSS - SISTEMA UNIVERSAL DE BOTONES
+   JMC PREUNIVERSITARIO
+   ====================================== */
+
+/* ======================================
+   BASE BUTTON SYSTEM
+   ====================================== */
+
+.btn-base {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--border-radius-button);
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    line-height: 1.2;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-base:focus-visible {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 2px;
+}
+
+/* ======================================
+   BUTTON VARIANTS - COLORES
+   ====================================== */
+
+/* Primary Button - Negro con texto amarillo (CTA principal) */
+.btn-primary {
+    background: var(--negro);
+    color: var(--amarillo);
+    box-shadow: var(--shadow-button);
+}
+
+.btn-primary:hover {
+    background: var(--amarillo);
+    color: var(--negro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button-hover);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-button);
+}
+
+/* Secondary Button - Azul principal */
+.btn-secondary {
+    background: var(--azul-principal);
+    color: white;
+    box-shadow: var(--shadow-button);
+}
+
+.btn-secondary:hover {
+    background: var(--azul-oscuro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button-hover);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-button);
+}
+
+/* Accent Button - Amarillo */
+.btn-accent {
+    background: var(--amarillo);
+    color: var(--negro);
+    box-shadow: 0 4px 15px rgba(244, 218, 64, 0.3);
+}
+
+.btn-accent:hover {
+    background: #f0d535;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(244, 218, 64, 0.4);
+}
+
+.btn-accent:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(244, 218, 64, 0.3);
+}
+
+/* Outline Button - Solo borde */
+.btn-outline {
+    background: transparent;
+    color: var(--azul-principal);
+    border: 2px solid var(--azul-principal);
+    box-shadow: none;
+}
+
+.btn-outline:hover {
+    background: var(--azul-principal);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button);
+}
+
+.btn-outline:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-light);
+}
+
+/* Ghost Button - Transparente con texto */
+.btn-ghost {
+    background: transparent;
+    color: var(--azul-principal);
+    box-shadow: none;
+    border: 1px solid transparent;
+}
+
+.btn-ghost:hover {
+    background: rgba(65, 182, 230, 0.1);
+    color: var(--azul-oscuro);
+    transform: translateY(-1px);
+}
+
+.btn-ghost:active {
+    transform: translateY(0);
+    background: rgba(65, 182, 230, 0.2);
+}
+
+/* Light Button - Para fondos oscuros */
+.btn-light {
+    background: white;
+    color: var(--azul-oscuro);
+    box-shadow: var(--shadow-light);
+}
+
+.btn-light:hover {
+    background: var(--gris-claro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-light:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-light);
+}
+
+/* Dark Button - Para fondos claros */
+.btn-dark {
+    background: var(--azul-oscuro);
+    color: white;
+    box-shadow: 0 4px 15px rgba(22, 92, 125, 0.3);
+}
+
+.btn-dark:hover {
+    background: var(--negro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(22, 92, 125, 0.4);
+}
+
+.btn-dark:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(22, 92, 125, 0.3);
+}
+
+/* Danger Button - Para acciones destructivas */
+.btn-danger {
+    background: var(--rojo);
+    color: white;
+    box-shadow: 0 4px 15px rgba(239, 51, 64, 0.3);
+}
+
+.btn-danger:hover {
+    background: #d12b38;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 51, 64, 0.4);
+}
+
+.btn-danger:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(239, 51, 64, 0.3);
+}
+
+/* ======================================
+   BUTTON SIZES
+   ====================================== */
+
+/* Extra Small */
+.btn-xs {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 2rem;
+}
+
+/* Small */
+.btn-sm {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 2.5rem;
+}
+
+/* Medium (Default) */
+.btn-md {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-button);
+}
+
+/* Large */
+.btn-lg {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-button);
+}
+
+/* Extra Large */
+.btn-xl {
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: var(--border-radius-button);
+}
+
+/* ======================================
+   BUTTON STATES
+   ====================================== */
+
+/* Loading State */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.7;
+    position: relative;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-top: -8px;
+    margin-left: -8px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: btn-spin 1s linear infinite;
+}
+
+@keyframes btn-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Disabled State */
+.btn-disabled,
+.btn-base:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Success State */
+.btn-success {
+    background: #28a745;
+    color: white;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-success:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.btn-success:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* ======================================
+   BUTTON STYLES ESPECIALES
+   ====================================== */
+
+/* Gradient Button */
+.btn-gradient {
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+    color: white;
+    box-shadow: var(--shadow-button);
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--negro) 100%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button-hover);
+}
+
+.btn-gradient:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-button);
+}
+
+/* Glass Button */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-light);
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-glass:active {
+    transform: translateY(0);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Rounded Button */
+.btn-rounded {
+    border-radius: 50px;
+}
+
+/* Pill Button */
+.btn-pill {
+    border-radius: 100px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+/* Square Button */
+.btn-square {
+    border-radius: 8px;
+}
+
+/* ======================================
+   BUTTON GROUPS
+   ====================================== */
+
+.btn-group {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.btn-group .btn-base {
+    margin: 0;
+}
+
+.btn-group.vertical {
+    flex-direction: column;
+}
+
+.btn-group.attached .btn-base {
+    border-radius: 0;
+    margin: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-group.attached .btn-base:first-child {
+    border-radius: var(--border-radius-button) 0 0 var(--border-radius-button);
+}
+
+.btn-group.attached .btn-base:last-child {
+    border-radius: 0 var(--border-radius-button) var(--border-radius-button) 0;
+    border-right: none;
+}
+
+.btn-group.attached .btn-base:only-child {
+    border-radius: var(--border-radius-button);
+}
+
+/* ======================================
+   BUTTON CON ICONOS
+   ====================================== */
+
+.btn-with-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-with-icon .material-symbols-rounded {
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.btn-with-icon.icon-right {
+    flex-direction: row-reverse;
+}
+
+.btn-icon-only {
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.btn-icon-only .material-symbols-rounded {
+    font-size: 1.5rem;
+}
+
+/* Tamaños para botones con solo icono */
+.btn-icon-only.btn-xs {
+    width: 2rem;
+    height: 2rem;
+}
+
+.btn-icon-only.btn-sm {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.btn-icon-only.btn-lg {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.btn-icon-only.btn-xl {
+    width: 4rem;
+    height: 4rem;
+}
+
+/* ======================================
+   EFECTOS ESPECIALES
+   ====================================== */
+
+/* Ripple Effect */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Bounce Effect */
+.btn-bounce:hover {
+    animation: btn-bounce 0.6s ease;
+}
+
+@keyframes btn-bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px);
+    }
+    60% {
+        transform: translateY(-4px);
+    }
+}
+
+/* Pulse Effect */
+.btn-pulse {
+    animation: btn-pulse 2s infinite;
+}
+
+@keyframes btn-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(65, 182, 230, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(65, 182, 230, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(65, 182, 230, 0);
+    }
+}
+
+/* Glow Effect */
+.btn-glow {
+    box-shadow: 0 0 20px rgba(65, 182, 230, 0.5);
+}
+
+.btn-glow:hover {
+    box-shadow: 0 0 30px rgba(65, 182, 230, 0.8);
+}
+
+/* ======================================
+   BOTONES FLOTANTES (FAB)
+   ====================================== */
+
+.btn-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.btn-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.btn-float .material-symbols-rounded {
+    font-size: 1.5rem;
+}
+
+/* ======================================
+   RESPONSIVE DESIGN
+   ====================================== */
+
+/* Tablet (max-width: 82rem) and (min-width: 53.0625rem) */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    
+    .btn-base {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+    }
+    
+    .btn-xs {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .btn-sm {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.85rem;
+    }
+    
+    .btn-md {
+        padding: 0.9rem 1.8rem;
+        font-size: 0.95rem;
+    }
+    
+    .btn-lg {
+        padding: 1.1rem 2.2rem;
+        font-size: 1.05rem;
+    }
+    
+    .btn-xl {
+        padding: 1.3rem 2.7rem;
+        font-size: 1.15rem;
+    }
+    
+    .btn-icon-only {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+    
+    .btn-icon-only.btn-lg {
+        width: 3.2rem;
+        height: 3.2rem;
+    }
+    
+    .btn-icon-only.btn-xl {
+        width: 3.7rem;
+        height: 3.7rem;
+    }
+    
+    .btn-float {
+        width: 3.5rem;
+        height: 3.5rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+    
+    .btn-group {
+        gap: 0.4rem;
+    }
+}
+
+/* Mobile (max-width: 53rem) */
+@media (max-width: 53rem) {
+    
+    .btn-base {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+    }
+    
+    .btn-xs {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.7rem;
+    }
+    
+    .btn-sm {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    
+    .btn-md {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-lg {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .btn-xl {
+        padding: 1.2rem 2.4rem;
+        font-size: 1.1rem;
+    }
+    
+    .btn-icon-only {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .btn-icon-only.btn-xs {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+    
+    .btn-icon-only.btn-sm {
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+    
+    .btn-icon-only.btn-lg {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .btn-icon-only.btn-xl {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+    
+    .btn-float {
+        width: 3rem;
+        height: 3rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .btn-float .material-symbols-rounded {
+        font-size: 1.3rem;
+    }
+    
+    .btn-group {
+        gap: 0.3rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .btn-group.vertical {
+        width: 100%;
+    }
+    
+    .btn-group.vertical .btn-base {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    /* Botones de ancho completo en mobile */
+    .btn-full-width-mobile {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+/* Mobile muy pequeño (max-width: 360px) */
+@media (max-width: 360px) {
+    
+    .btn-base {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-lg,
+    .btn-xl {
+        padding: 0.9rem 1.8rem;
+        font-size: 0.95rem;
+    }
+    
+    .btn-icon-only {
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+    
+    .btn-float {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+    
+    .btn-float .material-symbols-rounded {
+        font-size: 1.2rem;
+    }
+    
+    /* Simplificar efectos en pantallas muy pequeñas */
+    .btn-bounce:hover {
+        animation: none;
+    }
+    
+    .btn-pulse {
+        animation: none;
+    }
+}
+
+/* ======================================
+   ACCESIBILIDAD
+   ====================================== */
+
+/* Focus states mejorados */
+.btn-base:focus-visible {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 2px;
+}
+
+.btn-primary:focus-visible {
+    outline-color: var(--amarillo);
+}
+
+.btn-accent:focus-visible {
+    outline-color: var(--azul-principal);
+}
+
+.btn-danger:focus-visible {
+    outline-color: var(--rojo);
+}
+
+/* Reduced motion para usuarios con preferencias de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .btn-base,
+    .btn-primary,
+    .btn-secondary,
+    .btn-accent,
+    .btn-outline,
+    .btn-ghost,
+    .btn-light,
+    .btn-dark,
+    .btn-danger,
+    .btn-gradient,
+    .btn-glass {
+        transition: none !important;
+    }
+    
+    .btn-base:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-accent:hover,
+    .btn-outline:hover,
+    .btn-ghost:hover,
+    .btn-light:hover,
+    .btn-dark:hover,
+    .btn-danger:hover,
+    .btn-gradient:hover,
+    .btn-glass:hover {
+        transform: none !important;
+    }
+    
+    .btn-loading::after {
+        animation: none !important;
+    }
+    
+    .btn-bounce:hover {
+        animation: none !important;
+    }
+    
+    .btn-pulse {
+        animation: none !important;
+    }
+    
+    .btn-ripple::before {
+        transition: none !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .btn-base {
+        border: 2px solid currentColor;
+    }
+    
+    .btn-outline {
+        border-width: 3px;
+    }
+    
+    .btn-ghost {
+        border: 2px solid currentColor;
+    }
+}
+
+/* ======================================
+   ALIASES PARA COMPATIBILIDAD TEMPORAL
+   ====================================== */
+
+/* CTA Button - Botón principal del proyecto */
+.cta-button {
+    background: var(--negro);
+    color: var(--amarillo);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--border-radius-button);
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    margin-top: 2rem;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-button);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    background: var(--amarillo);
+    color: var(--negro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button-hover);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-button);
+}
+
+.cta-button:focus-visible {
+    outline: 3px solid var(--amarillo);
+    outline-offset: 2px;
+}
+
+/* Error Button - Botón para páginas de error */
+.error-button {
+    background: var(--azul-principal);
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: var(--border-radius-button);
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-button);
+}
+
+.error-button:hover {
+    background: var(--azul-oscuro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button-hover);
+}
+
+.error-button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-button);
+}
+
+.error-button:focus-visible {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 2px;
+}
+
+/* ======================================
+   RESPONSIVE PARA ALIASES
+   ====================================== */
+
+/* Tablet responsive para aliases */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    .cta-button {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+    }
+    
+    .error-button {
+        padding: 0.9rem 2.2rem;
+        font-size: 1rem;
+    }
+}
+
+/* Mobile responsive para aliases */
+@media (max-width: 53rem) {
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+        margin-top: 1.5rem;
+    }
+    
+    .error-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile muy pequeño para aliases */
+@media (max-width: 360px) {
+    .cta-button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .error-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ======================================
+   UTILIDADES ADICIONALES
+   ====================================== */
+
+/* Botón de ancho completo */
+.btn-full-width {
+    width: 100%;
+    text-align: center;
+}
+
+/* Botón centrado */
+.btn-center {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Grupo de botones centrados */
+.btn-group-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Botón con loading text */
+.btn-loading-text::after {
+    content: 'Cargando...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+
+/* Estados de validación */
+.btn-valid {
+    background: #28a745;
+    border-color: #28a745;
+}
+
+.btn-invalid {
+    background: var(--rojo);
+    border-color: var(--rojo);
+    animation: btn-shake 0.5s ease;
+}
+
+@keyframes btn-shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+    20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+/* ======================================
+   PRINT STYLES
+   ====================================== */
+
+@media print {
+    .btn-base,
+    .cta-button,
+    .error-button {
+        background: white !important;
+        color: black !important;
+        border: 2px solid black !important;
+        box-shadow: none !important;
+        text-decoration: none !important;
+        padding: 0.5rem 1rem !important;
+        display: inline-block !important;
+    }
+    
+    .btn-float {
+        display: none !important;
+    }
+    
+    .btn-loading::after {
+        display: none !important;
+    }
+}
+
+/* ======================================
+   FIN DEL ARCHIVO BUTTONS.CSS
+   ====================================== */
