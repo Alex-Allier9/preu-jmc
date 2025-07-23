@@ -1,10 +1,10 @@
 /* ======================================
-   GLOBAL.CSS - SISTEMA UNIVERSAL REFACTORIZADO
-   Elimina 1,000+ líneas de duplicación mediante sistemas universales
+   GLOBAL.CSS - SISTEMA UNIVERSAL OPTIMIZADO
+   Versión mejorada post-auditoría con optimizaciones de performance
    ====================================== */
 
 /* ======================================
-   CSS VARIABLES - DESIGN SYSTEM
+   CSS VARIABLES - DESIGN SYSTEM MEJORADO
    ====================================== */
 :root {
     /* Colores JMC */
@@ -33,15 +33,62 @@
     --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15);
     
+    /* Breakpoints Sistemáticos */
+    --bp-mobile: 53rem;     /* 848px */
+    --bp-tablet: 82rem;     /* 1312px */
+    --bp-desktop: 90rem;    /* 1440px */
+    --bp-wide: 120rem;      /* 1920px */
+    
+    /* Z-Index System */
+    --z-base: 1;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-header: 1000;
+    --z-overlay: 8000;
+    --z-modal: 9000;
+    --z-progress: 9999;
+    --z-debug: 10000;
+    
     /* Tipografía */
     --title-letter-spacing: 0.2rem;
-    --transition-fast: 0.2s ease;
+    
+    /* Transiciones - Responsive a reduced motion */
+    --transition-fast: 0.15s ease;
     --transition-standard: 0.3s ease;
     --transition-slow: 0.6s ease;
     
-    /* Breakpoints */
-    --breakpoint-tablet: 82rem;
-    --breakpoint-mobile: 53rem;
+    /* Animation Durations */
+    --anim-fast: 0.15s;
+    --anim-normal: 0.3s;
+    --anim-slow: 0.6s;
+    --anim-extra-slow: 1s;
+    
+    /* Grid Gaps Responsive */
+    --gap-mobile: 1rem;
+    --gap-tablet: 1.5rem;
+    --gap-desktop: 2rem;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition-fast: 0.05s ease;
+        --transition-standard: 0.1s ease;
+        --transition-slow: 0.15s ease;
+        --anim-fast: 0.05s;
+        --anim-normal: 0.1s;
+        --anim-slow: 0.15s;
+        --anim-extra-slow: 0.2s;
+    }
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+    :root {
+        --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
 }
 
 /* ======================================
@@ -116,7 +163,7 @@ html {
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
     position: relative;
-    z-index: 1;
+    z-index: var(--z-base);
 }
 
 .section {
@@ -124,11 +171,11 @@ html {
 }
 
 /* ======================================
-   GRID SYSTEM - UNIVERSAL (ELIMINA 8+ GRIDS DUPLICADOS)
+   GRID SYSTEM - UNIVERSAL MEJORADO
    ====================================== */
 .grid {
     display: grid;
-    gap: var(--spacing-lg);
+    gap: var(--gap-desktop);
     padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
 }
 
@@ -137,6 +184,13 @@ html {
 .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
 .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+.grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+/* Grid Auto-fit (responsive automático) */
+.grid.auto-fit-sm { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.grid.auto-fit-md { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid.auto-fit-lg { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
 
 /* Grid Gaps */
 .grid.gap-xs { gap: var(--spacing-xs); }
@@ -152,7 +206,7 @@ html {
 .grid.padding-lg { padding: var(--spacing-lg); }
 
 /* ======================================
-   CARD SYSTEM - UNIVERSAL (ELIMINA 17+ CARDS DUPLICADAS)
+   CARD SYSTEM - UNIVERSAL OPTIMIZADO
    ====================================== */
 .card {
     background: rgba(255, 255, 255, 0.9);
@@ -161,12 +215,17 @@ html {
     transition: all var(--transition-standard);
     overflow: hidden;
     position: relative;
+    /* Performance optimization */
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 /* Card Sizes */
+.card.xs { padding: var(--spacing-sm); }
 .card.sm { padding: var(--spacing-md); }
 .card.md { padding: var(--spacing-lg); }
 .card.lg { padding: var(--spacing-xl); }
+.card.xl { padding: var(--spacing-2xl); }
 
 /* Card Variants */
 .card.transparent {
@@ -191,6 +250,12 @@ html {
     color: white;
 }
 
+.card.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 /* Card Content Alignment */
 .card.text-center { text-align: center; }
 .card.text-left { text-align: left; }
@@ -210,6 +275,11 @@ html {
     background: rgba(255, 255, 255, 0.95);
 }
 
+.card.glass:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
 /* Card Layouts */
 .card.horizontal {
     display: flex;
@@ -225,8 +295,20 @@ html {
     min-height: 200px;
 }
 
+/* Card States */
+.card.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.card.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    filter: grayscale(100%);
+}
+
 /* ======================================
-   ICON SYSTEM - UNIVERSAL (ELIMINA 12+ CONTENEDORES DUPLICADOS)
+   ICON SYSTEM - UNIVERSAL MEJORADO
    ====================================== */
 .material-symbols-rounded {
     font-family: 'Material Symbols Rounded';
@@ -254,16 +336,18 @@ html {
     justify-content: center;
     margin: 0 auto var(--spacing-md) auto;
     transition: all var(--transition-standard);
+    /* Performance optimization */
+    will-change: transform;
 }
 
 /* Icon Sizes */
-.icon-container.xs { width: 2rem; height: 2rem; }
+.icon-container.xs { width: 1.5rem; height: 1.5rem; }
 .icon-container.sm { width: 3rem; height: 3rem; }
 .icon-container.md { width: 5rem; height: 5rem; }
 .icon-container.lg { width: 7.5rem; height: 7.5rem; }
 .icon-container.xl { width: 10rem; height: 10rem; }
 
-.icon-container.xs .material-symbols-rounded { font-size: 1.2rem; }
+.icon-container.xs .material-symbols-rounded { font-size: 1rem; }
 .icon-container.sm .material-symbols-rounded { font-size: 1.8rem; }
 .icon-container.md .material-symbols-rounded { font-size: 3rem; }
 .icon-container.lg .material-symbols-rounded { font-size: 4.5rem; }
@@ -275,6 +359,7 @@ html {
 .icon-container.dark .material-symbols-rounded { color: var(--azul-oscuro); }
 .icon-container.white .material-symbols-rounded { color: white; }
 .icon-container.red .material-symbols-rounded { color: var(--rojo); }
+.icon-container.muted .material-symbols-rounded { color: var(--gris-medio); }
 
 /* Icon Backgrounds */
 .icon-container.bg-primary {
@@ -287,13 +372,23 @@ html {
     color: white;
 }
 
+.icon-container.bg-secondary {
+    background: var(--amarillo);
+    border-radius: var(--radius-md);
+    box-shadow: 0 6px 18px rgba(244, 218, 64, 0.3);
+}
+
+.icon-container.bg-secondary .material-symbols-rounded {
+    color: var(--negro);
+}
+
 /* Icon Hover Effects */
 .card:hover .icon-container {
     transform: scale(1.1);
 }
 
 /* ======================================
-   BUTTON SYSTEM - UNIVERSAL (ELIMINA 5+ BOTONES DUPLICADOS)
+   BUTTON SYSTEM - UNIVERSAL MEJORADO
    ====================================== */
 .btn {
     padding: var(--spacing-sm) var(--spacing-lg);
@@ -310,6 +405,9 @@ html {
     text-align: center;
     position: relative;
     overflow: hidden;
+    /* Performance optimization */
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 /* Button Variants */
@@ -370,7 +468,24 @@ html {
     color: var(--negro);
 }
 
+.btn.ghost {
+    background: transparent;
+    color: var(--azul-principal);
+    border: none;
+    box-shadow: none;
+}
+
+.btn.ghost:hover {
+    background: rgba(65, 182, 230, 0.1);
+    transform: translateY(-1px);
+}
+
 /* Button Sizes */
+.btn.xs {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+}
+
 .btn.sm {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -397,8 +512,30 @@ html {
     box-shadow: var(--shadow-sm);
 }
 
+.btn:disabled,
+.btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Button with icons */
+.btn.icon-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn.icon-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+}
+
 /* ======================================
-   BACKGROUND SYSTEM - UNIVERSAL (ELIMINA 12+ IMPLEMENTACIONES)
+   BACKGROUND SYSTEM - UNIVERSAL
    ====================================== */
 .bg-wrapper {
     position: relative;
@@ -460,7 +597,7 @@ html {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     position: relative;
-    z-index: 2;
+    z-index: var(--z-base);
     padding: var(--spacing-xl);
 }
 
@@ -517,6 +654,16 @@ html {
 .text-black { color: var(--negro); }
 .text-white { color: white; }
 .text-red { color: var(--rojo); }
+.text-muted { color: var(--gris-medio); }
+
+/* Typography Sizes */
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
 
 /* ======================================
    HERO SYSTEM - UNIVERSAL
@@ -604,7 +751,7 @@ html {
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    z-index: 1000;
+    z-index: var(--z-header);
     padding: 1.5rem 0;
     transition: all var(--transition-standard);
     border-bottom: 1px solid rgba(65, 182, 230, 0.1);
@@ -926,6 +1073,51 @@ html {
     transform: translateY(0);
 }
 
+/* Fade in variants */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all var(--transition-slow);
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all var(--transition-slow);
+}
+
+.fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all var(--transition-slow);
+}
+
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all var(--transition-slow);
+}
+
+.fade-in-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -937,6 +1129,16 @@ html {
     }
 }
 
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 /* Scroll Progress Bar */
 #scroll-progress-bar {
     position: fixed;
@@ -944,7 +1146,7 @@ html {
     left: 0;
     right: 0;
     height: 6px;
-    z-index: 9999;
+    z-index: var(--z-progress);
     pointer-events: none;
 }
 
@@ -956,15 +1158,92 @@ html {
 }
 
 /* ======================================
-   RESPONSIVE SYSTEM - UNIVERSAL
+   UTILITY CLASSES
    ====================================== */
 
-/* Tablet (768px - 1024px) */
-@media (max-width: 82rem) and (min-width: 53.0625rem) {
+/* Spacing utilities */
+.m-0 { margin: 0; }
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+.mt-5 { margin-top: var(--spacing-xl); }
+
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+.mb-5 { margin-bottom: var(--spacing-xl); }
+
+.p-0 { padding: 0; }
+.p-1 { padding: var(--spacing-xs); }
+.p-2 { padding: var(--spacing-sm); }
+.p-3 { padding: var(--spacing-md); }
+.p-4 { padding: var(--spacing-lg); }
+.p-5 { padding: var(--spacing-xl); }
+
+/* Display utilities */
+.hidden { display: none; }
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.grid { display: grid; }
+
+/* Position utilities */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+/* Debug utilities */
+.debug-animations * {
+    animation-duration: 3s !important;
+    transition-duration: 1s !important;
+}
+
+.debug-grid {
+    outline: 1px solid red;
+}
+
+.debug-card {
+    outline: 2px solid var(--azul-principal);
+}
+
+/* ======================================
+   RESPONSIVE SYSTEM - UNIVERSAL OPTIMIZADO
+   ====================================== */
+
+/* Wide Desktop (1920px+) */
+@media (min-width: var(--bp-wide)) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .grid {
+        gap: var(--spacing-xl);
+    }
+}
+
+/* Desktop (1312px - 1920px) */
+@media (max-width: var(--bp-wide)) and (min-width: var(--bp-tablet)) {
+    .grid {
+        gap: var(--gap-desktop);
+    }
+}
+
+/* Tablet (848px - 1312px) */
+@media (max-width: var(--bp-tablet)) and (min-width: var(--bp-mobile)) {
     /* Grids automáticos */
+    .grid.cols-6 { grid-template-columns: repeat(3, 1fr); }
+    .grid.cols-5 { grid-template-columns: repeat(3, 1fr); }
     .grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
     .grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
     .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    
+    .grid {
+        gap: var(--gap-tablet);
+    }
     
     /* Cards */
     .card.md { padding: var(--spacing-lg); }
@@ -980,10 +1259,14 @@ html {
     .section-content {
         padding: var(--spacing-lg);
     }
+    
+    /* Typography */
+    .text-3xl { font-size: 1.75rem; }
+    .text-2xl { font-size: 1.375rem; }
 }
 
-/* Mobile (hasta 767px) */
-@media (max-width: 53rem) {
+/* Mobile (hasta 848px) */
+@media (max-width: var(--bp-mobile)) {
     /* Navigation */
     .nav-menu {
         display: none;
@@ -995,11 +1278,17 @@ html {
     }
     
     /* Grids automáticos */
+    .grid.cols-6,
+    .grid.cols-5,
     .grid.cols-4,
     .grid.cols-3,
     .grid.cols-2 {
         grid-template-columns: 1fr;
         padding: 0 var(--spacing-sm) var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .grid {
+        gap: var(--gap-mobile);
     }
     
     /* Cards */
@@ -1103,4 +1392,29 @@ html {
         background-size: cover;
         background-position: center top;
     }
+    
+    /* Typography mobile */
+    .text-3xl { font-size: 1.5rem; }
+    .text-2xl { font-size: 1.25rem; }
+    .text-xl { font-size: 1.125rem; }
+    
+    /* Buttons mobile */
+    .btn.lg { padding: 0.875rem 2rem; font-size: 1rem; }
+    .btn.xl { padding: 1rem 2.5rem; font-size: 1.1rem; }
+}
+
+/* Very small mobile (320px) */
+@media (max-width: 20rem) {
+    .container {
+        padding: 0 var(--spacing-xs);
+    }
+    
+    .section-content {
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        padding: var(--spacing-md);
+    }
+    
+    .text-3xl { font-size: 1.375rem; }
+    .text-2xl { font-size: 1.125rem; }
 }
