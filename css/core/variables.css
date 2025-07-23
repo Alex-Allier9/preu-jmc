@@ -1,0 +1,119 @@
+/* ======================================
+   VARIABLES.CSS - CONFIGURACIÓN GLOBAL
+   ====================================== */
+
+:root {
+    /* ======================================
+       COLORES PRINCIPALES - JMC
+       ====================================== */
+    --azul-principal: #41B6E6;    /* 298 C */
+    --amarillo: #F4DA40;          /* 7404 C */
+    --negro: #101820;             /* Black 6 C */
+    --rojo: #EF3340;              /* Red 032C */
+    --azul-oscuro: #165C7D;       /* 7700C */
+    --blanco: #FFFFFF;
+    --gris-claro: #F8F9FA;
+    --gris-medio: #E9ECEF;
+
+    /* ======================================
+       TIPOGRAFÍAS
+       ====================================== */
+    --font-title: 'DM Serif Text', serif;
+    --font-body: 'Raleway', sans-serif;
+    --title-letter-spacing: 0.2rem;
+
+    /* ======================================
+       ESPACIADO Y DIMENSIONES
+       ====================================== */
+    --section-padding: 5rem 0;
+    --section-padding-mobile: 3rem 0;
+    --card-padding: 2rem;
+    --card-padding-mobile: 1.5rem;
+    --container-padding: 0 2rem;
+    --container-padding-mobile: 0 1rem;
+    
+    /* Márgenes de secciones con background */
+    --section-margin-desktop: 8.33%;
+    --section-margin-tablet: 5%;
+    --section-margin-mobile: 5%;
+
+    /* ======================================
+       BORDES Y FORMAS
+       ====================================== */
+    --border-radius: 15px;
+    --border-radius-large: 20px;
+    --border-radius-small: 10px;
+    --border-radius-button: 3.125rem;
+
+    /* ======================================
+       SOMBRAS
+       ====================================== */
+    --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.15);
+    --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.2);
+    --shadow-button: 0 4px 15px rgba(65, 182, 230, 0.3);
+    --shadow-button-hover: 0 6px 20px rgba(65, 182, 230, 0.4);
+
+    /* ======================================
+       TRANSICIONES
+       ====================================== */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.6s ease;
+    --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* ======================================
+       Z-INDEX SCALE
+       ====================================== */
+    --z-background: -1;
+    --z-default: 1;
+    --z-content: 2;
+    --z-header: 1000;
+    --z-modal: 5000;
+    --z-progress: 9999;
+    --z-tooltip: 10000;
+
+    /* ======================================
+       BREAKPOINTS (para usar en JS si es necesario)
+       ====================================== */
+    --breakpoint-tablet: 82rem;    /* 1312px */
+    --breakpoint-mobile: 53rem;    /* 848px */
+
+    /* ======================================
+       ICONOS - TAMAÑOS
+       ====================================== */
+    --icon-xl: 6rem;
+    --icon-lg: 4.5rem;
+    --icon-md: 4rem;
+    --icon-sm: 1.2rem;
+    --icon-xs: 1rem;
+
+    /* Contenedores de iconos */
+    --icon-container-xl: 10rem;
+    --icon-container-lg: 7.5rem;
+    --icon-container-md: 5rem;
+
+    /* ======================================
+       GLASSMORPHISM
+       ====================================== */
+    --glass-background: rgba(255, 255, 255, 0.1);
+    --glass-background-hover: rgba(255, 255, 255, 0.15);
+    --glass-backdrop: blur(10px);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* ======================================
+       GRADIENTES
+       ====================================== */
+    --gradient-blue: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+    --gradient-border: linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%);
+    --gradient-progress: linear-gradient(90deg, var(--azul-principal), var(--amarillo));
+
+    /* ======================================
+       BACKGROUNDS ESPECÍFICOS
+       ====================================== */
+    --bg-section-white: rgba(255, 255, 255, 0.75);
+    --bg-section-white-solid: rgba(255, 255, 255, 0.9);
+    --bg-section-white-hover: rgba(255, 255, 255, 0.95);
+    --bg-header: rgba(255, 255, 255, 0.95);
+    --bg-header-scrolled: rgba(255, 255, 255, 0.98);
+}
