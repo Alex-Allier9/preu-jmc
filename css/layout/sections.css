@@ -1,0 +1,628 @@
+/* ======================================
+   SECTIONS.CSS - LAYOUT DE SECCIONES
+   ====================================== */
+
+/* ======================================
+   SCROLL BEHAVIOR GLOBAL
+   ====================================== */
+
+html {
+    scroll-padding-top: 6px;
+    scroll-behavior: smooth;
+}
+
+/* ======================================
+   SECTION BASE
+   ====================================== */
+
+.section {
+    padding: var(--section-padding);
+    position: relative;
+    z-index: var(--z-content);
+}
+
+/* ======================================
+   SECTION TITLES Y SUBTITLES
+   ====================================== */
+
+.section-title {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--azul-oscuro);
+    line-height: 1;
+    letter-spacing: var(--title-letter-spacing);
+    position: relative;
+    z-index: var(--z-content);
+}
+
+.section-subtitle {
+    display: block;
+    height: 4px;
+    margin: 0 auto 3rem auto;
+    width: 120px;
+    background: var(--amarillo);
+    position: relative;
+    border-radius: var(--border-radius-small);
+}
+
+.section-subtitle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: var(--amarillo);
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* ======================================
+   HERO SECTION
+   ====================================== */
+
+.hero {
+    height: 100vh;
+    min-height: 600px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--blanco);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.hero-content h1 {
+    font-family: var(--font-title);
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin-bottom: 1rem;
+    letter-spacing: var(--title-letter-spacing);
+    animation: fadeInUp 1s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-style: italic;
+    max-width: 100%;
+    animation: fadeInUp 1s ease 0.3s both;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+}
+
+/* ======================================
+   HERO SPLIT (ESPECÍFICO FUNDADOR)
+   ====================================== */
+
+.hero-split-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text-content {
+    flex: 1;
+    padding-right: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero-image-space {
+    flex: 1;
+    height: 100%;
+    position: relative;
+}
+
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--blanco);
+    opacity: 0.9;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    align-self: flex-start;
+}
+
+/* ======================================
+   SECTION CON BACKGROUND
+   ====================================== */
+
+.section-with-background {
+    background: var(--bg-section-white);
+    margin-left: var(--section-margin-desktop);
+    margin-right: var(--section-margin-desktop);
+    margin-bottom: 6rem;
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-light);
+    position: relative;
+    z-index: var(--z-content);
+    padding: var(--section-padding);
+}
+
+/* Variantes de padding */
+.section-with-background.padded {
+    padding: 3rem;
+}
+
+.section-with-background.compact {
+    padding: 2rem 0;
+}
+
+/* Márgenes superiores específicos */
+.section-with-background.first-section,
+.section-with-background.profile-header,
+.section-with-background.about {
+    margin-top: 6rem;
+}
+
+.section-with-background.values-section,
+.section-with-background.mountaineering-section,
+.section-with-background.third-section,
+.section-with-background.fourth-section {
+    margin-top: 6rem;
+}
+
+/* ======================================
+   BLUE SECTION (SECCIÓN AZUL UNIVERSAL)
+   ====================================== */
+
+.blue-section-universal {
+    background: var(--gradient-blue);
+    color: var(--blanco);
+    padding: var(--section-padding);
+    position: relative;
+    z-index: var(--z-content);
+}
+
+.blue-section-universal .section-title {
+    color: var(--blanco);
+}
+
+.blue-section-universal .section-subtitle {
+    background: var(--amarillo);
+}
+
+.blue-section-universal p {
+    color: var(--blanco);
+    opacity: 0.95;
+}
+
+/* Quote card dentro de blue section */
+.blue-section-universal .quote-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ======================================
+   REGULAR SECTION (FONDO BLANCO SÓLIDO)
+   ====================================== */
+
+.regular-section {
+    background: var(--blanco);
+    color: var(--negro);
+    padding: var(--section-padding);
+    position: relative;
+    z-index: var(--z-content);
+}
+
+.regular-section .section-title {
+    color: var(--azul-oscuro);
+}
+
+/* ======================================
+   CTA SECTION
+   ====================================== */
+
+.cta {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--blanco);
+    text-align: center;
+    padding: var(--section-padding);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.cta .container {
+    position: relative;
+    z-index: 2;
+}
+
+.cta h2 {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    letter-spacing: var(--title-letter-spacing);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cta p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button {
+    background: var(--negro);
+    color: var(--amarillo);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--border-radius-button);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    margin-top: 2rem;
+    text-decoration: none;
+    display: inline-block;
+    font-family: var(--font-body);
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-button);
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background: var(--amarillo);
+    color: var(--negro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button-hover);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-button);
+}
+
+/* ======================================
+   CONTENT INTRO (PARA TEXTOS INTRODUCTORIOS)
+   ====================================== */
+
+.content-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+.content-intro p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--negro);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.blue-section-universal .content-intro p {
+    color: var(--blanco);
+    opacity: 0.95;
+}
+
+/* ======================================
+   SECTION SPACING UTILITIES
+   ====================================== */
+
+.section-small {
+    padding: 3rem 0;
+}
+
+.section-large {
+    padding: 7rem 0;
+}
+
+.section-no-padding {
+    padding: 0;
+}
+
+.section-no-margin {
+    margin: 0;
+}
+
+/* ======================================
+   RESPONSIVE SECTIONS
+   ====================================== */
+
+/* Tablet */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    .section {
+        padding: 4rem 0;
+    }
+    
+    .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-subtitle {
+        width: 100px;
+        margin-bottom: 2.5rem;
+    }
+    
+    .section-with-background {
+        margin-left: var(--section-margin-tablet);
+        margin-right: var(--section-margin-tablet);
+        padding: 4rem 0;
+        margin-bottom: 4rem;
+    }
+    
+    .section-with-background.padded {
+        padding: 2.5rem;
+    }
+    
+    .section-with-background.first-section,
+    .section-with-background.profile-header,
+    .section-with-background.about,
+    .section-with-background.values-section,
+    .section-with-background.mountaineering-section,
+    .section-with-background.third-section,
+    .section-with-background.fourth-section {
+        margin-top: 4rem;
+    }
+    
+    .hero {
+        min-height: 500px;
+    }
+    
+    .hero-content h1 {
+        font-size: clamp(2.5rem, 7vw, 4rem);
+    }
+    
+    .hero-content p {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+    }
+    
+    .hero-split-container {
+        padding: 0 1.5rem;
+    }
+    
+    .hero-text-content {
+        padding-right: 2rem;
+    }
+    
+    .cta h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+    
+    .cta-button {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+    }
+    
+    .content-intro p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 53rem) {
+    .section {
+        padding: var(--section-padding-mobile);
+    }
+    
+    .section-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        margin-bottom: 1rem;
+    }
+    
+    .section-subtitle {
+        width: 80px;
+        height: 3px;
+        margin-bottom: 2rem;
+    }
+    
+    .section-subtitle::before {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .section-with-background {
+        margin-left: var(--section-margin-mobile);
+        margin-right: var(--section-margin-mobile);
+        margin-bottom: 3rem;
+        padding: 3rem 0;
+        border-radius: var(--border-radius);
+    }
+    
+    .section-with-background.padded {
+        padding: 2rem;
+    }
+    
+    .section-with-background.first-section,
+    .section-with-background.profile-header,
+    .section-with-background.about,
+    .section-with-background.values-section,
+    .section-with-background.mountaineering-section,
+    .section-with-background.third-section,
+    .section-with-background.fourth-section {
+        margin-top: 3rem;
+    }
+    
+    .hero {
+        height: 100vh;
+        min-height: 500px;
+        background-attachment: scroll;
+        padding: 0 1rem;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content p {
+        font-size: clamp(0.9rem, 4vw, 1.1rem);
+    }
+    
+    .hero-split-container {
+        flex-direction: row;
+        padding: 0 1rem;
+    }
+    
+    .hero-text-content {
+        padding-right: 1rem;
+    }
+    
+    .cta {
+        padding: 3rem 0;
+        background-attachment: scroll;
+    }
+    
+    .cta h2 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        margin-bottom: 1rem;
+    }
+    
+    .cta p {
+        font-size: clamp(1rem, 3vw, 1.1rem);
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .content-intro {
+        padding: 0 1rem;
+    }
+    
+    .content-intro p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* Mobile muy pequeño */
+@media (max-width: 360px) {
+    .section-title {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+    }
+    
+    .hero-content h1 {
+        font-size: clamp(1.8rem, 10vw, 2.5rem);
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .section-with-background.padded {
+        padding: 1.5rem;
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 53rem) and (orientation: landscape) and (max-height: 500px) {
+    .hero {
+        height: 100vh;
+        min-height: 400px;
+    }
+    
+    .hero-content h1 {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-content p {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+    }
+    
+    .section {
+        padding: 2rem 0;
+    }
+    
+    .section-with-background {
+        margin-bottom: 2rem;
+        padding: 2rem 0;
+    }
+}
+
+/* ======================================
+   PRINT STYLES
+   ====================================== */
+
+@media print {
+    .hero,
+    .cta {
+        background: none !important;
+        color: #000 !important;
+        min-height: auto !important;
+        height: auto !important;
+        page-break-inside: avoid;
+    }
+    
+    .hero::before,
+    .cta::before {
+        display: none !important;
+    }
+    
+    .section {
+        padding: 1rem 0 !important;
+        page-break-inside: avoid;
+    }
+    
+    .section-with-background {
+        margin: 1rem 0 !important;
+        padding: 1rem !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    .cta-button {
+        display: none !important;
+    }
+}

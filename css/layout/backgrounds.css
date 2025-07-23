@@ -1,0 +1,396 @@
+/* ======================================
+   BACKGROUNDS.CSS - BACKGROUND WRAPPERS
+   ====================================== */
+
+/* ======================================
+   BACKGROUND WRAPPERS PRINCIPALES
+   ====================================== */
+
+.background-wrapper-primary,
+.background-wrapper-secondary {
+    position: relative;
+    overflow: hidden;
+    z-index: var(--z-default);
+}
+
+/* ======================================
+   MOUNTAIN BACKGROUND (PRIMARIO)
+   ====================================== */
+
+.mountain-background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3264px;
+    height: 4896px;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: var(--z-background);
+    will-change: transform;
+    /* Background image se define en cada página específica */
+}
+
+/* ======================================
+   SECONDARY BACKGROUND
+   ====================================== */
+
+.secondary-background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3264px;
+    height: 4896px;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: var(--z-background);
+    will-change: transform;
+    /* Background image se define en cada página específica */
+}
+
+/* ======================================
+   BACKGROUND OVERLAYS
+   ====================================== */
+
+/* Overlay sutil para mejorar legibilidad */
+.background-wrapper-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.background-wrapper-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ======================================
+   BACKGROUND PARALLAX EFFECT
+   ====================================== */
+
+/* Efecto parallax sutil en desktop */
+@media (min-width: 53rem) and (prefers-reduced-motion: no-preference) {
+    .mountain-background,
+    .secondary-background {
+        background-attachment: fixed;
+        transform: translateX(-50%) translateZ(0);
+        backface-visibility: hidden;
+    }
+}
+
+/* ======================================
+   BACKGROUND GRADIENTS DECORATIVOS
+   ====================================== */
+
+/* Gradiente superior para transición suave */
+.background-wrapper-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.background-wrapper-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.15) 0%,
+        transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ======================================
+   BACKGROUND PERFORMANCE OPTIMIZATIONS
+   ====================================== */
+
+.mountain-background,
+.secondary-background {
+    /* GPU acceleration */
+    transform: translateX(-50%) translateZ(0);
+    backface-visibility: hidden;
+    
+    /* Smooth rendering */
+    image-rendering: optimizeQuality;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateX(-50%) translateZ(0);
+    
+    /* Prevent layout shifts */
+    contain: layout style paint;
+}
+
+/* ======================================
+   RESPONSIVE BACKGROUNDS
+   ====================================== */
+
+/* Tablet */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    .mountain-background,
+    .secondary-background {
+        width: 100vw;
+        height: 120vh;
+        background-position: center top;
+        transform: translateX(-50%);
+    }
+    
+    .background-wrapper-primary::after,
+    .background-wrapper-secondary::after {
+        height: 150px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 53rem) {
+    .mountain-background,
+    .secondary-background {
+        width: 100vw;
+        height: 150vh;
+        background-size: cover;
+        background-position: center top;
+        background-attachment: scroll;
+        transform: translateX(-50%);
+    }
+    
+    .background-wrapper-primary::after,
+    .background-wrapper-secondary::after {
+        height: 100px;
+    }
+    
+    /* Reducir overlays en mobile para mejor contraste */
+    .background-wrapper-primary::before {
+        background: rgba(255, 255, 255, 0.02);
+    }
+    
+    .background-wrapper-secondary::before {
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Mobile muy pequeño */
+@media (max-width: 360px) {
+    .mountain-background,
+    .secondary-background {
+        height: 130vh;
+    }
+    
+    .background-wrapper-primary::after,
+    .background-wrapper-secondary::after {
+        height: 80px;
+    }
+}
+
+/* ======================================
+   LANDSCAPE MOBILE OPTIMIZATION
+   ====================================== */
+
+@media (max-width: 53rem) and (orientation: landscape) and (max-height: 500px) {
+    .mountain-background,
+    .secondary-background {
+        height: 200vh;
+        background-position: center 20%;
+    }
+    
+    .background-wrapper-primary::after,
+    .background-wrapper-secondary::after {
+        height: 60px;
+    }
+}
+
+/* ======================================
+   BACKGROUND LOADING STATES
+   ====================================== */
+
+/* Placeholder mientras carga la imagen */
+.mountain-background,
+.secondary-background {
+    background-color: var(--gris-claro);
+    transition: opacity 0.3s ease;
+}
+
+/* Cuando la imagen está cargada */
+.mountain-background.loaded,
+.secondary-background.loaded {
+    opacity: 1;
+}
+
+/* Estado de carga */
+.mountain-background:not(.loaded),
+.secondary-background:not(.loaded) {
+    opacity: 0.7;
+}
+
+/* ======================================
+   BACKGROUND VARIANTS
+   ====================================== */
+
+/* Variant más oscuro para mejor contraste */
+.background-wrapper-primary.dark::before {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.background-wrapper-secondary.dark::before {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* Variant más claro para contenido oscuro */
+.background-wrapper-primary.light::before {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.background-wrapper-secondary.light::before {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ======================================
+   BACKGROUND BLUR EFFECTS
+   ====================================== */
+
+/* Para casos especiales donde necesitemos blur */
+.background-wrapper-primary.blur .mountain-background,
+.background-wrapper-secondary.blur .secondary-background {
+    filter: blur(2px);
+    transform: translateX(-50%) scale(1.02);
+}
+
+/* ======================================
+   PRINT STYLES
+   ====================================== */
+
+@media print {
+    .background-wrapper-primary,
+    .background-wrapper-secondary {
+        background: none !important;
+    }
+    
+    .mountain-background,
+    .secondary-background {
+        display: none !important;
+    }
+    
+    .background-wrapper-primary::before,
+    .background-wrapper-primary::after,
+    .background-wrapper-secondary::before,
+    .background-wrapper-secondary::after {
+        display: none !important;
+    }
+}
+
+/* ======================================
+   REDUCED MOTION
+   ====================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .mountain-background,
+    .secondary-background {
+        background-attachment: scroll !important;
+        transform: translateX(-50%) !important;
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .background-wrapper-primary::before,
+    .background-wrapper-primary::after,
+    .background-wrapper-secondary::before,
+    .background-wrapper-secondary::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ======================================
+   HIGH CONTRAST MODE
+   ====================================== */
+
+@media (prefers-contrast: high) {
+    .background-wrapper-primary::before {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .background-wrapper-secondary::before {
+        background: rgba(255, 255, 255, 0.4);
+    }
+    
+    .mountain-background,
+    .secondary-background {
+        opacity: 0.6;
+    }
+}
+
+/* ======================================
+   UTILITIES ESPECÍFICAS
+   ====================================== */
+
+/* Para ocultar backgrounds en casos específicos */
+.no-background .mountain-background,
+.no-background .secondary-background {
+    display: none;
+}
+
+.no-background .background-wrapper-primary::before,
+.no-background .background-wrapper-primary::after,
+.no-background .background-wrapper-secondary::before,
+.no-background .background-wrapper-secondary::after {
+    display: none;
+}
+
+/* Para backgrounds fijos en toda la página */
+.fixed-background .mountain-background,
+.fixed-background .secondary-background {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    z-index: var(--z-background);
+}
+
+/* ======================================
+   DEBUG MODE
+   ====================================== */
+
+.debug-backgrounds .background-wrapper-primary {
+    outline: 2px solid red;
+}
+
+.debug-backgrounds .background-wrapper-secondary {
+    outline: 2px solid blue;
+}
+
+.debug-backgrounds .mountain-background {
+    outline: 1px dashed orange;
+}
+
+.debug-backgrounds .secondary-background {
+    outline: 1px dashed purple;
+}

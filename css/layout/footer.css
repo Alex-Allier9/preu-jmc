@@ -1,0 +1,502 @@
+/* ======================================
+   FOOTER.CSS - FOOTER COMPLETO
+   ====================================== */
+
+/* ======================================
+   FOOTER PRINCIPAL
+   ====================================== */
+
+.footer {
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 3rem 0 1rem;
+    position: relative;
+    z-index: var(--z-content);
+}
+
+/* ======================================
+   FOOTER GRID LAYOUT
+   ====================================== */
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1.2fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* ======================================
+   FOOTER SECTIONS
+   ====================================== */
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section h3 {
+    color: var(--amarillo);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-family: var(--font-title);
+    letter-spacing: var(--title-letter-spacing);
+}
+
+/* ======================================
+   FOOTER MAIN (PRIMERA COLUMNA)
+   ====================================== */
+
+.footer-main p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--gris-claro);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.footer-main p:last-child {
+    margin-bottom: 0;
+}
+
+/* ======================================
+   FOOTER CONTACT (SEGUNDA COLUMNA)
+   ====================================== */
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-small);
+    transition: all var(--transition-normal);
+    text-decoration: none;
+    color: inherit;
+}
+
+.contact-item:hover {
+    background: rgba(244, 218, 64, 0.1);
+    transform: translateX(5px);
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+/* ======================================
+   CONTACT ITEM ICONS
+   ====================================== */
+
+.contact-item .material-symbols-rounded {
+    font-size: var(--icon-sm);
+    color: var(--amarillo);
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    transition: all var(--transition-normal);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.contact-item:hover .material-symbols-rounded {
+    color: var(--azul-principal);
+    transform: scale(1.1);
+}
+
+.footer-icon {
+    font-size: var(--icon-sm);
+    color: var(--amarillo);
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    transition: all var(--transition-normal);
+}
+
+.contact-item:hover .footer-icon {
+    color: var(--azul-principal);
+    transform: scale(1.1);
+}
+
+/* ======================================
+   INSTAGRAM ICON ESPECÍFICO
+   ====================================== */
+
+.instagram-icon {
+    width: var(--icon-sm);
+    height: var(--icon-sm);
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    transition: all var(--transition-normal);
+}
+
+.contact-item:hover .instagram-icon {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(93%) saturate(2206%) hue-rotate(180deg) brightness(96%) contrast(95%);
+    transform: scale(1.1);
+}
+
+/* ======================================
+   CONTACT ITEM TEXT
+   ====================================== */
+
+.contact-item span {
+    color: var(--blanco);
+    transition: color var(--transition-normal);
+    line-height: 1.4;
+}
+
+.contact-item:hover span {
+    color: var(--amarillo);
+}
+
+/* ======================================
+   FOOTER NAVIGATION (TERCERA COLUMNA)
+   ====================================== */
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-nav p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav p:last-child {
+    margin-bottom: 0;
+}
+
+.footer-nav-link {
+    color: var(--blanco);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    display: inline-block;
+    position: relative;
+    padding: 0.3rem;
+    border-radius: var(--border-radius-small);
+    margin-bottom: 0.25rem;
+    width: 100%;
+    text-align: left;
+}
+
+.footer-nav-link:hover {
+    color: var(--amarillo);
+    background: rgba(244, 218, 64, 0.1);
+    transform: translateX(0.3125rem);
+    padding-left: 0.5rem;
+}
+
+/* ======================================
+   FOOTER BOTTOM
+   ====================================== */
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.footer-bottom p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.footer-bottom p:last-child {
+    margin-bottom: 0;
+}
+
+.footer-author {
+    color: var(--amarillo);
+    margin-top: 0.5rem;
+    text-decoration: none;
+    transition: color var(--transition-normal);
+    font-weight: 500;
+    display: inline-block;
+}
+
+.footer-author:hover {
+    color: var(--azul-principal);
+    text-decoration: underline;
+}
+
+/* ======================================
+   FOOTER DECORATIVE ELEMENTS
+   ====================================== */
+
+/* Línea decorativa superior */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: var(--gradient-progress);
+    border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
+}
+
+/* ======================================
+   SOCIAL MEDIA ENHANCEMENTS
+   ====================================== */
+
+.contact-item[href*="instagram"] {
+    position: relative;
+}
+
+.contact-item[href*="instagram"]:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background-size: 200% 200%;
+    animation: instagram-gradient 3s ease infinite;
+}
+
+@keyframes instagram-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.contact-item[href*="instagram"]:hover span {
+    color: var(--blanco);
+}
+
+.contact-item[href*="instagram"]:hover .instagram-icon {
+    filter: brightness(0) saturate(100%) invert(100%);
+}
+
+/* ======================================
+   EMAIL ENHANCEMENT
+   ====================================== */
+
+.contact-item[href^="mailto"] {
+    position: relative;
+}
+
+.contact-item[href^="mailto"]:hover {
+    background: rgba(65, 182, 230, 0.2);
+}
+
+.contact-item[href^="mailto"]:hover .material-symbols-rounded {
+    color: var(--azul-principal);
+    animation: email-bounce 0.6s ease-in-out;
+}
+
+@keyframes email-bounce {
+    0%, 100% { transform: scale(1.1) translateY(0); }
+    50% { transform: scale(1.2) translateY(-2px); }
+}
+
+/* ======================================
+   MAPS ENHANCEMENT
+   ====================================== */
+
+.contact-item[href*="maps"] {
+    position: relative;
+}
+
+.contact-item[href*="maps"]:hover {
+    background: rgba(244, 218, 64, 0.2);
+}
+
+.contact-item[href*="maps"]:hover .material-symbols-rounded {
+    color: var(--amarillo);
+    animation: location-pulse 1s ease-in-out infinite;
+}
+
+@keyframes location-pulse {
+    0%, 100% { transform: scale(1.1); }
+    50% { transform: scale(1.3); }
+}
+
+/* ======================================
+   RESPONSIVE FOOTER
+   ====================================== */
+
+/* Tablet */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    .footer {
+        padding: 2.5rem 0 1rem;
+    }
+    
+    .footer-grid {
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .contact-item {
+        padding: 0.4rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .footer-nav-link {
+        padding: 0.25rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 53rem) {
+    .footer {
+        padding: 2rem 0 1rem;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-section {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-main p {
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .contact-item {
+        justify-content: center;
+        max-width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .footer-nav {
+        align-items: center;
+    }
+    
+    .footer-nav-link {
+        text-align: center;
+        justify-content: center;
+        max-width: 200px;
+    }
+    
+    .footer-nav-link:hover {
+        transform: translateX(0);
+        padding-left: 0.3rem;
+    }
+    
+    .footer-bottom {
+        padding-top: 1.5rem;
+    }
+}
+
+/* Mobile muy pequeño */
+@media (max-width: 360px) {
+    .footer {
+        padding: 1.5rem 0 1rem;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .contact-item {
+        padding: 0.3rem;
+        max-width: 250px;
+    }
+    
+    .footer-nav-link {
+        font-size: 0.9rem;
+        max-width: 180px;
+    }
+    
+    .footer-bottom {
+        font-size: 0.8rem;
+        padding-top: 1rem;
+    }
+}
+
+/* ======================================
+   ACCESIBILIDAD
+   ====================================== */
+
+/* Focus states */
+.contact-item:focus-visible {
+    outline: 2px solid var(--azul-principal);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-small);
+}
+
+.footer-nav-link:focus-visible {
+    outline: 2px solid var(--azul-principal);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-small);
+}
+
+.footer-author:focus-visible {
+    outline: 2px solid var(--amarillo);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-small);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .contact-item,
+    .footer-nav-link,
+    .footer-author,
+    .contact-item .material-symbols-rounded,
+    .contact-item .instagram-icon {
+        transition: none;
+        animation: none;
+    }
+    
+    .contact-item:hover {
+        transform: none;
+    }
+    
+    .footer-nav-link:hover {
+        transform: none;
+    }
+}
+
+/* ======================================
+   PRINT STYLES
+   ====================================== */
+
+@media print {
+    .footer {
+        background: transparent;
+        color: #000;
+        page-break-inside: avoid;
+    }
+    
+    .footer-section h3 {
+        color: #000;
+    }
+    
+    .contact-item span {
+        color: #000;
+    }
+    
+    .footer-nav-link {
+        color: #000;
+    }
+    
+    .footer-author {
+        color: #000;
+    }
+    
+    .footer::before {
+        display: none;
+    }
+}
