@@ -312,49 +312,90 @@
     color: var(--negro);
 }
 
-/* Payment Details Section */
-.payment-details {
-    background: rgba(255, 255, 255, 0.9);
+/* ======================================
+   TABLA MODERNA DE PAGOS - NUEVA
+   ====================================== */
+
+.modern-payment-table {
+    background: white;
     border-radius: 15px;
-    padding: 2.5rem;
-    margin-top: 2rem;
+    overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
     transition: all 0.3s ease;
 }
 
-.payment-details:hover {
+.modern-payment-table:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-.payment-details h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+.table-header {
+    background: linear-gradient(135deg, var(--azul-principal), var(--amarillo));
+    color: white;
+    padding: 1.5rem;
     text-align: center;
 }
 
-.payment-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+.table-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'DM Serif Text', serif;
 }
 
-.payment-item {
-    background: rgba(65, 182, 230, 0.05);
-    padding: 1.2rem;
-    border-radius: 12px;
-    border-left: 4px solid var(--azul-principal);
-    font-size: 1rem;
-    line-height: 1.5;
+.table-body {
+    padding: 0;
+}
+
+.table-row {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--gris-claro);
     transition: all 0.3s ease;
 }
 
-.payment-item strong {
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row:hover {
+    background: rgba(65, 182, 230, 0.05);
+    transform: translateX(5px);
+}
+
+.table-icon {
+    font-size: 2rem;
+    color: var(--azul-principal);
+    margin-right: 1rem;
+    min-width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-icon .material-symbols-rounded {
+    font-size: 2rem;
+    color: var(--azul-principal);
+}
+
+.table-content {
+    flex: 1;
+}
+
+.table-content strong {
     color: var(--azul-oscuro);
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.table-content span {
+    color: var(--negro);
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 /* Content Intro - Para textos introductorios */
@@ -416,9 +457,17 @@
         padding: 2.5rem;
     }
     
-    /* Payment info grid en tablet */
-    .payment-info {
-        grid-template-columns: 1fr;
+    /* Tabla moderna en tablet */
+    .table-row {
+        padding: 1rem 1.2rem;
+    }
+    
+    .table-icon .material-symbols-rounded {
+        font-size: 1.8rem;
+    }
+    
+    .table-content strong {
+        font-size: 1rem;
     }
     
     /* Ajustar complementary cards */
@@ -441,7 +490,7 @@
     /* Grids específicos en tablet */
     .first-section .card-grid-3 {
         gap: 2rem;
-        margin-bottom: 2rem; /* Added consistent spacing */
+        margin-bottom: 2rem;
     }
     
     .third-section .card-grid-2 {
@@ -471,6 +520,27 @@
         margin-top: 3rem;
     }
 
+    /* Tabla moderna en móvil */
+    .table-row {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .table-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .table-content strong {
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .table-content span {
+        font-size: 0.9rem;
+    }
+
     /* Grids específicos en móvil */
     .first-section .card-grid-3,
     .blue-section .card-grid-3,
@@ -479,13 +549,13 @@
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
         padding: 0 !important;
-        margin-bottom: 2rem; /* Added consistent spacing */
+        margin-bottom: 2rem;
     }
 
     /* Cards específicas móvil */
     .content-card {
         padding: 2rem;
-        margin: 0 0 2rem 0; /* Added consistent spacing */
+        margin: 0 0 2rem 0;
     }
 
     .content-intro {
@@ -501,22 +571,6 @@
         padding: 1.5rem !important;
         margin-bottom: 1.5rem !important;
         width: 100%;
-    }
-
-    /* Payment details en móvil */
-    .payment-details {
-        padding: 2rem;
-        margin-top: 1.5rem;
-    }
-
-    .payment-info {
-        grid-template-columns: 1fr !important;
-        gap: 1rem;
-    }
-
-    .payment-item {
-        padding: 1rem;
-        font-size: 0.95rem;
     }
 
     /* Complementary cards específicas móvil */
@@ -579,11 +633,28 @@
         font-size: 1.1rem;
     }
 
-    .payment-details {
-        padding: 1.5rem;
+    /* Tabla moderna en pantallas muy pequeñas */
+    .table-header {
+        padding: 1rem;
     }
-
-    .payment-details h3 {
-        font-size: 1.3rem;
+    
+    .table-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .table-row {
+        padding: 0.8rem;
+    }
+    
+    .table-icon .material-symbols-rounded {
+        font-size: 1.5rem;
+    }
+    
+    .table-content strong {
+        font-size: 0.95rem;
+    }
+    
+    .table-content span {
+        font-size: 0.85rem;
     }
 }
