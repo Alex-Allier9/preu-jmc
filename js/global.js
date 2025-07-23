@@ -1,4 +1,12 @@
-// Performance optimization - debounce scroll events
+/* ======================================
+   GLOBAL.JS - CONSOLIDADO Y OPTIMIZADO
+   ====================================== */
+
+/* ======================================
+   UTILITARIOS UNIVERSALES - CONSOLIDADO
+   ====================================== */
+
+// Performance optimization - debounce universal
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -11,29 +19,21 @@ function debounce(func, wait) {
     };
 }
 
+/* ======================================
+   HEADER Y NAVEGACIÓN
+   ====================================== */
+
 // Header scroll effect optimizado
 const debouncedScrollHandler = debounce(() => {
     const header = document.getElementById('header');
-    if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
+    if (header) {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     }
 }, 10);
-
-// Intersection Observer para animaciones
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
 
 // Navigation link active state management
 function setActiveNavLink() {
@@ -49,6 +49,32 @@ function setActiveNavLink() {
         if (linkPath === currentPath) {
             link.classList.add('active');
         }
+    });
+}
+
+/* ======================================
+   SISTEMA DE ANIMACIONES UNIVERSAL - MEJORADO
+   ====================================== */
+
+// Intersection Observer para animaciones
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// Función universal para inicializar animaciones
+function initUniversalAnimations() {
+    // Observar todos los elementos fade-in
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
     });
 }
 
@@ -96,7 +122,11 @@ function animateCounters() {
     });
 }
 
-// Función universal para efectos hover de tarjetas - EFECTO UNIFORME
+/* ======================================
+   SISTEMA DE CARDS UNIVERSAL - EXPANDIDO Y CONSOLIDADO
+   ====================================== */
+
+// Función universal para efectos hover de tarjetas - EFECTO UNIFORME EXPANDIDO
 function addUniversalCardEffects() {
     // Efecto estándar para todas las cards
     const standardHover = {
@@ -110,40 +140,32 @@ function addUniversalCardEffects() {
     };
 
     const cardConfigs = [
-        {
-            selector: '.mvp-card',
-            hasIcon: false
-        },
-        {
-            selector: '.program-card',
-            hasIcon: true
-        },
-        {
-            selector: '.stat-card',
-            hasIcon: false
-        },
-        {
-            selector: '.value-card',
-            hasIcon: true
-        },
-        {
-            selector: '.sede-card',
-            hasIcon: true,
-            hoverBackground: 'rgba(255, 255, 255, 0.15)',
-            restoreBackground: 'rgba(255, 255, 255, 0.1)'
-        },
-        {
-            selector: '.about-card',
-            hasIcon: false,
-            hoverBackground: 'rgba(255, 255, 255, 0.95)',
-            restoreBackground: 'rgba(255, 255, 255, 0.9)'
-        },
-        {
-            selector: '.quote-card',
-            hasIcon: false,
-            hoverBackground: 'rgba(255, 255, 255, 0.15)',
-            restoreBackground: 'rgba(255, 255, 255, 0.1)'
-        }
+        // Cards existentes de global
+        { selector: '.mvp-card', hasIcon: false },
+        { selector: '.program-card', hasIcon: true },
+        { selector: '.stat-card', hasIcon: false },
+        { selector: '.value-card', hasIcon: true },
+        { selector: '.sede-card', hasIcon: true, hoverBackground: 'rgba(255, 255, 255, 0.15)', restoreBackground: 'rgba(255, 255, 255, 0.1)' },
+        { selector: '.about-card', hasIcon: false, hoverBackground: 'rgba(255, 255, 255, 0.95)', restoreBackground: 'rgba(255, 255, 255, 0.9)' },
+        { selector: '.quote-card', hasIcon: false, hoverBackground: 'rgba(255, 255, 255, 0.15)', restoreBackground: 'rgba(255, 255, 255, 0.1)' },
+        
+        // Cards de servicios - CONSOLIDADAS AQUÍ
+        { selector: '.service-feature-card', hasIcon: true },
+        { selector: '.requisito-card', hasIcon: true, hoverBackground: 'rgba(255, 255, 255, 0.15)', restoreBackground: 'rgba(255, 255, 255, 0.1)' },
+        { selector: '.complementary-card', hasIcon: true },
+        { selector: '.financial-card', hasIcon: true },
+        { selector: '.practical-card', hasIcon: true },
+        
+        // Cards de fundador - CONSOLIDADAS AQUÍ
+        { selector: '.achievement-card', hasIcon: true },
+        { selector: '.philosophy-card', hasIcon: true, hoverBackground: 'rgba(255, 255, 255, 0.15)', restoreBackground: 'rgba(255, 255, 255, 0.1)' },
+        { selector: '.profile-card', hasIcon: false },
+        
+        // Cards de testimonios - PREPARADAS PARA EL FUTURO
+        { selector: '.testimonial-card', hasIcon: false },
+        
+        // Cards base universales
+        { selector: '.card-base', hasIcon: false }
     ];
 
     cardConfigs.forEach(config => {
@@ -160,12 +182,17 @@ function addUniversalCardEffects() {
                 
                 // Efecto de iconos si los tienen
                 if (config.hasIcon) {
-                    const iconContainer = this.querySelector('.main-icon-container, .secondary-icon-container');
-                    const icon = this.querySelector('.material-symbols-rounded, .instagram-icon');
-                    if (iconContainer && icon) {
-                        iconContainer.style.transform = 'scale(1.1)';
-                        icon.style.transform = 'scale(1.1)';
-                    }
+                    const iconContainers = this.querySelectorAll(
+                        '.main-icon-container, .secondary-icon-container, .service-icon, .requisito-icon, .complementary-icon, .financial-icon, .practical-icon, .achievement-icon, .philosophy-icon'
+                    );
+                    const icons = this.querySelectorAll('.material-symbols-rounded, .instagram-icon');
+                    
+                    iconContainers.forEach(container => {
+                        if (container) container.style.transform = 'scale(1.1)';
+                    });
+                    icons.forEach(icon => {
+                        if (icon) icon.style.transform = 'scale(1.1)';
+                    });
                 }
             });
             
@@ -181,12 +208,17 @@ function addUniversalCardEffects() {
                 
                 // Restaurar iconos
                 if (config.hasIcon) {
-                    const iconContainer = this.querySelector('.main-icon-container, .secondary-icon-container');
-                    const icon = this.querySelector('.material-symbols-rounded, .instagram-icon');
-                    if (iconContainer && icon) {
-                        iconContainer.style.transform = 'scale(1)';
-                        icon.style.transform = 'scale(1)';
-                    }
+                    const iconContainers = this.querySelectorAll(
+                        '.main-icon-container, .secondary-icon-container, .service-icon, .requisito-icon, .complementary-icon, .financial-icon, .practical-icon, .achievement-icon, .philosophy-icon'
+                    );
+                    const icons = this.querySelectorAll('.material-symbols-rounded, .instagram-icon');
+                    
+                    iconContainers.forEach(container => {
+                        if (container) container.style.transform = 'scale(1)';
+                    });
+                    icons.forEach(icon => {
+                        if (icon) icon.style.transform = 'scale(1)';
+                    });
                 }
             });
         });
@@ -229,6 +261,10 @@ function addProcessCardEffects() {
     });
 }
 
+/* ======================================
+   PROGRESS BAR DE SCROLL - MEJORADA
+   ====================================== */
+
 // Add scroll progress indicator - OPTIMIZADA
 function addScrollProgress() {
     // Remove existing progress bar if it exists
@@ -245,7 +281,7 @@ function addScrollProgress() {
         top: 0;
         left: 0;
         width: 100%;
-        height: 6px; /* Fixed height */
+        height: 6px;
         background: transparent;
         z-index: 9999;
         pointer-events: none;
@@ -296,9 +332,15 @@ function addScrollProgress() {
     updateProgress();
 }
 
+/* ======================================
+   ANIMACIONES DE CARDS - MEJORADAS
+   ====================================== */
+
 // Card reveal animation with stagger - OPTIMIZADA
 function addCardRevealAnimation() {
-    const cards = document.querySelectorAll('.proceso-card-full, .program-card, .sede-card, .stat-card, .mvp-card');
+    const cards = document.querySelectorAll(
+        '.proceso-card-full, .program-card, .sede-card, .stat-card, .mvp-card, .service-feature-card, .requisito-card, .complementary-card, .financial-card, .practical-card, .achievement-card, .philosophy-card, .testimonial-card'
+    );
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
@@ -323,6 +365,10 @@ function addCardRevealAnimation() {
     });
 }
 
+/* ======================================
+   SMOOTH SCROLL - OPTIMIZADA
+   ====================================== */
+
 // Smooth scroll for anchor links - OPTIMIZADA
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -339,32 +385,221 @@ function initSmoothScroll() {
     });
 }
 
-// Initialize on page load - OPTIMIZADA
-document.addEventListener('DOMContentLoaded', function() {
-    // Activar el scroll listener
-    window.addEventListener('scroll', debouncedScrollHandler);
+/* ======================================
+   RIPPLE EFFECTS UNIVERSALES - NUEVO
+   ====================================== */
+
+// Sistema completo de ripples para todos los botones
+function initUniversalRipples() {
+    const rippleElements = document.querySelectorAll(
+        '.cta-button, .error-button, .nav-link, .program-card, .sede-card, .service-feature-card, .requisito-card, .complementary-card, .financial-card, .practical-card, .achievement-card, .philosophy-card'
+    );
     
-    // Observar todos los elementos fade-in
-    document.querySelectorAll('.fade-in').forEach(el => {
-        observer.observe(el);
+    rippleElements.forEach(element => {
+        element.addEventListener('click', function(e) {
+            createRipple(e, this);
+        });
     });
+}
+
+function createRipple(event, element) {
+    const ripple = document.createElement('div');
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
     
-    // Configurar navegación activa
+    // Crear la animación CSS si no existe
+    if (!document.querySelector('#ripple-animation')) {
+        const style = document.createElement('style');
+        style.id = 'ripple-animation';
+        style.textContent = `
+            @keyframes ripple-expand {
+                0% { transform: scale(0); opacity: 1; }
+                100% { transform: scale(4); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    ripple.style.cssText = `
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(65, 182, 230, 0.3);
+        transform: scale(0);
+        animation: ripple-expand 0.6s ease-out;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${event.clientX - rect.left - size/2}px;
+        top: ${event.clientY - rect.top - size/2}px;
+        pointer-events: none;
+        z-index: 1000;
+    `;
+    
+    element.style.position = 'relative';
+    element.style.overflow = 'hidden';
+    element.appendChild(ripple);
+    
+    setTimeout(() => {
+        if (ripple.parentNode) {
+            ripple.parentNode.removeChild(ripple);
+        }
+    }, 600);
+}
+
+/* ======================================
+   LOADING STATES - NUEVO
+   ====================================== */
+
+// Crear loading states con shimmer para elementos que cargan contenido
+function addLoadingStates() {
+    // Crear CSS para loading states si no existe
+    if (!document.querySelector('#loading-states-css')) {
+        const style = document.createElement('style');
+        style.id = 'loading-states-css';
+        style.textContent = `
+            /* Loading shimmer para cards que cargan contenido */
+            .card-loading {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .card-loading::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.4),
+                    transparent
+                );
+                animation: shimmer 2s infinite;
+                z-index: 1;
+            }
+
+            @keyframes shimmer {
+                100% { left: 100%; }
+            }
+
+            /* Skeleton loading para texto */
+            .skeleton-text {
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.1) 25%,
+                    rgba(255, 255, 255, 0.2) 50%,
+                    rgba(255, 255, 255, 0.1) 75%
+                );
+                background-size: 200% 100%;
+                animation: skeleton-pulse 1.5s infinite;
+                border-radius: 4px;
+                height: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            @keyframes skeleton-pulse {
+                0% { background-position: 200% 0; }
+                100% { background-position: -200% 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+/* ======================================
+   FUNCIONES AUXILIARES
+   ====================================== */
+
+// Función para aplicar clase de loading a un elemento
+function setLoadingState(element, isLoading) {
+    if (isLoading) {
+        element.classList.add('card-loading');
+    } else {
+        element.classList.remove('card-loading');
+    }
+}
+
+// Función para crear skeleton text
+function createSkeletonText(container, lines = 3) {
+    container.innerHTML = '';
+    for (let i = 0; i < lines; i++) {
+        const skeleton = document.createElement('div');
+        skeleton.className = 'skeleton-text';
+        skeleton.style.width = `${Math.random() * 40 + 60}%`;
+        container.appendChild(skeleton);
+    }
+}
+
+/* ======================================
+   INICIALIZACIÓN UNIVERSAL - CONSOLIDADA
+   ====================================== */
+
+// Initialize on page load - OPTIMIZADA Y EXPANDIDA
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Global JS initialized - JMC Preuniversitario');
+    
+    // 1. Funcionalidades básicas existentes
+    window.addEventListener('scroll', debouncedScrollHandler);
     setActiveNavLink();
-    
-    // Inicializar funcionalidades
     initSmoothScroll();
+    
+    // 2. Animaciones y efectos visuales
+    initUniversalAnimations();
     animateCounters();
     addScrollProgress();
+    addLoadingStates();
     
-    // Esperar a que las animaciones iniciales se establezcan antes de agregar efectos hover
+    // 3. Efectos interactivos (con delay para evitar conflictos)
     setTimeout(() => {
         addUniversalCardEffects();
         addProcessCardEffects();
         addCardRevealAnimation();
+        initUniversalRipples();
     }, 500);
+    
+    // 4. Log de éxito
+    console.log('✅ All global functionalities loaded successfully');
+    console.log('📱 Responsive design: 82rem (tablet), 53rem (mobile)');
+    console.log('🎨 Universal card effects, ripples, and animations active');
 });
 
+/* ======================================
+   RESIZE HANDLER UNIVERSAL
+   ====================================== */
+
+// Manejo universal de resize
+window.addEventListener('resize', debounce(function() {
+    // Reajustar elementos que dependen del tamaño de pantalla
+    const isMobile = window.innerWidth <= 848; // 53rem
+    const isTablet = window.innerWidth <= 1312 && window.innerWidth > 848; // 82rem
+    
+    // Log para debugging
+    if (isMobile) {
+        console.log('📱 Mobile layout active');
+    } else if (isTablet) {
+        console.log('📟 Tablet layout active');
+    } else {
+        console.log('💻 Desktop layout active');
+    }
+    
+    // Reajustar scroll progress bar si es necesario
+    const progressBar = document.getElementById('scroll-progress-bar');
+    if (progressBar) {
+        // Forzar recálculo del progress
+        const event = new Event('scroll');
+        window.dispatchEvent(event);
+    }
+}, 250));
+
+/* ======================================
+   EXPORT PARA DEBUGGING
+   ====================================== */
+
 // Console log para debugging
-console.log('Preuniversitario JMC - Página cargada exitosamente');
-console.log('Desarrollado por Alexandre Castillo - ACastillo DG');
+console.log('🔧 Global JS functions available:');
+console.log('- debounce(): Universal debounce utility');
+console.log('- setLoadingState(): Add/remove loading states');
+console.log('- createSkeletonText(): Create skeleton loading text');
+console.log('- createRipple(): Manual ripple effect');
+console.log('📊 Developed by Alexandre Castillo - ACastillo DG');
