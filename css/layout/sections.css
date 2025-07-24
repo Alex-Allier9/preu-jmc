@@ -1,64 +1,15 @@
 /* ======================================
-   SECTIONS.CSS - LAYOUT DE SECCIONES
+   SECTIONS.CSS - LAYOUT DE SECCIONES CORREGIDO
    ====================================== */
-
-/* ======================================
-   SCROLL BEHAVIOR GLOBAL
-   ====================================== */
-
-html {
-    scroll-padding-top: 6px;
-    scroll-behavior: smooth;
-}
 
 /* ======================================
    SECTION BASE
    ====================================== */
 
 .section {
-    padding: var(--section-padding);
+    padding: var(--section-padding, 5rem 0);
     position: relative;
-    z-index: var(--z-content);
-}
-
-/* ======================================
-   SECTION TITLES Y SUBTITLES
-   ====================================== */
-
-.section-title {
-    font-family: var(--font-title);
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--azul-oscuro);
-    line-height: 1;
-    letter-spacing: var(--title-letter-spacing);
-    position: relative;
-    z-index: var(--z-content);
-}
-
-.section-subtitle {
-    display: block;
-    height: 4px;
-    margin: 0 auto 3rem auto;
-    width: 120px;
-    background: var(--amarillo);
-    position: relative;
-    border-radius: var(--border-radius-small);
-}
-
-.section-subtitle::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background: var(--amarillo);
-    border-radius: 50%;
-    opacity: 0.3;
-    z-index: -1;
+    z-index: var(--z-content, 1);
 }
 
 /* ======================================
@@ -67,151 +18,99 @@ html {
 
 .hero {
     height: 100vh;
-    min-height: 600px;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--blanco);
+    color: white;
     position: relative;
     overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 1;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 1000px;
     padding: 0 2rem;
 }
 
 .hero-content h1 {
-    font-family: var(--font-title);
+    font-family: var(--font-title, 'DM Serif Text', serif);
     font-size: clamp(3rem, 8vw, 6rem);
     margin-bottom: 1rem;
-    letter-spacing: var(--title-letter-spacing);
+    letter-spacing: var(--title-letter-spacing, 0.2rem);
     animation: fadeInUp 1s ease;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content p {
     font-size: clamp(1.1rem, 3vw, 1.5rem);
     font-style: italic;
-    max-width: 100%;
-    animation: fadeInUp 1s ease 0.3s both;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    opacity: 0.95;
-}
-
-/* ======================================
-   HERO SPLIT (ESPECÍFICO FUNDADOR)
-   ====================================== */
-
-.hero-split-container {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 0 2rem;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-text-content {
-    flex: 1;
-    padding-right: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-}
-
-.hero-image-space {
-    flex: 1;
-    height: 100%;
-    position: relative;
-}
-
-.hero-subtitle {
-    font-family: var(--font-body);
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    font-style: italic;
-    color: var(--blanco);
-    opacity: 0.9;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    max-width: 100%;
-    align-self: flex-start;
+    animation: fadeInUp 1s ease 0.3s both;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* ======================================
-   SECTION CON BACKGROUND
+   SECTION TITLES Y DECORACIÓN
    ====================================== */
 
-.section-with-background {
-    background: var(--bg-section-white);
-    margin-left: var(--section-margin-desktop);
-    margin-right: var(--section-margin-desktop);
-    margin-bottom: 6rem;
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--shadow-light);
+.section-title {
+    font-family: var(--font-title, 'DM Serif Text', serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--azul-oscuro);
+    line-height: 1.2;
+    letter-spacing: var(--title-letter-spacing, 0.2rem);
     position: relative;
-    z-index: var(--z-content);
-    padding: var(--section-padding);
 }
 
-/* Variantes de padding */
+/* Línea amarilla universal */
+.section-subtitle {
+    display: block;
+    height: 4px;
+    margin: 0 auto 3rem auto;
+    width: 120px;
+    background: var(--amarillo);
+    position: relative;
+    border-radius: 2px;
+}
+
+/* ======================================
+   SECTION TYPES
+   ====================================== */
+
+/* Section con background wrapper */
+.section-with-background {
+    margin-left: var(--section-margin, 2rem);
+    margin-right: var(--section-margin, 2rem);
+    border-radius: var(--border-radius-large, 20px);
+    overflow: hidden;
+    position: relative;
+    z-index: var(--z-content, 1);
+    margin-bottom: 5rem;
+}
+
 .section-with-background.padded {
     padding: 3rem;
 }
 
-.section-with-background.compact {
-    padding: 2rem 0;
-}
-
-/* Márgenes superiores específicos */
-.section-with-background.first-section,
-.section-with-background.profile-header,
-.section-with-background.about {
-    margin-top: 6rem;
-}
-
-.section-with-background.values-section,
-.section-with-background.mountaineering-section,
-.section-with-background.third-section,
-.section-with-background.fourth-section {
-    margin-top: 6rem;
-}
-
-/* ======================================
-   BLUE SECTION (SECCIÓN AZUL UNIVERSAL)
-   ====================================== */
-
+/* Blue section universal */
 .blue-section-universal {
-    background: var(--gradient-blue);
-    color: var(--blanco);
-    padding: var(--section-padding);
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+    color: white;
+    padding: var(--section-padding, 5rem 0);
     position: relative;
-    z-index: var(--z-content);
+    z-index: var(--z-content, 1);
 }
 
 .blue-section-universal .section-title {
-    color: var(--blanco);
+    color: white;
 }
 
 .blue-section-universal .section-subtitle {
@@ -219,27 +118,17 @@ html {
 }
 
 .blue-section-universal p {
-    color: var(--blanco);
+    color: white;
     opacity: 0.95;
 }
 
-/* Quote card dentro de blue section */
-.blue-section-universal .quote-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* ======================================
-   REGULAR SECTION (FONDO BLANCO SÓLIDO)
-   ====================================== */
-
+/* Regular section (fondo blanco) */
 .regular-section {
-    background: var(--blanco);
+    background: white;
     color: var(--negro);
-    padding: var(--section-padding);
+    padding: var(--section-padding, 5rem 0);
     position: relative;
-    z-index: var(--z-content);
+    z-index: var(--z-content, 1);
 }
 
 .regular-section .section-title {
@@ -247,7 +136,7 @@ html {
 }
 
 /* ======================================
-   CTA SECTION
+   CTA SECTION - CORREGIDO
    ====================================== */
 
 .cta {
@@ -255,13 +144,14 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: var(--blanco);
+    color: white;
     text-align: center;
-    padding: var(--section-padding);
+    padding: 5rem 0;
     position: relative;
     overflow: hidden;
 }
 
+/* Overlay oscuro para legibilidad */
 .cta::before {
     content: '';
     position: absolute;
@@ -279,18 +169,23 @@ html {
 }
 
 .cta h2 {
-    font-family: var(--font-title);
+    font-family: var(--font-title, 'DM Serif Text', serif);
     font-size: clamp(2.5rem, 5vw, 4rem);
     margin-bottom: 1rem;
-    letter-spacing: var(--title-letter-spacing);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: var(--title-letter-spacing, 0.2rem);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
 .cta p {
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     margin-bottom: 2rem;
     opacity: 0.95;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
 .cta-button {
@@ -298,34 +193,41 @@ html {
     color: var(--amarillo);
     padding: 1rem 2rem;
     border: none;
-    border-radius: var(--border-radius-button);
+    border-radius: var(--border-radius-button, 50px);
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-normal);
+    transition: all 0.3s ease;
     margin-top: 2rem;
     text-decoration: none;
     display: inline-block;
-    font-family: var(--font-body);
+    font-family: var(--font-body, 'Raleway', sans-serif);
     letter-spacing: 0.5px;
-    box-shadow: var(--shadow-button);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
+    position: relative;
+    z-index: 3;
 }
 
 .cta-button:hover {
     background: var(--amarillo);
     color: var(--negro);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-button-hover);
+    box-shadow: 0 6px 20px rgba(244, 218, 64, 0.4);
 }
 
 .cta-button:active {
     transform: translateY(0);
-    box-shadow: var(--shadow-button);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:focus-visible {
+    outline: 3px solid var(--amarillo);
+    outline-offset: 3px;
 }
 
 /* ======================================
-   CONTENT INTRO (PARA TEXTOS INTRODUCTORIOS)
+   CONTENT INTRO
    ====================================== */
 
 .content-intro {
@@ -343,7 +245,7 @@ html {
 }
 
 .blue-section-universal .content-intro p {
-    color: var(--blanco);
+    color: white;
     opacity: 0.95;
 }
 
@@ -367,6 +269,10 @@ html {
     margin: 0;
 }
 
+.section-centered {
+    text-align: center;
+}
+
 /* ======================================
    RESPONSIVE SECTIONS
    ====================================== */
@@ -388,8 +294,8 @@ html {
     }
     
     .section-with-background {
-        margin-left: var(--section-margin-tablet);
-        margin-right: var(--section-margin-tablet);
+        margin-left: var(--section-margin-tablet, 1.5rem);
+        margin-right: var(--section-margin-tablet, 1.5rem);
         padding: 4rem 0;
         margin-bottom: 4rem;
     }
@@ -398,54 +304,36 @@ html {
         padding: 2.5rem;
     }
     
-    .section-with-background.first-section,
-    .section-with-background.profile-header,
-    .section-with-background.about,
-    .section-with-background.values-section,
-    .section-with-background.mountaineering-section,
-    .section-with-background.third-section,
-    .section-with-background.fourth-section {
-        margin-top: 4rem;
-    }
-    
-    .hero {
-        min-height: 500px;
-    }
-    
     .hero-content h1 {
-        font-size: clamp(2.5rem, 7vw, 4rem);
+        font-size: clamp(2.5rem, 7vw, 4.5rem);
     }
     
     .hero-content p {
         font-size: clamp(1rem, 2.5vw, 1.3rem);
     }
     
-    .hero-split-container {
-        padding: 0 1.5rem;
-    }
-    
-    .hero-text-content {
-        padding-right: 2rem;
+    .cta {
+        padding: 4rem 0;
     }
     
     .cta h2 {
         font-size: clamp(2rem, 4vw, 3rem);
     }
     
+    .cta p {
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+    }
+    
     .cta-button {
         padding: 0.9rem 1.8rem;
         font-size: 1rem;
-    }
-    
-    .content-intro p {
-        font-size: 1.1rem;
     }
 }
 
 /* Mobile */
 @media (max-width: 53rem) {
     .section {
-        padding: var(--section-padding-mobile);
+        padding: 3rem 0;
     }
     
     .section-title {
@@ -455,42 +343,12 @@ html {
     
     .section-subtitle {
         width: 80px;
-        height: 3px;
         margin-bottom: 2rem;
-    }
-    
-    .section-subtitle::before {
-        width: 30px;
-        height: 30px;
-    }
-    
-    .section-with-background {
-        margin-left: var(--section-margin-mobile);
-        margin-right: var(--section-margin-mobile);
-        margin-bottom: 3rem;
-        padding: 3rem 0;
-        border-radius: var(--border-radius);
-    }
-    
-    .section-with-background.padded {
-        padding: 2rem;
-    }
-    
-    .section-with-background.first-section,
-    .section-with-background.profile-header,
-    .section-with-background.about,
-    .section-with-background.values-section,
-    .section-with-background.mountaineering-section,
-    .section-with-background.third-section,
-    .section-with-background.fourth-section {
-        margin-top: 3rem;
     }
     
     .hero {
         height: 100vh;
-        min-height: 500px;
-        background-attachment: scroll;
-        padding: 0 1rem;
+        min-height: 600px;
     }
     
     .hero-content {
@@ -499,25 +357,26 @@ html {
     
     .hero-content h1 {
         font-size: clamp(2rem, 8vw, 3rem);
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
     
     .hero-content p {
-        font-size: clamp(0.9rem, 4vw, 1.1rem);
+        font-size: clamp(1rem, 4vw, 1.2rem);
     }
     
-    .hero-split-container {
-        flex-direction: row;
-        padding: 0 1rem;
+    .section-with-background {
+        margin-left: var(--section-margin-mobile, 1rem);
+        margin-right: var(--section-margin-mobile, 1rem);
+        margin-bottom: 3rem;
+        padding: 3rem 0;
     }
     
-    .hero-text-content {
-        padding-right: 1rem;
+    .section-with-background.padded {
+        padding: 2rem;
     }
     
     .cta {
         padding: 3rem 0;
-        background-attachment: scroll;
     }
     
     .cta h2 {
@@ -533,10 +392,7 @@ html {
     .cta-button {
         padding: 0.8rem 1.5rem;
         font-size: 0.95rem;
-    }
-    
-    .content-intro {
-        padding: 0 1rem;
+        margin-top: 1.5rem;
     }
     
     .content-intro p {
@@ -547,29 +403,53 @@ html {
 
 /* Mobile muy pequeño */
 @media (max-width: 360px) {
+    .section {
+        padding: 2rem 0;
+    }
+    
     .section-title {
-        font-size: clamp(1.5rem, 8vw, 2rem);
+        font-size: 1.8rem;
+    }
+    
+    .hero {
+        min-height: 500px;
     }
     
     .hero-content h1 {
-        font-size: clamp(1.8rem, 10vw, 2.5rem);
+        font-size: 2rem;
+    }
+    
+    .section-with-background {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    
+    .section-with-background.padded {
+        padding: 1.5rem;
+    }
+    
+    .cta {
+        padding: 2rem 0;
+    }
+    
+    .cta h2 {
+        font-size: 1.6rem;
     }
     
     .cta-button {
         padding: 0.7rem 1.2rem;
         font-size: 0.9rem;
     }
-    
-    .section-with-background.padded {
-        padding: 1.5rem;
-    }
 }
 
-/* Landscape mobile optimization */
+/* ======================================
+   LANDSCAPE MOBILE
+   ====================================== */
+
 @media (max-width: 53rem) and (orientation: landscape) and (max-height: 500px) {
     .hero {
         height: 100vh;
-        min-height: 400px;
+        min-height: 500px;
     }
     
     .hero-content h1 {
@@ -596,33 +476,81 @@ html {
    ====================================== */
 
 @media print {
-    .hero,
+    .hero {
+        height: auto;
+        background: white !important;
+        color: black !important;
+        padding: 2rem 0;
+        page-break-inside: avoid;
+    }
+    
     .cta {
-        background: none !important;
-        color: #000 !important;
-        min-height: auto !important;
-        height: auto !important;
+        background: white !important;
+        color: black !important;
+        padding: 2rem 0;
         page-break-inside: avoid;
     }
     
-    .hero::before,
     .cta::before {
-        display: none !important;
-    }
-    
-    .section {
-        padding: 1rem 0 !important;
-        page-break-inside: avoid;
-    }
-    
-    .section-with-background {
-        margin: 1rem 0 !important;
-        padding: 1rem !important;
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
+        display: none;
     }
     
     .cta-button {
-        display: none !important;
+        background: white !important;
+        color: black !important;
+        border: 2px solid black !important;
+        box-shadow: none !important;
     }
+    
+    .blue-section-universal {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .blue-section-universal .section-title {
+        color: black !important;
+    }
+    
+    .section-subtitle {
+        background: #ccc !important;
+    }
+}
+
+/* ======================================
+   ACCESSIBILITY
+   ====================================== */
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-content h1,
+    .hero-content p {
+        animation: none;
+    }
+    
+    .cta-button:hover {
+        transform: none;
+    }
+}
+
+/* High contrast */
+@media (prefers-contrast: high) {
+    .hero::before,
+    .cta::before {
+        background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .section-subtitle {
+        height: 6px;
+    }
+    
+    .cta-button {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Focus visible para elementos interactivos */
+.hero:focus-visible,
+.cta:focus-visible {
+    outline: 3px solid var(--amarillo);
+    outline-offset: 2px;
 }
