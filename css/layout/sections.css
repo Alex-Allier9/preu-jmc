@@ -1,213 +1,118 @@
-/* ======================================
-   SECTIONS.CSS - LAYOUT DE SECCIONES CORREGIDO
-   ====================================== */
-
-/* ======================================
-   SECTION BASE
-   ====================================== */
-
-.section {
-    padding: var(--section-padding, 5rem 0);
-    position: relative;
-    z-index: var(--z-content, 1);
-}
-
-/* ======================================
-   HERO SECTION
-   ====================================== */
-
+/* Hero Section - GLOBAL */
 .hero {
     height: 100vh;
     background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
     position: relative;
-    overflow: hidden;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 1000px;
-    padding: 0 2rem;
 }
 
 .hero-content h1 {
-    font-family: var(--font-title, 'DM Serif Text', serif);
+    font-family: 'DM Serif Text', serif;
     font-size: clamp(3rem, 8vw, 6rem);
     margin-bottom: 1rem;
-    letter-spacing: var(--title-letter-spacing, 0.2rem);
+    letter-spacing: var(--title-letter-spacing);
     animation: fadeInUp 1s ease;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content p {
     font-size: clamp(1.1rem, 3vw, 1.5rem);
     font-style: italic;
     max-width: 800px;
-    margin: 0 auto;
     animation: fadeInUp 1s ease 0.3s both;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* ======================================
-   SECTION TITLES Y DECORACIÓN
-   ====================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sections - UNIVERSAL */
+.section {
+    padding: 5rem 0;
+}
 
 .section-title {
-    font-family: var(--font-title, 'DM Serif Text', serif);
+    font-family: 'DM Serif Text', serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     text-align: center;
     margin-bottom: 2rem;
+    /* Espacio consistente con la línea amarilla */
     color: var(--azul-oscuro);
-    line-height: 1.2;
-    letter-spacing: var(--title-letter-spacing, 0.2rem);
-    position: relative;
+    line-height: 1;
+    letter-spacing: var(--title-letter-spacing);
 }
 
-/* Línea amarilla universal */
+/* CORREGIDO - Línea amarilla universal */
 .section-subtitle {
     display: block;
     height: 4px;
     margin: 0 auto 3rem auto;
+    /* Centrado y espacio inferior consistente */
     width: 120px;
     background: var(--amarillo);
     position: relative;
-    border-radius: 2px;
 }
 
-/* ======================================
-   SECTION TYPES
-   ====================================== */
-
-/* Section con background wrapper */
-.section-with-background {
-    margin-left: var(--section-margin, 2rem);
-    margin-right: var(--section-margin, 2rem);
-    border-radius: var(--border-radius-large, 20px);
+/* Background wrappers - GLOBAL */
+.background-wrapper-primary,
+.background-wrapper-secondary {
+    position: relative;
     overflow: hidden;
-    position: relative;
-    z-index: var(--z-content, 1);
-    margin-bottom: 5rem;
 }
 
-.section-with-background.padded {
-    padding: 3rem;
+/* Background images - BASE (sin imágenes específicas) */
+.mountain-background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3264px;
+    height: 4896px;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: -1;
+    will-change: transform;
 }
 
-/* Blue section universal */
-.blue-gradient-section {
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
-    color: white;
-    padding: var(--section-padding, 5rem 0);
-    position: relative;
-    z-index: var(--z-content, 1);
+.secondary-background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3264px;
+    height: 4896px;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: -1;
+    will-change: transform;
 }
 
-.blue-gradient-section .section-title {
-    color: white;
-}
-
-.blue-gradient-section .section-subtitle {
-    background: var(--amarillo);
-}
-
-.blue-gradient-section p {
-    color: white;
-    opacity: 0.95;
-}
-
-/* Dark blue section universal */
-.dark-blue-gradient-section {
-    background: linear-gradient(135deg, var(--azul-oscuro) 0%, #0a2d3a 100%);
-    color: white;
-    padding: var(--section-padding, 5rem 0);
-    position: relative;
-    z-index: var(--z-content, 1);
-}
-
-.dark-blue-gradient-section .section-title {
-    color: white;
-}
-
-.dark-blue-gradient-section .section-subtitle {
-    background: var(--amarillo);
-}
-
-.dark-blue-gradient-section p {
-    color: white;
-    opacity: 0.95;
-}
-
-/* Regular section (fondo blanco) */
-.regular-section {
-    background: white;
-    color: var(--negro);
-    padding: var(--section-padding, 5rem 0);
-    position: relative;
-    z-index: var(--z-content, 1);
-}
-
-.regular-section .section-title {
-    color: var(--azul-oscuro);
-}
-
-/* ======================================
-   CTA SECTION - CORREGIDO
-   ====================================== */
-
+/* CTA Section - UNIVERSAL */
 .cta {
     background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     color: white;
     text-align: center;
     padding: 5rem 0;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Overlay oscuro para legibilidad */
-.cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
-}
-
-.cta .container {
-    position: relative;
-    z-index: 2;
 }
 
 .cta h2 {
-    font-family: var(--font-title, 'DM Serif Text', serif);
+    font-family: 'DM Serif Text', serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     margin-bottom: 1rem;
-    letter-spacing: var(--title-letter-spacing, 0.2rem);
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    color: white;
-}
-
-.cta p {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    margin-bottom: 2rem;
-    opacity: 0.95;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+    letter-spacing: var(--title-letter-spacing);
 }
 
 .cta-button {
@@ -215,7 +120,7 @@
     color: var(--amarillo);
     padding: 1rem 2rem;
     border: none;
-    border-radius: var(--border-radius-button, 50px);
+    border-radius: 3.125rem;
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
@@ -223,356 +128,33 @@
     margin-top: 2rem;
     text-decoration: none;
     display: inline-block;
-    font-family: var(--font-body, 'Raleway', sans-serif);
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    text-transform: uppercase;
-    position: relative;
-    z-index: 3;
 }
 
 .cta-button:hover {
     background: var(--amarillo);
     color: var(--negro);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(244, 218, 64, 0.4);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2);
 }
 
-.cta-button:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.cta-button:focus-visible {
-    outline: 3px solid var(--amarillo);
-    outline-offset: 3px;
-}
-
-/* ======================================
-   CONTENT INTRO
-   ====================================== */
-
-.content-intro {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding: 0;
-}
-
-.content-intro p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: var(--negro);
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.blue-gradient-section .content-intro p {
-    color: white;
-    opacity: 0.95;
-}
-
-/* ======================================
-   SECTION SPACING UTILITIES
-   ====================================== */
-
-.section-small {
-    padding: 3rem 0;
-}
-
-.section-large {
-    padding: 7rem 0;
-}
-
-.section-no-padding {
-    padding: 0;
-}
-
-.section-no-margin {
-    margin: 0;
-}
-
-.section-centered {
-    text-align: center;
-}
-
-/* ======================================
-   RESPONSIVE SECTIONS
-   ====================================== */
-
-/* Tablet */
-@media (max-width: 82rem) and (min-width: 53.0625rem) {
-    .section {
-        padding: 4rem 0;
-    }
-    
-    .section-title {
-        font-size: clamp(2rem, 4vw, 3rem);
-        margin-bottom: 1.5rem;
-    }
-    
-    .section-subtitle {
-        width: 100px;
-        margin-bottom: 2.5rem;
-    }
-    
-    .section-with-background {
-        margin-left: var(--section-margin-tablet, 1.5rem);
-        margin-right: var(--section-margin-tablet, 1.5rem);
-        padding: 4rem 0;
-        margin-bottom: 4rem;
-    }
-    
-    .section-with-background.padded {
-        padding: 2.5rem;
-    }
-    
-    .hero-content h1 {
-        font-size: clamp(2.5rem, 7vw, 4.5rem);
-    }
-    
-    .hero-content p {
-        font-size: clamp(1rem, 2.5vw, 1.3rem);
-    }
-    
-    .cta {
-        padding: 4rem 0;
-    }
-    
-    .cta h2 {
-        font-size: clamp(2rem, 4vw, 3rem);
-    }
-    
-    .cta p {
-        font-size: clamp(0.95rem, 2vw, 1.1rem);
-    }
-    
-    .cta-button {
-        padding: 0.9rem 1.8rem;
-        font-size: 1rem;
-    }
-}
-
-/* Mobile */
 @media (max-width: 53rem) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
     .section {
         padding: 3rem 0;
     }
-    
-    .section-title {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
-        margin-bottom: 1rem;
-    }
-    
-    .section-subtitle {
-        width: 80px;
-        margin-bottom: 2rem;
-    }
-    
-    .hero {
-        height: 100vh;
-        min-height: 600px;
-    }
-    
-    .hero-content {
-        padding: 0 1rem;
-    }
-    
-    .hero-content h1 {
-        font-size: clamp(2rem, 8vw, 3rem);
-        margin-bottom: 0.5rem;
-    }
-    
-    .hero-content p {
-        font-size: clamp(1rem, 4vw, 1.2rem);
-    }
-    
-    .section-with-background {
-        margin-left: var(--section-margin-mobile, 1rem);
-        margin-right: var(--section-margin-mobile, 1rem);
-        margin-bottom: 3rem;
-        padding: 3rem 0;
-    }
-    
-    .section-with-background.padded {
-        padding: 2rem;
-    }
-    
-    .cta {
-        padding: 3rem 0;
-    }
-    
-    .cta h2 {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
-        margin-bottom: 1rem;
-    }
-    
-    .cta p {
-        font-size: clamp(1rem, 3vw, 1.1rem);
-        margin-bottom: 1.5rem;
-    }
-    
-    .cta-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.95rem;
-        margin-top: 1.5rem;
-    }
-    
-    .content-intro p {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-}
 
-/* Mobile muy pequeño */
-@media (max-width: 360px) {
-    .section {
-        padding: 2rem 0;
+    .footer-section {
+        text-align: center;
     }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    .hero {
-        min-height: 500px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .section-with-background {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-    }
-    
-    .section-with-background.padded {
-        padding: 1.5rem;
-    }
-    
-    .cta {
-        padding: 2rem 0;
-    }
-    
-    .cta h2 {
-        font-size: 1.6rem;
-    }
-    
-    .cta-button {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
-    }
-}
 
-/* ======================================
-   LANDSCAPE MOBILE
-   ====================================== */
-
-@media (max-width: 53rem) and (orientation: landscape) and (max-height: 500px) {
-    .hero {
-        height: 100vh;
-        min-height: 500px;
+    .mountain-background,
+    .secondary-background {
+        width: 100vw;
+        height: 150vh;
+        background-size: cover;
+        background-position: center top;
     }
-    
-    .hero-content h1 {
-        font-size: clamp(1.5rem, 6vw, 2.5rem);
-        margin-bottom: 0.5rem;
-    }
-    
-    .hero-content p {
-        font-size: clamp(0.9rem, 3vw, 1.1rem);
-    }
-    
-    .section {
-        padding: 2rem 0;
-    }
-    
-    .section-with-background {
-        margin-bottom: 2rem;
-        padding: 2rem 0;
-    }
-}
-
-/* ======================================
-   PRINT STYLES
-   ====================================== */
-
-@media print {
-    .hero {
-        height: auto;
-        background: white !important;
-        color: black !important;
-        padding: 2rem 0;
-        page-break-inside: avoid;
-    }
-    
-    .cta {
-        background: white !important;
-        color: black !important;
-        padding: 2rem 0;
-        page-break-inside: avoid;
-    }
-    
-    .cta::before {
-        display: none;
-    }
-    
-    .cta-button {
-        background: white !important;
-        color: black !important;
-        border: 2px solid black !important;
-        box-shadow: none !important;
-    }
-    
-    .blue-gradient-section {
-        background: white !important;
-        color: black !important;
-    }
-    
-    .blue-gradient-section .section-title {
-        color: black !important;
-    }
-    
-    .section-subtitle {
-        background: #ccc !important;
-    }
-}
-
-/* ======================================
-   ACCESSIBILITY
-   ====================================== */
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .hero-content h1,
-    .hero-content p {
-        animation: none;
-    }
-    
-    .cta-button:hover {
-        transform: none;
-    }
-}
-
-/* High contrast */
-@media (prefers-contrast: high) {
-    .hero::before,
-    .cta::before {
-        background: rgba(0, 0, 0, 0.8);
-    }
-    
-    .section-subtitle {
-        height: 6px;
-    }
-    
-    .cta-button {
-        border: 2px solid currentColor;
-    }
-}
-
-/* Focus visible para elementos interactivos */
-.hero:focus-visible,
-.cta:focus-visible {
-    outline: 3px solid var(--amarillo);
-    outline-offset: 2px;
 }

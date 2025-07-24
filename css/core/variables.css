@@ -1,200 +1,79 @@
 /* ======================================
-   VARIABLES.CSS - CONFIGURACIÓN GLOBAL COMPLETA
+   VARIABLES.CSS - CONFIGURACIÓN GLOBAL
    ====================================== */
 
 :root {
     /* ======================================
-       COLORES PRINCIPALES - JMC
+       COLORES PRINCIPALES
        ====================================== */
-    --azul-principal: #41B6E6;    /* 298 C */
-    --amarillo: #F4DA40;          /* 7404 C */
-    --negro: #101820;             /* Black 6 C */
-    --rojo: #EF3340;              /* Red 032C */
-    --azul-oscuro: #165C7D;       /* 7700C */
+    --azul-principal: #41B6E6;
+    --amarillo: #F4DA40;
+    --negro: #101820;
+    --rojo: #EF3340;
+    --azul-oscuro: #165C7D;
     --blanco: #FFFFFF;
     --gris-claro: #F8F9FA;
     --gris-medio: #E9ECEF;
-
-    /* ======================================
-       GRADIENTES
-       ====================================== */
-    --gradient-blue: linear-gradient(135deg, #41B6E6 0%, #165C7D 100%);
-    --gradient-progress: linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%);
-    --gradient-border: linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%);
-
+    
     /* ======================================
        TIPOGRAFÍAS
        ====================================== */
     --font-title: 'DM Serif Text', serif;
     --font-body: 'Raleway', sans-serif;
-    --title-letter-spacing: 0.2rem;
-
+    
     /* ======================================
        ESPACIADO Y DIMENSIONES
        ====================================== */
+    --title-letter-spacing: 0.2rem;
     --section-padding: 5rem 0;
-    --section-padding-mobile: 3rem 0;
     --card-padding: 2rem;
-    --card-padding-mobile: 1.5rem;
-    --container-padding: 0 2rem;
-    --container-padding-mobile: 0 1rem;
-    
-    /* Márgenes de secciones con background */
-    --section-margin: 2rem;
-    --section-margin-tablet: 1.5rem;
-    --section-margin-mobile: 1rem;
-
-    /* ======================================
-       BORDES Y FORMAS
-       ====================================== */
     --border-radius: 15px;
     --border-radius-large: 20px;
-    --border-radius-small: 10px;
-    --border-radius-button: 3.125rem;
-
+    --container-max-width: 1200px;
+    
     /* ======================================
        SOMBRAS
        ====================================== */
     --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.1);
     --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.15);
-    --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.2);
-    --shadow-button: 0 4px 15px rgba(65, 182, 230, 0.3);
-    --shadow-button-hover: 0 6px 20px rgba(65, 182, 230, 0.4);
-
+    --shadow-heavy: 0 20px 50px rgba(0, 0, 0, 0.2);
+    
     /* ======================================
        TRANSICIONES
        ====================================== */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
-    --transition-slow: 0.6s ease;
-    --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
+    --transition-slow: 0.5s ease;
+    
     /* ======================================
-       ICONOS - TAMAÑOS
-       ====================================== */
-    --icon-xs: 1rem;
-    --icon-sm: 1.2rem;
-    --icon-md: 1.5rem;
-    --icon-lg: 2rem;
-    --icon-xl: 2.5rem;
-    --icon-xxl: 3rem;
-    --icon-main: 6rem;
-    --icon-secondary: 4.5rem;
-    --icon-process: 4rem;
-
-    /* ======================================
-       Z-INDEX SCALE
+       Z-INDEX
        ====================================== */
     --z-background: -1;
-    --z-default: 1;
-    --z-content: 2;
+    --z-content: 1;
+    --z-overlay: 10;
+    --z-modal: 100;
     --z-header: 1000;
-    --z-modal: 5000;
-    --z-progress: 9999;
     --z-tooltip: 10000;
-
+    
     /* ======================================
-       BREAKPOINTS (para usar en JS si es necesario)
+       BREAKPOINTS
        ====================================== */
-    --breakpoint-tablet: 82rem;    /* 1312px */
-    --breakpoint-mobile: 53rem;    /* 848px */
-
+    --desktop: 82rem;
+    --tablet: 53.0625rem;
+    --mobile: 53rem;
+    
     /* ======================================
-       CONTENEDORES DE ICONOS
+       ICONOS
        ====================================== */
-    --icon-container-main: 10rem;      /* 160px */
-    --icon-container-secondary: 7.5rem; /* 120px */
-    --icon-container-md: 5rem;         /* 80px */
-    --icon-container-sm: 3.75rem;      /* 60px */
-
-    /* ======================================
-       ANIMACIONES Y KEYFRAMES
-       ====================================== */
-    --animation-duration: 1s;
-    --animation-delay: 0.3s;
-
-    /* ======================================
-       CONTENEDORES MÁXIMOS
-       ====================================== */
-    --container-max-width: 1200px;
-    --content-max-width: 800px;
-    --card-max-width: 600px;
-
-    /* ======================================
-       ESPECÍFICOS PARA QUOTE CARDS
-       ====================================== */
-    --quote-font-size: 5rem;
-    --quote-opacity: 0.9;
-
-    /* ======================================
-       ESPACIADO PARA LAYOUTS ESPECÍFICOS
-       ====================================== */
-    --grid-gap: 2rem;
-    --grid-gap-mobile: 1rem;
-    --hero-min-height: 100vh;
-    --section-min-height: auto;
-
-    /* ======================================
-       BORDES Y LÍNEAS DECORATIVAS
-       ====================================== */
-    --divider-height: 4px;
-    --divider-width: 120px;
-    --border-thin: 1px;
-    --border-medium: 2px;
-    --border-thick: 9px;
-
-    /* ======================================
-       OPACIDADES
-       ====================================== */
-    --opacity-light: 0.1;
-    --opacity-medium: 0.15;
-    --opacity-heavy: 0.3;
-    --opacity-text: 0.95;
-    --opacity-disabled: 0.6;
-
-    /* ======================================
-       FILTROS Y EFECTOS
-       ====================================== */
-    --blur-light: blur(10px);
-    --blur-medium: blur(15px);
-    --blur-heavy: blur(20px);
-
-    /* ======================================
-       BACKGROUNDS ESPECÍFICOS
-       ====================================== */
-    --bg-glass: rgba(255, 255, 255, 0.1);
-    --bg-glass-hover: rgba(255, 255, 255, 0.15);
-    --bg-card: rgba(255, 255, 255, 0.9);
-    --bg-overlay: rgba(0, 0, 0, 0.6);
-
-    /* ======================================
-       TEXTO Y FUENTES
-       ====================================== */
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.25rem;
-    --font-size-2xl: 1.5rem;
-    --font-size-3xl: 1.875rem;
-    --font-size-4xl: 2.25rem;
-    --font-size-5xl: 3rem;
-    --font-size-6xl: 4rem;
-
-    --font-weight-light: 300;
-    --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-    --font-weight-extrabold: 800;
-
-    --line-height-tight: 1.2;
-    --line-height-normal: 1.6;
-    --line-height-relaxed: 1.7;
-
-    /* ======================================
-       UTILIDADES DE DESARROLLO
-       ====================================== */
-    --debug-border: 1px solid red;
-    --debug-background: rgba(255, 0, 0, 0.1);
+    --icon-xl: 6rem;
+    --icon-lg: 4.5rem;
+    --icon-md: 4rem;
+    --icon-sm: 1.2rem;
+    --icon-xs: 1rem;
+    
+    --icon-container-xl: 10rem;
+    --icon-container-lg: 7.5rem;
+    --icon-container-md: 5rem;
+    --icon-container-sm: 2rem;
+    --icon-container-xs: 1.5rem;
 }

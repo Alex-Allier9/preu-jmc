@@ -3,10 +3,8 @@
    ====================================== */
 
 /* ======================================
-   KEYFRAMES PRINCIPALES
+   KEYFRAMES UNIVERSALES
    ====================================== */
-
-/* Fade in desde abajo */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -18,7 +16,6 @@
     }
 }
 
-/* Fade in desde arriba */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -30,7 +27,6 @@
     }
 }
 
-/* Fade in desde la izquierda */
 @keyframes fadeInLeft {
     from {
         opacity: 0;
@@ -42,7 +38,6 @@
     }
 }
 
-/* Fade in desde la derecha */
 @keyframes fadeInRight {
     from {
         opacity: 0;
@@ -54,182 +49,53 @@
     }
 }
 
-/* Fade in simple */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Scale in */
 @keyframes scaleIn {
     from {
         opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Bounce in */
-@keyframes bounceIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.3);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-    70% {
         transform: scale(0.9);
     }
-    100% {
+    to {
         opacity: 1;
         transform: scale(1);
     }
 }
 
-/* Slide in desde abajo */
-@keyframes slideInUp {
-    from {
-        transform: translateY(100%);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
-/* ======================================
-   ANIMACIONES DE EFECTOS
-   ====================================== */
-
-/* Efecto ripple para botones */
 @keyframes ripple-expand {
-    0% {
-        transform: scale(0);
-        opacity: 1;
+    0% { 
+        transform: scale(0); 
+        opacity: 1; 
     }
-    100% {
-        transform: scale(4);
-        opacity: 0;
+    100% { 
+        transform: scale(4); 
+        opacity: 0; 
     }
 }
 
-/* Pulso suave */
 @keyframes pulse {
-    0% {
-        transform: scale(1);
+    0%, 100% { 
+        transform: scale(1); 
     }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
+    50% { 
+        transform: scale(1.05); 
     }
 }
 
-/* Shake (temblor) */
-@keyframes shake {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    10%, 30%, 50%, 70%, 90% {
-        transform: translateX(-5px);
-    }
-    20%, 40%, 60%, 80% {
-        transform: translateX(5px);
-    }
-}
-
-/* Wobble */
-@keyframes wobble {
-    0% {
-        transform: translateX(0%);
-    }
-    15% {
-        transform: translateX(-25%) rotate(-5deg);
-    }
-    30% {
-        transform: translateX(20%) rotate(3deg);
-    }
-    45% {
-        transform: translateX(-15%) rotate(-3deg);
-    }
-    60% {
-        transform: translateX(10%) rotate(2deg);
-    }
-    75% {
-        transform: translateX(-5%) rotate(-1deg);
-    }
-    100% {
-        transform: translateX(0%);
-    }
-}
-
-/* Glow effect */
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 5px var(--azul-principal);
-    }
-    50% {
-        box-shadow: 0 0 20px var(--azul-principal), 0 0 30px var(--azul-principal);
-    }
-    100% {
-        box-shadow: 0 0 5px var(--azul-principal);
-    }
-}
-
-/* ======================================
-   ANIMACIONES DE CARGA
-   ====================================== */
-
-/* Spinner simple */
 @keyframes spin {
-    from {
-        transform: rotate(0deg);
+    from { 
+        transform: rotate(0deg); 
     }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Skeleton loading shimmer */
-@keyframes shimmer {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-/* Loading dots */
-@keyframes loading-dots {
-    0%, 80%, 100% {
-        transform: scale(0);
-        opacity: 0.5;
-    }
-    40% {
-        transform: scale(1);
-        opacity: 1;
+    to { 
+        transform: rotate(360deg); 
     }
 }
 
 /* ======================================
    CLASES DE ANIMACIÓN
    ====================================== */
-
-/* Clase principal para elementos que aparecen */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity var(--transition-slow), transform var(--transition-slow);
+    transition: all 0.6s ease;
 }
 
 .fade-in.visible {
@@ -237,11 +103,10 @@
     transform: translateY(0);
 }
 
-/* Variantes de fade-in */
 .fade-in-down {
     opacity: 0;
     transform: translateY(-30px);
-    transition: opacity var(--transition-slow), transform var(--transition-slow);
+    transition: all 0.6s ease;
 }
 
 .fade-in-down.visible {
@@ -252,7 +117,7 @@
 .fade-in-left {
     opacity: 0;
     transform: translateX(-30px);
-    transition: opacity var(--transition-slow), transform var(--transition-slow);
+    transition: all 0.6s ease;
 }
 
 .fade-in-left.visible {
@@ -263,7 +128,7 @@
 .fade-in-right {
     opacity: 0;
     transform: translateX(30px);
-    transition: opacity var(--transition-slow), transform var(--transition-slow);
+    transition: all 0.6s ease;
 }
 
 .fade-in-right.visible {
@@ -273,8 +138,8 @@
 
 .scale-in {
     opacity: 0;
-    transform: scale(0.8);
-    transition: opacity var(--transition-slow), transform var(--transition-slow);
+    transform: scale(0.9);
+    transition: all 0.6s ease;
 }
 
 .scale-in.visible {
@@ -282,160 +147,11 @@
     transform: scale(1);
 }
 
-/* ======================================
-   CLASES DE ANIMACIONES ESPECÍFICAS
-   ====================================== */
-
-/* Hover animations */
-.hover-lift {
-    transition: transform var(--transition-normal);
-}
-
-.hover-lift:hover {
-    transform: translateY(-8px);
-}
-
-.hover-scale {
-    transition: transform var(--transition-normal);
-}
-
-.hover-scale:hover {
-    transform: scale(1.05);
-}
-
-.hover-rotate {
-    transition: transform var(--transition-normal);
-}
-
-.hover-rotate:hover {
-    transform: rotate(5deg);
-}
-
-/* Pulse animation class */
-.animate-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Spin animation class */
-.animate-spin {
-    animation: spin 1s linear infinite;
-}
-
-/* Bounce animation class */
-.animate-bounce {
-    animation: bounceIn 0.6s ease-out;
-}
-
-/* Shake animation class */
-.animate-shake {
-    animation: shake 0.5s ease-in-out;
-}
-
-/* Wobble animation class */
-.animate-wobble {
-    animation: wobble 1s ease-in-out;
-}
-
-/* Glow animation class */
-.animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-}
-
-/* ======================================
-   LOADING STATES
-   ====================================== */
-
-/* Skeleton loading */
-.skeleton {
-    background: linear-gradient(
-        90deg,
-        var(--gris-claro) 25%,
-        var(--gris-medio) 50%,
-        var(--gris-claro) 75%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-    border-radius: var(--border-radius-small);
-}
-
-.skeleton-text {
-    height: 1rem;
-    margin-bottom: 0.5rem;
-    border-radius: var(--border-radius-small);
-}
-
-.skeleton-text:last-child {
-    margin-bottom: 0;
-    width: 60%;
-}
-
-.skeleton-avatar {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-}
-
-.skeleton-card {
-    padding: 1rem;
-    border-radius: var(--border-radius);
-}
-
-/* Loading spinner */
-.loading-spinner {
-    width: 2rem;
-    height: 2rem;
-    border: 3px solid var(--gris-claro);
-    border-top: 3px solid var(--azul-principal);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 1rem auto;
-}
-
-.loading-spinner.small {
-    width: 1rem;
-    height: 1rem;
-    border-width: 2px;
-}
-
-.loading-spinner.large {
-    width: 3rem;
-    height: 3rem;
-    border-width: 4px;
-}
-
-/* Loading dots */
-.loading-dots {
-    display: flex;
-    gap: 0.25rem;
-    justify-content: center;
-    align-items: center;
-}
-
-.loading-dots span {
-    width: 0.5rem;
-    height: 0.5rem;
-    background: var(--azul-principal);
-    border-radius: 50%;
-    animation: loading-dots 1.4s ease-in-out infinite both;
-}
-
-.loading-dots span:nth-child(1) {
-    animation-delay: -0.32s;
-}
-
-.loading-dots span:nth-child(2) {
-    animation-delay: -0.16s;
-}
-
-/* ======================================
-   CARD ANIMATIONS
-   ====================================== */
-
-/* Card reveal con stagger */
+/* Cards reveal con delay */
 .card-reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
 }
 
 .card-reveal.visible {
@@ -443,7 +159,6 @@
     transform: translateY(0);
 }
 
-/* Stagger delays para múltiples cards */
 .card-reveal:nth-child(1) { transition-delay: 0ms; }
 .card-reveal:nth-child(2) { transition-delay: 100ms; }
 .card-reveal:nth-child(3) { transition-delay: 200ms; }
@@ -452,116 +167,38 @@
 .card-reveal:nth-child(6) { transition-delay: 500ms; }
 
 /* ======================================
-   TEXT ANIMATIONS
+   UTILIDADES DE ANIMACIÓN
    ====================================== */
-
-/* Typewriter effect */
-.typewriter {
-    overflow: hidden;
-    border-right: 2px solid var(--azul-principal);
-    white-space: nowrap;
-    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+.animate-pulse {
+    animation: pulse 2s infinite;
 }
 
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes blink-caret {
-    from, to {
-        border-color: transparent;
-    }
-    50% {
-        border-color: var(--azul-principal);
-    }
-}
-
-/* Text reveal */
-.text-reveal {
-    overflow: hidden;
-}
-
-.text-reveal span {
-    display: inline-block;
-    transform: translateY(100%);
-    transition: transform 0.6s ease;
-}
-
-.text-reveal.visible span {
-    transform: translateY(0);
-}
-
-/* ======================================
-   RESPONSIVE ANIMATIONS
-   ====================================== */
-
-/* Reduce animations on mobile for performance */
-@media (max-width: 53rem) {
-    .fade-in,
-    .fade-in-down,
-    .fade-in-left,
-    .fade-in-right,
-    .scale-in,
-    .card-reveal {
-        transition-duration: 0.4s;
-    }
-    
-    .card-reveal:nth-child(n) {
-        transition-delay: 0ms;
-    }
-    
-    /* Disable complex animations on mobile */
-    .animate-glow,
-    .typewriter {
-        animation: none;
-    }
-}
-
-/* ======================================
-   UTILITY CLASSES
-   ====================================== */
-
-/* Animation controls */
-.animate-none {
-    animation: none !important;
-}
-
-.animate-paused {
-    animation-play-state: paused !important;
-}
-
-.animate-running {
-    animation-play-state: running !important;
-}
-
-/* Transition utilities */
-.transition-none {
-    transition: none !important;
+.animate-spin {
+    animation: spin 1s linear infinite;
 }
 
 .transition-fast {
-    transition: all var(--transition-fast) !important;
+    transition: all var(--transition-fast);
 }
 
 .transition-normal {
-    transition: all var(--transition-normal) !important;
+    transition: all var(--transition-normal);
 }
 
 .transition-slow {
-    transition: all var(--transition-slow) !important;
+    transition: all var(--transition-slow);
 }
 
-/* Delay utilities */
-.delay-75 { transition-delay: 75ms !important; }
-.delay-100 { transition-delay: 100ms !important; }
-.delay-150 { transition-delay: 150ms !important; }
-.delay-200 { transition-delay: 200ms !important; }
-.delay-300 { transition-delay: 300ms !important; }
-.delay-500 { transition-delay: 500ms !important; }
-.delay-700 { transition-delay: 700ms !important; }
-.delay-1000 { transition-delay: 1000ms !important; }
+/* ======================================
+   REDUCED MOTION
+   ====================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
