@@ -531,9 +531,21 @@
    ====================================== */
 
 .card-services-mixed {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     padding: 2rem;
     text-align: left;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-services-mixed:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .card-services-mixed .service-header {
@@ -547,11 +559,11 @@
 
 .card-services-mixed .service-icon .material-symbols-rounded {
     font-size: 3rem;
-    color: var(--azul-oscuro);
+    color: var(--amarillo);
 }
 
 .card-services-mixed h3 {
-    color: var(--azul-oscuro);
+    color: var(--amarillo);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -559,11 +571,12 @@
 }
 
 .card-services-mixed p {
-    color: var(--negro);
+    color: white;
     line-height: 1.6;
     font-size: 1.05rem;
     margin-bottom: 1rem;
     text-align: left;
+    opacity: 0.95;
 }
 
 .card-services-mixed ul {
@@ -574,9 +587,10 @@
 
 .card-services-mixed li {
     padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(65, 182, 230, 0.2);
-    color: var(--negro);
+    border-bottom: 1px solid rgba(244, 218, 64, 0.3);
+    color: white;
     font-size: 1rem;
+    opacity: 0.9;
 }
 
 .card-services-mixed li:last-child {
