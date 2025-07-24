@@ -1,170 +1,297 @@
 /* ======================================
-   CARDS.CSS - SISTEMA COMPLETO DE CARDS
-   JMC PREUNIVERSITARIO
+   CARDS-SYSTEM.CSS - 10 ESTILOS ÚNICOS
+   JMC PREUNIVERSITARIO - CSS PURO
    ====================================== */
 
 /* ======================================
-   BASE CARD SYSTEM
+   PROPIEDADES BASE COMPARTIDAS
    ====================================== */
 
-.card-base {
-    border-radius: var(--border-radius);
-    padding: var(--card-padding);
-    text-align: center;
-    position: relative;
-    transition: all var(--transition-normal);
-    box-shadow: var(--shadow-light);
-    background: rgba(255, 255, 255, 0.9);
-    margin-bottom: 2rem;
-    width: 100%;
-}
-
-.card-base:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-}
-
-/* ======================================
-   CARDS ESPECÍFICAS - VALORES FUNDAMENTALES
-   ====================================== */
-
-.value-card {
-    background: rgba(255, 255, 255, 0.9);
+/* Base styles que se repiten en todas las cards */
+.card-text-left,
+.card-center-text,
+.card-gradient-border,
+.card-quote,
+.card-icon-center,
+.card-profile-buttons,
+.card-mountaineering,
+.card-gallery,
+.card-process-horizontal,
+.card-services-mixed {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    padding: 1.5rem;
-    text-align: center;
-    min-height: 180px;
+    position: relative;
     width: 100%;
+    margin-bottom: 2rem;
+}
+
+.card-text-left:hover,
+.card-center-text:hover,
+.card-gradient-border:hover,
+.card-quote:hover,
+.card-icon-center:hover,
+.card-profile-buttons:hover,
+.card-mountaineering:hover,
+.card-process-horizontal:hover,
+.card-services-mixed:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ======================================
+   1. CARD TEXTO IZQUIERDA
+   ====================================== */
+
+.card-text-left {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+.card-text-left:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.card-text-left h2,
+.card-text-left h3 {
+    color: var(--azul-oscuro);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.card-text-left p {
+    color: var(--negro);
+    line-height: 1.7;
+    font-size: 1.15rem;
+    text-align: justify;
+}
+
+/* ======================================
+   2. CARD CENTRO TEXTO
+   ====================================== */
+
+.card-center-text {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
-    position: relative;
 }
 
-.value-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.value-card h3 {
+.card-center-text h3 {
     color: var(--azul-oscuro);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-align: center;
-    line-height: 1.3;
-    font-size: 1rem;
-    hyphens: auto;
-    word-wrap: break-word;
-}
-
-.value-card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--negro);
-    text-align: center;
-}
-
-/* ======================================
-   CARDS ESPECÍFICAS - NUESTRA SEDE
-   ====================================== */
-
-.sede-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.sede-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.sede-card h3 {
-    color: var(--amarillo);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
 
-.sede-card p {
-    font-size: 1.05rem;
+.card-center-text p {
+    color: var(--negro);
     line-height: 1.6;
-    color: white;
+    font-size: 1.05rem;
+}
+
+/* Números grandes para stats */
+.card-center-text .stat-number {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: var(--title-letter-spacing);
 }
 
 /* ======================================
-   CARDS ESPECÍFICAS - JOSÉ MANUEL CARTES (FUNDADOR)
+   3. CARD BORDE GRADIENTE
    ====================================== */
 
-.profile-card {
+.card-gradient-border {
+    background: 
+        linear-gradient(white, white) padding-box,
+        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
+    border: 9px solid transparent;
+    padding: 2rem;
+    text-align: center;
+}
+
+.card-gradient-border h3 {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.card-gradient-border p {
+    color: var(--negro);
+    line-height: 1.6;
+    font-size: 1.05rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ======================================
+   4. CARD QUOTES
+   ====================================== */
+
+.card-quote {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    padding: 3rem;
+    text-align: center;
+    margin: 3rem auto;
+    max-width: 600px;
+    cursor: pointer;
+}
+
+.card-quote:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+.card-quote .quote-text {
+    font-style: italic;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.card-quote .quote-text::before,
+.card-quote .quote-text::after {
+    content: '"';
+    font-family: var(--font-title);
+    font-size: 5rem;
+    color: var(--amarillo);
+    position: absolute;
+    opacity: 0.9;
+    font-weight: 400;
+    line-height: 1;
+    z-index: 1;
+    font-style: normal;
+}
+
+.card-quote .quote-text::before {
+    top: -1rem;
+    left: -1.5rem;
+    transform: rotate(-10deg);
+}
+
+.card-quote .quote-text::after {
+    bottom: -2rem;
+    right: -1.5rem;
+    transform: rotate(10deg);
+}
+
+.card-quote .quote-author {
+    color: var(--amarillo);
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* ======================================
+   5. CARD ICONO CENTRO
+   ====================================== */
+
+.card-icon-center {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+}
+
+/* Para cards dentro de secciones azules */
+.blue-gradient-section .card-icon-center {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.blue-gradient-section .card-icon-center:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.card-icon-center .card-icon {
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.card-icon-center .card-icon .material-symbols-rounded {
+    font-size: 3rem;
+    color: var(--azul-oscuro);
+}
+
+.blue-gradient-section .card-icon-center .card-icon .material-symbols-rounded {
+    color: var(--amarillo);
+}
+
+.card-icon-center h3 {
+    color: var(--azul-oscuro);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    hyphens: auto;
+    word-wrap: break-word;
+}
+
+.blue-gradient-section .card-icon-center h3 {
+    color: var(--amarillo);
+}
+
+.card-icon-center p {
+    color: var(--negro);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.blue-gradient-section .card-icon-center p {
+    color: white;
+    font-size: 1rem;
+}
+
+/* ======================================
+   6. CARD PROFILE BUTTONS
+   ====================================== */
+
+.card-profile-buttons {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     padding: 0;
     display: grid;
     grid-template-columns: 300px 1fr;
-    gap: 0;
-    align-items: stretch;
-    margin-bottom: 3rem;
     overflow: hidden;
-    transition: all 0.3s ease;
-    position: relative;
 }
 
-.profile-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+.card-profile-buttons:hover {
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .profile-image {
     position: relative;
     overflow: hidden;
-    border-radius: 20px 0 0 20px;
 }
 
 .profile-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-.profile-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(65, 182, 230, 0.2), rgba(22, 92, 125, 0.3));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.profile-card:hover .profile-overlay {
-    opacity: 1;
-}
-
-.profile-overlay .material-symbols-rounded {
-    font-size: 4rem;
-    color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .profile-info {
@@ -172,35 +299,34 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left;
 }
 
 .profile-name {
     font-family: var(--font-title);
-    font-size: 2.5rem;
-    color: var(--amarillo);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: white;
     margin-bottom: 0.5rem;
+    line-height: 1.1;
     letter-spacing: var(--title-letter-spacing);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .profile-title {
     font-size: 1.5rem;
-    color: white;
-    margin-bottom: 0.5rem;
+    color: var(--amarillo);
     font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 .profile-subtitle {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: white;
+    opacity: 0.9;
     margin-bottom: 2rem;
-    font-style: italic;
 }
 
 .profile-contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1rem;
 }
 
@@ -208,66 +334,164 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 0.8rem;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    text-decoration: none;
-    color: white;
     transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
+    text-decoration: none;
 }
 
 .profile-contact-item:hover {
     background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
+    transform: translateX(5px);
 }
 
-.profile-contact-item .material-symbols-rounded,
-.profile-contact-item img {
-    width: 1.5rem;
-    height: 1.5rem;
-    flex-shrink: 0;
+/* ======================================
+   7. CARD MONTAÑISMO
+   ====================================== */
+
+.card-mountaineering {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.profile-contact-details {
+.card-mountaineering .achievement-icon {
+    margin-bottom: 1.5rem;
+}
+
+.card-mountaineering .achievement-icon .material-symbols-rounded {
+    font-size: 3rem;
+    color: var(--azul-principal);
+}
+
+.card-mountaineering h3 {
+    color: var(--azul-oscuro);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.card-mountaineering .achievement-stats {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(65, 182, 230, 0.1);
+    border-radius: 10px;
 }
 
-.profile-contact-label {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.7);
+.card-mountaineering .stat-number {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--azul-principal);
+    line-height: 1;
+}
+
+.card-mountaineering .stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--azul-oscuro);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.profile-contact-value {
-    font-size: 0.9rem;
-    color: white;
-    font-weight: 500;
+.card-mountaineering p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--negro);
 }
 
 /* ======================================
-   CARDS ESPECÍFICAS - PROCESO DE INSCRIPCIÓN
+   8. CARD GALERÍA
    ====================================== */
 
-.proceso-card-full {
-    background: rgba(255, 255, 255, 0.9);
+.card-gallery {
+    aspect-ratio: 1 / 1;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-gallery:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.card-gallery:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 1.5rem 1rem 1rem;
+    transform: translateY(100%);
     transition: all 0.3s ease;
+}
+
+.card-gallery:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.gallery-overlay p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* ======================================
+   9. CARD PROCESO HORIZONTAL
+   ====================================== */
+
+.card-process-horizontal {
+    background: rgba(255, 255, 255, 0.9);
     padding: 2.5rem;
-    position: relative;
     display: flex;
     align-items: flex-start;
     gap: 2rem;
-    margin-bottom: 2rem;
-    width: 100%;
 }
 
-.proceso-card-full:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+.process-step-icon {
+    flex-shrink: 0;
+    width: 7.5rem;
+    height: 7.5rem;
+    background: var(--azul-principal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.card-process-horizontal:hover .process-step-icon {
+    background: var(--azul-oscuro);
+    transform: scale(1.05);
+}
+
+.process-step-icon .material-symbols-rounded {
+    font-size: 4rem;
+    color: white;
 }
 
 .card-content {
@@ -276,7 +500,6 @@
 }
 
 .card-content h3 {
-    font-family: var(--font-body);
     font-size: 1.6rem;
     color: var(--azul-oscuro);
     margin-bottom: 1.5rem;
@@ -303,542 +526,70 @@
     flex-wrap: wrap;
 }
 
-.meta-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.meta-item .material-symbols-rounded {
-    color: var(--azul-principal);
-    font-size: 1rem;
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
 /* ======================================
-   CARDS UNIVERSALES - TYPES EXISTENTES
+   10. CARD SERVICIOS MIXTO
    ====================================== */
 
-/* MVP Cards y Financial Cards (IDÉNTICAS) */
-.mvp-card,
-.financial-card {
+.card-services-mixed {
     background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    padding: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.mvp-card:hover,
-.financial-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.mvp-card h3,
-.financial-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.mvp-card p,
-.financial-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--negro);
-}
-
-/* Program Cards y Service Feature Cards (IDÉNTICAS) */
-.program-card,
-.service-feature-card {
-    background: 
-        linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
-    border: 9px solid transparent;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    width: 100%;
-}
-
-.program-card:hover,
-.service-feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.program-card h3,
-.service-feature-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
-    font-size: 1.3rem;
-}
-
-.program-card p,
-.service-feature-card p {
-    position: relative;
-    z-index: 1;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--negro);
-}
-
-/* Stat Cards */
-.stat-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.stat-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.stat-card .stat-number {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--amarillo);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-.stat-card .stat-label {
-    font-size: 1.1rem;
-    color: white;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* About Cards y Timeline Content (SIMILARES) */
-.about-card,
-.timeline-content {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    margin-bottom: 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.about-card {
-    padding: 2rem;
-}
-
-.timeline-content {
-    padding: 1.5rem;
-}
-
-.about-card:hover,
-.timeline-content:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.about-card h3,
-.timeline-content h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.about-card h3 {
-    font-size: 1.3rem;
-}
-
-.timeline-content h3 {
-    font-size: 1.2rem;
-}
-
-.about-card p,
-.timeline-content p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--negro);
-}
-
-.about-card p {
-    text-align: justify;
-}
-
-/* Requisito Cards */
-.requisito-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.requisito-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.requisito-card h3 {
-    color: var(--amarillo);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.requisito-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: white;
-}
-
-/* Complementary Cards */
-.complementary-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 2rem;
     text-align: left;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    width: 100%;
-    position: relative;
 }
 
-.complementary-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+.card-services-mixed .service-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-.complementary-card h3 {
+.card-services-mixed .service-icon {
+    margin-bottom: 1rem;
+}
+
+.card-services-mixed .service-icon .material-symbols-rounded {
+    font-size: 3rem;
+    color: var(--azul-oscuro);
+}
+
+.card-services-mixed h3 {
     color: var(--azul-oscuro);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.3rem;
+    text-align: center;
 }
 
-.complementary-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
+.card-services-mixed p {
     color: var(--negro);
+    line-height: 1.6;
+    font-size: 1.05rem;
     margin-bottom: 1rem;
+    text-align: left;
 }
 
-.complementary-card ul {
+.card-services-mixed ul {
     list-style: none;
     padding: 0;
+    text-align: left;
 }
 
-.complementary-card li {
+.card-services-mixed li {
     padding: 0.5rem 0;
     border-bottom: 1px solid rgba(65, 182, 230, 0.2);
     color: var(--negro);
     font-size: 1rem;
 }
 
-.complementary-card li:last-child {
+.card-services-mixed li:last-child {
     border-bottom: none;
 }
 
-/* Practical Cards */
-.practical-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    text-align: center;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.practical-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.practical-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.practical-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--negro);
-}
-
-/* Achievement Cards */
-.achievement-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.achievement-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.achievement-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.achievement-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--negro);
-}
-
-/* Philosophy Cards */
-.philosophy-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.philosophy-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.philosophy-card h3 {
-    color: var(--amarillo);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.philosophy-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: white;
-}
-
-/* Gallery Items */
-.gallery-item {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.gallery-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-}
-
-.gallery-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(65, 182, 230, 0.8), rgba(22, 92, 125, 0.9));
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    text-align: center;
-    padding: 2rem;
-}
-
-.gallery-item:hover .gallery-overlay {
-    opacity: 1;
-}
-
-.gallery-overlay h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--amarillo);
-}
-
-.gallery-overlay p {
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
 /* ======================================
-   QUOTE CARD - COMPONENT ESPECÍFICO
-   ====================================== */
-
-.quote-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 3rem;
-    text-align: center;
-    margin: 3rem auto;
-    max-width: 600px;
-    border-radius: var(--border-radius);
-    transition: all var(--transition-normal);
-    cursor: pointer;
-    position: relative;
-    box-shadow: var(--shadow-light);
-}
-
-.quote-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium);
-}
-
-.quote-text {
-    font-style: italic;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    position: relative;
-    z-index: 2;
-    color: white;
-}
-
-.quote-text::before,
-.quote-text::after {
-    content: '"';
-    font-family: var(--font-title);
-    font-size: 5rem;
-    color: var(--amarillo);
-    position: absolute;
-    opacity: 0.9;
-    font-weight: 400;
-    line-height: 1;
-    z-index: 1;
-    font-style: normal;
-}
-
-.quote-text::before {
-    content: '"';
-    top: -1rem;
-    left: -1.5rem;
-    transform: rotate(-10deg);
-}
-
-.quote-text::after {
-    content: '"';
-    bottom: -2rem;
-    right: -1.5rem;
-    transform: rotate(10deg);
-}
-
-.quote-author {
-    color: var(--amarillo);
-    font-weight: 600;
-    font-size: 1.1rem;
-    position: relative;
-    z-index: 2;
-}
-
-/* ======================================
-   ICON CONTAINERS UNIVERSALES
-   ====================================== */
-
-.card-icon-container,
-.service-icon,
-.requisito-icon,
-.value-icon,
-.achievement-icon,
-.complementary-icon,
-.financial-icon,
-.practical-icon {
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-}
-
-.service-icon .material-symbols-rounded,
-.value-icon .material-symbols-rounded,
-.achievement-icon .material-symbols-rounded,
-.complementary-icon .material-symbols-rounded,
-.financial-icon .material-symbols-rounded,
-.practical-icon .material-symbols-rounded {
-    color: var(--azul-oscuro);
-}
-
-.requisito-icon .material-symbols-rounded {
-    color: var(--amarillo);
-}
-
-/* ======================================
-   RESPONSIVE CARDS
+   RESPONSIVE - TODAS LAS CARDS
    ====================================== */
 
 /* Tablet */
 @media (max-width: 82rem) and (min-width: 53.0625rem) {
-    .value-card {
-        min-height: 160px;
-        padding: 1.2rem;
-    }
-    
-    .value-card h3 {
-        font-size: 0.95rem;
-    }
-    
-    .profile-card {
+    .card-profile-buttons {
         grid-template-columns: 250px 1fr;
     }
     
@@ -850,16 +601,7 @@
         font-size: 2rem;
     }
     
-    .profile-title {
-        font-size: 1.3rem;
-    }
-    
-    .profile-contact-grid {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
-    }
-    
-    .proceso-card-full {
+    .card-process-horizontal {
         padding: 2rem;
     }
     
@@ -867,42 +609,26 @@
         font-size: 1.4rem;
     }
     
-    .quote-card {
+    .card-quote {
         padding: 2.5rem;
         margin: 2.5rem auto;
         max-width: 500px;
     }
     
-    .quote-text {
+    .card-quote .quote-text {
         font-size: 1.2rem;
     }
     
-    .quote-text::before,
-    .quote-text::after {
+    .card-quote .quote-text::before,
+    .card-quote .quote-text::after {
         font-size: 4rem;
     }
 }
 
 /* Mobile */
 @media (max-width: 53rem) {
-    .value-card {
-        min-height: 140px;
-        padding: 1.2rem;
-    }
-    
-    .value-card h3 {
-        font-size: 0.95rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .profile-card {
+    .card-profile-buttons {
         grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .profile-image {
-        height: 300px;
-        border-radius: 20px 20px 0 0;
     }
     
     .profile-info {
@@ -910,37 +636,15 @@
         text-align: center;
     }
     
-    .profile-name {
-        font-size: 1.8rem;
-    }
-    
-    .profile-title {
-        font-size: 1.2rem;
-    }
-    
-    .profile-contact-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .profile-contact-item {
-        justify-content: center;
-    }
-    
-    .proceso-card-full {
-        padding: 2rem;
+    .card-process-horizontal {
         flex-direction: column;
         text-align: center;
         gap: 1.5rem;
+        padding: 2rem;
     }
     
     .card-content {
         text-align: center;
-    }
-    
-    .card-content h3 {
-        text-align: center;
-        font-size: 1.4rem;
     }
     
     .card-content p {
@@ -949,224 +653,27 @@
     
     .card-meta {
         justify-content: center;
-        flex-direction: column;
-        text-align: center;
     }
     
-    .quote-card {
+    .card-text-left {
+        padding: 2rem;
+    }
+    
+    .card-quote {
         padding: 2rem;
         margin: 2rem auto;
-        max-width: 400px;
     }
     
-    .quote-text {
+    .card-quote .quote-text {
         font-size: 1.1rem;
-        line-height: 1.5;
     }
     
-    .quote-text::before,
-    .quote-text::after {
+    .card-quote .quote-text::before,
+    .card-quote .quote-text::after {
         font-size: 3rem;
     }
     
-    .quote-text::before {
-        top: -0.5rem;
-        left: -1rem;
-    }
-    
-    .quote-text::after {
-        bottom: -1rem;
-        right: -1rem;
-    }
-    
-    .gallery-item img {
-        height: 200px;
-    }
-    
-    .gallery-overlay {
-        padding: 1.5rem;
-    }
-    
-    .gallery-overlay h3 {
-        font-size: 1.2rem;
-    }
-    
-    .gallery-overlay p {
-        font-size: 0.9rem;
-    }
-}
-
-/* Mobile muy pequeño */
-@media (max-width: 360px) {
-    .value-card {
-        min-height: 120px;
-        padding: 1rem;
-    }
-    
-    .profile-info {
-        padding: 1.5rem;
-    }
-    
-    .profile-name {
-        font-size: 1.5rem;
-    }
-    
-    .quote-card {
-        padding: 1.5rem;
-        margin: 1.5rem auto;
-        max-width: 300px;
-    }
-    
-    .quote-text {
-        font-size: 1rem;
-    }
-    
-    .quote-text::before,
-    .quote-text::after {
-        font-size: 2.5rem;
-    }
-    
-    .gallery-item img {
-        height: 180px;
-    }
-}
-
-/* ======================================
-   ACCESIBILIDAD
-   ====================================== */
-
-/* Focus states */
-.card-base:focus-visible,
-.value-card:focus-visible,
-.sede-card:focus-visible,
-.profile-card:focus-visible,
-.proceso-card-full:focus-visible,
-.quote-card:focus-visible,
-.gallery-item:focus-visible {
-    outline: 3px solid var(--azul-principal);
-    outline-offset: 2px;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .card-base,
-    .value-card,
-    .sede-card,
-    .profile-card,
-    .proceso-card-full,
-    .quote-card,
-    .gallery-item,
-    .mvp-card,
-    .financial-card,
-    .program-card,
-    .service-feature-card,
-    .stat-card,
-    .about-card,
-    .timeline-content,
-    .requisito-card,
-    .complementary-card,
-    .practical-card,
-    .achievement-card,
-    .philosophy-card,
-    .quote-text::before,
-    .quote-text::after,
-    .profile-overlay,
-    .gallery-overlay {
-        transition: none !important;
-        animation: none !important;
-    }
-    
-    .card-base:hover,
-    .value-card:hover,
-    .sede-card:hover,
-    .profile-card:hover,
-    .proceso-card-full:hover,
-    .quote-card:hover,
-    .gallery-item:hover,
-    .mvp-card:hover,
-    .financial-card:hover,
-    .program-card:hover,
-    .service-feature-card:hover,
-    .stat-card:hover,
-    .about-card:hover,
-    .timeline-content:hover,
-    .requisito-card:hover,
-    .complementary-card:hover,
-    .practical-card:hover,
-    .achievement-card:hover,
-    .philosophy-card:hover {
-        transform: none !important;
-    }
-}
-
-/* High contrast */
-@media (prefers-contrast: high) {
-    .card-base,
-    .value-card,
-    .sede-card,
-    .profile-card,
-    .proceso-card-full,
-    .quote-card,
-    .gallery-item,
-    .mvp-card,
-    .financial-card,
-    .program-card,
-    .service-feature-card,
-    .stat-card,
-    .about-card,
-    .timeline-content,
-    .requisito-card,
-    .complementary-card,
-    .practical-card,
-    .achievement-card,
-    .philosophy-card {
-        border: 2px solid currentColor;
-    }
-    
-    .quote-text::before,
-    .quote-text::after {
-        opacity: 1;
-    }
-}
-
-/* ======================================
-   PRINT STYLES
-   ====================================== */
-
-@media print {
-    .card-base,
-    .value-card,
-    .sede-card,
-    .profile-card,
-    .proceso-card-full,
-    .quote-card,
-    .gallery-item,
-    .mvp-card,
-    .financial-card,
-    .program-card,
-    .service-feature-card,
-    .stat-card,
-    .about-card,
-    .timeline-content,
-    .requisito-card,
-    .complementary-card,
-    .practical-card,
-    .achievement-card,
-    .philosophy-card {
-        background: white !important;
-        color: black !important;
-        border: 1px solid #ccc !important;
-        box-shadow: none !important;
-        page-break-inside: avoid;
-    }
-    
-    .profile-overlay,
-    .gallery-overlay {
-        display: none !important;
-    }
-    
-    .quote-text::before,
-    .quote-text::after {
-        color: #ccc !important;
+    .card-services-mixed h3 {
+        text-align: center;
     }
 }

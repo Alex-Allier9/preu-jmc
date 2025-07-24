@@ -256,7 +256,7 @@ html {
 }
 
 /* Sección azul universal */
-.blue-section-universal {
+.blue-gradient-section {
     background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
     color: white;
     padding: var(--section-padding);

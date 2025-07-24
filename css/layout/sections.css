@@ -101,7 +101,7 @@
 }
 
 /* Blue section universal */
-.blue-section-universal {
+.blue-gradient-section {
     background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
     color: white;
     padding: var(--section-padding, 5rem 0);
@@ -109,15 +109,15 @@
     z-index: var(--z-content, 1);
 }
 
-.blue-section-universal .section-title {
+.blue-gradient-section .section-title {
     color: white;
 }
 
-.blue-section-universal .section-subtitle {
+.blue-gradient-section .section-subtitle {
     background: var(--amarillo);
 }
 
-.blue-section-universal p {
+.blue-gradient-section p {
     color: white;
     opacity: 0.95;
 }
@@ -244,7 +244,7 @@
     margin: 0 auto;
 }
 
-.blue-section-universal .content-intro p {
+.blue-gradient-section .content-intro p {
     color: white;
     opacity: 0.95;
 }
@@ -502,12 +502,12 @@
         box-shadow: none !important;
     }
     
-    .blue-section-universal {
+    .blue-gradient-section {
         background: white !important;
         color: black !important;
     }
     
-    .blue-section-universal .section-title {
+    .blue-gradient-section .section-title {
         color: black !important;
     }
     

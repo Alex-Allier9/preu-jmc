@@ -1,87 +1,22 @@
 /* ======================================
-   GRIDS.CSS - SISTEMA UNIVERSAL DE GRIDS
-   JMC PREUNIVERSITARIO
+   GRIDS-SYSTEM.CSS - 7 CONFIGURACIONES ÚNICAS
+   JMC PREUNIVERSITARIO - CSS PURO
    ====================================== */
 
 /* ======================================
-   BASE GRID SYSTEM
+   PROPIEDADES BASE COMPARTIDAS
    ====================================== */
 
-.grid-base {
-    display: grid;
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Modificadores de gap */
-.grid-base.gap-small { gap: 1rem; }
-.grid-base.gap-large { gap: 3rem; }
-.grid-base.gap-extra-large { gap: 4rem; }
-
-/* Modificadores de padding */
-.grid-base.padding-none { padding: 0; }
-.grid-base.padding-small { padding: 0 1rem 1rem 1rem; }
-.grid-base.padding-large { padding: 0 3rem 3rem 3rem; }
-
-/* ======================================
-   GRIDS CONSOLIDADAS - 100% IDÉNTICAS
-   ====================================== */
-
-/* Grid 2 columnas estándar (program-grid, sede-grid, card-grid-2) */
-.grid-2-2-1 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Grid 3 columnas estándar (card-grid-3, values-grid) */
-.grid-3-3-1 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Grid 4 columnas estándar (stats-grid, card-grid-4, gallery-grid) */
-.grid-4-2-1 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* ======================================
-   GRIDS CON COMPORTAMIENTO ESPECIAL
-   ====================================== */
-
-/* Grid 3 columnas con comportamiento especial (mvp-grid, philosophy-grid, achievements-grid) */
+/* Base styles que se repiten en todos los grids */
+.grid-4-2-1,
+.grid-3-3-1,
+.grid-3-2-1,
+.grid-3-1-1,
+.grid-2-2-1,
+.grid-2-1-1,
+.grid-1-1-1,
 .grid-3-2-1-special {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Grid 3 en tablet que va a 2 columnas normales */
-.grid-3-2-1 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 0;
     padding: 0 2rem 2rem 2rem;
@@ -90,746 +25,374 @@
 }
 
 /* ======================================
-   GRIDS ADICIONALES - SISTEMA EXPANDIDO
+   MODIFICADORES DE GAP
    ====================================== */
 
-/* Grid 5 columnas para casos especiales */
-.grid-5-3-1 {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Grid 6 columnas para elementos pequeños */
-.grid-6-3-2 {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1.5rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Grid auto-fit para contenido dinámico */
-.grid-auto-fit {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.grid-auto-fit.min-300 {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.grid-auto-fit.min-350 {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-}
-
-/* Grid masonry simulado para alturas variables */
-.grid-masonry {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
+.gap-small { gap: 1rem !important; }
+.gap-large { gap: 3rem !important; }
+.gap-extra-large { gap: 4rem !important; }
 
 /* ======================================
-   GRIDS PARA LAYOUTS ESPECÍFICOS
+   MODIFICADORES DE PADDING
    ====================================== */
 
-/* Grid para sidebar + contenido */
-.grid-sidebar-content {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 3rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
+.padding-none { padding: 0 !important; }
+.padding-small { padding: 0 1rem 1rem 1rem !important; }
+.padding-large { padding: 0 3rem 3rem 3rem !important; }
 
-/* Grid para header con navegación */
-.grid-header-nav {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 2rem;
-    align-items: center;
-    margin-top: 0;
-    padding: 0 2rem;
-    width: 100%;
-    position: relative;
-}
+/* ======================================
+   1. GRID 4-2-1
+   ====================================== */
 
-/* Grid para footer con múltiples secciones */
-.grid-footer {
-    display: grid;
+.grid-4-2-1 {
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Grid para galería con aspect ratio */
-.grid-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.grid-gallery > * {
-    aspect-ratio: 1;
-    overflow: hidden;
-}
-
-/* Grid para testimonios */
-.grid-testimonials {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Grid para proceso/timeline */
-.grid-process {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
 }
 
 /* ======================================
-   RESPONSIVE DESIGN - TABLET
+   2. GRID 3-3-1
    ====================================== */
 
-/* Tablet (max-width: 82rem) and (min-width: 53.0625rem) */
+.grid-3-3-1 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ======================================
+   3. GRID 3-2-1
+   ====================================== */
+
+.grid-3-2-1 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ======================================
+   4. GRID 3-1-1
+   ====================================== */
+
+.grid-3-1-1 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ======================================
+   5. GRID 2-2-1
+   ====================================== */
+
+.grid-2-2-1 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ======================================
+   6. GRID 2-1-1
+   ====================================== */
+
+.grid-2-1-1 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ======================================
+   7. GRID 1-1-1
+   ====================================== */
+
+.grid-1-1-1 {
+    grid-template-columns: 1fr;
+}
+
+/* ======================================
+   GRIDS ESPECIALES - COMPORTAMIENTOS ÚNICOS
+   ====================================== */
+
+/* Grid 3-2-1 Special: Tercer elemento span en tablet */
+.grid-3-2-1-special {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ======================================
+   RESPONSIVE - TABLET (82rem - 53.0625rem)
+   ====================================== */
+
 @media (max-width: 82rem) and (min-width: 53.0625rem) {
     
-    /* Grids principales - comportamiento tablet */
-    .grid-4-2-1,
-    .grid-5-3-1,
-    .grid-6-3-2 {
+    /* Grid 4-2-1: 4 cols → 2 cols */
+    .grid-4-2-1 {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .grid-3-3-1,
-    .grid-3-2-1 {
+    /* Grid 3-3-1: 3 cols → 3 cols (sin cambios) */
+    .grid-3-3-1 {
         grid-template-columns: repeat(3, 1fr);
     }
     
+    /* Grid 3-2-1: 3 cols → 2 cols */
+    .grid-3-2-1 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Grid 3-1-1: 3 cols → 1 col */
+    .grid-3-1-1 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Grid 2-2-1: 2 cols → 2 cols (sin cambios) */
     .grid-2-2-1 {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    /* Grid especial - comportamiento único en tablet */
+    /* Grid 2-1-1: 2 cols → 1 col */
+    .grid-2-1-1 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Grid 1-1-1: 1 col → 1 col (sin cambios) */
+    .grid-1-1-1 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Grid 3-2-1 Special: Comportamiento especial en tablet */
     .grid-3-2-1-special {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    /* El tercer elemento toma el ancho completo en tablet */
     .grid-3-2-1-special > *:nth-child(3) {
         grid-column: span 2;
         max-width: 80%;
         margin: 0 auto;
     }
     
-    /* Ajustes de padding para tablet */
-    .grid-base,
-    .grid-2-2-1,
+    /* Ajustar padding en tablet */
+    .grid-4-2-1,
     .grid-3-3-1,
     .grid-3-2-1,
-    .grid-3-2-1-special,
-    .grid-4-2-1,
-    .grid-5-3-1,
-    .grid-6-3-2,
-    .grid-auto-fit,
-    .grid-masonry,
-    .grid-gallery,
-    .grid-testimonials,
-    .grid-process {
+    .grid-3-1-1,
+    .grid-2-2-1,
+    .grid-2-1-1,
+    .grid-1-1-1,
+    .grid-3-2-1-special {
         padding: 0 1.5rem 2rem 1.5rem;
-        gap: 1.5rem;
-    }
-    
-    /* Grids específicos para tablet */
-    .grid-sidebar-content {
-        grid-template-columns: 250px 1fr;
-        gap: 2rem;
-        padding: 0 1.5rem 2rem 1.5rem;
-    }
-    
-    .grid-header-nav {
-        gap: 1.5rem;
-        padding: 0 1.5rem;
-    }
-    
-    .grid-footer {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        padding: 1.5rem;
-    }
-    
-    /* Auto-fit grids ajustadas */
-    .grid-auto-fit {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-    
-    .grid-auto-fit.min-300 {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-    
-    .grid-auto-fit.min-350 {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    
-    .grid-masonry {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-    
-    .grid-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 }
 
 /* ======================================
-   RESPONSIVE DESIGN - MOBILE
+   RESPONSIVE - MOBILE (53rem y menos)
    ====================================== */
 
-/* Mobile (max-width: 53rem) */
 @media (max-width: 53rem) {
     
-    /* Todas las grids van a columna única en mobile */
-    .grid-base,
-    .grid-2-2-1,
+    /* TODOS los grids van a 1 columna en mobile */
+    .grid-4-2-1,
     .grid-3-3-1,
     .grid-3-2-1,
-    .grid-3-2-1-special,
-    .grid-4-2-1,
-    .grid-5-3-1,
-    .grid-6-3-2,
-    .grid-auto-fit,
-    .grid-masonry,
-    .grid-sidebar-content,
-    .grid-footer,
-    .grid-gallery,
-    .grid-testimonials {
+    .grid-3-1-1,
+    .grid-2-2-1,
+    .grid-2-1-1,
+    .grid-1-1-1,
+    .grid-3-2-1-special {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 1rem 2rem 1rem;
     }
     
-    /* Reset comportamiento especial en mobile */
+    /* Resetear comportamiento especial en mobile */
     .grid-3-2-1-special > *:nth-child(3) {
         grid-column: auto;
         max-width: 100%;
         margin: 0;
     }
     
-    /* Grids específicos para mobile */
-    .grid-header-nav {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 0 1rem;
-        text-align: center;
-    }
-    
-    .grid-process {
-        gap: 1.5rem;
-        padding: 0 1rem 2rem 1rem;
-    }
-    
-    /* Auto-fit grids para mobile */
-    .grid-auto-fit,
-    .grid-auto-fit.min-300,
-    .grid-auto-fit.min-350 {
-        grid-template-columns: 1fr;
-    }
-    
-    .grid-masonry {
-        grid-template-columns: 1fr;
-    }
-    
-    .grid-gallery {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    /* Ajustes específicos de gap en mobile */
-    .grid-base.gap-small,
-    .grid-2-2-1,
-    .grid-3-3-1,
-    .grid-3-2-1,
-    .grid-3-2-1-special,
-    .grid-4-2-1 {
-        gap: 1rem;
-    }
-    
-    .grid-base.gap-large {
-        gap: 2rem;
-    }
-    
-    .grid-base.gap-extra-large {
-        gap: 2.5rem;
-    }
-}
-
-/* Mobile muy pequeño (max-width: 360px) */
-@media (max-width: 360px) {
-    
-    /* Padding mínimo para pantallas muy pequeñas */
-    .grid-base,
-    .grid-2-2-1,
-    .grid-3-3-1,
-    .grid-3-2-1,
-    .grid-3-2-1-special,
+    /* Reducir padding en mobile */
     .grid-4-2-1,
-    .grid-5-3-1,
-    .grid-6-3-2,
-    .grid-auto-fit,
-    .grid-masonry,
-    .grid-sidebar-content,
-    .grid-footer,
-    .grid-gallery,
-    .grid-testimonials,
-    .grid-process {
-        padding: 0 0.5rem 1.5rem 0.5rem;
-        gap: 1rem;
+    .grid-3-3-1,
+    .grid-3-2-1,
+    .grid-3-1-1,
+    .grid-2-2-1,
+    .grid-2-1-1,
+    .grid-1-1-1,
+    .grid-3-2-1-special {
+        padding: 0 1rem 2rem 1rem;
+        gap: 1.5rem;
     }
     
-    .grid-header-nav {
-        padding: 0 0.5rem;
-        gap: 0.5rem;
-    }
+    /* Gap más pequeño para mobile */
+    .gap-small { gap: 0.5rem !important; }
+    .gap-large { gap: 2rem !important; }
+    .gap-extra-large { gap: 2.5rem !important; }
 }
 
 /* ======================================
-   UTILITIES Y MODIFICADORES
+   GRIDS FLEX - PARA CASOS ESPECIALES
    ====================================== */
 
-/* Modificadores de alineación */
-.grid-center-items {
+/* Flex vertical para procesos */
+.flex-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+    width: 100%;
+    position: relative;
+}
+
+/* Flex horizontal con wrap */
+.flex-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+    width: 100%;
+    position: relative;
+}
+
+.flex-horizontal > * {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* ======================================
+   UTILIDADES DE GRID
+   ====================================== */
+
+/* Para elementos que necesitan span específico */
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
+.span-full { grid-column: 1 / -1; }
+
+/* Para elementos que necesitan posición específica */
+.col-start-1 { grid-column-start: 1; }
+.col-start-2 { grid-column-start: 2; }
+.col-start-3 { grid-column-start: 3; }
+.col-start-4 { grid-column-start: 4; }
+
+/* Para elementos que necesitan altura específica */
+.row-span-2 { grid-row: span 2; }
+.row-span-3 { grid-row: span 3; }
+
+/* ======================================
+   CENTRADO ESPECIAL
+   ====================================== */
+
+/* Para centrar elementos específicos en grids */
+.center-in-grid {
+    justify-self: center;
+    align-self: center;
+}
+
+.center-content {
     place-items: center;
 }
 
-.grid-start-items {
-    place-items: start;
+/* ======================================
+   RESPONSIVE FLEX
+   ====================================== */
+
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    .flex-vertical {
+        padding: 0 1.5rem 2rem 1.5rem;
+    }
+    
+    .flex-horizontal {
+        padding: 0 1.5rem 2rem 1.5rem;
+    }
+    
+    .flex-horizontal > * {
+        min-width: 250px;
+    }
 }
 
-.grid-end-items {
-    place-items: end;
+@media (max-width: 53rem) {
+    .flex-vertical {
+        padding: 0 1rem 2rem 1rem;
+        gap: 1.5rem;
+    }
+    
+    .flex-horizontal {
+        flex-direction: column;
+        padding: 0 1rem 2rem 1rem;
+        gap: 1.5rem;
+    }
+    
+    .flex-horizontal > * {
+        min-width: auto;
+        flex: none;
+    }
 }
 
-.grid-stretch-items {
-    place-items: stretch;
+/* ======================================
+   AUTO-FIT Y AUTO-FILL GRIDS
+   ====================================== */
+
+/* Grid que se ajusta automáticamente */
+.grid-auto-fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+    width: 100%;
+    position: relative;
 }
 
-/* Modificadores de contenido */
-.grid-center-content {
-    place-content: center;
+.grid-auto-fill {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+    width: 100%;
+    position: relative;
 }
 
-.grid-space-between {
-    place-content: space-between;
+/* Para cards más pequeñas */
+.grid-auto-fit-small {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+    width: 100%;
+    position: relative;
 }
 
-.grid-space-around {
-    place-content: space-around;
+@media (max-width: 53rem) {
+    .grid-auto-fit,
+    .grid-auto-fill,
+    .grid-auto-fit-small {
+        grid-template-columns: 1fr;
+    }
 }
 
-.grid-space-evenly {
-    place-content: space-evenly;
+/* ======================================
+   GRID MASONRY SIMULATION
+   ====================================== */
+
+/* Para galería tipo masonry */
+.grid-masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+    width: 100%;
+    position: relative;
 }
 
-/* Modificadores de altura */
-.grid-min-height {
-    min-height: 300px;
+.grid-masonry .tall {
+    grid-row: span 2;
 }
 
-.grid-full-height {
-    min-height: 100vh;
-}
-
-/* Modificadores para elementos hijos */
-.grid-item-span-2 {
+.grid-masonry .wide {
     grid-column: span 2;
 }
 
-.grid-item-span-3 {
-    grid-column: span 3;
-}
-
-.grid-item-span-4 {
-    grid-column: span 4;
-}
-
-.grid-item-span-full {
-    grid-column: 1 / -1;
-}
-
-/* Modificadores de orden */
-.grid-item-first {
-    order: -1;
-}
-
-.grid-item-last {
-    order: 1;
-}
-
-/* ======================================
-   ACCESIBILIDAD
-   ====================================== */
-
-/* Focus states para navegación por teclado */
-.grid-base:focus-within,
-.grid-2-2-1:focus-within,
-.grid-3-3-1:focus-within,
-.grid-3-2-1:focus-within,
-.grid-3-2-1-special:focus-within,
-.grid-4-2-1:focus-within {
-    outline: 2px solid var(--azul-principal);
-    outline-offset: 2px;
-}
-
-/* Reduced motion para usuarios con preferencias de accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-    .grid-base,
-    .grid-2-2-1,
-    .grid-3-3-1,
-    .grid-3-2-1,
-    .grid-3-2-1-special,
-    .grid-4-2-1,
-    .grid-5-3-1,
-    .grid-6-3-2,
-    .grid-auto-fit,
-    .grid-masonry,
-    .grid-sidebar-content,
-    .grid-header-nav,
-    .grid-footer,
-    .grid-gallery,
-    .grid-testimonials,
-    .grid-process {
-        transition: none;
-    }
-}
-
-/* ======================================
-   ALIASES PARA COMPATIBILIDAD TEMPORAL
-   ====================================== */
-
-/* Mientras se actualizan los HTMLs, mantener aliases */
-
-/* Grid 2 columnas - aliases idénticos */
-.program-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.sede-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.card-grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Grid 3 columnas estándar - aliases */
-.card-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Grid 3 columnas especial - aliases */
-.mvp-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.philosophy-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* Grid 4 columnas - aliases idénticos */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.card-grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-    width: 100%;
-    position: relative;
-}
-
-/* ======================================
-   RESPONSIVE PARA ALIASES
-   ====================================== */
-
-/* Tablet responsive para aliases */
-@media (max-width: 82rem) and (min-width: 53.0625rem) {
-    
-    /* Grid 2 columnas mantienen 2 columnas */
-    .program-grid,
-    .sede-grid,
-    .card-grid-2 {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        padding: 0 1.5rem 2rem 1.5rem;
-    }
-    
-    /* Grid 3 columnas estándar mantienen 3 */
-    .card-grid-3,
-    .values-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        padding: 0 1.5rem 2rem 1.5rem;
-    }
-    
-    /* Grid 3 especial va a 2 con span */
-    .mvp-grid,
-    .philosophy-grid,
-    .achievements-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        padding: 0 1.5rem 2rem 1.5rem;
-    }
-    
-    .mvp-grid > *:nth-child(3),
-    .philosophy-grid > *:nth-child(3),
-    .achievements-grid > *:nth-child(3) {
-        grid-column: span 2;
-        max-width: 80%;
-        margin: 0 auto;
-    }
-    
-    /* Grid 4 columnas van a 2 */
-    .stats-grid,
-    .card-grid-4,
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        padding: 0 1.5rem 2rem 1.5rem;
-    }
-}
-
-/* Mobile responsive para aliases */
 @media (max-width: 53rem) {
-    
-    /* Todos los aliases van a columna única */
-    .program-grid,
-    .sede-grid,
-    .card-grid-2,
-    .card-grid-3,
-    .values-grid,
-    .mvp-grid,
-    .philosophy-grid,
-    .achievements-grid,
-    .stats-grid,
-    .card-grid-4,
-    .gallery-grid {
+    .grid-masonry {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 1rem 2rem 1rem;
     }
     
-    /* Reset span behavior en mobile */
-    .mvp-grid > *:nth-child(3),
-    .philosophy-grid > *:nth-child(3),
-    .achievements-grid > *:nth-child(3) {
+    .grid-masonry .tall,
+    .grid-masonry .wide {
+        grid-row: auto;
         grid-column: auto;
-        max-width: 100%;
-        margin: 0;
     }
 }
-
-/* Mobile muy pequeño para aliases */
-@media (max-width: 360px) {
-    .program-grid,
-    .sede-grid,
-    .card-grid-2,
-    .card-grid-3,
-    .values-grid,
-    .mvp-grid,
-    .philosophy-grid,
-    .achievements-grid,
-    .stats-grid,
-    .card-grid-4,
-    .gallery-grid {
-        padding: 0 0.5rem 1.5rem 0.5rem;
-        gap: 1rem;
-    }
-}
-
-/* ======================================
-   PRINT STYLES
-   ====================================== */
-
-@media print {
-    .grid-base,
-    .grid-2-2-1,
-    .grid-3-3-1,
-    .grid-3-2-1,
-    .grid-3-2-1-special,
-    .grid-4-2-1,
-    .grid-5-3-1,
-    .grid-6-3-2,
-    .program-grid,
-    .sede-grid,
-    .card-grid-2,
-    .card-grid-3,
-    .values-grid,
-    .mvp-grid,
-    .philosophy-grid,
-    .achievements-grid,
-    .stats-grid,
-    .card-grid-4,
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1rem !important;
-        padding: 0 1rem 1rem 1rem !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
-    }
-    
-    .grid-sidebar-content {
-        grid-template-columns: 1fr !important;
-    }
-    
-    .grid-header-nav {
-        grid-template-columns: 1fr !important;
-    }
-    
-    .grid-footer {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-}
-
-/* ======================================
-   DEBUGGING Y DESARROLLO
-   ====================================== */
-
-/* Clase para visualizar grids durante desarrollo */
-.debug-grid {
-    position: relative;
-}
-
-.debug-grid::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        to right,
-        rgba(255, 0, 0, 0.1) 0%,
-        rgba(255, 0, 0, 0.1) 50%,
-        transparent 50%,
-        transparent 100%
-    );
-    pointer-events: none;
-    z-index: 1000;
-}
-
-.debug-grid > * {
-    position: relative;
-    background: rgba(0, 255, 0, 0.1);
-    border: 1px dashed rgba(0, 255, 0, 0.5);
-}
-
-/* ======================================
-   FIN DEL ARCHIVO GRIDS.CSS
-   ====================================== */
