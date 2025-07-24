@@ -99,12 +99,12 @@ body {
    TIPOGRAFÍA BASE
    ====================================== */
 
-/* Headings base */
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
     font-family: var(--font-title);
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    color: var(--azul-oscuro);
+}
+
+h3, h4, h5, h6 {
+    font-family: var(--font-body); /* ✅ TÍTULOS DE CARDS USAN RALEWAY */
 }
 
 h1 {
