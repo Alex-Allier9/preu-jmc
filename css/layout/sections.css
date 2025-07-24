@@ -122,6 +122,28 @@
     opacity: 0.95;
 }
 
+/* Dark blue section universal */
+.dark-blue-gradient-section {
+    background: linear-gradient(135deg, var(--azul-oscuro) 0%, #0a2d3a 100%);
+    color: white;
+    padding: var(--section-padding, 5rem 0);
+    position: relative;
+    z-index: var(--z-content, 1);
+}
+
+.dark-blue-gradient-section .section-title {
+    color: white;
+}
+
+.dark-blue-gradient-section .section-subtitle {
+    background: var(--amarillo);
+}
+
+.dark-blue-gradient-section p {
+    color: white;
+    opacity: 0.95;
+}
+
 /* Regular section (fondo blanco) */
 .regular-section {
     background: white;
