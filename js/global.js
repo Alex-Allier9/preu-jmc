@@ -1,9 +1,10 @@
 /* ======================================
-   GLOBAL.JS - CONSOLIDADO Y OPTIMIZADO
+   GLOBAL.JS - FUNCIONES COMPLETAS HEADER Y FOOTER
+   JMC PREUNIVERSITARIO - REPARADO Y COMPLETO
    ====================================== */
 
 /* ======================================
-   UTILITARIOS UNIVERSALES - CONSOLIDADO
+   UTILITARIOS UNIVERSALES
    ====================================== */
 
 // Performance optimization - debounce universal
@@ -19,13 +20,27 @@ function debounce(func, wait) {
     };
 }
 
+// Throttle function para scroll events
+function throttle(func, wait) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, wait);
+        }
+    }
+}
+
 /* ======================================
-   HEADER Y NAVEGACIÓN
+   HEADER Y NAVEGACIÓN - COMPLETO
    ====================================== */
 
 // Header scroll effect optimizado
 const debouncedScrollHandler = debounce(() => {
-    const header = document.getElementById('header');
+    const header = document.getElementById('header') || document.querySelector('.header');
     if (header) {
         if (window.scrollY > 100) {
             header.classList.add('scrolled');
@@ -35,237 +50,7 @@ const debouncedScrollHandler = debounce(() => {
     }
 }, 10);
 
-// Navigation link active state management
-function setActiveNavLink() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => link.classList.remove('active'));
-    
-    // Get current page path
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // Find matching link and set active
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const linkPath = link.getAttribute('href').split('/').pop();
-        if (linkPath === currentPath) {
-            link.classList.add('active');
-        }
-    });
-}
-
-/* ======================================
-   SISTEMA DE ANIMACIONES UNIVERSAL - MEJORADO
-   ====================================== */
-
-// Intersection Observer para animaciones
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// Función universal para inicializar animaciones
-function initUniversalAnimations() {
-    // Observar todos los elementos fade-in
-    document.querySelectorAll('.fade-in').forEach(el => {
-        observer.observe(el);
-    });
-}
-
-// Animate value function optimizada
-function animateValue(element, start, end, duration, originalText) {
-    let startTimestamp = null;
-    const prefix = originalText.includes('+') ? '+' : '';
-    const suffix = originalText.includes('%') ? '%' : '';
-    
-    const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const current = Math.floor(progress * (end - start) + start);
-        element.textContent = prefix + current + suffix;
-        
-        if (progress < 1) {
-            window.requestAnimationFrame(step);
-        }
-    };
-    
-    window.requestAnimationFrame(step);
-}
-
-// Counter animation for statistics
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    
-    counters.forEach(counter => {
-        const target = counter.textContent;
-        
-        if (!isNaN(target.replace('+', '').replace('%', ''))) {
-            counter.textContent = '0';
-            
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateValue(counter, 0, parseInt(target.replace('+', '').replace('%', '')), 1600, target);
-                        counterObserver.unobserve(counter);
-                    }
-                });
-            });
-            
-            counterObserver.observe(counter);
-        }
-    });
-}
-
-/* ======================================
-   SISTEMA DE CARDS UNIVERSAL - EXPANDIDO Y CONSOLIDADO
-   ====================================== */
-
-// Función universal para efectos hover de tarjetas - EFECTO UNIFORME EXPANDIDO
-function addUniversalCardEffects() {
-    // Efecto estándar para todas las cards
-    const standardHover = {
-        transform: 'translateY(-8px)',
-        boxShadow: '0 15px 40px rgba(0, 0, 0, 0.15)'
-    };
-    
-    const standardRestore = {
-        transform: 'translateY(0)',
-        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
-    };
-
-    const cardConfigs = [
-        // Cards existentes de global
-        { selector: '.mvp-card', hasIcon: false },
-        { selector: '.program-card', hasIcon: true },
-        { selector: '.stat-card', hasIcon: false },
-        { selector: '.value-card', hasIcon: true },
-        { selector: '.sede-card', hasIcon: true, hoverBackground: 'rgba(255, 255, 255, 0.15)', restoreBackground: 'rgba(255, 255, 255, 0.1)' },
-        { selector: '.about-card', hasIcon: false, hoverBackground: 'rgba(255, 255, 255, 0.95)', restoreBackground: 'rgba(255, 255, 255, 0.9)' },
-        { selector: '.quote-card', hasIcon: false, hoverBackground: 'rgba(255, 255, 255, 0.15)', restoreBackground: 'rgba(255, 255, 255, 0.1)' },
-        
-        // Cards de servicios - CONSOLIDADAS AQUÍ
-        { selector: '.service-feature-card', hasIcon: true },
-        { selector: '.requisito-card', hasIcon: true, hoverBackground: 'rgba(255, 255, 255, 0.15)', restoreBackground: 'rgba(255, 255, 255, 0.1)' },
-        { selector: '.complementary-card', hasIcon: true },
-        { selector: '.financial-card', hasIcon: true },
-        { selector: '.practical-card', hasIcon: true },
-        
-        // Cards de fundador - CONSOLIDADAS AQUÍ
-        { selector: '.achievement-card', hasIcon: true },
-        { selector: '.philosophy-card', hasIcon: true, hoverBackground: 'rgba(255, 255, 255, 0.15)', restoreBackground: 'rgba(255, 255, 255, 0.1)' },
-        { selector: '.profile-card', hasIcon: false },
-        
-        // Cards de testimonios - PREPARADAS PARA EL FUTURO
-        { selector: '.testimonial-card', hasIcon: false },
-        
-        // Cards base universales
-        { selector: '.card-base', hasIcon: false }
-    ];
-
-    cardConfigs.forEach(config => {
-        document.querySelectorAll(config.selector).forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                // Efecto estándar para todas
-                this.style.transform = standardHover.transform;
-                this.style.boxShadow = standardHover.boxShadow;
-                
-                // Backgrounds específicos si los tienen
-                if (config.hoverBackground) {
-                    this.style.background = config.hoverBackground;
-                }
-                
-                // Efecto de iconos si los tienen
-                if (config.hasIcon) {
-                    const iconContainers = this.querySelectorAll(
-                        '.main-icon-container, .secondary-icon-container, .service-icon, .requisito-icon, .complementary-icon, .financial-icon, .practical-icon, .achievement-icon, .philosophy-icon'
-                    );
-                    const icons = this.querySelectorAll('.material-symbols-rounded, .instagram-icon');
-                    
-                    iconContainers.forEach(container => {
-                        if (container) container.style.transform = 'scale(1.1)';
-                    });
-                    icons.forEach(icon => {
-                        if (icon) icon.style.transform = 'scale(1.1)';
-                    });
-                }
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                // Restaurar efecto estándar
-                this.style.transform = standardRestore.transform;
-                this.style.boxShadow = standardRestore.boxShadow;
-                
-                // Restaurar backgrounds específicos
-                if (config.restoreBackground) {
-                    this.style.background = config.restoreBackground;
-                }
-                
-                // Restaurar iconos
-                if (config.hasIcon) {
-                    const iconContainers = this.querySelectorAll(
-                        '.main-icon-container, .secondary-icon-container, .service-icon, .requisito-icon, .complementary-icon, .financial-icon, .practical-icon, .achievement-icon, .philosophy-icon'
-                    );
-                    const icons = this.querySelectorAll('.material-symbols-rounded, .instagram-icon');
-                    
-                    iconContainers.forEach(container => {
-                        if (container) container.style.transform = 'scale(1)';
-                    });
-                    icons.forEach(icon => {
-                        if (icon) icon.style.transform = 'scale(1)';
-                    });
-                }
-            });
-        });
-    });
-}
-
-// Process card hover effects - EFECTO UNIFORME
-function addProcessCardEffects() {
-    const processCards = document.querySelectorAll('.proceso-card-full');
-    
-    processCards.forEach(card => {
-        const stepIcon = card.querySelector('.process-step-icon');
-        
-        card.addEventListener('mouseenter', function() {
-            // Mismo efecto estándar que las otras cards
-            this.style.transform = 'translateY(-8px)';
-            this.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.15)';
-            if (stepIcon) {
-                stepIcon.style.transform = 'scale(1.1)';
-                stepIcon.style.boxShadow = '0 8px 20px rgba(65, 182, 230, 0.4)';
-            }
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
-            if (stepIcon) {
-                stepIcon.style.transform = 'scale(1)';
-                stepIcon.style.boxShadow = '0 6px 18px rgba(65, 182, 230, 0.3)';
-            }
-        });
-        
-        // Click effect mantenido
-        card.addEventListener('click', function() {
-            this.style.transform = 'translateY(-5px) scale(0.98)';
-            setTimeout(() => {
-                this.style.transform = 'translateY(-8px) scale(1)';
-            }, 150);
-        });
-    });
-}
-
-/* ======================================
-   PROGRESS BAR DE SCROLL - MEJORADA
-   ====================================== */
-
-// Add scroll progress indicator - OPTIMIZADA
+// Progress bar de scroll optimizada
 function addScrollProgress() {
     // Remove existing progress bar if it exists
     const existingBar = document.getElementById('scroll-progress-bar');
@@ -276,37 +61,9 @@ function addScrollProgress() {
     // Create new progress bar
     const progressBar = document.createElement('div');
     progressBar.id = 'scroll-progress-bar';
-    progressBar.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 6px;
-        background: transparent;
-        z-index: 9999;
-        pointer-events: none;
-    `;
-    
-    // Create the progress indicator element
-    const progressIndicator = document.createElement('div');
-    progressIndicator.style.cssText = `
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        transform-origin: left center;
-        transform: scaleX(0);
-        transition: transform 0.1s linear;
-        box-shadow: 0 2px 4px rgba(65, 182, 230, 0.3);
-    `;
-    
-    progressBar.appendChild(progressIndicator);
+    progressBar.innerHTML = '<div></div>';
     document.body.appendChild(progressBar);
     
-    // Smooth scroll animation using requestAnimationFrame
-    let lastScrollY = window.scrollY;
     let ticking = false;
     
     const updateProgress = () => {
@@ -314,12 +71,14 @@ function addScrollProgress() {
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = Math.min(winScroll / height, 1); // Ensure doesn't exceed 1
         
-        progressIndicator.style.transform = `scaleX(${scrolled})`;
+        const progressIndicator = progressBar.querySelector('div');
+        if (progressIndicator) {
+            progressIndicator.style.transform = `scaleX(${scrolled})`;
+        }
         ticking = false;
     };
     
     const onScroll = () => {
-        lastScrollY = window.scrollY;
         if (!ticking) {
             window.requestAnimationFrame(updateProgress);
             ticking = true;
@@ -332,53 +91,137 @@ function addScrollProgress() {
     updateProgress();
 }
 
-/* ======================================
-   ANIMACIONES DE CARDS - MEJORADAS
-   ====================================== */
-
-// Card reveal animation with stagger - OPTIMIZADA
-function addCardRevealAnimation() {
-    const cards = document.querySelectorAll(
-        '.proceso-card-full, .program-card, .sede-card, .stat-card, .mvp-card, .service-feature-card, .requisito-card, .complementary-card, .financial-card, .practical-card, .achievement-card, .philosophy-card, .testimonial-card'
-    );
+// Navegación mobile completa
+function initMobileNavigation() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const navMobile = document.querySelector('.nav-mobile');
     
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 100);
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+    // Si no existen los elementos, crear la estructura necesaria
+    if (!navToggle || !navOverlay || !navMobile) {
+        createMobileNavStructure();
+        return;
+    }
+    
+    const toggleMobileNav = () => {
+        const isActive = navToggle.classList.contains('active');
+        
+        navToggle.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        navMobile.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (!isActive) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    };
+    
+    // Toggle button click
+    navToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMobileNav();
     });
     
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        revealObserver.observe(card);
+    // Overlay click to close
+    navOverlay.addEventListener('click', toggleMobileNav);
+    
+    // Close menu when clicking nav links
+    document.querySelectorAll('.nav-mobile .nav-link').forEach(link => {
+        link.addEventListener('click', toggleMobileNav);
+    });
+    
+    // Close menu on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMobile.classList.contains('active')) {
+            toggleMobileNav();
+        }
+    });
+    
+    // Close menu on window resize to desktop
+    window.addEventListener('resize', debounce(() => {
+        if (window.innerWidth > 848 && navMobile.classList.contains('active')) {
+            toggleMobileNav();
+        }
+    }, 250));
+}
+
+// Crear estructura de navegación mobile si no existe
+function createMobileNavStructure() {
+    const header = document.querySelector('.header');
+    const navContainer = document.querySelector('.nav-container');
+    const desktopMenu = document.querySelector('.nav-menu');
+    
+    if (!header || !navContainer || !desktopMenu) {
+        console.warn('Header structure incomplete for mobile navigation');
+        return;
+    }
+    
+    // Crear botón hamburger si no existe
+    let navToggle = document.querySelector('.nav-toggle');
+    if (!navToggle) {
+        navToggle = document.createElement('div');
+        navToggle.className = 'nav-toggle';
+        navToggle.innerHTML = '<span></span><span></span><span></span>';
+        navContainer.appendChild(navToggle);
+    }
+    
+    // Crear overlay si no existe
+    let navOverlay = document.querySelector('.nav-overlay');
+    if (!navOverlay) {
+        navOverlay = document.createElement('div');
+        navOverlay.className = 'nav-overlay';
+        document.body.appendChild(navOverlay);
+    }
+    
+    // Crear menu mobile si no existe
+    let navMobile = document.querySelector('.nav-mobile');
+    if (!navMobile) {
+        navMobile = document.createElement('nav');
+        navMobile.className = 'nav-mobile';
+        navMobile.innerHTML = `<ul class="nav-menu">${desktopMenu.innerHTML}</ul>`;
+        document.body.appendChild(navMobile);
+    }
+    
+    // Inicializar funcionalidad
+    setTimeout(() => initMobileNavigation(), 100);
+}
+
+// Set active navigation link
+function setActiveNavLink() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => link.classList.remove('active'));
+    
+    // Get current page path
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Find matching link and set active
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const linkPath = link.getAttribute('href').split('/').pop();
+        if (linkPath === currentPath || 
+            (currentPath === '' && linkPath === 'index.html') ||
+            (currentPath === 'index.html' && linkPath === '') ||
+            linkPath === currentPath.replace('.html', '')) {
+            link.classList.add('active');
+        }
     });
 }
 
-/* ======================================
-   SMOOTH SCROLL - OPTIMIZADA
-   ====================================== */
-
-// Smooth scroll for anchor links - OPTIMIZADA
+// Smooth scroll for anchor links
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
@@ -386,220 +229,285 @@ function initSmoothScroll() {
 }
 
 /* ======================================
-   RIPPLE EFFECTS UNIVERSALES - NUEVO
+   ANIMACIONES UNIVERSALES
    ====================================== */
 
-// Sistema completo de ripples para todos los botones
-function initUniversalRipples() {
-    const rippleElements = document.querySelectorAll(
-        '.cta-button, .btn-error, .nav-link, .program-card, .sede-card, .service-feature-card, .requisito-card, .complementary-card, .financial-card, .practical-card, .achievement-card, .philosophy-card'
+// Intersection Observer para animaciones fade-in
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Inicializar animaciones universales
+function initUniversalAnimations() {
+    // Observar todos los elementos fade-in
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+    
+    // Animaciones de footer con delay
+    const footerSections = document.querySelectorAll('.footer-section');
+    footerSections.forEach((section, index) => {
+        section.style.animationDelay = `${(index + 1) * 0.1}s`;
+    });
+}
+
+/* ======================================
+   SISTEMA DE CONTADORES ANIMADOS
+   ====================================== */
+
+// Animate value function optimizada
+function animateValue(element, start, end, duration, originalText) {
+    let startTimestamp = null;
+    const prefix = originalText.includes('+') ? '+' : '';
+    const suffix = originalText.includes('%') ? '%' : '';
+    
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        
+        // Easing function
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const current = Math.floor(start + (end - start) * easeOutQuart);
+        
+        element.textContent = prefix + current.toLocaleString() + suffix;
+        
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    
+    window.requestAnimationFrame(step);
+}
+
+// Animate counters automático
+function animateCounters() {
+    const counterElements = document.querySelectorAll('[data-counter]');
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const originalText = element.textContent;
+                const targetValue = parseInt(element.getAttribute('data-counter')) || parseInt(originalText.replace(/\D/g, ''));
+                
+                if (targetValue) {
+                    animateValue(element, 0, targetValue, 2000, originalText);
+                    counterObserver.unobserve(element);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    counterElements.forEach(el => counterObserver.observe(el));
+}
+
+/* ======================================
+   SISTEMA DE CARDS UNIVERSAL
+   ====================================== */
+
+// Efectos universales para cards
+function addUniversalCardEffects() {
+    const cards = document.querySelectorAll(
+        '.card, .card-base, .proceso-card, .program-card, .sede-card, .stat-card, .mvp-card, .service-feature-card, .requisito-card, .complementary-card, .financial-card, .practical-card, .achievement-card, .philosophy-card, .testimonial-card, .profile-card'
     );
     
-    rippleElements.forEach(element => {
-        element.addEventListener('click', function(e) {
-            createRipple(e, this);
+    cards.forEach(card => {
+        // Hover effect
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+            this.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.15)';
+            
+            // Efecto en iconos si existen
+            const icon = this.querySelector('.main-icon, .secondary-icon, .process-icon');
+            if (icon) {
+                icon.style.transform = 'scale(1.1)';
+            }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '';
+            
+            const icon = this.querySelector('.main-icon, .secondary-icon, .process-icon');
+            if (icon) {
+                icon.style.transform = 'scale(1)';
+            }
         });
     });
 }
 
-function createRipple(event, element) {
-    const ripple = document.createElement('div');
+/* ======================================
+   SISTEMA DE RIPPLES
+   ====================================== */
+
+// Crear efecto ripple
+function createRipple(element, event) {
+    const ripple = document.createElement('span');
     const rect = element.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);
-    
-    // Crear la animación CSS si no existe
-    if (!document.querySelector('#ripple-animation')) {
-        const style = document.createElement('style');
-        style.id = 'ripple-animation';
-        style.textContent = `
-            @keyframes ripple-expand {
-                0% { transform: scale(0); opacity: 1; }
-                100% { transform: scale(4); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-    }
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
     
     ripple.style.cssText = `
         position: absolute;
         border-radius: 50%;
-        background: rgba(65, 182, 230, 0.3);
+        background: rgba(255, 255, 255, 0.6);
         transform: scale(0);
-        animation: ripple-expand 0.6s ease-out;
+        animation: ripple 0.6s linear;
         width: ${size}px;
         height: ${size}px;
-        left: ${event.clientX - rect.left - size/2}px;
-        top: ${event.clientY - rect.top - size/2}px;
+        left: ${x}px;
+        top: ${y}px;
         pointer-events: none;
-        z-index: 1000;
     `;
     
-    element.style.position = 'relative';
-    element.style.overflow = 'hidden';
     element.appendChild(ripple);
     
     setTimeout(() => {
-        if (ripple.parentNode) {
-            ripple.parentNode.removeChild(ripple);
-        }
+        ripple.remove();
     }, 600);
 }
 
-/* ======================================
-   LOADING STATES - NUEVO
-   ====================================== */
-
-// Crear loading states con shimmer para elementos que cargan contenido
-function addLoadingStates() {
-    // Crear CSS para loading states si no existe
-    if (!document.querySelector('#loading-states-css')) {
-        const style = document.createElement('style');
-        style.id = 'loading-states-css';
-        style.textContent = `
-            /* Loading shimmer para cards que cargan contenido */
-            .card-loading {
-                position: relative;
-                overflow: hidden;
-            }
-
-            .card-loading::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.4),
-                    transparent
-                );
-                animation: shimmer 2s infinite;
-                z-index: 1;
-            }
-
-            @keyframes shimmer {
-                100% { left: 100%; }
-            }
-
-            /* Skeleton loading para texto */
-            .skeleton-text {
-                background: linear-gradient(
-                    90deg,
-                    rgba(255, 255, 255, 0.1) 25%,
-                    rgba(255, 255, 255, 0.2) 50%,
-                    rgba(255, 255, 255, 0.1) 75%
-                );
-                background-size: 200% 100%;
-                animation: skeleton-pulse 1.5s infinite;
-                border-radius: 4px;
-                height: 1rem;
-                margin-bottom: 0.5rem;
-            }
-
-            @keyframes skeleton-pulse {
-                0% { background-position: 200% 0; }
-                100% { background-position: -200% 0; }
-            }
-        `;
-        document.head.appendChild(style);
-    }
+// Inicializar ripples universales
+function initUniversalRipples() {
+    const rippleElements = document.querySelectorAll('.cta-button, .contact-item, .footer-nav-link, button, [data-ripple]');
+    
+    rippleElements.forEach(element => {
+        element.style.position = 'relative';
+        element.style.overflow = 'hidden';
+        
+        element.addEventListener('click', function(e) {
+            createRipple(this, e);
+        });
+    });
 }
 
 /* ======================================
-   FUNCIONES AUXILIARES
+   GESTIÓN DE ESTADOS DE CARGA
    ====================================== */
 
-// Función para aplicar clase de loading a un elemento
+// Loading states para elementos
 function setLoadingState(element, isLoading) {
     if (isLoading) {
-        element.classList.add('card-loading');
+        element.classList.add('loading');
+        element.setAttribute('aria-busy', 'true');
     } else {
-        element.classList.remove('card-loading');
-    }
-}
-
-// Función para crear skeleton text
-function createSkeletonText(container, lines = 3) {
-    container.innerHTML = '';
-    for (let i = 0; i < lines; i++) {
-        const skeleton = document.createElement('div');
-        skeleton.className = 'skeleton-text';
-        skeleton.style.width = `${Math.random() * 40 + 60}%`;
-        container.appendChild(skeleton);
+        element.classList.remove('loading');
+        element.removeAttribute('aria-busy');
     }
 }
 
 /* ======================================
-   INICIALIZACIÓN UNIVERSAL - CONSOLIDADA
+   RESPONSIVE UTILITIES
    ====================================== */
 
-// Initialize on page load - OPTIMIZADA Y EXPANDIDA
+// Detectar breakpoints
+function getBreakpoint() {
+    const width = window.innerWidth;
+    if (width <= 848) return 'mobile';
+    if (width <= 1312) return 'tablet';
+    return 'desktop';
+}
+
+// Ejecutar función según breakpoint
+function onBreakpoint(breakpoint, callback) {
+    if (getBreakpoint() === breakpoint) {
+        callback();
+    }
+}
+
+/* ======================================
+   INICIALIZACIÓN GLOBAL
+   ====================================== */
+
+// DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Global JS initialized - JMC Preuniversitario');
     
-    // 1. Funcionalidades básicas existentes
-    window.addEventListener('scroll', debouncedScrollHandler);
+    // 1. Header y navegación (orden crítico)
+    window.addEventListener('scroll', debouncedScrollHandler, { passive: true });
     setActiveNavLink();
     initSmoothScroll();
+    addScrollProgress();
+    initMobileNavigation();
     
     // 2. Animaciones y efectos visuales
     initUniversalAnimations();
     animateCounters();
-    addScrollProgress();
-    addLoadingStates();
     
     // 3. Efectos interactivos (con delay para evitar conflictos)
     setTimeout(() => {
         addUniversalCardEffects();
-        addProcessCardEffects();
-        addCardRevealAnimation();
         initUniversalRipples();
     }, 500);
     
-    // 4. Log de éxito
-    console.log('✅ All global functionalities loaded successfully');
-    console.log('📱 Responsive design: 82rem (tablet), 53rem (mobile)');
-    console.log('🎨 Universal card effects, ripples, and animations active');
+    console.log('✅ Header, footer and global functionalities loaded');
+    console.log(`📱 Current breakpoint: ${getBreakpoint()}`);
 });
 
-/* ======================================
-   RESIZE HANDLER UNIVERSAL
-   ====================================== */
-
-// Manejo universal de resize
+// Resize handler universal
 window.addEventListener('resize', debounce(function() {
-    // Reajustar elementos que dependen del tamaño de pantalla
-    const isMobile = window.innerWidth <= 848; // 53rem
-    const isTablet = window.innerWidth <= 1312 && window.innerWidth > 848; // 82rem
+    const breakpoint = getBreakpoint();
+    console.log(`📐 Resized to: ${breakpoint} (${window.innerWidth}px)`);
     
-    // Log para debugging
-    if (isMobile) {
-        console.log('📱 Mobile layout active');
-    } else if (isTablet) {
-        console.log('📟 Tablet layout active');
-    } else {
-        console.log('💻 Desktop layout active');
-    }
-    
-    // Reajustar scroll progress bar si es necesario
+    // Recalcular progress bar
     const progressBar = document.getElementById('scroll-progress-bar');
     if (progressBar) {
-        // Forzar recálculo del progress
         const event = new Event('scroll');
         window.dispatchEvent(event);
     }
 }, 250));
 
 /* ======================================
+   KEYFRAMES CSS DINÁMICOS
+   ====================================== */
+
+// Agregar keyframes para ripple si no existen
+if (!document.querySelector('#ripple-keyframes')) {
+    const style = document.createElement('style');
+    style.id = 'ripple-keyframes';
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+/* ======================================
    EXPORT PARA DEBUGGING
    ====================================== */
 
-// Console log para debugging
-console.log('🔧 Global JS functions available:');
-console.log('- debounce(): Universal debounce utility');
-console.log('- setLoadingState(): Add/remove loading states');
-console.log('- createSkeletonText(): Create skeleton loading text');
-console.log('- createRipple(): Manual ripple effect');
-console.log('📊 Developed by Alexandre Castillo - ACastillo DG');
+// Funciones disponibles globalmente para debugging
+window.jmcGlobal = {
+    debounce,
+    throttle,
+    setActiveNavLink,
+    animateCounters,
+    createRipple,
+    setLoadingState,
+    getBreakpoint,
+    onBreakpoint
+};
+
+// Console info
+console.log('🔧 JMC Global functions available via window.jmcGlobal');
+console.log('📊 Functions: debounce, throttle, setActiveNavLink, animateCounters, createRipple, setLoadingState, getBreakpoint, onBreakpoint');
+console.log('🎨 Developed by Alexandre Castillo - ACastillo DG');
+
+/* ======================================
+   FIN DEL ARCHIVO GLOBAL.JS
+   ====================================== */
