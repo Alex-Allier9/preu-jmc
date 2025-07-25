@@ -124,7 +124,7 @@ function handleVisibilityChange() {
 
 // Función para agregar efecto hover al botón
 function enhance404Button() {
-    const errorButton = document.querySelector('.error-button');
+    const errorButton = document.querySelector('.btn-error');
     
     if (errorButton) {
         // Efecto de ondas al hacer clic

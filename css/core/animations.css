@@ -1,10 +1,21 @@
 /* ======================================
-   ANIMATIONS.CSS - KEYFRAMES Y ANIMACIONES
+   ANIMATIONS.CSS - SISTEMA DE ANIMACIONES
+   JMC PREUNIVERSITARIO
    ====================================== */
 
 /* ======================================
-   KEYFRAMES UNIVERSALES
+   1. TRANSICIONES BASE
    ====================================== */
+
+/* Clase de transición */
+.transition {
+    transition: all var(--transition-normal);
+}
+
+/* ======================================
+   2. FADE ANIMATIONS
+   ====================================== */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -90,12 +101,24 @@
 }
 
 /* ======================================
-   CLASES DE ANIMACIÓN
+   CLASES DE ANIMACIÓN BASE
    ====================================== */
+
+/* Fade Base */
+.animate-fade {
+    opacity: 0;
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.animate-fade.visible {
+    opacity: 1;
+}
+
+/* Fade con dirección */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.6s ease;
+    transition: all var(--transition-slow);
 }
 
 .fade-in.visible {
@@ -106,7 +129,7 @@
 .fade-in-down {
     opacity: 0;
     transform: translateY(-30px);
-    transition: all 0.6s ease;
+    transition: all var(--transition-slow);
 }
 
 .fade-in-down.visible {
@@ -117,7 +140,7 @@
 .fade-in-left {
     opacity: 0;
     transform: translateX(-30px);
-    transition: all 0.6s ease;
+    transition: all var(--transition-slow);
 }
 
 .fade-in-left.visible {
@@ -128,7 +151,7 @@
 .fade-in-right {
     opacity: 0;
     transform: translateX(30px);
-    transition: all 0.6s ease;
+    transition: all var(--transition-slow);
 }
 
 .fade-in-right.visible {
@@ -136,10 +159,17 @@
     transform: translateX(0);
 }
 
+/* Delays de animación */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
 .scale-in {
     opacity: 0;
     transform: scale(0.9);
-    transition: all 0.6s ease;
+    transition: all var(--transition-slow);
 }
 
 .scale-in.visible {
@@ -151,7 +181,7 @@
 .card-reveal {
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.6s ease;
+    transition: all var(--transition-slow);
 }
 
 .card-reveal.visible {
@@ -167,8 +197,36 @@
 .card-reveal:nth-child(6) { transition-delay: 500ms; }
 
 /* ======================================
-   UTILIDADES DE ANIMACIÓN
+   ANIMACIONES DE INTERACCIÓN
    ====================================== */
+
+/* Hover Animations */
+.hover-up {
+    transition: transform var(--transition-normal);
+}
+
+.hover-up:hover {
+    transform: translateY(-5px);
+}
+
+.hover-scale {
+    transition: transform var(--transition-normal);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Click Animations */
+.click-shrink {
+    transition: transform var(--transition-fast);
+}
+
+.click-shrink:active {
+    transform: scale(0.95);
+}
+
+/* Estados de Loading */
 .animate-pulse {
     animation: pulse 2s infinite;
 }
@@ -177,17 +235,23 @@
     animation: spin 1s linear infinite;
 }
 
-.transition-fast {
-    transition: all var(--transition-fast);
-}
+/* ======================================
+   UTILIDADES DE ANIMACIÓN
+   ====================================== */
 
-.transition-normal {
-    transition: all var(--transition-normal);
-}
+/* Duraciones */
+.duration-1 { transition-duration: 0.3s; }
+.duration-2 { transition-duration: 0.5s; }
+.duration-3 { transition-duration: 0.8s; }
 
-.transition-slow {
-    transition: all var(--transition-slow);
-}
+/* Timing Functions */
+.ease-bounce { transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.ease-out-back { transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+/* Fill Modes */
+.fill-forwards { animation-fill-mode: forwards; }
+.fill-backwards { animation-fill-mode: backwards; }
+.fill-both { animation-fill-mode: both; }
 
 /* ======================================
    REDUCED MOTION

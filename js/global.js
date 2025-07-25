@@ -392,7 +392,7 @@ function initSmoothScroll() {
 // Sistema completo de ripples para todos los botones
 function initUniversalRipples() {
     const rippleElements = document.querySelectorAll(
-        '.cta-button, .error-button, .nav-link, .program-card, .sede-card, .service-feature-card, .requisito-card, .complementary-card, .financial-card, .practical-card, .achievement-card, .philosophy-card'
+        '.cta-button, .btn-error, .nav-link, .program-card, .sede-card, .service-feature-card, .requisito-card, .complementary-card, .financial-card, .practical-card, .achievement-card, .philosophy-card'
     );
     
     rippleElements.forEach(element => {

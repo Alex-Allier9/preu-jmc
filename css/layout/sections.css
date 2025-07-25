@@ -1,4 +1,12 @@
-/* Hero Section - GLOBAL */
+/* ======================================
+   SECTIONS.CSS - SISTEMA DE SECCIONES
+   JMC PREUNIVERSITARIO
+   ====================================== */
+
+/* ======================================
+   1. HERO SECTION
+   ====================================== */
+
 .hero {
     height: 100vh;
     background-position: center center;
@@ -8,6 +16,13 @@
     text-align: center;
     color: white;
     position: relative;
+    overflow: hidden; /* Previene desbordamiento */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
 }
 
 .hero-content h1 {
@@ -22,134 +37,157 @@
     font-size: clamp(1.1rem, 3vw, 1.5rem);
     font-style: italic;
     max-width: 800px;
+    margin: 0 auto;
     animation: fadeInUp 1s ease 0.3s both;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Overlay oscuro para mejor contraste */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
-/* Sections - UNIVERSAL */
+/* ======================================
+   2. SECCIONES BASE
+   ====================================== */
 .section {
-    padding: 5rem 0;
+    padding: var(--section-padding, 5rem 0);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Títulos de sección */
 .section-title {
     font-family: 'DM Serif Text', serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     text-align: center;
     margin-bottom: 2rem;
-    /* Espacio consistente con la línea amarilla */
     color: var(--azul-oscuro);
-    line-height: 1;
+    line-height: 1.2;
     letter-spacing: var(--title-letter-spacing);
 }
 
-/* CORREGIDO - Línea amarilla universal */
+/* Línea decorativa */
 .section-subtitle {
     display: block;
     height: 4px;
-    margin: 0 auto 3rem auto;
-    /* Centrado y espacio inferior consistente */
     width: 120px;
+    margin: 0 auto 3rem auto;
     background: var(--amarillo);
     position: relative;
+    border-radius: 2px;
 }
 
-/* Background wrappers - GLOBAL */
-.background-wrapper-primary,
-.background-wrapper-secondary {
+/* Container para contenido */
+.section-content {
+    max-width: var(--content-width, 1200px);
+    margin: 0 auto;
+    padding: 0 var(--content-padding, 2rem);
+}
+
+/* ======================================
+   3. WRAPPERS DE FONDO
+   ====================================== */
+/* Integración con backgrounds.css */
+.section-background {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+/* Referencia al sistema de backgrounds */
+.section-with-background {
+    position: relative;
+    z-index: var(--z-content, 1);
+}
+
+/* ======================================
+   4. SECCIONES CON GRADIENTE
+   ====================================== */
+/* Sección azul */
+.blue-gradient-section {
+    background: linear-gradient(135deg, 
+        var(--azul-principal) 0%, 
+        var(--azul-oscuro) 100%
+    );
+    color: white;
+    position: relative;
+    z-index: var(--z-content, 1);
+}
+
+.blue-gradient-section .section-title,
+.blue-gradient-section p {
+    color: white;
+}
+
+.blue-gradient-section p {
+    opacity: 0.95;
+}
+
+/* Sección azul oscuro */
+.dark-blue-gradient-section {
+    background: linear-gradient(135deg, 
+        var(--azul-oscuro) 0%, 
+        #0a2d3a 100%
+    );
+    color: white;
+    position: relative;
+    z-index: var(--z-content, 1);
+}
+
+.dark-blue-gradient-section .section-title,
+.dark-blue-gradient-section p {
+    color: white;
+}
+
+.dark-blue-gradient-section p {
+    opacity: 0.95;
+}
+
+/* Elementos comunes para secciones con gradiente */
+.gradient-section {
+    padding: var(--section-padding, 5rem 0);
+}
+
+.gradient-section .section-subtitle {
+    background: var(--amarillo);
+}
+
+/* ======================================
+   5. SECCIÓN CTA
+   ====================================== */
+.cta {
+    background-position: center center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 5rem 0;
     position: relative;
     overflow: hidden;
 }
 
-/* Background images - BASE (sin imágenes específicas) */
-.mountain-background {
+/* Overlay para mejor contraste */
+.cta::after {
+    content: '';
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 3264px;
-    height: 4896px;
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    z-index: -1;
-    will-change: transform;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
-.secondary-background {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 3264px;
-    height: 4896px;
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    z-index: -1;
-    will-change: transform;
-}
-
-/* Blue section universal */
-.blue-gradient-section {
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
-    color: white;
-    padding: var(--section-padding, 5rem 0);
+.cta-content {
     position: relative;
-    z-index: var(--z-content, 1);
-}
-
-.blue-gradient-section .section-title {
-    color: white;
-}
-
-.blue-gradient-section .section-subtitle {
-    background: var(--amarillo);
-}
-
-.blue-gradient-section p {
-    color: white;
-    opacity: 0.95;
-}
-
-/* Dark blue section universal */
-.dark-blue-gradient-section {
-    background: linear-gradient(135deg, var(--azul-oscuro) 0%, #0a2d3a 100%);
-    color: white;
-    padding: var(--section-padding, 5rem 0);
-    position: relative;
-    z-index: var(--z-content, 1);
-}
-
-.dark-blue-gradient-section .section-title {
-    color: white;
-}
-
-.dark-blue-gradient-section .section-subtitle {
-    background: var(--amarillo);
-}
-
-.dark-blue-gradient-section p {
-    color: white;
-    opacity: 0.95;
-}
-
-/* CTA Section - UNIVERSAL */
-.cta {
-    background-position: center center;
-    color: white;
-    text-align: center;
-    padding: 5rem 0;
+    z-index: 2;
 }
 
 .cta h2 {
@@ -172,6 +210,7 @@
     margin-top: 2rem;
     text-decoration: none;
     display: inline-block;
+    will-change: transform;
 }
 
 .cta-button:hover {
@@ -181,24 +220,74 @@
     box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2);
 }
 
+/* Focus visible para accesibilidad */
+.cta-button:focus-visible {
+    outline: 2px solid var(--amarillo);
+    outline-offset: 4px;
+}
+
+/* ======================================
+   6. RESPONSIVE
+   ====================================== */
+
 @media (max-width: 53rem) {
+    /* Hero ajustes */
     .hero-content h1 {
-        font-size: 3rem;
+        font-size: clamp(2.5rem, 6vw, 3rem);
     }
 
+    /* Secciones generales */
     .section {
-        padding: 3rem 0;
+        padding: var(--section-padding-mobile, 3rem 0);
     }
 
-    .footer-section {
-        text-align: center;
+    /* Contenedores */
+    .section-content {
+        padding: 0 var(--content-padding-mobile, 1rem);
     }
 
-    .mountain-background,
-    .secondary-background {
+    /* Backgrounds */
+    .background-image {
         width: 100vw;
         height: 150vh;
-        background-size: cover;
-        background-position: center top;
+        min-width: unset;
+    }
+
+    /* CTA ajustes */
+    .cta {
+        padding: 4rem 0;
+    }
+
+    .cta h2 {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+    }
+}
+
+/* ======================================
+   7. UTILIDADES Y OPTIMIZACIONES
+   ====================================== */
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-content h1,
+    .hero-content p,
+    .cta-button {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .hero,
+    .cta {
+        height: auto;
+        padding: 2rem 0;
+    }
+
+    .background-image,
+    .hero::after,
+    .cta::after {
+        display: none;
     }
 }

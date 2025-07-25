@@ -11,9 +11,9 @@
     display: inline-block;
     padding: 1rem 2rem;
     border: none;
-    border-radius: var(--border-radius-button);
+    border-radius: var(--radius-full);
     font-family: var(--font-body);
-    font-size: 1.1rem;
+    font-size: var(--text-base);
     font-weight: 600;
     text-align: center;
     text-decoration: none;
@@ -25,15 +25,12 @@
     overflow: hidden;
     outline: none;
     line-height: 1.2;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
 
 .btn-base:focus-visible {
-    outline: 3px solid var(--azul-principal);
+    outline: 3px solid var(--primary);
     outline-offset: 2px;
 }
 
@@ -41,11 +38,16 @@
    BUTTON VARIANTS - COLORES
    ====================================== */
 
-/* Primary Button - Negro con texto amarillo (CTA principal) */
+/* Primary Button - CTA Principal */
 .btn-primary {
     background: var(--negro);
     color: var(--amarillo);
     box-shadow: var(--shadow-button);
+    margin-top: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-primary:hover {
@@ -60,11 +62,17 @@
     box-shadow: var(--shadow-button);
 }
 
-/* Secondary Button - Azul principal */
+.btn-primary:focus-visible {
+    outline: 3px solid var(--amarillo);
+    outline-offset: 2px;
+}
+
+/* Secondary Button - Estilo 404 */
 .btn-secondary {
     background: var(--azul-principal);
     color: white;
     box-shadow: var(--shadow-button);
+    letter-spacing: 0.5px;
 }
 
 .btn-secondary:hover {
@@ -78,135 +86,51 @@
     box-shadow: var(--shadow-button);
 }
 
-/* Accent Button - Amarillo */
+.btn-secondary:focus-visible {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 2px;
+}
+
+/* Accent Button - CTA Invertido */
 .btn-accent {
     background: var(--amarillo);
     color: var(--negro);
-    box-shadow: 0 4px 15px rgba(244, 218, 64, 0.3);
+    box-shadow: var(--shadow-button);
+    margin-top: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-accent:hover {
-    background: #f0d535;
+    background: var(--negro);
+    color: var(--amarillo);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(244, 218, 64, 0.4);
+    box-shadow: var(--shadow-button-hover);
 }
 
 .btn-accent:active {
     transform: translateY(0);
-    box-shadow: 0 4px 15px rgba(244, 218, 64, 0.3);
-}
-
-/* Outline Button - Solo borde */
-.btn-outline {
-    background: transparent;
-    color: var(--azul-principal);
-    border: 2px solid var(--azul-principal);
-    box-shadow: none;
-}
-
-.btn-outline:hover {
-    background: var(--azul-principal);
-    color: white;
-    transform: translateY(-2px);
     box-shadow: var(--shadow-button);
 }
 
-.btn-outline:active {
-    transform: translateY(0);
-    box-shadow: var(--shadow-light);
+.btn-accent:focus-visible {
+    outline: 3px solid var(--amarillo);
+    outline-offset: 2px;
 }
 
-/* Ghost Button - Transparente con texto */
-.btn-ghost {
-    background: transparent;
-    color: var(--azul-principal);
-    box-shadow: none;
-    border: 1px solid transparent;
-}
-
-.btn-ghost:hover {
-    background: rgba(65, 182, 230, 0.1);
-    color: var(--azul-oscuro);
-    transform: translateY(-1px);
-}
-
-.btn-ghost:active {
-    transform: translateY(0);
-    background: rgba(65, 182, 230, 0.2);
-}
-
-/* Light Button - Para fondos oscuros */
-.btn-light {
-    background: white;
-    color: var(--azul-oscuro);
-    box-shadow: var(--shadow-light);
-}
-
-.btn-light:hover {
-    background: var(--gris-claro);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
-}
-
-.btn-light:active {
-    transform: translateY(0);
-    box-shadow: var(--shadow-light);
-}
-
-/* Dark Button - Para fondos claros */
-.btn-dark {
-    background: var(--azul-oscuro);
-    color: white;
-    box-shadow: 0 4px 15px rgba(22, 92, 125, 0.3);
-}
-
-.btn-dark:hover {
-    background: var(--negro);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(22, 92, 125, 0.4);
-}
-
-.btn-dark:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 15px rgba(22, 92, 125, 0.3);
-}
-
-/* Danger Button - Para acciones destructivas */
-.btn-danger {
-    background: var(--rojo);
-    color: white;
-    box-shadow: 0 4px 15px rgba(239, 51, 64, 0.3);
-}
-
-.btn-danger:hover {
-    background: #d12b38;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(239, 51, 64, 0.4);
-}
-
-.btn-danger:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 15px rgba(239, 51, 64, 0.3);
-}
+/* Aquí terminan las variantes de botones */
 
 /* ======================================
    BUTTON SIZES
    ====================================== */
-
-/* Extra Small */
-.btn-xs {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border-radius: 2rem;
-}
 
 /* Small */
 .btn-sm {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
     font-weight: 500;
-    border-radius: 2.5rem;
 }
 
 /* Medium (Default) */
@@ -214,7 +138,6 @@
     padding: 1rem 2rem;
     font-size: 1rem;
     font-weight: 600;
-    border-radius: var(--border-radius-button);
 }
 
 /* Large */
@@ -222,15 +145,6 @@
     padding: 1.25rem 2.5rem;
     font-size: 1.1rem;
     font-weight: 600;
-    border-radius: var(--border-radius-button);
-}
-
-/* Extra Large */
-.btn-xl {
-    padding: 1.5rem 3rem;
-    font-size: 1.2rem;
-    font-weight: 700;
-    border-radius: var(--border-radius-button);
 }
 
 /* ======================================
@@ -292,64 +206,7 @@
     box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }
 
-/* ======================================
-   BUTTON STYLES ESPECIALES
-   ====================================== */
-
-/* Gradient Button */
-.btn-gradient {
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
-    color: white;
-    box-shadow: var(--shadow-button);
-}
-
-.btn-gradient:hover {
-    background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--negro) 100%);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-button-hover);
-}
-
-.btn-gradient:active {
-    transform: translateY(0);
-    box-shadow: var(--shadow-button);
-}
-
-/* Glass Button */
-.btn-glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: var(--shadow-light);
-}
-
-.btn-glass:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
-}
-
-.btn-glass:active {
-    transform: translateY(0);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-/* Rounded Button */
-.btn-rounded {
-    border-radius: 50px;
-}
-
-/* Pill Button */
-.btn-pill {
-    border-radius: 100px;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-}
-
-/* Square Button */
-.btn-square {
-    border-radius: 8px;
-}
+/* No se necesitan estilos especiales */
 
 /* ======================================
    BUTTON GROUPS
@@ -443,74 +300,12 @@
 }
 
 /* ======================================
-   EFECTOS ESPECIALES
+   EFECTOS BÁSICOS
    ====================================== */
 
-/* Ripple Effect */
-.btn-ripple {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-ripple::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.btn-ripple:active::before {
-    width: 300px;
-    height: 300px;
-}
-
-/* Bounce Effect */
-.btn-bounce:hover {
-    animation: btn-bounce 0.6s ease;
-}
-
-@keyframes btn-bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-8px);
-    }
-    60% {
-        transform: translateY(-4px);
-    }
-}
-
-/* Pulse Effect */
-.btn-pulse {
-    animation: btn-pulse 2s infinite;
-}
-
-@keyframes btn-pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(65, 182, 230, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(65, 182, 230, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(65, 182, 230, 0);
-    }
-}
-
-/* Glow Effect */
-.btn-glow {
-    box-shadow: 0 0 20px rgba(65, 182, 230, 0.5);
-}
-
-.btn-glow:hover {
-    box-shadow: 0 0 30px rgba(65, 182, 230, 0.8);
+/* Transición suave en hover */
+.btn-base:hover {
+    transition: all var(--transition-normal);
 }
 
 /* ======================================
@@ -764,45 +559,19 @@
     .btn-base,
     .btn-primary,
     .btn-secondary,
-    .btn-accent,
-    .btn-outline,
-    .btn-ghost,
-    .btn-light,
-    .btn-dark,
-    .btn-danger,
-    .btn-gradient,
-    .btn-glass {
+    .btn-accent {
         transition: none !important;
     }
     
     .btn-base:hover,
     .btn-primary:hover,
     .btn-secondary:hover,
-    .btn-accent:hover,
-    .btn-outline:hover,
-    .btn-ghost:hover,
-    .btn-light:hover,
-    .btn-dark:hover,
-    .btn-danger:hover,
-    .btn-gradient:hover,
-    .btn-glass:hover {
+    .btn-accent:hover {
         transform: none !important;
     }
     
     .btn-loading::after {
         animation: none !important;
-    }
-    
-    .btn-bounce:hover {
-        animation: none !important;
-    }
-    
-    .btn-pulse {
-        animation: none !important;
-    }
-    
-    .btn-ripple::before {
-        transition: none !important;
     }
 }
 
@@ -821,126 +590,9 @@
     }
 }
 
-/* ======================================
-   ALIASES PARA COMPATIBILIDAD TEMPORAL
-   ====================================== */
+/* Los botones CTA y de error ahora usan las clases base con modificadores */
 
-/* CTA Button - Botón principal del proyecto */
-.cta-button {
-    background: var(--negro);
-    color: var(--amarillo);
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: var(--border-radius-button);
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-family: var(--font-body);
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    margin-top: 2rem;
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: 0.5px;
-    box-shadow: var(--shadow-button);
-    text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
-}
-
-.cta-button:hover {
-    background: var(--amarillo);
-    color: var(--negro);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-button-hover);
-}
-
-.cta-button:active {
-    transform: translateY(0);
-    box-shadow: var(--shadow-button);
-}
-
-.cta-button:focus-visible {
-    outline: 3px solid var(--amarillo);
-    outline-offset: 2px;
-}
-
-/* Error Button - Botón para páginas de error */
-.error-button {
-    background: var(--azul-principal);
-    color: white;
-    padding: 1rem 2.5rem;
-    border: none;
-    border-radius: var(--border-radius-button);
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-family: var(--font-body);
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: 0.5px;
-    box-shadow: var(--shadow-button);
-}
-
-.error-button:hover {
-    background: var(--azul-oscuro);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-button-hover);
-}
-
-.error-button:active {
-    transform: translateY(0);
-    box-shadow: var(--shadow-button);
-}
-
-.error-button:focus-visible {
-    outline: 3px solid var(--azul-principal);
-    outline-offset: 2px;
-}
-
-/* ======================================
-   RESPONSIVE PARA ALIASES
-   ====================================== */
-
-/* Tablet responsive para aliases */
-@media (max-width: 82rem) and (min-width: 53.0625rem) {
-    .cta-button {
-        padding: 0.9rem 1.8rem;
-        font-size: 1rem;
-    }
-    
-    .error-button {
-        padding: 0.9rem 2.2rem;
-        font-size: 1rem;
-    }
-}
-
-/* Mobile responsive para aliases */
-@media (max-width: 53rem) {
-    .cta-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.95rem;
-        margin-top: 1.5rem;
-    }
-    
-    .error-button {
-        padding: 0.8rem 1.8rem;
-        font-size: 0.95rem;
-    }
-}
-
-/* Mobile muy pequeño para aliases */
-@media (max-width: 360px) {
-    .cta-button {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
-    }
-    
-    .error-button {
-        padding: 0.7rem 1.5rem;
-        font-size: 0.9rem;
-    }
-}
+/* Los estilos responsivos para CTA ahora están integrados en .btn-primary */
 
 /* ======================================
    UTILIDADES ADICIONALES
@@ -1002,7 +654,7 @@
 @media print {
     .btn-base,
     .cta-button,
-    .error-button {
+    .btn-error {
         background: white !important;
         color: black !important;
         border: 2px solid black !important;

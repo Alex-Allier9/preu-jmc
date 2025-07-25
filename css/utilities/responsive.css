@@ -7,43 +7,43 @@
    ====================================== */
 
 /* 
-   Breakpoints del sistema JMC:
-   - Desktop: > 82rem (1312px)
-   - Tablet: 53rem - 82rem (848px - 1312px)  
-   - Mobile: < 53rem (848px)
+   Breakpoints del sistema:
+   - Desktop: > var(--desktop)
+   - Tablet: var(--tablet) - var(--desktop) 
+   - Mobile: < var(--mobile)
 */
 
 /* ======================================
-   TABLET (768px - 1024px)
+   TABLET
    ====================================== */
 
-@media (max-width: 82rem) and (min-width: 53.0625rem) {
+@media (max-width: var(--desktop)) and (min-width: var(--tablet)) {
     
     /* Container ajustes */
     .container {
-        padding: 0 1.5rem;
+        padding: 0 var(--space-6);
     }
     
     /* Typography tablet */
     .title-hero {
-        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-size: clamp(var(--text-2xl), 8vw, var(--text-4xl));
     }
     
     .title-section {
-        font-size: clamp(2rem, 4vw, 3rem);
+        font-size: clamp(var(--text-xl), 4vw, var(--text-3xl));
     }
     
     .text-content {
-        font-size: 1.1rem;
+        font-size: var(--text-lg);
     }
     
     .quote-text {
-        font-size: 1.3rem;
+        font-size: var(--text-xl);
     }
     
     /* Section adjustments */
     .section {
-        padding: 4rem 0;
+        padding: var(--space-16) 0;
     }
     
     .section-with-background {

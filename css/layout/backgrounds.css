@@ -1,212 +1,212 @@
 /* ======================================
-   BACKGROUNDS.CSS - BACKGROUND WRAPPERS
+   BACKGROUNDS.CSS - SISTEMA DE FONDOS
+   JMC PREUNIVERSITARIO
    ====================================== */
 
 /* ======================================
-   BACKGROUND WRAPPERS PRINCIPALES
+   1. WRAPPERS BASE
    ====================================== */
 
-.background-wrapper-primary,
-.background-wrapper-secondary {
+/* Contenedor base para fondos */
+.background-wrapper {
     position: relative;
     overflow: hidden;
     z-index: var(--z-default);
+    width: 100%;
+    height: 100%;
 }
 
 /* ======================================
-   MOUNTAIN BACKGROUND (PRIMARIO)
+   2. SISTEMA DE FONDOS
    ====================================== */
 
-.mountain-background {
+/* Clase base para todos los fondos */
+.background-image {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%);
-    width: 3264px;
+    transform: translateX(-50%) translateZ(0);
+    width: 100%;
+    min-width: 3264px;
     height: 4896px;
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    z-index: var(--z-background);
+    z-index: var(--z-base);
     will-change: transform;
-    /* Background image se define en cada página específica */
+    contain: layout style paint;
+    
+    /* Estado de carga por defecto */
+    background-color: var(--gray-100);
+    opacity: 0.7;
+    transition: transform var(--transition-normal),
+                opacity var(--transition-normal);
 }
 
-/* ======================================
-   SECONDARY BACKGROUND
-   ====================================== */
+/* Variantes de fondo */
+.mountain-background {
+    opacity: 0.15;
+}
 
 .secondary-background {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 3264px;
-    height: 4896px;
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    z-index: var(--z-background);
-    will-change: transform;
-    /* Background image se define en cada página específica */
+    opacity: 0.1;
+}
+
+/* Estados de carga */
+.background-image.loaded {
+    opacity: 1;
 }
 
 /* ======================================
-   BACKGROUND OVERLAYS
+   3. SISTEMA DE OVERLAYS
    ====================================== */
 
-/* Overlay sutil para mejorar legibilidad */
-.background-wrapper-primary::before {
+/* Base para overlays */
+.background-overlay {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Variantes de overlay */
+.background-wrapper-primary .background-overlay {
     background: rgba(255, 255, 255, 0.05);
-    z-index: 0;
-    pointer-events: none;
 }
 
-.background-wrapper-secondary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.background-wrapper-secondary .background-overlay {
     background: rgba(255, 255, 255, 0.08);
-    z-index: 0;
-    pointer-events: none;
+}
+
+/* Variantes de contraste */
+.background-wrapper.dark .background-overlay {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.background-wrapper.light .background-overlay {
+    background: rgba(255, 255, 255, 0.15);
 }
 
 /* ======================================
-   BACKGROUND PARALLAX EFFECT
+   4. EFECTOS ESPECIALES
    ====================================== */
 
-/* Efecto parallax sutil en desktop */
+/* Parallax en desktop */
 @media (min-width: 53rem) and (prefers-reduced-motion: no-preference) {
-    .mountain-background,
-    .secondary-background {
+    .background-image {
         background-attachment: fixed;
-        transform: translateX(-50%) translateZ(0);
-        backface-visibility: hidden;
     }
 }
 
 /* ======================================
-   BACKGROUND GRADIENTS DECORATIVOS
+   5. EFECTOS DECORATIVOS
    ====================================== */
 
-/* Gradiente superior para transición suave */
-.background-wrapper-primary::after {
+/* Gradiente decorativo base */
+.background-gradient {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 200px;
+    height: var(--gradient-height, 200px);
     background: linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.1) 0%,
-        transparent 100%
+        var(--gradient-start-color) 0%,
+        var(--gradient-end-color) 100%
     );
     z-index: 1;
     pointer-events: none;
+    transition: height 0.3s ease;
 }
 
-.background-wrapper-secondary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 150px;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.15) 0%,
-        transparent 100%
-    );
-    z-index: 1;
-    pointer-events: none;
+/* Variantes de gradiente */
+.background-wrapper-primary .background-gradient {
+    --gradient-start-color: rgba(255, 255, 255, 0.1);
+    --gradient-end-color: transparent;
+    --gradient-height: 200px;
 }
 
-/* ======================================
-   BACKGROUND PERFORMANCE OPTIMIZATIONS
-   ====================================== */
-
-.mountain-background,
-.secondary-background {
-    /* GPU acceleration */
-    transform: translateX(-50%) translateZ(0);
-    backface-visibility: hidden;
-    
-    /* Smooth rendering */
-    image-rendering: optimizeQuality;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translateX(-50%) translateZ(0);
-    
-    /* Prevent layout shifts */
-    contain: layout style paint;
+.background-wrapper-secondary .background-gradient {
+    --gradient-start-color: rgba(255, 255, 255, 0.15);
+    --gradient-end-color: transparent;
+    --gradient-height: 150px;
 }
 
 /* ======================================
-   RESPONSIVE BACKGROUNDS
+   6. VARIANTES Y ESTADOS
    ====================================== */
+
+/* Variante con blur */
+.background-wrapper.blur .background-image {
+    filter: blur(2px);
+    transform: translateX(-50%) scale(1.02);
+}
+
+/* ======================================
+   7. RESPONSIVE
+   ====================================== */
+
+/* Variables responsive */
+:root {
+    --background-height: 4896px;
+    --background-min-width: 3264px;
+    --gradient-height-desktop: 200px;
+    --gradient-height-tablet: 150px;
+    --gradient-height-mobile: 100px;
+    --gradient-height-small: 80px;
+}
 
 /* Tablet */
 @media (max-width: 82rem) and (min-width: 53.0625rem) {
-    .mountain-background,
-    .secondary-background {
+    .background-image {
         width: 100vw;
         height: 120vh;
+        min-width: unset;
         background-position: center top;
-        transform: translateX(-50%);
     }
     
-    .background-wrapper-primary::after,
-    .background-wrapper-secondary::after {
-        height: 150px;
+    .background-gradient {
+        --gradient-height: var(--gradient-height-tablet);
     }
 }
 
 /* Mobile */
 @media (max-width: 53rem) {
-    .mountain-background,
-    .secondary-background {
+    .background-image {
         width: 100vw;
         height: 150vh;
-        background-size: cover;
-        background-position: center top;
+        min-width: unset;
         background-attachment: scroll;
-        transform: translateX(-50%);
     }
     
-    .background-wrapper-primary::after,
-    .background-wrapper-secondary::after {
-        height: 100px;
+    .background-gradient {
+        --gradient-height: var(--gradient-height-mobile);
     }
     
-    /* Reducir overlays en mobile para mejor contraste */
-    .background-wrapper-primary::before {
+    /* Ajustes de overlays */
+    .background-wrapper-primary .background-overlay {
         background: rgba(255, 255, 255, 0.02);
     }
     
-    .background-wrapper-secondary::before {
+    .background-wrapper-secondary .background-overlay {
         background: rgba(255, 255, 255, 0.05);
     }
 }
 
-/* Mobile muy pequeño */
+/* Mobile pequeño */
 @media (max-width: 360px) {
-    .mountain-background,
-    .secondary-background {
+    .background-image {
         height: 130vh;
     }
     
-    .background-wrapper-primary::after,
-    .background-wrapper-secondary::after {
-        height: 80px;
+    .background-gradient {
+        --gradient-height: var(--gradient-height-small);
     }
 }
 

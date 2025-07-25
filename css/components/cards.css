@@ -18,12 +18,12 @@
 .card-gallery,
 .card-process-horizontal,
 .card-services-mixed {
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
     position: relative;
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-8);
 }
 
 .card-text-left:hover,
@@ -36,7 +36,7 @@
 .card-process-horizontal:hover,
 .card-services-mixed:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
 }
 
 /* ======================================
@@ -56,15 +56,15 @@
 
 .card-text-left h2,
 .card-text-left h3 {
-    color: var(--azul-oscuro);
-    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    margin-bottom: var(--space-4);
     font-weight: 600;
 }
 
 .card-text-left p {
-    color: var(--negro);
+    color: var(--dark);
     line-height: 1.7;
-    font-size: 1.15rem;
+    font-size: var(--text-lg);
     text-align: justify;
 }
 
@@ -74,7 +74,7 @@
 
 .card-center-text {
     background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
+    padding: var(--space-8);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -83,16 +83,16 @@
 }
 
 .card-center-text h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
+    margin-bottom: var(--space-4);
+    font-size: var(--text-xl);
 }
 
 .card-center-text p {
-    color: var(--negro);
+    color: var(--dark);
     line-height: 1.6;
-    font-size: 1.05rem;
+    font-size: var(--text-base);
 }
 
 /* Números grandes para stats */
