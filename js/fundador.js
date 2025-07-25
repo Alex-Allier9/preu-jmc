@@ -70,7 +70,7 @@ function initGalleryLightbox() {
         }
         
         .close-lightbox:hover {
-            color: var(--accent);
+            color: var(--amarillo);
         }
         
         .lightbox-caption {
@@ -83,7 +83,7 @@ function initGalleryLightbox() {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 10px;
-            color: var(--accent);
+            color: var(--amarillo);
         }
         
         .lightbox-description {

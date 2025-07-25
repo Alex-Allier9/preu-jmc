@@ -69,7 +69,7 @@
    ====================================== */
 
 .blue-section {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
     color: white;
 }
 
@@ -83,11 +83,11 @@
 
 .regular-section {
     background: white;
-    color: var(--dark);
+    color: var(--negro);
 }
 
 .regular-section .section-title {
-    color: var(--primary-dark);
+    color: var(--azul-oscuro);
 }
 
 /* ======================================
@@ -129,7 +129,7 @@
 }
 
 .service-feature-card h3 {
-    color: var(--primary-dark);
+    color: var(--azul-oscuro);
     font-weight: 700;
     margin-bottom: 1rem;
     position: relative;
@@ -152,7 +152,7 @@
 }
 
 .service-icon .material-symbols-rounded {
-    color: var(--primary-dark);
+    color: var(--azul-oscuro);
 }
 
 /* Requisito Cards - Para los requisitos de ingreso */
@@ -170,11 +170,11 @@
 }
 
 .requisito-icon .material-symbols-rounded {
-    color: var(--accent);
+    color: var(--amarillo);
 }
 
 .requisito-card h3 {
-    color: var(--accent);
+    color: var(--amarillo);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -202,11 +202,11 @@
 }
 
 .complementary-icon .material-symbols-rounded {
-    color: var(--primary);
+    color: var(--azul-principal);
 }
 
 .complementary-card h3 {
-    color: var(--primary-dark);
+    color: var(--azul-oscuro);
     font-weight: 700;
     margin-bottom: 1.5rem;
     font-size: 1.4rem;
@@ -216,7 +216,7 @@
 .complementary-card p {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: var(--dark);
+    color: var(--negro);
     margin-bottom: 1.5rem;
     text-align: justify;
 }
@@ -229,8 +229,8 @@
 
 .complementary-card li {
     padding: 0.5rem 0;
-    border-bottom: 1px solid var(--gray-100);
-    color: var(--primary-dark);
+    border-bottom: 1px solid var(--gris-claro);
+    color: var(--azul-oscuro);
     font-weight: 500;
     position: relative;
     padding-left: 1.5rem;
@@ -240,7 +240,7 @@
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--primary);
+    color: var(--azul-principal);
     font-weight: bold;
 }
 
@@ -262,11 +262,11 @@
 }
 
 .financial-icon .material-symbols-rounded {
-    color: var(--primary);
+    color: var(--azul-principal);
 }
 
 .financial-card h3 {
-    color: var(--primary-dark);
+    color: var(--azul-oscuro);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -275,7 +275,7 @@
 .financial-card p {
     font-size: 1.05rem;
     line-height: 1.6;
-    color: var(--dark);
+    color: var(--negro);
 }
 
 /* Practical Cards - Para información práctica */
@@ -296,11 +296,11 @@
 }
 
 .practical-icon .material-symbols-rounded {
-    color: var(--primary);
+    color: var(--azul-principal);
 }
 
 .practical-card h3 {
-    color: var(--primary-dark);
+    color: var(--azul-oscuro);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.2rem;
@@ -309,93 +309,52 @@
 .practical-card p {
     font-size: 1rem;
     line-height: 1.5;
-    color: var(--dark);
+    color: var(--negro);
 }
 
-/* ======================================
-   TABLA MODERNA DE PAGOS - NUEVA
-   ====================================== */
-
-.modern-payment-table {
-    background: white;
+/* Payment Details Section */
+.payment-details {
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
     margin-top: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
-.modern-payment-table:hover {
+.payment-details:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-.table-header {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white;
-    padding: 1.5rem;
+.payment-details h3 {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
-.table-header h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: 'DM Serif Text', serif;
+.payment-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
 }
 
-.table-body {
-    padding: 0;
-}
-
-.table-row {
-    display: flex;
-    align-items: center;
-    padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid var(--gray-100);
+.payment-item {
+    background: rgba(65, 182, 230, 0.05);
+    padding: 1.2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--azul-principal);
+    font-size: 1rem;
+    line-height: 1.5;
     transition: all 0.3s ease;
 }
 
-.table-row:last-child {
-    border-bottom: none;
-}
-
-.table-row:hover {
-    background: rgba(65, 182, 230, 0.05);
-    transform: translateX(5px);
-}
-
-.table-icon {
-    font-size: 2rem;
-    color: var(--primary);
-    margin-right: 1rem;
-    min-width: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.table-icon .material-symbols-rounded {
-    font-size: 2rem;
-    color: var(--primary);
-}
-
-.table-content {
-    flex: 1;
-}
-
-.table-content strong {
-    color: var(--primary-dark);
+.payment-item strong {
+    color: var(--azul-oscuro);
     display: block;
-    margin-bottom: 0.3rem;
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-.table-content span {
-    color: var(--dark);
-    font-size: 0.95rem;
-    line-height: 1.5;
+    margin-bottom: 0.5rem;
 }
 
 /* Content Intro - Para textos introductorios */
@@ -408,7 +367,7 @@
 .content-intro p {
     font-size: 1.15rem;
     line-height: 1.7;
-    color: var(--dark);
+    color: var(--negro);
 }
 
 /* ======================================
@@ -457,17 +416,9 @@
         padding: 2.5rem;
     }
     
-    /* Tabla moderna en tablet */
-    .table-row {
-        padding: 1rem 1.2rem;
-    }
-    
-    .table-icon .material-symbols-rounded {
-        font-size: 1.8rem;
-    }
-    
-    .table-content strong {
-        font-size: 1rem;
+    /* Payment info grid en tablet */
+    .payment-info {
+        grid-template-columns: 1fr;
     }
     
     /* Ajustar complementary cards */
@@ -490,7 +441,7 @@
     /* Grids específicos en tablet */
     .first-section .card-grid-3 {
         gap: 2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 2rem; /* Added consistent spacing */
     }
     
     .third-section .card-grid-2 {
@@ -520,27 +471,6 @@
         margin-top: 3rem;
     }
 
-    /* Tabla moderna en móvil */
-    .table-row {
-        padding: 1rem;
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .table-icon {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-    }
-    
-    .table-content strong {
-        font-size: 1rem;
-        margin-bottom: 0.2rem;
-    }
-    
-    .table-content span {
-        font-size: 0.9rem;
-    }
-
     /* Grids específicos en móvil */
     .first-section .card-grid-3,
     .blue-section .card-grid-3,
@@ -549,13 +479,13 @@
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
         padding: 0 !important;
-        margin-bottom: 2rem;
+        margin-bottom: 2rem; /* Added consistent spacing */
     }
 
     /* Cards específicas móvil */
     .content-card {
         padding: 2rem;
-        margin: 0 0 2rem 0;
+        margin: 0 0 2rem 0; /* Added consistent spacing */
     }
 
     .content-intro {
@@ -571,6 +501,22 @@
         padding: 1.5rem !important;
         margin-bottom: 1.5rem !important;
         width: 100%;
+    }
+
+    /* Payment details en móvil */
+    .payment-details {
+        padding: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .payment-info {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+
+    .payment-item {
+        padding: 1rem;
+        font-size: 0.95rem;
     }
 
     /* Complementary cards específicas móvil */
@@ -633,28 +579,11 @@
         font-size: 1.1rem;
     }
 
-    /* Tabla moderna en pantallas muy pequeñas */
-    .table-header {
-        padding: 1rem;
+    .payment-details {
+        padding: 1.5rem;
     }
-    
-    .table-header h3 {
-        font-size: 1.2rem;
-    }
-    
-    .table-row {
-        padding: 0.8rem;
-    }
-    
-    .table-icon .material-symbols-rounded {
-        font-size: 1.5rem;
-    }
-    
-    .table-content strong {
-        font-size: 0.95rem;
-    }
-    
-    .table-content span {
-        font-size: 0.85rem;
+
+    .payment-details h3 {
+        font-size: 1.3rem;
     }
 }

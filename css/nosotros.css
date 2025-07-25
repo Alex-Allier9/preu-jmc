@@ -72,7 +72,7 @@
 }
 
 .mvp-card h3 {
-    color: var(--primary);
+    color: var(--azul-principal);
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -107,7 +107,7 @@
 .stat-number {
     font-family: 'DM Serif Text', serif;
     font-size: clamp(2.5rem, 8vw, 4.5rem);
-    color: var(--primary);
+    color: var(--azul-principal);
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1;
@@ -115,7 +115,7 @@
 }
 
 .stat-number.red {
-    color: var(--danger);
+    color: var(--rojo);
 }
 
 .stat-card p {
@@ -180,8 +180,7 @@
     .stats,
     .results,
     .values-section,
-    .commitment-section,
-    .process {
+    .commitment-section {
         margin-left: 5%;
         margin-right: 5%;
         margin-bottom: 3rem;
