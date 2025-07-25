@@ -124,7 +124,7 @@ function handleVisibilityChange() {
 
 // Función para agregar efecto hover al botón
 function enhance404Button() {
-    const errorButton = document.querySelector('.btn-error');
+    const errorButton = document.querySelector('.error-button');
     
     if (errorButton) {
         // Efecto de ondas al hacer clic
@@ -231,10 +231,10 @@ function suggestAlternativePages() {
                 suggestion.style.cssText = `
                     margin-top: 1rem;
                     font-size: 0.9rem;
-                    color: var(--primary-dark);
+                    color: var(--azul-oscuro);
                     font-style: normal;
                 `;
-                suggestion.innerHTML = `¿Tal vez buscabas <a href="${page}" style="color: var(--primary); text-decoration: underline;">${page.replace('.html', '')}?</a>`;
+                suggestion.innerHTML = `¿Tal vez buscabas <a href="${page}" style="color: var(--azul-principal); text-decoration: underline;">${page.replace('.html', '')}?</a>`;
                 errorMessage.appendChild(suggestion);
             }
             break;

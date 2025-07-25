@@ -11,54 +11,6 @@
     --title-letter-spacing: 0.2rem;
 }
 
-@font-face {
-    font-family: 'Material Symbols Rounded';
-    font-style: normal;
-    font-weight: 100 700;
-    font-display: block;
-    src: url('../media/fonts/material-symbols/MaterialSymbolsRounded.woff2') format('woff2');
-}
-
-.material-symbols-rounded {
-    font-family: 'Material Symbols Rounded', sans-serif;
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    /* ... resto del CSS existente ... */
-}
-
-/* DM Serif Text */
-@font-face {
-    font-family: 'DM Serif Text';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('../media/fonts/dm-serif-text/DMSerifText-Regular.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'DM Serif Text';
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url('../media/fonts/dm-serif-text/DMSerifText-Italic.ttf') format('truetype');
-}
-
-/* Raleway Variable - Solo 2 archivos */
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 100 900;  /* Rango completo */
-    font-display: swap;
-    src: url('../media/fonts/raleway/variable/Raleway-Variable.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 100 900;  /* Rango completo */
-    font-display: swap;
-    src: url('../media/fonts/raleway/variable/Raleway-VariableItalic.ttf') format('truetype');
-}
-
 /* Reset y Base */
 * {
     margin: 0;
