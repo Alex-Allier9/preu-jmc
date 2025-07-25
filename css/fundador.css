@@ -151,13 +151,13 @@
 /* Profile Info */
 .profile-info {
     flex: 1;
-    color: var(--negro);
+    color: var(--dark);
 }
 
 .profile-name {
     font-family: 'DM Serif Text', serif;
     font-size: clamp(2.5rem, 4vw, 3.5rem);
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     margin-bottom: 0.5rem;
     letter-spacing: var(--title-letter-spacing);
     line-height: 1.2;
@@ -165,14 +165,14 @@
 
 .profile-title {
     font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    color: var(--azul-principal);
+    color: var(--primary);
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 .profile-subtitle {
     font-size: 1.1rem;
-    color: var(--negro);
+    color: var(--dark);
     margin-bottom: 2rem;
     opacity: 0.8;
 }
@@ -205,26 +205,26 @@
 .profile-contact-label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     display: block;
     margin-bottom: 0.3rem;
 }
 
 .profile-contact-value {
     font-size: 1rem;
-    color: var(--negro);
+    color: var(--dark);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .profile-contact-item:hover .profile-contact-value {
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 /* Iconos específicos para el perfil */
 .profile-contact-item .material-symbols-rounded {
     font-size: 1.5rem;
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 .profile-contact-icon {
@@ -306,7 +306,7 @@
     content: '';
     position: absolute;
     width: 4px;
-    background-color: var(--azul-principal);
+    background-color: var(--primary);
     top: 0;
     bottom: 0;
     left: 50%;
@@ -331,8 +331,8 @@
 
 .timeline-year {
     padding: 0.5rem 1rem;
-    background-color: var(--amarillo);
-    color: var(--negro);
+    background-color: var(--accent);
+    color: var(--dark);
     font-weight: 600;
     border-radius: 20px;
     display: inline-block;
@@ -341,7 +341,7 @@
 
 .timeline-content {
     padding: 1.5rem;
-    background-color: var(--blanco);
+    background-color: var(--light);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -353,7 +353,7 @@
 }
 
 .timeline-content h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
@@ -364,7 +364,7 @@
 
 .philosophy-section {
     /* CORREGIDO - Exactamente igual que methodology en nosotros */
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
 }
 
@@ -407,12 +407,12 @@
 .philosophy-icon .material-symbols-rounded {
     font-size: 3rem;
     /* CORREGIDO - Iconos amarillos para contraste con fondo azul */
-    color: var(--amarillo);
+    color: var(--accent);
 }
 
 .philosophy-card h3 {
     /* CORREGIDO - Títulos amarillos para contraste */
-    color: var(--amarillo);
+    color: var(--accent);
     font-weight: 600;
     margin-bottom: 1rem;
     font-size: 1.2rem;
@@ -436,7 +436,7 @@
 .mountaineering-intro p {
     font-size: 1.15rem;
     line-height: 1.7;
-    color: var(--negro);
+    color: var(--dark);
 }
 
 .achievements-grid {
@@ -468,11 +468,11 @@
 
 .achievement-icon .material-symbols-rounded {
     font-size: 3rem;
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 .achievement-content h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-weight: 600;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -492,14 +492,14 @@
     font-family: 'DM Serif Text', serif;
     font-size: 2rem;
     font-weight: 700;
-    color: var(--azul-principal);
+    color: var(--primary);
     line-height: 1;
 }
 
 .stat-label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -507,7 +507,7 @@
 .achievement-content p {
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--negro);
+    color: var(--dark);
 }
 
 /* ======================================
@@ -520,7 +520,7 @@
 
 .mountaineering-gallery h3 {
     text-align: center;
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-size: 1.8rem;
     margin-bottom: 2rem;
     font-weight: 600;

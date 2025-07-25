@@ -53,14 +53,14 @@ css/
 /* Variables CSS y configuración global */
 :root {
     /* Colores principales */
-    --azul-principal: #41B6E6;
-    --amarillo: #F4DA40;
-    --negro: #101820;
-    --rojo: #EF3340;
-    --azul-oscuro: #165C7D;
-    --blanco: #FFFFFF;
-    --gris-claro: #F8F9FA;
-    --gris-medio: #E9ECEF;
+    --primary: #41B6E6;
+    --accent: #F4DA40;
+    --dark: #101820;
+    --danger: #EF3340;
+    --primary-dark: #165C7D;
+    --light: #FFFFFF;
+    --gray-100: #F8F9FA;
+    --gray-200: #E9ECEF;
     
     /* Tipografías */
     --font-title: 'DM Serif Text', serif;
@@ -121,7 +121,7 @@ css/
 body {
     font-family: var(--font-body);
     line-height: 1.6;
-    color: var(--negro);
+    color: var(--dark);
     overflow-x: hidden;
 }
 
@@ -216,7 +216,7 @@ html {
     font-size: clamp(2.5rem, 5vw, 4rem);
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     line-height: 1;
     letter-spacing: var(--title-letter-spacing);
 }
@@ -226,7 +226,7 @@ html {
     height: 4px;
     margin: 0 auto 3rem auto;
     width: 120px;
-    background: var(--amarillo);
+    background: var(--accent);
     position: relative;
 }
 
@@ -257,7 +257,7 @@ html {
 
 /* Sección azul universal */
 .blue-gradient-section {
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
     padding: var(--section-padding);
 }
@@ -465,7 +465,7 @@ html {
 .icon-container-lg-blue {
     height: 7.5rem;
     width: 7.5rem;
-    background: var(--azul-principal);
+    background: var(--primary);
     border-radius: 1.25rem;
     display: flex;
     align-items: center;

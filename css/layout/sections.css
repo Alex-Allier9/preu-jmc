@@ -68,7 +68,7 @@
     font-size: clamp(2.5rem, 5vw, 4rem);
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     line-height: 1.2;
     letter-spacing: var(--title-letter-spacing);
 }
@@ -79,7 +79,7 @@
     height: 4px;
     width: 120px;
     margin: 0 auto 3rem auto;
-    background: var(--amarillo);
+    background: var(--accent);
     position: relative;
     border-radius: 2px;
 }
@@ -114,8 +114,8 @@
 /* Sección azul */
 .blue-gradient-section {
     background: linear-gradient(135deg, 
-        var(--azul-principal) 0%, 
-        var(--azul-oscuro) 100%
+        var(--primary) 0%, 
+        var(--primary-dark) 100%
     );
     color: white;
     position: relative;
@@ -134,7 +134,7 @@
 /* Sección azul oscuro */
 .dark-blue-gradient-section {
     background: linear-gradient(135deg, 
-        var(--azul-oscuro) 0%, 
+        var(--primary-dark) 0%, 
         #0a2d3a 100%
     );
     color: white;
@@ -157,7 +157,7 @@
 }
 
 .gradient-section .section-subtitle {
-    background: var(--amarillo);
+    background: var(--accent);
 }
 
 /* ======================================
@@ -198,8 +198,8 @@
 }
 
 .cta-button {
-    background: var(--negro);
-    color: var(--amarillo);
+    background: var(--dark);
+    color: var(--accent);
     padding: 1rem 2rem;
     border: none;
     border-radius: 3.125rem;
@@ -214,15 +214,15 @@
 }
 
 .cta-button:hover {
-    background: var(--amarillo);
-    color: var(--negro);
+    background: var(--accent);
+    color: var(--dark);
     transform: translateY(-0.125rem);
     box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2);
 }
 
 /* Focus visible para accesibilidad */
 .cta-button:focus-visible {
-    outline: 2px solid var(--amarillo);
+    outline: 2px solid var(--accent);
     outline-offset: 4px;
 }
 

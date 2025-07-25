@@ -135,9 +135,9 @@ Edita en `404.css`:
 ### Modificar Colores
 Utiliza las variables CSS globales:
 ```css
---azul-principal: #41B6E6;
---amarillo: #F4DA40;
---negro: #101820;
+--primary: #41B6E6;
+--accent: #F4DA40;
+--dark: #101820;
 ```
 
 ### Añadir Más Sugerencias

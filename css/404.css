@@ -26,7 +26,7 @@
 /* Efecto Glitch para el número 404 con italic */
 .glitch {
     position: relative;
-    color: var(--negro);
+    color: var(--dark);
     font-family: 'DM Serif Text', serif;
     font-size: clamp(16rem, 30vw, 40rem);
     font-weight: 400;
@@ -94,75 +94,75 @@
 
 /* Keyframes de glitch individuales con colores de JMC - versión original */
 @keyframes glitch1 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(-3px); color: var(--azul-principal); }
-    90% { transform: translateX(2px); color: var(--amarillo); }
-    95% { transform: translateX(-1px); color: var(--rojo); }
-    100% { transform: translateX(0); color: var(--negro); }
+    0%, 80% { transform: translateX(0); color: var(--dark); }
+    85% { transform: translateX(-3px); color: var(--primary); }
+    90% { transform: translateX(2px); color: var(--accent); }
+    95% { transform: translateX(-1px); color: var(--danger); }
+    100% { transform: translateX(0); color: var(--dark); }
 }
 
 @keyframes glitch2 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(4px); color: var(--amarillo); }
-    90% { transform: translateX(-2px); color: var(--azul-principal); }
-    95% { transform: translateX(3px); color: var(--negro); }
-    100% { transform: translateX(0); color: var(--negro); }
+    0%, 80% { transform: translateX(0); color: var(--dark); }
+    85% { transform: translateX(4px); color: var(--accent); }
+    90% { transform: translateX(-2px); color: var(--primary); }
+    95% { transform: translateX(3px); color: var(--dark); }
+    100% { transform: translateX(0); color: var(--dark); }
 }
 
 @keyframes glitch3 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(-2px); color: var(--rojo); }
-    90% { transform: translateX(5px); color: var(--azul-principal); }
-    95% { transform: translateX(-4px); color: var(--amarillo); }
-    100% { transform: translateX(0); color: var(--negro); }
+    0%, 80% { transform: translateX(0); color: var(--dark); }
+    85% { transform: translateX(-2px); color: var(--danger); }
+    90% { transform: translateX(5px); color: var(--primary); }
+    95% { transform: translateX(-4px); color: var(--accent); }
+    100% { transform: translateX(0); color: var(--dark); }
 }
 
 @keyframes glitch4 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(1px); color: var(--azul-principal); }
-    90% { transform: translateX(-3px); color: var(--rojo); }
-    95% { transform: translateX(2px); color: var(--amarillo); }
-    100% { transform: translateX(0); color: var(--negro); }
+    0%, 80% { transform: translateX(0); color: var(--dark); }
+    85% { transform: translateX(1px); color: var(--primary); }
+    90% { transform: translateX(-3px); color: var(--danger); }
+    95% { transform: translateX(2px); color: var(--accent); }
+    100% { transform: translateX(0); color: var(--dark); }
 }
 
 @keyframes glitch5 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(-4px); color: var(--amarillo); }
-    90% { transform: translateX(1px); color: var(--azul-principal); }
-    95% { transform: translateX(-2px); color: var(--negro); }
-    100% { transform: translateX(0); color: var(--negro); }
+    0%, 80% { transform: translateX(0); color: var(--dark); }
+    85% { transform: translateX(-4px); color: var(--accent); }
+    90% { transform: translateX(1px); color: var(--primary); }
+    95% { transform: translateX(-2px); color: var(--dark); }
+    100% { transform: translateX(0); color: var(--dark); }
 }
 
 @keyframes glitch6 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(3px); color: var(--rojo); }
-    90% { transform: translateX(-1px); color: var(--amarillo); }
-    95% { transform: translateX(4px); color: var(--azul-principal); }
-    100% { transform: translateX(0); color: var(--negro); }
+    0%, 80% { transform: translateX(0); color: var(--dark); }
+    85% { transform: translateX(3px); color: var(--danger); }
+    90% { transform: translateX(-1px); color: var(--accent); }
+    95% { transform: translateX(4px); color: var(--primary); }
+    100% { transform: translateX(0); color: var(--dark); }
 }
 
 @keyframes glitch7 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(-1px); color: var(--azul-principal); }
-    90% { transform: translateX(3px); color: var(--rojo); }
-    95% { transform: translateX(-5px); color: var(--amarillo); }
-    100% { transform: translateX(0); color: var(--negro); }
+    0%, 80% { transform: translateX(0); color: var(--dark); }
+    85% { transform: translateX(-1px); color: var(--primary); }
+    90% { transform: translateX(3px); color: var(--danger); }
+    95% { transform: translateX(-5px); color: var(--accent); }
+    100% { transform: translateX(0); color: var(--dark); }
 }
 
 @keyframes glitch8 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(2px); color: var(--amarillo); }
-    90% { transform: translateX(-4px); color: var(--azul-principal); }
-    95% { transform: translateX(1px); color: var(--rojo); }
-    100% { transform: translateX(0); color: var(--negro); }
+    0%, 80% { transform: translateX(0); color: var(--dark); }
+    85% { transform: translateX(2px); color: var(--accent); }
+    90% { transform: translateX(-4px); color: var(--primary); }
+    95% { transform: translateX(1px); color: var(--danger); }
+    100% { transform: translateX(0); color: var(--dark); }
 }
 
 @keyframes glitch9 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(-3px); color: var(--rojo); }
-    90% { transform: translateX(4px); color: var(--amarillo); }
-    95% { transform: translateX(-2px); color: var(--azul-principal); }
-    100% { transform: translateX(0); color: var(--negro); }
+    0%, 80% { transform: translateX(0); color: var(--dark); }
+    85% { transform: translateX(-3px); color: var(--danger); }
+    90% { transform: translateX(4px); color: var(--accent); }
+    95% { transform: translateX(-2px); color: var(--primary); }
+    100% { transform: translateX(0); color: var(--dark); }
 }
 
 /* Animación de clip universal */
@@ -179,7 +179,7 @@
 .error-message {
     font-family: 'Raleway', sans-serif;
     font-size: clamp(1.2rem, 3vw, 1.8rem);
-    color: var(--negro);
+    color: var(--dark);
     margin-bottom: 2.5rem;
     max-width: 600px;
     margin-left: auto;

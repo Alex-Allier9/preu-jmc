@@ -171,7 +171,7 @@ function showConsultationSuccess() {
         top: 20px;
         right: 20px;
         z-index: 10000;
-        background: var(--azul-principal);
+        background: var(--primary);
         color: white;
         padding: 1rem 2rem;
         border-radius: 10px;
@@ -334,12 +334,12 @@ function initComplementaryServiceLists() {
         
         // Efecto hover individual
         item.addEventListener('mouseenter', function() {
-            this.style.color = 'var(--azul-principal)';
+            this.style.color = 'var(--primary)';
             this.style.paddingLeft = '2rem';
         });
         
         item.addEventListener('mouseleave', function() {
-            this.style.color = 'var(--azul-oscuro)';
+            this.style.color = 'var(--primary-dark)';
             this.style.paddingLeft = '1.5rem';
         });
     });

@@ -231,10 +231,10 @@ function suggestAlternativePages() {
                 suggestion.style.cssText = `
                     margin-top: 1rem;
                     font-size: 0.9rem;
-                    color: var(--azul-oscuro);
+                    color: var(--primary-dark);
                     font-style: normal;
                 `;
-                suggestion.innerHTML = `¿Tal vez buscabas <a href="${page}" style="color: var(--azul-principal); text-decoration: underline;">${page.replace('.html', '')}?</a>`;
+                suggestion.innerHTML = `¿Tal vez buscabas <a href="${page}" style="color: var(--primary); text-decoration: underline;">${page.replace('.html', '')}?</a>`;
                 errorMessage.appendChild(suggestion);
             }
             break;

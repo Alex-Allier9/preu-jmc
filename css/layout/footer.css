@@ -1,6 +1,6 @@
 /* Footer - UNIVERSAL */
 .footer {
-    background: var(--negro);
+    background: var(--dark);
     color: white;
     padding: 3rem 0 1rem;
 }
@@ -13,7 +13,7 @@
 }
 
 .footer-section h3 {
-    color: var(--amarillo);
+    color: var(--accent);
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
@@ -32,7 +32,7 @@
 
 .contact-item .material-symbols-rounded {
     font-size: 1.2rem;
-    color: var(--amarillo);
+    color: var(--accent);
     margin-top: 0.2rem;
     flex-shrink: 0;
     transition: all 0.3s ease;
@@ -52,7 +52,7 @@
 }
 
 .contact-item:hover .material-symbols-rounded {
-    color: var(--azul-principal);
+    color: var(--primary);
     transform: scale(1.1);
 }
 
@@ -67,7 +67,7 @@
 }
 
 .contact-item:hover span {
-    color: var(--amarillo);
+    color: var(--accent);
 }
 
 .footer-nav-link {
@@ -84,7 +84,7 @@
 }
 
 .footer-nav-link:hover {
-    color: var(--amarillo);
+    color: var(--accent);
     background: rgba(244, 218, 64, 0.1);
     transform: translateX(0.3125rem);
     padding-left: 0.5rem;
@@ -98,14 +98,14 @@
 }
 
 .footer-author {
-    color: var(--amarillo);
+    color: var(--accent);
     margin-top: 0.5rem;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-author:hover {
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 

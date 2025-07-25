@@ -295,7 +295,7 @@ function addScrollProgress() {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, var(--azul-principal), var(--amarillo));
+        background: linear-gradient(90deg, var(--primary), var(--accent));
         transform-origin: left center;
         transform: scaleX(0);
         transition: transform 0.1s linear;

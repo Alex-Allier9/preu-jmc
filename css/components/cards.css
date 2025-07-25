@@ -62,7 +62,7 @@
 }
 
 .card-text-left p {
-    color: var(--dark);
+    color: var(--black);
     line-height: 1.7;
     font-size: var(--text-lg);
     text-align: justify;
@@ -90,7 +90,7 @@
 }
 
 .card-center-text p {
-    color: var(--dark);
+    color: var(--black);
     line-height: 1.6;
     font-size: var(--text-base);
 }
@@ -119,7 +119,7 @@
 }
 
 .card-gradient-border h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -128,7 +128,7 @@
 }
 
 .card-gradient-border p {
-    color: var(--negro);
+    color: var(--dark);
     line-height: 1.6;
     font-size: 1.05rem;
     position: relative;
@@ -170,7 +170,7 @@
     content: '"';
     font-family: var(--font-title);
     font-size: 5rem;
-    color: var(--amarillo);
+    color: var(--accent);
     position: absolute;
     opacity: 0.9;
     font-weight: 400;
@@ -192,7 +192,7 @@
 }
 
 .card-quote .quote-author {
-    color: var(--amarillo);
+    color: var(--accent);
     font-weight: 600;
     font-size: 1.1rem;
     position: relative;
@@ -234,15 +234,15 @@
 
 .card-icon-center .card-icon .material-symbols-rounded {
     font-size: 3rem;
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
 }
 
 .blue-gradient-section .card-icon-center .card-icon .material-symbols-rounded {
-    color: var(--amarillo);
+    color: var(--accent);
 }
 
 .card-icon-center h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-weight: 600;
     margin-bottom: 1rem;
     font-size: 1.2rem;
@@ -252,11 +252,11 @@
 }
 
 .blue-gradient-section .card-icon-center h3 {
-    color: var(--amarillo);
+    color: var(--accent);
 }
 
 .card-icon-center p {
-    color: var(--negro);
+    color: var(--dark);
     line-height: 1.6;
     font-size: 0.95rem;
 }
@@ -312,7 +312,7 @@
 
 .profile-title {
     font-size: 1.5rem;
-    color: var(--amarillo);
+    color: var(--accent);
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
@@ -363,11 +363,11 @@
 
 .card-mountaineering .achievement-icon .material-symbols-rounded {
     font-size: 3rem;
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 .card-mountaineering h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-weight: 600;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -387,14 +387,14 @@
     font-family: var(--font-title);
     font-size: 2rem;
     font-weight: 700;
-    color: var(--azul-principal);
+    color: var(--primary);
     line-height: 1;
 }
 
 .card-mountaineering .stat-label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -402,7 +402,7 @@
 .card-mountaineering p {
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--negro);
+    color: var(--dark);
 }
 
 /* ======================================
@@ -476,7 +476,7 @@
     flex-shrink: 0;
     width: 7.5rem;
     height: 7.5rem;
-    background: var(--azul-principal);
+    background: var(--primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -485,7 +485,7 @@
 }
 
 .card-process-horizontal:hover .process-step-icon {
-    background: var(--azul-oscuro);
+    background: var(--primary-dark);
     transform: scale(1.05);
 }
 
@@ -501,13 +501,13 @@
 
 .card-content h3 {
     font-size: 1.6rem;
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
 
 .card-content p {
-    color: var(--negro);
+    color: var(--dark);
     line-height: 1.7;
     margin-bottom: 1.5rem;
     text-align: justify;
@@ -519,9 +519,9 @@
     gap: 2rem;
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--gris-claro);
+    border-top: 1px solid var(--gray-100);
     font-size: 0.95rem;
-    color: var(--azul-principal);
+    color: var(--primary);
     font-weight: 600;
     flex-wrap: wrap;
 }
@@ -560,11 +560,11 @@
 
 .card-services-mixed .service-icon .material-symbols-rounded {
     font-size: 3rem;
-    color: var(--amarillo);
+    color: var(--accent);
 }
 
 .card-services-mixed h3 {
-    color: var(--amarillo);
+    color: var(--accent);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.3rem;

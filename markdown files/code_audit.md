@@ -220,7 +220,7 @@
 }
 
 .blue-gradient-section {
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
     padding: 5rem 0;
 }
@@ -231,12 +231,12 @@
 
 .white-solid-section {
     background: white;
-    color: var(--negro);
+    color: var(--dark);
     padding: 5rem 0;
 }
 
 .white-solid-section .section-title {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
 }
 ```
 

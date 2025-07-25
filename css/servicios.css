@@ -69,7 +69,7 @@
    ====================================== */
 
 .blue-section {
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
 }
 
@@ -83,11 +83,11 @@
 
 .regular-section {
     background: white;
-    color: var(--negro);
+    color: var(--dark);
 }
 
 .regular-section .section-title {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
 }
 
 /* ======================================
@@ -129,7 +129,7 @@
 }
 
 .service-feature-card h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-weight: 700;
     margin-bottom: 1rem;
     position: relative;
@@ -152,7 +152,7 @@
 }
 
 .service-icon .material-symbols-rounded {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
 }
 
 /* Requisito Cards - Para los requisitos de ingreso */
@@ -170,11 +170,11 @@
 }
 
 .requisito-icon .material-symbols-rounded {
-    color: var(--amarillo);
+    color: var(--accent);
 }
 
 .requisito-card h3 {
-    color: var(--amarillo);
+    color: var(--accent);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -202,11 +202,11 @@
 }
 
 .complementary-icon .material-symbols-rounded {
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 .complementary-card h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-weight: 700;
     margin-bottom: 1.5rem;
     font-size: 1.4rem;
@@ -216,7 +216,7 @@
 .complementary-card p {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: var(--negro);
+    color: var(--dark);
     margin-bottom: 1.5rem;
     text-align: justify;
 }
@@ -229,8 +229,8 @@
 
 .complementary-card li {
     padding: 0.5rem 0;
-    border-bottom: 1px solid var(--gris-claro);
-    color: var(--azul-oscuro);
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--primary-dark);
     font-weight: 500;
     position: relative;
     padding-left: 1.5rem;
@@ -240,7 +240,7 @@
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--azul-principal);
+    color: var(--primary);
     font-weight: bold;
 }
 
@@ -262,11 +262,11 @@
 }
 
 .financial-icon .material-symbols-rounded {
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 .financial-card h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -275,7 +275,7 @@
 .financial-card p {
     font-size: 1.05rem;
     line-height: 1.6;
-    color: var(--negro);
+    color: var(--dark);
 }
 
 /* Practical Cards - Para información práctica */
@@ -296,11 +296,11 @@
 }
 
 .practical-icon .material-symbols-rounded {
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 .practical-card h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.2rem;
@@ -309,7 +309,7 @@
 .practical-card p {
     font-size: 1rem;
     line-height: 1.5;
-    color: var(--negro);
+    color: var(--dark);
 }
 
 /* ======================================
@@ -331,7 +331,7 @@
 }
 
 .table-header {
-    background: linear-gradient(135deg, var(--azul-principal), var(--amarillo));
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
     padding: 1.5rem;
     text-align: center;
@@ -352,7 +352,7 @@
     display: flex;
     align-items: center;
     padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid var(--gris-claro);
+    border-bottom: 1px solid var(--gray-100);
     transition: all 0.3s ease;
 }
 
@@ -367,7 +367,7 @@
 
 .table-icon {
     font-size: 2rem;
-    color: var(--azul-principal);
+    color: var(--primary);
     margin-right: 1rem;
     min-width: 3rem;
     display: flex;
@@ -377,7 +377,7 @@
 
 .table-icon .material-symbols-rounded {
     font-size: 2rem;
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 .table-content {
@@ -385,7 +385,7 @@
 }
 
 .table-content strong {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     display: block;
     margin-bottom: 0.3rem;
     font-weight: 600;
@@ -393,7 +393,7 @@
 }
 
 .table-content span {
-    color: var(--negro);
+    color: var(--dark);
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -408,7 +408,7 @@
 .content-intro p {
     font-size: 1.15rem;
     line-height: 1.7;
-    color: var(--negro);
+    color: var(--dark);
 }
 
 /* ======================================

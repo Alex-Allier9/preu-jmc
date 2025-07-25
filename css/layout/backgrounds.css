@@ -234,7 +234,7 @@
 /* Placeholder mientras carga la imagen */
 .mountain-background,
 .secondary-background {
-    background-color: var(--gris-claro);
+    background-color: var(--gray-100);
     transition: opacity 0.3s ease;
 }
 
