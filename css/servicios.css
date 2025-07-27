@@ -21,7 +21,7 @@
    ====================================== */
 
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    background: linear-gradient(rgba(var(--black-rgb), 0.4), rgba(var(--black-rgb), 0.4)),
         url('../media/images/servicios/gaetan-meyer-WemqIKiduMo-unsplash.jpg') center/cover;
 }
 
@@ -30,7 +30,7 @@
    ====================================== */
 
 .cta {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
         url('../media/images/servicios/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
 }
 
@@ -44,38 +44,29 @@
 .third-section,
 .fourth-section {
     background: rgba(255, 255, 255, 0.75);
-    margin-left: 8.33%;
-    margin-right: 8.33%;
-    margin-bottom: 6rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-left: var(--section-margin-horizontal);
+    margin-right: var(--section-margin-horizontal);
+    margin-bottom: var(--section-margin-bottom);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-light);
     position: relative;
     z-index: 2;
-    padding: 3rem;
+    padding: var(--card-padding-large);
 }
 
 /* Márgenes superiores específicos */
 .first-section {
-    margin-top: 6rem;
+    margin-top: var(--section-margin-bottom);
 }
 
 .third-section,
 .fourth-section {
-    margin-top: 6rem;
+    margin-top: var(--section-margin-bottom);
 }
 
 /* ======================================
    SECCIÓN AZUL - REQUISITOS
    ====================================== */
-
-.blue-section {
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
-    color: white;
-}
-
-.blue-section .section-title {
-    color: white;
-}
 
 /* ======================================
    SECCIÓN REGULAR - INFORMACIÓN PRÁCTICA
@@ -83,234 +74,19 @@
 
 .regular-section {
     background: white;
-    color: var(--negro);
+    color: var(--black);
 }
 
 .regular-section .section-title {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
 }
 
 /* ======================================
-   CARDS ESPECÍFICAS DE SERVICIOS
+   CARDS - YA DEFINIDAS EN components/cards.css
    ====================================== */
 
-/* Base styles for all cards */
-.service-feature-card,
-.requisito-card,
-.complementary-card,
-.financial-card,
-.practical-card {
-    border-radius: 15px;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    width: 100%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Hover effect for all cards */
-.service-feature-card:hover,
-.requisito-card:hover,
-.complementary-card:hover,
-.financial-card:hover,
-.practical-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* Service Feature Cards - Características del servicio principal */
-.service-feature-card {
-    background: 
-        linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
-    border: 9px solid transparent;
-}
-
-.service-feature-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
-    font-size: 1.3rem;
-}
-
-.service-feature-card p {
-    position: relative;
-    z-index: 1;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    text-align: center;
-}
-
-.service-icon {
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-}
-
-.service-icon .material-symbols-rounded {
-    color: var(--azul-oscuro);
-}
-
-/* Requisito Cards - Para los requisitos de ingreso */
-.requisito-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-.requisito-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.requisito-icon {
-    margin-bottom: 2rem;
-}
-
-.requisito-icon .material-symbols-rounded {
-    color: var(--amarillo);
-}
-
-.requisito-card h3 {
-    color: var(--amarillo);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.requisito-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: white;
-}
-
-/* Complementary Cards - Para servicios complementarios */
-.complementary-card {
-    background: rgba(255, 255, 255, 0.9);
-    text-align: left;
-}
-
-.complementary-card:hover {
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.complementary-icon {
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.complementary-icon .material-symbols-rounded {
-    color: var(--azul-principal);
-}
-
-.complementary-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    font-size: 1.4rem;
-    text-align: center;
-}
-
-.complementary-card p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--negro);
-    margin-bottom: 1.5rem;
-    text-align: justify;
-}
-
-.complementary-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.complementary-card li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--gris-claro);
-    color: var(--azul-oscuro);
-    font-weight: 500;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.complementary-card li:before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--azul-principal);
-    font-weight: bold;
-}
-
-.complementary-card li:last-child {
-    border-bottom: none;
-}
-
-/* Financial Cards - Para apoyo financiero */
-.financial-card {
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.financial-card:hover {
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.financial-icon {
-    margin-bottom: 2rem;
-}
-
-.financial-icon .material-symbols-rounded {
-    color: var(--azul-principal);
-}
-
-.financial-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.financial-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--negro);
-}
-
-/* Practical Cards - Para información práctica */
-.practical-card {
-    background: rgba(255, 255, 255, 0.9);
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.practical-card:hover {
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.practical-icon {
-    margin-bottom: 1.5rem;
-}
-
-.practical-icon .material-symbols-rounded {
-    color: var(--azul-principal);
-}
-
-.practical-card h3 {
-    color: var(--azul-oscuro);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.practical-card p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--negro);
-}
+/* Todas las cards (service-feature-card, glass-card, complementary-card, financial-card, practical-card) 
+   ya están definidas en components/cards.css */
 
 /* ======================================
    TABLA MODERNA DE PAGOS - NUEVA
@@ -318,20 +94,20 @@
 
 .modern-payment-table {
     background: white;
-    border-radius: 15px;
+    border-radius: var(--border-radius-standard);
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
-    transition: all 0.3s ease;
+    box-shadow: var(--shadow-light);
+    margin-top: var(--margin-bottom-standard);
+    transition: var(--transition-standard);
 }
 
 .modern-payment-table:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-medium);
 }
 
 .table-header {
-    background: linear-gradient(135deg, var(--azul-principal), var(--amarillo));
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
     padding: 1.5rem;
     text-align: center;
@@ -352,7 +128,7 @@
     display: flex;
     align-items: center;
     padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid var(--gris-claro);
+    border-bottom: 1px solid var(--gray-light);
     transition: all 0.3s ease;
 }
 
@@ -361,13 +137,13 @@
 }
 
 .table-row:hover {
-    background: rgba(65, 182, 230, 0.05);
+    background: rgba(var(--primary-rgb), 0.05);
     transform: translateX(5px);
 }
 
 .table-icon {
     font-size: 2rem;
-    color: var(--azul-principal);
+    color: var(--primary);
     margin-right: 1rem;
     min-width: 3rem;
     display: flex;
@@ -377,7 +153,7 @@
 
 .table-icon .material-symbols-rounded {
     font-size: 2rem;
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 .table-content {
@@ -385,7 +161,7 @@
 }
 
 .table-content strong {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     display: block;
     margin-bottom: 0.3rem;
     font-weight: 600;
@@ -393,7 +169,7 @@
 }
 
 .table-content span {
-    color: var(--negro);
+    color: var(--black);
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -408,40 +184,15 @@
 .content-intro p {
     font-size: 1.15rem;
     line-height: 1.7;
-    color: var(--negro);
+    color: var(--black);
 }
 
 /* ======================================
-   ESTILOS ESPECÍFICOS DE CARDS
+   CARDS - YA CENTRALIZADAS EN components/cards.css
    ====================================== */
 
-/* Content Card - Para contenido principal */
-.content-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    max-width: 100%;
-    margin: 0 auto 2rem auto;
-}
-
-.content-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.content-card p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    text-align: justify;
-    margin-bottom: 1.5rem;
-}
-
-.content-card p:last-child {
-    margin-bottom: 0;
-}
+/* Todas las cards (service-feature-card, glass-card, complementary-card, financial-card, practical-card, content-card) 
+   ya están definidas en components/cards.css con el nuevo sistema unificado */
 
 /* ======================================
    RESPONSIVE ESPECÍFICO DE SERVICIOS
@@ -543,7 +294,7 @@
 
     /* Grids específicos en móvil */
     .first-section .card-grid-3,
-    .blue-section .card-grid-3,
+    .primary-gradient-section .card-grid-3,
     .third-section .card-grid-2,
     .fourth-section .card-grid-3 {
         grid-template-columns: 1fr !important;
@@ -552,19 +303,14 @@
         margin-bottom: 2rem;
     }
 
-    /* Cards específicas móvil */
-    .content-card {
-        padding: 2rem;
-        margin: 0 0 2rem 0;
-    }
-
+    /* Cards específicas móvil - las content-card ya están centralizadas */
     .content-intro {
         padding: 0;
     }
 
     /* Ajustar todas las cards en móvil */
     .service-feature-card,
-    .requisito-card,
+    .glass-card,
     .complementary-card,
     .financial-card,
     .practical-card {
@@ -608,6 +354,42 @@
     .practical-card p {
         font-size: 0.95rem;
     }
+
+    /* Process cards responsive */
+    .proceso-card-full {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+
+    .process-step-icon {
+        min-width: 60px;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+
+    .process-step-icon .process-icon {
+        font-size: 2rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .card-content p {
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .card-meta {
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
 }
 
 /* ======================================
@@ -616,14 +398,14 @@
 
 @media (max-width: 360px) {
     .service-feature-card h3,
-    .requisito-card h3,
+    .glass-card h3,
     .financial-card h3,
     .practical-card h3 {
         font-size: 1.1rem;
     }
 
     .service-feature-card p,
-    .requisito-card p,
+    .glass-card p,
     .financial-card p,
     .practical-card p {
         font-size: 1rem;
@@ -657,4 +439,129 @@
     .table-content span {
         font-size: 0.85rem;
     }
+}
+
+/* ======================================
+   PROCESS SECTION - ESPECÍFICO DE SERVICIOS
+   ====================================== */
+
+.process-cards-horizontal {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.proceso-card-full {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    padding: 2.5rem;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: var(--margin-bottom-standard);
+}
+
+.proceso-card-full:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Process Step Icon */
+.process-step-icon {
+    min-width: 80px;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+}
+
+.process-step-icon .process-icon {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.proceso-card-full:hover .process-step-icon {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-medium);
+}
+
+.card-content {
+    flex: 1;
+    text-align: left;
+}
+
+.card-content h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.card-content p {
+    color: var(--black);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    font-size: 1.1rem;
+}
+
+.card-meta {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 0.0625rem solid var(--gray-light);
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-weight: 600;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.meta-item .meta-icon {
+    color: var(--primary);
+}
+
+/* ======================================
+   TESTIMONIOS LINKS - ESPECÍFICO DE SERVICIOS
+   ====================================== */
+
+.testimonios-link {
+    color: var(--primary);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.testimonios-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.testimonios-link:hover::after {
+    transform: scaleX(1);
 }

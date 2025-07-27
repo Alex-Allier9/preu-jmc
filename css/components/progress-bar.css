@@ -1,0 +1,49 @@
+/* ======================================
+   PROGRESS-BAR.CSS - BARRA DE PROGRESO DE SCROLL
+   ====================================== */
+
+/* Contenedor de la barra de progreso */
+#scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14px; /* Aumentado a 14px */
+    z-index: 10001; /* Por encima de todo */
+    pointer-events: none;
+    background: transparent;
+    overflow: hidden; /* Oculta el contenido que sobresale */
+    contain: layout style paint; /* Optimización de renderizado */
+}
+
+/* Barra de progreso interna */
+#scroll-progress-bar > div {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 0; /* Sin radio en el elemento animado */
+    transform-origin: left center;
+    transition: width 0.1s ease-out;
+    will-change: width;
+}
+
+/* Estados específicos */
+#scroll-progress-bar.visible {
+    opacity: 1;
+}
+
+#scroll-progress-bar.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: var(--tablet)) {
+    #scroll-progress-bar {
+        height: 8px; /* Aumentado de 6px a 8px */
+    }
+    
+    #scroll-progress-bar > div {
+        border-radius: 0; /* Sin radio en el elemento animado */
+    }
+}

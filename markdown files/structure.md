@@ -1,6 +1,6 @@
-## 📋 **ESTRUCTURA COMPLETA DEL SITIO WEB - Basada en Documentos de Cartes**
+## 📋 **ESTRUCTURA ACTUAL DEL SITIO WEB**
 
-preuniversitario-jmc/
+preu-jmc/
 │
 ├── index.html                # Página INICIO
 ├── nosotros.html             # Página NOSOTROS
@@ -11,30 +11,67 @@ preuniversitario-jmc/
 ├── recursos.html             # Página RECURSOS (oculta)
 ├── 404.html                  # Página de error
 │
-├── .htaccess                 # Para 404 - Apache
-├── nginx.conf                # Para 404 - Nginx
 │
 ├── css/
-│   ├── global.css            # Estilos compartidos (header, footer, etc.)
-│   ├── inicio.css            # Solo para index.html
-│   ├── nosotros.css          # Solo para nosotros.html
-│   ├── fundador.css          # Solo para fundador.html
-│   ├── servicios.css         # Solo para servicios.html
-│   ├── testimonios.css       # Solo para testimonios.html
-│   ├── contacto.css          # Solo para contacto.html
-│   ├── recursos.css          # Solo para recursos.html
-│   └── 404.css               # Solo para 404.html
+│   ├── main.css              # Archivo principal de CSS
+│   ├── 404.css               # Estilos específicos para 404.html
+│   ├── fundador.css          # Estilos específicos para fundador.html
+│   ├── nosotros.css          # Estilos específicos para nosotros.html
+│   ├── servicios.css         # Estilos específicos para servicios.html
+│   │
+│   ├── components/
+│   │   ├── buttons.css       # Componentes de botones
+│   │   ├── cards.css         # Componentes de tarjetas
+│   │   ├── grids.css         # Sistemas de grilla
+│   │   └── icons.css         # Iconografía
+│   │
+│   ├── core/
+│   │   ├── animations.css    # Animaciones del sistema
+│   │   ├── fonts.css         # Tipografías
+│   │   ├── reset.css         # Reset CSS
+│   │   └── variables.css     # Variables CSS personalizadas
+│   │
+│   ├── layout/
+│   │   ├── backgrounds.css   # Fondos y backgrounds
+│   │   ├── footer.css        # Footer del sitio
+│   │   ├── header.css        # Header y navegación
+│   │   └── sections.css      # Secciones generales
+│   │
+│   └── utilities/
+│       ├── helpers.css       # Clases auxiliares
+│       ├── responsive.css    # Media queries y responsive
+│       └── utilities.css     # Utilidades generales
 │
 ├── js/
-│   ├── global.js             # Funcionalidad compartida
-│   ├── inicio.js             # Solo para index.html
-│   ├── nosotros.js           # Solo para nosotros.html
-│   ├── fundador.js           # Solo para fundador.html
-│   ├── servicios.js          # Solo para servicios.html
-│   ├── testimonios.js        # Solo para testimonios.html
-│   ├── contacto.js           # Solo para contacto.html
-│   ├── recursos.js           # Solo para recursos.html
-│   └── 404.js                # Solo para 404.html
+│   ├── global.js             # Funcionalidad global compartida
+│   ├── 404.js                # Funcionalidad específica para 404.html
+│   ├── fundador.js           # Funcionalidad específica para fundador.html
+│   ├── nosotros.js           # Funcionalidad específica para nosotros.html
+│   └── servicios.js          # Funcionalidad específica para servicios.html
+│   │
+│   │ # ARCHIVOS JS PENDIENTES:
+│   │ # ├── index.js         # Para index.html (PENDIENTE)
+│   │ # ├── testimonios.js   # Para testimonios.html (PENDIENTE)
+│   │ # ├── contacto.js      # Para contacto.html (PENDIENTE)
+│   │ # └── recursos.js      # Para recursos.html (PENDIENTE)
+│
+├── markdown files/           # Documentación del proyecto
+│   ├── structure.md          # Este archivo - estructura del sitio
+│   ├── cartes_notes.md
+│   └── recap.md
+│
+├── web-old/                  # Versión anterior del sitio
+│   ├── 404.html
+│   ├── fundador.html
+│   ├── nosotros.html
+│   ├── servicios.html
+│   └── css/
+│       ├── 404.css
+│       ├── fundador.css
+│       ├── global.css
+│       ├── nosotros.css
+│       └── servicios.css
+│
 │
 └── media/                    # Todos los archivos multimedia
     ├── logos/
@@ -50,6 +87,42 @@ preuniversitario-jmc/
     │   └── 404               # Solo para 404.html
     └── downloads/
     
+---
+
+## **📊 ESTADO ACTUAL DEL PROYECTO**
+
+### **✅ PÁGINAS IMPLEMENTADAS**
+- ✅ **404.html** - Página de error completamente funcional
+- ✅ **fundador.html** - Página del fundador con contenido completo
+- ✅ **nosotros.html** - Página institucional con información completa
+- ✅ **servicios.html** - Página de servicios con detalles completos
+
+### **⏳ PÁGINAS PENDIENTES**
+- ❌ **index.html** - Página de inicio (FALTA CREAR)
+- ❌ **testimonios.html** - Página de testimonios (FALTA CREAR)
+- ❌ **contacto.html** - Página de contacto (FALTA CREAR)
+- ❌ **recursos.html** - Página de recursos (FALTA CREAR)
+
+### **🎨 SISTEMA CSS IMPLEMENTADO**
+- ✅ **Arquitectura Modular** - Sistema CSS organizado en módulos
+- ✅ **Variables CSS** - Sistema de variables personalizadas implementado
+- ✅ **Componentes** - Botones, tarjetas, grillas e iconos
+- ✅ **Layout** - Header, footer, secciones y backgrounds
+- ✅ **Utilidades** - Helpers, responsive y utilidades generales
+- ✅ **Core** - Reset, tipografías, animaciones y variables
+
+### **⚡ FUNCIONALIDAD JAVASCRIPT**
+- ✅ **global.js** - Funcionalidad compartida implementada y optimizada
+- ✅ **Sistema de efectos centralizado** - Hover effects unificados en global.js
+- ✅ **Código optimizado** - Eliminadas duplicaciones de funciones
+- ✅ **Páginas específicas** - JS para páginas implementadas (sin duplicaciones)
+- ❌ **Páginas pendientes** - JS para páginas faltantes
+
+### **🔧 HERRAMIENTAS DE DESARROLLO**
+- ✅ **Scripts PowerShell** - Para migración y limpieza de código
+- ✅ **Documentación** - Markdown files con análisis y estructura
+- ✅ **Backup** - Versión anterior en carpeta web-old/
+
 ---
 
 ## **🏠 PÁGINA: INICIO**
@@ -259,15 +332,29 @@ preuniversitario-jmc/
 
 ---
 
-## **🎯 NAVEGACIÓN PRINCIPAL**
+## **🎯 NAVEGACIÓN PLANIFICADA**
 ```
 INICIO | NOSOTROS | FUNDADOR | SERVICIOS | TESTIMONIOS | CONTACTO
 ```
 
-## **🔗 NAVEGACIÓN FOOTER**
+### **Estado de implementación:**
+- ❌ **INICIO** - (index.html - PENDIENTE)
+- ✅ **NOSOTROS** - (nosotros.html - IMPLEMENTADA)
+- ✅ **FUNDADOR** - (fundador.html - IMPLEMENTADA) 
+- ✅ **SERVICIOS** - (servicios.html - IMPLEMENTADA)
+- ❌ **TESTIMONIOS** - (testimonios.html - PENDIENTE)
+- ❌ **CONTACTO** - (contacto.html - PENDIENTE)
+
+## **🔗 NAVEGACIÓN FOOTER PLANIFICADA**
 ```
 - Recursos (página oculta)
 - Términos y Condiciones  
 - Política de Privacidad
 - Reglamento Interno (PDF)
 ```
+
+### **Estado de implementación:**
+- ❌ **Recursos** - (recursos.html - PENDIENTE)
+- ❌ **Términos y Condiciones** - (PENDIENTE)
+- ❌ **Política de Privacidad** - (PENDIENTE) 
+- ❌ **Reglamento Interno** - (PDF - PENDIENTE)

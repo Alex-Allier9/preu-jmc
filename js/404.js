@@ -6,63 +6,42 @@
    404.JS - FUNCIONALIDADES ESPECÍFICAS DE LA PÁGINA 404
    ====================================== */
 
-// Función debounce local para este archivo
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
+// Nota: La función debounce se usa desde global.js
 
-// Función para inicializar las animaciones fade-in específicas de 404
+// Función para inicializar las animaciones fade-in de contenedores
 function init404Animations() {
-    // Forzar que los elementos aparezcan con animaciones
+    // Activar fade-in secuencial en contenedores
     setTimeout(() => {
-        const fadeElements = document.querySelectorAll('.fade-in');
-        fadeElements.forEach((element, index) => {
-            setTimeout(() => {
-                element.classList.add('visible');
-                
-                // Activar animaciones específicas después de la entrada
-                if (element.classList.contains('glitch')) {
-                    // Activar animaciones glitch después de la entrada
-                    setTimeout(() => {
-                        element.querySelectorAll('.line').forEach(line => {
-                            line.style.animationPlayState = 'running';
-                        });
-                        // También activar la animación italic del contenedor glitch
-                        element.style.animationPlayState = 'running';
-                    }, 800);
-                }
-                
-                if (element.classList.contains('error-message')) {
-                    // Activar animación crazy text después de la entrada
-                    setTimeout(() => {
-                        const crazyText = element.querySelector('.crazy-text');
-                        if (crazyText) {
-                            crazyText.style.animationPlayState = 'running';
-                        }
-                    }, 600);
-                }
-            }, index * 200); // Escalonar las animaciones cada 200ms
-        });
+        const glitchContainer = document.querySelector('.glitch-container');
+        if (glitchContainer) {
+            glitchContainer.classList.add('visible');
+        }
     }, 100);
+
+    setTimeout(() => {
+        const messageContainer = document.querySelector('.message-container');
+        if (messageContainer) {
+            messageContainer.classList.add('visible');
+        }
+    }, 400);
+
+    setTimeout(() => {
+        const buttonContainer = document.querySelector('.button-container');
+        if (buttonContainer) {
+            buttonContainer.classList.add('visible');
+        }
+    }, 700);
 }
 
 // Función para controlar la intensidad de las animaciones según el dispositivo
 function adjustAnimationsByDevice() {
     const isMobile = window.innerWidth <= 848; // 53rem
     const isSmallMobile = window.innerWidth <= 360;
-    
+
     const glitchLines = document.querySelectorAll('.line');
     const crazyText = document.querySelector('.crazy-text');
     const glitchContainer = document.querySelector('.glitch');
-    
+
     if (isSmallMobile) {
         // Animaciones más suaves en pantallas muy pequeñas
         glitchLines.forEach(line => {
@@ -94,7 +73,7 @@ function handleVisibilityChange() {
     const glitchLines = document.querySelectorAll('.line');
     const crazyText = document.querySelector('.crazy-text');
     const glitchContainer = document.querySelector('.glitch');
-    
+
     if (document.hidden) {
         // Pausar animaciones cuando la página no es visible
         glitchLines.forEach(line => {
@@ -125,15 +104,15 @@ function handleVisibilityChange() {
 // Función para agregar efecto hover al botón
 function enhance404Button() {
     const errorButton = document.querySelector('.error-button');
-    
+
     if (errorButton) {
         // Efecto de ondas al hacer clic
-        errorButton.addEventListener('click', function(e) {
+        errorButton.addEventListener('click', function (e) {
             // Crear elemento de onda
             const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
-            
+
             ripple.style.cssText = `
                 position: absolute;
                 border-radius: 50%;
@@ -146,7 +125,7 @@ function enhance404Button() {
                 top: ${e.clientY - rect.top - size / 2}px;
                 pointer-events: none;
             `;
-            
+
             // Agregar animación CSS si no existe
             if (!document.querySelector('#ripple-style')) {
                 const style = document.createElement('style');
@@ -159,13 +138,13 @@ function enhance404Button() {
                 `;
                 document.head.appendChild(style);
             }
-            
+
             // Asegurar posición relativa
             this.style.position = 'relative';
             this.style.overflow = 'hidden';
-            
+
             this.appendChild(ripple);
-            
+
             // Remover el elemento después de la animación
             setTimeout(() => {
                 if (ripple.parentNode) {
@@ -173,13 +152,13 @@ function enhance404Button() {
                 }
             }, 600);
         });
-        
+
         // Efecto de partículas al hover (opcional)
-        errorButton.addEventListener('mouseenter', function() {
+        errorButton.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-2px) scale(1.02)';
         });
-        
-        errorButton.addEventListener('mouseleave', function() {
+
+        errorButton.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) scale(1)';
         });
     }
@@ -195,7 +174,7 @@ function log404Error() {
             custom_parameter: '404_error'
         });
     }
-    
+
     // Log en consola para desarrollo
     console.log('📍 404 Error - Página no encontrada:', window.location.href);
     console.log('🔗 Referrer:', document.referrer || 'Directo');
@@ -218,12 +197,12 @@ function suggestAlternativePages() {
         'contacto': 'contacto.html',
         'contact': 'contacto.html'
     };
-    
+
     // Buscar coincidencias en la URL
     for (const [keyword, page] of Object.entries(suggestions)) {
         if (currentPath.includes(keyword)) {
             console.log(`💡 Sugerencia: ¿Buscabas ${page}?`);
-            
+
             // Opcional: mostrar sugerencia en la página
             const errorMessage = document.querySelector('.error-message');
             if (errorMessage) {
@@ -231,10 +210,10 @@ function suggestAlternativePages() {
                 suggestion.style.cssText = `
                     margin-top: 1rem;
                     font-size: 0.9rem;
-                    color: var(--azul-oscuro);
+                    color: var(--primary-dark);
                     font-style: normal;
                 `;
-                suggestion.innerHTML = `¿Tal vez buscabas <a href="${page}" style="color: var(--azul-principal); text-decoration: underline;">${page.replace('.html', '')}?</a>`;
+                suggestion.innerHTML = `¿Tal vez buscabas <a href="${page}" style="color: var(--primary); text-decoration: underline;">${page.replace('.html', '')}?</a>`;
                 errorMessage.appendChild(suggestion);
             }
             break;
@@ -246,7 +225,7 @@ function suggestAlternativePages() {
 function enhanceSearchExperience() {
     // Precargar páginas principales para navegación más rápida
     const mainPages = ['index.html', 'nosotros.html', 'fundador.html', 'servicios.html', 'testimonios.html', 'contacto.html'];
-    
+
     mainPages.forEach(page => {
         const link = document.createElement('link');
         link.rel = 'prefetch';
@@ -256,23 +235,23 @@ function enhanceSearchExperience() {
 }
 
 // Inicialización específica de la página 404
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('404 Page with Glitch Effects initialized - JMC Preuniversitario');
-    
+
     // Inicializar animaciones PRIMERO
     init404Animations();
-    
+
     // Ajustar animaciones según el dispositivo
     adjustAnimationsByDevice();
-    
+
     // Configurar control de visibilidad
     document.addEventListener('visibilitychange', handleVisibilityChange);
-    
+
     // Reajustar animaciones en resize
     window.addEventListener('resize', debounce(() => {
         adjustAnimationsByDevice();
     }, 250));
-    
+
     // Luego inicializar otras funcionalidades
     setTimeout(() => {
         enhance404Button();
@@ -280,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
         suggestAlternativePages();
         enhanceSearchExperience();
     }, 500);
-    
+
     // Performance: Reducir animaciones si el usuario prefiere movimiento reducido
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const allAnimatedElements = document.querySelectorAll('.line, .crazy-text, .glitch');
@@ -300,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Mejorar la navegación desde la página 404
-window.addEventListener('popstate', function() {
+window.addEventListener('popstate', function () {
     // Si el usuario usa el botón de retroceso, redirigir a inicio
     if (window.location.pathname === '/404.html' || window.location.pathname.includes('404')) {
         window.location.href = 'index.html';

@@ -15,7 +15,7 @@
 /* Hero Section - Versión corregida */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    background: linear-gradient(rgba(var(--black-rgb), 0.3), rgba(var(--black-rgb), 0.3)),
         url('../media/images/fundador/ojos-salado_0002.jpg') center/cover;
     position: relative;
 }
@@ -26,7 +26,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: var(--container-padding);
     align-items: center;
 }
 
@@ -46,13 +46,13 @@
 }
 
 .hero h1 {
-    font-family: 'DM Serif Text', serif;
+    font-family: var(--font-title);
     font-size: clamp(2.5rem, 6vw, 4.5rem);
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--gap-medium);
     letter-spacing: var(--title-letter-spacing);
     line-height: 1.2;
     color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(var(--black-rgb), 0.3);
 }
 
 .hero-subtitle {
@@ -60,14 +60,14 @@
     font-style: italic;
     color: white;
     opacity: 0.9;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 3px rgba(var(--black-rgb), 0.2);
     max-width: 100%;
     align-self: flex-start;
 }
 
 /* CTA section background - ESPECÍFICO DE FUNDADOR */
 .cta {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
         url('../media/images/fundador/sergey-pesterev-tMvuB9se2uQ-unsplash.jpg') center/cover;
 }
 
@@ -76,180 +76,16 @@
    ====================================== */
 
 .profile-header {
-    padding: 5rem 0;
+    padding: var(--section-padding);
 }
 
-.profile-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 3rem;
-    align-items: start;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
+/* Profile card ya está definido en components/cards.css */
 
-.profile-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
-}
+/* Profile card, profile-image, profile-info, profile-contact ya están definidos en components/cards.css */
 
-/* Profile Image */
-.profile-image {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.profile-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-}
-
-.profile-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.3s ease;
-}
-
-.profile-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(65, 182, 230, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.profile-overlay .material-symbols-rounded {
-    font-size: 4rem;
-    color: white;
-}
-
-.profile-image:hover .profile-overlay {
-    opacity: 1;
-}
-
-.profile-image:hover .profile-photo {
-    transform: scale(1.1);
-}
-
-/* Profile Info */
-.profile-info {
-    flex: 1;
-    color: var(--negro);
-}
-
-.profile-name {
-    font-family: 'DM Serif Text', serif;
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    color: var(--azul-oscuro);
-    margin-bottom: 0.5rem;
-    letter-spacing: var(--title-letter-spacing);
-    line-height: 1.2;
-}
-
-.profile-title {
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    color: var(--azul-principal);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.profile-subtitle {
-    font-size: 1.1rem;
-    color: var(--negro);
-    margin-bottom: 2rem;
-    opacity: 0.8;
-}
-
-.profile-contact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-/* CORREGIDO - Profile contact items ahora son completamente clickeables */
-.profile-contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: inherit;
-}
-
-.profile-contact-item:hover {
-    background: rgba(65, 182, 230, 0.1);
-    transform: translateY(-3px);
-}
-
-.profile-contact-label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--azul-oscuro);
-    display: block;
-    margin-bottom: 0.3rem;
-}
-
-.profile-contact-value {
-    font-size: 1rem;
-    color: var(--negro);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.profile-contact-item:hover .profile-contact-value {
-    color: var(--azul-principal);
-}
-
-/* Iconos específicos para el perfil */
-.profile-contact-item .material-symbols-rounded {
-    font-size: 1.5rem;
-    color: var(--azul-principal);
-}
-
-.profile-contact-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    min-width: 1.5rem;
-    /* Evita que se deforme */
-}
-
-/* ======================================
-   ABOUT CARD
-   ====================================== */
-
-.about-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    max-width: 100%;
-    margin: 0 auto;
-}
+/* About card ya está definido en components/cards.css */
 
 .about-content {
-    line-height: 1.8;
     font-size: 1.1rem;
     hyphens: none;
 }
@@ -277,7 +113,7 @@
     margin-right: 8.33%;
     margin-bottom: 6rem;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-light);
     position: relative;
     z-index: 2;
 }
@@ -306,7 +142,7 @@
     content: '';
     position: absolute;
     width: 4px;
-    background-color: var(--azul-principal);
+    background-color: var(--primary);
     top: 0;
     bottom: 0;
     left: 50%;
@@ -331,8 +167,8 @@
 
 .timeline-year {
     padding: 0.5rem 1rem;
-    background-color: var(--amarillo);
-    color: var(--negro);
+    background-color: var(--accent);
+    color: var(--black);
     font-weight: 600;
     border-radius: 20px;
     display: inline-block;
@@ -341,19 +177,19 @@
 
 .timeline-content {
     padding: 1.5rem;
-    background-color: var(--blanco);
+    background-color: white;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-light);
     transition: all 0.3s ease;
 }
 
 .timeline-content:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-medium);
 }
 
 .timeline-content h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
@@ -362,68 +198,8 @@
    PHILOSOPHY SECTION
    ====================================== */
 
-.philosophy-section {
-    /* CORREGIDO - Exactamente igual que methodology en nosotros */
-    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
-    color: white;
-}
-
-/* Título blanco para fondo azul */
-.philosophy-section .section-title {
-    color: white;
-}
-
-.philosophy-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 3rem;
-    /* CORREGIDO - Usar padding igual que nosotros */
-    padding: 0 2rem 2rem 2rem;
-}
-
-.philosophy-card {
-    /* CORREGIDO - Fondo semitransparente blanco para contraste */
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: none;
-    padding: 2rem;
-    text-align: center;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.philosophy-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.philosophy-icon {
-    margin-bottom: 1.5rem;
-}
-
-.philosophy-icon .material-symbols-rounded {
-    font-size: 3rem;
-    /* CORREGIDO - Iconos amarillos para contraste con fondo azul */
-    color: var(--amarillo);
-}
-
-.philosophy-card h3 {
-    /* CORREGIDO - Títulos amarillos para contraste */
-    color: var(--amarillo);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.philosophy-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-    /* CORREGIDO - Texto blanco */
-    color: white;
-}
+/* Philosophy grid ya está definido en components/grids.css */
+/* Philosophy card ya está definido en components/cards.css */
 
 
 
@@ -436,43 +212,19 @@
 .mountaineering-intro p {
     font-size: 1.15rem;
     line-height: 1.7;
-    color: var(--negro);
+    color: var(--black);
 }
 
-.achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 4rem;
-    padding: 0 2rem;
-}
-
-.achievement-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.achievement-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.achievement-icon {
-    margin-bottom: 1.5rem;
-}
+/* Achievements grid ya está definido en components/grids.css */
+/* Achievement card ya está definido en components/cards.css */
 
 .achievement-icon .material-symbols-rounded {
     font-size: 3rem;
-    color: var(--azul-principal);
+    color: var(--primary);
 }
 
 .achievement-content h3 {
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-weight: 600;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -492,14 +244,14 @@
     font-family: 'DM Serif Text', serif;
     font-size: 2rem;
     font-weight: 700;
-    color: var(--azul-principal);
+    color: var(--primary);
     line-height: 1;
 }
 
 .stat-label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -507,7 +259,7 @@
 .achievement-content p {
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--negro);
+    color: var(--black);
 }
 
 /* ======================================
@@ -520,17 +272,13 @@
 
 .mountaineering-gallery h3 {
     text-align: center;
-    color: var(--azul-oscuro);
+    color: var(--primary-dark);
     font-size: 1.8rem;
     margin-bottom: 2rem;
     font-weight: 600;
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-}
+/* Gallery grid ya está definido en components/grids.css */
 
 .gallery-item {
     position: relative;
@@ -539,12 +287,12 @@
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-gallery);
 }
 
 .gallery-item:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-gallery-hover);
 }
 
 .gallery-item img {
@@ -563,7 +311,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    background: linear-gradient(transparent, rgba(var(--black-rgb), 0.8));
     color: white;
     padding: 1.5rem 1rem 1rem;
     transform: translateY(100%);
@@ -583,15 +331,6 @@
 .gallery-overlay p {
     font-size: 0.9rem;
     opacity: 0.9;
-}
-
-/* ======================================
-   CTA SECTION BACKGROUND
-   ====================================== */
-
-.cta {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url('../media/images/fundador/sergey-pesterev-tMvuB9se2uQ-unsplash.jpg') center/cover;
 }
 
 /* ======================================
@@ -617,7 +356,7 @@
     }
 
     /* CORREGIDO - Profile contact grid centrado en tablet */
-    .profile-contact-grid {
+    .profile-contact-items {
         grid-template-columns: 1fr;
         justify-items: center;
     }
@@ -633,7 +372,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .philosophy-grid .philosophy-card:nth-child(3) {
+    .philosophy-grid .glass-card:nth-child(3) {
         grid-column: span 2;
         max-width: 100%;
         margin: 0 auto;
@@ -686,7 +425,7 @@
     }
 
     /* CORREGIDO - Profile contact grid en mobile */
-    .profile-contact-grid {
+    .profile-contact-items {
         grid-template-columns: 1fr;
         justify-items: center;
     }
@@ -770,11 +509,8 @@
 
     /* Mantener hero-image-space visible pero más pequeño si es necesario */
 
-    .about-card {
-        padding: 2rem;
-    }
-
-    .about-content {
+    /* Content cards responsive - ya centralizado en components/cards.css */
+    .content-wrapper {
         font-size: 1rem;
         line-height: 1.7;
     }
@@ -785,7 +521,7 @@
         padding: 0 1rem 2rem 1rem !important;
     }
 
-    .philosophy-grid .philosophy-card:nth-child(3),
+    .philosophy-grid .glass-card:nth-child(3),
     .achievements-grid .achievement-card:nth-child(3) {
         grid-column: auto;
         max-width: 100%;

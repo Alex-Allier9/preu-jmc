@@ -1,0 +1,80 @@
+/* ======================================
+   RESPONSIVE.CSS - MEDIA QUERIES CENTRALIZADAS
+   ====================================== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    /* Grids responsive ahora están en components/grids.css */
+    
+    /* Icons tablet */
+    .main-icon-container {
+        height: 8.75rem;
+        width: 8.75rem;
+    }
+    
+    .main-icon {
+        font-size: 5rem;
+    }
+    
+    .secondary-icon-container {
+        height: 6.25rem;
+        width: 6.25rem;
+    }
+    
+    .secondary-icon {
+        font-size: 3.5rem;
+    }
+}
+
+/* Mobile (hasta 767px) */
+@media (max-width: 53rem) {
+    /* Navigation mobile */
+    .nav-menu {
+        display: none;
+    }
+    
+    /* Hero mobile */
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    /* Sections mobile */
+    .section {
+        padding: 3rem 0;
+    }
+    
+    /* Container mobile */
+    .container {
+        padding: 0 1rem;
+    }
+    
+    /* Grids responsive ahora están en components/grids.css */
+    
+    /* Icons mobile */
+    .main-icon-container {
+        height: 5rem;
+        width: 5rem;
+    }
+    
+    .main-icon {
+        font-size: 2.5rem;
+    }
+    
+    .secondary-icon-container {
+        height: 3.75rem;
+        width: 3.75rem;
+    }
+    
+    .secondary-icon {
+        font-size: 2rem;
+    }
+    
+    /* Backgrounds mobile */
+    .mountain-background,
+    .secondary-background {
+        width: 100vw;
+        height: 150vh;
+        background-size: cover;
+        background-position: center top;
+    }
+}

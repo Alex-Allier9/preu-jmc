@@ -7,14 +7,16 @@
     <title>José Manuel Cartes - Fundador | Preuniversitario JMC</title>
     <meta name="description"
         content="Conoce a José Manuel Cartes, fundador del Preuniversitario JMC. Ingeniero Civil UC, profesor con metodología Montessori y montañista con más de 18 años de experiencia.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded&icon_names=assignment,attach_money,balance,bid_landscape,book_3,calendar_month,co_present,coffee,date_range,email,event_available,elevation,exercise,explore,forum,groups,groups_3,library_books,location_on,mountain_flag,query_stats,school,self_improvement,south_america,star_shine,sunny,supervisor_account,target,timer,volunteer_activism,person,business,school,emoji_events,trending_up&display=block" />
-    <link rel="stylesheet" href="css/global.css">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="media/favicon/favicon.svg">
+    <link rel="icon" type="image/png" href="media/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="shortcut icon" href="media/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="media/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="media/favicon/site.webmanifest">
+    <meta name="theme-color" content="#41B6E6">
+    
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/fundador.css">
 </head>
 
@@ -22,16 +24,16 @@
     <!-- Header -->
     <header class="header" id="header">
         <nav class="nav-container">
-            <a href="/" class="logo">
+            <a href="index" class="logo">
                 <img src="media/logos/logo_web.svg" alt="JMC" style="height: 1.8rem;">
             </a>
             <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Inicio</a></li>
-                <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
-                <li><a href="fundador.html" class="nav-link active">Fundador</a></li>
-                <li><a href="servicios.html" class="nav-link">Servicios</a></li>
-                <li><a href="testimonios.html" class="nav-link">Testimonios</a></li>
-                <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                <li><a href="index" class="nav-link">Inicio</a></li>
+                <li><a href="nosotros" class="nav-link">Nosotros</a></li>
+                <li><a href="fundador" class="nav-link active">Fundador</a></li>
+                <li><a href="servicios" class="nav-link">Servicios</a></li>
+                <li><a href="testimonios" class="nav-link">Testimonios</a></li>
+                <li><a href="contacto" class="nav-link">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -56,7 +58,7 @@
         <!-- Profile Header Section -->
         <section class="profile-header">
             <div class="container">
-                <div class="profile-card fade-in">
+                <div class="profile-card profile-contact-grid fade-in">
                     <div class="profile-image">
                         <img src="media/images/fundador/jose-manuel-cartes.jpg" alt="José Manuel Cartes Urzúa"
                             class="profile-photo">
@@ -69,7 +71,7 @@
                         <h2 class="profile-title">Fundador Preuniversitario JMC</h2>
                         <p class="profile-subtitle">Ingeniero Civil UC • Profesor • Montañista</p>
 
-                        <div class="profile-contact-grid">
+                        <div class="profile-contact-items">
                             <a href="mailto:jcartes@preujmc.cl" class="profile-contact-item">
                                 <span class="material-symbols-rounded">email</span>
                                 <div class="profile-contact-details">
@@ -77,14 +79,17 @@
                                     <span class="profile-contact-value">jcartes@preujmc.cl</span>
                                 </div>
                             </a>
-                            <a href="https://instagram.com/josemanuelcartes" target="_blank" class="profile-contact-item">
-                                <img src="media/icons/Instagram_Glyph_Gradient.png" alt="Instagram" class="profile-contact-icon">
+                            <a href="https://instagram.com/josemanuelcartes" target="_blank"
+                                class="profile-contact-item">
+                                <img src="media/icons/Instagram_Glyph_Gradient.png" alt="Instagram"
+                                    class="profile-contact-icon">
                                 <div class="profile-contact-details">
                                     <span class="profile-contact-label">Instagram</span>
                                     <span class="profile-contact-value">@josemanuelcartes</span>
                                 </div>
                             </a>
-                            <a href="https://www.linkedin.com/in/josé-manuel-cartes-urzúa-10b35711" target="_blank" class="profile-contact-item">
+                            <a href="https://www.linkedin.com/in/josé-manuel-cartes-urzúa-10b35711" target="_blank"
+                                class="profile-contact-item">
                                 <img src="media/icons/LI-In-Bug.png" alt="LinkedIn" class="profile-contact-icon">
                                 <div class="profile-contact-details">
                                     <span class="profile-contact-label">LinkedIn</span>
@@ -102,8 +107,8 @@
             <div class="container">
                 <h2 class="section-title fade-in">Sobre mí</h2>
                 <div class="section-subtitle fade-in"></div>
-                <div class="about-card fade-in">
-                    <div class="about-content">
+                <div class="content-card fade-in">
+                    <div class="content-wrapper">
                         <p>Mi nombre es José Manuel Cartes Urzúa, soy profesor, ingeniero Civil UC y montañista, además
                             de un ser humano creyente en Dios. Cuento con más de 18 años de experiencia en aula como
                             profesor del Colegio Epullay Montessori y de mi preuniversitario.</p>
@@ -184,33 +189,34 @@
         <div class="secondary-background"></div>
 
         <!-- Philosophy Section -->
-        <section class="section philosophy-section">
+        <section class="section primary-gradient-section">
             <div class="container">
                 <h2 class="section-title fade-in">Filosofía Educativa</h2>
                 <div class="section-subtitle fade-in"></div>
 
                 <div class="philosophy-grid">
-                    <div class="philosophy-card fade-in">
-                        <div class="philosophy-icon">
-                            <span class="material-symbols-rounded">self_improvement</span>
+                    <div class="glass-card fade-in">
+                        <div class="secondary-icon-container">
+                            <span class="material-symbols-rounded secondary-icon">self_improvement</span>
                         </div>
                         <h3>Potencial Infinito</h3>
                         <p>Cada ser humano cuenta con un potencial enorme para crecer, aprender y contribuir a los demás
                             cuando desarrolla sus talentos únicos.</p>
                     </div>
 
-                    <div class="philosophy-card fade-in">
-                        <div class="philosophy-icon">
-                            <span class="material-symbols-rounded">volunteer_activism</span>
+                    <div class="glass-card fade-in">
+                        <div class="secondary-icon-container">
+                            <span class="material-symbols-rounded secondary-icon">volunteer_activism</span>
                         </div>
                         <h3>Formación Integral</h3>
-                        <p>Desarrollo no solo de habilidades académicas, sino también de disciplina, autoconfianza y valores
+                        <p>Desarrollo no solo de habilidades académicas, sino también de disciplina, autoconfianza y
+                            valores
                             para ser mejores seres humanos.</p>
                     </div>
 
-                    <div class="philosophy-card fade-in">
-                        <div class="philosophy-icon">
-                            <span class="material-symbols-rounded">star_shine</span>
+                    <div class="glass-card fade-in">
+                        <div class="secondary-icon-container">
+                            <span class="material-symbols-rounded secondary-icon">star_shine</span>
                         </div>
                         <h3>Proyecto de Vida</h3>
                         <p>Acompañamiento en la construcción de un proyecto de vida valioso que permita aportar
@@ -328,7 +334,7 @@
             <h2 class="fade-in">¿Quieres conocer más sobre nuestra metodología?</h2>
             <p class="fade-in" style="font-size: 1.2rem; margin-bottom: 2rem;">Agenda una entrevista personal con José
                 Manuel Cartes</p>
-            <a href="contacto.html" class="cta-button fade-in">CONTÁCTANOS</a>
+            <a href="contacto" class="btn-accent-inverse fade-in">CONTÁCTANOS</a>
         </div>
     </section>
 
@@ -359,12 +365,12 @@
                 </div>
                 <div class="footer-section footer-nav">
                     <h3>Navegación</h3>
-                    <p><a href="index.html" class="footer-nav-link">Inicio</a></p>
-                    <p><a href="nosotros.html" class="footer-nav-link">Nosotros</a></p>
-                    <p><a href="fundador.html" class="footer-nav-link">Fundador</a></p>
-                    <p><a href="servicios.html" class="footer-nav-link">Servicios</a></p>
-                    <p><a href="testimonios.html" class="footer-nav-link">Testimonios</a></p>
-                    <p><a href="contacto.html" class="footer-nav-link">Contacto</a></p>
+                    <p><a href="index" class="footer-nav-link">Inicio</a></p>
+                    <p><a href="nosotros" class="footer-nav-link">Nosotros</a></p>
+                    <p><a href="fundador" class="footer-nav-link">Fundador</a></p>
+                    <p><a href="servicios" class="footer-nav-link">Servicios</a></p>
+                    <p><a href="testimonios" class="footer-nav-link">Testimonios</a></p>
+                    <p><a href="contacto" class="footer-nav-link">Contacto</a></p>
                 </div>
             </div>
             <div class="footer-bottom">

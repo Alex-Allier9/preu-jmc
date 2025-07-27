@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría Completa CSS - Test Interactivo de Todos los Estilos - Preuniversitario JMC</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="media/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="media/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="media/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    
+    <style>
+        /* Background control styles */
+        .bg-controller {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            border-radius: 10px;
+            color: white;
+            max-width: 200px;
+        }
+        
+        .bg-controller h4 {
+            margin: 0 0 0.5rem 0; 
+            font-size: 0.9rem;
+        }
+        
+        .bg-controller button {
+            margin: 0.25rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            font-size: 0.8rem;
+            width: 100%;
+        }
+        
+        .bg-controller button:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Different background options */
+        .bg-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .bg-image {
+            background-image: url('media/images/servicios/thomas-griesbeck-Y2aNc1X7xLg-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .bg-pattern {
+            background: 
+                radial-gradient(circle at 25% 25%, #667eea 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #764ba2 0%, transparent 50%),
+                linear-gradient(45deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            min-height: 100vh;
+        }
+        
+        .bg-solid {
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .bg-dark {
+            background: #2c3e50;
+            min-height: 100vh;
+        }
+        
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .test-content {
+            position: relative;
+            z-index: 3;
+            padding: 2rem 0;
+        }
+        
+        /* Test specific styles */
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .comparison-section {
+            margin: 4rem 0;
+            padding: 2rem;
+            border: 2px solid var(--accent);
+            border-radius: var(--border-radius-large);
+        }
+        
+        .icon-showcase {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-standard);
+        }
+        
+        .icon-size-demo {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .color-swatch {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0.5rem;
+            display: inline-block;
+            border: 2px solid white;
+            box-shadow: var(--shadow-light);
+        }
+        
+        .typography-demo h1,
+        .typography-demo h2,
+        .typography-demo h3,
+        .typography-demo h4,
+        .typography-demo h5,
+        .typography-demo h6 {
+            margin: 1rem 0;
+        }
+        
+        /* Special demo cards */
+        .demo-card {
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: var(--border-radius-standard);
+            transition: var(--transition-standard);
+        }
+        
+        .shadow-demo {
+            margin: 1rem;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--border-radius-standard);
+            text-align: center;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .bg-controller {
+                top: 10px;
+                right: 10px;
+                font-size: 0.8rem;
+                max-width: 150px;
+            }
+            
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .icon-size-demo {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body id="testBody" class="bg-gradient">
+    <!-- Background Controller -->
+    <div class="bg-controller">
+        <h4>Fondo:</h4>
+        <button onclick="changeBackground('bg-gradient')">Gradiente</button>
+        <button onclick="changeBackground('bg-image')">Imagen</button>
+        <button onclick="changeBackground('bg-pattern')">Patrón</button>
+        <button onclick="changeBackground('bg-solid')">Sólido</button>
+        <button onclick="changeBackground('bg-dark')">Oscuro</button>
+    </div>
+
+    <div class="bg-overlay" id="overlay"></div>
+    
+    <div class="test-content">
+        <!-- Header Principal -->
+        <header class="glass-section">
+            <div class="container text-center">
+                <h1 class="section-title">Test Completo - Sistema Actualizado</h1>
+                <div class="section-subtitle"></div>
+                <p class="subtitle">Demostración completa con cards unificadas y nombres universales</p>
+            </div>
+        </header>
+
+        <!-- ===== NAVEGACIÓN INTERNA ===== -->
+        <section class="glass-section" style="padding: 2rem 0;">
+            <div class="container">
+                <nav style="text-align: center;">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 1rem;">Navegación del Test</h3>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                        <a href="#botones" class="universal-link">Botones</a>
+                        <a href="#cards" class="universal-link">Cards</a>
+                        <a href="#grids" class="universal-link">Grids</a>
+                        <a href="#iconos" class="universal-link">Iconos</a>
+                        <a href="#enlaces" class="universal-link">Enlaces</a>
+                        <a href="#utilidades" class="universal-link">Utilidades</a>
+                        <a href="#tipografia" class="universal-link">Tipografía</a>
+                    </div>
+                </nav>
+            </div>
+        </section>
+
+        <!-- ===== SISTEMA DE BOTONES ===== -->
+        <section id="botones" class="glass-section-light">
+            <div class="container">
+                <h2 class="section-title text-center">Sistema Completo de Botones</h2>
+                <div class="section-subtitle"></div>
+                
+                <h3 class="text-center">Botones Glassmorphism</h3>
+                <div class="button-group">
+                    <a href="#" class="btn-glass-primary">Glass Primary</a>
+                    <a href="#" class="btn-glass-white">Glass White</a>
+                    <a href="#" class="btn-glass-dark">Glass Dark</a>
+                </div>
+                
+                <h3 class="text-center">Botones Primary</h3>
+                <div class="button-group">
+                    <a href="#" class="btn-primary">Primary</a>
+                    <a href="#" class="btn-primary-dark">Primary Dark</a>
+                    <a href="#" class="btn-primary-outlined">Primary Outlined</a>
+                    <a href="#" class="btn-primary-dark-outlined">Primary Dark Outlined</a>
+                </div>
+                
+                <h3 class="text-center">Botones Accent</h3>
+                <div class="button-group">
+                    <a href="#" class="btn-accent">Accent</a>
+                    <a href="#" class="btn-accent-inverse">Accent Inverse</a>
+                    <a href="#" class="btn-accent-outlined">Accent Outlined</a>
+                    <a href="#" class="btn-accent-inverse-outlined">Accent Inverse Outlined</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SISTEMA DE CARDS ===== -->
+        <section id="cards" class="glass-section">
+            <div class="container">
+                <h2 class="section-title text-center">Sistema Completo de Cards</h2>
+                <div class="section-subtitle"></div>
+                
+                <h3 class="text-center">Glass Cards</h3>
+                <div class="test-grid">
+                    <div class="glass-card">
+                        <span class="material-symbols-rounded main-icon" style="color: var(--primary);">auto_stories</span>
+                        <h3 class="card-title">Glass Card Normal</h3>
+                        <p class="card-text">Card con efecto glassmorphism translúcido perfecto para fondos complejos.</p>
+                        <a href="#" class="btn-glass-primary">Explorar</a>
+                    </div>
+                    
+                    <div class="glass-card-light">
+                        <span class="material-symbols-rounded main-icon" style="color: var(--accent);">psychology</span>
+                        <h3 class="card-title">Glass Card Light</h3>
+                        <p class="card-text">Versión más transparente para efectos sutiles y elegantes.</p>
+                        <a href="#" class="btn-glass-white">Descubrir</a>
+                    </div>
+                    
+                    <div class="glass-card-dark">
+                        <span class="material-symbols-rounded main-icon" style="color: white;">groups</span>
+                        <h3 class="card-title">Glass Card Dark</h3>
+                        <p class="card-text">Card oscura translúcida para fondos claros o contraste elegante.</p>
+                        <a href="#" class="btn-glass-dark">Conocer</a>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">🎯 Cards Unificadas - Sistema Universal Actualizado</h3>
+                <div class="test-grid">
+                    <div class="feature-card">
+                        <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); margin-bottom: 1rem;">auto_awesome</span>
+                        <h3 class="card-title">Feature Card</h3>
+                        <p class="card-text">Card universal para características, servicios y aspectos prácticos. Combina service-feature-card + practical-card.</p>
+                        <a href="#" class="universal-link">Ver Características</a>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <span class="material-symbols-rounded secondary-icon" style="color: var(--accent); margin-bottom: 1rem;">info</span>
+                        <h3 class="card-title">Glass Card</h3>
+                        <p class="card-text">Card universal con fondo glassmorphism para información. Combina value-card + financial-card + info-card.</p>
+                        <a href="#" class="universal-link">Ver Información</a>
+                    </div>
+                    
+                    <div class="mvp-card">
+                        <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); margin-bottom: 1rem;">workspace_premium</span>
+                        <h3 class="card-title">MVP Card (Universal)</h3>
+                        <p class="card-text">Card universal para misión, visión, propósito y propuestas de valor.</p>
+                        <a href="#" class="universal-link">Conocer Más</a>
+                    </div>
+                </div>
+
+                <h3 class="text-center">Cards Especializadas - Nuevos Universales</h3>
+                <div class="test-grid">
+                    <div class="stat-card">
+                        <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); margin-bottom: 1rem;">trending_up</span>
+                        <div class="stat-number" style="font-size: 3rem; font-weight: bold; color: var(--primary);">95%</div>
+                        <p class="card-text">Stat Card (Universal) - Para estadísticas y datos numéricos importantes.</p>
+                    </div>
+                    
+                    <div class="complementary-card">
+                        <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); margin-bottom: 1rem;">extension</span>
+                        <h3 class="card-title">Complementary Card</h3>
+                        <p class="card-text">Card para servicios y características complementarias.</p>
+                        <a href="#" class="universal-link">Detalles</a>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); margin-bottom: 1rem;">blur_on</span>
+                        <h3 class="card-title">Glass Card</h3>
+                        <p class="card-text">Card universal con efecto glassmorphism para fondos complejos e iconos centrales.</p>
+                        <a href="#" class="universal-link">Explorar</a>
+                    </div>
+                </div>
+                    
+                    <div class="profile-card" style="max-width: 400px; margin: 0 auto;">
+                        <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); margin-bottom: 1rem;">person</span>
+                        <h3 class="card-title">Profile Card</h3>
+                        <p class="card-text">Card especializada para perfiles y información personal.</p>
+                        <a href="#" class="btn-primary">Ver Perfil</a>
+                    </div>
+                    
+                    <div class="content-card" style="max-width: 400px; margin: 0 auto;">
+                        <span class="material-symbols-rounded secondary-icon" style="color: var(--accent); margin-bottom: 1rem;">article</span>
+                        <h3 class="card-title">Content Card</h3>
+                        <p class="card-text">Card para contenido narrativo principal y textos extensos.</p>
+                        <a href="#" class="btn-accent">Leer Más</a>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Quote Card - Citas y Testimonios</h3>
+                <div class="quote-card">
+                    <p class="quote-text">La educación es el arma más poderosa que puedes usar para cambiar el mundo.</p>
+                    <p class="quote-author">— Nelson Mandela</p>
+                </div>
+                
+                <div class="quote-card">
+                    <p class="quote-text">El conocimiento es poder, pero el poder de aplicar ese conocimiento es sabiduría.</p>
+                    <p class="quote-author">— José Manuel Cartes, Fundador</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SISTEMA DE ICONOS ===== -->
+        <section id="iconos" class="glass-section-dark">
+            <div class="container">
+                <h2 class="section-title text-center">Sistema de Iconos Material Symbols</h2>
+                <div class="section-subtitle"></div>
+                
+                <h3 class="text-center">Tamaños de Iconos</h3>
+                <div class="icon-size-demo">
+                    <div class="text-center">
+                        <span class="material-symbols-rounded main-icon">school</span>
+                        <br><small>Main Icon (6rem)</small>
+                    </div>
+                    <div class="text-center">
+                        <span class="material-symbols-rounded secondary-icon">psychology</span>
+                        <br><small>Secondary Icon (4.5rem)</small>
+                    </div>
+                    <div class="text-center">
+                        <span class="material-symbols-rounded" style="font-size: 3rem;">science</span>
+                        <br><small>Large (3rem)</small>
+                    </div>
+                    <div class="text-center">
+                        <span class="material-symbols-rounded" style="font-size: 2rem;">calculate</span>
+                        <br><small>Medium (2rem)</small>
+                    </div>
+                    <div class="text-center">
+                        <span class="material-symbols-rounded footer-icon">auto_stories</span>
+                        <br><small>Footer Icon (1.2rem)</small>
+                    </div>
+                    <div class="text-center">
+                        <span class="material-symbols-rounded meta-icon">info</span>
+                        <br><small>Meta Icon (1rem)</small>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Iconos por Categoría</h3>
+                <div class="test-grid">
+                    <div class="glass-card">
+                        <h4>Educación</h4>
+                        <div class="icon-showcase">
+                            <span class="material-symbols-rounded" style="font-size: 2rem;">school</span>
+                            <span><strong>school</strong> - Educación</span>
+                        </div>
+                        <div class="icon-showcase">
+                            <span class="material-symbols-rounded" style="font-size: 2rem;">auto_stories</span>
+                            <span><strong>auto_stories</strong> - Literatura</span>
+                        </div>
+                        <div class="icon-showcase">
+                            <span class="material-symbols-rounded" style="font-size: 2rem;">menu_book</span>
+                            <span><strong>menu_book</strong> - Libros</span>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h4>Ciencias</h4>
+                        <div class="icon-showcase">
+                            <span class="material-symbols-rounded" style="font-size: 2rem;">science</span>
+                            <span><strong>science</strong> - Ciencias</span>
+                        </div>
+                        <div class="icon-showcase">
+                            <span class="material-symbols-rounded" style="font-size: 2rem;">calculate</span>
+                            <span><strong>calculate</strong> - Matemáticas</span>
+                        </div>
+                        <div class="icon-showcase">
+                            <span class="material-symbols-rounded" style="font-size: 2rem;">psychology</span>
+                            <span><strong>psychology</strong> - Psicología</span>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h4>Gestión</h4>
+                        <div class="icon-showcase">
+                            <span class="material-symbols-rounded" style="font-size: 2rem;">groups</span>
+                            <span><strong>groups</strong> - Grupos</span>
+                        </div>
+                        <div class="icon-showcase">
+                            <span class="material-symbols-rounded" style="font-size: 2rem;">trending_up</span>
+                            <span><strong>trending_up</strong> - Progreso</span>
+                        </div>
+                        <div class="icon-showcase">
+                            <span class="material-symbols-rounded" style="font-size: 2rem;">workspace_premium</span>
+                            <span><strong>workspace_premium</strong> - Premium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SISTEMA DE GRIDS ===== -->
+        <section id="grids" class="glass-section-light">
+            <div class="container">
+                <h2 class="section-title text-center">Sistema de Grids</h2>
+                <div class="section-subtitle"></div>
+                
+                <h3 class="text-center">Grid 2-2-1 - Nuevo Layout (2 desktop, 2 tablet, 1 mobile)</h3>
+                <div class="grid-2-2-1">
+                    <div class="feature-card">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon">groups</span>
+                        </div>
+                        <h3>Grupos Pequeños</h3>
+                        <p>2 columnas en desktop, 2 en tablet, 1 en mobile</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon">calendar_month</span>
+                        </div>
+                        <h3>Clases Presenciales</h3>
+                        <p>Layout perfecto para "Nuestro Programa"</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon">location_on</span>
+                        </div>
+                        <h3>Ubicación</h3>
+                        <p>También funciona para "Nuestra Sede"</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon">coffee</span>
+                        </div>
+                        <h3>Instalaciones</h3>
+                        <p>Responsive en todos los dispositivos</p>
+                    </div>
+                </div>
+                
+        <!-- ===== SISTEMA DE GRIDS COMPLETO ===== -->
+        <section class="glass-section-light">
+            <div class="container">
+                <h2 class="section-title text-center">Sistema Completo de Grids Responsivas</h2>
+                <div class="section-subtitle"></div>
+                
+                <p class="text-center" style="margin-bottom: 3rem;">Formato: <strong>grid-(desktop)-(tablet)-(mobile)</strong> indica columnas en cada dispositivo</p>
+                
+                <h3 class="text-center">Grid 4-2-1 (4 desktop, 2 tablet, 1 mobile)</h3>
+                <div class="grid-4-2-1">
+                    <div class="glass-card-light">
+                        <h4>Card 1</h4>
+                        <p>4 columnas en desktop</p>
+                    </div>
+                    <div class="glass-card-light">
+                        <h4>Card 2</h4>
+                        <p>2 columnas en tablet</p>
+                    </div>
+                    <div class="glass-card-light">
+                        <h4>Card 3</h4>
+                        <p>1 columna en mobile</p>
+                    </div>
+                    <div class="glass-card-light">
+                        <h4>Card 4</h4>
+                        <p>Perfecto para stats</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Grid 3-3-1 (3 desktop, 3 tablet, 1 mobile)</h3>
+                <div class="grid-3-3-1">
+                    <div class="feature-card">
+                        <h4>Card 1</h4>
+                        <p>3 columnas en desktop y tablet</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Card 2</h4>
+                        <p>Solo 1 columna en mobile</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Card 3</h4>
+                        <p>Ideal para características</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Grid 3-2-1 (3 desktop, 2 tablet, 1 mobile) - Estilo MVP</h3>
+                <div class="grid-3-2-1">
+                    <div class="mvp-card">
+                        <h4>Misión</h4>
+                        <p>3 columnas en desktop, 2 en tablet, 1 en mobile</p>
+                    </div>
+                    <div class="mvp-card">
+                        <h4>Visión</h4>
+                        <p>Grid perfecta para MVP section</p>
+                    </div>
+                    <div class="mvp-card">
+                        <h4>Propósito</h4>
+                        <p>Responsive automático</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Grid 3-1-1 (3 desktop, 1 tablet, 1 mobile)</h3>
+                <div class="grid-3-1-1">
+                    <div class="glass-card">
+                        <h4>Card 1</h4>
+                        <p>3 columnas solo en desktop</p>
+                    </div>
+                    <div class="glass-card">
+                        <h4>Card 2</h4>
+                        <p>1 columna en tablet y mobile</p>
+                    </div>
+                    <div class="glass-card">
+                        <h4>Card 3</h4>
+                        <p>Más espacio en dispositivos pequeños</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Grid 2-2-1 (2 desktop, 2 tablet, 1 mobile)</h3>
+                <div class="grid-2-2-1">
+                    <div class="feature-card">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon">groups</span>
+                        </div>
+                        <h3>Nuestro Programa</h3>
+                        <p>2 columnas en desktop y tablet</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon">location_on</span>
+                        </div>
+                        <h3>Nuestra Sede</h3>
+                        <p>1 columna en mobile</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Grid 2-1-1 (2 desktop, 1 tablet, 1 mobile)</h3>
+                <div class="grid-2-1-1">
+                    <div class="glass-card">
+                        <h4>Card 1</h4>
+                        <p>2 columnas solo en desktop</p>
+                    </div>
+                    <div class="glass-card">
+                        <h4>Card 2</h4>
+                        <p>1 columna en tablet y mobile</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Grid 1-1-1 (1 desktop, 1 tablet, 1 mobile)</h3>
+                <div class="grid-1-1-1">
+                    <div class="content-card" style="max-width: 800px; margin: 0 auto;">
+                        <h4>Card Única</h4>
+                        <p>Siempre 1 columna en todos los dispositivos. Perfecta para contenido principal, hero sections o elementos que requieren máximo ancho y atención.</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Resumen de Breakpoints</h3>
+                <div class="content-card" style="max-width: 900px; margin: 2rem auto;">
+                    <div class="content-wrapper">
+                        <h4>📱 Responsive System</h4>
+                        <ul>
+                            <li><strong>Desktop:</strong> Más de 82rem (1312px) - Columnas completas</li>
+                            <li><strong>Tablet:</strong> 53rem - 82rem (848px - 1312px) - Columnas medias</li>
+                            <li><strong>Mobile:</strong> Hasta 53rem (848px) - Principalmente 1 columna</li>
+                        </ul>
+                        
+                        <h4>🎯 Uso Recomendado</h4>
+                        <ul>
+                            <li><strong>grid-4-2-1:</strong> Stats, datos, múltiples elementos pequeños</li>
+                            <li><strong>grid-3-3-1:</strong> Características, servicios, elementos medianos</li>
+                            <li><strong>grid-3-2-1:</strong> MVP, filosofía, elementos importantes</li>
+                            <li><strong>grid-3-1-1:</strong> Contenido que necesita más espacio en mobile</li>
+                            <li><strong>grid-2-2-1:</strong> Programas, sedes, elementos principales</li>
+                            <li><strong>grid-2-1-1:</strong> Comparaciones, dos elementos importantes</li>
+                            <li><strong>grid-1-1-1:</strong> Contenido único, hero, elementos destacados</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- ===== TIPOGRAFÍA ===== -->
+        <section id="tipografia" class="glass-section">
+            <div class="container">
+                <h2 class="section-title text-center">Sistema Tipográfico</h2>
+                <div class="section-subtitle"></div>
+                
+                <div class="test-grid">
+                    <div class="glass-card typography-demo">
+                        <h1 style="font-family: var(--font-title);">Título H1 - DM Serif</h1>
+                        <h2 style="font-family: var(--font-title);">Título H2 - DM Serif</h2>
+                        <h3 style="font-family: var(--font-title);">Título H3 - DM Serif</h3>
+                        <h4 style="font-family: var(--font-body);">Título H4 - Raleway</h4>
+                        <h5 style="font-family: var(--font-body);">Título H5 - Raleway</h5>
+                        <h6 style="font-family: var(--font-body);">Título H6 - Raleway</h6>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h3>Párrafos y Texto</h3>
+                        <p style="font-family: var(--font-body);">Este es un párrafo normal con Raleway. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="subtitle">Este es un subtítulo con estilo especial.</p>
+                        <p style="font-style: italic;">Este es texto en cursiva para énfasis.</p>
+                        <p><strong>Este es texto en negrita para destacar.</strong></p>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h3>Utilidades de Texto</h3>
+                        <p class="text-center">Texto centrado (.text-center)</p>
+                        <p class="text-left">Texto alineado a la izquierda (.text-left)</p>
+                        <p class="text-right">Texto alineado a la derecha (.text-right)</p>
+                        <p class="fw-light">Peso de fuente ligero (.fw-light)</p>
+                        <p class="fw-normal">Peso de fuente normal (.fw-normal)</p>
+                        <p class="fw-medium">Peso de fuente medio (.fw-medium)</p>
+                        <p class="fw-semibold">Peso de fuente semi-negrita (.fw-semibold)</p>
+                        <p class="fw-bold">Peso de fuente negrita (.fw-bold)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECCIONES ESPECIALES ===== -->
+        <section class="primary-gradient-section">
+            <div class="container text-center">
+                <h2 class="section-title">Sección con Gradiente Primary</h2>
+                <div class="section-subtitle"></div>
+                <p class="subtitle">Esta sección tiene el gradiente primario del sistema (azul)</p>
+                <a href="#" class="btn-accent-inverse">Botón Accent Inverse</a>
+            </div>
+        </section>
+
+        <section class="dark-blue-gradient-section">
+            <div class="container text-center">
+                <h2 class="section-title">Sección con Gradiente Dark Blue</h2>
+                <div class="section-subtitle"></div>
+                <p class="subtitle">Esta sección usa el gradiente azul oscuro para mayor contraste</p>
+                <a href="#" class="btn-accent">Botón Accent</a>
+            </div>
+        </section>
+
+        <!-- ===== SOMBRAS Y EFECTOS ===== -->
+        <section class="glass-section-light">
+            <div class="container">
+                <h2 class="section-title text-center">Sistema de Sombras</h2>
+                <div class="section-subtitle"></div>
+                
+                <div class="test-grid">
+                    <div class="shadow-demo" style="box-shadow: var(--shadow-light);">
+                        <h4>Shadow Light</h4>
+                        <p>var(--shadow-light)</p>
+                        <p>Sombra ligera para elementos sutiles</p>
+                    </div>
+                    <div class="shadow-demo" style="box-shadow: var(--shadow-medium);">
+                        <h4>Shadow Medium</h4>
+                        <p>var(--shadow-medium)</p>
+                        <p>Sombra media para cards estándar</p>
+                    </div>
+                    <div class="shadow-demo" style="box-shadow: var(--shadow-strong);">
+                        <h4>Shadow Strong</h4>
+                        <p>var(--shadow-strong)</p>
+                        <p>Sombra fuerte para elementos elevados</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== COLORES DEL SISTEMA ===== -->
+        <section class="glass-section">
+            <div class="container text-center">
+                <h2 class="section-title">Paleta de Colores</h2>
+                <div class="section-subtitle"></div>
+                
+                <h3>Colores Primarios</h3>
+                <div>
+                    <span class="color-swatch" style="background: var(--primary);" title="Primary"></span>
+                    <span class="color-swatch" style="background: var(--primary-dark);" title="Primary Dark"></span>
+                    <span class="color-swatch" style="background: var(--accent);" title="Accent"></span>
+                </div>
+                <p>
+                    <small>Primary: var(--primary) | Primary Dark: var(--primary-dark) | Accent: var(--accent)</small>
+                </p>
+                
+                <h3>Grises del Sistema</h3>
+                <div>
+                    <span class="color-swatch" style="background: var(--text-dark);" title="Text Dark"></span>
+                    <span class="color-swatch" style="background: var(--text-light);" title="Text Light"></span>
+                    <span class="color-swatch" style="background: var(--border-light);" title="Border Light"></span>
+                </div>
+                <p>
+                    <small>Text Dark: var(--text-dark) | Text Light: var(--text-light) | Border: var(--border-light)</small>
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== UTILITARIOS GLASSMORPHISM ===== -->
+        <section class="glass-section-dark">
+            <div class="container">
+                <h2 class="section-title text-center">Utilitarios Glassmorphism</h2>
+                <div class="section-subtitle"></div>
+                
+                <div class="test-grid">
+                    <div class="glass-bg" style="padding: 2rem; border-radius: var(--border-radius-standard);">
+                        <h4>Glass BG</h4>
+                        <p><strong>Class:</strong> .glass-bg</p>
+                        <p>Background glassmorphism estándar con blur medio</p>
+                    </div>
+                    
+                    <div class="glass-bg-light" style="padding: 2rem; border-radius: var(--border-radius-standard);">
+                        <h4>Glass BG Light</h4>
+                        <p><strong>Class:</strong> .glass-bg-light</p>
+                        <p>Background glassmorphism ligero y sutil</p>
+                    </div>
+                    
+                    <div class="glass-bg-strong" style="padding: 2rem; border-radius: var(--border-radius-standard);">
+                        <h4>Glass BG Strong</h4>
+                        <p><strong>Class:</strong> .glass-bg-strong</p>
+                        <p>Background glassmorphism fuerte y prominente</p>
+                    </div>
+                    
+                    <div class="glass-bg-dark" style="padding: 2rem; border-radius: var(--border-radius-standard); color: white;">
+                        <h4>Glass BG Dark</h4>
+                        <p><strong>Class:</strong> .glass-bg-dark</p>
+                        <p>Background glassmorphism oscuro para contraste</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Efectos de Blur</h3>
+                <div class="test-grid">
+                    <div class="blur-light transparent-50" style="padding: 2rem; border-radius: var(--border-radius-standard);">
+                        <h4>Blur Light</h4>
+                        <p><strong>Class:</strong> .blur-light</p>
+                    </div>
+                    <div class="blur-medium transparent-50" style="padding: 2rem; border-radius: var(--border-radius-standard);">
+                        <h4>Blur Medium</h4>
+                        <p><strong>Class:</strong> .blur-medium</p>
+                    </div>
+                    <div class="blur-strong transparent-50" style="padding: 2rem; border-radius: var(--border-radius-standard);">
+                        <h4>Blur Strong</h4>
+                        <p><strong>Class:</strong> .blur-strong</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Transparencias</h3>
+                <div class="test-grid">
+                    <div class="transparent-30" style="padding: 1rem; border-radius: var(--border-radius-standard);">
+                        <strong>.transparent-30</strong> - 30% opacity
+                    </div>
+                    <div class="transparent-50" style="padding: 1rem; border-radius: var(--border-radius-standard);">
+                        <strong>.transparent-50</strong> - 50% opacity
+                    </div>
+                    <div class="transparent-70" style="padding: 1rem; border-radius: var(--border-radius-standard);">
+                        <strong>.transparent-70</strong> - 70% opacity
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CARD PADDINGS Y VARIACIONES ===== -->
+        <section class="glass-section">
+            <div class="container">
+                <h2 class="section-title text-center">Paddings de Cards</h2>
+                <div class="section-subtitle"></div>
+                
+                <h3 class="text-center">Padding Estándar vs Largo</h3>
+                <div class="test-grid">
+                    <div class="glass-card" style="padding: var(--card-padding);">
+                        <h4>Padding Estándar</h4>
+                        <p><strong>CSS:</strong> var(--card-padding)</p>
+                        <p>Este es el padding estándar usado en la mayoría de cards del sistema.</p>
+                    </div>
+                    
+                    <div class="glass-card" style="padding: var(--card-padding-large);">
+                        <h4>Padding Large</h4>
+                        <p><strong>CSS:</strong> var(--card-padding-large)</p>
+                        <p>Padding extendido para cards que requieren más espacio interno, como quote-cards y content-cards.</p>
+                    </div>
+                    
+                    <div class="content-card" style="max-width: 500px; margin: 0 auto;">
+                        <h4>Content Card con Padding Large</h4>
+                        <p>Las content-cards usan 3rem de padding para crear una sensación más espaciosa y cómoda para la lectura de contenido extenso.</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-center">Paddings Especializados</h3>
+                <div class="test-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">2.5rem</div>
+                        <p><strong>Stat Card</strong><br>Padding: 2.5rem</p>
+                    </div>
+                    
+                    <div class="mvp-card">
+                        <h4>MVP Card</h4>
+                        <p><strong>Padding:</strong> 2rem</p>
+                        <p>Para propuestas de valor destacadas</p>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <span class="material-symbols-rounded" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;">workspace_premium</span>
+                        <h4>Achievement Card</h4>
+                        <p><strong>Padding:</strong> 2rem</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SISTEMA DE ENLACES ===== -->
+        <section id="enlaces" class="glass-section">
+            <div class="container">
+                <h2 class="section-title text-center">Sistema Universal de Enlaces</h2>
+                <div class="section-subtitle"></div>
+                
+                <h3 class="text-center">Enlaces Básicos</h3>
+                <div class="test-grid">
+                    <div class="glass-card">
+                        <h4>Universal Link</h4>
+                        <p>Enlace principal con underline animado en hover</p>
+                        <a href="#" class="universal-link">Enlace Principal</a>
+                        <br><br>
+                        <code>.universal-link</code>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Color: var(--primary), Underline: var(--accent)</p>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h4>Universal Link Dark</h4>
+                        <p>Variante con color más oscuro</p>
+                        <a href="#" class="universal-link universal-link-dark">Enlace Oscuro</a>
+                        <br><br>
+                        <code>.universal-link-dark</code>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Color: var(--primary-dark), Underline: var(--accent)</p>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h4>Universal Link Accent</h4>
+                        <p>Variante con color de acento</p>
+                        <a href="#" class="universal-link universal-link-accent">Enlace Accent</a>
+                        <br><br>
+                        <code>.universal-link-accent</code>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Color: var(--accent), Underline: var(--primary)</p>
+                    </div>
+                </div>
+
+                <h3 class="text-center">Estados de Enlaces</h3>
+                <div class="test-grid">
+                    <div class="glass-card">
+                        <h4>Estado Normal</h4>
+                        <a href="#" class="universal-link">Enlace normal</a>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Sin hover, sin underline</p>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h4>Estado Hover</h4>
+                        <a href="#" class="universal-link" style="color: var(--primary);">Enlace en hover</a>
+                        <div style="width: 100%; height: 2px; background: var(--accent); margin-top: 2px; border-radius: 1px;"></div>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Con underline visible (simulado)</p>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h4>Estado Activo</h4>
+                        <a href="#" class="universal-link active">Enlace activo</a>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Con clase .active, underline permanente</p>
+                    </div>
+                </div>
+
+                <h3 class="text-center">Ejemplos en Contexto</h3>
+                <div class="test-grid">
+                    <div class="feature-card">
+                        <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); margin-bottom: 1rem;">link</span>
+                        <h4>En Cards</h4>
+                        <p>Los enlaces universales funcionan perfectamente dentro de cualquier card del sistema.</p>
+                        <a href="#" class="universal-link">Ver más detalles</a>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h4>En Glassmorphism</h4>
+                        <p>También se adaptan bien a fondos glassmorphism manteniendo la legibilidad.</p>
+                        <a href="#" class="universal-link-dark">Explorar opciones</a>
+                    </div>
+                    
+                    <div style="background: var(--black); color: white; padding: 2rem; border-radius: var(--border-radius-standard);">
+                        <h4>En Fondos Oscuros</h4>
+                        <p>Para fondos oscuros, el enlace principal mantiene su visibilidad.</p>
+                        <a href="#" class="universal-link">Enlace sobre fondo oscuro</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SPACING UTILITIES ===== -->
+        <section id="utilidades" class="glass-section-light">
+            <div class="container">
+                <h2 class="section-title text-center">Utilidades de Espaciado</h2>
+                <div class="section-subtitle"></div>
+                
+                <div class="test-grid">
+                    <div class="glass-card">
+                        <h3>Margins</h3>
+                        <div style="background: rgba(255, 0, 0, 0.1); padding: 0.5rem;">
+                            <div class="m-1" style="background: rgba(0, 255, 0, 0.2);">.m-1 (1rem margin)</div>
+                        </div>
+                        <div style="background: rgba(255, 0, 0, 0.1); padding: 0.5rem;">
+                            <div class="m-2" style="background: rgba(0, 255, 0, 0.2);">.m-2 (2rem margin)</div>
+                        </div>
+                        <div style="background: rgba(255, 0, 0, 0.1); padding: 0.5rem;">
+                            <div class="mt-3" style="background: rgba(0, 255, 0, 0.2);">.mt-3 (3rem margin-top)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h3>Paddings</h3>
+                        <div class="p-1" style="background: rgba(0, 255, 0, 0.2);">.p-1 (1rem padding)</div>
+                        <div class="p-2" style="background: rgba(0, 0, 255, 0.2);">.p-2 (2rem padding)</div>
+                        <div class="pt-3 pb-1" style="background: rgba(255, 255, 0, 0.2);">.pt-3 .pb-1</div>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h3>Display & Visibility</h3>
+                        <div class="d-block" style="background: rgba(255, 0, 0, 0.2); margin: 0.5rem 0;">.d-block</div>
+                        <div class="d-inline-block" style="background: rgba(0, 255, 0, 0.2); margin: 0.5rem;">.d-inline-block</div>
+                        <div class="text-center" style="background: rgba(0, 0, 255, 0.2); margin: 0.5rem 0;">.text-center</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== NAVEGACIÓN Y LINKS ===== -->
+        <section class="glass-section">
+            <div class="container text-center">
+                <h2 class="section-title">Navegación del Sitio</h2>
+                <div class="section-subtitle"></div>
+                
+                <p>Enlaces a todas las páginas del sistema:</p>
+                
+                <div class="button-group">
+                    <a href="nosotros.html" class="btn-glass-primary">Página Nosotros</a>
+                    <a href="servicios.html" class="btn-glass-white">Página Servicios</a>
+                    <a href="fundador.html" class="btn-glass-dark">Página Fundador</a>
+                    <a href="404.html" class="btn-primary-outlined">Página 404</a>
+                </div>
+                
+                <h3>Estados de Enlaces</h3>
+                <p><a href="#" style="color: var(--primary);">Enlace normal</a> | 
+                   <a href="#" style="color: var(--primary-dark);">Enlace visitado</a> | 
+                   <a href="#" style="color: var(--accent);">Enlace hover</a></p>
+            </div>
+        </section>
+
+        <!-- ===== RESPONSIVE DEMO ===== -->
+        <section class="glass-section-dark">
+            <div class="container">
+                <h2 class="section-title text-center">Sistema Responsive</h2>
+                <div class="section-subtitle"></div>
+                
+                <div class="glass-card text-center">
+                    <h3>Breakpoints del Sistema</h3>
+                    <p><strong>Desktop:</strong> Más de 82rem (1312px)</p>
+                    <p><strong>Tablet:</strong> 53rem - 82rem (848px - 1312px)</p>
+                    <p><strong>Mobile:</strong> Hasta 53rem (848px)</p>
+                    
+                    <h4>Prueba redimensionando la ventana</h4>
+                    
+                    <div class="hide-mobile" style="background: rgba(0, 255, 0, 0.2); padding: 1rem; margin: 1rem 0; border-radius: var(--border-radius-standard);">
+                        <strong>Visible solo en Tablet y Desktop (.hide-mobile)</strong>
+                    </div>
+                    
+                    <div class="show-mobile" style="background: rgba(255, 0, 0, 0.2); padding: 1rem; margin: 1rem 0; border-radius: var(--border-radius-standard);">
+                        <strong>Visible solo en Mobile (.show-mobile)</strong>
+                    </div>
+                    
+                    <div class="hide-desktop" style="background: rgba(0, 0, 255, 0.2); padding: 1rem; margin: 1rem 0; border-radius: var(--border-radius-standard);">
+                        <strong>Oculto en Desktop (.hide-desktop)</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== RESUMEN DE CAMBIOS ===== -->
+        <section class="glass-section-light">
+            <div class="container">
+                <h2 class="section-title text-center">📋 Resumen de Actualización del Sistema</h2>
+                <div class="section-subtitle"></div>
+                
+                <div class="content-card" style="max-width: 1000px; margin: 0 auto;">
+                    <div class="content-wrapper">
+                        <h3 style="color: var(--primary); margin-bottom: 1.5rem;">🎯 Sistema de Cards Completamente Unificado</h3>
+                        
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--border-radius-standard); margin-bottom: 2rem;">
+                            <h4 style="color: var(--accent); margin-bottom: 1rem;">✅ Cards Universales Principales:</h4>
+                            <ul style="text-align: left;">
+                                <li><strong>glass-card:</strong> Unifica info-card, value-card, financial-card - Para información con glassmorphism</li>
+                                <li><strong>feature-card:</strong> Unifica service-feature-card, practical-card - Para características y servicios</li>
+                                <li><strong>mvp-card:</strong> Ahora universal - Para misión, visión, propósito y propuestas de valor</li>
+                                <li><strong>stat-card:</strong> Ahora universal - Para estadísticas y datos numéricos</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--border-radius-standard); margin-bottom: 2rem;">
+                            <h4 style="color: var(--accent); margin-bottom: 1rem;">�️ Cards Eliminadas:</h4>
+                            <ul style="text-align: left;">
+                                <li><strong>info-card:</strong> Reemplazada completamente por glass-card</li>
+                                <li><strong>value-card:</strong> Funcionalidad fusionada en glass-card</li>
+                                <li><strong>financial-card:</strong> Mantiene compatibilidad, pero se recomienda glass-card</li>
+                            </ul>
+                        </div>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h3 style="color: var(--primary); margin-bottom: 1.5rem;">🔄 Migración Completa</h3>
+                        <p>Todas las páginas del sitio han sido actualizadas para usar las nuevas cards universales. La compatibilidad retroactiva se mantiene en el CSS pero ya no es necesario usar los nombres antiguos.</p>
+                        
+                        <h3 style="color: var(--primary); margin-bottom: 1.5rem;">🏫 Información Institucional</h3>
+                        <p>Nueva sección añadida con tres glass-cards que demuestran información institucional completa: Nuestra Sede, Filosofía Educativa y Requisitos de Ingreso. Todas usando el nuevo estilo con opacidad del 10% para máxima translucidez.</p>
+                        
+                        <h3 style="color: var(--primary); margin-bottom: 1.5rem;">💬 Quote Cards</h3>
+                        <p>Sistema de citas y testimonios con efecto glassmorphism, comillas decorativas y estilos específicos para autor. Perfecto para mostrar testimonios y frases inspiradoras.</p>
+                        
+                        <h3 style="color: var(--primary); margin-bottom: 1.5rem;">📐 Sistema de Paddings</h3>
+                        <p>Demostración completa de los diferentes paddings usados: var(--card-padding) estándar, var(--card-padding-large) para content-cards, y paddings especializados para stat-cards (2.5rem) y achievement-cards (2rem).</p>
+                        
+                        <h3 style="color: var(--primary); margin-bottom: 1.5rem;">🦶 Footer Integrado</h3>
+                        <p>Footer completo del sitio real con contacto real, redes sociales, navegación completa y créditos del diseñador. Totalmente funcional y consistente con el resto del sitio.</p>
+                        
+                        <h3 style="color: var(--primary); margin-bottom: 1.5rem;">✅ Beneficios del Sistema</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                            <div style="padding: 1rem; background: rgba(var(--primary-rgb), 0.1); border-radius: 10px;">
+                                <strong style="color: var(--primary);">Consistencia Visual</strong>
+                                <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem;">Cards similares ahora tienen el mismo estilo</p>
+                            </div>
+                            <div style="padding: 1rem; background: rgba(var(--accent-rgb), 0.1); border-radius: 10px;">
+                                <strong style="color: var(--accent);">Nombres Universales</strong>
+                                <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem;">Reutilizables en cualquier sección</p>
+                            </div>
+                            <div style="padding: 1rem; background: rgba(var(--primary-rgb), 0.1); border-radius: 10px;">
+                                <strong style="color: var(--primary);">Código Limpio</strong>
+                                <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem;">Menos duplicación de estilos</p>
+                            </div>
+                            <div style="padding: 1rem; background: rgba(var(--accent-rgb), 0.1); border-radius: 10px;">
+                                <strong style="color: var(--accent);">Fácil Mantenimiento</strong>
+                                <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem;">Un solo lugar para cambios</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== INFORMACIÓN INSTITUCIONAL ===== -->
+        <section class="glass-section">
+            <div class="container">
+                <h2 class="section-title text-center">Información Institucional</h2>
+                <div class="section-subtitle"></div>
+                
+                <div class="test-grid">
+                    <div class="glass-card" style="background: rgba(255, 255, 255, 0.1);">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon" style="color: var(--primary);">location_on</span>
+                        </div>
+                        <h3>Nuestra Sede</h3>
+                        <p>Ubicados estratégicamente en el centro de la ciudad, nuestras instalaciones modernas cuentan con aulas equipadas con tecnología de punta, biblioteca especializada y espacios de estudio colaborativo.</p>
+                        <div style="margin-top: 1rem; padding: 1rem; background: rgba(var(--accent-rgb), 0.1); border-radius: 8px;">
+                            <small><strong>Dirección:</strong> Av. Principal 123, Centro<br>
+                            <strong>Horarios:</strong> Lunes a Viernes 8:00 - 20:00</small>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card" style="background: rgba(255, 255, 255, 0.1);">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon" style="color: var(--accent);">psychology</span>
+                        </div>
+                        <h3>Filosofía Educativa</h3>
+                        <p>Creemos en el desarrollo integral del estudiante, combinando excelencia académica con formación en valores. Nuestro enfoque personalizado garantiza que cada alumno alcance su máximo potencial.</p>
+                        <div style="margin-top: 1rem; padding: 1rem; background: rgba(var(--primary-rgb), 0.1); border-radius: 8px;">
+                            <small><strong>Metodología:</strong> Aprendizaje activo y colaborativo<br>
+                            <strong>Valores:</strong> Excelencia, Integridad, Responsabilidad</small>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card" style="background: rgba(255, 255, 255, 0.1);">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon" style="color: var(--primary-dark);">assignment</span>
+                        </div>
+                        <h3>Requisitos de Ingreso</h3>
+                        <p>Proceso de admisión transparente y equitativo que evalúa tanto el rendimiento académico como la motivación del estudiante para asegurar un ambiente de aprendizaje óptimo.</p>
+                        <div style="margin-top: 1rem; padding: 1rem; background: rgba(var(--accent-rgb), 0.1); border-radius: 8px;">
+                            <small><strong>Documentos:</strong> Certificado de notas, Cédula de identidad<br>
+                            <strong>Evaluación:</strong> Diagnóstico inicial y entrevista personal</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Completo -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section footer-main">
+                        <h3>Preuniversitario JMC</h3>
+                        <p>Desarrolla tu máximo potencial,<br>Construye tu proyecto de vida.</p>
+                    </div>
+                    <div class="footer-section footer-contact">
+                        <h3>Contacto</h3>
+                        <a href="mailto:jcartes@preujmc.cl" class="contact-item">
+                            <span class="material-symbols-rounded footer-icon">email</span>
+                            <span>jcartes@preujmc.cl</span>
+                        </a>
+                        <a href="https://instagram.com/josemanuelcartes" target="_blank" rel="noopener noreferrer"
+                            class="contact-item">
+                            <img src="media/icons/instagram_logo.svg" alt="Instagram" class="instagram-icon">
+                            <span>Instagram: @josemanuelcartes</span>
+                        </a>
+                        <a href="https://www.google.com/maps/place/Mateo+de+Toro+y+Zambrano+1491,+7850592+La+Reina,+Región+Metropolitana"
+                            target="_blank" rel="noopener noreferrer" class="contact-item">
+                            <span class="material-symbols-rounded footer-icon">location_on</span>
+                            <span>Mateo de Toro y Zambrano 1491<br>Of. 303, La Reina, Santiago</span>
+                        </a>
+                    </div>
+                    <div class="footer-section footer-nav">
+                        <h3>Navegación</h3>
+                        <p><a href="index.html" class="footer-nav-link">Inicio</a></p>
+                        <p><a href="nosotros.html" class="footer-nav-link">Nosotros</a></p>
+                        <p><a href="fundador.html" class="footer-nav-link">Fundador</a></p>
+                        <p><a href="servicios.html" class="footer-nav-link">Servicios</a></p>
+                        <p><a href="test-complete.html" class="footer-nav-link">Test Completo</a></p>
+                        <p><a href="404.html" class="footer-nav-link">404</a></p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 Preuniversitario JMC. Todos los derechos reservados.</p>
+                    <p>Sistema de diseño completo con glassmorphism y componentes modulares</p>
+                    <p><a href="https://www.behance.net/acastillo_dg" target="_blank" class="footer-author">Alexandre Castillo · ACastillo DG</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript para funcionalidades -->
+    <script>
+        function changeBackground(className) {
+            const body = document.getElementById('testBody');
+            const overlay = document.getElementById('overlay');
+            
+            // Remove all background classes
+            body.className = '';
+            body.classList.add(className);
+            
+            // Show/hide overlay based on background
+            if (className === 'bg-image') {
+                overlay.style.display = 'block';
+            } else {
+                overlay.style.display = 'none';
+            }
+            
+            console.log('Background changed to:', className);
+        }
+        
+        // Log all available CSS classes on load
+        function logAvailableClasses() {
+            console.log('=== SISTEMA DE ESTILOS PREUNIVERSITARIO JMC ===');
+            console.log('BOTONES: btn-primary, btn-primary-dark, btn-accent, btn-glass-primary, btn-glass-white, btn-glass-dark');
+            console.log('🎯 Sistema CSS Unificado - Todas las cards son universales');
+            console.log('CARDS UNIVERSALES: glass-card, feature-card, mvp-card, stat-card, quote-card, content-card, profile-card, complementary-card');
+            console.log('ELIMINADAS: info-card (reemplazada por glass-card)');
+            console.log('UNIVERSALIZADAS: mvp-card y stat-card ahora son universales');
+            console.log('GRIDS: grid-auto-fit, grid-2-col, grid-3-col, card-grid-3, card-grid-4');
+            console.log('SECCIONES: glass-section, glass-section-light, glass-section-dark, primary-gradient-section');
+            console.log('ICONOS: main-icon, secondary-icon, footer-icon, meta-icon');
+            console.log('GLASSMORPHISM: glass-bg, glass-bg-light, glass-bg-strong, blur-light, transparent-50');
+            console.log('ESPACIADO: m-1, m-2, m-3, p-1, p-2, p-3, mt-1, pt-2, etc.');
+            console.log('PADDINGS: var(--card-padding), var(--card-padding-large), 2rem, 2.5rem, 3rem');
+            console.log('TIPOGRAFÍA: text-center, fw-bold, fw-light, section-title, subtitle');
+            console.log('RESPONSIVE: hide-mobile, show-mobile, hide-desktop, show-desktop');
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Test completo cargado - Todos los estilos del sistema disponibles');
+            logAvailableClasses();
+        });
+    </script>
+
+    <!-- Scripts del sistema -->
+    <script src="js/global.js"></script>
+</body>
+</html>

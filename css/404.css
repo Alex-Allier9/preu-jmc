@@ -5,11 +5,9 @@
 /* Sección principal 404 */
 .error-404 {
     height: 100vh;
-    background: linear-gradient(rgba(243, 217, 66, 0.3), rgba(243, 217, 66, 0.3)),
+    background: linear-gradient(rgba(244, 218, 64, 0.3), rgba(244, 218, 64, 0.3)),
         url('../media/images/404/daniel-hohe-1VgmgXW3Yuk-unsplash.jpg') center/cover;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+    /* Grid definido en components/grids.css */
     position: relative;
     overflow: hidden;
 }
@@ -26,14 +24,14 @@
 /* Efecto Glitch para el número 404 con italic */
 .glitch {
     position: relative;
-    color: var(--negro);
+    color: var(--black);
     font-family: 'DM Serif Text', serif;
     font-size: clamp(16rem, 30vw, 40rem);
     font-weight: 400;
     line-height: 1;
     letter-spacing: var(--title-letter-spacing);
     margin-bottom: 2rem;
-    animation: glitchItalic 4s infinite ease-in-out;
+    animation: glitchItalic 8s infinite ease-in-out;
 }
 
 /* Animación italic para todo el glitch */
@@ -55,114 +53,205 @@
     left: 0;
 }
 
-/* Generamos los keyframes para cada línea individualmente - versión original */
+/* Generamos los keyframes para cada línea individualmente - versión con tiempos aleatorios */
 .line:nth-child(1) {
-    animation: clip 3000ms 0ms linear infinite, glitch1 500ms 0ms linear infinite;
+    animation: clip 7200ms -340ms linear infinite, 
+               glitchMove1 1450ms -120ms ease-in-out infinite,
+               glitchColor1 4200ms -680ms ease-in-out infinite;
 }
 
 .line:nth-child(2) {
-    animation: clip 3000ms -300ms linear infinite, glitch2 500ms -100ms linear infinite;
+    animation: clip 5800ms -920ms linear infinite, 
+               glitchMove2 980ms -340ms ease-in-out infinite,
+               glitchColor2 3800ms -1250ms ease-in-out infinite;
 }
 
 .line:nth-child(3) {
-    animation: clip 3000ms -600ms linear infinite, glitch3 500ms -200ms linear infinite;
+    animation: clip 6700ms -1580ms linear infinite, 
+               glitchMove3 1350ms -80ms ease-in-out infinite,
+               glitchColor3 4600ms -920ms ease-in-out infinite;
 }
 
 .line:nth-child(4) {
-    animation: clip 3000ms -900ms linear infinite, glitch4 500ms -300ms linear infinite;
+    animation: clip 5400ms -2100ms linear infinite, 
+               glitchMove4 1180ms -470ms ease-in-out infinite,
+               glitchColor4 3200ms -1680ms ease-in-out infinite;
 }
 
 .line:nth-child(5) {
-    animation: clip 3000ms -1200ms linear infinite, glitch5 500ms -400ms linear infinite;
+    animation: clip 6900ms -780ms linear infinite, 
+               glitchMove5 1520ms -250ms ease-in-out infinite,
+               glitchColor5 4100ms -320ms ease-in-out infinite;
 }
 
 .line:nth-child(6) {
-    animation: clip 3000ms -1500ms linear infinite, glitch6 500ms -500ms linear infinite;
+    animation: clip 6200ms -3200ms linear infinite, 
+               glitchMove6 850ms -590ms ease-in-out infinite,
+               glitchColor6 3900ms -2100ms ease-in-out infinite;
 }
 
 .line:nth-child(7) {
-    animation: clip 3000ms -1800ms linear infinite, glitch7 500ms -600ms linear infinite;
+    animation: clip 5900ms -1400ms linear infinite, 
+               glitchMove7 1420ms -720ms ease-in-out infinite,
+               glitchColor7 4400ms -1950ms ease-in-out infinite;
 }
 
 .line:nth-child(8) {
-    animation: clip 3000ms -2100ms linear infinite, glitch8 500ms -700ms linear infinite;
+    animation: clip 7100ms -4600ms linear infinite, 
+               glitchMove8 1080ms -180ms ease-in-out infinite,
+               glitchColor8 3600ms -2800ms ease-in-out infinite;
 }
 
 .line:nth-child(9) {
-    animation: clip 3000ms -2400ms linear infinite, glitch9 500ms -800ms linear infinite;
+    animation: clip 6400ms -2900ms linear infinite, 
+               glitchMove9 1650ms -420ms ease-in-out infinite,
+               glitchColor9 4300ms -1100ms ease-in-out infinite;
 }
 
-/* Keyframes de glitch individuales con colores de JMC - versión original */
-@keyframes glitch1 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(-3px); color: var(--azul-principal); }
-    90% { transform: translateX(2px); color: var(--amarillo); }
-    95% { transform: translateX(-1px); color: var(--rojo); }
-    100% { transform: translateX(0); color: var(--negro); }
+/* ===== ANIMACIONES DE MOVIMIENTO (RÁPIDAS) - TIEMPOS ALEATORIOS ===== */
+@keyframes glitchMove1 {
+    0%, 78% { transform: translateX(0); }
+    83% { transform: translateX(-6px); }
+    89% { transform: translateX(4px); }
+    94% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
 }
 
-@keyframes glitch2 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(4px); color: var(--amarillo); }
-    90% { transform: translateX(-2px); color: var(--azul-principal); }
-    95% { transform: translateX(3px); color: var(--negro); }
-    100% { transform: translateX(0); color: var(--negro); }
+@keyframes glitchMove2 {
+    0%, 82% { transform: translateX(0); }
+    86% { transform: translateX(7px); }
+    93% { transform: translateX(-4px); }
+    97% { transform: translateX(3px); }
+    100% { transform: translateX(0); }
 }
 
-@keyframes glitch3 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(-2px); color: var(--rojo); }
-    90% { transform: translateX(5px); color: var(--azul-principal); }
-    95% { transform: translateX(-4px); color: var(--amarillo); }
-    100% { transform: translateX(0); color: var(--negro); }
+@keyframes glitchMove3 {
+    0%, 75% { transform: translateX(0); }
+    81% { transform: translateX(-5px); }
+    87% { transform: translateX(8px); }
+    95% { transform: translateX(-6px); }
+    100% { transform: translateX(0); }
 }
 
-@keyframes glitch4 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(1px); color: var(--azul-principal); }
-    90% { transform: translateX(-3px); color: var(--rojo); }
-    95% { transform: translateX(2px); color: var(--amarillo); }
-    100% { transform: translateX(0); color: var(--negro); }
+@keyframes glitchMove4 {
+    0%, 84% { transform: translateX(0); }
+    88% { transform: translateX(4px); }
+    91% { transform: translateX(-7px); }
+    96% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
 }
 
-@keyframes glitch5 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(-4px); color: var(--amarillo); }
-    90% { transform: translateX(1px); color: var(--azul-principal); }
-    95% { transform: translateX(-2px); color: var(--negro); }
-    100% { transform: translateX(0); color: var(--negro); }
+@keyframes glitchMove5 {
+    0%, 77% { transform: translateX(0); }
+    82% { transform: translateX(-8px); }
+    90% { transform: translateX(3px); }
+    93% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
 }
 
-@keyframes glitch6 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(3px); color: var(--rojo); }
-    90% { transform: translateX(-1px); color: var(--amarillo); }
-    95% { transform: translateX(4px); color: var(--azul-principal); }
-    100% { transform: translateX(0); color: var(--negro); }
+@keyframes glitchMove6 {
+    0%, 86% { transform: translateX(0); }
+    89% { transform: translateX(6px); }
+    94% { transform: translateX(-5px); }
+    98% { transform: translateX(7px); }
+    100% { transform: translateX(0); }
 }
 
-@keyframes glitch7 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(-1px); color: var(--azul-principal); }
-    90% { transform: translateX(3px); color: var(--rojo); }
-    95% { transform: translateX(-5px); color: var(--amarillo); }
-    100% { transform: translateX(0); color: var(--negro); }
+@keyframes glitchMove7 {
+    0%, 73% { transform: translateX(0); }
+    79% { transform: translateX(-4px); }
+    85% { transform: translateX(9px); }
+    92% { transform: translateX(-7px); }
+    100% { transform: translateX(0); }
 }
 
-@keyframes glitch8 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(2px); color: var(--amarillo); }
-    90% { transform: translateX(-4px); color: var(--azul-principal); }
-    95% { transform: translateX(1px); color: var(--rojo); }
-    100% { transform: translateX(0); color: var(--negro); }
+@keyframes glitchMove8 {
+    0%, 81% { transform: translateX(0); }
+    87% { transform: translateX(5px); }
+    92% { transform: translateX(-8px); }
+    97% { transform: translateX(4px); }
+    100% { transform: translateX(0); }
 }
 
-@keyframes glitch9 {
-    0%, 80% { transform: translateX(0); color: var(--negro); }
-    85% { transform: translateX(-3px); color: var(--rojo); }
-    90% { transform: translateX(4px); color: var(--amarillo); }
-    95% { transform: translateX(-2px); color: var(--azul-principal); }
-    100% { transform: translateX(0); color: var(--negro); }
+@keyframes glitchMove9 {
+    0%, 76% { transform: translateX(0); }
+    83% { transform: translateX(-7px); }
+    88% { transform: translateX(6px); }
+    95% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* ===== ANIMACIONES DE COLOR (LENTAS) - TIEMPOS ALEATORIOS ===== */
+@keyframes glitchColor1 {
+    0%, 87% { color: var(--black); }
+    91% { color: var(--primary); }
+    95% { color: var(--accent); }
+    98% { color: var(--accent-red); }
+    100% { color: var(--black); }
+}
+
+@keyframes glitchColor2 {
+    0%, 92% { color: var(--black); }
+    94% { color: var(--accent); }
+    97% { color: var(--primary); }
+    99% { color: var(--black); }
+    100% { color: var(--black); }
+}
+
+@keyframes glitchColor3 {
+    0%, 83% { color: var(--black); }
+    88% { color: var(--accent-red); }
+    93% { color: var(--primary); }
+    96% { color: var(--accent); }
+    100% { color: var(--black); }
+}
+
+@keyframes glitchColor4 {
+    0%, 89% { color: var(--black); }
+    92% { color: var(--primary); }
+    96% { color: var(--accent-red); }
+    98% { color: var(--accent); }
+    100% { color: var(--black); }
+}
+
+@keyframes glitchColor5 {
+    0%, 85% { color: var(--black); }
+    90% { color: var(--accent); }
+    94% { color: var(--primary); }
+    97% { color: var(--black); }
+    100% { color: var(--black); }
+}
+
+@keyframes glitchColor6 {
+    0%, 94% { color: var(--black); }
+    96% { color: var(--accent-red); }
+    98% { color: var(--accent); }
+    99% { color: var(--primary); }
+    100% { color: var(--black); }
+}
+
+@keyframes glitchColor7 {
+    0%, 88% { color: var(--black); }
+    91% { color: var(--primary); }
+    95% { color: var(--accent-red); }
+    97% { color: var(--accent); }
+    100% { color: var(--black); }
+}
+
+@keyframes glitchColor8 {
+    0%, 91% { color: var(--black); }
+    93% { color: var(--accent); }
+    96% { color: var(--primary); }
+    98% { color: var(--accent-red); }
+    100% { color: var(--black); }
+}
+
+@keyframes glitchColor9 {
+    0%, 86% { color: var(--black); }
+    89% { color: var(--accent-red); }
+    93% { color: var(--accent); }
+    97% { color: var(--primary); }
+    100% { color: var(--black); }
 }
 
 /* Animación de clip universal */
@@ -179,7 +268,7 @@
 .error-message {
     font-family: 'Raleway', sans-serif;
     font-size: clamp(1.2rem, 3vw, 1.8rem);
-    color: var(--negro);
+    color: var(--black);
     margin-bottom: 2.5rem;
     max-width: 600px;
     margin-left: auto;
@@ -190,11 +279,11 @@
     outline: none;
     text-align: center;
     display: inline-block;
-    animation: subtleItalic 3s infinite ease-in-out;
+    animation: subtleItalic 6s infinite ease-in-out;
 }
 
 .crazy-text * {
-    animation: subtleItalic 3s infinite ease-in-out;
+    animation: subtleItalic 6s infinite ease-in-out;
     display: inline-block;
 }
 
@@ -207,34 +296,9 @@
     100% { font-style: italic; }
 }
 
-/* Botón de error */
-.error-button {
-    background: var(--azul-principal);
-    color: white;
-    padding: 1rem 2.5rem;
-    border: none;
-    border-radius: 3.125rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-family: 'Raleway', sans-serif;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(65, 182, 230, 0.3);
-}
-
-.error-button:hover {
-    background: var(--azul-oscuro);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(65, 182, 230, 0.4);
-}
-
-.error-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(65, 182, 230, 0.3);
-}
+/* ======================================
+   ESTILOS ESPECÍFICOS DE LA PÁGINA 404
+   ====================================== */
 
 /* ======================================
    RESPONSIVE ESPECÍFICO DE 404
@@ -258,11 +322,6 @@
     .error-message {
         font-size: clamp(1.1rem, 2.5vw, 1.5rem);
         margin-bottom: 2rem;
-    }
-    
-    .error-button {
-        padding: 0.9rem 2rem;
-        font-size: 1rem;
     }
 }
 
@@ -293,15 +352,9 @@
         padding: 0 1rem;
     }
     
-    .error-button {
-        padding: 0.8rem 1.8rem;
-        font-size: 0.95rem;
-        margin-top: 0.5rem;
-    }
-    
     /* Reducir intensidad de animaciones en mobile */
     .line:nth-child(n) {
-        animation-duration: 4000ms, 750ms;
+        animation-duration: 4000ms, 750ms, 4000ms;
     }
     
     .crazy-text {
@@ -328,14 +381,9 @@
         padding: 0 0.5rem;
     }
     
-    .error-button {
-        padding: 0.7rem 1.5rem;
-        font-size: 0.9rem;
-    }
-    
     /* Animaciones más suaves en pantallas muy pequeñas */
     .line:nth-child(n) {
-        animation-duration: 5000ms, 1000ms;
+        animation-duration: 5000ms, 1000ms, 5000ms;
     }
     
     .crazy-text {
@@ -348,60 +396,58 @@
 }
 
 /* ======================================
-   ANIMACIONES DE ENTRADA
+   ANIMACIONES DE ENTRADA - CONTENEDORES
    ====================================== */
 
-/* Animación de entrada para el glitch */
-.glitch.fade-in {
+/* Fade-in aplicado a contenedores para no interferir con hover */
+.glitch-container {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(30px);
     transition: all 0.8s ease-out;
 }
 
-.glitch.fade-in.visible {
+.glitch-container.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Animación de entrada para el mensaje crazy */
-.error-message.fade-in {
+.message-container {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
     transition: all 0.6s ease-out 0.3s;
 }
 
-.error-message.fade-in.visible {
+.message-container.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Animación de entrada para el botón */
-.error-button.fade-in {
+.button-container {
     opacity: 0;
-    transform: translateY(30px) scale(0.9);
-    transition: all 0.2s ease-out 0.2s;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out 0.6s;
 }
 
-.error-button.fade-in.visible {
+.button-container.visible {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
 }
 
 /* Pausar animaciones hasta que sean visibles */
-.glitch:not(.visible) .line {
+.glitch-container:not(.visible) .line {
     animation-play-state: paused;
 }
 
-.crazy-text:not(.visible) {
+.message-container:not(.visible) .crazy-text {
     animation-play-state: paused;
 }
 
-/* Activar animaciones cuando se hace visible */
-.glitch.visible .line {
+/* Activar animaciones cuando el contenedor se hace visible */
+.glitch-container.visible .line {
     animation-play-state: running;
 }
 
-.error-message.visible .crazy-text {
+.message-container.visible .crazy-text {
     animation-play-state: running;
 }
 
@@ -418,28 +464,62 @@
     will-change: font-style;
 }
 
-/* Reducir animaciones para usuarios que prefieren menos movimiento */
+/* ======================================
+   CONFIGURACIONES DE ACCESIBILIDAD
+   ====================================== */
+
+/* Configuración por defecto más suave */
+@media (prefers-reduced-motion: no-preference) {
+    /* Ya está configurado con duraciones moderadas */
+}
+
+/* Reducir drásticamente animaciones para usuarios sensibles */
 @media (prefers-reduced-motion: reduce) {
-    .line {
-        animation-duration: 8s, 1000ms !important;
-        animation-iteration-count: 3 !important;
-    }
-    
-    .crazy-text {
-        animation-duration: 6s !important;
-        animation-iteration-count: 2 !important;
-    }
-    
     .glitch {
-        animation-duration: 10s !important;
-        animation-iteration-count: 2 !important;
+        animation: none !important;
+        font-style: normal !important;
+    }
+    
+    .line {
+        animation: none !important;
+        transform: none !important;
+        color: var(--black) !important;
+    }
+    
+    .crazy-text, .crazy-text * {
+        animation: none !important;
+        font-style: normal !important;
+    }
+    
+    /* Contenedores sin transiciones de entrada */
+    .glitch-container,
+    .message-container,
+    .button-container {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 }
 
-/* Pausar animaciones cuando el elemento no es visible */
-.glitch:not(.visible) .line,
-.glitch:not(.visible),
-.error-message:not(.visible) .crazy-text {
+/* Protección adicional contra epilepsia fotosensible */
+@media (prefers-color-scheme: no-preference), (prefers-contrast: more) {
+    .line {
+        animation-duration: 8s, 2000ms, 6000ms !important;
+    }
+    
+    .crazy-text {
+        animation-duration: 10s !important;
+    }
+    
+    .glitch {
+        animation-duration: 12s !important;
+    }
+}
+
+/* Pausar animaciones cuando el contenedor no es visible */
+.glitch-container:not(.visible) .line,
+.glitch-container:not(.visible) .glitch,
+.message-container:not(.visible) .crazy-text {
     animation-play-state: paused;
 }
 
@@ -466,12 +546,9 @@
     pointer-events: none;
 }
 
-/* Efecto de parallax sutil en el fondo */
-@media (prefers-reduced-motion: no-preference) {
-    .error-404 {
-        background-attachment: fixed;
-    }
-}
+/* ===== FADE-IN ANIMATIONS - ESPECÍFICO 404 ===== */
+/* Los estilos del botón primary se definen completamente en components/buttons.css */
+/* Sin modificaciones específicas para 404 */
 
 /* Asegurar que el footer no se superponga */
 .error-404 + .footer {

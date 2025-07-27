@@ -5,9 +5,9 @@
 // Gallery Lightbox functionality
 function initGalleryLightbox() {
     const galleryItems = document.querySelectorAll('.gallery-item');
-    
+
     if (galleryItems.length === 0) return;
-    
+
     // Create lightbox element
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
@@ -22,7 +22,7 @@ function initGalleryLightbox() {
         </div>
     `;
     document.body.appendChild(lightbox);
-    
+
     // Lightbox styles
     const lightboxStyles = `
         <style>
@@ -70,7 +70,7 @@ function initGalleryLightbox() {
         }
         
         .close-lightbox:hover {
-            color: var(--amarillo);
+            color: var(--accent);
         }
         
         .lightbox-caption {
@@ -83,7 +83,7 @@ function initGalleryLightbox() {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 10px;
-            color: var(--amarillo);
+            color: var(--accent);
         }
         
         .lightbox-description {
@@ -108,47 +108,47 @@ function initGalleryLightbox() {
         </style>
     `;
     document.head.insertAdjacentHTML('beforeend', lightboxStyles);
-    
+
     // Function to open lightbox
     function openLightbox(item) {
         const img = item.querySelector('img');
         const overlay = item.querySelector('.gallery-overlay');
-        
+
         lightbox.querySelector('.lightbox-img').src = img.src;
         lightbox.querySelector('.lightbox-img').alt = img.alt;
-        
+
         if (overlay) {
             lightbox.querySelector('.lightbox-title').textContent = overlay.querySelector('h4').textContent;
             lightbox.querySelector('.lightbox-description').textContent = overlay.querySelector('p').textContent;
         }
-        
+
         lightbox.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
-    
+
     // Function to close lightbox
     function closeLightbox() {
         lightbox.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
-    
+
     // Add click listeners to gallery items
     galleryItems.forEach((item) => {
         item.addEventListener('click', () => openLightbox(item));
     });
-    
+
     // Lightbox controls
     lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
-    
+
     // Close on background click
-    lightbox.addEventListener('click', function(e) {
+    lightbox.addEventListener('click', function (e) {
         if (e.target === this) {
             closeLightbox();
         }
     });
-    
+
     // Close on escape key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && lightbox.style.display === 'flex') {
             closeLightbox();
         }
@@ -156,12 +156,12 @@ function initGalleryLightbox() {
 }
 
 // Initialize page-specific functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('Fundador page initialized');
-    
+
     // Initialize gallery lightbox
     initGalleryLightbox();
-    
+
     // Log success
     console.log('Fundador page: All functionality loaded successfully');
 });

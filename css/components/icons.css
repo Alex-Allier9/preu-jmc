@@ -1,0 +1,125 @@
+/* ======================================
+   ICONS.CSS - SISTEMA UNIVERSAL DE ICONOS
+   ====================================== */
+
+/* MATERIAL SYMBOLS - UNIVERSAL */
+.material-symbols-rounded {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-variation-settings: 
+        'FILL' 0, 
+        'wght' 400, 
+        'GRAD' 0, 
+        'opsz' 48;
+    -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: var(--transition-standard);
+}
+
+/* Icon sizes - UNIVERSAL */
+.main-icon {
+    font-size: 6rem;
+}
+
+.secondary-icon {
+    font-size: 4.5rem;
+}
+
+.footer-icon {
+    font-size: 1.2rem;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.meta-icon {
+    font-size: 1rem;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Icon containers - UNIVERSAL */
+.main-icon-container {
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-standard);
+    margin: 0 auto;
+}
+
+.secondary-icon-container {
+    height: 7.5rem;
+    width: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-standard);
+    margin: 0 auto;
+}
+
+/* ICON COLORS - UNIVERSAL */
+/* Primary blue icons for main content */
+.main-icon-container .material-symbols-rounded,
+.main-icon {
+    color: var(--primary);
+}
+
+/* Secondary dark blue icons for emphasis */
+.secondary-icon-container .material-symbols-rounded,
+.secondary-icon {
+    color: var(--primary-dark);
+}
+
+/* Card-specific icon colors */
+.financial-card .main-icon-container .material-symbols-rounded,
+.practical-card .main-icon-container .material-symbols-rounded {
+    color: var(--primary);
+}
+
+/* Info Card icons - special color for glassmorphism background */
+.glass-card .main-icon-container .material-symbols-rounded,
+.glass-card .secondary-icon-container .material-symbols-rounded,
+.glass-card .main-icon,
+.glass-card .secondary-icon,
+.financial-card .main-icon-container .material-symbols-rounded,
+.financial-card .secondary-icon-container .material-symbols-rounded,
+.financial-card .main-icon,
+.financial-card .secondary-icon,
+.value-card .main-icon-container .material-symbols-rounded,
+.value-card .secondary-icon-container .material-symbols-rounded,
+.value-card .main-icon,
+.value-card .secondary-icon,
+.glass-card .main-icon-container .material-symbols-rounded,
+.glass-card .secondary-icon-container .material-symbols-rounded,
+.glass-card .main-icon,
+.glass-card .secondary-icon,
+.quote-card .main-icon-container .material-symbols-rounded,
+.quote-card .secondary-icon-container .material-symbols-rounded,
+.quote-card .main-icon,
+.quote-card .secondary-icon,
+.complementary-card .main-icon-container .material-symbols-rounded,
+.complementary-card .secondary-icon-container .material-symbols-rounded,
+.complementary-card .main-icon,
+.complementary-card .secondary-icon {
+    color: var(--accent) !important;
+}
+
+/* Footer and meta icons */
+.footer-icon {
+    color: var(--primary);
+}
+
+.meta-icon {
+    color: var(--black);
+}
