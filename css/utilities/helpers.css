@@ -240,11 +240,11 @@
 }
 
 .border-1 { 
-    border: 1px solid var(--gray-200); 
+    border: 1px solid var(--gray-light); 
 }
 
 .border-2 { 
-    border: 2px solid var(--gray-200); 
+    border: 2px solid var(--gray-light); 
 }
 
 .border-radius { 
@@ -294,7 +294,7 @@
 }
 
 .text-accent { 
-    color: var(--accent-acento); 
+    color: var(--accent); 
 }
 
 .text-dark { 
@@ -306,7 +306,7 @@
 }
 
 .text-muted { 
-    color: var(--gray-600); 
+    color: var(--gray-light); 
 }
 
 .bg-primary { 
@@ -318,7 +318,7 @@
 }
 
 .bg-accent { 
-    background-color: var(--accent-acento); 
+    background-color: var(--accent); 
 }
 
 .bg-dark { 

@@ -207,7 +207,7 @@ box-shadow: var(--shadow-medium);
 
 /* Mobile - var(--mobile) */
 @media (max-width: var(--mobile)) {
-    .content-card, .about-card { padding: 2rem; }
+    .content-card { padding: 2rem; }
     .stat-number { font-size: 2.5rem; }
 }
 ```

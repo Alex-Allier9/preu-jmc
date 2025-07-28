@@ -115,7 +115,7 @@
    CARDS - YA DEFINIDAS EN components/cards.css
    ====================================== */
 
-/* Todas las cards (service-feature-card, glass-card, complementary-card, glass-card, practical-card) 
+/* Todas las cards (gradient-border-card, glass-card, complementary-card, simple-card, standard-card) 
    ya están definidas en components/cards.css */
 
 /* ======================================
@@ -221,7 +221,7 @@
    CARDS - YA CENTRALIZADAS EN components/cards.css
    ====================================== */
 
-/* Todas las cards (service-feature-card, glass-card, complementary-card, practical-card, standard-card) 
+/* Todas las cards (gradient-border-card, glass-card, complementary-card, simple-card, standard-card) 
    ya están definidas en components/cards.css con el nuevo sistema unificado */
 
 /* ======================================
@@ -256,25 +256,14 @@
         padding: 2rem;
         margin-bottom: 1.5rem;
     }
-    
-    /* Ajustar practical cards en tablet */
-    .practical-card {
-        min-height: 180px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .practical-card h3 {
-        font-size: 1.1rem;
-    }
-    
+        
     /* Grids específicos en tablet */
-    .first-section .card-grid-3 {
+    .first-section .grid-3-2-1 {
         gap: 2rem;
         margin-bottom: 2rem;
     }
     
-    .third-section .card-grid-2 {
+    .third-section .grid-2-2-1 {
         gap: 2.5rem;
     }
 }
@@ -323,10 +312,10 @@
     }
 
     /* Grids específicos en móvil */
-    .first-section .card-grid-3,
-    .primary-gradient-section .card-grid-3,
-    .third-section .card-grid-2,
-    .fourth-section .card-grid-3 {
+    .first-section .grid-3-2-1,
+    .primary-gradient-section .grid-3-2-1,
+    .third-section .grid-2-2-1,
+    .fourth-section .grid-3-2-1 {
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
         padding: 0 !important;
@@ -339,11 +328,11 @@
     }
 
     /* Ajustar todas las cards en móvil */
-    .service-feature-card,
+    .gradient-border-card,
     .glass-card,
     .complementary-card,
-    .glass-card,
-    .practical-card {
+    .simple-card,
+    .standard-card {
         padding: 1.5rem !important;
         margin-bottom: 1.5rem !important;
         width: 100%;
@@ -372,16 +361,16 @@
         margin-right: 0.5rem;
     }
 
-    /* Practical cards específicas móvil */
-    .practical-card {
+    /* Standard cards específicas móvil */
+    .standard-card {
         min-height: 160px;
     }
 
-    .practical-card h3 {
+    .standard-card h3 {
         font-size: 1.1rem;
     }
 
-    .practical-card p {
+    .standard-card p {
         font-size: 0.95rem;
     }
 
@@ -427,17 +416,17 @@
    ====================================== */
 
 @media (max-width: 360px) {
-    .service-feature-card h3,
+    .gradient-border-card h3,
     .glass-card h3,
-    .glass-card h3,
-    .practical-card h3 {
+    .simple-card h3,
+    .standard-card h3 {
         font-size: 1.1rem;
     }
 
-    .service-feature-card p,
+    .gradient-border-card p,
     .glass-card p,
-    .glass-card p,
-    .practical-card p {
+    .simple-card p,
+    .standard-card p {
         font-size: 1rem;
     }
 

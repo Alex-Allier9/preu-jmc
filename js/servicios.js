@@ -34,10 +34,6 @@ function registerServicesCardsInGlobalSystem() {
             selector: '.glass-card',
             hasIcon: true
         },
-        {
-            selector: '.practical-card',
-            hasIcon: true
-        }
     ];
 
     // Aplicar solo efectos específicos de servicios (backgrounds personalizados)

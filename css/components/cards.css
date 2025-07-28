@@ -443,37 +443,6 @@
     text-align: center;
 }
 
-/* Backward compatibility aliases para gradiente border cards */
-.feature-card,
-.service-feature-card,
-.practical-card {
-    background: 
-        linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
-    border: 9px solid transparent;
-}
-
-.feature-card h3,
-.service-feature-card h3,
-.practical-card h3 {
-    color: var(--primary-dark);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
-    font-size: 1.3rem;
-}
-
-.feature-card p,
-.service-feature-card p,
-.practical-card p {
-    position: relative;
-    z-index: 1;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    text-align: center;
-}
-
 /* Complementary Card */
 .complementary-card {
     background: rgba(255, 255, 255, 0.9);
@@ -673,28 +642,6 @@
     margin-bottom: 0;
 }
 
-/* Backward compatibility - mantener about-card como alias */
-.about-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: var(--shadow-light);
-    transition: all 0.3s ease;
-    max-width: 100%;
-    margin: 0 auto;
-    cursor: pointer;
-}
-
-.about-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.about-content {
-    line-height: 1.8;
-}
-
 /* ===== SIMPLE CARD - UNIVERSAL ===== */
 
 /* Simple Card - Fondo sólido sin borde para contenido con listas */
@@ -807,8 +754,7 @@
         font-size: 2.5rem;
     }
     
-    .content-card,
-    .about-card {
+    .content-card {
         padding: 2rem;
     }
     

@@ -12,10 +12,13 @@
     --primary-rgb: 65, 182, 230;    /* RGB del color primario para rgba() */
     --primary-dark: #165C7D;      /* Color secundario - Títulos, gradientes */
     --accent: #F4DA40;            /* Color de acento principal - Líneas decorativas, hover states (23 usos) */
-    
+    --accent-rgb: 244, 218, 64;
+
     /* ===== COLORES SECUNDARIOS ===== */
     --accent-red: #EF3340;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
+    --accent-red-rgb: 239, 51, 64;
     --gray-light: #F8F9FA;        /* Usado para borders (3 usos) */
+    --gray-light-rgb: 248, 249, 250;
     
     /* ===== TIPOGRAFÍA ===== */
     --title-letter-spacing: 0.2rem;  /* Usado en títulos principales (7 usos) */

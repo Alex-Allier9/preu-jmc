@@ -161,10 +161,6 @@ function addUniversalCardEffects() {
             selector: '.financial-card',
             hasIcon: true
         },
-        {
-            selector: '.practical-card',
-            hasIcon: true
-        }
     ];
 
     cardConfigs.forEach(config => {

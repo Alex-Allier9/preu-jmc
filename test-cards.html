@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cards - Preuniversitario JMC</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/core/variables.css">
+    <link rel="stylesheet" href="css/core/reset.css">
+    <link rel="stylesheet" href="css/core/fonts.css">
+    <link rel="stylesheet" href="css/components/cards.css">
+    <link rel="stylesheet" href="css/components/grids.css">
+    <link rel="stylesheet" href="css/components/icons.css">
+    
+    <style>
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--primary-dark);
+            margin-bottom: 3rem;
+            font-family: var(--font-title);
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test de Cards del Sistema</h1>
+        
+        <!-- Gradient Border Cards -->
+        <section class="section">
+            <h2 class="section-title">Gradient Border Cards</h2>
+            <div class="grid-3-2-1">
+                <div class="gradient-border-card">
+                    <span class="material-symbols-rounded main-icon" style="color: var(--primary); display: block; text-align: center; margin-bottom: 1rem;">school</span>
+                    <h3>Educación de Calidad</h3>
+                    <p>Formación académica de excelencia con metodología personalizada para cada estudiante.</p>
+                </div>
+                <div class="gradient-border-card">
+                    <span class="material-symbols-rounded main-icon" style="color: var(--primary); display: block; text-align: center; margin-bottom: 1rem;">groups</span>
+                    <h3>Grupos Pequeños</h3>
+                    <p>Máximo 10 estudiantes por grupo para garantizar atención personalizada.</p>
+                </div>
+                <div class="gradient-border-card">
+                    <span class="material-symbols-rounded main-icon" style="color: var(--primary); display: block; text-align: center; margin-bottom: 1rem;">psychology</span>
+                    <h3>Apoyo Integral</h3>
+                    <p>Acompañamiento académico y emocional durante todo el proceso educativo.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Simple Cards -->
+        <section class="section">
+            <h2 class="section-title">Simple Cards</h2>
+            <div class="grid-2-1-1">
+                <div class="simple-card">
+                    <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); display: block; text-align: center; margin-bottom: 1rem;">support_agent</span>
+                    <h3>Servicios Complementarios</h3>
+                    <p>Servicios adicionales para complementar la formación académica:</p>
+                    <ul>
+                        <li>Apoyo psicopedagógico</li>
+                        <li>Orientación vocacional</li>
+                        <li>Talleres de técnicas de estudio</li>
+                    </ul>
+                </div>
+                <div class="simple-card">
+                    <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); display: block; text-align: center; margin-bottom: 1rem;">quiz</span>
+                    <h3>Sistema de Evaluación</h3>
+                    <p>Evaluación continua y seguimiento del progreso:</p>
+                    <ul>
+                        <li>Controles semanales</li>
+                        <li>Ensayos PSU/PAES</li>
+                        <li>Reportes de progreso</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Glass Cards -->
+        <section class="section">
+            <h2 class="section-title">Glass Cards</h2>
+            <div class="grid-3-2-1">
+                <div class="glass-card">
+                    <span class="material-symbols-rounded secondary-icon" style="color: var(--accent); display: block; text-align: center; margin-bottom: 1rem;">star</span>
+                    <h3>Excelencia</h3>
+                    <p>Compromiso con la calidad educativa y la formación integral de nuestros estudiantes.</p>
+                </div>
+                <div class="glass-card">
+                    <span class="material-symbols-rounded secondary-icon" style="color: var(--accent); display: block; text-align: center; margin-bottom: 1rem;">self_improvement</span>
+                    <h3>Desarrollo Personal</h3>
+                    <p>Fomentamos el crecimiento personal y el desarrollo de habilidades blandas.</p>
+                </div>
+                <div class="glass-card">
+                    <span class="material-symbols-rounded secondary-icon" style="color: var(--accent); display: block; text-align: center; margin-bottom: 1rem;">volunteer_activism</span>
+                    <h3>Compromiso Social</h3>
+                    <p>Formamos ciudadanos comprometidos con su comunidad y su país.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- MVP Cards -->
+        <section class="section">
+            <h2 class="section-title">MVP Cards</h2>
+            <div class="grid-3-2-1">
+                <div class="mvp-card">
+                    <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); display: block; text-align: center; margin-bottom: 1rem;">flag</span>
+                    <h3>Misión</h3>
+                    <p>Formar jóvenes con excelencia académica y valores sólidos para enfrentar los desafíos universitarios.</p>
+                </div>
+                <div class="mvp-card">
+                    <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); display: block; text-align: center; margin-bottom: 1rem;">visibility</span>
+                    <h3>Visión</h3>
+                    <p>Ser el preuniversitario líder en formación integral y excelencia académica.</p>
+                </div>
+                <div class="mvp-card">
+                    <span class="material-symbols-rounded secondary-icon" style="color: var(--primary); display: block; text-align: center; margin-bottom: 1rem;">rocket_launch</span>
+                    <h3>Propósito</h3>
+                    <p>Acompañar a cada estudiante en la construcción de su proyecto de vida universitario.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stat Cards -->
+        <section class="section">
+            <h2 class="section-title">Stat Cards</h2>
+            <div class="grid-4-2-1">
+                <div class="stat-card">
+                    <div class="stat-number">+18</div>
+                    <p>Años de Experiencia</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10</div>
+                    <p>Estudiantes por Grupo</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number red">95%</div>
+                    <p>Tasa de Ingreso</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <p>Estudiantes Exitosos</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
