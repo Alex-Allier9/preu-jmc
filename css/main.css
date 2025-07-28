@@ -58,15 +58,3 @@
 .radius-small { border-radius: var(--border-radius-small); }
 .radius-standard { border-radius: var(--border-radius-standard); }
 .radius-large { border-radius: var(--border-radius-large); }
-
-/* Debug (solo en desarrollo) */
-.debug * {
-    outline: 1px solid red !important;
-}
-
-.debug-grid {
-    background-image: 
-        linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-}

@@ -247,10 +247,6 @@
     border: 2px solid var(--gray-light); 
 }
 
-.border-radius { 
-    border-radius: var(--border-radius); 
-}
-
 .border-radius-sm { 
     border-radius: 0.5rem; 
 }
@@ -353,22 +349,6 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-}
-
-/* Debug utilities */
-.debug * {
-    outline: 1px solid red;
-}
-
-.debug-info {
-    position: fixed;
-    top: 0;
-    right: 0;
-    background: rgba(var(--black-rgb), 0.8);
-    color: white;
-    padding: 1rem;
-    font-size: 0.8rem;
-    z-index: 9999;
 }
 
 /* ======================================
