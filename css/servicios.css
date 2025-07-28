@@ -45,7 +45,7 @@
 .fourth-section {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     margin-left: var(--section-margin-horizontal);
     margin-right: var(--section-margin-horizontal);
     margin-bottom: var(--section-margin-bottom);
@@ -88,7 +88,7 @@
 .regular-section {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     margin-left: var(--section-margin-horizontal);
     margin-right: var(--section-margin-horizontal);
     margin-bottom: var(--section-margin-bottom);
@@ -108,7 +108,6 @@
 
 .regular-section .section-title {
     color: var(--primary-dark);
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
 }
 
 /* ======================================

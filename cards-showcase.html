@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase de Cards - Preuniversitario JMC</title>
+    
+    <!-- CSS System Files - Complete Import -->
+    <link rel="stylesheet" href="css/main.css">
+    
+    <style>
+        /* Estilos específicos para el showcase */
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+        
+        .showcase-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .showcase-title {
+            font-family: var(--font-title);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            letter-spacing: var(--title-letter-spacing);
+        }
+        
+        .showcase-subtitle {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .showcase-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .showcase-stat {
+            text-align: center;
+        }
+        
+        .showcase-stat-number {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: var(--accent-red);
+            font-weight: 700;
+            display: block;
+        }
+        
+        .showcase-stat-label {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .section-showcase {
+            margin-bottom: 4rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .section-showcase-title {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-showcase-description {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-light);
+        }
+        
+        .card-info-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+        
+        .card-code {
+            background: rgba(16, 24, 32, 0.95);
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .usage-example {
+            background: rgba(244, 218, 64, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .grid-demo {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .grid-demo-title {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        /* Demo específico para stat cards */
+        .stat-demo {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        /* Demo específico para quote cards */
+        .quote-demo {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        /* Demo específico para glass cards */
+        .glass-demo {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #0f3a4a 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .responsive-note {
+            background: rgba(65, 182, 230, 0.1);
+            border: 1px solid var(--primary);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            color: var(--primary-dark);
+        }
+        
+        @media (max-width: 53rem) {
+            .showcase-stats {
+                gap: 1.5rem;
+            }
+            
+            .section-showcase {
+                padding: 2rem;
+            }
+            
+            .card-demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="showcase-container">
+        <!-- Header del Showcase -->
+        <header class="showcase-header">
+            <h1 class="showcase-title">Sistema de Cards JMC</h1>
+            <p class="showcase-subtitle">Showcase completo con Universal Card System unificado</p>
+            
+            <div class="showcase-stats">
+                <div class="showcase-stat">
+                    <span class="showcase-stat-number">12+</span>
+                    <span class="showcase-stat-label">Cards Optimizadas</span>
+                </div>
+                <div class="showcase-stat">
+                    <span class="showcase-stat-number">1</span>
+                    <span class="showcase-stat-label">Sistema Universal</span>
+                </div>
+                <div class="showcase-stat">
+                    <span class="showcase-stat-number">67%</span>
+                    <span class="showcase-stat-label">Menos CSS</span>
+                </div>
+            </div>
+            
+            <div class="responsive-note">
+                <strong>🚀 Nuevo Universal Card System:</strong> Unificación de simple-card, standard-card y complementary-card en una sola clase .universal-card con modificadores .extensive y .technical
+            </div>
+        </header>
+
+        <!-- 0. UNIVERSAL CARD SYSTEM - NUEVA SECCIÓN -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">🎯 Universal Card System</h2>
+            <p class="section-showcase-description">Una sola card para 3 casos de uso diferentes - Sistema unificado</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">🔥 Universal Card</h3>
+                <p><strong>Reemplaza:</strong> simple-card, standard-card, complementary-card</p>
+                <p><strong>Beneficios:</strong> 67% menos CSS, iconos consistentes, alineación unificada</p>
+                <p><strong>Modificadores:</strong> .extensive (contenido largo), .technical (servicios especializados)</p>
+            </div>
+
+            <div class="grid-demo">
+                <h4 class="grid-demo-title">Universal Cards - Grid 3-2-1</h4>
+                <div class="grid-3-2-1">
+                    <!-- Básica -->
+                    <div class="universal-card">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">home</span>
+                        </div>
+                        <h3>Universal Básica</h3>
+                        <p>Reemplaza simple-card. Para servicios con listas.</p>
+                        <ul>
+                            <li>Iconos en color primary</li>
+                            <li>Alineación izquierda consistente</li>
+                            <li>Listas con checkmarks</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Extensiva -->
+                    <div class="universal-card extensive">
+                        <h3>Universal Extensiva</h3>
+                        <p>Reemplaza standard-card. Para contenido narrativo largo con texto justificado.</p>
+                        <p>Ideal para misión, visión, textos educativos y párrafos múltiples que requieren mayor padding.</p>
+                    </div>
+                    
+                    <!-- Técnica -->
+                    <div class="universal-card technical">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">support_agent</span>
+                        </div>
+                        <h3>Universal Técnica</h3>
+                        <p>Reemplaza complementary-card. Para servicios especializados con títulos más grandes.</p>
+                        <ul>
+                            <li>Títulos en 1.5rem</li>
+                            <li>Espaciado optimizado</li>
+                            <li>Contenido técnico</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-code">/* ============================================
+   MIGRACIÓN AUTOMÁTICA
+   ============================================ */
+
+// Cambios directos:
+.simple-card → .universal-card
+.standard-card → .universal-card.extensive  
+.complementary-card → .universal-card.technical
+
+// Cambios en iconos:
+.secondary-icon-container → .card-icon
+class="secondary-icon" → (eliminar, automático con .card-icon)</div>
+
+            <div class="usage-example">
+                <strong>✅ Beneficios del Universal Card System:</strong><br>
+                • <strong>Una sola clase</strong> para 3 casos de uso diferentes<br>
+                • <strong>Iconos consistentes</strong> en color primary<br>
+                • <strong>67% menos CSS</strong> - de ~150 líneas a ~80 líneas<br>
+                • <strong>Mantenimiento simplificado</strong> - Un sistema, múltiples propósitos
+            </div>
+        </section>
+                    <span class="showcase-stat-label">Tipos de Cards</span>
+                </div>
+                <div class="showcase-stat">
+                    <span class="showcase-stat-number">8</span>
+                    <span class="showcase-stat-label">Sistemas de Grid</span>
+                </div>
+                <div class="showcase-stat">
+                    <span class="showcase-stat-number">4</span>
+                    <span class="showcase-stat-label">Tamaños de Iconos</span>
+                </div>
+                <div class="showcase-stat">
+                    <span class="showcase-stat-number">100%</span>
+                    <span class="showcase-stat-label">Responsive</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 1. CARDS PRINCIPALES DEL SISTEMA -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">🏗️ Cards Principales del Sistema</h2>
+            <p class="section-showcase-description">Cards optimizadas y unificadas - Sistema base actualizado</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">📋 Gradient Border Card</h3>
+                <p><strong>Uso:</strong> Características principales, servicios destacados, features importantes</p>
+                <p><strong>Páginas:</strong> Servicios, Nosotros</p>
+                <div class="card-code">&lt;div class="gradient-border-card"&gt;
+    &lt;div class="main-icon-container"&gt;
+        &lt;span class="material-symbols-rounded main-icon"&gt;school&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;h3&gt;Título&lt;/h3&gt;
+    &lt;p&gt;Descripción...&lt;/p&gt;
+&lt;/div&gt;</div>
+            </div>
+
+            <div class="grid-demo">
+                <h4 class="grid-demo-title">Gradient Border Cards - Grid 3-2-1</h4>
+                <div class="grid-3-2-1">
+                    <div class="gradient-border-card">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon">groups</span>
+                        </div>
+                        <h3>Grupos Pequeños</h3>
+                        <p><strong>Máximo 10 estudiantes</strong> por grupo para garantizar atención personalizada y seguimiento individual.</p>
+                    </div>
+                    <div class="gradient-border-card">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon">co_present</span>
+                        </div>
+                        <h3>Modalidad Presencial</h3>
+                        <p><strong>2 clases semanales</strong> de 2 horas cada una, complementadas con 2-3 horas de estudio personal.</p>
+                    </div>
+                    <div class="gradient-border-card">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon">library_books</span>
+                        </div>
+                        <h3>Material Completo</h3>
+                        <p><strong>Todo incluido:</strong> Guías impresas, controles, ensayos, textos de estudio y plataforma Classroom.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usage-example">
+                <strong>💡 Aliases disponibles:</strong> .feature-card, .service-feature-card, .practical-card, .program-card
+            </div>
+        </section>
+
+        <!-- 2. SIMPLE CARDS -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">📄 Simple Cards</h2>
+            <p class="section-showcase-description">Fondo sólido blanco para servicios complementarios y listas</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">📋 Simple Card</h3>
+                <p><strong>Uso:</strong> Servicios complementarios, contenido con listas, información detallada</p>
+                <p><strong>Características:</strong> Fondo blanco sólido, soporte para listas con checkmarks</p>
+            </div>
+
+            <div class="grid-demo">
+                <h4 class="grid-demo-title">Simple Cards - Grid 2-2-1 (OBSOLETO - Usar Universal Card)</h4>
+                <div class="grid-2-2-1">
+                    <div class="universal-card">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">home</span>
+                        </div>
+                        <h3>Clases Particulares</h3>
+                        <p>Atención individual tanto en nuestra sede como a domicilio. Ideal para nivelación específica.</p>
+                        <ul>
+                            <li>Enseñanza media (todos los niveles)</li>
+                            <li>Primeros años de universidad</li>
+                            <li>Modalidad presencial en sede o domicilio</li>
+                            <li>Horarios flexibles</li>
+                        </ul>
+                    </div>
+                    <div class="universal-card">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">sunny</span>
+                        </div>
+                        <h3>Talleres de Verano</h3>
+                        <p>Programas intensivos de nivelación durante el período de vacaciones.</p>
+                        <ul>
+                            <li>Nivelación en matemáticas</li>
+                            <li>Refuerzo de contenidos específicos</li>
+                            <li>Preparación para el año académico</li>
+                            <li>Grupos reducidos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. GLASS CARDS -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">🌟 Glass Cards</h2>
+            <p class="section-showcase-description">Efecto glassmorphism para elementos destacados sobre fondos complejos</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">🔮 Glass Card</h3>
+                <p><strong>Uso:</strong> Valores institucionales, elementos destacados sobre backgrounds</p>
+                <p><strong>Características:</strong> Glassmorphism con backdrop-filter, iconos en color accent</p>
+            </div>
+
+            <div class="glass-demo">
+                <h4 class="grid-demo-title">Glass Cards - Grid 3-2-1 sobre fondo complejo</h4>
+                <div class="grid-3-2-1">
+                    <div class="glass-card">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">exercise</span>
+                        </div>
+                        <h3>Trabajo constante y disciplinado</h3>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">mountain_flag</span>
+                        </div>
+                        <h3>Resiliencia y espíritu de superación</h3>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">self_improvement</span>
+                        </div>
+                        <h3>Autoestima y autoconocimiento</h3>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">sunny</span>
+                        </div>
+                        <h3>Amor por la vida</h3>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">volunteer_activism</span>
+                        </div>
+                        <h3>Solidaridad y deseo genuino por contribuir</h3>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">balance</span>
+                        </div>
+                        <h3>Honestidad</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. STANDARD CARDS -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">📝 Standard Cards</h2>
+            <p class="section-showcase-description">Contenido narrativo extenso con fondo sólido blanco</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">📄 Standard Card (OBSOLETO - Usar Universal Card Extensiva)</h3>
+                <p><strong>Reemplazado por:</strong> .universal-card.extensive</p>
+                <p><strong>Características:</strong> Contenido narrativo extenso, párrafos justificados, información institucional</p>
+            </div>
+
+            <div class="grid-demo">
+                <h4 class="grid-demo-title">Universal Card Extensiva - Contenido extenso</h4>
+                <div class="universal-card extensive">
+                    <h3>Nuestra Institución</h3>
+                    <p>Preuniversitario JMC se funda con la misión de contribuir con las futuras generaciones en su preparación académica y formación personal, para con ello aportar en la construcción de un proyecto de vida valioso.</p>
+
+                    <p>Estamos convencidos de que todo ser humano cuenta con un potencial enorme para crecer, contribuir y por supuesto ser feliz. Sin embargo, para aprovechar y desarrollar ese potencial, se hace imprescindible contar con el apoyo y guía en momentos claves de la vida.</p>
+
+                    <p>Desafío que como institución educativa hemos querido emprender, por medio de nuestro trabajo, compromiso profundo, amor por la vida y fe en el ser humano.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. STAT CARDS -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">📊 Stat Cards</h2>
+            <p class="section-showcase-description">Estadísticas destacadas con números grandes y animaciones</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">📈 Stat Card</h3>
+                <p><strong>Uso:</strong> Estadísticas importantes, números destacados, KPIs institucionales</p>
+                <p><strong>Características:</strong> Números grandes con DM Serif Text, animaciones con JavaScript, clase .red para destacar</p>
+            </div>
+
+            <div class="stat-demo">
+                <h4 class="grid-demo-title">Stat Cards - Grid 4-2-1</h4>
+                <div class="grid-4-2-1">
+                    <div class="stat-card">
+                        <div class="stat-number">18+</div>
+                        <p>Años de<br>Experiencia</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10</div>
+                        <p>Estudiantes Máximo por Grupo</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number red">3</div>
+                        <p>Máximos Nacionales<br>PAES 2022</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">200+</div>
+                        <p>Total Estudiantes Histórico</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usage-example">
+                <strong>🎨 Clases especiales:</strong><br>
+                • <code>.stat-number</code> - Color primary (azul)<br>
+                • <code>.stat-number.red</code> - Color accent-red para destacar
+            </div>
+        </section>
+
+        <!-- 6. MVP CARDS -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">🎯 MVP Cards</h2>
+            <p class="section-showcase-description">Misión, Visión, Propósito y proposiciones de valor</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">🏛️ MVP Card</h3>
+                <p><strong>Uso:</strong> Misión, Visión, Propósito, proposiciones de valor institucionales</p>
+                <p><strong>Características:</strong> Fondo blanco sólido, títulos en color primary, centrado</p>
+            </div>
+
+            <div class="grid-demo">
+                <h4 class="grid-demo-title">MVP Cards - Grid 3-1-1</h4>
+                <div class="grid-3-1-1">
+                    <div class="mvp-card">
+                        <h3>Misión</h3>
+                        <p>Contribuir con las futuras generaciones en su preparación académica y formación personal, entregando herramientas sólidas para construir un proyecto de vida valioso.</p>
+                    </div>
+                    <div class="mvp-card">
+                        <h3>Visión</h3>
+                        <p>Llegar a ser una institución educativa reconocida, a nivel nacional, por contribuir con las futuras generaciones y marcar la diferencia en su formación académica y humana.</p>
+                    </div>
+                    <div class="mvp-card">
+                        <h3>Propósito</h3>
+                        <p>Excelencia, propósito y construcción de un proyecto de vida valioso.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. QUOTE CARDS -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">💬 Quote Cards</h2>
+            <p class="section-showcase-description">Citas destacadas con efecto glassmorphism y comillas decorativas</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">🗣️ Quote Card</h3>
+                <p><strong>Uso:</strong> Citas inspiracionales, testimonios destacados, frases importantes</p>
+                <p><strong>Características:</strong> Comillas decorativas con DM Serif Text, glassmorphism, centrado</p>
+            </div>
+
+            <div class="quote-demo">
+                <h4 class="grid-demo-title">Quote Card - Sobre fondo de color</h4>
+                <div class="quote-card">
+                    <div class="quote-text">El niño, guiado por un maestro interior, trabaja infatigablemente con alegría para construir al hombre.</div>
+                    <div class="quote-author">- María Montessori</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CARDS ESPECÍFICAS -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">🛠️ Cards Específicas</h2>
+            <p class="section-showcase-description">Cards especializadas para funcionalidades específicas</p>
+
+            <div class="card-demo-grid">
+                <!-- Profile Card -->
+                <div>
+                    <div class="card-info">
+                        <h3 class="card-info-title">👤 Profile Card</h3>
+                        <p><strong>Uso:</strong> Información de perfil del fundador</p>
+                        <p><strong>Grid:</strong> profile-contact-grid (auto + 1fr)</p>
+                    </div>
+                    
+                    <div class="profile-card profile-contact-grid">
+                        <div class="profile-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%2341B6E6'/%3E%3Ctext x='100' y='100' text-anchor='middle' dy='.3em' fill='white' font-size='60'%3E👨‍🏫%3C/text%3E%3C/svg%3E" alt="José Manuel Cartes Urzúa" class="profile-photo">
+                            <div class="profile-overlay">
+                                <span class="material-symbols-rounded">person</span>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h1 class="profile-name">José Manuel Cartes U.</h1>
+                            <h2 class="profile-title">Fundador Preuniversitario JMC</h2>
+                            <p class="profile-subtitle">Ingeniero Civil UC • Profesor • Montañista</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement Card -->
+                <div>
+                    <div class="card-info">
+                        <h3 class="card-info-title">🏆 Achievement Card</h3>
+                        <p><strong>Uso:</strong> Logros montañísticos, reconocimientos</p>
+                        <p><strong>Características:</strong> Icono + contenido estructurado</p>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <span class="material-symbols-rounded">mountain_flag</span>
+                        </div>
+                        <div class="achievement-content">
+                            <h3>Cerro El Plomo</h3>
+                            <div class="achievement-stats">
+                                <span class="stat-number">XX</span>
+                                <span class="stat-label">Cumbres Alcanzadas</span>
+                            </div>
+                            <p>Varias ascensiones invernales, incluyendo una trotando desde Plaza de Armas en 13h 39min.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Card Full -->
+                <div style="grid-column: 1 / -1;">
+                    <div class="card-info">
+                        <h3 class="card-info-title">🔄 Process Card Full</h3>
+                        <p><strong>Uso:</strong> Pasos del proceso de inscripción</p>
+                        <p><strong>Layout:</strong> Horizontal (icono + contenido)</p>
+                    </div>
+                    
+                    <div class="proceso-card-full">
+                        <div class="process-step-icon">
+                            <span class="material-symbols-rounded process-icon">assignment</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>1. Prueba de Diagnóstico</h3>
+                            <p>Evaluamos tu nivel inicial en matemáticas para identificar fortalezas y áreas de mejora. Esta prueba nos permite diseñar una estrategia de aprendizaje personalizada.</p>
+                            <div class="card-meta">
+                                <div class="meta-item">
+                                    <span class="material-symbols-rounded meta-icon">timer</span>
+                                    <span>90 minutos</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="material-symbols-rounded meta-icon">location_on</span>
+                                    <span>En nuestra sede</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. COMPLEMENTARY CARDS -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">📚 Complementary Cards</h2>
+            <p class="section-showcase-description">Cards para servicios complementarios con listas especializadas</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">➕ Complementary Card (OBSOLETO - Usar Universal Card Técnica)</h3>
+                <p><strong>Reemplazado por:</strong> .universal-card.technical</p>
+                <p><strong>Características:</strong> Servicios complementarios con listas detalladas</p>
+            </div>
+
+            <div class="grid-demo">
+                <h4 class="grid-demo-title">Universal Cards Técnicas - Grid 2-2-1</h4>
+                <div class="grid-2-2-1">
+                    <div class="universal-card technical">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">support_agent</span>
+                        </div>
+                        <h3>Servicios Adicionales</h3>
+                        <p>Servicios complementarios para apoyar la formación académica integral de nuestros estudiantes.</p>
+                        <ul>
+                            <li>Apoyo psicopedagógico especializado</li>
+                            <li>Orientación vocacional personalizada</li>
+                            <li>Talleres de técnicas de estudio</li>
+                            <li>Seguimiento académico continuo</li>
+                        </ul>
+                    </div>
+                    <div class="universal-card technical">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">quiz</span>
+                        </div>
+                        <h3>Sistema de Evaluación</h3>
+                        <p>Evaluación continua y seguimiento del progreso académico con herramientas modernas.</p>
+                        <ul>
+                            <li>Controles semanales personalizados</li>
+                            <li>Ensayos PSU/PAES regulares</li>
+                            <li>Reportes de progreso detallados</li>
+                            <li>Retroalimentación constante</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. MODERN PAYMENT TABLE -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">💰 Modern Payment Table</h2>
+            <p class="section-showcase-description">Tabla moderna para información de pagos y modalidades</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">💳 Modern Payment Table</h3>
+                <p><strong>Uso:</strong> Información de modalidades de pago, precios, términos</p>
+                <p><strong>Características:</strong> Header con gradiente, filas interactivas, iconos informativos</p>
+            </div>
+
+            <div class="grid-demo">
+                <h4 class="grid-demo-title">Modern Payment Table</h4>
+                <div class="modern-payment-table">
+                    <div class="table-header">
+                        <h3>💰 Modalidades de Pago</h3>
+                    </div>
+                    <div class="table-body">
+                        <div class="table-row">
+                            <div class="table-icon">
+                                <span class="material-symbols-rounded">calendar_month</span>
+                            </div>
+                            <div class="table-content">
+                                <strong>Matrícula</strong>
+                                <span>Se cancela entre diciembre y enero para asegurar el cupo</span>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-icon">
+                                <span class="material-symbols-rounded">credit_card</span>
+                            </div>
+                            <div class="table-content">
+                                <strong>Mensualidades</strong>
+                                <span>9 cuotas mensuales de marzo a noviembre</span>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-icon">
+                                <span class="material-symbols-rounded">schedule</span>
+                            </div>
+                            <div class="table-content">
+                                <strong>Fecha Límite</strong>
+                                <span>Primeros 5 días de cada mes</span>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-icon">
+                                <span class="material-symbols-rounded">check_circle</span>
+                            </div>
+                            <div class="table-content">
+                                <strong>Consultas por Valores</strong>
+                                <span>Contacta directamente para información detallada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. SISTEMA DE GRIDS -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">📐 Sistema de Grids</h2>
+            <p class="section-showcase-description">Grids responsivos universales - Patrón Desktop-Tablet-Mobile</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">🗂️ Grids Disponibles</h3>
+                <p><strong>Patrón:</strong> .grid-{desktop}-{tablet}-{mobile}</p>
+                <p><strong>Breakpoints:</strong> 82rem (tablet), 53rem (mobile)</p>
+                <div class="card-code">/* Grids Principales */
+.grid-1-1-1  /* 1 columna siempre */
+.grid-2-1-1  /* 2 desktop, 1 tablet, 1 mobile */
+.grid-2-2-1  /* 2 desktop, 2 tablet, 1 mobile */
+.grid-3-1-1  /* 3 desktop, 1 tablet, 1 mobile */
+.grid-3-2-1  /* 3 desktop, 2 tablet, 1 mobile */
+.grid-3-3-1  /* 3 desktop, 3 tablet, 1 mobile */
+.grid-4-2-1  /* 4 desktop, 2 tablet, 1 mobile */
+.grid-5-2-1  /* 5 desktop, 2 tablet, 1 mobile */</div>
+            </div>
+
+            <!-- Demo Visual de Grids -->
+            <div class="grid-demo">
+                <h4 class="grid-demo-title">Grid 4-2-1 Demo (4 desktop, 2 tablet, 1 mobile)</h4>
+                <div class="grid-4-2-1">
+                    <div style="background: var(--primary); color: white; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600;">Item 1</div>
+                    <div style="background: var(--primary-dark); color: white; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600;">Item 2</div>
+                    <div style="background: var(--accent); color: var(--black); padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600;">Item 3</div>
+                    <div style="background: var(--accent-red); color: white; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600;">Item 4</div>
+                </div>
+            </div>
+
+            <div class="grid-demo">
+                <h4 class="grid-demo-title">Grid 3-2-1 Demo (3 desktop, 2 tablet, 1 mobile)</h4>
+                <div class="grid-3-2-1">
+                    <div style="background: var(--primary); color: white; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600;">Item 1</div>
+                    <div style="background: var(--primary-dark); color: white; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600;">Item 2</div>
+                    <div style="background: var(--accent); color: var(--black); padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600;">Item 3</div>
+                </div>
+            </div>
+
+            <div class="responsive-note">
+                <strong>📱 Comportamiento Responsivo:</strong><br>
+                • <strong>Desktop:</strong> Número completo de columnas<br>
+                • <strong>Tablet (≤82rem):</strong> Reducción a 2-3 columnas<br>
+                • <strong>Mobile (≤53rem):</strong> Siempre 1 columna<br>
+                • <strong>Especial:</strong> grid-3-2-1 y grid-5-2-1 centran el último elemento si queda solo en tablet
+            </div>
+        </section>
+
+        <!-- 12. ICONOS Y TAMAÑOS -->
+        <section class="section-showcase">
+            <h2 class="section-showcase-title">🎨 Sistema de Iconos</h2>
+            <p class="section-showcase-description">Material Symbols Rounded con tamaños responsivos</p>
+
+            <div class="card-info">
+                <h3 class="card-info-title">🔤 Material Symbols Rounded</h3>
+                <p><strong>Fuente:</strong> Local (MaterialSymbolsRounded.woff2)</p>
+                <p><strong>Tamaños:</strong> 4 niveles responsivos + contenedores</p>
+            </div>
+
+            <div class="grid-demo">
+                <h4 class="grid-demo-title">Tamaños de Iconos</h4>
+                <div class="grid-4-2-1" style="text-align: center;">
+                    <div style="background: white; padding: 2rem; border-radius: 15px;">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon" style="color: var(--primary);">school</span>
+                        </div>
+                        <strong>Main Icon</strong><br>
+                        <code>.main-icon (6rem)</code><br>
+                        <code>.main-icon-container</code>
+                    </div>
+                    <div style="background: white; padding: 2rem; border-radius: 15px;">
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">star</span>
+                        </div>
+                        <strong>Card Icon (NUEVO)</strong><br>
+                        <code>.card-icon</code><br>
+                        <span style="font-size: 0.9em; color: #666;">Reemplaza .secondary-icon-container</span>
+                    </div>
+                    <div style="background: white; padding: 2rem; border-radius: 15px;">
+                        <span class="material-symbols-rounded footer-icon" style="color: var(--primary); font-size: 3rem;">email</span><br><br>
+                        <strong>Footer Icon</strong><br>
+                        <code>.footer-icon (1.2rem)</code>
+                    </div>
+                    <div style="background: white; padding: 2rem; border-radius: 15px;">
+                        <span class="material-symbols-rounded meta-icon" style="color: var(--black); font-size: 2rem;">timer</span><br><br>
+                        <strong>Meta Icon</strong><br>
+                        <code>.meta-icon (1rem)</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usage-example">
+                <strong>🎯 Colores por contexto:</strong><br>
+                • <strong>Main icons:</strong> var(--primary) - Azul principal<br>
+                • <strong>Secondary icons:</strong> var(--primary-dark) - Azul oscuro<br>
+                • <strong>Glass cards:</strong> var(--accent) - Amarillo para contraste<br>
+                • <strong>Footer/Meta:</strong> Según contexto
+            </div>
+        </section>
+
+        <!-- Footer del Showcase -->
+        <footer style="text-align: center; margin-top: 4rem; padding: 3rem; background: rgba(255, 255, 255, 0.95); border-radius: 20px; backdrop-filter: blur(15px); box-shadow: var(--shadow-medium);">
+            <h3 style="color: var(--primary-dark); margin-bottom: 1rem; font-family: var(--font-title); font-size: 2rem;">Sistema Completo de Cards JMC</h3>
+            <p style="color: var(--primary); font-weight: 600; font-size: 1.2rem; margin-bottom: 2rem;">15+ tipos de cards unificadas • 8 grids responsivos • 4 tamaños de iconos</p>
+            
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem;">🎨</span>
+                    <strong>Sistema CSS Modular</strong>
+                </div>
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem;">📱</span>
+                    <strong>100% Responsive</strong>
+                </div>
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem;">⚡</span>
+                    <strong>Performance Optimizada</strong>
+                </div>
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem;">🔧</span>
+                    <strong>Fácil Mantenimiento</strong>
+                </div>
+            </div>
+            
+            <p style="color: var(--black); opacity: 0.8;">Desarrollado por Alexandre Castillo - ACastillo DG</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/global.js"></script>
+    <script>
+        // Script específico para el showcase
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Cards Showcase loaded successfully');
+            
+            // Agregar números animados a las stats
+            setTimeout(() => {
+                const statsNumbers = document.querySelectorAll('.showcase-stat-number');
+                statsNumbers.forEach(stat => {
+                    const originalText = stat.textContent;
+                    if (!isNaN(originalText.replace('+', '').replace('%', ''))) {
+                        stat.textContent = '0';
+                        const target = parseInt(originalText.replace('+', '').replace('%', ''));
+                        animateValue(stat, 0, target, 2000, originalText);
+                    }
+                });
+            }, 500);
+            
+            // Agregar información de responsive en tiempo real
+            const addResponsiveInfo = () => {
+                const width = window.innerWidth;
+                let device = 'Desktop';
+                if (width <= 848) device = 'Mobile';
+                else if (width <= 1312) device = 'Tablet';
+                
+                document.title = `Cards Showcase - ${device} (${width}px)`;
+            };
+            
+            addResponsiveInfo();
+            window.addEventListener('resize', addResponsiveInfo);
+        });
+    </script>
+</body>
+</html>

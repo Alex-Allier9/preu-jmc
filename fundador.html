@@ -56,44 +56,56 @@
         <div class="mountain-background"></div>
 
         <!-- Profile Header Section -->
-        <section class="profile-header">
+        <section class="section profile-header">
             <div class="container">
-                <div class="profile-card profile-contact-grid fade-in">
-                    <div class="profile-image">
-                        <img src="media/images/fundador/jose-manuel-cartes.jpg" alt="José Manuel Cartes Urzúa"
-                            class="profile-photo">
-                        <div class="profile-overlay">
-                            <span class="material-symbols-rounded">person</span>
-                        </div>
+                <div class="grid-profile fade-in">
+                    <div class="profile-image-container">
+                        <img src="media/images/fundador/jose-manuel-cartes.jpg" 
+                             alt="José Manuel Cartes Urzúa"
+                             style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-light);">
                     </div>
-                    <div class="profile-info">
-                        <h1 class="profile-name">José Manuel Cartes Urzúa</h1>
-                        <h2 class="profile-title">Fundador Preuniversitario JMC</h2>
-                        <p class="profile-subtitle">Ingeniero Civil UC • Profesor • Montañista</p>
-
-                        <div class="profile-contact-items">
-                            <a href="mailto:jcartes@preujmc.cl" class="profile-contact-item">
-                                <span class="material-symbols-rounded">email</span>
-                                <div class="profile-contact-details">
-                                    <span class="profile-contact-label">Email</span>
-                                    <span class="profile-contact-value">jcartes@preujmc.cl</span>
+                    
+                    <!-- Contenido completo (70%) -->
+                    <div class="profile-content-container">
+                        <!-- Información del perfil -->
+                        <div class="profile-info">
+                            <h1 style="font-family: var(--font-title); font-size: clamp(2.5rem, 4vw, 3.5rem); color: var(--primary-dark); margin-bottom: 0.5rem; letter-spacing: var(--title-letter-spacing); line-height: 1.2;">José Manuel Cartes Urzúa</h1>
+                            <h2 style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">Fundador Preuniversitario JMC</h2>
+                            <p style="font-size: 1.1rem; color: var(--black); margin-bottom: 2rem; opacity: 0.8;">Ingeniero Civil UC • Profesor • Montañista</p>
+                        </div>
+                        
+                        <!-- Botones de contacto usando grid global 3-1-1 -->
+                        <div class="grid-3-1-1">
+                            <a href="mailto:jcartes@preujmc.cl" 
+                               style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.7); border-radius: 10px; transition: all 0.3s ease; text-decoration: none; color: inherit;"
+                               onmouseover="this.style.background='rgba(65, 182, 230, 0.1)'; this.style.transform='translateY(-3px)'"
+                               onmouseout="this.style.background='rgba(255, 255, 255, 0.7)'; this.style.transform='translateY(0)'">
+                                <span class="material-symbols-rounded" style="font-size: 1.5rem; color: var(--primary);">email</span>
+                                <div>
+                                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--primary-dark); display: block; margin-bottom: 0.3rem;">Email</span>
+                                    <span style="font-size: 1rem; color: var(--black);">jcartes@preujmc.cl</span>
                                 </div>
                             </a>
+                            
                             <a href="https://instagram.com/josemanuelcartes" target="_blank"
-                                class="profile-contact-item">
-                                <img src="media/icons/Instagram_Glyph_Gradient.png" alt="Instagram"
-                                    class="profile-contact-icon">
-                                <div class="profile-contact-details">
-                                    <span class="profile-contact-label">Instagram</span>
-                                    <span class="profile-contact-value">@josemanuelcartes</span>
+                               style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.7); border-radius: 10px; transition: all 0.3s ease; text-decoration: none; color: inherit;"
+                               onmouseover="this.style.background='rgba(65, 182, 230, 0.1)'; this.style.transform='translateY(-3px)'"
+                               onmouseout="this.style.background='rgba(255, 255, 255, 0.7)'; this.style.transform='translateY(0)'">
+                                <img src="media/icons/Instagram_Glyph_Gradient.png" alt="Instagram" style="width: 1.5rem; height: 1.5rem; min-width: 1.5rem;">
+                                <div>
+                                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--primary-dark); display: block; margin-bottom: 0.3rem;">Instagram</span>
+                                    <span style="font-size: 1rem; color: var(--black);">@josemanuelcartes</span>
                                 </div>
                             </a>
+                            
                             <a href="https://www.linkedin.com/in/josé-manuel-cartes-urzúa-10b35711" target="_blank"
-                                class="profile-contact-item">
-                                <img src="media/icons/LI-In-Bug.png" alt="LinkedIn" class="profile-contact-icon">
-                                <div class="profile-contact-details">
-                                    <span class="profile-contact-label">LinkedIn</span>
-                                    <span class="profile-contact-value">José Manuel Cartes</span>
+                               style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.7); border-radius: 10px; transition: all 0.3s ease; text-decoration: none; color: inherit;"
+                               onmouseover="this.style.background='rgba(65, 182, 230, 0.1)'; this.style.transform='translateY(-3px)'"
+                               onmouseout="this.style.background='rgba(255, 255, 255, 0.7)'; this.style.transform='translateY(0)'">
+                                <img src="media/icons/LI-In-Bug.png" alt="LinkedIn" style="width: 1.5rem; height: 1.5rem; min-width: 1.5rem;">
+                                <div>
+                                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--primary-dark); display: block; margin-bottom: 0.3rem;">LinkedIn</span>
+                                    <span style="font-size: 1rem; color: var(--black);">José Manuel Cartes</span>
                                 </div>
                             </a>
                         </div>
@@ -107,20 +119,20 @@
             <div class="container">
                 <h2 class="section-title fade-in">Sobre mí</h2>
                 <div class="section-subtitle fade-in"></div>
-                <div class="standard-card fade-in">
-                    <div class="content-wrapper">
-                        <p>Mi nombre es José Manuel Cartes Urzúa, soy profesor, ingeniero Civil UC y montañista, además
-                            de un ser humano creyente en Dios. Cuento con más de 18 años de experiencia en aula como
-                            profesor del Colegio Epullay Montessori y de mi preuniversitario.</p>
+                <div class="universal-card extensive fade-in">
+                    <h3>Mi Historia</h3>
+                    <p>Mi nombre es José Manuel Cartes Urzúa, soy profesor, ingeniero Civil UC y montañista, además
+                        de un ser humano creyente en Dios. Cuento con más de 18 años de experiencia en aula como
+                        profesor del Colegio Epullay Montessori y de mi preuniversitario.</p>
 
-                        <p>Dentro de mis años en el mundo de la educación, he sido testigo de que el ser humano tiene un
-                            potencial infinito para crecer, aprender y contribuir a los demás. Cada persona, si
-                            desarrolla con perseverancia y amor sus talentos únicos, puede construir un proyecto de vida
-                            realmente valioso y aportar en la creación de un mundo mejor.</p>
+                    <p>Dentro de mis años en el mundo de la educación, he sido testigo de que el ser humano tiene un
+                        potencial infinito para crecer, aprender y contribuir a los demás. Cada persona, si
+                        desarrolla con perseverancia y amor sus talentos únicos, puede construir un proyecto de vida
+                        realmente valioso y aportar en la creación de un mundo mejor.</p>
 
-                        <p>Mi compromiso es dar lo mejor que tengo como persona y como profesional, para que cada
-                            estudiante que trabaje conmigo desarrolle su máximo potencial en el área matemática, pero
-                            también potencie su disciplina, autoconfianza y valores que le permitan convertirse en un
+                    <p>Mi compromiso es dar lo mejor que tengo como persona y como profesional, para que cada
+                        estudiante que trabaje conmigo desarrolle su máximo potencial en el área matemática, pero
+                        también potencie su disciplina, autoconfianza y valores que le permitan convertirse en un
                             mejor ser humano.</p>
                     </div>
                 </div>
@@ -196,8 +208,8 @@
 
                 <div class="grid-3-2-1">
                     <div class="glass-card fade-in">
-                        <div class="secondary-icon-container">
-                            <span class="material-symbols-rounded secondary-icon">self_improvement</span>
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">self_improvement</span>
                         </div>
                         <h3>Potencial Infinito</h3>
                         <p>Cada ser humano cuenta con un potencial enorme para crecer, aprender y contribuir a los demás
@@ -205,8 +217,8 @@
                     </div>
 
                     <div class="glass-card fade-in">
-                        <div class="secondary-icon-container">
-                            <span class="material-symbols-rounded secondary-icon">volunteer_activism</span>
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">volunteer_activism</span>
                         </div>
                         <h3>Formación Integral</h3>
                         <p>Desarrollo no solo de habilidades académicas, sino también de disciplina, autoconfianza y
@@ -215,8 +227,8 @@
                     </div>
 
                     <div class="glass-card fade-in">
-                        <div class="secondary-icon-container">
-                            <span class="material-symbols-rounded secondary-icon">star_shine</span>
+                        <div class="card-icon">
+                            <span class="material-symbols-rounded">star_shine</span>
                         </div>
                         <h3>Proyecto de Vida</h3>
                         <p>Acompañamiento en la construcción de un proyecto de vida valioso que permita aportar

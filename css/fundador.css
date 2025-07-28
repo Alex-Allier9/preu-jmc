@@ -52,7 +52,6 @@
     letter-spacing: var(--title-letter-spacing);
     line-height: 1.2;
     color: white;
-    text-shadow: 0 2px 4px rgba(var(--black-rgb), 0.3);
 }
 
 .hero-subtitle {
@@ -60,7 +59,6 @@
     font-style: italic;
     color: white;
     opacity: 0.9;
-    text-shadow: 0 1px 3px rgba(var(--black-rgb), 0.2);
     max-width: 100%;
     align-self: flex-start;
 }
@@ -110,7 +108,7 @@
 .mountaineering-section {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     margin-left: 8.33%;
     margin-right: 8.33%;
     margin-bottom: 6rem;

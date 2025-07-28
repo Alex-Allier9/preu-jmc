@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Sistema Universal de Enlaces | Preuniversitario JMC</title>
+    
+    <style>
+        /* Variables del sistema JMC */
+        :root {
+            --primary: #41B6E6;
+            --primary-dark: #165C7D;
+            --accent: #F4DA40;
+            --black: #101820;
+            --primary-rgb: 65, 182, 230;
+            --accent-rgb: 244, 218, 64;
+            --black-rgb: 16, 24, 32;
+            --transition-standard: all 0.3s ease;
+            --transition-transform: transform 0.3s ease;
+            --transition-color: color 0.3s ease;
+            --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--black);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ======================================
+           NUEVO SISTEMA UNIVERSAL DE ENLACES
+           ====================================== */
+
+        /* ENLACE BASE UNIVERSAL */
+        .link, 
+        .universal-link,
+        .inline-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition-color);
+            display: inline-block;
+        }
+
+        /* Estado visitado - Primary dark */
+        .link:visited,
+        .universal-link:visited,
+        .inline-link:visited {
+            color: var(--primary-dark);
+        }
+
+        /* Estado hover - Mantener color primario */
+        .link:hover,
+        .universal-link:hover,
+        .inline-link:hover {
+            color: var(--primary);
+        }
+
+        /* Línea amarilla universal - Mismo estilo que el header */
+        .link::after,
+        .universal-link::after,
+        .inline-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: var(--transition-transform);
+        }
+
+        /* Activar línea en hover */
+        .link:hover::after,
+        .universal-link:hover::after,
+        .inline-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* ENLACE PARA TEXTO CORRIDO */
+        .link-text {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500; /* Menos peso para texto corrido */
+            position: relative;
+            transition: var(--transition-color);
+            display: inline;
+        }
+
+        .link-text:visited {
+            color: var(--primary-dark);
+        }
+
+        .link-text:hover {
+            color: var(--primary);
+        }
+
+        .link-text::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: var(--transition-transform);
+        }
+
+        .link-text:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* ENLACE DESTACADO */
+        .link-featured {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            position: relative;
+            transition: var(--transition-color);
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(var(--primary-rgb), 0.1);
+        }
+
+        .link-featured:visited {
+            color: var(--primary-dark);
+            background: rgba(var(--primary-dark), 0.1);
+        }
+
+        .link-featured:hover {
+            color: var(--accent);
+            background: rgba(var(--accent-rgb), 0.15);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(var(--primary-rgb), 0.2);
+        }
+
+        .link-featured::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .link-featured:hover::after {
+            width: 90%;
+        }
+
+        /* ENLACE PARA FONDOS OSCUROS */
+        .link-dark-bg {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition-color);
+            display: inline-block;
+        }
+
+        .link-dark-bg:visited {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .link-dark-bg:hover {
+            color: var(--accent);
+        }
+
+        .link-dark-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: var(--transition-transform);
+        }
+
+        .link-dark-bg:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* ======================================
+           FOOTER - SISTEMA ACTUAL SIN CAMBIOS
+           ====================================== */
+
+        .footer {
+            background: var(--black);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-nav-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            padding: 0.3rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.25rem;
+            width: 100%;
+            text-align: left;
+        }
+
+        .footer-nav-link:hover {
+            color: var(--accent);
+            background: rgba(244, 218, 64, 0.1);
+            transform: translateX(0.3125rem);
+            padding-left: 0.5rem;
+        }
+
+        .footer-author {
+            color: var(--accent);
+            margin-top: 0.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-author:hover {
+            color: var(--primary);
+        }
+
+        /* ======================================
+           ESTILOS DE LA DEMOSTRACIÓN
+           ====================================== */
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-title {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .before, .after {
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .before {
+            background: rgba(239, 83, 80, 0.1);
+            border-left: 4px solid #ef5350;
+        }
+
+        .after {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 4px solid #4caf50;
+        }
+
+        .example-content {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .dark-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #0f3a4a 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .note {
+            background: rgba(244, 218, 64, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="demo-header">
+            <h1 class="demo-title">Sistema Universal de Enlaces</h1>
+            <p>Demostración del nuevo sistema unificado para Preuniversitario JMC</p>
+        </header>
+
+        <!-- Comparación del Sistema -->
+        <section class="demo-section">
+            <h2 class="section-title">📊 Comparación: Antes vs Después</h2>
+            
+            <div class="comparison">
+                <div class="before">
+                    <h3>❌ ANTES - Sistema Fragmentado</h3>
+                    <p>Múltiples clases inconsistentes:</p>
+                    <ul>
+                        <li><code>.universal-link</code></li>
+                        <li><code>.inline-link</code></li>
+                        <li><code>.testimonios-link</code></li>
+                        <li>Estilos diferentes</li>
+                        <li>Colores inconsistentes</li>
+                    </ul>
+                </div>
+                
+                <div class="after">
+                    <h3>✅ DESPUÉS - Sistema Unificado</h3>
+                    <p>4 clases principales consistentes:</p>
+                    <ul>
+                        <li><code>.link</code> - Estándar</li>
+                        <li><code>.link-text</code> - En párrafos</li>
+                        <li><code>.link-featured</code> - Destacado</li>
+                        <li><code>.link-dark-bg</code> - Fondos oscuros</li>
+                        <li>Línea amarilla unificada</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enlace Estándar -->
+        <section class="demo-section">
+            <h2 class="section-title">🔗 1. Enlace Estándar (.link)</h2>
+            <p><strong>Uso:</strong> Enlaces generales en contenido</p>
+            <p><strong>Peso:</strong> 600 (semibold)</p>
+            
+            <div class="example-content">
+                <p>Para más información sobre nuestros servicios, visita <a href="#" class="link">nuestra página de servicios</a> donde encontrarás todo detallado.</p>
+                
+                <p>También puedes contactarnos directamente a <a href="mailto:ejemplo@preujmc.cl" class="link">ejemplo@preujmc.cl</a> para resolver cualquier duda.</p>
+                
+                <p>Enlaces independientes: <a href="#" class="link">Fundador</a> | <a href="#" class="link">Testimonios</a> | <a href="#" class="link">Contacto</a></p>
+            </div>
+            
+            <div class="note">
+                <strong>Estados:</strong> Normal (azul) → Visitado (azul oscuro) → Hover (azul + línea amarilla)
+            </div>
+        </section>
+
+        <!-- Enlace en Texto -->
+        <section class="demo-section">
+            <h2 class="section-title">📝 2. Enlace en Texto (.link-text)</h2>
+            <p><strong>Uso:</strong> Enlaces integrados dentro de párrafos</p>
+            <p><strong>Peso:</strong> 500 (medium) - menos prominente</p>
+            
+            <div class="example-content">
+                <p>Nuestros resultados reflejan no solo la preparación académica de excelencia, sino también nuestro riguroso proceso de selección. Conoce las historias completas de nuestros estudiantes en la sección de <a href="#" class="link-text">Testimonios</a> donde documentamos todos los casos de éxito.</p>
+                
+                <p>El Preuniversitario JMC cuenta con más de 18 años de experiencia. Si quieres conocer más sobre nuestro fundador, puedes leer <a href="#" class="link-text">su historia completa</a> en la página dedicada.</p>
+                
+                <p>Para estudiantes que requieren apoyo adicional, ofrecemos <a href="#" class="link-text">clases particulares</a> tanto en nuestra sede como a domicilio.</p>
+            </div>
+            
+            <div class="note">
+                <strong>Diferencia:</strong> Peso de fuente menor (500 vs 600) para integrarse mejor en el texto corrido
+            </div>
+        </section>
+
+        <!-- Enlace Destacado -->
+        <section class="demo-section">
+            <h2 class="section-title">⭐ 3. Enlace Destacado (.link-featured)</h2>
+            <p><strong>Uso:</strong> CTAs importantes y enlaces que necesitan destacar</p>
+            <p><strong>Peso:</strong> 700 (bold) + background sutil</p>
+            
+            <div class="example-content">
+                <p>¿Interesado en formar parte de nuestro preuniversitario? <a href="#" class="link-featured">Agenda tu entrevista personal aquí</a> y conoce nuestra metodología.</p>
+                
+                <p>Los resultados hablan por sí solos: tenemos múltiples máximos nacionales. <a href="#" class="link-featured">Ver todos los testimonios</a> de nuestros estudiantes exitosos.</p>
+                
+                <p>¿Necesitas una nivelación específica? <a href="#" class="link-featured">Consulta por nuestros talleres de verano</a> diseñados para diferentes niveles.</p>
+                
+                <p>Para situaciones especiales, evaluamos cada caso individualmente. <a href="#" class="link-featured">Contáctanos directamente</a> para conversar sobre becas y facilidades de pago.</p>
+            </div>
+            
+            <div class="note">
+                <strong>Efectos especiales:</strong> Background sutil + elevación en hover + línea amarilla animada
+            </div>
+        </section>
+
+        <!-- Enlace para Fondos Oscuros -->
+        <section class="demo-section">
+            <h2 class="section-title">🌙 4. Enlace para Fondos Oscuros (.link-dark-bg)</h2>
+            <p><strong>Uso:</strong> CTAs y enlaces en secciones con fondos oscuros</p>
+            <p><strong>Color:</strong> Blanco → Amarillo en hover</p>
+            
+            <div class="dark-section">
+                <h3>¿Listo para transformar tu futuro?</h3>
+                <p>Únete a los estudiantes que han construido su proyecto de vida con JMC. <a href="#" class="link-dark-bg">Inscríbete ahora</a> y comienza tu preparación de excelencia.</p>
+                
+                <p>¿Tienes dudas sobre nuestro proceso? <a href="#" class="link-dark-bg">Agenda una reunión informativa</a> sin compromiso para conocer nuestra metodología.</p>
+                
+                <p>Para consultas específicas sobre becas y financiamiento, <a href="#" class="link-dark-bg">contáctanos directamente</a> para evaluar tu situación particular.</p>
+            </div>
+            
+            <div class="note">
+                <strong>Importante:</strong> Este estilo es SOLO para contenido principal, NO para el footer
+            </div>
+        </section>
+
+        <!-- Ejemplos Reales -->
+        <section class="demo-section">
+            <h2 class="section-title">📖 Ejemplos Reales de Uso</h2>
+            
+            <h3>Como aparecería en nosotros.html:</h3>
+            <div class="example-content">
+                <p>Conoce las historias completas de nuestros estudiantes en la sección de <a href="testimonios" class="link-text">Testimonios</a> donde documentamos todos los casos de éxito.</p>
+            </div>
+            
+            <h3>Como aparecería en servicios.html:</h3>
+            <div class="example-content">
+                <p>Para situaciones especiales, ofrecemos alternativas de pago flexibles. <a href="contacto" class="link-featured">Contáctanos directamente</a> para conversar tu situación particular.</p>
+            </div>
+            
+            <h3>Como aparecería en fundador.html:</h3>
+            <div class="example-content">
+                <p>¿Quieres conocer más sobre nuestra metodología educativa? <a href="contacto" class="link">Agenda una entrevista personal</a> con José Manuel Cartes.</p>
+            </div>
+        </section>
+
+        <!-- Estados de los Enlaces -->
+        <section class="demo-section">
+            <h2 class="section-title">🎨 Estados Visuales Unificados</h2>
+            
+            <div class="example-content">
+                <p><strong>Estado Normal:</strong> <span style="color: var(--primary);">Color Primary (#41B6E6)</span></p>
+                <p><strong>Estado Visitado:</strong> <span style="color: var(--primary-dark);">Color Primary Dark (#165C7D)</span></p>
+                <p><strong>Estado Hover:</strong> <span style="color: var(--primary);">Color Primary</span> + <span style="background: var(--accent); padding: 0 4px; border-radius: 2px;">Línea Amarilla (#F4DA40)</span></p>
+            </div>
+            
+            <p>Prueba hacer hover sobre cualquier enlace de esta página para ver la línea amarilla en acción:</p>
+            <div class="example-content">
+                <a href="#" class="link">Hover sobre este enlace estándar</a><br><br>
+                <a href="#" class="link-text">Hover sobre este enlace de texto</a><br><br>
+                <a href="#" class="link-featured">Hover sobre este enlace destacado</a>
+            </div>
+        </section>
+
+        <!-- Footer Demostración -->
+        <section class="demo-section">
+            <h2 class="section-title">👇 Footer - Sistema Actual Mantenido</h2>
+            <div class="note">
+                <strong>Importante:</strong> El footer mantiene su sistema actual sin cambios. No se aplica el nuevo sistema de enlaces aquí.
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer - Sistema Actual -->
+    <footer class="footer">
+        <div class="container">
+            <h3 style="color: var(--accent); margin-bottom: 1rem;">Footer - Sistema Actual Sin Cambios</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Navegación</h4>
+                    <p><a href="#" class="footer-nav-link">Inicio</a></p>
+                    <p><a href="#" class="footer-nav-link">Nosotros</a></p>
+                    <p><a href="#" class="footer-nav-link">Fundador</a></p>
+                    <p><a href="#" class="footer-nav-link">Servicios</a></p>
+                    <p><a href="#" class="footer-nav-link">Testimonios</a></p>
+                    <p><a href="#" class="footer-nav-link">Contacto</a></p>
+                </div>
+                
+                <div>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Enlaces Especiales</h4>
+                    <p><a href="#" class="footer-author">Alexandre Castillo · ACastillo DG</a></p>
+                    <p style="color: #888; margin-top: 1rem;">© 2025 Preuniversitario JMC</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #333;">
+                <p style="color: #888;">El footer mantiene su estilo específico y funcional - sin cambios</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

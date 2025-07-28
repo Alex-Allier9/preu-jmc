@@ -92,6 +92,31 @@
     align-items: start;
 }
 
+/* ===== GRID ESPECIAL PARA FUNDADOR ===== */
+
+.grid-profile {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: var(--gap-large);
+    align-items: start;
+}
+
+.profile-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.profile-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.profile-info {
+    margin-bottom: 0;
+}
+
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
 /* Tablet - 82rem (1312px) */
@@ -140,6 +165,11 @@
         grid-column: span 2;
         max-width: 80%;
         margin: 0 auto;
+    }
+    
+    .grid-profile {
+        grid-template-columns: 1fr 1fr !important;
+        gap: var(--gap-medium);
     }
     
     .footer-grid {
@@ -197,6 +227,21 @@
         grid-column: auto;
         max-width: 100%;
         margin: 0;
+    }
+    
+    .grid-profile {
+        grid-template-columns: 1fr !important;
+        gap: var(--gap-standard);
+        text-align: center;
+    }
+    
+    .profile-image-container {
+        order: -1; /* Imagen primero en mobile */
+        margin-bottom: 1rem;
+    }
+    
+    .profile-content-container {
+        gap: 1.5rem;
     }
     
     .profile-contact-grid {

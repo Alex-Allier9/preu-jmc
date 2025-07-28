@@ -2,6 +2,175 @@
    HELPERS.CSS - Clases Utilitarias
    ====================================== */
 
+/* ======================================
+   NUEVO SISTEMA UNIVERSAL DE ENLACES
+   ====================================== */
+
+/* ENLACE BASE UNIVERSAL */
+.link, 
+.universal-link,
+.inline-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: var(--transition-color);
+    display: inline-block;
+}
+
+/* Estado visitado - Primary dark */
+.link:visited,
+.universal-link:visited,
+.inline-link:visited {
+    color: var(--primary-dark);
+}
+
+/* Estado hover - Mantener color primario */
+.link:hover,
+.universal-link:hover,
+.inline-link:hover {
+    color: var(--primary);
+}
+
+/* Línea amarilla universal - Mismo estilo que el header */
+.link::after,
+.universal-link::after,
+.inline-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+/* Activar línea en hover */
+.link:hover::after,
+.universal-link:hover::after,
+.inline-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* ENLACE PARA TEXTO CORRIDO */
+.link-text {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500; /* Menos peso para texto corrido */
+    position: relative;
+    transition: var(--transition-color);
+    display: inline;
+}
+
+.link-text:visited {
+    color: var(--primary-dark);
+}
+
+.link-text:hover {
+    color: var(--primary);
+}
+
+.link-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+.link-text:hover::after {
+    transform: scaleX(1);
+}
+
+/* ENLACE DESTACADO */
+.link-featured {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    position: relative;
+    transition: var(--transition-color);
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(var(--primary-rgb), 0.1);
+}
+
+.link-featured:visited {
+    color: var(--primary-dark);
+    background: rgba(var(--primary-dark), 0.1);
+}
+
+.link-featured:hover {
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(var(--primary-rgb), 0.2);
+}
+
+.link-featured::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.link-featured:hover::after {
+    width: 90%;
+}
+
+/* ENLACE PARA FONDOS OSCUROS */
+.link-dark-bg {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: var(--transition-color);
+    display: inline-block;
+}
+
+.link-dark-bg:visited {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.link-dark-bg:hover {
+    color: var(--accent);
+}
+
+.link-dark-bg::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+.link-dark-bg:hover::after {
+    transform: scaleX(1);
+}
+
+/* ======================================
+   TEXT UTILITIES
+   ====================================== */
+
 /* Text utilities */
 .text-center { 
     text-align: center; 
@@ -357,21 +526,21 @@
 
 /* Glass background utilities */
 .glass-bg {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .glass-bg-light {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .glass-bg-strong {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(22px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .glass-bg-dark {
@@ -418,71 +587,6 @@
 .transparent-90 { background: rgba(255, 255, 255, 0.9); }
 
 .transparent-dark-10 { background: rgba(var(--black-rgb), 0.1); }
-
-/* ======================================
-   LINK UTILITIES - UNIVERSAL
-   ====================================== */
-
-/* Universal link - Estilo universal para enlaces con underline animado */
-.universal-link {
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: 600;
-    position: relative;
-    transition: var(--transition-color);
-}
-
-.universal-link:hover {
-    color: var(--primary);
-}
-
-.universal-link::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--accent);
-    border-radius: 1px;
-    transform: scaleX(0);
-    transition: var(--transition-transform);
-}
-
-.universal-link:hover::after {
-    transform: scaleX(1);
-}
-
-/* Link variants */
-.universal-link-dark {
-    color: var(--primary-dark);
-}
-
-.universal-link-dark:hover {
-    color: var(--primary-dark);
-}
-
-.universal-link-accent {
-    color: var(--accent);
-}
-
-.universal-link-accent:hover {
-    color: var(--accent);
-}
-
-.universal-link-accent::after {
-    background: var(--primary);
-}
-
-/* Link states */
-.universal-link.active {
-    color: var(--primary);
-}
-
-.universal-link.active::after {
-    transform: scaleX(1);
-    transition: none;
-}
 .transparent-dark-20 { background: rgba(var(--black-rgb), 0.2); }
 .transparent-dark-30 { background: rgba(var(--black-rgb), 0.3); }
 .transparent-dark-40 { background: rgba(var(--black-rgb), 0.4); }
@@ -492,39 +596,38 @@
 .transparent-dark-80 { background: rgba(var(--black-rgb), 0.8); }
 .transparent-dark-90 { background: rgba(var(--black-rgb), 0.9); }
 
-/* ===== INLINE LINKS ===== */
+/* ======================================
+   GUÍA DE USO DEL SISTEMA DE ENLACES
+   ====================================== */
 
-/* Inline Link - Enlaces modernos dentro de párrafos */
-.inline-link {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    position: relative;
-    transition: var(--transition-color);
-    padding: 0.2rem 0.4rem;
-    border-radius: 4px;
-    background: rgba(var(--primary-rgb), 0.1);
-}
+/*
+GUÍA DE USO:
 
-.inline-link:hover {
-    color: var(--accent);
-    background: rgba(var(--accent-rgb), 0.15);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(var(--primary-rgb), 0.2);
-}
+1. ENLACE ESTÁNDAR (.link):
+   - Para enlaces generales en contenido
+   - Peso: 600 (semibold)
+   - Uso: <a href="#" class="link">Enlace normal</a>
 
-.inline-link::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
+2. ENLACE EN TEXTO (.link-text):
+   - Para enlaces dentro de párrafos
+   - Peso: 500 (medium) - menos prominente
+   - Uso: Los estudiantes pueden ver más en <a href="#" class="link-text">nuestra sección</a> de testimonios.
 
-.inline-link:hover::before {
-    width: 100%;
-}
+3. ENLACE DESTACADO (.link-featured):
+   - Para enlaces importantes con background
+   - Peso: 700 (bold) + background sutil
+   - Uso: <a href="#" class="link-featured">Ver todos los testimonios</a>
+
+4. ENLACE CLARO (.link-dark-bg):
+   - Para fondos oscuros
+   - Color: blanco -> accent en hover
+   - Uso: En footers y secciones oscuras
+
+COLORES UNIFICADOS:
+- Normal: var(--primary) (#41B6E6)
+- Visitado: var(--primary-dark) (#165C7D)
+- Hover: var(--primary) (#41B6E6)
+- Línea: var(--accent) (#F4DA40)
+
+NOTA: El footer mantiene su propio sistema especial de enlaces (.footer-nav-link, .footer-author)
+*/
