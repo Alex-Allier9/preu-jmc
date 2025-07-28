@@ -15,7 +15,8 @@
     transition: var(--transition-standard);
     margin-bottom: var(--margin-bottom-standard);
     width: 100%;
-    text-align: left; /* Alineación izquierda consistente */
+    text-align: left;
+    /* Alineación izquierda consistente */
     position: relative;
 }
 
@@ -33,7 +34,8 @@
 
 .universal-card .card-icon .material-symbols-rounded {
     font-size: 4.5rem;
-    color: var(--primary); /* Color primary siempre */
+    color: var(--primary);
+    /* Color primary siempre */
     transition: var(--transition-standard);
 }
 
@@ -47,7 +49,8 @@
     font-weight: 700;
     margin-bottom: var(--gap-medium);
     font-size: 1.4rem;
-    text-align: left; /* Siempre alineado a la izquierda */
+    text-align: left;
+    /* Siempre alineado a la izquierda */
 }
 
 /* Párrafos en universal card */
@@ -56,7 +59,8 @@
     line-height: 1.7;
     color: var(--black);
     margin-bottom: var(--gap-medium);
-    text-align: left; /* Alineación izquierda consistente */
+    text-align: left;
+    /* Alineación izquierda consistente */
 }
 
 .universal-card p:last-child {
@@ -84,7 +88,8 @@
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--primary); /* Checkmarks en color primary */
+    color: var(--primary);
+    /* Checkmarks en color primary */
     font-weight: bold;
 }
 
@@ -99,7 +104,8 @@
 
 .universal-card.extensive p {
     margin-bottom: 1.5rem;
-    text-align: justify; /* Solo para contenido extenso, justificado */
+    text-align: justify;
+    /* Solo para contenido extenso, justificado */
 }
 
 /* Modificador para servicios técnicos (reemplaza complementary-card) */
@@ -181,7 +187,7 @@
 
 /* Program Card - Compatible con gradient-border-card */
 .program-card {
-    background: 
+    background:
         linear-gradient(white, white) padding-box,
         linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
     border: 9px solid transparent;
@@ -489,11 +495,14 @@
 
 /* Achievement Card */
 .achievement-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
     text-align: center;
-    transition: all 0.3s ease;
+    position: relative;
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
     box-shadow: var(--shadow-light);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -501,35 +510,88 @@
 .achievement-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 1);
 }
 
-.achievement-icon {
+/* Icono del achievement */
+.achievement-card .achievement-icon {
     margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-.achievement-icon .material-symbols-rounded {
-    font-size: 3rem;
+.achievement-card .achievement-icon .material-symbols-rounded {
+    font-size: 3.5rem;
     color: var(--primary);
+    transition: var(--transition-standard);
 }
 
-.achievement-content h3 {
+.achievement-card:hover .achievement-icon .material-symbols-rounded {
+    transform: scale(1.1);
+    color: var(--accent);
+}
+
+/* Título del achievement */
+.achievement-card .achievement-title {
     color: var(--primary-dark);
     font-weight: 600;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 1.2;
 }
 
-.achievement-content p {
+/* Contenedor de estadística principal */
+.achievement-card .achievement-stats {
+    background: rgba(var(--primary-rgb), 0.1);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: var(--transition-standard);
+}
+
+.achievement-card:hover .achievement-stats {
+    background: rgba(var(--accent-rgb), 0.15);
+    transform: scale(1.02);
+}
+
+/* Número grande de la estadística */
+.achievement-card .stat-number {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: var(--transition-standard);
+}
+
+.achievement-card:hover .stat-number {
+    color: var(--accent);
+}
+
+/* Etiqueta de la estadística */
+.achievement-card .stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+/* Descripción detallada */
+.achievement-card .achievement-description {
     font-size: 1rem;
     line-height: 1.6;
     color: var(--black);
+    text-align: center;
 }
 
 /* ===== CARDS ESPECÍFICAS - SERVICIOS ===== */
 
 /* Gradient Border Card - Universal card para características destacadas */
 .gradient-border-card {
-    background: 
+    background:
         linear-gradient(white, white) padding-box,
         linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
     border: 9px solid transparent;
@@ -823,15 +885,15 @@
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .stat-number {
         font-size: 3.75rem;
     }
-    
+
     .mvp-card h3 {
         font-size: 1.5rem;
     }
-    
+
     .feature-card h3,
     .service-feature-card h3,
     .requisito-card h3,
@@ -839,7 +901,7 @@
     .universal-card h3 {
         font-size: 1.2rem;
     }
-    
+
     .universal-card.technical h3 {
         font-size: 1.3rem;
     }
@@ -850,41 +912,41 @@
     .profile-name {
         font-size: 2rem;
     }
-    
+
     .profile-title {
         font-size: 1.2rem;
     }
-    
+
     .quote-text {
         font-size: 1.5rem;
     }
-    
+
     .quote-text::before,
     .quote-text::after {
         font-size: 3rem;
     }
-    
+
     .stat-number {
         font-size: 2.5rem;
     }
-    
+
     .content-card {
         padding: 2rem;
     }
-    
+
     .philosophy-card,
     .achievement-card {
         padding: 1.5rem;
     }
-    
+
     .universal-card {
         padding: 1.5rem;
     }
-    
+
     .universal-card.extensive {
         padding: 2rem;
     }
-    
+
     .universal-card .card-icon .material-symbols-rounded {
         font-size: 3.5rem;
     }
@@ -972,7 +1034,7 @@
 
 /* ===== FEATURE CARD - Movida desde style-guide.html ===== */
 .feature-card {
-    background: 
+    background:
         linear-gradient(white, white) padding-box,
         linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
     border: 9px solid transparent;
