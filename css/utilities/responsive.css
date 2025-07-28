@@ -1,112 +1,184 @@
 /* ======================================
-   RESPONSIVE.CSS - MEDIA QUERIES CENTRALIZADAS
+   RESPONSIVE.CSS - MEDIA QUERIES CENTRALIZADAS CORREGIDAS
    ====================================== */
 
-/* Tablet (768px - 1024px) */
+/* ======================================
+   BREAKPOINTS CORRECTOS:
+   --tablet: 82rem (1312px)
+   --mobile: 53rem (848px)
+   ====================================== */
+
+/* Tablet: 848px - 1312px */
 @media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
-    /* Grids responsive ahora están en components/grids.css */
-    
-    /* Icons tablet */
-    .main-icon-container {
-        height: 8.75rem;
-        width: 8.75rem;
+    /* ===== GENERAL LAYOUT ===== */
+    .container {
+        padding: 0 1.5rem;
     }
     
-    .main-icon {
-        font-size: 5rem;
+    .section {
+        padding: 4rem 0;
     }
     
-    .secondary-icon-container {
-        height: 6.25rem;
-        width: 6.25rem;
+    /* ===== NAVIGATION ===== */
+    .nav-menu {
+        gap: 1.5rem;
     }
     
-    .secondary-icon {
-        font-size: 3.5rem;
+    .nav-link {
+        font-size: 1rem;
     }
     
-    /* Card Icons tablet */
-    .icon-large,
-    .icon-large .material-symbols-rounded {
-        font-size: 3.5rem;
+    /* ===== HERO TYPOGRAPHY ===== */
+    .hero h1 {
+        font-size: clamp(2.5rem, 7vw, 4.5rem) !important;
     }
     
-    .icon-medium,
-    .icon-medium .material-symbols-rounded {
-        font-size: 2.5rem;
+    .hero p {
+        font-size: clamp(1rem, 3vw, 1.3rem) !important;
     }
     
-    .icon-small,
-    .icon-small .material-symbols-rounded {
-        font-size: 1.8rem;
+    .hero-split .hero-text-content {
+        padding-right: 2rem;
     }
 }
 
-/* Mobile (hasta 767px) */
+/* Mobile: Hasta 848px */
 @media (max-width: var(--mobile)) {
-    /* Navigation mobile */
+    /* ===== NAVIGATION ===== */
     .nav-menu {
         display: none;
     }
     
-    /* Hero mobile */
-    .hero-content h1 {
-        font-size: 3rem;
-    }
-    
-    /* Sections mobile */
-    .section {
-        padding: 3rem 0;
-    }
-    
-    /* Container mobile */
+    /* ===== GENERAL LAYOUT ===== */
     .container {
         padding: 0 1rem;
     }
     
-    /* Grids responsive ahora están en components/grids.css */
-    
-    /* Icons mobile */
-    .main-icon-container {
-        height: 5rem;
-        width: 5rem;
+    .section {
+        padding: 3rem 0;
     }
     
-    .main-icon {
-        font-size: 2.5rem;
+    /* ===== HERO TYPOGRAPHY ===== */
+    .hero h1 {
+        font-size: clamp(2rem, 8vw, 3.5rem) !important;
     }
     
-    .secondary-icon-container {
-        height: 3.75rem;
-        width: 3.75rem;
+    .hero p {
+        font-size: clamp(1rem, 4vw, 1.3rem) !important;
     }
     
-    .secondary-icon {
-        font-size: 2rem;
+    .hero-standard .hero-content {
+        padding: 0 1.5rem;
     }
     
-    /* Card Icons mobile */
-    .icon-large,
-    .icon-large .material-symbols-rounded {
-        font-size: 3rem;
+    .hero-split .hero-split-container {
+        padding: 0 1.5rem;
     }
     
-    .icon-medium,
-    .icon-medium .material-symbols-rounded {
-        font-size: 2.2rem;
+    .hero-split .hero-text-content {
+        padding-right: 2rem;
     }
     
-    .icon-small,
-    .icon-small .material-symbols-rounded {
-        font-size: 1.5rem;
-    }
-    
-    /* Backgrounds mobile */
+    /* ===== BACKGROUNDS ===== */
     .mountain-background,
     .secondary-background {
         width: 100vw;
         height: 150vh;
         background-size: cover;
         background-position: center top;
+    }
+    
+    /* ===== SECTION MARGINS ===== */
+    .first-section,
+    .second-section,
+    .third-section,
+    .fourth-section,
+    .about,
+    .mvp-section,
+    .stats,
+    .results,
+    .values-section,
+    .commitment-section,
+    .profile-header,
+    .about-section,
+    .experience-section,
+    .mountaineering-section {
+        margin-left: 5% !important;
+        margin-right: 5% !important;
+        margin-bottom: 3rem !important;
+    }
+    
+    .first-section,
+    .about,
+    .profile-header,
+    .values-section,
+    .mountaineering-section {
+        margin-top: 3rem !important;
+    }
+}
+
+/* ======================================
+   RESPONSIVE OPTIMIZATIONS
+   ====================================== */
+
+/* Reduce animation intensity on smaller screens */
+@media (max-width: var(--mobile)) {
+    .fade-in {
+        transition: all 0.4s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px) !important;
+    }
+    
+    /* Optimize performance on mobile */
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo img,
+    .profile-image img,
+    .gallery-item img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Landscape phones */
+@media (max-width: var(--mobile)) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+    }
+    
+    .section {
+        padding: 2rem 0;
+    }
+}
+
+/* ======================================
+   ACCESSIBILITY RESPONSIVE
+   ====================================== */
+
+/* Large text preference */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .card,
+    .btn-primary,
+    .nav-link {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .glass-card,
+    .glass-section {
+        background: rgba(255, 255, 255, 0.95) !important;
+        border: 2px solid var(--primary) !important;
     }
 }

@@ -121,10 +121,10 @@
 /* About card ya está definido en components/cards.css */
 
 /* ======================================
-   RESPONSIVE ESPECÍFICO DE NOSOTROS
+   RESPONSIVE ESPECÍFICO DE NOSOTROS - CORREGIDO
    ====================================== */
 
-/* Tablet (768px - 1024px) */
+/* Tablet: 848px - 1312px (var(--tablet) y var(--mobile)) */
 @media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
     /* Stats responsive - ya definido en components/grids.css */
     
@@ -132,9 +132,14 @@
     .stat-number {
         font-size: 3.75rem;
     }
+    
+    /* MVP cards en tablet */
+    .mvp-card h3 {
+        font-size: 1.5rem;
+    }
 }
 
-/* Mobile (hasta 767px) */
+/* Mobile: Hasta 848px (var(--mobile)) */
 @media (max-width: var(--mobile)) {
     /* Márgenes móviles específicos */
     .about,
@@ -157,6 +162,19 @@
     .mvp-card {
         padding: 1.5rem !important;
     }
-
-    /* Stats responsive - ya definido en components/grids.css */
+    
+    /* Stats mobile */
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    /* Quote card mobile */
+    .quote-text {
+        font-size: 1.5rem;
+    }
+    
+    .quote-text::before,
+    .quote-text::after {
+        font-size: 3rem;
+    }
 }

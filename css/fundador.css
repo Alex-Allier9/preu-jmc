@@ -325,7 +325,11 @@
    RESPONSIVE ESPECÍFICO DE FUNDADOR - BASADO EN NOSOTROS
    ====================================== */
 
-/* Tablet (768px - 1024px) - IGUAL QUE NOSOTROS */
+/* ======================================
+   RESPONSIVE ESPECÍFICO DE FUNDADOR - CORREGIDO
+   ====================================== */
+
+/* Tablet: 848px - 1312px (var(--tablet) y var(--mobile)) */
 @media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
     .profile-card {
         grid-template-columns: 1fr;
@@ -339,7 +343,7 @@
         margin: 0 auto;
     }
 
-    /* CORREGIDO - Profile contact grid centrado en tablet */
+    /* Profile contact grid centrado en tablet */
     .profile-contact-items {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -351,19 +355,32 @@
         justify-content: center;
         text-align: center;
     }
+    
+    /* Timeline en tablet */
+    .timeline {
+        max-width: 90%;
+    }
+    
+    .timeline-item {
+        width: 45%;
+    }
+    
+    .timeline-content {
+        padding: 1.2rem;
+    }
 }
 
-/* Mobile (hasta 767px) - EXACTAMENTE IGUAL QUE NOSOTROS */
+/* Mobile: Hasta 848px (var(--mobile)) */
 @media (max-width: var(--mobile)) {
     .hero .hero-text-content h1 {
         font-size: clamp(1.2rem, 5vw, 2rem);
         line-height: 1.1;
-        text-align: center; /* Centrar en mobile */
+        text-align: center;
     }
     
     .hero .hero-subtitle {
         font-size: clamp(0.85rem, 3vw, 1rem);
-        text-align: center; /* Centrar en mobile */
+        text-align: center;
     }
 
     /* Profile header específico */
@@ -372,7 +389,7 @@
         min-height: auto;
     }
 
-    /* CORREGIDO - Profile card mobile: imagen centrada arriba, texto y botones abajo */
+    /* Profile card mobile: imagen centrada arriba, texto y botones abajo */
     .profile-card {
         padding: 2rem;
         margin: 0 1rem;
@@ -395,7 +412,7 @@
         font-size: 1.2rem;
     }
 
-    /* CORREGIDO - Profile contact grid en mobile */
+    /* Profile contact grid en mobile */
     .profile-contact-items {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -407,7 +424,7 @@
         text-align: center;
     }
 
-    /* Márgenes móviles específicos - IGUAL QUE NOSOTROS */
+    /* Márgenes móviles específicos */
     .profile-header,
     .about-section,
     .experience-section,
@@ -425,7 +442,7 @@
         margin-top: 3rem;
     }
 
-    /* CORREGIDO - Timeline mobile: convertir a lista simple */
+    /* Timeline mobile: convertir a lista simple */
     .timeline {
         max-width: 100%;
         margin: 0;
@@ -465,34 +482,36 @@
         text-align: center;
     }
 
-    /* CORREGIDO - Hero mobile: mantener distribución 2x1 igual que desktop */
+    /* Hero mobile: mantener distribución 2x1 igual que desktop */
     .hero-split-container {
-        /* NO cambiar flex-direction - mantener row */
-        /* NO cambiar justify-content ni text-align */
         padding: 0 1.5rem;
     }
 
     .hero-text-content {
-        /* NO cambiar padding-right, align-items, ni text-align */
-        /* Mantener exactamente igual que desktop */
-        padding-right: 2rem; /* Reducir solo un poco el espaciado */
+        padding-right: 2rem;
     }
 
-    /* Mantener hero-image-space visible pero más pequeño si es necesario */
-
-    /* Content cards responsive - ya centralizado en components/cards.css */
+    /* Content cards responsive */
     .content-wrapper {
         font-size: 1rem;
         line-height: 1.7;
     }
 
-    /* Grids responsive - ahora definidos en components/grids.css */
-
+    /* Mountaineering gallery */
     .mountaineering-intro {
         padding: 0 1rem;
     }
 
     .mountaineering-gallery {
         padding: 0 1rem 2rem 1rem !important;
+    }
+    
+    /* Achievement cards */
+    .achievement-card {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
     }
 }
