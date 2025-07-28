@@ -13,54 +13,9 @@
 
 /* Hero section background - ESPECÍFICO DE FUNDADOR */
 /* Hero Section - Versión corregida */
+/* Hero section background - ESPECÍFICO DE FUNDADOR */
 .hero {
-    height: 100vh;
-    background: linear-gradient(rgba(var(--black-rgb), 0.3), rgba(var(--black-rgb), 0.3)),
-        url('../media/images/fundador/ojos-salado_0002.jpg') center/cover;
-    position: relative;
-}
-
-.hero-split-container {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--container-padding);
-    align-items: center;
-}
-
-.hero-text-content {
-    flex: 1;
-    padding-right: 4rem;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-}
-
-.hero-image-space {
-    flex: 1;
-    height: 100%;
-}
-
-.hero h1 {
-    font-family: var(--font-title);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    margin-bottom: var(--gap-medium);
-    letter-spacing: var(--title-letter-spacing);
-    line-height: 1.2;
-    color: white;
-}
-
-.hero-subtitle {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    font-style: italic;
-    color: white;
-    opacity: 0.9;
-    max-width: 100%;
-    align-self: flex-start;
+    background-image: url('../media/images/fundador/ojos-salado_0002.jpg');
 }
 
 /* CTA section background - ESPECÍFICO DE FUNDADOR */

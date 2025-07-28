@@ -21,10 +21,8 @@
    ====================================== */
 
 .hero {
-    background: linear-gradient(rgba(var(--black-rgb), 0.4), rgba(var(--black-rgb), 0.4)),
-        url('../media/images/servicios/gaetan-meyer-WemqIKiduMo-unsplash.jpg') center/cover;
+    background-image: url('../media/images/servicios/gaetan-meyer-WemqIKiduMo-unsplash.jpg');
 }
-
 /* ======================================
    CTA SECTION BACKGROUND - ESPECÍFICO DE SERVICIOS
    ====================================== */

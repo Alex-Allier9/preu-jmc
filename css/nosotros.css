@@ -13,10 +13,8 @@
 
 /* Hero section background - ESPECÍFICO DE NOSOTROS */
 .hero {
-    background: linear-gradient(rgba(var(--black-rgb), 0.3), rgba(var(--black-rgb), 0.3)),
-        url('../media/images/nosotros/redd-francisco-gdQnsMbhkUs-unsplash.jpg') center/cover;
+    background-image: url('../media/images/nosotros/redd-francisco-gdQnsMbhkUs-unsplash.jpg');
 }
-
 /* CTA section background - ESPECÍFICO DE NOSOTROS */
 .cta {
     background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
