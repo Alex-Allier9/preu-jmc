@@ -839,3 +839,192 @@
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.9);
 }
+
+/* ======================================
+   CARDS ESPECÍFICAS MOVIDAS DESDE OTROS ARCHIVOS
+   ====================================== */
+
+/* ===== FEATURE CARD - Movida desde style-guide.html ===== */
+.feature-card {
+    background: 
+        linear-gradient(white, white) padding-box,
+        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
+    border: 9px solid transparent;
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    text-align: center;
+    position: relative;
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    box-shadow: var(--shadow-light);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.feature-card h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    font-size: 1.3rem;
+}
+
+.feature-card p {
+    position: relative;
+    z-index: 1;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* ===== PROFILE CARD - Movida desde fundador.css ===== */
+.profile-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius-large);
+    padding: var(--card-padding-large);
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    display: grid;
+    text-align: center;
+    gap: 2rem;
+}
+
+.profile-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* ===== ACHIEVEMENT CARD - Movida desde fundador.css ===== */
+.achievement-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    text-align: center;
+    position: relative;
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    box-shadow: var(--shadow-light);
+}
+
+.achievement-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.achievement-card h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.achievement-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+/* ===== PROCESO CARD FULL - Movida desde servicios.css ===== */
+.proceso-card-full {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius-large);
+    padding: var(--card-padding-large);
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 2rem;
+}
+
+.proceso-card-full:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* ===== STANDARD CARD - Estilos base centralizados ===== */
+.standard-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    text-align: center;
+    position: relative;
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    box-shadow: var(--shadow-light);
+    min-height: 160px;
+}
+
+.standard-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.standard-card h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.standard-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+/* ===== COMPLEMENTARY CARD - Estilos específicos para listas ===== */
+.complementary-card li {
+    text-align: left;
+    padding-left: 1.5rem;
+    font-size: 1rem;
+    position: relative;
+}
+
+.complementary-card li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* ======================================
+   RESPONSIVE ESPECÍFICO PARA CARDS
+   ====================================== */
+
+/* Mobile responsive para proceso-card-full */
+@media (max-width: 53rem) {
+    .proceso-card-full {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+
+    .process-step-icon {
+        min-width: 60px;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+
+    .process-step-icon .process-icon {
+        font-size: 2rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}

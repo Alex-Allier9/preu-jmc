@@ -112,15 +112,10 @@
 }
 
 /* ======================================
-   CARDS - YA DEFINIDAS EN components/cards.css
+   CARDS - YA CENTRALIZADAS EN components/cards.css
    ====================================== */
 
-/* Todas las cards (gradient-border-card, glass-card, complementary-card, simple-card, standard-card) 
-   ya están definidas en components/cards.css */
-
-/* ======================================
-   TABLA MODERNA DE PAGOS - NUEVA
-   ====================================== */
+/* Todas las cards ya están definidas en components/cards.css con el nuevo sistema unificado */
 
 .modern-payment-table {
     background: white;
@@ -171,20 +166,7 @@
     transform: translateX(5px);
 }
 
-.table-icon {
-    font-size: 2rem;
-    color: var(--primary);
-    margin-right: 1rem;
-    min-width: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.table-icon .material-symbols-rounded {
-    font-size: 2rem;
-    color: var(--primary);
-}
+/* Table icon ya está definido en components/icons.css */
 
 .table-content {
     flex: 1;
@@ -218,11 +200,8 @@
 }
 
 /* ======================================
-   CARDS - YA CENTRALIZADAS EN components/cards.css
+   TABLA MODERNA DE PAGOS - NUEVA
    ====================================== */
-
-/* Todas las cards (gradient-border-card, glass-card, complementary-card, simple-card, standard-card) 
-   ya están definidas en components/cards.css con el nuevo sistema unificado */
 
 /* ======================================
    RESPONSIVE ESPECÍFICO DE SERVICIOS
@@ -249,22 +228,6 @@
     
     .table-content strong {
         font-size: 1rem;
-    }
-    
-    /* Ajustar complementary cards */
-    .complementary-card {
-        padding: 2rem;
-        margin-bottom: 1.5rem;
-    }
-        
-    /* Grids específicos en tablet */
-    .first-section .grid-3-2-1 {
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-    
-    .third-section .grid-2-2-1 {
-        gap: 2.5rem;
     }
 }
 
@@ -311,75 +274,9 @@
         font-size: 0.9rem;
     }
 
-    /* Grids específicos en móvil */
-    .first-section .grid-3-2-1,
-    .primary-gradient-section .grid-3-2-1,
-    .third-section .grid-2-2-1,
-    .fourth-section .grid-3-2-1 {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-        padding: 0 !important;
-        margin-bottom: 2rem;
-    }
-
-    /* Cards específicas móvil - las standard-card ya están centralizadas */
+    /* Cards responsive - ya centralizadas en components/cards.css */
     .content-intro {
         padding: 0;
-    }
-
-    /* Ajustar todas las cards en móvil */
-    .gradient-border-card,
-    .glass-card,
-    .complementary-card,
-    .simple-card,
-    .standard-card {
-        padding: 1.5rem !important;
-        margin-bottom: 1.5rem !important;
-        width: 100%;
-    }
-
-    /* Complementary cards específicas móvil */
-    .complementary-card h3 {
-        font-size: 1.2rem;
-        text-align: center;
-    }
-
-    .complementary-card p {
-        text-align: center;
-        font-size: 1rem;
-    }
-
-    /* Lista items en móvil */
-    .complementary-card li {
-        text-align: center;
-        padding-left: 0;
-        font-size: 0.95rem;
-    }
-
-    .complementary-card li:before {
-        position: static;
-        margin-right: 0.5rem;
-    }
-
-    /* Standard cards específicas móvil */
-    .standard-card {
-        min-height: 160px;
-    }
-
-    .standard-card h3 {
-        font-size: 1.1rem;
-    }
-
-    .standard-card p {
-        font-size: 0.95rem;
-    }
-
-    /* Process cards responsive */
-    .proceso-card-full {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem;
-        gap: 1.5rem;
     }
 
     .process-step-icon {
@@ -416,19 +313,7 @@
    ====================================== */
 
 @media (max-width: 360px) {
-    .gradient-border-card h3,
-    .glass-card h3,
-    .simple-card h3,
-    .standard-card h3 {
-        font-size: 1.1rem;
-    }
-
-    .gradient-border-card p,
-    .glass-card p,
-    .simple-card p,
-    .standard-card p {
-        font-size: 1rem;
-    }
+    /* Cards responsive - ya centralizadas en components/cards.css */
 
     .complementary-card h3 {
         font-size: 1.1rem;
@@ -472,48 +357,7 @@
     padding: 0 2rem 2rem 2rem;
 }
 
-.proceso-card-full {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: var(--border-radius-standard);
-    box-shadow: var(--shadow-light);
-    transition: var(--transition-standard);
-    padding: 2.5rem;
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    margin-bottom: var(--margin-bottom-standard);
-}
-
-.proceso-card-full:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.95);
-}
-
-/* Process Step Icon */
-.process-step-icon {
-    min-width: 80px;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary) 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-light);
-    transition: var(--transition-standard);
-}
-
-.process-step-icon .process-icon {
-    font-size: 2.5rem;
-    color: white;
-}
-
-.proceso-card-full:hover .process-step-icon {
-    transform: scale(1.1);
-    box-shadow: var(--shadow-medium);
-}
+/* Process step icon ya está definido en components/icons.css */
 
 .card-content {
     flex: 1;

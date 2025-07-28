@@ -88,14 +88,7 @@
 
 /* Values grid ya está definido en components/grids.css */
 /* Value card ya está definido en components/cards.css */
-
-.value-icon {
-    margin-bottom: 2rem;
-}
-
-.value-icon .secondary-icon {
-    color: var(--primary);
-}
+/* Value icon ya está definido en components/icons.css */
 
 /* ======================================
    SEDE SECTION - ESPECÍFICO DE NOSOTROS
@@ -135,20 +128,11 @@
 
 /* Tablet (768px - 1024px) */
 @media (max-width: 82rem) and (min-width: 53.0625rem) {
-    /* Stats grid comportamiento específico */
-    .stats-grid, .results .stats-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
+    /* Stats responsive - ya definido en components/grids.css */
     
     /* Stat numbers responsive */
     .stat-number {
         font-size: 3.75rem;
-    }
-    
-    /* Ocultar extras si los hay */
-    .stats-grid .stat-card:nth-child(n+5),
-    .results .stats-grid .stat-card:nth-child(n+5) {
-        display: none;
     }
 }
 
@@ -176,18 +160,7 @@
         padding: 1.5rem !important;
     }
 
-    /* Stats grid móvil específico */
-    .stats-grid, .results .stats-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-        padding: 0 1rem 2rem 1rem !important;
-    }
-    
-    /* Mostrar todas las cards en columna única */
-    .stats-grid .stat-card:nth-child(n+5),
-    .results .stats-grid .stat-card:nth-child(n+5) {
-        display: flex;
-    }
+    /* Stats responsive - ya definido en components/grids.css */
 }
 
 /* ======================================

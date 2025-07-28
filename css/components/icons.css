@@ -196,3 +196,172 @@
 .meta-icon {
     color: var(--black);
 }
+
+/* ======================================
+   ICONOS ESPECÍFICOS MOVIDOS DESDE OTROS ARCHIVOS
+   ====================================== */
+
+/* ===== TABLE ICON - Movido desde servicios.css ===== */
+.table-icon {
+    min-width: 60px;
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+}
+
+.table-icon .material-symbols-rounded {
+    font-size: 2rem;
+    color: white;
+}
+
+/* ===== PROCESS STEP ICON - Movido desde servicios.css ===== */
+.process-step-icon {
+    min-width: 80px;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+}
+
+.process-step-icon .process-icon {
+    font-size: 2.5rem;
+    color: white;
+}
+
+/* ===== VALUE ICON - Movido desde nosotros.css ===== */
+.value-icon {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.value-icon .secondary-icon {
+    color: var(--primary);
+}
+
+/* ===== PROFILE CONTACT ICON - Movido desde cards.css ===== */
+.profile-contact-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    color: var(--primary);
+}
+
+/* ===== ACHIEVEMENT ICON - Movido desde cards.css ===== */
+.achievement-icon {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.achievement-icon .material-symbols-rounded {
+    font-size: 3rem;
+    color: var(--primary);
+}
+
+/* ===== ICON CONTAINERS - Movidos desde responsive.css ===== */
+.main-icon-container {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.secondary-icon-container {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* ===== ICON SIZES RESPONSIVE - Movidos desde responsive.css ===== */
+.icon-large,
+.icon-large .material-symbols-rounded {
+    font-size: 3rem;
+}
+
+.icon-medium,
+.icon-medium .material-symbols-rounded {
+    font-size: 2rem;
+}
+
+.icon-small,
+.icon-small .material-symbols-rounded {
+    font-size: 1.5rem;
+}
+
+/* ===== META ICON ESPECÍFICO - Movido desde servicios.css ===== */
+.meta-item .meta-icon {
+    color: var(--primary);
+}
+
+/* ======================================
+   RESPONSIVE PARA ICONOS ESPECÍFICOS
+   ====================================== */
+
+/* Tablet */
+@media (max-width: var(--tablet)) {
+    .table-icon {
+        min-width: 50px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .table-icon .material-symbols-rounded {
+        font-size: 1.5rem;
+    }
+    
+    .process-step-icon {
+        min-width: 70px;
+        width: 70px;
+        height: 70px;
+    }
+    
+    .process-step-icon .process-icon {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: var(--mobile)) {
+    .table-icon {
+        min-width: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .table-icon .material-symbols-rounded {
+        font-size: 1.2rem;
+    }
+    
+    .process-step-icon {
+        min-width: 60px;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+    
+    .process-step-icon .process-icon {
+        font-size: 1.8rem;
+    }
+    
+    .icon-large,
+    .icon-large .material-symbols-rounded {
+        font-size: 2.5rem;
+    }
+    
+    .icon-medium,
+    .icon-medium .material-symbols-rounded {
+        font-size: 1.8rem;
+    }
+    
+    .icon-small,
+    .icon-small .material-symbols-rounded {
+        font-size: 1.2rem;
+    }
+}
