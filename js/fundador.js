@@ -92,7 +92,7 @@ function initGalleryLightbox() {
             line-height: 1.6;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: var(--mobile)) {
             .lightbox-content {
                 padding: 10px;
             }

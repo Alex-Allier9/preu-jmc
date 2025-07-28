@@ -205,7 +205,7 @@
    ====================================== */
 
 /* Tablet (768px - 1024px) */
-@media (max-width: 82rem) and (min-width: 53.0625rem) {
+@media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
     /* Secciones en tablet */
     .first-section,
     .second-section,
@@ -229,7 +229,7 @@
 }
 
 /* Mobile (hasta 767px) */
-@media (max-width: 53rem) {
+@media (max-width: var(--mobile)) {
     /* Márgenes móviles específicos */
     .first-section,
     .second-section,
@@ -302,43 +302,6 @@
         justify-content: center;
         gap: 1rem;
         flex-wrap: wrap;
-    }
-}
-
-/* ======================================
-   MÓVIL PEQUEÑO (hasta 360px)
-   ====================================== */
-
-@media (max-width: 360px) {
-    /* Cards responsive - ya centralizadas en components/cards.css */
-
-    .complementary-card h3 {
-        font-size: 1.1rem;
-    }
-
-    /* Tabla moderna en pantallas muy pequeñas */
-    .table-header {
-        padding: 1rem;
-    }
-    
-    .table-header h3 {
-        font-size: 1.2rem;
-    }
-    
-    .table-row {
-        padding: 0.8rem;
-    }
-    
-    .table-icon .material-symbols-rounded {
-        font-size: 1.5rem;
-    }
-    
-    .table-content strong {
-        font-size: 0.95rem;
-    }
-    
-    .table-content span {
-        font-size: 0.85rem;
     }
 }
 

@@ -128,7 +128,7 @@
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
 /* Tablet - 82rem (1312px) */
-@media (max-width: 82rem) {
+@media (max-width: var(--tablet)) {
     .grid-1-1-1 {
         grid-template-columns: 1fr !important;
     }
@@ -196,7 +196,7 @@
 }
 
 /* Mobile - 53rem (848px) */
-@media (max-width: 53rem) {
+@media (max-width: var(--mobile)) {
     .grid-1-1-1 {
         grid-template-columns: 1fr !important;
     }

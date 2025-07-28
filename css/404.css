@@ -305,7 +305,7 @@
    ====================================== */
 
 /* Tablet */
-@media (max-width: 82rem) and (min-width: 53.0625rem) {
+@media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
     .error-404 {
         grid-template-columns: 1fr 1fr; /* Mantener grid 2x1 */
     }
@@ -326,7 +326,7 @@
 }
 
 /* Mobile */
-@media (max-width: 53rem) {
+@media (max-width: var(--mobile)) {
     .error-404 {
         height: 100vh;
         background-position: center center;
@@ -363,35 +363,6 @@
     
     .glitch {
         animation-duration: 5s;
-    }
-}
-
-/* Mobile muy pequeño */
-@media (max-width: 360px) {
-    .error-content {
-        padding: 0.5rem;
-    }
-    
-    .glitch {
-        font-size: clamp(6rem, 35vw, 10rem);
-    }
-    
-    .error-message {
-        font-size: 1rem;
-        padding: 0 0.5rem;
-    }
-    
-    /* Animaciones más suaves en pantallas muy pequeñas */
-    .line:nth-child(n) {
-        animation-duration: 5000ms, 1000ms, 5000ms;
-    }
-    
-    .crazy-text {
-        animation-duration: 4s;
-    }
-    
-    .glitch {
-        animation-duration: 6s;
     }
 }
 

@@ -99,7 +99,7 @@
 }
 
 /* Mobile Navigation */
-@media (max-width: 53rem) {
+@media (max-width: var(--mobile)) {
     .nav-menu {
         display: none;
     }

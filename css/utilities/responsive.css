@@ -3,7 +3,7 @@
    ====================================== */
 
 /* Tablet (768px - 1024px) */
-@media (max-width: 82rem) and (min-width: 53.0625rem) {
+@media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
     /* Grids responsive ahora están en components/grids.css */
     
     /* Icons tablet */
@@ -43,7 +43,7 @@
 }
 
 /* Mobile (hasta 767px) */
-@media (max-width: 53rem) {
+@media (max-width: var(--mobile)) {
     /* Navigation mobile */
     .nav-menu {
         display: none;

@@ -111,7 +111,7 @@
 }
 
 /* Footer Responsive */
-@media (max-width: 53rem) {
+@media (max-width: var(--mobile)) {
     /* Footer grid responsivo ya está en components/grids.css */
     
     .footer-section {

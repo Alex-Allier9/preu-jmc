@@ -1191,7 +1191,7 @@
    ====================================== */
 
 /* Mobile responsive para proceso-card-full */
-@media (max-width: 53rem) {
+@media (max-width: var(--mobile)) {
     .proceso-card-full {
         flex-direction: column;
         text-align: center;
