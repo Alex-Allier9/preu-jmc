@@ -106,9 +106,9 @@
 .about-section,
 .experience-section,
 .mountaineering-section {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     margin-left: 8.33%;
     margin-right: 8.33%;
     margin-bottom: 6rem;
@@ -124,7 +124,7 @@
 .about-section:hover,
 .experience-section:hover,
 .mountaineering-section:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.5);
     transform: translateY(-2px);
     box-shadow: var(--shadow-heavy);
 }

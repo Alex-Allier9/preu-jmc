@@ -43,9 +43,9 @@
 .second-section,
 .third-section,
 .fourth-section {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     margin-left: var(--section-margin-horizontal);
     margin-right: var(--section-margin-horizontal);
     margin-bottom: var(--section-margin-bottom);
@@ -62,7 +62,7 @@
 .second-section:hover,
 .third-section:hover,
 .fourth-section:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.5);
     transform: translateY(-2px);
     box-shadow: var(--shadow-heavy);
 }

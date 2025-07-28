@@ -101,19 +101,19 @@
 
 /* Glass Section - Glassmorphism effect for sections over backgrounds */
 .glass-section {
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(20px);
     border-radius: var(--border-radius-large);
     margin: 2rem 8.33%;
     box-shadow: var(--shadow-medium);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.55);
     position: relative;
     z-index: 2;
 }
 
 /* Glass Section Light - Más transparente */
 .glass-section-light {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(18px);
     border-radius: var(--border-radius-large);
     margin: 2rem 8.33%;
