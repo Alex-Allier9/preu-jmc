@@ -1,4 +1,4 @@
-﻿/* ======================================
+/* ======================================
    CARDS.CSS - SISTEMA UNIVERSAL DE CARDS  
    ====================================== */
 
@@ -16,14 +16,13 @@
 /* ===== CARDS BASE - SHARED STYLES ===== */
 
 /* Base styles for all universal cards */
-.feature-card,
-.service-feature-card,
+.gradient-border-card,
 .complementary-card,
 .financial-card,
-.practical-card,
 .glass-card,
 .mvp-card,
-.stat-card {
+.stat-card,
+.simple-card {
     border-radius: var(--border-radius-standard);
     padding: var(--card-padding);
     text-align: center;
@@ -43,12 +42,11 @@
 }
 
 /* Hover effect for all service cards */
-.feature-card:hover,
-.service-feature-card:hover,
+.gradient-border-card:hover,
 .complementary-card:hover,
 .info-card:hover,
 .financial-card:hover,
-.practical-card:hover {
+.simple-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-medium);
 }
@@ -72,7 +70,7 @@
 
 /* ===== CARDS ESPEC�FICAS - NOSOTROS ===== */
 
-/* Program Card */
+/* Program Card - Compatible con gradient-border-card */
 .program-card {
     background: 
         linear-gradient(white, white) padding-box,
@@ -98,7 +96,7 @@
     line-height: 1.6;
 }
 
-/* Quote Card - UNIFICADO */
+/* Quote Card - UNIFICADO con glass-card background */
 .quote-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: var(--blur-standard);
@@ -160,38 +158,6 @@
     z-index: 2;
     text-align: right;
 }
-
-/* Info Card (Value Card - Alias) - Using semitransparent background */
-
-/* Sede Card - DEPRECATED: Usar .glass-card */
-/* 
-.sede-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.sede-card h3 {
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.sede-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-}
-
-.sede-icon {
-    margin-bottom: 2rem;
-}
-
-.sede-icon .material-symbols-rounded {
-    color: var(--accent);
-}
-*/
 
 /* ===== UNIVERSAL CARDS ===== */
 
@@ -412,48 +378,6 @@
     min-width: 1.5rem;
 }
 
-/* Philosophy Card - DEPRECATED: Usar .glass-card */
-/*
-.philosophy-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: none;
-    padding: 2rem;
-    text-align: center;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.philosophy-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.philosophy-icon {
-    margin-bottom: 1.5rem;
-}
-
-.philosophy-icon .material-symbols-rounded {
-    font-size: 3rem;
-    color: var(--accent);
-}
-
-.philosophy-card h3 {
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.philosophy-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: white;
-}
-*/
-
 /* Achievement Card */
 .achievement-card {
     background: rgba(255, 255, 255, 0.9);
@@ -492,17 +416,17 @@
     color: var(--black);
 }
 
-/* ===== CARDS ESPEC�FICAS - SERVICIOS ===== */
+/* ===== CARDS ESPECÍFICAS - SERVICIOS ===== */
 
-/* Feature Card - Universal card for features, services, and practical content */
-.feature-card {
+/* Gradient Border Card - Universal card para características destacadas */
+.gradient-border-card {
     background: 
         linear-gradient(white, white) padding-box,
         linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
     border: 9px solid transparent;
 }
 
-.feature-card h3 {
+.gradient-border-card h3 {
     color: var(--primary-dark);
     font-weight: 700;
     margin-bottom: 1rem;
@@ -511,7 +435,7 @@
     font-size: 1.3rem;
 }
 
-.feature-card p {
+.gradient-border-card p {
     position: relative;
     z-index: 1;
     font-size: 1.05rem;
@@ -519,31 +443,9 @@
     text-align: center;
 }
 
-/* Backward compatibility aliases */
-.service-feature-card {
-    background: 
-        linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
-    border: 9px solid transparent;
-}
-
-.service-feature-card h3 {
-    color: var(--primary-dark);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
-    font-size: 1.3rem;
-}
-
-.service-feature-card p {
-    position: relative;
-    z-index: 1;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    text-align: center;
-}
-
+/* Backward compatibility aliases para gradiente border cards */
+.feature-card,
+.service-feature-card,
 .practical-card {
     background: 
         linear-gradient(white, white) padding-box,
@@ -551,6 +453,8 @@
     border: 9px solid transparent;
 }
 
+.feature-card h3,
+.service-feature-card h3,
 .practical-card h3 {
     color: var(--primary-dark);
     font-weight: 700;
@@ -560,6 +464,8 @@
     font-size: 1.3rem;
 }
 
+.feature-card p,
+.service-feature-card p,
 .practical-card p {
     position: relative;
     z-index: 1;
@@ -567,39 +473,6 @@
     line-height: 1.6;
     text-align: center;
 }
-
-/* Requisito Card - DEPRECATED: Usar .glass-card */
-/*
-.requisito-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: var(--blur-standard);
-}
-
-.requisito-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.requisito-icon {
-    margin-bottom: var(--margin-bottom-standard);
-}
-
-.requisito-icon .material-symbols-rounded {
-    color: var(--accent);
-}
-
-.requisito-card h3 {
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.requisito-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: white;
-}
-*/
 
 /* Complementary Card */
 .complementary-card {
@@ -652,6 +525,40 @@
 
 .complementary-card li:last-child {
     border-bottom: none;
+}
+
+/* Standard Card - Para contenido extenso con fondo sólido */
+.standard-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding-large);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    text-align: left;
+}
+
+.standard-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.standard-card h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: var(--gap-medium);
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.standard-card p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--black);
+    margin-bottom: var(--gap-medium);
+    text-align: justify;
 }
 
 /* Backward compatibility aliases */
@@ -788,6 +695,70 @@
     line-height: 1.8;
 }
 
+/* ===== SIMPLE CARD - UNIVERSAL ===== */
+
+/* Simple Card - Fondo sólido sin borde para contenido con listas */
+.simple-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    text-align: left;
+    position: relative;
+}
+
+.simple-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.simple-card h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: var(--gap-medium);
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.simple-card p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--black);
+    margin-bottom: var(--gap-medium);
+    text-align: justify;
+}
+
+.simple-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.simple-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--gray-light);
+    color: var(--primary-dark);
+    font-weight: 500;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.simple-card li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.simple-card li:last-child {
+    border-bottom: none;
+}
+
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
 /* Tablet - var(--tablet) */
@@ -922,4 +893,3 @@
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.9);
 }
-

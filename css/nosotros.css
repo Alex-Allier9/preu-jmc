@@ -27,21 +27,36 @@
    LAYOUT ESPECÍFICO DE NOSOTROS
    ====================================== */
 
-/* Secciones con fondos semitransparentes y márgenes específicos */
+/* Secciones con efecto glassmorphism */
 .about,
 .mvp-section,
 .stats,
 .results,
 .values-section,
 .commitment-section {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     margin-left: var(--section-margin-horizontal);
     margin-right: var(--section-margin-horizontal);
     margin-bottom: var(--section-margin-bottom);
     border-radius: var(--border-radius-large);
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--shadow-medium);
     position: relative;
     z-index: 2;
+    transition: var(--transition-standard);
+}
+
+/* Hover effects para secciones glassmorphism */
+.about:hover,
+.mvp-section:hover,
+.stats:hover,
+.results:hover,
+.values-section:hover,
+.commitment-section:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-heavy);
 }
 
 /* Márgenes superiores específicos */

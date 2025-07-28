@@ -31,7 +31,7 @@ function registerServicesCardsInGlobalSystem() {
             hasIcon: true
         },
         {
-            selector: '.financial-card',
+            selector: '.glass-card',
             hasIcon: true
         },
         {
@@ -165,7 +165,7 @@ function showConsultationSuccess() {
 
 // Función para manejar animaciones específicas de las cards de servicios - OPTIMIZADA
 function initServiceCardAnimations() {
-    const serviceCards = document.querySelectorAll('.service-feature-card, .complementary-card, .practical-card, .financial-card, .glass-card');
+    const serviceCards = document.querySelectorAll('.service-feature-card, .complementary-card, .practical-card, .glass-card, .glass-card');
 
     if (serviceCards.length === 0) return;
 

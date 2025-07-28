@@ -103,19 +103,32 @@
    LAYOUT ESPECÍFICO DE FUNDADOR - BASADO EN NOSOTROS
    ====================================== */
 
-/* Secciones con fondos semitransparentes y márgenes específicos - IGUAL QUE NOSOTROS */
+/* Secciones con efecto glassmorphism */
 .profile-header,
 .about-section,
 .experience-section,
 .mountaineering-section {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     margin-left: 8.33%;
     margin-right: 8.33%;
     margin-bottom: 6rem;
     border-radius: 20px;
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--shadow-medium);
     position: relative;
     z-index: 2;
+    transition: var(--transition-standard);
+}
+
+/* Hover effects para secciones glassmorphism */
+.profile-header:hover,
+.about-section:hover,
+.experience-section:hover,
+.mountaineering-section:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-heavy);
 }
 
 /* Márgenes superiores específicos - IGUAL QUE NOSOTROS */
@@ -179,13 +192,13 @@
     padding: 1.5rem;
     background-color: white;
     border-radius: 15px;
-    box-shadow: var(--shadow-light);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
 .timeline-content:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .timeline-content h3 {
@@ -287,12 +300,12 @@
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-gallery);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .gallery-item:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: var(--shadow-gallery-hover);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-item img {
@@ -311,7 +324,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(var(--black-rgb), 0.8));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
     color: white;
     padding: 1.5rem 1rem 1rem;
     transform: translateY(100%);

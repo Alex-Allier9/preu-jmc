@@ -38,20 +38,33 @@
    LAYOUT ESPECÍFICO DE SERVICIOS
    ====================================== */
 
-/* Secciones con fondos semitransparentes y márgenes específicos */
+/* Secciones con efecto glassmorphism */
 .first-section,
 .second-section,
 .third-section,
 .fourth-section {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     margin-left: var(--section-margin-horizontal);
     margin-right: var(--section-margin-horizontal);
     margin-bottom: var(--section-margin-bottom);
     border-radius: var(--border-radius-large);
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--shadow-medium);
     position: relative;
     z-index: 2;
     padding: var(--card-padding-large);
+    transition: var(--transition-standard);
+}
+
+/* Hover effects para secciones glassmorphism */
+.first-section:hover,
+.second-section:hover,
+.third-section:hover,
+.fourth-section:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-heavy);
 }
 
 /* Márgenes superiores específicos */
@@ -69,23 +82,40 @@
    ====================================== */
 
 /* ======================================
-   SECCIÓN REGULAR - INFORMACIÓN PRÁCTICA
+   SECCIÓN REGULAR - INFORMACIÓN PRÁCTICA CON GLASSMORPHISM
    ====================================== */
 
 .regular-section {
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-left: var(--section-margin-horizontal);
+    margin-right: var(--section-margin-horizontal);
+    margin-bottom: var(--section-margin-bottom);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-standard);
     color: var(--black);
+}
+
+.regular-section:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-heavy);
 }
 
 .regular-section .section-title {
     color: var(--primary-dark);
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
 }
 
 /* ======================================
    CARDS - YA DEFINIDAS EN components/cards.css
    ====================================== */
 
-/* Todas las cards (service-feature-card, glass-card, complementary-card, financial-card, practical-card) 
+/* Todas las cards (service-feature-card, glass-card, complementary-card, glass-card, practical-card) 
    ya están definidas en components/cards.css */
 
 /* ======================================
@@ -191,7 +221,7 @@
    CARDS - YA CENTRALIZADAS EN components/cards.css
    ====================================== */
 
-/* Todas las cards (service-feature-card, glass-card, complementary-card, financial-card, practical-card, content-card) 
+/* Todas las cards (service-feature-card, glass-card, complementary-card, practical-card, standard-card) 
    ya están definidas en components/cards.css con el nuevo sistema unificado */
 
 /* ======================================
@@ -303,7 +333,7 @@
         margin-bottom: 2rem;
     }
 
-    /* Cards específicas móvil - las content-card ya están centralizadas */
+    /* Cards específicas móvil - las standard-card ya están centralizadas */
     .content-intro {
         padding: 0;
     }
@@ -312,7 +342,7 @@
     .service-feature-card,
     .glass-card,
     .complementary-card,
-    .financial-card,
+    .glass-card,
     .practical-card {
         padding: 1.5rem !important;
         margin-bottom: 1.5rem !important;
@@ -399,14 +429,14 @@
 @media (max-width: 360px) {
     .service-feature-card h3,
     .glass-card h3,
-    .financial-card h3,
+    .glass-card h3,
     .practical-card h3 {
         font-size: 1.1rem;
     }
 
     .service-feature-card p,
     .glass-card p,
-    .financial-card p,
+    .glass-card p,
     .practical-card p {
         font-size: 1rem;
     }

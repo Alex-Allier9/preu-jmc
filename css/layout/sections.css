@@ -17,6 +17,48 @@
     letter-spacing: var(--title-letter-spacing);
 }
 
+/* Glassmorphism Section Title Override - Para mejorar legibilidad en secciones con glassmorphism */
+.glass-section .section-title,
+.glass-section-light .section-title,
+.profile-header .section-title,
+.about-section .section-title,
+.experience-section .section-title,
+.mountaineering-section .section-title,
+.about .section-title,
+.mvp-section .section-title,
+.stats .section-title,
+.results .section-title,
+.values-section .section-title,
+.commitment-section .section-title,
+.first-section .section-title,
+.second-section .section-title,
+.third-section .section-title,
+.fourth-section .section-title,
+.regular-section .section-title {
+    color: var(--primary-dark);
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+/* Glassmorphism Content Legibility - Mejora la legibilidad del contenido en secciones glassmorphism */
+.profile-header p,
+.about-section p,
+.experience-section p,
+.mountaineering-section p,
+.about p,
+.mvp-section p,
+.stats p,
+.results p,
+.values-section p,
+.commitment-section p,
+.first-section p,
+.second-section p,
+.third-section p,
+.fourth-section p,
+.regular-section p {
+    color: var(--black);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
 /* CORREGIDO - Línea amarilla universal */
 .section-subtitle {
     display: block;
