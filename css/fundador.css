@@ -18,6 +18,24 @@
     background-image: url('../media/images/fundador/ojos-salado_0002.jpg');
 }
 
+.hero h1 {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: var(--gap-medium);
+    letter-spacing: var(--title-letter-spacing);
+    line-height: 1.2;
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: white;
+    opacity: 0.9;
+    max-width: 100%;
+    align-self: flex-start;
+}
+
 /* CTA section background - ESPECÍFICO DE FUNDADOR */
 .cta {
     background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
@@ -337,6 +355,17 @@
 
 /* Mobile (hasta 767px) - EXACTAMENTE IGUAL QUE NOSOTROS */
 @media (max-width: 53rem) {
+    .hero .hero-text-content h1 {
+        font-size: clamp(1.2rem, 5vw, 2rem);
+        line-height: 1.1;
+        text-align: center; /* Centrar en mobile */
+    }
+    
+    .hero .hero-subtitle {
+        font-size: clamp(0.85rem, 3vw, 1rem);
+        text-align: center; /* Centrar en mobile */
+    }
+    
     /* Profile header específico */
     .profile-header {
         padding: 6rem 0 3rem;
