@@ -1,6 +1,6 @@
 /* ======================================
    SECTIONS.CSS - LAYOUT UNIVERSAL DE SECCIONES CON HERO GLOBAL
-   REEMPLAZAR TODO EL CONTENIDO DE layout/sections.css
+   VERSIÓN CORREGIDA - COMBINA NUEVO HERO + CTA + GRADIENTS
    ====================================== */
 
 /* Sections - UNIVERSAL */
@@ -95,19 +95,15 @@
     z-index: 1;
 }
 
-/* ======================================
-   VARIANTES DE HERO
-   ====================================== */
-
-/* Hero Estándar - Para nosotros, servicios, páginas futuras */
-.hero-standard {
+/* Hero - Para todas las páginas */
+.hero {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
-.hero-standard .hero-content {
+.hero .hero-content {
     position: relative;
     z-index: 2;
     max-width: 1200px;
@@ -115,40 +111,8 @@
     padding: 0 2rem;
 }
 
-/* Hero Split - Para fundador (layout especial) */
-.hero-split {
-    display: flex;
-    align-items: center;
-}
-
-.hero-split .hero-split-container {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--container-padding);
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-split .hero-text-content {
-    flex: 1;
-    padding-right: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-}
-
-.hero-split .hero-image-space {
-    flex: 1;
-    height: 100%;
-}
-
 /* ======================================
-   TIPOGRAFÍA UNIVERSAL DE HERO
+   TIPOGRAFÍA DE HERO
    ====================================== */
 
 /* Estilos base para todos los heros */
@@ -166,32 +130,19 @@
     opacity: 0.95;
 }
 
-/* Tipografía específica para Hero Estándar */
-.hero-standard h1 {
+/* Tipografía específica para Hero */
+.hero h1 {
     font-size: clamp(3rem, 8vw, 6rem);
     animation: fadeInUp 1s ease;
     text-align: center;
 }
 
-.hero-standard p {
+.hero p {
     font-size: clamp(1.1rem, 3vw, 1.5rem);
     max-width: 800px;
     margin: 0 auto;
     animation: fadeInUp 1s ease 0.3s both;
     text-align: center;
-}
-
-/* Tipografía específica para Hero Split */
-.hero-split h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    margin-bottom: var(--gap-medium);
-    text-align: left;
-}
-
-.hero-split p {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    max-width: 100%;
-    text-align: left;
 }
 
 /* ======================================
@@ -232,10 +183,72 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     z-index: 2;
+    color: white;
+}
+
+.glass-section-dark .section-title {
+    color: white;
 }
 
 /* ======================================
-   RESPONSIVE PARA SISTEMA HERO GLOBAL
+   GRADIENT SECTIONS - RECUPERADOS
+   ====================================== */
+
+/* Primary Gradient Section - Universal blue gradient background */
+.primary-gradient-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+}
+
+.primary-gradient-section .section-title {
+    color: white;
+}
+
+/* Primary Dark Gradient Section - Darker gradient background */
+.primary-dark-gradient-section {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #0f3a4a 100%);
+    color: white;
+}
+
+.primary-dark-gradient-section .section-title {
+    color: white;
+}
+
+/* ======================================
+   CTA SECTION - RECUPERADA
+   ====================================== */
+
+/* CTA Section Base - Universal styling */
+.cta {
+    padding: 5rem 0;
+    text-align: center;
+    position: relative;
+    color: white;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cta h2 {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    color: white;
+    letter-spacing: var(--title-letter-spacing);
+}
+
+.cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+/* ======================================
+   RESPONSIVE PARA HERO
    ====================================== */
 
 /* Tablet */
@@ -246,10 +259,6 @@
     
     .hero p {
         font-size: clamp(1rem, 3vw, 1.3rem) !important;
-    }
-    
-    .hero-split .hero-text-content {
-        padding-right: 2rem;
     }
 }
 
@@ -263,15 +272,40 @@
         font-size: clamp(1rem, 4vw, 1.3rem) !important;
     }
     
-    .hero-standard .hero-content {
+    .hero .hero-content {
         padding: 0 1.5rem;
     }
-    
-    .hero-split .hero-split-container {
-        padding: 0 1.5rem;
+}
+
+/* ======================================
+   CTA RESPONSIVE - RECUPERADO
+   ====================================== */
+
+@media (max-width: var(--tablet)) {
+    .cta {
+        padding: 4rem 0;
     }
     
-    .hero-split .hero-text-content {
-        padding-right: 2rem;
+    .cta h2 {
+        font-size: 2.5rem;
+    }
+    
+    .cta p {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: var(--mobile)) {
+    .cta {
+        padding: 3rem 0;
+    }
+    
+    .cta h2 {
+        font-size: 2rem;
+    }
+    
+    .cta p {
+        font-size: 1rem;
     }
 }
