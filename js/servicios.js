@@ -10,43 +10,6 @@
 // FUNCIONES ESPECÍFICAS DE LA PÁGINA DE SERVICIOS
 // ======================================
 
-// Función para registrar cards de servicios en el sistema global
-function registerServicesCardsInGlobalSystem() {
-    // Nota: Los efectos estándar de hover están centralizados en global.js
-    // Esta función solo registra configuraciones específicas de servicios
-
-    const serviciosCardConfigs = [
-        {
-            selector: '.glass-card',
-            hasIcon: true,
-            hoverBackground: 'rgba(255, 255, 255, 0.15)',
-            restoreBackground: 'rgba(255, 255, 255, 0.1)'
-        },
-        {
-            selector: '.glass-card',
-            hasIcon: true
-        },
-    ];
-
-    // Aplicar solo efectos específicos de servicios (backgrounds personalizados)
-    serviciosCardConfigs.forEach(config => {
-        document.querySelectorAll(config.selector).forEach(card => {
-            if (config.hoverBackground || config.restoreBackground) {
-                card.addEventListener('mouseenter', function () {
-                    if (config.hoverBackground) {
-                        this.style.background = config.hoverBackground;
-                    }
-                });
-
-                card.addEventListener('mouseleave', function () {
-                    if (config.restoreBackground) {
-                        this.style.background = config.restoreBackground;
-                    }
-                });
-            }
-        });
-    });
-}
 // Función para manejar interacciones con las cards de proceso
 function initProcessStepInteractions() {
     const processCards = document.querySelectorAll('.proceso-card-full');
@@ -83,84 +46,6 @@ function initProcessStepInteractions() {
             }
         });
     });
-}
-
-// Función para manejar el formulario de consulta rápida (si se agrega en el futuro)
-function initQuickConsultationForm() {
-    const quickForm = document.querySelector('.quick-consultation-form');
-
-    if (!quickForm) return;
-
-    quickForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        // Obtener datos del formulario
-        const formData = new FormData(this);
-        const consultationData = Object.fromEntries(formData);
-
-        console.log('Quick consultation submitted:', consultationData);
-
-        // Simular envío exitoso
-        showConsultationSuccess();
-    });
-}
-
-// Función para mostrar mensaje de éxito en consulta
-function showConsultationSuccess() {
-    // Crear mensaje de éxito temporal
-    const successMessage = document.createElement('div');
-    successMessage.className = 'consultation-success';
-    successMessage.innerHTML = `
-        <div class="success-content">
-            <span class="material-symbols-rounded">check_circle</span>
-            <p>¡Consulta enviada exitosamente! Te contactaremos pronto.</p>
-        </div>
-    `;
-
-    // Estilos para el mensaje
-    successMessage.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 10000;
-        background: var(--primary);
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    `;
-
-    document.body.appendChild(successMessage);
-
-    // Animación de entrada
-    setTimeout(() => {
-        successMessage.style.transform = 'translateX(0)';
-    }, 100);
-
-    // Remover después de 4 segundos
-    setTimeout(() => {
-        successMessage.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            document.body.removeChild(successMessage);
-        }, 300);
-    }, 4000);
-}
-
-// Función para manejar animaciones específicas de las cards de servicios - OPTIMIZADA
-function initServiceCardAnimations() {
-    const serviceCards = document.querySelectorAll('.practical-card, .glass-card, .glass-card');
-
-    if (serviceCards.length === 0) return;
-
-    // Nota: Las animaciones de reveal básicas están manejadas en global.js
-    // Aquí solo agregamos efectos específicos de servicios si son necesarios
-
-    console.log('Service cards specific animations initialized for', serviceCards.length, 'cards');
 }
 
 // Función para efectos específicos de requisitos - SIMPLIFICADA (efectos principales en sistema global)
@@ -229,39 +114,6 @@ function initServicesScrollEffects() {
     window.addEventListener('scroll', servicesScrollHandler, { passive: true });
 }
 
-// Función para manejar información adicional de las modalidades de pago
-function initPaymentInfoToggle() {
-    const paymentItems = document.querySelectorAll('.payment-item');
-
-    if (paymentItems.length === 0) return;
-
-    paymentItems.forEach(item => {
-        item.addEventListener('click', function () {
-            // Efecto visual al hacer click
-            this.style.transform = 'scale(0.98)';
-            this.style.background = 'rgba(65, 182, 230, 0.15)';
-
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-                this.style.background = 'rgba(65, 182, 230, 0.05)';
-            }, 200);
-
-            console.log('Payment info clicked:', this.querySelector('strong').textContent);
-        });
-
-        // Efecto hover mejorado
-        item.addEventListener('mouseenter', function () {
-            this.style.borderLeftColor = '#F4DA40';
-            this.style.transform = 'translateX(5px)';
-        });
-
-        item.addEventListener('mouseleave', function () {
-            this.style.borderLeftColor = '#41B6E6';
-            this.style.transform = 'translateX(0)';
-        });
-    });
-}
-
 // Función para manejar efectos de las listas en servicios complementarios
 function initComplementaryServiceLists() {
     const listItems = document.querySelectorAll('.complementary-card li');
@@ -314,13 +166,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Nota: Los efectos principales de hover están centralizados en global.js
     // Solo inicializar funcionalidades específicas de servicios
-    registerServicesCardsInGlobalSystem(); // Solo para backgrounds específicos
     initProcessStepInteractions();
-    initQuickConsultationForm();
-    initServiceCardAnimations();
     initRequirementCardEffects();
     initServicesScrollEffects();
-    initPaymentInfoToggle();
     initComplementaryServiceLists();
     // initServicesReadingProgress(); - ELIMINADA, usar solo barra global
 

@@ -85,18 +85,18 @@ function animateValue(element, start, end, duration, originalText) {
  */
 function animateTimeValue(element, targetMinutes, duration, originalText) {
     let startTimestamp = null;
-    
+
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        
+
         // Calcular minutos actuales basado en el progreso
         const currentMinutes = Math.floor(progress * targetMinutes);
-        
+
         // Convertir a formato "Xh Ymin"
         const hours = Math.floor(currentMinutes / 60);
         const minutes = currentMinutes % 60;
-        
+
         // Formatear el texto
         let formattedTime = '';
         if (hours > 0) {
@@ -107,9 +107,9 @@ function animateTimeValue(element, targetMinutes, duration, originalText) {
         } else {
             formattedTime = `${minutes}min`;
         }
-        
+
         element.textContent = formattedTime;
-        
+
         if (progress < 1) {
             window.requestAnimationFrame(step);
         } else {
@@ -117,7 +117,7 @@ function animateTimeValue(element, targetMinutes, duration, originalText) {
             element.textContent = originalText;
         }
     };
-    
+
     window.requestAnimationFrame(step);
 }
 
@@ -128,19 +128,19 @@ function animateTimeValue(element, targetMinutes, duration, originalText) {
  */
 function parseTimeText(timeText) {
     const text = timeText.trim().toLowerCase();
-    
+
     // Regex para capturar horas y minutos en diferentes formatos
     const timeRegex = /(?:(\d+)h(?:ours?)?)?(?:\s*(\d+)min(?:utes?)?)?/;
     const match = text.match(timeRegex);
-    
+
     if (!match) return null;
-    
+
     const hours = parseInt(match[1]) || 0;
     const minutes = parseInt(match[2]) || 0;
-    
+
     // Si no hay horas ni minutos, no es un tiempo válido
     if (hours === 0 && minutes === 0) return null;
-    
+
     return (hours * 60) + minutes;
 }
 
@@ -149,20 +149,20 @@ function parseTimeText(timeText) {
  */
 function animateValueWithText(element, start, end, duration, originalText) {
     let startTimestamp = null;
-    
+
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
         const current = Math.floor(progress * (end - start) + start);
-        
+
         // Reemplazar solo la parte numérica
         element.textContent = originalText.replace(/^\d+/, current.toString());
-        
+
         if (progress < 1) {
             window.requestAnimationFrame(step);
         }
     };
-    
+
     window.requestAnimationFrame(step);
 }
 
@@ -172,13 +172,13 @@ function animateCountersUniversal() {
 
     counters.forEach(counter => {
         const target = counter.textContent.trim();
-        
+
         // 1. VERIFICAR SI ES UN FORMATO DE TIEMPO
         const timeMinutes = parseTimeText(target);
         if (timeMinutes !== null) {
             // Es un tiempo - usar animación de tiempo
             counter.textContent = '0min';
-            
+
             const counterObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -188,17 +188,17 @@ function animateCountersUniversal() {
                     }
                 });
             });
-            
+
             counterObserver.observe(counter);
             return;
         }
-        
+
         // 2. VERIFICAR SI ES UN NÚMERO PURO
         const cleanNumber = target.replace('+', '').replace('%', '');
         if (!isNaN(cleanNumber) && cleanNumber !== '') {
             // Es un número - usar animación normal
             counter.textContent = '0';
-            
+
             const counterObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -207,11 +207,11 @@ function animateCountersUniversal() {
                     }
                 });
             });
-            
+
             counterObserver.observe(counter);
             return;
         }
-        
+
         // 3. VERIFICAR SI EMPIEZA CON NÚMERO (para futuros casos como "3 Cumbres")
         const numberMatch = target.match(/^(\d+)/);
         if (numberMatch) {
@@ -219,7 +219,7 @@ function animateCountersUniversal() {
             if (numberPart > 0) {
                 const originalText = target;
                 counter.textContent = originalText.replace(/^\d+/, '0');
-                
+
                 const counterObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -228,12 +228,12 @@ function animateCountersUniversal() {
                         }
                     });
                 });
-                
+
                 counterObserver.observe(counter);
                 return;
             }
         }
-        
+
         // 4. TEXTO PURO - No animar (placeholders como "XX")
         // Se queda como está
     });
@@ -253,10 +253,6 @@ function addUniversalCardEffects() {
     };
 
     const cardConfigs = [
-        {
-            selector: '.simple-card',
-            hasIcon: false
-        },
         {
             selector: '.stat-card',
             hasIcon: false
@@ -432,7 +428,7 @@ function addScrollProgress() {
 
 // Card reveal animation with stagger - OPTIMIZADA
 function addCardRevealAnimation() {
-    const cards = document.querySelectorAll('.proceso-card-full, .card-services-mixed, .stat-card, .simple-card, .practical-card, .glass-card');
+    const cards = document.querySelectorAll('.proceso-card-full, .card-services-mixed, .stat-card, .practical-card, .glass-card');
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
@@ -496,34 +492,34 @@ class UniversalGallery {
             touchNavigation: true,
             ...options
         };
-        
+
         this.currentIndex = 0;
         this.galleryItems = [];
         this.isOpen = false;
         this.touchStartX = 0;
         this.touchEndX = 0;
-        
+
         this.init();
     }
-    
+
     init() {
         this.createLightbox();
         this.bindEvents();
         this.findGalleryItems();
     }
-    
+
     createLightbox() {
         // Verificar si ya existe
         if (document.getElementById(this.options.lightboxId)) {
             this.lightbox = document.getElementById(this.options.lightboxId);
             return;
         }
-        
+
         // Crear elemento lightbox
         this.lightbox = document.createElement('div');
         this.lightbox.id = this.options.lightboxId;
         this.lightbox.className = 'universal-lightbox';
-        
+
         this.lightbox.innerHTML = `
             <div class="lightbox-content">
                 <span class="lightbox-close">&times;</span>
@@ -542,25 +538,25 @@ class UniversalGallery {
                 </div>
             </div>
         `;
-        
+
         document.body.appendChild(this.lightbox);
-        
+
         // Referencias a elementos
         this.lightboxContent = this.lightbox.querySelector('.lightbox-content');
         this.lightboxImage = this.lightbox.querySelector('.lightbox-image');
         this.lightboxTitle = this.lightbox.querySelector('.lightbox-title');
         this.lightboxDescription = this.lightbox.querySelector('.lightbox-description');
         this.closeButton = this.lightbox.querySelector('.lightbox-close');
-        
+
         if (this.options.showNavigation) {
             this.prevButton = this.lightbox.querySelector('.lightbox-nav.prev');
             this.nextButton = this.lightbox.querySelector('.lightbox-nav.next');
         }
     }
-    
+
     findGalleryItems() {
         this.galleryItems = Array.from(document.querySelectorAll(this.options.gallerySelector));
-        
+
         this.galleryItems.forEach((item, index) => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -568,7 +564,7 @@ class UniversalGallery {
             });
         });
     }
-    
+
     bindEvents() {
         // Cerrar lightbox
         this.lightbox.addEventListener('click', (e) => {
@@ -576,14 +572,14 @@ class UniversalGallery {
                 this.closeLightbox();
             }
         });
-        
+
         // Botón cerrar
         this.lightbox.addEventListener('click', (e) => {
             if (e.target.classList.contains('lightbox-close')) {
                 this.closeLightbox();
             }
         });
-        
+
         // Navegación con botones
         if (this.options.showNavigation) {
             this.lightbox.addEventListener('click', (e) => {
@@ -597,12 +593,12 @@ class UniversalGallery {
                 }
             });
         }
-        
+
         // Navegación con teclado
         if (this.options.keyboardNavigation) {
             document.addEventListener('keydown', (e) => {
                 if (!this.isOpen) return;
-                
+
                 switch (e.key) {
                     case 'Escape':
                         this.closeLightbox();
@@ -616,72 +612,72 @@ class UniversalGallery {
                 }
             });
         }
-        
+
         // Navegación táctil
         if (this.options.touchNavigation) {
             this.lightbox.addEventListener('touchstart', (e) => {
                 this.touchStartX = e.changedTouches[0].screenX;
             });
-            
+
             this.lightbox.addEventListener('touchend', (e) => {
                 this.touchEndX = e.changedTouches[0].screenX;
                 this.handleSwipe();
             });
         }
     }
-    
+
     openLightbox(index) {
         this.currentIndex = index;
         this.isOpen = true;
-        
+
         const item = this.galleryItems[index];
         const image = item.querySelector(this.options.imageSelector);
         const title = item.querySelector(this.options.titleSelector);
         const description = item.querySelector(this.options.descriptionSelector);
-        
+
         // Actualizar contenido
         this.lightboxImage.src = image.src;
         this.lightboxImage.alt = image.alt || '';
-        
+
         if (title) {
             this.lightboxTitle.textContent = title.textContent;
             this.lightboxTitle.style.display = 'block';
         } else {
             this.lightboxTitle.style.display = 'none';
         }
-        
+
         if (description) {
             this.lightboxDescription.textContent = description.textContent;
             this.lightboxDescription.style.display = 'block';
         } else {
             this.lightboxDescription.style.display = 'none';
         }
-        
+
         // Mostrar lightbox
         this.lightbox.style.display = 'flex';
         document.body.style.overflow = 'hidden';
-        
+
         // Añadir clase active con delay para animación
         setTimeout(() => {
             this.lightbox.classList.add('active');
         }, 10);
-        
+
         // Actualizar navegación
         if (this.options.showNavigation) {
             this.updateNavigation();
         }
     }
-    
+
     closeLightbox() {
         this.isOpen = false;
         this.lightbox.classList.remove('active');
-        
+
         setTimeout(() => {
             this.lightbox.style.display = 'none';
             document.body.style.overflow = 'auto';
         }, this.options.fadeSpeed);
     }
-    
+
     nextImage() {
         if (this.currentIndex < this.galleryItems.length - 1) {
             this.openLightbox(this.currentIndex + 1);
@@ -689,7 +685,7 @@ class UniversalGallery {
             this.openLightbox(0); // Volver al principio
         }
     }
-    
+
     previousImage() {
         if (this.currentIndex > 0) {
             this.openLightbox(this.currentIndex - 1);
@@ -697,10 +693,10 @@ class UniversalGallery {
             this.openLightbox(this.galleryItems.length - 1); // Ir al final
         }
     }
-    
+
     updateNavigation() {
         if (!this.options.showNavigation) return;
-        
+
         // Mostrar/ocultar botones según disponibilidad
         if (this.galleryItems.length <= 1) {
             if (this.prevButton) this.prevButton.style.display = 'none';
@@ -710,13 +706,13 @@ class UniversalGallery {
             if (this.nextButton) this.nextButton.style.display = 'flex';
         }
     }
-    
+
     handleSwipe() {
         if (!this.options.touchNavigation || !this.options.showNavigation) return;
-        
+
         const swipeThreshold = 50;
         const swipeDistance = this.touchEndX - this.touchStartX;
-        
+
         if (Math.abs(swipeDistance) > swipeThreshold) {
             if (swipeDistance > 0) {
                 this.previousImage(); // Swipe derecha = imagen anterior
@@ -725,12 +721,12 @@ class UniversalGallery {
             }
         }
     }
-    
+
     // Método para refrescar la galería (útil para contenido dinámico)
     refresh() {
         this.findGalleryItems();
     }
-    
+
     // Método para destruir la instancia
     destroy() {
         if (this.lightbox && this.lightbox.parentNode) {
@@ -767,7 +763,7 @@ function createGalleryHTML(images, options = {}) {
         showZoomIcon: true,
         ...options
     };
-    
+
     const galleryHTML = `
         <div class="${config.containerClass}">
             ${config.title || config.subtitle ? `
@@ -796,7 +792,7 @@ function createGalleryHTML(images, options = {}) {
             </div>
         </div>
     `;
-    
+
     return galleryHTML;
 }
 
@@ -805,43 +801,43 @@ function createGalleryHTML(images, options = {}) {
  */
 function addGalleryCardEffects() {
     const galleryCards = document.querySelectorAll('.gallery-card');
-    
+
     galleryCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-8px) scale(1.02)';
             this.style.boxShadow = '0 25px 70px rgba(0, 0, 0, 0.15)';
-            
+
             const image = this.querySelector('.gallery-image');
             if (image) {
                 image.style.transform = 'scale(1.1)';
             }
-            
+
             const overlay = this.querySelector('.gallery-overlay');
             if (overlay) {
                 overlay.style.transform = 'translateY(0)';
             }
-            
+
             const zoomIcon = this.querySelector('.gallery-zoom-icon');
             if (zoomIcon) {
                 zoomIcon.style.opacity = '1';
                 zoomIcon.style.transform = 'scale(1)';
             }
         });
-        
-        card.addEventListener('mouseleave', function() {
+
+        card.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) scale(1)';
             this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
-            
+
             const image = this.querySelector('.gallery-image');
             if (image) {
                 image.style.transform = 'scale(1)';
             }
-            
+
             const overlay = this.querySelector('.gallery-overlay');
             if (overlay) {
                 overlay.style.transform = 'translateY(100%)';
             }
-            
+
             const zoomIcon = this.querySelector('.gallery-zoom-icon');
             if (zoomIcon) {
                 zoomIcon.style.opacity = '0';
@@ -859,7 +855,7 @@ function addGalleryCardEffects() {
 function autoInitGallery() {
     // Verificar si hay gallery cards en la página
     const galleryCards = document.querySelectorAll('.gallery-card');
-    
+
     if (galleryCards.length > 0) {
         // Configuración por defecto
         const defaultOptions = {
@@ -867,15 +863,15 @@ function autoInitGallery() {
             keyboardNavigation: true,
             touchNavigation: true
         };
-        
+
         // Inicializar galería
         const gallery = new UniversalGallery(defaultOptions);
-        
+
         // Agregar efectos hover
         addGalleryCardEffects();
-        
+
         console.log(`Universal Gallery initialized with ${galleryCards.length} images`);
-        
+
         return gallery;
     }
 }
@@ -890,30 +886,30 @@ function createDynamicGallery(containerId, images, options = {}) {
         console.error(`Container with id "${containerId}" not found`);
         return;
     }
-    
+
     const defaultOptions = {
         title: 'Galería',
         subtitle: '',
         showZoomIcon: true,
         showNavigation: true
     };
-    
+
     const config = { ...defaultOptions, ...options };
-    
+
     // Crear HTML de la galería
     const galleryHTML = createGalleryHTML(images, config);
     container.innerHTML = galleryHTML;
-    
+
     // Inicializar la galería
     const gallery = new UniversalGallery({
         showNavigation: config.showNavigation,
         keyboardNavigation: true,
         touchNavigation: true
     });
-    
+
     // Agregar efectos hover
     addGalleryCardEffects();
-    
+
     return gallery;
 }
 
@@ -927,14 +923,14 @@ const galleryPresets = {
         keyboardNavigation: false,
         touchNavigation: false
     },
-    
+
     // Galería completa con todas las funciones
     full: {
         showNavigation: true,
         keyboardNavigation: true,
         touchNavigation: true
     },
-    
+
     // Galería para portfolios
     portfolio: {
         showNavigation: true,
@@ -942,7 +938,7 @@ const galleryPresets = {
         touchNavigation: true,
         autoClose: false
     },
-    
+
     // Galería para móviles optimizada
     mobile: {
         showNavigation: false,
@@ -957,7 +953,7 @@ const galleryPresets = {
 function initGalleryWithPreset(presetName, customOptions = {}) {
     const preset = galleryPresets[presetName] || galleryPresets.basic;
     const options = { ...preset, ...customOptions };
-    
+
     return new UniversalGallery(options);
 }
 
@@ -975,8 +971,8 @@ function handleUniversalStatsGridResize() {
 
     statsGrids.forEach(grid => {
         // Si es un grid container, buscar las cards dentro
-        const cards = grid.classList.contains('stat-card') 
-            ? [grid] 
+        const cards = grid.classList.contains('stat-card')
+            ? [grid]
             : grid.querySelectorAll('.stat-card');
 
         // Vista tablet - asegurar exactamente 4 cards (2x2)
@@ -1028,12 +1024,12 @@ function handleCustomGridResize(gridSelector, itemSelector, tabletLimit = 4) {
 function initUniversalGridBehaviors() {
     // Stats grids
     handleUniversalStatsGridResize();
-    
+
     // Achievement grids (para fundador)
     handleCustomGridResize('.achievements-grid', '.achievement-card', 3);
-    
+
     // Gallery grids ya tienen su propio sistema responsive
-    
+
     // Agregar listener para resize
     window.addEventListener('resize', debounce(() => {
         handleUniversalStatsGridResize();
@@ -1065,13 +1061,13 @@ document.addEventListener('DOMContentLoaded', function () {
         addUniversalCardEffects();
         addProcessCardEffects();
         addCardRevealAnimation();
-        
+
         // Sistema universal de galería
         autoInitGallery();
-        
+
         // Sistema universal de grids responsivos
         initUniversalGridBehaviors();
-        
+
     }, 500);
 });
 
@@ -1085,12 +1081,12 @@ if (typeof window !== 'undefined') {
     window.autoInitGallery = autoInitGallery;
     window.createDynamicGallery = createDynamicGallery;
     window.initGalleryWithPreset = initGalleryWithPreset;
-    
+
     // Grid system
     window.handleUniversalStatsGridResize = handleUniversalStatsGridResize;
     window.handleCustomGridResize = handleCustomGridResize;
     window.initUniversalGridBehaviors = initUniversalGridBehaviors;
-    
+
     // Animation system (nuevas funciones)
     window.animateTimeValue = animateTimeValue;
     window.parseTimeText = parseTimeText;

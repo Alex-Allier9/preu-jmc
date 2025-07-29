@@ -7,9 +7,7 @@
    ====================================== */
 
 /* ENLACE BASE UNIVERSAL */
-.link, 
-.universal-link,
-.inline-link {
+.universal-link {
     color: var(--primary);
     text-decoration: none;
     font-weight: 600;
@@ -19,23 +17,17 @@
 }
 
 /* Estado visitado - Primary dark */
-.link:visited,
-.universal-link:visited,
-.inline-link:visited {
+.universal-link:visited {
     color: var(--primary-dark);
 }
 
 /* Estado hover - Mantener color primario */
-.link:hover,
-.universal-link:hover,
-.inline-link:hover {
+.universal-link:hover {
     color: var(--primary);
 }
 
 /* Línea amarilla universal - Mismo estilo que el header */
-.link::after,
-.universal-link::after,
-.inline-link::after {
+.universal-link::after {
     content: '';
     position: absolute;
     bottom: -3px;
@@ -49,9 +41,7 @@
 }
 
 /* Activar línea en hover */
-.link:hover::after,
-.universal-link:hover::after,
-.inline-link:hover::after {
+.universal-link:hover::after {
     transform: scaleX(1);
 }
 

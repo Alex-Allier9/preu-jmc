@@ -213,12 +213,6 @@
 
 /* Tablet: 848px - 1312px (var(--tablet) y var(--mobile)) */
 @media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
-    .profile-card {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-
     .profile-image {
         width: 150px;
         height: 150px;
@@ -272,14 +266,6 @@
     }
 
     /* Profile card mobile: imagen centrada arriba, texto y botones abajo */
-    .profile-card {
-        padding: 2rem;
-        margin: 0 1rem;
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-
     .profile-image {
         width: 120px;
         height: 120px;

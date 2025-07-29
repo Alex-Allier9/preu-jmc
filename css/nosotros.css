@@ -109,18 +109,6 @@
 }
 
 /* ======================================
-   GRIDS ESPECÍFICOS DE NOSOTROS
-   ====================================== */
-
-/* MVP Grid ya está definido en components/grids.css */
-/* MVP card ya está definido en components/cards.css */
-
-/* Stats Grid ya está definido en components/grids.css */
-/* Stat card ya está definido en components/cards.css */
-
-/* About card ya está definido en components/cards.css */
-
-/* ======================================
    RESPONSIVE ESPECÍFICO DE NOSOTROS - CORREGIDO
    ====================================== */
 
@@ -129,7 +117,7 @@
     /* Stats responsive - ya definido en components/grids.css */
     
     
-    /* MVP cards en tablet */
+    /* Basic cards en tablet */
     .basic-card h3 {
         font-size: 1.5rem;
     }

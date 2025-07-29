@@ -143,7 +143,7 @@
     color: var(--accent) !important;
 }
 
-/* MVP Cards - Color azul primary */
+/* Basic Cards - Color azul primary */
 .basic-card .material-symbols-rounded {
     color: var(--primary);
 }
