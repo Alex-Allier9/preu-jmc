@@ -514,8 +514,8 @@
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
-/* Tablet - var(--tablet) */
-@media (max-width: var(--tablet)) {
+/* Tablet - 82re */
+@media (max-width: 82re) {
     .profile-contact-items {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -552,8 +552,8 @@
     }
 }
 
-/* Mobile - var(--mobile) */
-@media (max-width: var(--mobile)) {
+/* Mobile - 53rem */
+@media (max-width: 53rem) {
     .profile-name {
         font-size: 2rem;
     }
@@ -710,7 +710,7 @@
    ====================================== */
 
 /* Mobile responsive para proceso-card-full */
-@media (max-width: var(--mobile)) {
+@media (max-width: 53rem) {
     .proceso-card-full {
         flex-direction: column;
         text-align: center;
@@ -1071,7 +1071,7 @@
    ====================================== */
 
 /* Tablet: 848px - 1312px */
-@media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
+@media (max-width: 82re) and (min-width: 53rem) {
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--gap-medium);
@@ -1100,7 +1100,7 @@
 }
 
 /* Mobile: Hasta 848px */
-@media (max-width: var(--mobile)) {
+@media (max-width: 53rem) {
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--gap-small);

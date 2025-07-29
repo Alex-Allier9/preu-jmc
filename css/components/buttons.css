@@ -201,7 +201,7 @@
 /* ===== RESPONSIVE BUTTONS ===== */
 
 /* Tablet */
-@media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
+@media (max-width: 82re) and (min-width: 53rem) {
     .btn-primary,
     .btn-primary-dark,
     .btn-primary-outlined,
@@ -216,7 +216,7 @@
 }
 
 /* Mobile */
-@media (max-width: var(--mobile)) {
+@media (max-width: 53rem) {
     .btn-primary,
     .btn-primary-dark,
     .btn-primary-outlined,

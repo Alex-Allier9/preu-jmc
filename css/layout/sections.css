@@ -252,7 +252,7 @@
    ====================================== */
 
 /* Tablet */
-@media (max-width: var(--tablet)) {
+@media (max-width: 82re) {
     .hero h1 {
         font-size: clamp(2.5rem, 7vw, 4.5rem) !important;
     }
@@ -263,7 +263,7 @@
 }
 
 /* Mobile */
-@media (max-width: var(--mobile)) {
+@media (max-width: 53rem) {
     .hero h1 {
         font-size: clamp(2rem, 8vw, 3.5rem) !important;
     }
@@ -281,7 +281,7 @@
    CTA RESPONSIVE - RECUPERADO
    ====================================== */
 
-@media (max-width: var(--tablet)) {
+@media (max-width: 82re) {
     .cta {
         padding: 4rem 0;
     }
@@ -296,7 +296,7 @@
     }
 }
 
-@media (max-width: var(--mobile)) {
+@media (max-width: 53rem) {
     .cta {
         padding: 3rem 0;
     }

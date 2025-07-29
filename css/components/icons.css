@@ -227,7 +227,7 @@
    ====================================== */
 
 /* Tablet */
-@media (max-width: var(--tablet)) {
+@media (max-width: 82re) {
     /* Contenedores principales */
     .main-icon-container {
         height: 8.75rem;
@@ -286,7 +286,7 @@
 }
 
 /* Mobile */
-@media (max-width: var(--mobile)) {
+@media (max-width: 53rem) {
     /* Contenedores principales */
     .main-icon-container {
         height: 5rem;

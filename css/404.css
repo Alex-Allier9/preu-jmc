@@ -301,7 +301,7 @@
    ====================================== */
 
 /* Tablet: 848px - 1312px */
-@media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
+@media (max-width: 82re) and (min-width: 53rem) {
     .error-content {
         padding: 1.5rem;
     }
@@ -318,7 +318,7 @@
 }
 
 /* Mobile: Hasta 848px */
-@media (max-width: var(--mobile)) {
+@media (max-width: 53rem) {
     /* OVERRIDE: Cambiar grid-2-2-2 a flex en mobile para centrar mejor */
     .error-404.grid-2-2-2 {
         display: flex !important;

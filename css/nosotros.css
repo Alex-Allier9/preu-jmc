@@ -112,8 +112,8 @@
    RESPONSIVE ESPECÍFICO DE NOSOTROS - CORREGIDO
    ====================================== */
 
-/* Tablet: 848px - 1312px (var(--tablet) y var(--mobile)) */
-@media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
+/* Tablet: 848px - 1312px (82re y 53rem) */
+@media (max-width: 82re) and (min-width: 53rem) {
     /* Stats responsive - ya definido en components/grids.css */
     
     
@@ -123,8 +123,8 @@
     }
 }
 
-/* Mobile: Hasta 848px (var(--mobile)) */
-@media (max-width: var(--mobile)) {
+/* Mobile: Hasta 848px (53rem) */
+@media (max-width: 53rem) {
     /* Márgenes móviles específicos */
     .about,
     .mvp-section,

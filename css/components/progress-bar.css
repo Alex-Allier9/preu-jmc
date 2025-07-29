@@ -38,7 +38,7 @@
 }
 
 /* Responsive */
-@media (max-width: var(--tablet)) {
+@media (max-width: 82re) {
     #scroll-progress-bar {
         height: 8px; /* Aumentado de 6px a 8px */
     }

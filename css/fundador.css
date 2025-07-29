@@ -211,8 +211,8 @@
    RESPONSIVE ESPECÍFICO DE FUNDADOR - CORREGIDO
    ====================================== */
 
-/* Tablet: 848px - 1312px (var(--tablet) y var(--mobile)) */
-@media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
+/* Tablet: 848px - 1312px (82re y 53rem) */
+@media (max-width: 82re) and (min-width: 53rem) {
     .profile-image {
         width: 150px;
         height: 150px;
@@ -246,8 +246,8 @@
     }
 }
 
-/* Mobile: Hasta 848px (var(--mobile)) */
-@media (max-width: var(--mobile)) {
+/* Mobile: Hasta 848px (53rem) */
+@media (max-width: 53rem) {
     .hero .hero-text-content h1 {
         font-size: clamp(1.2rem, 5vw, 2rem);
         line-height: 1.1;

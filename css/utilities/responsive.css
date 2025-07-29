@@ -9,7 +9,7 @@
    ====================================== */
 
 /* Tablet: 848px - 1312px */
-@media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
+@media (max-width: 82re) and (min-width: 53rem) {
     /* ===== GENERAL LAYOUT ===== */
     .container {
         padding: 0 1.5rem;
@@ -43,7 +43,7 @@
 }
 
 /* Mobile: Hasta 848px */
-@media (max-width: var(--mobile)) {
+@media (max-width: 53rem) {
     /* ===== NAVIGATION ===== */
     .nav-menu {
         display: none;
@@ -122,7 +122,7 @@
    ====================================== */
 
 /* Reduce animation intensity on smaller screens */
-@media (max-width: var(--mobile)) {
+@media (max-width: 53rem) {
     .fade-in {
         transition: all 0.4s ease;
     }
@@ -149,7 +149,7 @@
 }
 
 /* Landscape phones */
-@media (max-width: var(--mobile)) and (orientation: landscape) {
+@media (max-width: 53rem) and (orientation: landscape) {
     .hero {
         min-height: 100vh;
     }
