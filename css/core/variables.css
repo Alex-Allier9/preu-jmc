@@ -67,10 +67,6 @@
     --transition-transform: transform 0.3s ease;  /* Transición de transform */
     --transition-color: color 0.3s ease;          /* Transición de color */
     
-    /* ===== BREAKPOINTS ===== */
-    --tablet: 82rem;                 /* 1312px */
-    --mobile: 53rem;                 /* 848px */
-    
     /* ===== MÁRGENES DE LAYOUT ===== */
     --section-margin-horizontal: 8.33%;  /* Márgenes laterales de secciones */
     --section-margin-bottom: 6rem;       /* Margen inferior de secciones */
