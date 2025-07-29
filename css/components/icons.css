@@ -148,16 +148,6 @@
     color: var(--primary);
 }
 
-/* Program Cards - Color azul primary */
-.program-card .material-symbols-rounded {
-    color: var(--primary);
-}
-
-/* Value Cards - Color amarillo accent */
-.value-card .material-symbols-rounded {
-    color: var(--accent) !important;
-}
-
 /* ======================================
    ICONOS ESPECÍFICOS POR CONTEXTO
    ====================================== */

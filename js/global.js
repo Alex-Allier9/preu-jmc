@@ -254,32 +254,18 @@ function addUniversalCardEffects() {
 
     const cardConfigs = [
         {
-            selector: '.mvp-card',
+            selector: '.simple-card',
             hasIcon: false
-        },
-        {
-            selector: '.program-card',
-            hasIcon: true
         },
         {
             selector: '.stat-card',
             hasIcon: false
         },
         {
-            selector: '.value-card',
-            hasIcon: true
-        },
-        {
             selector: '.card-services-mixed',
             hasIcon: true,
             hoverBackground: 'rgba(255, 255, 255, 0.15)',
             restoreBackground: 'rgba(255, 255, 255, 0.1)'
-        },
-        {
-            selector: '.about-card',
-            hasIcon: false,
-            hoverBackground: 'rgba(255, 255, 255, 0.95)',
-            restoreBackground: 'rgba(255, 255, 255, 0.9)'
         },
         {
             selector: '.quote-card',
@@ -289,21 +275,9 @@ function addUniversalCardEffects() {
         },
         // Cards específicas de servicios (centralizadas aquí)
         {
-            selector: '.service-feature-card',
-            hasIcon: true
-        },
-        {
             selector: '.glass-card',
             hasIcon: true
-        },
-        {
-            selector: '.complementary-card',
-            hasIcon: true
-        },
-        {
-            selector: '.financial-card',
-            hasIcon: true
-        },
+        }
     ];
 
     cardConfigs.forEach(config => {
@@ -458,7 +432,7 @@ function addScrollProgress() {
 
 // Card reveal animation with stagger - OPTIMIZADA
 function addCardRevealAnimation() {
-    const cards = document.querySelectorAll('.proceso-card-full, .program-card, .card-services-mixed, .stat-card, .mvp-card, .service-feature-card, .complementary-card, .practical-card, .financial-card, .glass-card');
+    const cards = document.querySelectorAll('.proceso-card-full, .card-services-mixed, .stat-card, .simple-card, .practical-card, .glass-card');
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {

@@ -17,18 +17,10 @@ function registerServicesCardsInGlobalSystem() {
 
     const serviciosCardConfigs = [
         {
-            selector: '.service-feature-card',
-            hasIcon: true
-        },
-        {
             selector: '.glass-card',
             hasIcon: true,
             hoverBackground: 'rgba(255, 255, 255, 0.15)',
             restoreBackground: 'rgba(255, 255, 255, 0.1)'
-        },
-        {
-            selector: '.complementary-card',
-            hasIcon: true
         },
         {
             selector: '.glass-card',
@@ -161,7 +153,7 @@ function showConsultationSuccess() {
 
 // Función para manejar animaciones específicas de las cards de servicios - OPTIMIZADA
 function initServiceCardAnimations() {
-    const serviceCards = document.querySelectorAll('.service-feature-card, .complementary-card, .practical-card, .glass-card, .glass-card');
+    const serviceCards = document.querySelectorAll('.practical-card, .glass-card, .glass-card');
 
     if (serviceCards.length === 0) return;
 
@@ -222,7 +214,7 @@ function initServicesScrollEffects() {
 
         // Efecto especial en las cards cuando se hace scroll hacia arriba
         if (scrollDirection === 'up') {
-            const visibleCards = document.querySelectorAll('.service-feature-card:hover, .practical-card:hover');
+            const visibleCards = document.querySelectorAll('.practical-card:hover');
             visibleCards.forEach(card => {
                 card.style.transform = 'translateY(-12px)';
                 setTimeout(() => {
