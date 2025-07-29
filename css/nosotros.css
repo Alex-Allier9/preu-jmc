@@ -128,13 +128,9 @@
 @media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
     /* Stats responsive - ya definido en components/grids.css */
     
-    /* Stat numbers responsive */
-    .stat-number {
-        font-size: 3.75rem;
-    }
     
     /* MVP cards en tablet */
-    .mvp-card h3 {
+    .basic-card h3 {
         font-size: 1.5rem;
     }
 }
@@ -159,13 +155,8 @@
     }
 
     /* Ajustar padding de cards en móvil */
-    .mvp-card {
+    .basic-card {
         padding: 1.5rem !important;
-    }
-    
-    /* Stats mobile */
-    .stat-number {
-        font-size: 2.5rem;
     }
     
     /* Quote card mobile */

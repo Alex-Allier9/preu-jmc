@@ -135,7 +135,7 @@
 .complementary-card,
 .financial-card,
 .glass-card,
-.mvp-card,
+.basic-card,
 .stat-card,
 .simple-card {
     border-radius: var(--border-radius-standard);
@@ -167,7 +167,7 @@
 }
 
 /* Hover effect for universal cards with solid background */
-.mvp-card:hover,
+.basic-card:hover,
 .stat-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-medium);
@@ -277,20 +277,20 @@
 /* ===== UNIVERSAL CARDS ===== */
 
 /* MVP Card - Universal card for mission, vision, purpose and value propositions */
-.mvp-card {
+.basic-card {
     background: rgba(255, 255, 255, 0.9);
     padding: 2rem;
     text-align: center;
 }
 
-.mvp-card h3 {
+.basic-card h3 {
     color: var(--primary);
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 1rem;
 }
 
-.mvp-card p {
+.basic-card p {
     font-size: 1.1rem;
     line-height: 1.6;
 }
@@ -543,7 +543,7 @@
 .achievement-card .achievement-stats {
     background: rgba(var(--primary-rgb), 0.1);
     border-radius: 10px;
-    padding: 1.5rem;
+    padding: 0.25rem;
     margin-bottom: 1.5rem;
     transition: var(--transition-standard);
 }
@@ -890,7 +890,7 @@
         font-size: 3.75rem;
     }
 
-    .mvp-card h3 {
+    .basic-card h3 {
         font-size: 1.5rem;
     }
 
@@ -1214,5 +1214,518 @@
         font-size: 1.3rem;
         text-align: center;
         margin-bottom: 1rem;
+    }
+}
+
+/* ======================================
+   GALLERY CARDS UNIVERSAL SYSTEM
+   Para agregar a components/cards.css
+   ====================================== */
+
+/* ======================================
+   GALLERY CARD UNIVERSAL
+   ====================================== */
+
+/* Gallery Card - Card especializada para galerías de imágenes */
+.gallery-card {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--border-radius-standard);
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition-standard);
+    box-shadow: var(--shadow-light);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    background: var(--black);
+}
+
+.gallery-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Imagen de la gallery card */
+.gallery-card .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    display: block;
+}
+
+.gallery-card:hover .gallery-image {
+    transform: scale(1.1);
+}
+
+/* Overlay con información */
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(var(--black-rgb), 0.9));
+    color: white;
+    padding: 1.5rem 1rem 1rem;
+    transform: translateY(100%);
+    transition: var(--transition-standard);
+}
+
+.gallery-card:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+/* Título y descripción del overlay */
+.gallery-overlay .gallery-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: white;
+    line-height: 1.2;
+}
+
+.gallery-overlay .gallery-description {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    color: white;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Icono de zoom opcional */
+.gallery-zoom-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(var(--primary-rgb), 0.9);
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.gallery-card:hover .gallery-zoom-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.gallery-zoom-icon .material-symbols-rounded {
+    font-size: 1.2rem;
+}
+
+/* ======================================
+   GALLERY CONTAINER
+   ====================================== */
+
+/* Contenedor completo de galería */
+.gallery-container {
+    margin-bottom: var(--margin-bottom-large);
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: var(--margin-bottom-standard);
+}
+
+.gallery-header .gallery-main-title {
+    font-family: var(--font-title);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.gallery-header .gallery-subtitle {
+    font-size: 1.1rem;
+    color: var(--black);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Grid para la galería usando sistema existente */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap-standard);
+    margin-top: 0;
+}
+
+/* ======================================
+   LIGHTBOX UNIVERSAL
+   ====================================== */
+
+/* Lightbox overlay */
+.universal-lightbox {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--black-rgb), 0.95);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.universal-lightbox.active {
+    opacity: 1;
+}
+
+/* Contenido del lightbox */
+.lightbox-content {
+    position: relative;
+    margin: auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.universal-lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+/* Imagen principal del lightbox */
+.lightbox-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-heavy);
+    margin-bottom: 1.5rem;
+}
+
+/* Botón de cerrar */
+.lightbox-close {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+    transition: var(--transition-color);
+    background: rgba(var(--black-rgb), 0.5);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-close:hover {
+    color: var(--accent);
+    background: rgba(var(--black-rgb), 0.8);
+}
+
+/* Información de la imagen en lightbox */
+.lightbox-info {
+    text-align: center;
+    color: white;
+    margin-top: 1.5rem;
+}
+
+.lightbox-info .lightbox-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-family: var(--font-title);
+}
+
+.lightbox-info .lightbox-description {
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Navegación del lightbox (opcional para múltiples imágenes) */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(var(--black-rgb), 0.7);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: var(--transition-standard);
+    backdrop-filter: blur(10px);
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-nav:hover {
+    background: rgba(var(--primary-rgb), 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-nav.prev {
+    left: 2rem;
+}
+
+.lightbox-nav.next {
+    right: 2rem;
+}
+
+.lightbox-nav .material-symbols-rounded {
+    font-size: 1.5rem;
+}
+
+/* ======================================
+   VARIANTES DE GALLERY CARDS
+   ====================================== */
+
+/* Gallery Card Redonda */
+.gallery-card.round {
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.gallery-card.round .gallery-overlay {
+    border-radius: 0 0 50% 50%;
+}
+
+/* Gallery Card Rectangular */
+.gallery-card.rectangular {
+    aspect-ratio: 16 / 9;
+}
+
+/* Gallery Card Pequeña */
+.gallery-card.small {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--border-radius-small);
+}
+
+.gallery-card.small .gallery-overlay {
+    padding: 1rem 0.8rem 0.8rem;
+}
+
+.gallery-card.small .gallery-title {
+    font-size: 0.9rem;
+}
+
+.gallery-card.small .gallery-description {
+    font-size: 0.8rem;
+}
+
+/* Gallery Card Grande */
+.gallery-card.large {
+    aspect-ratio: 4 / 3;
+}
+
+.gallery-card.large .gallery-overlay {
+    padding: 2rem 1.5rem 1.5rem;
+}
+
+.gallery-card.large .gallery-title {
+    font-size: 1.3rem;
+}
+
+/* ======================================
+   RESPONSIVE GALLERY SYSTEM
+   ====================================== */
+
+/* Tablet: 848px - 1312px */
+@media (max-width: var(--tablet)) and (min-width: var(--mobile)) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--gap-medium);
+    }
+
+    .gallery-header .gallery-main-title {
+        font-size: clamp(1.6rem, 4vw, 2rem);
+    }
+
+    .lightbox-content {
+        padding: 1.5rem;
+    }
+
+    .lightbox-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .lightbox-nav.prev {
+        left: 1rem;
+    }
+
+    .lightbox-nav.next {
+        right: 1rem;
+    }
+}
+
+/* Mobile: Hasta 848px */
+@media (max-width: var(--mobile)) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--gap-small);
+    }
+
+    .gallery-header .gallery-main-title {
+        font-size: clamp(1.4rem, 5vw, 1.8rem);
+    }
+
+    .gallery-header .gallery-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    /* Lightbox mobile */
+    .lightbox-content {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    .lightbox-image {
+        max-height: 60vh;
+    }
+
+    .lightbox-close {
+        font-size: 2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        top: -5px;
+        right: 5px;
+    }
+
+    .lightbox-info .lightbox-title {
+        font-size: 1.2rem;
+    }
+
+    .lightbox-info .lightbox-description {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+
+    /* Navegación simplificada en mobile */
+    .lightbox-nav {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+
+    .lightbox-nav.prev {
+        left: 0.5rem;
+    }
+
+    .lightbox-nav.next {
+        right: 0.5rem;
+    }
+
+    /* Gallery cards más pequeñas en mobile */
+    .gallery-card .gallery-overlay {
+        padding: 1rem 0.8rem 0.8rem;
+    }
+
+    .gallery-overlay .gallery-title {
+        font-size: 0.9rem;
+    }
+
+    .gallery-overlay .gallery-description {
+        font-size: 0.8rem;
+    }
+
+    .gallery-zoom-icon {
+        width: 2rem;
+        height: 2rem;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .gallery-zoom-icon .material-symbols-rounded {
+        font-size: 1rem;
+    }
+}
+
+/* ======================================
+   UTILIDADES PARA GALLERY
+   ====================================== */
+
+/* Centrar galería */
+.gallery-centered {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+/* Galería con espaciado extra */
+.gallery-spaced {
+    margin-top: var(--margin-bottom-large);
+    margin-bottom: var(--margin-bottom-large);
+}
+
+/* Galería compacta */
+.gallery-compact .gallery-grid {
+    gap: var(--gap-small);
+}
+
+/* Galería expandida */
+.gallery-expanded .gallery-grid {
+    gap: var(--gap-large);
+}
+
+/* ======================================
+   PERFORMANCE OPTIMIZATIONS
+   ====================================== */
+
+/* Optimizaciones para animaciones suaves */
+.gallery-card,
+.gallery-image,
+.gallery-overlay {
+    will-change: transform;
+}
+
+.universal-lightbox {
+    will-change: opacity;
+}
+
+.lightbox-content {
+    will-change: transform;
+}
+
+/* Reducir animaciones para usuarios sensibles */
+@media (prefers-reduced-motion: reduce) {
+
+    .gallery-card,
+    .gallery-image,
+    .gallery-overlay,
+    .universal-lightbox,
+    .lightbox-content {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .gallery-card:hover {
+        transform: translateY(-2px) !important;
+    }
+
+    .gallery-card:hover .gallery-image {
+        transform: none !important;
     }
 }

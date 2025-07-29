@@ -22,7 +22,7 @@
 .complementary-card     ✅ ACTIVA - Fondo blanco, texto justificado
 .financial-card         ✅ ACTIVA - Glass con backdrop-filter
 .glass-card            ✅ ACTIVA - Glassmorphism principal (UNIVERSAL)
-.mvp-card              ✅ ACTIVA - Misión/Visión/Propósito
+.basic-card              ✅ ACTIVA - Misión/Visión/Propósito
 .stat-card             ✅ ACTIVA - Números y estadísticas
 .standard-card         ✅ ACTIVA - Contenido extenso fondo sólido (NUEVA)
 ```
@@ -126,7 +126,7 @@
 ### **GRUPO C: CARDS CON FONDO SÓLIDO** - ✅ AMPLIADO
 | Clase | Estado | Uso | Características |
 |-------|--------|-----|----------------|
-| `.mvp-card` | ✅ Activa | Universal | Fondo blanco 90%, misión/visión |
+| `.basic-card` | ✅ Activa | Universal | Fondo blanco 90%, misión/visión |
 | `.stat-card` | ✅ Activa | Universal | Números grandes, estadísticas |
 | `.complementary-card` | ✅ Activa | Servicios | Fondo blanco, listas, texto justificado |
 | `.content-card` | ✅ Activa | Universal | Narrativo extenso |
@@ -202,7 +202,7 @@ box-shadow: var(--shadow-medium);
 /* Tablet - var(--tablet) */
 @media (max-width: var(--tablet)) {
     .stat-number { font-size: 3.75rem; }
-    .mvp-card h3 { font-size: 1.5rem; }
+    .basic-card h3 { font-size: 1.5rem; }
 }
 
 /* Mobile - var(--mobile) */
