@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMC - Sistema de Diseño Actualizado</title>
+    
+    <!-- Google Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    
+    <style>
+        /* ======================================
+           VARIABLES CSS - SISTEMA ACTUAL
+           ====================================== */
+        :root {
+            /* Colores principales - Del sistema actual */
+            --black: #101820;
+            --black-rgb: 16, 24, 32;
+            --primary: #41B6E6;
+            --primary-rgb: 65, 182, 230;
+            --primary-dark: #165C7D;
+            --accent: #F4DA40;
+            --accent-rgb: 244, 218, 64;
+            --accent-red: #EF3340;
+            --accent-red-rgb: 239, 51, 64;
+            --gray-light: #F8F9FA;
+            --gray-light-rgb: 248, 249, 250;
+            
+            /* Tipografías del sistema actual */
+            --font-title: 'DM Serif Text', serif;
+            --font-body: 'Raleway', sans-serif;
+            --title-letter-spacing: 0.2rem;
+            
+            /* Tamaños de fuente */
+            --font-size-small: 1.1rem;
+            --font-size-medium: 1.2rem;
+            --font-size-large: 1.3rem;
+            --font-size-xlarge: 1.5rem;
+            
+            /* Espaciado del sistema actual */
+            --card-padding: 2rem;
+            --card-padding-medium: 1.5rem;
+            --card-padding-large: 3rem;
+            --small-padding: 0.3rem;
+            --container-padding: 0 2rem;
+            --section-padding: 5rem 0;
+            
+            /* Gaps y márgenes */
+            --gap-small: 1rem;
+            --gap-medium: 1.5rem;
+            --gap-standard: 2rem;
+            --gap-large: 3rem;
+            --margin-bottom-small: 1rem;
+            --margin-bottom-standard: 2rem;
+            --margin-bottom-large: 3rem;
+            
+            /* Border radius */
+            --border-radius-small: 8px;
+            --border-radius-standard: 15px;
+            --border-radius-large: 20px;
+            
+            /* Sombras del sistema actual */
+            --shadow-light: 0 10px 30px rgba(var(--black-rgb), 0.1);
+            --shadow-medium: 0 15px 40px rgba(var(--black-rgb), 0.15);
+            --shadow-heavy: 0 25px 70px rgba(var(--black-rgb), 0.15);
+            --shadow-strong: 0 20px 50px rgba(var(--black-rgb), 0.25);
+            --shadow-header: 0 4px 20px rgba(var(--black-rgb), 0.1);
+            
+            /* Transiciones */
+            --transition-standard: all 0.3s ease;
+            --transition-transform: transform 0.3s ease;
+            --transition-color: color 0.3s ease;
+            
+            /* Breakpoints */
+            --tablet: 82rem;
+            --mobile: 53rem;
+            
+            /* Blur effects */
+            --blur-standard: blur(10px);
+            --blur-heavy: blur(15px);
+        }
+
+        /* ======================================
+           RESET Y BASE STYLES
+           ====================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ======================================
+           HEADER FIJO - SISTEMA ACTUAL
+           ====================================== */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: var(--blur-standard);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow-header);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .main-nav {
+            display: flex;
+            list-style: none;
+            gap: var(--gap-standard);
+        }
+
+        /* Nav links - Sistema actual */
+        .nav-link {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            font-size: var(--font-size-small);
+            position: relative;
+            transition: var(--transition-color);
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: var(--transition-transform);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        /* ======================================
+           CONTAINER PRINCIPAL
+           ====================================== */
+        .showcase-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 2rem 2rem;
+        }
+
+        /* ======================================
+           HERO SECTION
+           ====================================== */
+        .hero-section {
+            text-align: center;
+            margin-bottom: var(--margin-bottom-large);
+            background: rgba(255, 255, 255, 0.95);
+            padding: var(--card-padding-large);
+            border-radius: var(--border-radius-large);
+            backdrop-filter: var(--blur-heavy);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .hero-title {
+            font-family: var(--font-title);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            color: var(--primary-dark);
+            margin-bottom: var(--margin-bottom-small);
+            letter-spacing: var(--title-letter-spacing);
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-large);
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: var(--margin-bottom-standard);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--gap-large);
+            flex-wrap: wrap;
+            margin-bottom: var(--margin-bottom-standard);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            display: block;
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .note {
+            background: rgba(var(--accent-rgb), 0.1);
+            border: 1px solid var(--accent);
+            padding: var(--margin-bottom-small);
+            border-radius: var(--border-radius-small);
+            margin: var(--margin-bottom-small) 0;
+            font-weight: 600;
+        }
+
+        /* ======================================
+           SECTION STYLES
+           ====================================== */
+        .section {
+            margin-bottom: var(--margin-bottom-large);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius-large);
+            padding: var(--card-padding-large);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--gap-large);
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-description {
+            font-size: var(--font-size-medium);
+            color: var(--accent);
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .subsection-title {
+            color: white;
+            margin: var(--gap-large) 0 var(--gap-standard);
+            font-size: 1.8rem;
+        }
+
+        /* ======================================
+           UNIVERSAL CARD SYSTEM - ACTUAL
+           ====================================== */
+        
+        /* Universal Card - Sistema unificado actual */
+        .universal-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius-standard);
+            padding: var(--card-padding);
+            box-shadow: var(--shadow-light);
+            transition: var(--transition-standard);
+            margin-bottom: var(--margin-bottom-standard);
+            width: 100%;
+            text-align: left;
+            position: relative;
+        }
+
+        .universal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .universal-card .card-icon {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .universal-card .card-icon .material-symbols-rounded {
+            font-size: 4.5rem;
+            color: var(--primary);
+            transition: var(--transition-standard);
+        }
+
+        .universal-card:hover .card-icon .material-symbols-rounded {
+            transform: scale(1.1);
+        }
+
+        .universal-card h3 {
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: var(--gap-medium);
+            font-size: 1.4rem;
+            text-align: left;
+        }
+
+        .universal-card p {
+            font-size: var(--font-size-small);
+            line-height: 1.7;
+            color: var(--black);
+            margin-bottom: var(--gap-medium);
+            text-align: left;
+        }
+
+        .universal-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .universal-card ul {
+            list-style: none;
+            padding: 0;
+            margin: var(--gap-medium) 0 0 0;
+        }
+
+        .universal-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-light);
+            color: var(--primary-dark);
+            font-weight: 500;
+            position: relative;
+            padding-left: 1.5rem;
+            text-align: left;
+        }
+
+        .universal-card li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .universal-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Modificador extensivo */
+        .universal-card.extensive {
+            padding: var(--card-padding-large);
+        }
+
+        .universal-card.extensive p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Modificador técnico */
+        .universal-card.technical h3 {
+            font-size: var(--font-size-xlarge);
+        }
+
+        .universal-card.technical p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* ======================================
+           CARDS ESPECÍFICAS DEL SISTEMA ACTUAL
+           ====================================== */
+
+        /* Gradient Border Card */
+        .gradient-border-card {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 3px;
+            border-radius: var(--border-radius-standard);
+            margin-bottom: var(--margin-bottom-standard);
+            transition: var(--transition-standard);
+        }
+
+        .gradient-border-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .gradient-border-card-content {
+            background: white;
+            padding: var(--card-padding);
+            border-radius: calc(var(--border-radius-standard) - 3px);
+            text-align: center;
+        }
+
+        .gradient-border-card .main-icon-container {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .gradient-border-card .main-icon {
+            font-size: 4.5rem;
+            color: var(--primary);
+            transition: var(--transition-standard);
+        }
+
+        .gradient-border-card:hover .main-icon {
+            transform: scale(1.1);
+            color: var(--accent);
+        }
+
+        .gradient-border-card h3 {
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: var(--gap-medium);
+            font-size: 1.4rem;
+        }
+
+        .gradient-border-card p {
+            font-size: var(--font-size-small);
+            line-height: 1.7;
+            color: var(--black);
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: var(--blur-heavy);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-standard);
+            padding: var(--card-padding);
+            box-shadow: var(--shadow-light);
+            transition: var(--transition-standard);
+            margin-bottom: var(--margin-bottom-standard);
+            text-align: center;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .glass-card .secondary-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: var(--margin-bottom-small);
+        }
+
+        .glass-card h3 {
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: var(--gap-medium);
+            font-size: 1.4rem;
+        }
+
+        .glass-card p {
+            font-size: var(--font-size-small);
+            line-height: 1.7;
+            color: var(--black);
+        }
+
+        /* Basic Card */
+        .basic-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius-standard);
+            padding: var(--card-padding);
+            box-shadow: var(--shadow-light);
+            transition: var(--transition-standard);
+            margin-bottom: var(--margin-bottom-standard);
+            border-left: 4px solid var(--primary);
+        }
+
+        .basic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .basic-card h3 {
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: var(--gap-medium);
+            font-size: 1.3rem;
+        }
+
+        .basic-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--black);
+        }
+
+        /* Achievement Card - Sistema actual */
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius-standard);
+            padding: var(--card-padding);
+            text-align: center;
+            position: relative;
+            transition: var(--transition-standard);
+            margin-bottom: var(--margin-bottom-standard);
+            width: 100%;
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .achievement-card .achievement-icon {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .achievement-card .achievement-icon .material-symbols-rounded {
+            font-size: 3.5rem;
+            color: var(--primary);
+            transition: var(--transition-standard);
+        }
+
+        .achievement-card:hover .achievement-icon .material-symbols-rounded {
+            transform: scale(1.1);
+            color: var(--accent);
+        }
+
+        .achievement-card .achievement-title {
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            line-height: 1.2;
+        }
+
+        .achievement-card .achievement-stats {
+            background: rgba(var(--primary-rgb), 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-standard);
+        }
+
+        .achievement-card:hover .achievement-stats {
+            background: rgba(var(--accent-rgb), 0.15);
+            transform: scale(1.02);
+        }
+
+        .achievement-card .stat-number {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: var(--transition-standard);
+        }
+
+        .achievement-card:hover .stat-number {
+            color: var(--accent);
+        }
+
+        .achievement-card .stat-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .achievement-card .achievement-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--black);
+            text-align: center;
+        }
+
+        /* ======================================
+           SISTEMA DE ENLACES - ACTUAL
+           ====================================== */
+        
+        /* Enlaces base del sistema actual */
+        .link, 
+        .universal-link,
+        .inline-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition-color);
+            display: inline-block;
+        }
+
+        .link:visited,
+        .universal-link:visited,
+        .inline-link:visited {
+            color: var(--primary-dark);
+        }
+
+        .link:hover,
+        .universal-link:hover,
+        .inline-link:hover {
+            color: var(--primary);
+        }
+
+        .link::after,
+        .universal-link::after,
+        .inline-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: var(--transition-transform);
+        }
+
+        .link:hover::after,
+        .universal-link:hover::after,
+        .inline-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Link para texto corrido */
+        .link-text {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition-color);
+            display: inline;
+        }
+
+        .link-text:visited {
+            color: var(--primary-dark);
+        }
+
+        .link-text:hover {
+            color: var(--primary);
+        }
+
+        .link-text::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: var(--transition-transform);
+        }
+
+        .link-text:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Link destacado */
+        .link-featured {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            position: relative;
+            transition: var(--transition-color);
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(var(--primary-rgb), 0.1);
+        }
+
+        .link-featured:visited {
+            color: var(--primary-dark);
+            background: rgba(var(--primary-dark), 0.1);
+        }
+
+        .link-featured:hover {
+            color: var(--accent);
+            background: rgba(var(--accent-rgb), 0.15);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(var(--primary-rgb), 0.2);
+        }
+
+        .link-featured::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .link-featured:hover::after {
+            width: 90%;
+        }
+
+        /* Link para fondos oscuros */
+        .link-dark-bg {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition-color);
+            display: inline-block;
+        }
+
+        .link-dark-bg:visited {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .link-dark-bg:hover {
+            color: var(--accent);
+        }
+
+        .link-dark-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: var(--transition-transform);
+        }
+
+        .link-dark-bg:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* ======================================
+           GRIDS Y LAYOUTS
+           ====================================== */
+        .demo-grid {
+            display: grid;
+            gap: var(--gap-standard);
+            margin: var(--gap-standard) 0;
+        }
+
+        .grid-auto { 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        }
+        
+        .grid-2 { 
+            grid-template-columns: repeat(2, 1fr); 
+        }
+        
+        .grid-3 { 
+            grid-template-columns: repeat(3, 1fr); 
+        }
+
+        /* ======================================
+           DEMO ELEMENTS
+           ====================================== */
+        .demo-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: var(--card-padding);
+            border-radius: var(--border-radius-standard);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-item h4 {
+            color: var(--primary-dark);
+            margin-bottom: var(--margin-bottom-small);
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .code-example {
+            background: rgba(16, 24, 32, 0.95);
+            color: #00ff00;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-small);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: var(--margin-bottom-small) 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--accent);
+        }
+
+        .dark-demo {
+            background: var(--black);
+            color: white;
+            padding: var(--card-padding);
+            border-radius: var(--border-radius-standard);
+            margin: var(--margin-bottom-small) 0;
+        }
+
+        .file-location {
+            background: rgba(var(--primary-rgb), 0.1);
+            border: 1px solid var(--primary);
+            padding: var(--margin-bottom-small);
+            border-radius: var(--border-radius-small);
+            margin: var(--margin-bottom-small) 0;
+            font-family: monospace;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        /* ======================================
+           RESPONSIVE DESIGN
+           ====================================== */
+        @media (max-width: 53rem) {
+            .main-nav {
+                display: none;
+            }
+
+            .showcase-container {
+                padding: 100px 1rem 1rem;
+            }
+
+            .hero-section {
+                padding: var(--card-padding) 1.5rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .section {
+                padding: var(--card-padding) 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .demo-grid.grid-2,
+            .demo-grid.grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* ======================================
+           UTILITIES
+           ====================================== */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .mb-2 { margin-bottom: var(--margin-bottom-standard); }
+        .mt-2 { margin-top: var(--margin-bottom-standard); }
+    </style>
+</head>
+<body>
+    <!-- Header fijo -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo">JMC</a>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="#hero" class="nav-link active">Inicio</a></li>
+                    <li><a href="#cards" class="nav-link">Cards</a></li>
+                    <li><a href="#links" class="nav-link">Enlaces</a></li>
+                    <li><a href="#implementation" class="nav-link">Implementación</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="showcase-container">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <h1 class="hero-title">Sistema de Diseño JMC</h1>
+            <p class="hero-subtitle">Showcase del sistema actual implementado en el proyecto</p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">15+</span>
+                    <span class="hero-stat-label">Archivos CSS</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">10+</span>
+                    <span class="hero-stat-label">Cards Activas</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">6</span>
+                    <span class="hero-stat-label">Tipos de Enlaces</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">129</span>
+                    <span class="hero-stat-label">Variables CSS</span>
+                </div>
+            </div>
+            
+            <div class="note">
+                <strong>🎯 Sistema Actual:</strong> Arquitectura CSS modular con core/, layout/, components/ y utilities/. Universal Card System implementado con modificadores .extensive y .technical.
+            </div>
+        </section>
+
+        <!-- Sistema de Cards -->
+        <section id="cards" class="section">
+            <div class="section-header">
+                <h2 class="section-title">🗂️ Sistema de Cards Actual</h2>
+                <p class="section-description">Cards implementadas y funcionando en el proyecto</p>
+            </div>
+
+            <!-- Universal Cards -->
+            <h3 class="subsection-title">Universal Card System (Implementado)</h3>
+            <div class="demo-grid grid-auto">
+                <!-- Universal Card Básica -->
+                <div class="universal-card">
+                    <div class="card-icon">
+                        <span class="material-symbols-rounded">lightbulb</span>
+                    </div>
+                    <h3>Universal Card Básica</h3>
+                    <p>Sistema unificado que reemplaza simple-card, standard-card y complementary-card.</p>
+                    <ul>
+                        <li>Alineación izquierda consistente</li>
+                        <li>Hover effects suaves</li>
+                        <li>Sistema de checkmarks</li>
+                    </ul>
+                </div>
+
+                <!-- Universal Card Extensiva -->
+                <div class="universal-card extensive">
+                    <h3>Universal Card Extensiva</h3>
+                    <p>Modificador .extensive para contenido narrativo extenso. Incluye padding aumentado y texto justificado para mejor legibilidad en contenido largo.</p>
+                    <p>Ideal para misión, visión, textos académicos y contenido educativo detallado. Optimizada para párrafos múltiples.</p>
+                </div>
+
+                <!-- Universal Card Técnica -->
+                <div class="universal-card technical">
+                    <div class="card-icon">
+                        <span class="material-symbols-rounded">settings</span>
+                    </div>
+                    <h3>Universal Card Técnica</h3>
+                    <p>Modificador .technical para documentación técnica y especificaciones.</p>
+                    <p>Incluye tamaño de título aumentado y espaciado optimizado para contenido estructurado.</p>
+                </div>
+            </div>
+
+            <!-- Cards Especializadas -->
+            <h3 class="subsection-title">Cards Especializadas (En Uso)</h3>
+            <div class="demo-grid grid-auto">
+                <!-- Gradient Border Card -->
+                <div class="gradient-border-card">
+                    <div class="gradient-border-card-content">
+                        <div class="main-icon-container">
+                            <span class="material-symbols-rounded main-icon">school</span>
+                        </div>
+                        <h3>Gradient Border Card</h3>
+                        <p>Card principal para características destacadas con borde gradiente azul-amarillo del sistema JMC.</p>
+                    </div>
+                </div>
+
+                <!-- Achievement Card -->
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <span class="material-symbols-rounded">mountain_flag</span>
+                    </div>
+                    <h3 class="achievement-title">Achievement Card</h3>
+                    <div class="achievement-stats">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Logros Alcanzados</span>
+                    </div>
+                    <p class="achievement-description">Sistema especializado para logros montañísticos y académicos con estructura corregida.</p>
+                </div>
+
+                <!-- Glass Card -->
+                <div class="glass-card">
+                    <div class="card-icon">
+                        <span class="material-symbols-rounded secondary-icon">star</span>
+                    </div>
+                    <h3>Glass Card</h3>
+                    <p>Efecto glassmorphism con backdrop-filter para elementos destacados sobre fondos complejos.</p>
+                </div>
+
+                <!-- Basic Card -->
+                <div class="basic-card">
+                    <h3>Basic Card</h3>
+                    <p>Card minimalista con borde lateral para misión, visión, propósito y valores institucionales.</p>
+                </div>
+            </div>
+
+            <!-- Código de Implementación -->
+            <div class="demo-item">
+                <h4>📁 Ubicación: css/components/cards.css</h4>
+                <div class="code-example">/* Universal Card - Sistema unificado actual */
+.universal-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    text-align: left;
+    position: relative;
+}
+
+/* Modificadores */
+.universal-card.extensive {
+    padding: var(--card-padding-large);
+}
+
+.universal-card.technical h3 {
+    font-size: var(--font-size-xlarge);
+}</div>
+            </div>
+        </section>
+
+        <!-- Sistema de Enlaces -->
+        <section id="links" class="section">
+            <div class="section-header">
+                <h2 class="section-title">🔗 Sistema de Enlaces Actual</h2>
+                <p class="section-description">Enlaces implementados en css/utilities/helpers.css</p>
+            </div>
+
+            <!-- Enlaces de Navegación -->
+            <div class="demo-item">
+                <h4>🧭 Enlaces de Navegación (.nav-link)</h4>
+                <div class="file-location">📁 css/layout/header.css</div>
+                
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 10px; margin: 1rem 0; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <a href="#" class="nav-link">Nosotros</a>
+                    <a href="#" class="nav-link active">Fundador</a>
+                    <a href="#" class="nav-link">Servicios</a>
+                    <a href="#" class="nav-link">Testimonios</a>
+                    <a href="#" class="nav-link">Contacto</a>
+                </div>
+            </div>
+
+            <!-- Enlaces Universales -->
+            <div class="demo-item">
+                <h4>🔗 Enlaces Universales (.universal-link)</h4>
+                <div class="file-location">📁 css/utilities/helpers.css</div>
+                
+                <p>Sistema base para enlaces principales. Conoce más sobre nuestra <a href="#" class="universal-link">metodología educativa especializada</a> y descubre los <a href="#" class="universal-link">resultados académicos</a> que hemos logrado.</p>
+            </div>
+
+            <!-- Enlaces de Texto -->
+            <div class="demo-item">
+                <h4>📝 Enlaces en Texto (.link-text)</h4>
+                <p>Para enlaces dentro de párrafos con menos peso visual. Los estudiantes pueden revisar <a href="#" class="link-text">nuestros testimonios</a> y conocer más sobre <a href="#" class="link-text">el proceso de admisión</a>.</p>
+            </div>
+
+            <!-- Enlaces Destacados -->
+            <div class="demo-item">
+                <h4>⭐ Enlaces Destacados (.link-featured)</h4>
+                <p>CTAs importantes con background sutil. ¿Interesado en nuestro preuniversitario? <a href="#" class="link-featured">Agenda tu entrevista personal</a> para conocer nuestra metodología de cerca.</p>
+            </div>
+
+            <!-- Enlaces para Fondos Oscuros -->
+            <div class="demo-item">
+                <h4>🌙 Enlaces para Fondos Oscuros (.link-dark-bg)</h4>
+                <div class="dark-demo">
+                    <h3>¿Listo para transformar tu futuro académico?</h3>
+                    <p>Únete a los estudiantes que han construido su proyecto de vida con JMC. <a href="#" class="link-dark-bg">Inscríbete ahora</a> y comienza tu preparación de excelencia. Para más información, <a href="#" class="link-dark-bg">contáctanos directamente</a>.</p>
+                </div>
+            </div>
+
+            <!-- Código del Sistema -->
+            <div class="demo-item">
+                <h4>📝 Sistema Base de Enlaces</h4>
+                <div class="code-example">/* Sistema universal de enlaces */
+.link, 
+.universal-link,
+.inline-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: var(--transition-color);
+}
+
+/* Línea amarilla universal */
+.universal-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+.universal-link:hover::after {
+    transform: scaleX(1);
+}</div>
+            </div>
+        </section>
+
+        <!-- Implementación y Arquitectura -->
+        <section id="implementation" class="section">
+            <div class="section-header">
+                <h2 class="section-title">📋 Arquitectura del Sistema</h2>
+                <p class="section-description">Estructura CSS modular implementada</p>
+            </div>
+
+            <div class="demo-grid grid-2">
+                <div class="demo-item">
+                    <h4>🗂️ Arquitectura CSS Modular</h4>
+                    <div class="code-example">css/
+├── main.css              # Coordinador principal
+├── core/                 # Fundamentos
+│   ├── variables.css     # 129 variables CSS
+│   ├── fonts.css         # Tipografías locales
+│   ├── reset.css         # Reset y base
+│   └── animations.css    # Keyframes
+├── layout/               # Estructura
+│   ├── header.css        # Nav con glassmorphism
+│   ├── footer.css        # Footer universal
+│   ├── sections.css      # Layout de secciones
+│   └── backgrounds.css   # Fondos y wrappers
+├── components/           # Componentes
+│   ├── cards.css         # Sistema de cards
+│   ├── buttons.css       # 11 tipos botones
+│   ├── grids.css         # 8 grids responsivos
+│   └── icons.css         # 4 tamaños iconos
+└── utilities/            # Utilidades
+    ├── helpers.css       # Enlaces y utilidades
+    └── responsive.css    # Media queries</div>
+                </div>
+
+                <div class="demo-item">
+                    <h4>🎨 Variables CSS Principales</h4>
+                    <div class="code-example">/* Colores del sistema */
+--black: #101820;             /* Texto principal */
+--primary: #41B6E6;           /* Color marca */
+--primary-dark: #165C7D;      /* Títulos */
+--accent: #F4DA40;            /* Líneas y hover */
+--accent-red: #EF3340;        /* Destacados */
+
+/* Tipografías */
+--font-title: 'DM Serif Text', serif;
+--font-body: 'Raleway', sans-serif;
+--title-letter-spacing: 0.2rem;
+
+/* Espaciado */
+--card-padding: 2rem;
+--gap-standard: 2rem;
+--margin-bottom-standard: 2rem;
+
+/* Efectos */
+--shadow-light: 0 10px 30px rgba(16, 24, 32, 0.1);
+--transition-standard: all 0.3s ease;
+--border-radius-standard: 15px;</div>
+                </div>
+
+                <div class="demo-item">
+                    <h4>📱 Breakpoints Responsivos</h4>
+                    <div class="code-example">/* Breakpoints del sistema */
+--tablet: 82rem;    /* 1312px */
+--mobile: 53rem;    /* 848px */
+
+/* Grids responsivos implementados */
+.grid-3-2-1         /* 3 → 2 → 1 columnas */
+.grid-4-2-1         /* 4 → 2 → 1 columnas */
+.grid-2-2-1         /* 2 → 2 → 1 columnas */
+.footer-grid        /* Grid específico footer */
+
+/* Media queries activas */
+@media (max-width: 53rem) {
+    .main-nav { display: none; }
+    .grid-2, .grid-3 { 
+        grid-template-columns: 1fr; 
+    }
+}</div>
+                </div>
+
+                <div class="demo-item">
+                    <h4>🔄 Migración de Cards</h4>
+                    <div class="note">
+                        <strong>Cards Obsoletas → Nuevas:</strong>
+                        <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                            <li><strong>.simple-card</strong> → <strong>.universal-card</strong></li>
+                            <li><strong>.standard-card</strong> → <strong>.universal-card.extensive</strong></li>
+                            <li><strong>.complementary-card</strong> → <strong>.universal-card.technical</strong></li>
+                            <li><strong>.feature-card</strong> → <strong>.gradient-border-card</strong> (alias)</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example"><!-- Antes (obsoleto) -->
+&lt;div class="simple-card"&gt;...&lt;/div&gt;
+&lt;div class="standard-card"&gt;...&lt;/div&gt;
+
+&lt;!-- Ahora (implementado) --&gt;
+&lt;div class="universal-card"&gt;...&lt;/div&gt;
+&lt;div class="universal-card extensive"&gt;...&lt;/div&gt;</div>
+                </div>
+            </div>
+
+            <!-- Estado del Proyecto -->
+            <div class="demo-item">
+                <h4>📊 Estado Actual del Proyecto</h4>
+                <div class="demo-grid grid-3">
+                    <div style="text-align: center; padding: 1rem; background: rgba(46, 204, 113, 0.1); border-radius: 8px;">
+                        <strong style="color: #27ae60; font-size: 1.2rem;">✅ Completadas</strong><br>
+                        <span style="color: var(--black);">nosotros.html, fundador.html, servicios.html, 404.html</span>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: rgba(241, 196, 15, 0.1); border-radius: 8px;">
+                        <strong style="color: #f39c12; font-size: 1.2rem;">⏳ En Desarrollo</strong><br>
+                        <span style="color: var(--black);">index.html (próxima prioridad)</span>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: rgba(52, 152, 219, 0.1); border-radius: 8px;">
+                        <strong style="color: #3498db; font-size: 1.2rem;">🚧 Planificadas</strong><br>
+                        <span style="color: var(--black);">testimonios.html, contacto.html</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="text-align: center; margin-top: var(--margin-bottom-large); padding: var(--card-padding-large); background: rgba(255, 255, 255, 0.95); border-radius: var(--border-radius-large); backdrop-filter: var(--blur-heavy); box-shadow: var(--shadow-medium);">
+            <h3 style="color: var(--primary-dark); margin-bottom: var(--margin-bottom-small); font-family: var(--font-title); font-size: 2.5rem;">Sistema JMC Actualizado</h3>
+            <p style="color: var(--primary); font-weight: 600; font-size: var(--font-size-large); margin-bottom: var(--margin-bottom-standard);">Arquitectura CSS Modular • Sistema Unificado • 100% Implementado</p>
+            
+            <div style="display: flex; justify-content: center; gap: var(--gap-large); flex-wrap: wrap; margin-bottom: var(--margin-bottom-standard);">
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem;">🏗️</span>
+                    <strong>15 Archivos CSS</strong>
+                </div>
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem;">🎯</span>
+                    <strong>Sistema Modular</strong>
+                </div>
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem;">📱</span>
+                    <strong>Responsive Design</strong>
+                </div>
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem;">⚡</span>
+                    <strong>Optimizado</strong>
+                </div>
+            </div>
+            
+            <p style="color: var(--black); opacity: 0.8;">Preuniversitario JMC • Sistema de diseño actualizado • Alexandre Castillo - ACastillo DG</p>
+        </footer>
+    </div>
+
+    <!-- Script de navegación -->
+    <script>
+        // Navegación suave
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remover clase activa
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Agregar clase activa
+                this.classList.add('active');
+                
+                // Scroll suave
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Actualizar navegación en scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section, #hero');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Feedback en links demo
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoLinks = document.querySelectorAll('a[href="#"]');
+            demoLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const originalText = this.textContent;
+                    this.textContent = '✓ Demo clicked!';
+                    this.style.pointerEvents = 'none';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.pointerEvents = 'auto';
+                    }, 1500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
