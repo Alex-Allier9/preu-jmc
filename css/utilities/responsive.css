@@ -1,16 +1,20 @@
 /* ======================================
-   RESPONSIVE.CSS - MEDIA QUERIES CENTRALIZADAS CORREGIDAS
+   RESPONSIVE.CSS - MEDIA QUERIES CENTRALIZADAS
    ====================================== */
 
 /* ======================================
-   BREAKPOINTS CORRECTOS:
-   --tablet: 82remm (1312px)
+   BREAKPOINTS DEFINIDOS:
+   --tablet: 82rem (1312px)
    --mobile: 53rem (848px)
    ====================================== */
 
-/* Tablet: 848px - 1312px */
+/* ======================================
+   TABLET: 848px - 1312px
+   ====================================== */
+
 @media (max-width: 82rem) and (min-width: 53rem) {
-    /* ===== GENERAL LAYOUT ===== */
+    
+    /* LAYOUT GENERAL */
     .container {
         padding: 0 1.5rem;
     }
@@ -19,7 +23,7 @@
         padding: 4rem 0;
     }
     
-    /* ===== NAVIGATION ===== */
+    /* NAVEGACIÓN */
     .nav-menu {
         gap: 1.5rem;
     }
@@ -28,7 +32,7 @@
         font-size: 1rem;
     }
     
-    /* ===== HERO TYPOGRAPHY ===== */
+    /* HERO TYPOGRAPHY */
     .hero h1 {
         font-size: clamp(2.5rem, 7vw, 4.5rem) !important;
     }
@@ -37,19 +41,26 @@
         font-size: clamp(1rem, 3vw, 1.3rem) !important;
     }
     
-    .hero-split .hero-text-content {
-        padding-right: 2rem;
+    /* BACKGROUNDS */
+    .mountain-background,
+    .secondary-background {
+        width: 100vw;
+        height: 120vh;
     }
 }
 
-/* Mobile: Hasta 848px */
+/* ======================================
+   MOBILE: Hasta 848px
+   ====================================== */
+
 @media (max-width: 53rem) {
-    /* ===== NAVIGATION ===== */
+    
+    /* NAVEGACIÓN */
     .nav-menu {
         display: none;
     }
     
-    /* ===== GENERAL LAYOUT ===== */
+    /* LAYOUT GENERAL */
     .container {
         padding: 0 1rem;
     }
@@ -58,7 +69,7 @@
         padding: 3rem 0;
     }
     
-    /* ===== HERO TYPOGRAPHY ===== */
+    /* HERO TYPOGRAPHY */
     .hero h1 {
         font-size: clamp(2rem, 8vw, 3.5rem) !important;
     }
@@ -67,19 +78,7 @@
         font-size: clamp(1rem, 4vw, 1.3rem) !important;
     }
     
-    .hero-standard .hero-content {
-        padding: 0 1.5rem;
-    }
-    
-    .hero-split .hero-split-container {
-        padding: 0 1.5rem;
-    }
-    
-    .hero-split .hero-text-content {
-        padding-right: 2rem;
-    }
-    
-    /* ===== BACKGROUNDS ===== */
+    /* BACKGROUNDS */
     .mountain-background,
     .secondary-background {
         width: 100vw;
@@ -88,40 +87,48 @@
         background-position: center top;
     }
     
-    /* ===== SECTION MARGINS ===== */
-    .first-section,
-    .second-section,
-    .third-section,
-    .fourth-section,
-    .about,
-    .mvp-section,
-    .stats,
-    .results,
-    .values-section,
-    .commitment-section,
-    .profile-header,
-    .about-section,
-    .experience-section,
-    .mountaineering-section {
-        margin-left: 5% !important;
-        margin-right: 5% !important;
-        margin-bottom: 3rem !important;
+    /* UTILIDADES RESPONSIVE */
+    .mb-2 {
+        margin-bottom: 1.5rem;
     }
     
-    .first-section,
-    .about,
-    .profile-header,
-    .values-section,
-    .mountaineering-section {
-        margin-top: 3rem !important;
+    .mb-3 {
+        margin-bottom: 2rem;
+    }
+    
+    .p-2 {
+        padding: 1.5rem;
     }
 }
 
 /* ======================================
-   RESPONSIVE OPTIMIZATIONS
+   RESPONSIVE PARA UTILIDADES ESPECÍFICAS
    ====================================== */
 
-/* Reduce animation intensity on smaller screens */
+/* Botones responsive */
+@media (max-width: 53rem) {
+    .btn-primary,
+    .btn-primary-dark,
+    .btn-primary-outlined,
+    .btn-primary-dark-outlined,
+    .btn-accent,
+    .btn-accent-inverse,
+    .btn-accent-outlined,
+    .btn-accent-inverse-outlined,
+    .btn-glass-primary,
+    .btn-glass-white,
+    .btn-glass-dark {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+/* ======================================
+   OPTIMIZACIONES DE PERFORMANCE
+   ====================================== */
+
+/* Reducir intensidad de animaciones en móvil */
 @media (max-width: 53rem) {
     .fade-in {
         transition: all 0.4s ease;
@@ -131,31 +138,10 @@
         transform: translateY(-5px) !important;
     }
     
-    /* Optimize performance on mobile */
+    /* Optimización de fuentes en pantallas pequeñas */
     * {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-    }
-}
-
-/* High DPI displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .logo img,
-    .profile-image img,
-    .gallery-item img {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-    }
-}
-
-/* Landscape phones */
-@media (max-width: 53rem) and (orientation: landscape) {
-    .hero {
-        min-height: 100vh;
-    }
-    
-    .section {
-        padding: 2rem 0;
     }
 }
 
@@ -163,7 +149,7 @@
    ACCESSIBILITY RESPONSIVE
    ====================================== */
 
-/* Large text preference */
+/* Respetar preferencias de usuario */
 @media (prefers-reduced-motion: reduce) {
     .fade-in,
     .card,
@@ -174,11 +160,21 @@
     }
 }
 
-/* High contrast mode */
+/* Alto contraste */
 @media (prefers-contrast: high) {
     .glass-card,
     .glass-section {
         background: rgba(255, 255, 255, 0.95) !important;
         border: 2px solid var(--primary) !important;
+    }
+}
+
+/* Pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo img,
+    .profile-image img,
+    .gallery-item img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
     }
 }
