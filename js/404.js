@@ -1,219 +1,233 @@
 /* ======================================
-   404.JS - PÁGINA DE ERROR 404 (OPTIMIZADO DRY)
+   404.JS - FUNCIONALIDADES ESPECÍFICAS DE LA PÁGINA 404
    ====================================== */
 
-// ======================================
-// CONFIGURACIONES UNIFICADAS
-// ======================================
+/* ======================================
+   404.JS - FUNCIONALIDADES ESPECÍFICAS DE LA PÁGINA 404
+   ====================================== */
 
-// Configuración central para 404 (DRY)
-const ERROR_404_CONFIG = {
-    animations: {
-        containers: [
-            { selector: '.glitch-container', delay: 100 },
-            { selector: '.message-container', delay: 400 },
-            { selector: '.button-container', delay: 700 }
-        ],
-        deviceSettings: {
-            smallMobile: {
-                breakpoint: 360,
-                glitchDuration: '6s',
-                lineDuration: '5000ms, 1000ms',
-                textDuration: '4s'
-            },
-            mobile: {
-                breakpoint: 848, // 53rem
-                glitchDuration: '8s',
-                lineDuration: '4000ms, 1500ms',
-                textDuration: '6s'
-            }
-        }
-    },
-    suggestions: {
-        'inicio': 'index.html',
-        'home': 'index.html',
-        'nosotros': 'nosotros.html',
-        'about': 'nosotros.html',
-        'fundador': 'fundador.html',
-        'founder': 'fundador.html',
-        'servicios': 'servicios.html',
-        'services': 'servicios.html',
-        'testimonios': 'testimonios.html',
-        'testimonials': 'testimonios.html',
-        'contacto': 'contacto.html',
-        'contact': 'contacto.html'
-    },
-    preloadPages: ['index.html', 'nosotros.html', 'fundador.html', 'servicios.html', 'testimonios.html', 'contacto.html']
-};
+// Nota: La función debounce se usa desde global.js
 
-// ======================================
-// FUNCIONES OPTIMIZADAS
-// ======================================
-
-// Animaciones secuenciales optimizadas (DRY)
+// Función para inicializar las animaciones fade-in de contenedores
 function init404Animations() {
-    // Usar forEach en lugar de setTimeout repetitivos
-    ERROR_404_CONFIG.animations.containers.forEach(({ selector, delay }) => {
-        setTimeout(() => {
-            const container = document.querySelector(selector);
-            if (container) {
-                container.classList.add('visible');
-            }
-        }, delay);
-    });
+    // Activar fade-in secuencial en contenedores
+    setTimeout(() => {
+        const glitchContainer = document.querySelector('.glitch-container');
+        if (glitchContainer) {
+            glitchContainer.classList.add('visible');
+        }
+    }, 100);
+
+    setTimeout(() => {
+        const messageContainer = document.querySelector('.message-container');
+        if (messageContainer) {
+            messageContainer.classList.add('visible');
+        }
+    }, 400);
+
+    setTimeout(() => {
+        const buttonContainer = document.querySelector('.button-container');
+        if (buttonContainer) {
+            buttonContainer.classList.add('visible');
+        }
+    }, 700);
 }
 
-// Ajustes de dispositivo unificados (DRY)
+// Función para controlar la intensidad de las animaciones según el dispositivo
 function adjustAnimationsByDevice() {
-    const windowWidth = window.innerWidth;
-    const { smallMobile, mobile } = ERROR_404_CONFIG.animations.deviceSettings;
-    
-    // Determinar configuración según dispositivo
-    let config = null;
-    if (windowWidth <= smallMobile.breakpoint) {
-        config = smallMobile;
-    } else if (windowWidth <= mobile.breakpoint) {
-        config = mobile;
+    const isMobile = window.innerWidth <= 848; // 53rem
+    const isSmallMobile = window.innerWidth <= 360;
+
+    const glitchLines = document.querySelectorAll('.line');
+    const crazyText = document.querySelector('.crazy-text');
+    const glitchContainer = document.querySelector('.glitch');
+
+    if (isSmallMobile) {
+        // Animaciones más suaves en pantallas muy pequeñas
+        glitchLines.forEach(line => {
+            line.style.animationDuration = '5000ms, 1000ms';
+        });
+        if (crazyText) {
+            crazyText.style.animationDuration = '4s';
+        }
+        if (glitchContainer) {
+            glitchContainer.style.animationDuration = '6s';
+        }
+    } else if (isMobile) {
+        // Animaciones intermedias en mobile
+        glitchLines.forEach(line => {
+            line.style.animationDuration = '4000ms, 750ms';
+        });
+        if (crazyText) {
+            crazyText.style.animationDuration = '4s';
+        }
+        if (glitchContainer) {
+            glitchContainer.style.animationDuration = '5s';
+        }
     }
-    
-    if (!config) return; // Desktop - sin cambios
-    
-    // Aplicar configuración unificada
-    const elements = {
-        glitchLines: document.querySelectorAll('.line'),
-        crazyText: document.querySelector('.crazy-text'),
-        glitchContainer: document.querySelector('.glitch')
-    };
-    
-    // Aplicar animaciones con configuración unificada
-    if (elements.glitchLines.length) {
-        elements.glitchLines.forEach(line => {
-            line.style.animationDuration = config.lineDuration;
+    // Desktop mantiene las animaciones originales (500ms para glitch, 3s para crazy-text, 4s para glitch italic)
+}
+
+// Función para pausar/reanudar animaciones cuando el usuario no está activo
+function handleVisibilityChange() {
+    const glitchLines = document.querySelectorAll('.line');
+    const crazyText = document.querySelector('.crazy-text');
+    const glitchContainer = document.querySelector('.glitch');
+
+    if (document.hidden) {
+        // Pausar animaciones cuando la página no es visible
+        glitchLines.forEach(line => {
+            line.style.animationPlayState = 'paused';
+        });
+        if (crazyText) {
+            crazyText.style.animationPlayState = 'paused';
+        }
+        if (glitchContainer) {
+            glitchContainer.style.animationPlayState = 'paused';
+        }
+    } else {
+        // Reanudar animaciones cuando la página vuelve a ser visible
+        setTimeout(() => {
+            glitchLines.forEach(line => {
+                line.style.animationPlayState = 'running';
+            });
+            if (crazyText) {
+                crazyText.style.animationPlayState = 'running';
+            }
+            if (glitchContainer) {
+                glitchContainer.style.animationPlayState = 'running';
+            }
+        }, 1000);
+    }
+}
+
+// Función para agregar efecto hover al botón
+function enhance404Button() {
+    const errorButton = document.querySelector('.error-button');
+
+    if (errorButton) {
+        // Efecto de ondas al hacer clic
+        errorButton.addEventListener('click', function (e) {
+            // Crear elemento de onda
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${e.clientX - rect.left - size / 2}px;
+                top: ${e.clientY - rect.top - size / 2}px;
+                pointer-events: none;
+            `;
+
+            // Agregar animación CSS si no existe
+            if (!document.querySelector('#ripple-style')) {
+                const style = document.createElement('style');
+                style.id = 'ripple-style';
+                style.textContent = `
+                    @keyframes ripple {
+                        0% { transform: scale(0); opacity: 1; }
+                        100% { transform: scale(4); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            // Asegurar posición relativa
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+
+            this.appendChild(ripple);
+
+            // Remover el elemento después de la animación
+            setTimeout(() => {
+                if (ripple.parentNode) {
+                    ripple.parentNode.removeChild(ripple);
+                }
+            }, 600);
+        });
+
+        // Efecto de partículas al hover (opcional)
+        errorButton.addEventListener('mouseenter', function () {
+            this.style.transform = 'translateY(-2px) scale(1.02)';
+        });
+
+        errorButton.addEventListener('mouseleave', function () {
+            this.style.transform = 'translateY(0) scale(1)';
         });
     }
-    
-    if (elements.crazyText) {
-        elements.crazyText.style.animationDuration = config.textDuration;
-    }
-    
-    if (elements.glitchContainer) {
-        elements.glitchContainer.style.animationDuration = config.glitchDuration;
-    }
 }
 
-// Sistema de sugerencias optimizado (DRY)
-function suggestAlternativePages() {
-    const currentPath = window.location.pathname.toLowerCase();
-    
-    // Buscar coincidencia usando Object.entries (más eficiente)
-    const match = Object.entries(ERROR_404_CONFIG.suggestions)
-        .find(([keyword]) => currentPath.includes(keyword));
-    
-    if (!match) return;
-    
-    const [keyword, page] = match;
-    console.log(`💡 Sugerencia: ¿Buscabas ${page}?`);
-    
-    // Mostrar sugerencia en la página
-    const errorMessage = document.querySelector('.error-message');
-    if (errorMessage) {
-        const suggestion = createSuggestionElement(page, keyword);
-        errorMessage.appendChild(suggestion);
-    }
-}
-
-// Helper para crear elemento de sugerencia (DRY)
-function createSuggestionElement(page, keyword) {
-    const suggestion = document.createElement('p');
-    suggestion.style.cssText = `
-        margin-top: 1rem;
-        font-size: 0.9rem;
-        color: var(--primary-dark);
-        font-style: normal;
-    `;
-    suggestion.innerHTML = `¿Tal vez buscabas <a href="${page}" style="color: var(--primary); text-decoration: underline;">${page.replace('.html', '')}?</a>`;
-    return suggestion;
-}
-
-// Preloading optimizado (DRY)
-function enhanceSearchExperience() {
-    // Crear fragment para optimizar DOM manipulation
-    const fragment = document.createDocumentFragment();
-    
-    ERROR_404_CONFIG.preloadPages.forEach(page => {
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = page;
-        fragment.appendChild(link);
-    });
-    
-    document.head.appendChild(fragment);
-    console.log(`🚀 Preloaded ${ERROR_404_CONFIG.preloadPages.length} pages for faster navigation`);
-}
-
-// Logging optimizado (DRY)
+// Función para logging de errores 404 (opcional)
 function log404Error() {
-    const errorData = {
-        url: window.location.href,
-        referrer: document.referrer || 'Directo',
-        userAgent: navigator.userAgent,
-        timestamp: new Date().toISOString()
-    };
-    
-    console.log('📍 404 Error Details:', errorData);
-    
-    // Opcional: enviar a analytics
-    // analytics.track('404_error', errorData);
-}
-
-// Optimización para navegadores antiguos (DRY)
-function handleLegacySupport() {
-    // Verificar soporte para Intersection Observer
-    if (!window.IntersectionObserver) {
-        // Fallback para navegadores antiguos
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.classList.add('visible');
+    // Solo en producción y si hay analytics configurado
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            page_title: '404 Error',
+            page_location: window.location.href,
+            custom_parameter: '404_error'
         });
-        console.log('⚠️ Legacy browser detected - using fallback animations');
     }
+
+    // Log en consola para desarrollo
+    console.log('📍 404 Error - Página no encontrada:', window.location.href);
+    console.log('🔗 Referrer:', document.referrer || 'Directo');
 }
 
-// Handler de resize optimizado
-function handle404Resize() {
-    adjustAnimationsByDevice();
-}
+// Inicialización específica de la página 404
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('404 Page with Glitch Effects initialized - JMC Preuniversitario');
 
-// ======================================
-// INICIALIZACIÓN OPTIMIZADA
-// ======================================
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚨 404 Page - Optimized initialization');
-    
-    // Funcionalidades específicas de 404
+    // Inicializar animaciones PRIMERO
     init404Animations();
+
+    // Ajustar animaciones según el dispositivo
     adjustAnimationsByDevice();
-    suggestAlternativePages();
-    enhanceSearchExperience();
-    log404Error();
-    handleLegacySupport();
-    
-    // Event listeners optimizados
-    window.addEventListener('resize', debounce(handle404Resize, 100));
-    
-    console.log('✅ 404: Error page functionality loaded');
-    console.log('🔍 Alternative page suggestions active');
+
+    // Configurar control de visibilidad
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Reajustar animaciones en resize
+    window.addEventListener('resize', debounce(() => {
+        adjustAnimationsByDevice();
+    }, 250));
+
+    // Luego inicializar otras funcionalidades
+    setTimeout(() => {
+        enhance404Button();
+        log404Error();
+        suggestAlternativePages();
+        enhanceSearchExperience();
+    }, 500);
+
+    // Performance: Reducir animaciones si el usuario prefiere movimiento reducido
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const allAnimatedElements = document.querySelectorAll('.line, .crazy-text, .glitch');
+        allAnimatedElements.forEach(element => {
+            if (element.classList.contains('line')) {
+                element.style.animationDuration = '8s, 1000ms';
+                element.style.animationIterationCount = '3';
+            } else if (element.classList.contains('glitch')) {
+                element.style.animationDuration = '10s';
+                element.style.animationIterationCount = '2';
+            } else {
+                element.style.animationDuration = '6s';
+                element.style.animationIterationCount = '2';
+            }
+        });
+    }
 });
 
-// Función debounce local (reutilizable)
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
+// Mejorar la navegación desde la página 404
+window.addEventListener('popstate', function () {
+    // Si el usuario usa el botón de retroceso, redirigir a inicio
+    if (window.location.pathname === '/404.html' || window.location.pathname.includes('404')) {
+        window.location.href = 'index.html';
+    }
+});

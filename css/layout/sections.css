@@ -143,28 +143,24 @@
 }
 
 /* ======================================
-   GRADIENTS SECTIONS (DRY)
+   GRADIENTS SECTIONS (original)
    ====================================== */
 
-/* Section con gradient base */
-.gradient-section {
-    --gradient-color-1: var(--primary);
-    --gradient-color-2: var(--primary-dark);
-    --gradient-text-color: white;
-    
-    background: linear-gradient(135deg, var(--gradient-color-1) 0%, var(--gradient-color-2) 100%);
-    color: var(--gradient-text-color);
+/* Primary Gradient Section - Universal blue gradient background */
+.primary-gradient-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
 }
 
-/* Modificadores de gradient */
-.gradient-section--dark {
-    --gradient-color-1: var(--primary-dark);
-    --gradient-color-2: #0f3a4a;
+.primary-gradient-section .section-title,
+.primary-dark-gradient-section .section-title {
+    color: white;
 }
 
-/* Títulos en gradient sections */
-.gradient-section .section-title {
-    color: var(--gradient-text-color);
+/* Primary Dark Gradient Section - Darker gradient background */
+.primary-dark-gradient-section {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #0f3a4a 100%);
+    color: white;
 }
 
 /* ======================================

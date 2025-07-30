@@ -1,5 +1,5 @@
 /* ======================================
-   GLOBAL.JS - FUNCIONALIDAD COMPARTIDA (OPTIMIZADO DRY)
+   GLOBAL.JS - FUNCIONALIDAD COMPARTIDA (VERSIÓN CORREGIDA COMPLETA)
    ====================================== */
 
 // ======================================
@@ -71,10 +71,78 @@ function setActiveNavLink() {
 }
 
 // ======================================
-// SISTEMA UNIVERSAL DE ANIMACIÓN DE VALORES
+// SISTEMA UNIVERSAL DE ANIMACIÓN DE VALORES - CORREGIDO COMPLETO
 // ======================================
 
-// Función universal para animar valores (números y tiempos) - DRY
+/**
+ * Parsea un tiempo en formato texto y devuelve los minutos totales
+ * @param {string} timeText - Texto en formato "5h 48min", "2h", "45min", etc.
+ * @returns {number} - Minutos totales, o null si no es un formato válido
+ */
+function parseTimeText(timeText) {
+    const text = timeText.trim().toLowerCase();
+
+    // Regex para capturar horas y minutos en diferentes formatos
+    const timeRegex = /(?:(\d+)h(?:ours?)?)?(?:\s*(\d+)min(?:utes?)?)?/;
+    const match = text.match(timeRegex);
+
+    if (!match) return null;
+
+    const hours = parseInt(match[1]) || 0;
+    const minutes = parseInt(match[2]) || 0;
+
+    // Si no hay horas ni minutos, no es un tiempo válido
+    if (hours === 0 && minutes === 0) return null;
+
+    return (hours * 60) + minutes;
+}
+
+/**
+ * Anima valores de tiempo en formato "Xh Ymin" desde 0min hasta el valor objetivo
+ * @param {Element} element - Elemento a animar
+ * @param {number} targetMinutes - Minutos totales objetivo
+ * @param {number} duration - Duración de la animación en ms
+ * @param {string} originalText - Texto original para mantener formato
+ */
+function animateTimeValue(element, targetMinutes, duration, originalText) {
+    let startTimestamp = null;
+
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+        // Calcular minutos actuales basado en el progreso
+        const currentMinutes = Math.floor(progress * targetMinutes);
+
+        // Convertir a formato "Xh Ymin"
+        const hours = Math.floor(currentMinutes / 60);
+        const minutes = currentMinutes % 60;
+
+        // Formatear el texto
+        let formattedTime = '';
+        if (hours > 0) {
+            formattedTime += `${hours}h`;
+            if (minutes > 0) {
+                formattedTime += ` ${minutes}min`;
+            }
+        } else {
+            formattedTime = `${minutes}min`;
+        }
+
+        element.textContent = formattedTime;
+
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        } else {
+            // Asegurar que muestre el valor final exacto
+            element.textContent = originalText;
+        }
+    };
+
+    window.requestAnimationFrame(step);
+}
+
+// Función universal para animar valores (números y tiempos) - CORREGIDA
 function animateValue(element, start, end, duration, config = {}) {
     const {
         prefix = '',
@@ -104,7 +172,7 @@ function animateValue(element, start, end, duration, config = {}) {
             element.textContent = years > 0 ? `${years} años ${months} meses` : `${months} meses`;
         } else {
             // Formato número normal
-            element.textContent = `${prefix}${Math.floor(current)}${suffix}`;
+            element.textContent = `${config.prefix}${Math.floor(current)}${config.suffix}`;
         }
 
         if (progress < 1) {
@@ -115,13 +183,57 @@ function animateValue(element, start, end, duration, config = {}) {
     requestAnimationFrame(step);
 }
 
-// Counter animation universal - MANEJA NÚMEROS Y TIEMPOS
+/**
+ * Animar valor manteniendo el texto adicional (para casos como "3 Cumbres")
+ */
+function animateValueWithText(element, start, end, duration, originalText) {
+    let startTimestamp = null;
+
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const current = Math.floor(progress * (end - start) + start);
+
+        // Reemplazar solo la parte numérica
+        element.textContent = originalText.replace(/^\d+/, current.toString());
+
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        }
+    };
+
+    requestAnimationFrame(step);
+}
+
+// CONTADOR UNIVERSAL CORREGIDO - DETECCIÓN MÚLTIPLE
 function animateCountersUniversal() {
-    const counters = document.querySelectorAll('.stat-number');
+    // MÚLTIPLES SELECTORES para capturar todos los elementos animables
+    const selectors = [
+        '.stat-number',           // Stats principales
+        '.achievement-stats .stat-number', // Achievement numbers
+        '.stat-card .stat-number', // Stat cards
+        '.achievement-card .stat-number', // Achievement cards
+        '[data-count]',           // Elementos con data-count
+        '.counter',               // Clase general counter
+        '.animate-number'         // Clase específica para animación
+    ];
 
-    counters.forEach(counter => {
+    // Buscar en todos los selectores
+    let counters = [];
+    selectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+            if (!counters.includes(el)) { // Evitar duplicados
+                counters.push(el);
+            }
+        });
+    });
+
+    console.log(`🔢 Encontrados ${counters.length} contadores para animar`);
+
+    counters.forEach((counter, index) => {
         const target = counter.textContent.trim();
-
+        
         // 1. VERIFICAR SI ES UN FORMATO DE TIEMPO
         const timeMinutes = parseTimeText(target);
         if (timeMinutes !== null) {
@@ -142,16 +254,23 @@ function animateCountersUniversal() {
             return;
         }
 
-        // 2. VERIFICAR SI ES UN NÚMERO PURO
-        const cleanNumber = target.replace('+', '').replace('%', '');
-        if (!isNaN(cleanNumber) && cleanNumber !== '') {
+        // 2. VERIFICAR SI ES UN NÚMERO PURO O CON SÍMBOLOS
+        const cleanNumber = target.replace(/[+%]/g, '');
+        if (!isNaN(cleanNumber) && cleanNumber !== '' && cleanNumber !== 'XX' && cleanNumber !== 'XXX') {
             // Es un número - usar animación normal
-            counter.textContent = '0';
+            const hasPlus = target.includes('+');
+            const hasPercent = target.includes('%');
+            
+            counter.textContent = hasPlus ? '+0' : hasPercent ? '0%' : '0';
 
             const counterObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        animateValue(counter, 0, parseInt(cleanNumber), 1600, target);
+                        animateValue(counter, 0, parseInt(cleanNumber), 1600, {
+                            prefix: hasPlus ? '+' : '',
+                            suffix: hasPercent ? '%' : '',
+                            originalText: target
+                        });
                         counterObserver.unobserve(counter);
                     }
                 });
@@ -161,7 +280,7 @@ function animateCountersUniversal() {
             return;
         }
 
-        // 3. VERIFICAR SI EMPIEZA CON NÚMERO (para futuros casos como "3 Cumbres")
+        // 3. VERIFICAR SI EMPIEZA CON NÚMERO (para casos como "3 Cumbres")
         const numberMatch = target.match(/^(\d+)/);
         if (numberMatch) {
             const numberPart = parseInt(numberMatch[1]);
@@ -183,30 +302,63 @@ function animateCountersUniversal() {
             }
         }
 
-        // 4. TEXTO PURO - No animar (placeholders como "XX")
+        // 4. VERIFICAR SI TIENE data-count ATTRIBUTE
+        if (counter.hasAttribute('data-count')) {
+            const dataCount = parseInt(counter.getAttribute('data-count'));
+            if (!isNaN(dataCount)) {
+                counter.textContent = '0';
+
+                const counterObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateValue(counter, 0, dataCount, 1600, {
+                                originalText: target
+                            });
+                            counterObserver.unobserve(counter);
+                        }
+                    });
+                });
+
+                counterObserver.observe(counter);
+                return;
+            }
+        }
+
+        // 5. TEXTO PURO - No animar (placeholders como "XX", "XXX")
         // Se queda como está
     });
 }
 
 // ======================================
-// SISTEMA UNIVERSAL DE HOVER EFFECTS
+// SISTEMA UNIVERSAL DE HOVER EFFECTS - INCLUYENDO ICON CARDS
 // ======================================
 
-// Configuraciones de cards unificadas (DRY)
+// Configuraciones de cards unificadas (DRY) - INCLUYENDO ICON CARDS
 const CARD_CONFIGS = [
-    { selector: '.proceso-card-full', hasIcon: true },
+    { selector: '.processo-card-full', hasIcon: true },
     { selector: '.card-services-mixed', hasIcon: true },
     { selector: '.stat-card', hasIcon: false },
     { selector: '.glass-card', hasIcon: true, 
       hover: 'rgba(255, 255, 255, 0.15)', 
       restore: 'rgba(255, 255, 255, 0.1)' },
+    { selector: '.glass-card-light', hasIcon: true,
+      hover: 'rgba(255, 255, 255, 0.45)',
+      restore: 'rgba(255, 255, 255, 0.4)' },
+    { selector: '.glass-card-dark', hasIcon: true,
+      hover: 'rgba(16, 24, 32, 0.4)',
+      restore: 'rgba(16, 24, 32, 0.6)' },
+    { selector: '.icon-card', hasIcon: true, // AGREGADO - ICON CARDS
+      hover: 'rgba(255, 255, 255, 0.15)', 
+      restore: 'rgba(255, 255, 255, 0.1)' },
     { selector: '.service-feature-card', hasIcon: true },
     { selector: '.complementary-card', hasIcon: true },
     { selector: '.practical-card', hasIcon: true },
-    { selector: '.mvp-card', hasIcon: true }
+    { selector: '.mvp-card', hasIcon: true },
+    { selector: '.universal-card', hasIcon: true },
+    { selector: '.achievement-card', hasIcon: true }
 ];
 
-// Sistema universal de hover effects (DRY)
+// Sistema universal de hover effects (DRY) - MEJORADO
 function addUniversalCardEffects() {
     CARD_CONFIGS.forEach(config => {
         document.querySelectorAll(config.selector).forEach(card => {
@@ -224,8 +376,13 @@ function addUniversalCardEffects() {
                 // Efecto de icono si tiene
                 if (config.hasIcon) {
                     const icon = this.querySelector('.material-symbols-rounded');
+                    const iconContainer = this.querySelector('.card-icon, .main-icon-container, .secondary-icon-container, .achievement-icon');
+                    
                     if (icon) {
                         icon.style.transform = 'scale(1.1)';
+                    }
+                    if (iconContainer) {
+                        iconContainer.style.transform = 'scale(1.1)';
                     }
                 }
             });
@@ -243,8 +400,13 @@ function addUniversalCardEffects() {
                 // Restaurar icono
                 if (config.hasIcon) {
                     const icon = this.querySelector('.material-symbols-rounded');
+                    const iconContainer = this.querySelector('.card-icon, .main-icon-container, .secondary-icon-container, .achievement-icon');
+                    
                     if (icon) {
                         icon.style.transform = 'scale(1)';
+                    }
+                    if (iconContainer) {
+                        iconContainer.style.transform = 'scale(1)';
                     }
                 }
             });
@@ -299,8 +461,9 @@ function addScrollProgress() {
 
 function addCardRevealAnimation() {
     const cards = document.querySelectorAll(
-        '.proceso-card-full, .card-services-mixed, .stat-card, ' +
-        '.practical-card, .glass-card, .service-feature-card'
+        '.processo-card-full, .card-services-mixed, .stat-card, ' +
+        '.practical-card, .glass-card, .service-feature-card, ' +
+        '.icon-card, .universal-card, .achievement-card' // AGREGADAS MÁS CARDS
     );
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -347,157 +510,107 @@ function initSmoothScroll() {
 // SISTEMA BÁSICO DE GALERÍA
 // ======================================
 
-// Gallery Lightbox functionality
-function initGalleryLightbox() {
-    const galleryItems = document.querySelectorAll('.gallery-card');
+// Lightbox simple y eficiente (DRY)
+function initBasicLightbox() {
+    const galleryCards = document.querySelectorAll('.gallery-card');
+    if (galleryCards.length === 0) return;
 
-    if (galleryItems.length === 0) return;
-
-    // Create lightbox element
+    // Crear lightbox una sola vez
     const lightbox = document.createElement('div');
-    lightbox.className = 'lightbox';
+    lightbox.className = 'lightbox-overlay';
     lightbox.innerHTML = `
         <div class="lightbox-content">
-            <span class="close-lightbox">&times;</span>
-            <img src="" alt="" class="lightbox-img">
-            <div class="lightbox-caption">
-                <h4 class="lightbox-title"></h4>
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <h3 class="lightbox-title"></h3>
                 <p class="lightbox-description"></p>
             </div>
         </div>
     `;
     document.body.appendChild(lightbox);
 
-    // Lightbox styles
-    const lightboxStyles = `
-        <style>
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .lightbox-content {
-            position: relative;
-            margin: auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 800px;
-            text-align: center;
-        }
-        
-        .lightbox-img {
-            max-width: 100%;
-            max-height: 70vh;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        
-        .close-lightbox {
-            position: absolute;
-            top: -10px;
-            right: 10px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 10001;
-            transition: color 0.3s ease;
-        }
-        
-        .close-lightbox:hover {
-            color: var(--accent);
-        }
-        
-        .lightbox-caption {
-            text-align: center;
-            color: white;
-            margin-top: 20px;
-        }
-        
-        .lightbox-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
-        
-        .lightbox-description {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        @media (max-width: 768px) {
-            .lightbox-content {
-                padding: 10px;
-            }
-            
-            .close-lightbox {
-                font-size: 30px;
-            }
-            
-            .lightbox-img {
-                max-height: 60vh;
-            }
-        }
-        </style>
-    `;
-    document.head.insertAdjacentHTML('beforeend', lightboxStyles);
+    const lightboxImg = lightbox.querySelector('.lightbox-image');
+    const lightboxTitle = lightbox.querySelector('.lightbox-title');
+    const lightboxDesc = lightbox.querySelector('.lightbox-description');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
 
-    // Function to open lightbox
-    function openLightbox(item) {
-        const img = item.querySelector('img');
-        const overlay = item.querySelector('.gallery-overlay');
+    // Función para abrir lightbox
+    const openLightbox = (card) => {
+        const img = card.querySelector('.gallery-image');
+        const title = card.querySelector('.gallery-title')?.textContent || '';
+        const desc = card.querySelector('.gallery-description')?.textContent || '';
 
-        lightbox.querySelector('.lightbox-img').src = img.src;
-        lightbox.querySelector('.lightbox-img').alt = img.alt;
-
-        if (overlay) {
-            lightbox.querySelector('.lightbox-title').textContent = overlay.querySelector('h4').textContent;
-            lightbox.querySelector('.lightbox-description').textContent = overlay.querySelector('p').textContent;
-        }
-
-        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxTitle.textContent = title;
+        lightboxDesc.textContent = desc;
+        
+        lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
-    }
+    };
 
-    // Function to close lightbox
-    function closeLightbox() {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
+    // Función para cerrar lightbox
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    };
 
-    // Add click listeners to gallery items
-    galleryItems.forEach((item) => {
-        item.addEventListener('click', () => openLightbox(item));
+    // Event listeners
+    galleryCards.forEach(card => {
+        card.addEventListener('click', () => openLightbox(card));
     });
 
-    // Lightbox controls
-    lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
 
-    // Close on background click
-    lightbox.addEventListener('click', function (e) {
-        if (e.target === this) {
+    // Teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
             closeLightbox();
         }
     });
+}
 
-    // Close on escape key
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && lightbox.style.display === 'flex') {
-            closeLightbox();
+// ======================================
+// DEBUGGING Y UTILIDADES
+// ======================================
+
+/**
+ * DEBUGGING - Función para encontrar todos los elementos que deberían animarse
+ */
+function debugCounters() {
+    const allNumbers = [];
+    
+    // Buscar todos los elementos que contengan números
+    document.querySelectorAll('*').forEach(el => {
+        const text = el.textContent.trim();
+        
+        // Skip elementos vacíos o que contienen otros elementos
+        if (!text || el.children.length > 0) return;
+        
+        // Buscar patrones de números
+        if (/^\d+/.test(text) || /\d+h/.test(text) || /\d+min/.test(text) || /^\+\d+/.test(text) || /\d+%$/.test(text)) {
+            allNumbers.push({
+                element: el,
+                text: text,
+                classes: el.className,
+                tag: el.tagName
+            });
         }
     });
+    
+    console.log('🔍 Elementos con números encontrados:', allNumbers);
+    return allNumbers;
+}
+
+/**
+ * FUNCIÓN PARA REFRESCAR CONTADORES (útil para contenido dinámico)
+ */
+function refreshCounters() {
+    animateCountersUniversal();
 }
 
 // ======================================
@@ -516,14 +629,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configurar funcionalidades
     setActiveNavLink();
     initSmoothScroll();
-    animateCountersUniversal();
     addScrollProgress();
+
+    // CONTADORES - CON DELAY PARA ASEGURAR QUE TODO ESTÉ CARGADO
+    setTimeout(() => {
+        animateCountersUniversal(); // CORREGIDO - INCLUIDO
+    }, 800);
 
     // Efectos visuales con delay para mejor performance
     setTimeout(() => {
-        addUniversalCardEffects();
-        addCardRevealAnimation();
-        initGalleryLightbox();
+        addUniversalCardEffects(); // INCLUYE ICON CARDS
+        addCardRevealAnimation();   // INCLUYE ICON CARDS
+        initBasicLightbox();
     }, 300);
 });
 
@@ -596,7 +713,29 @@ if (!document.querySelector('#lightbox-styles')) {
     document.head.appendChild(lightboxStyles);
 }
 
+// Hacer funciones disponibles globalmente
+if (typeof window !== 'undefined') {
+    // Sistema de contadores
+    window.animateCountersUniversal = animateCountersUniversal;
+    window.animateTimeValue = animateTimeValue;
+    window.parseTimeText = parseTimeText;
+    window.animateValue = animateValue;
+    window.animateValueWithText = animateValueWithText;
+    window.refreshCounters = refreshCounters;
+    window.debugCounters = debugCounters;
+    
+    // Observer universal
+    window.universalObserver = universalObserver;
+    
+    // Funciones principales
+    window.addUniversalCardEffects = addUniversalCardEffects;
+    window.addCardRevealAnimation = addCardRevealAnimation;
+    window.initBasicLightbox = initBasicLightbox;
+}
+
 // Console para debugging
-console.log('🚀 Preuniversitario JMC - Sistema optimizado cargado');
+console.log('🚀 Preuniversitario JMC - Sistema corregido y completo cargado');
+console.log('🔢 Sistema de contadores con detección múltiple activo');
+console.log('🎨 Icon cards incluidas en sistema de hover effects');
 console.log('📊 DRY optimizations applied: -60% code duplication');
 console.log('💻 Desarrollado por Alexandre Castillo - ACastillo DG');

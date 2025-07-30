@@ -1,195 +1,13 @@
 /* ======================================
-   CARDS.CSS - SISTEMA UNIVERSAL OPTIMIZADO
+   CARDS.CSS - SISTEMA UNIVERSAL DE CARDS  
    ====================================== */
 
 /* ======================================
-   1. CLASES BASE UNIVERSALES
+   UNIVERSAL CARD SYSTEM - IMPLEMENTACIÓN COMPLETA
    ====================================== */
 
-/* Estilos base que comparten TODAS las cards */
-.card-base {
-    border-radius: var(--border-radius-standard);
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-    position: relative;
-}
-
-/* Background universal - usado por la mayoría */
-.card-bg-white {
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: var(--shadow-light);
-}
-
-.card-bg-white:hover {
-    background: rgba(255, 255, 255, 0.95);
-}
-
-/* Hover effect universal - usado por 90% de las cards */
-.card-hover:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-}
-
-/* Hover especial para stat cards */
-.card-hover-light:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium);
-}
-
-/* Padding universales */
-.card-padding {
-    padding: var(--card-padding);
-}
-
-.card-padding-large {
-    padding: var(--card-padding-large);
-}
-
-.card-padding-xl {
-    padding: 2.5rem;
-}
-
-/* Text alignment universales */
-.card-center {
-    text-align: center;
-}
-
-.card-left {
-    text-align: left;
-}
-
-/* ======================================
-   2. TYPOGRAPHY UNIVERSAL
-   ====================================== */
-
-/* Títulos universales */
-.card-title {
-    color: var(--primary-dark);
-    font-weight: 700;
-    margin-bottom: var(--gap-medium);
-    font-size: 1.4rem;
-}
-
-.card-title-large {
-    color: var(--primary);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.card-title-accent {
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.card-title-white {
-    color: white;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-/* Texto universal */
-.card-text {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--black);
-    margin-bottom: var(--gap-medium);
-}
-
-.card-text:last-child {
-    margin-bottom: 0;
-}
-
-.card-text-small {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--black);
-}
-
-.card-text-white {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* ======================================
-   3. ICONOS UNIVERSALES
-   ====================================== */
-
-/* Contenedor de icono universal */
-.card-icon {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-/* Tamaños de iconos */
-.card-icon-xl .material-symbols-rounded {
-    font-size: 4.5rem;
-    color: var(--primary);
-    transition: var(--transition-standard);
-}
-
-.card-icon-large .material-symbols-rounded {
-    font-size: 3.5rem;
-    color: var(--primary);
-    transition: var(--transition-standard);
-}
-
-.card-icon-medium .material-symbols-rounded {
-    font-size: 3rem;
-    color: var(--primary);
-    transition: var(--transition-standard);
-}
-
-/* Hover universal para iconos */
-.card-icon-hover:hover .material-symbols-rounded {
-    transform: scale(1.1);
-}
-
-/* ======================================
-   4. LISTAS UNIVERSALES
-   ====================================== */
-
-.card-list {
-    list-style: none;
-    padding: 0;
-    margin: var(--gap-medium) 0 0 0;
-}
-
-.card-list-item {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--gray-light);
-    color: var(--primary-dark);
-    font-weight: 500;
-    position: relative;
-    padding-left: 1.5rem;
-    text-align: left;
-}
-
-.card-list-item:before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--primary);
-    font-weight: bold;
-}
-
-.card-list-item:last-child {
-    border-bottom: none;
-}
-
-/* ======================================
-   5. UNIVERSAL CARD
-   ====================================== */
-
-/* Aplicar estilos base a universal card */
-.universal-card,
-.universal-card.extensive,
-.universal-card.technical {
+/* Universal Card Base */
+.universal-card {
     background: rgba(255, 255, 255, 0.9);
     border-radius: var(--border-radius-standard);
     padding: var(--card-padding);
@@ -201,14 +19,13 @@
     position: relative;
 }
 
-.universal-card:hover,
-.universal-card.extensive:hover,
-.universal-card.technical:hover {
+.universal-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-medium);
     background: rgba(255, 255, 255, 0.95);
 }
 
+/* Icono opcional en universal card */
 .universal-card .card-icon {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -224,6 +41,7 @@
     transform: scale(1.1);
 }
 
+/* Título de universal card */
 .universal-card h3 {
     color: var(--primary-dark);
     font-weight: 700;
@@ -232,6 +50,7 @@
     text-align: left;
 }
 
+/* Párrafos en universal card */
 .universal-card p {
     font-size: 1.1rem;
     line-height: 1.7;
@@ -244,6 +63,7 @@
     margin-bottom: 0;
 }
 
+/* Soporte para listas en universal card */
 .universal-card ul {
     list-style: none;
     padding: 0;
@@ -272,7 +92,7 @@
     border-bottom: none;
 }
 
-/* Variantes de universal card */
+/* Modificador para contenido extenso */
 .universal-card.extensive {
     padding: var(--card-padding-large);
 }
@@ -282,6 +102,7 @@
     text-align: justify;
 }
 
+/* Modificador para servicios técnicos */
 .universal-card.technical h3 {
     font-size: 1.5rem;
 }
@@ -291,29 +112,157 @@
 }
 
 /* ======================================
-   6. GRADIENT BORDER CARD
+   CARD-BUTTON - NUEVA CARD INTERACTIVA
    ====================================== */
 
-.gradient-border-card {
-    /* Base styles */
+.card-button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: var(--margin-bottom-small);
+    box-shadow: var(--shadow-light);
+    position: relative;
+}
+
+.card-button:hover {
+    background: rgba(65, 182, 230, 0.1);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.card-button:active {
+    transform: translateY(-1px);
+}
+
+/* Icono principal de la card-button */
+.card-button .card-button-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    min-width: 1.5rem;
+    flex-shrink: 0;
+    transition: var(--transition-standard);
+}
+
+.card-button:hover .card-button-icon {
+    color: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+/* Contenido de texto de la card-button */
+.card-button-content {
+    flex: 1;
+    text-align: left;
+}
+
+.card-button-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    display: block;
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+}
+
+.card-button-value {
+    font-size: 1rem;
+    color: var(--black);
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Variante con imagen en lugar de icono */
+.card-button .card-button-image {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    flex-shrink: 0;
+    transition: var(--transition-standard);
+}
+
+.card-button:hover .card-button-image {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+/* Variante simple sin label/value structure */
+.card-button.simple {
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.card-button.simple .card-button-icon {
+    margin-right: 0.5rem;
+}
+
+/* Variante con color de background personalizado */
+.card-button.primary {
+    background: rgba(var(--primary-rgb), 0.1);
+}
+
+.card-button.primary:hover {
+    background: rgba(var(--primary-rgb), 0.2);
+}
+
+.card-button.accent {
+    background: rgba(var(--accent-rgb), 0.1);
+}
+
+.card-button.accent:hover {
+    background: rgba(var(--accent-rgb), 0.2);
+}
+
+/* ======================================
+   SISTEMA UNIVERSAL DE CARDS EXISTENTES
+   ====================================== */
+
+/* Base styles for all universal cards */
+.gradient-border-card,
+.glass-card,
+.basic-card,
+.stat-card {
     border-radius: var(--border-radius-standard);
     padding: var(--card-padding);
-    box-shadow: var(--shadow-light);
+    text-align: center;
+    position: relative;
     transition: var(--transition-standard);
     margin-bottom: var(--margin-bottom-standard);
     width: 100%;
-    text-align: center;
-    position: relative;
-    /* Gradient specific */
+    box-shadow: var(--shadow-light);
+}
+
+/* Hover effects universales */
+.gradient-border-card:hover,
+.basic-card:hover,
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.basic-card:hover,
+.stat-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* ======================================
+   GRADIENT BORDER CARD
+   ====================================== */
+
+.gradient-border-card {
     background: 
         linear-gradient(white, white) padding-box,
         linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
     border: 9px solid transparent;
-}
-
-.gradient-border-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
 }
 
 .gradient-border-card h3 {
@@ -334,126 +283,34 @@
 }
 
 /* ======================================
-   7. GLASS CARDS
+   BASIC CARD
    ====================================== */
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: var(--blur-standard);
-    border-radius: var(--border-radius-standard);
-    padding: var(--card-padding);
+.basic-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
     text-align: center;
-    position: relative;
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-    box-shadow: var(--shadow-light);
 }
 
-.glass-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.glass-card h3 {
-    color: var(--accent);
+.basic-card h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    font-size: 1.3rem;
 }
 
-.glass-card p {
-    font-size: 1.05rem;
+.basic-card p {
+    font-size: 1.1rem;
     line-height: 1.6;
-    color: white;
-}
-
-.glass-card-light {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--shadow-light);
-    position: relative;
-    z-index: 2;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    text-align: center;
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-}
-
-.glass-card-light:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.45);
-}
-
-.glass-card-light h3 {
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.glass-card-light p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: white;
-}
-
-.glass-card-dark {
-    background: rgba(var(--black-rgb), 0.3);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--shadow-medium);
-    position: relative;
-    z-index: 2;
-    padding: 1.5rem;
-    color: white;
-    transition: all 0.3s ease;
-    text-align: center;
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-}
-
-.glass-card-dark:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-strong);
-    background: rgba(var(--black-rgb), 0.4);
-}
-
-.glass-card-dark h3,
-.glass-card-dark .card-title {
-    color: white;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.glass-card-dark p,
-.glass-card-dark .card-text {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--black);
 }
 
 /* ======================================
-   8. STAT CARD
+   STAT CARD
    ====================================== */
 
 .stat-card {
-    /* Base universal */
     background: rgba(255, 255, 255, 0.9);
-    border-radius: var(--border-radius-standard);
-    box-shadow: var(--shadow-light);
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-    position: relative;
-    /* Específico de stat */
     padding: 2.5rem;
     text-align: center;
     backdrop-filter: blur(10px);
@@ -469,12 +326,10 @@
 .stat-card:hover {
     transform: translateY(-5px);
     backdrop-filter: blur(15px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.95);
 }
 
 .stat-number {
-    font-family: var(--font-title);
+    font-family: 'DM Serif Text', serif;
     font-size: clamp(2.5rem, 8vw, 4.5rem);
     color: var(--primary);
     font-weight: 700;
@@ -505,129 +360,19 @@
 }
 
 /* ======================================
-   9. BASIC CARD
-   ====================================== */
-
-.basic-card {
-    /* Base universal */
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: var(--border-radius-standard);
-    box-shadow: var(--shadow-light);
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-    position: relative;
-    /* Específico */
-    padding: 2rem;
-    text-align: center;
-}
-
-.basic-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.basic-card h3 {
-    color: var(--primary);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.basic-card p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--black);
-}
-
-/* ======================================
-   10. QUOTE CARD
-   ====================================== */
-
-.quote-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: var(--blur-standard);
-    border-radius: var(--border-radius-standard);
-    box-shadow: var(--shadow-light);
-    padding: var(--card-padding-large);
-    text-align: center;
-    margin: var(--margin-bottom-large) auto;
-    max-width: 600px;
-    transition: var(--transition-standard);
-    cursor: pointer;
-    position: relative;
-}
-
-.quote-text {
-    font-family: var(--font-body);
-    font-style: italic;
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: var(--gap-medium);
-    line-height: 1.6;
-    position: relative;
-    z-index: 2;
-    color: white;
-}
-
-.quote-text::before,
-.quote-text::after {
-    content: '"';
-    font-family: var(--font-title);
-    font-size: 4rem;
-    color: var(--accent);
-    position: absolute;
-    opacity: 0.6;
-    font-weight: 300;
-    line-height: 1;
-    z-index: 1;
-    font-style: normal;
-}
-
-.quote-text::before {
-    top: -0.2rem;
-    left: -0.8rem;
-    transform: rotate(-5deg);
-}
-
-.quote-text::after {
-    bottom: -1.6rem;
-    right: -0.8rem;
-    transform: rotate(5deg);
-}
-
-.quote-author {
-    color: var(--accent);
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 1.1rem;
-    position: relative;
-    z-index: 2;
-    text-align: right;
-}
-
-.quote-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-}
-
-/* ======================================
-   11. ACHIEVEMENT CARD
+   ACHIEVEMENT CARD
    ====================================== */
 
 .achievement-card {
-    /* Base universal */
     background: rgba(255, 255, 255, 0.95);
     border-radius: var(--border-radius-standard);
     padding: var(--card-padding);
-    box-shadow: var(--shadow-light);
+    text-align: center;
+    position: relative;
     transition: var(--transition-standard);
     margin-bottom: var(--margin-bottom-standard);
     width: 100%;
-    position: relative;
-    /* Específico */
-    text-align: center;
+    box-shadow: var(--shadow-light);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -706,47 +451,274 @@
 }
 
 /* ======================================
-   12. PROCESSO CARD FULL
+   GLASS CARDS
    ====================================== */
 
-.processo-card-full {
-    /* Base universal */
-    background: rgba(255, 255, 255, 0.95);
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--blur-standard);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    text-align: center;
+    position: relative;
     transition: var(--transition-standard);
     margin-bottom: var(--margin-bottom-standard);
     width: 100%;
+    box-shadow: var(--shadow-light);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.glass-card h3 {
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.glass-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: white;
+}
+
+/* Glass Card Variants */
+.glass-card-light {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-light);
     position: relative;
-    /* Específico */
+    z-index: 2;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+}
+
+.glass-card-light:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.glass-card-light h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.glass-card-light p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+.glass-card-dark {
+    background: rgba(var(--black-rgb), 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem;
+    color: white;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+}
+
+.glass-card-dark:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
+    background: rgba(var(--black-rgb), 0.4);
+}
+
+.glass-card-dark h3,
+.glass-card-dark .card-title {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.glass-card-dark p,
+.glass-card-dark .card-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ======================================
+   ICON CARD
+   ====================================== */
+
+.icon-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--blur-standard);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    text-align: center;
+    position: relative;
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    box-shadow: var(--shadow-light);
+}
+
+.icon-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.icon-card .card-icon {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.icon-card .card-icon .material-symbols-rounded {
+    font-size: 4.5rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+.icon-card:hover .card-icon .material-symbols-rounded {
+    transform: scale(1.1);
+}
+
+.icon-card h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    hyphens: auto;
+    word-wrap: break-word;
+}
+
+.icon-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: white;
+}
+
+/* ======================================
+   QUOTE CARD
+   ====================================== */
+
+.quote-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--blur-standard);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    padding: var(--card-padding-large);
+    text-align: center;
+    margin: var(--margin-bottom-large) auto;
+    max-width: 600px;
+    transition: var(--transition-standard);
+    cursor: pointer;
+    position: relative;
+}
+
+.quote-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.quote-text {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: var(--gap-medium);
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.quote-text::before,
+.quote-text::after {
+    content: '"';
+    font-family: var(--font-title);
+    font-size: 4rem;
+    color: var(--accent);
+    position: absolute;
+    opacity: 0.6;
+    font-weight: 300;
+    line-height: 1;
+    z-index: 1;
+    font-style: normal;
+}
+
+.quote-text::before {
+    top: -0.2rem;
+    left: -0.8rem;
+    transform: rotate(-5deg);
+}
+
+.quote-text::after {
+    bottom: -1.6rem;
+    right: -0.8rem;
+    transform: rotate(5deg);
+}
+
+.quote-author {
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+    text-align: right;
+}
+
+/* ======================================
+   PROCESS CARD FULL
+   ====================================== */
+
+.process-card-full {
+    background: rgba(255, 255, 255, 0.95);
     border-radius: var(--border-radius-large);
     padding: var(--card-padding-large);
     box-shadow: var(--shadow-medium);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
     display: flex;
     align-items: center;
     text-align: left;
     gap: 2rem;
 }
 
-.processo-card-full:hover {
+.process-card-full:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-heavy);
 }
 
 /* ======================================
-   13. GALLERY CARD
+   GALLERY CARDS - CORREGIDAS
    ====================================== */
 
 .gallery-card {
-    /* Base universal */
-    border-radius: var(--border-radius-standard);
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
     position: relative;
-    /* Específico */
     aspect-ratio: 1 / 1;
+    border-radius: var(--border-radius-standard);
     overflow: hidden;
     cursor: pointer;
+    transition: var(--transition-standard);
     box-shadow: var(--shadow-light);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
     background: var(--black);
 }
 
@@ -767,6 +739,38 @@
     transform: scale(1.1);
 }
 
+/* ICONO DE ZOOM - CORREGIDO */
+.gallery-zoom-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(var(--primary-rgb), 0.9);
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.gallery-card:hover .gallery-zoom-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.gallery-zoom-icon .material-symbols-rounded {
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Overlay con información - CORREGIDO */
 .gallery-overlay {
     position: absolute;
     bottom: 0;
@@ -777,6 +781,7 @@
     padding: 1.5rem 1rem 1rem;
     transform: translateY(100%);
     transition: var(--transition-standard);
+    z-index: 5;
 }
 
 .gallery-card:hover .gallery-overlay {
@@ -799,39 +804,181 @@
     margin: 0;
 }
 
-.gallery-zoom-icon {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: rgba(var(--primary-rgb), 0.9);
-    color: white;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
+/* ======================================
+   GALLERY CONTAINER Y GRID
+   ====================================== */
+
+.gallery-container {
+    margin-bottom: var(--margin-bottom-large);
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: var(--margin-bottom-standard);
+}
+
+.gallery-header .gallery-main-title {
+    font-family: var(--font-title);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.gallery-header .gallery-subtitle {
+    font-size: 1.1rem;
+    color: var(--black);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap-standard);
+    margin-top: 0;
+}
+
+/* ======================================
+   LIGHTBOX UNIVERSAL - CSS EXTERNO
+   ====================================== */
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transform: scale(0.8);
+    visibility: hidden;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
 }
 
-.gallery-card:hover .gallery-zoom-icon {
+.lightbox-overlay.active {
     opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: transparent;
+    border-radius: var(--border-radius-standard);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-overlay.active .lightbox-content {
     transform: scale(1);
 }
 
-.gallery-zoom-icon .material-symbols-rounded {
-    font-size: 1.2rem;
+.lightbox-close {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+    transition: var(--transition-color);
+    background: rgba(var(--black-rgb), 0.7);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    color: var(--accent);
+    background: rgba(var(--black-rgb), 0.9);
+    transform: scale(1.1);
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-heavy);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.lightbox-info {
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    background: rgba(var(--black-rgb), 0.8);
+    border-radius: var(--border-radius-standard);
+    backdrop-filter: blur(10px);
+    max-width: 500px;
+}
+
+.lightbox-info .lightbox-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-family: var(--font-title);
+}
+
+.lightbox-info .lightbox-description {
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* ======================================
-   14. RESPONSIVE
+   RESPONSIVE PARA CARDS
    ====================================== */
 
+/* Responsive para card-button */
 @media (max-width: 53rem) {
-    .processo-card-full {
+    .card-button {
+        padding: 0.875rem;
+        gap: 0.875rem;
+    }
+    
+    .card-button-icon,
+    .card-button-image {
+        width: 1.3rem;
+        height: 1.3rem;
+        min-width: 1.3rem;
+        font-size: 1.3rem;
+    }
+    
+    .card-button-label {
+        font-size: 0.85rem;
+    }
+    
+    .card-button-value {
+        font-size: 0.95rem;
+    }
+}
+
+/* Responsive para process-card-full */
+@media (max-width: 53rem) {
+    .process-card-full {
         flex-direction: column;
         text-align: center;
         padding: 2rem;
@@ -854,9 +1001,180 @@
         text-align: center;
         margin-bottom: 1rem;
     }
+}
+
+/* Responsive para gallery */
+@media (max-width: 82rem) and (min-width: 53rem) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--gap-medium);
+    }
+
+    .gallery-header .gallery-main-title {
+        font-size: clamp(1.6rem, 4vw, 2rem);
+    }
+
+    .lightbox-content {
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+
+    .lightbox-image {
+        max-height: 65vh;
+    }
+
+    .lightbox-close {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 53rem) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--gap-small);
+    }
+
+    .gallery-header .gallery-main-title {
+        font-size: clamp(1.4rem, 5vw, 1.8rem);
+    }
+
+    .gallery-header .gallery-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .lightbox-content {
+        max-width: 95vw;
+        max-height: 95vh;
+        padding: 1rem;
+    }
+
+    .lightbox-image {
+        max-height: 60vh;
+    }
+
+    .lightbox-close {
+        font-size: 2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        top: -5px;
+        right: 5px;
+    }
+
+    .lightbox-info {
+        padding: 0.75rem;
+    }
+
+    .lightbox-info .lightbox-title {
+        font-size: 1.2rem;
+    }
+
+    .lightbox-info .lightbox-description {
+        font-size: 0.9rem;
+    }
+
+    .gallery-card .gallery-overlay {
+        padding: 1rem 0.8rem 0.8rem;
+    }
+
+    .gallery-overlay .gallery-title {
+        font-size: 0.9rem;
+    }
+
+    .gallery-overlay .gallery-description {
+        font-size: 0.8rem;
+    }
+
+    .gallery-zoom-icon {
+        width: 2rem;
+        height: 2rem;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .gallery-zoom-icon .material-symbols-rounded {
+        font-size: 1rem;
+    }
+
+    /* Responsive general para cards */
+    .achievement-card {
+        padding: 1.5rem;
+    }
+
+    .universal-card {
+        padding: 1.5rem;
+    }
+
+    .universal-card.extensive {
+        padding: 2rem;
+    }
+
+    .universal-card .card-icon .material-symbols-rounded {
+        font-size: 3.5rem;
+    }
+
+    .icon-card {
+        min-height: 8.75rem;
+        padding: 1.2rem;
+    }
+    
+    .icon-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .icon-card .card-icon .material-symbols-rounded {
+        font-size: 3rem;
+    }
+    
+    .icon-card .card-icon {
+        margin-bottom: 1rem;
+    }
+
+    .quote-text {
+        font-size: 1.5rem;
+    }
 
     .quote-text::before,
     .quote-text::after {
         font-size: 3rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* Responsive tablet */
+@media (max-width: 82rem) and (min-width: 53rem) {
+    .stat-number {
+        font-size: 3.75rem;
+    }
+
+    .basic-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .universal-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .universal-card.technical h3 {
+        font-size: 1.3rem;
+    }
+
+    .icon-card {
+        min-height: 10rem;
+        padding: 1.2rem;
+    }
+    
+    .icon-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .icon-card .card-icon .material-symbols-rounded {
+        font-size: 3.5rem;
     }
 }
