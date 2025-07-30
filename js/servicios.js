@@ -226,16 +226,3 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ Servicios: Specific functionality loaded');
     console.log('ℹ️  Global effects handled by global.js');
 });
-
-// Función debounce local si no está disponible globalmente
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
