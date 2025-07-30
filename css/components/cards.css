@@ -37,10 +37,6 @@
     transition: var(--transition-standard);
 }
 
-.universal-card:hover .card-icon .material-symbols-rounded {
-    transform: scale(1.1);
-}
-
 /* Título de universal card */
 .universal-card h3 {
     color: var(--primary-dark);
@@ -254,6 +250,21 @@
     background: rgba(255, 255, 255, 0.95);
 }
 
+.universal-card:hover .card-icon .material-symbols-rounded,
+.gradient-border-card:hover .material-symbols-rounded,
+.icon-card:hover .card-icon .material-symbols-rounded,
+.gallery-card:hover .gallery-image,
+.process-card-full:hover .process-step-icon .process-icon {
+    transform: scale(1.1);
+}
+
+.stat-card:hover .stat-number,
+.stat-card:hover .stat-number.red,
+.achievement-card:hover .achievement-icon .material-symbols-rounded {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
 /* ======================================
    GRADIENT BORDER CARD
    ====================================== */
@@ -261,7 +272,7 @@
 .gradient-border-card {
     background: 
         linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
+        linear-gradient(135deg, var(--primary-light) 0%, var(--accent-light) 100%) border-box;
     border: 9px solid transparent;
 }
 
@@ -320,7 +331,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
 
 .stat-card:hover {
@@ -343,15 +353,7 @@
     color: var(--accent-red);
 }
 
-.stat-card:hover .stat-number {
-    color: var(--accent);
-    transform: scale(1.1);
-}
 
-.stat-card:hover .stat-number.red {
-    color: var(--accent);
-    transform: scale(1.1);
-}
 
 .stat-card p {
     font-size: 1rem;
@@ -391,11 +393,6 @@
     font-size: 3.5rem;
     color: var(--primary);
     transition: var(--transition-standard);
-}
-
-.achievement-card:hover .achievement-icon .material-symbols-rounded {
-    transform: scale(1.1);
-    color: var(--accent);
 }
 
 .achievement-card .achievement-title {
@@ -592,18 +589,12 @@
     transition: var(--transition-standard);
 }
 
-.icon-card:hover .card-icon .material-symbols-rounded {
-    transform: scale(1.1);
-}
-
 .icon-card h3 {
     color: var(--primary-dark);
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.3rem;
     line-height: 1.3;
-    hyphens: auto;
-    word-wrap: break-word;
 }
 
 .icon-card p {
@@ -626,7 +617,6 @@
     margin: var(--margin-bottom-large) auto;
     max-width: 600px;
     transition: var(--transition-standard);
-    cursor: pointer;
     position: relative;
 }
 
@@ -733,10 +723,6 @@
     object-fit: cover;
     transition: all 0.5s ease;
     display: block;
-}
-
-.gallery-card:hover .gallery-image {
-    transform: scale(1.1);
 }
 
 /* ICONO DE ZOOM - CORREGIDO */

@@ -150,11 +150,13 @@
     justify-content: center;
     box-shadow: var(--shadow-light);
     transition: var(--transition-standard);
+    flex-shrink: 0; /* AÑADIDO: Evita que el icono se encoja */
 }
 
 .table-icon .material-symbols-rounded {
     font-size: 2rem;
     color: white;
+    transition: var(--transition-standard); /* AÑADIDO: Transición para hover */
 }
 
 .process-step-icon {

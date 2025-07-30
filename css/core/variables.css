@@ -8,17 +8,30 @@
     /* Variables más utilizadas: --black (39 usos), --primary (33 usos), --primary-dark (25 usos) */
     --black: #101820;             /* Color de texto principal - MÁS USADO */
     --black-rgb: 16, 24, 32;        /* RGB del color negro para rgba() */
+
     --primary: #41B6E6;           /* Color principal de marca - Logo, enlaces, iconos */
     --primary-rgb: 65, 182, 230;    /* RGB del color primario para rgba() */
+
+    --primary-light: #74D1EA;     /* Color claro del primario - Fondos, elementos secundarios */
+    --primary-light-rgb: 116, 209, 234;
+
     --primary-dark: #165C7D;      /* Color secundario - Títulos, gradientes */
+    --primary-dark-rgb: 22, 92, 125;
+
+    --primary-darker: #244C5A;    /* Color más oscuro del primario - Fondos oscuros, elementos destacados */
+    --primary-darker-rgb: 36, 76, 90;
+
     --accent: #F4DA40;            /* Color de acento principal - Líneas decorativas, hover states (23 usos) */
     --accent-rgb: 244, 218, 64;
 
-    /* ===== COLORES SECUNDARIOS ===== */
+    --accent-light: #F2F0A1;      /* Color claro del acento - Fondos, elementos secundarios */
+    --accent-light-rgb: 242, 240, 161;
+
     --accent-red: #EF3340;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
     --accent-red-rgb: 239, 51, 64;
-    --gray-light: #F8F9FA;        /* Usado para borders (3 usos) */
-    --gray-light-rgb: 248, 249, 250;
+
+    --gray-light: #F4F4F4;        /* Usado para borders (3 usos) */
+    --gray-light-rgb: 244, 244, 244; /* RGB del color gris claro para rgba() */
     
     /* ===== TIPOGRAFÍA ===== */
     --title-letter-spacing: 0.2rem;  /* Usado en títulos principales (7 usos) */

@@ -15,12 +15,15 @@
 ## 🎨 IDENTIDAD VISUAL COMPLETAMENTE IMPLEMENTADA ✅
 
 ### **Sistema de Colores JMC - TOTALMENTE UNIFICADO:**
-- 🔵 **Primary:** `#41B6E6` (var(--primary)) - Color principal de marca
-- 🔵 **Primary Dark:** `#165C7D` (var(--primary-dark)) - Títulos y texto destacado  
-- 🟡 **Accent:** `#F4DA40` (var(--accent)) - Líneas decorativas, hover states
-- ⚫ **Black:** `#101820` (var(--black)) - Texto principal
-- 🔴 **Accent Red:** `#EF3340` (var(--accent-red)) - Estadísticas, animaciones
-- ⚪ **Gray Light:** `#F8F9FA` (var(--gray-light)) - Borders, fondos sutiles
+- 🔵 **Primary:**           `#41B6E6` - 298 C
+- 🔵 **Primary Light:**     `#74D1EA` - Blue 0821 C
+- 🔵 **Primary Dark:**      `#165C7D` - 7700 C
+- 🔵 **Primary Darker:**    `#244C5A` - 7477 C
+- 🟡 **Accent:**            `#F4DA40` - 7404 C
+- 🟡 **Accent Light:**      `#F2F0A1` - Yellow 0131 C
+- ⚫ **Black:**             `#101820` - Black 6 C
+- 🔴 **Accent Red:**        `#EF3340` - Red 032 C
+- ⚪ **Gray Light:**        `#F4F4F4`
 
 ### **✅ MIGRACIÓN CSS COMPLETADA (Julio 26-27, 2025):**
 - ✅ **Sistema de variables 100% unificado** (129 referencias activas)

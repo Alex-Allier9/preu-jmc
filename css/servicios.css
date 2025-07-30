@@ -76,10 +76,6 @@
 }
 
 /* ======================================
-   SECCIÓN AZUL - REQUISITOS
-   ====================================== */
-
-/* ======================================
    SECCIÓN REGULAR - INFORMACIÓN PRÁCTICA CON GLASSMORPHISM
    ====================================== */
 
@@ -152,6 +148,7 @@
     padding: 1.2rem 1.5rem;
     border-bottom: 1px solid var(--gray-light);
     transition: all 0.3s ease;
+    gap: 1.5rem; /* AÑADIDO: Espacio entre icono y contenido */
 }
 
 .table-row:last-child {
@@ -163,10 +160,21 @@
     transform: translateX(5px);
 }
 
-/* Table icon ya está definido en components/icons.css */
+/* NUEVO: Hover effect para table icon */
+.table-row:hover .table-icon {
+    background: linear-gradient(135deg, var(--primary-light) 10%, var(--accent-light) 90%);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-medium);
+}
+
+.table-row:hover .table-icon .material-symbols-rounded {
+    transform: scale(1.2);
+    color: var(--primary-dark);
+}
 
 .table-content {
     flex: 1;
+    min-width: 0; /* AÑADIDO: Permite que el texto se envuelva correctamente */
 }
 
 .table-content strong {
