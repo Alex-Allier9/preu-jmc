@@ -126,12 +126,12 @@
 
 /* ======================================
    RESPONSIVE BREAKPOINTS
-   Tablet: 848px - 1312px (82re y 53rem)
+   Tablet: 848px - 1312px (82rem y 53rem)
    Mobile: Hasta 848px (53rem)
    ====================================== */
 
 /* Tablet: 848px - 1312px */
-@media (max-width: 82re) and (min-width: 53rem) {
+@media (max-width: 82rem) and (min-width: 53rem) {
     /* Grid transformations para tablet */
     .grid-2-1-1 {
         grid-template-columns: 1fr;

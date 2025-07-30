@@ -47,7 +47,7 @@
 - ✅ **Contadores animados** automáticos
 - ✅ **Hover effects universales** en cards
 - ✅ **Progress bar de scroll** con gradiente
-- ✅ **Responsive design:** 82rem (tablet) y 53rem (mobile)
+- ✅ **Responsive design:** 82remm (tablet) y 53rem (mobile)
 - ✅ **Arquitectura CSS modular completa**
 - ✅ **Sistema de variables unificado**
 - ✅ **JavaScript optimizado con ES6+**

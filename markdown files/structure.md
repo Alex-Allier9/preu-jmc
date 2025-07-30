@@ -328,7 +328,7 @@ Recursos | Términos y Condiciones | Política de Privacidad | Reglamento Intern
 - **Código limpio:** Sin duplicaciones, funciones centralizadas
 
 ### **📱 Responsive Design:**
-- **Breakpoints optimizados:** Tablet (82rem), Mobile (53rem)
+- **Breakpoints optimizados:** Tablet (82remm), Mobile (53rem)
 - **Grid behavior:** Media queries centralizadas para todos los grids
 - **Icon scaling:** Tamaños de iconos responsivos automáticos
 - **Typography scaling:** Tipografías adaptativas por dispositivo

@@ -1,0 +1,37 @@
+/* ======================================
+   RESET.CSS - RESET Y BASE STYLES
+   ====================================== */
+
+/* Reset CSS y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--black);
+    overflow-x: hidden;
+}
+
+html {
+    scroll-padding-top: 6px;
+    scroll-behavior: smooth;
+}
+
+/* Main content container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+    position: relative;
+    z-index: 1;
+}
+
+/* Textos generales - UNIVERSAL */
+.section p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+}

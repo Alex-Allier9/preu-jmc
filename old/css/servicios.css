@@ -21,8 +21,10 @@
    ====================================== */
 
 .hero {
-    background-image: url('../media/images/servicios/gaetan-meyer-WemqIKiduMo-unsplash.jpg');
+    background: linear-gradient(rgba(var(--black-rgb), 0.4), rgba(var(--black-rgb), 0.4)),
+        url('../media/images/servicios/gaetan-meyer-WemqIKiduMo-unsplash.jpg') center/cover;
 }
+
 /* ======================================
    CTA SECTION BACKGROUND - ESPECÍFICO DE SERVICIOS
    ====================================== */
@@ -200,70 +202,12 @@
    TABLA MODERNA DE PAGOS - NUEVA
    ====================================== */
 
-
 /* ======================================
-   PROCESS SECTION - ESPECÍFICO DE SERVICIOS
+   RESPONSIVE ESPECÍFICO DE SERVICIOS
    ====================================== */
 
-.process-cards-horizontal {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 0;
-    padding: 0 2rem 2rem 2rem;
-}
-
-/* Process step icon ya está definido en components/icons.css */
-
-.card-content {
-    flex: 1;
-    text-align: left;
-}
-
-.card-content h3 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.6rem;
-    color: var(--primary-dark);
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-}
-
-.card-content p {
-    color: var(--black);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    text-align: justify;
-    font-size: 1.1rem;
-}
-
-.card-meta {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 0.0625rem solid var(--gray-light);
-    font-size: 0.95rem;
-    color: var(--primary);
-    font-weight: 600;
-    flex-wrap: wrap;
-}
-
-.meta-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.meta-item .meta-icon {
-    color: var(--primary);
-}
-
-/* ======================================
-   RESPONSIVE ESPECÍFICO DE SERVICIOS - CORREGIDO
-   ====================================== */
-
-/* Tablet: 848px - 1312px (82rem y 53rem) */
-@media (max-width: 82rem) and (min-width: 53rem) {
+/* Tablet (768px - 1024px) */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
     /* Secciones en tablet */
     .first-section,
     .second-section,
@@ -286,7 +230,7 @@
     }
 }
 
-/* Mobile: Hasta 848px (53rem) */
+/* Mobile (hasta 767px) */
 @media (max-width: 53rem) {
     /* Márgenes móviles específicos */
     .first-section,
@@ -361,4 +305,125 @@
         gap: 1rem;
         flex-wrap: wrap;
     }
+}
+
+/* ======================================
+   MÓVIL PEQUEÑO (hasta 360px)
+   ====================================== */
+
+@media (max-width: 360px) {
+    /* Cards responsive - ya centralizadas en components/cards.css */
+
+    .complementary-card h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Tabla moderna en pantallas muy pequeñas */
+    .table-header {
+        padding: 1rem;
+    }
+    
+    .table-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .table-row {
+        padding: 0.8rem;
+    }
+    
+    .table-icon .material-symbols-rounded {
+        font-size: 1.5rem;
+    }
+    
+    .table-content strong {
+        font-size: 0.95rem;
+    }
+    
+    .table-content span {
+        font-size: 0.85rem;
+    }
+}
+
+/* ======================================
+   PROCESS SECTION - ESPECÍFICO DE SERVICIOS
+   ====================================== */
+
+.process-cards-horizontal {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+}
+
+/* Process step icon ya está definido en components/icons.css */
+
+.card-content {
+    flex: 1;
+    text-align: left;
+}
+
+.card-content h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.card-content p {
+    color: var(--black);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    font-size: 1.1rem;
+}
+
+.card-meta {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 0.0625rem solid var(--gray-light);
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-weight: 600;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.meta-item .meta-icon {
+    color: var(--primary);
+}
+
+/* ======================================
+   TESTIMONIOS LINKS - ESPECÍFICO DE SERVICIOS
+   ====================================== */
+
+.testimonios-link {
+    color: var(--primary);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.testimonios-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.testimonios-link:hover::after {
+    transform: scaleX(1);
 }

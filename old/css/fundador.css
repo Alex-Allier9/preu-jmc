@@ -13,9 +13,36 @@
 
 /* Hero section background - ESPECÍFICO DE FUNDADOR */
 /* Hero Section - Versión corregida */
-/* Hero section background - ESPECÍFICO DE FUNDADOR */
 .hero {
-    background-image: url('../media/images/fundador/ojos-salado_0002.jpg');
+    height: 100vh;
+    background: linear-gradient(rgba(var(--black-rgb), 0.3), rgba(var(--black-rgb), 0.3)),
+        url('../media/images/fundador/ojos-salado_0002.jpg') center/cover;
+    position: relative;
+}
+
+.hero-split-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+    align-items: center;
+}
+
+.hero-text-content {
+    flex: 1;
+    padding-right: 4rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero-image-space {
+    flex: 1;
+    height: 100%;
 }
 
 .hero h1 {
@@ -199,6 +226,124 @@
     color: var(--black);
 }
 
+/* Achievements grid ya está definido en components/grids.css */
+/* Achievement card ya está definido en components/cards.css */
+
+.achievement-icon .material-symbols-rounded {
+    font-size: 3rem;
+    color: var(--primary);
+}
+
+.achievement-content h3 {
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.achievement-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(65, 182, 230, 0.1);
+    border-radius: 10px;
+}
+
+.stat-number {
+    font-family: 'DM Serif Text', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.achievement-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+/* ======================================
+   GALLERY SECTION
+   ====================================== */
+
+.mountaineering-gallery {
+    padding: 0 2rem 2rem 2rem;
+}
+
+.mountaineering-gallery h3 {
+    text-align: center;
+    color: var(--primary-dark);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+/* Gallery grid ya está definido en components/grids.css */
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 1.5rem 1rem 1rem;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.gallery-overlay p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
 /* ======================================
    RESPONSIVE DESIGN
    ====================================== */
@@ -207,19 +352,21 @@
    RESPONSIVE ESPECÍFICO DE FUNDADOR - BASADO EN NOSOTROS
    ====================================== */
 
-/* ======================================
-   RESPONSIVE ESPECÍFICO DE FUNDADOR - CORREGIDO
-   ====================================== */
+/* Tablet (768px - 1024px) - IGUAL QUE NOSOTROS */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    .profile-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
 
-/* Tablet: 848px - 1312px (82rem y 53rem) */
-@media (max-width: 82rem) and (min-width: 53rem) {
     .profile-image {
         width: 150px;
         height: 150px;
         margin: 0 auto;
     }
 
-    /* Profile contact grid centrado en tablet */
+    /* CORREGIDO - Profile contact grid centrado en tablet */
     .profile-contact-items {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -231,41 +378,25 @@
         justify-content: center;
         text-align: center;
     }
-    
-    /* Timeline en tablet */
-    .timeline {
-        max-width: 90%;
-    }
-    
-    .timeline-item {
-        width: 45%;
-    }
-    
-    .timeline-content {
-        padding: 1.2rem;
-    }
 }
 
-/* Mobile: Hasta 848px (53rem) */
+/* Mobile (hasta 767px) - EXACTAMENTE IGUAL QUE NOSOTROS */
 @media (max-width: 53rem) {
-    .hero .hero-text-content h1 {
-        font-size: clamp(1.2rem, 5vw, 2rem);
-        line-height: 1.1;
-        text-align: center;
-    }
-    
-    .hero .hero-subtitle {
-        font-size: clamp(0.85rem, 3vw, 1rem);
-        text-align: center;
-    }
-
     /* Profile header específico */
     .profile-header {
         padding: 6rem 0 3rem;
         min-height: auto;
     }
 
-    /* Profile card mobile: imagen centrada arriba, texto y botones abajo */
+    /* CORREGIDO - Profile card mobile: imagen centrada arriba, texto y botones abajo */
+    .profile-card {
+        padding: 2rem;
+        margin: 0 1rem;
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
     .profile-image {
         width: 120px;
         height: 120px;
@@ -280,7 +411,7 @@
         font-size: 1.2rem;
     }
 
-    /* Profile contact grid en mobile */
+    /* CORREGIDO - Profile contact grid en mobile */
     .profile-contact-items {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -292,7 +423,7 @@
         text-align: center;
     }
 
-    /* Márgenes móviles específicos */
+    /* Márgenes móviles específicos - IGUAL QUE NOSOTROS */
     .profile-header,
     .about-section,
     .experience-section,
@@ -310,7 +441,7 @@
         margin-top: 3rem;
     }
 
-    /* Timeline mobile: convertir a lista simple */
+    /* CORREGIDO - Timeline mobile: convertir a lista simple */
     .timeline {
         max-width: 100%;
         margin: 0;
@@ -350,21 +481,54 @@
         text-align: center;
     }
 
-    /* Hero mobile: mantener distribución 2x1 igual que desktop */
+    /* CORREGIDO - Hero mobile: mantener distribución 2x1 igual que desktop */
     .hero-split-container {
+        /* NO cambiar flex-direction - mantener row */
+        /* NO cambiar justify-content ni text-align */
         padding: 0 1.5rem;
     }
 
     .hero-text-content {
-        padding-right: 2rem;
+        /* NO cambiar padding-right, align-items, ni text-align */
+        /* Mantener exactamente igual que desktop */
+        padding-right: 2rem; /* Reducir solo un poco el espaciado */
     }
 
-    /* Mountaineering gallery */
+    /* Mantener hero-image-space visible pero más pequeño si es necesario */
+
+    /* Content cards responsive - ya centralizado en components/cards.css */
+    .content-wrapper {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    /* Grids responsive - ahora definidos en components/grids.css */
+
     .mountaineering-intro {
         padding: 0 1rem;
     }
 
+    .mountaineering-gallery {
+        padding: 0 1rem 2rem 1rem !important;
+    }
+}
+
+/* Very small mobile */
+@media (max-width: 360px) {
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .achievement-stats {
+        padding: 0.8rem;
+    }
+
     .stat-number {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.1rem;
     }
 }

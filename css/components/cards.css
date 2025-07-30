@@ -514,8 +514,8 @@
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
-/* Tablet - 82re */
-@media (max-width: 82re) {
+/* Tablet - 82rem */
+@media (max-width: 82rem) {
     .profile-contact-items {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -1071,7 +1071,7 @@
    ====================================== */
 
 /* Tablet: 848px - 1312px */
-@media (max-width: 82re) and (min-width: 53rem) {
+@media (max-width: 82rem) and (min-width: 53rem) {
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--gap-medium);

@@ -2,14 +2,14 @@
    404.CSS - ESTILOS ESPECÍFICOS DE LA PÁGINA 404
    ====================================== */
 
-/* Sección principal 404 - USANDO GRID-2-2-2 */
-.error-404.grid-2-2-2 {
+/* Sección principal 404 */
+.error-404 {
     height: 100vh;
-    background: linear-gradient(rgba(var(--accent-rgb), 0.3), rgba(var(--accent-rgb), 0.3)),
+    background: linear-gradient(rgba(244, 218, 64, 0.3), rgba(244, 218, 64, 0.3)),
         url('../media/images/404/daniel-hohe-1VgmgXW3Yuk-unsplash.jpg') center/cover;
+    /* Grid definido en components/grids.css */
     position: relative;
     overflow: hidden;
-    align-items: center; /* Centrar verticalmente el contenido */
 }
 
 /* Contenido del error */
@@ -18,7 +18,7 @@
     padding: 2rem;
     z-index: 2;
     text-align: center;
-    width: 100%;
+    justify-self: center;
 }
 
 /* Efecto Glitch para el número 404 con italic */
@@ -297,11 +297,19 @@
 }
 
 /* ======================================
-   RESPONSIVE ESPECÍFICO DE 404 - ACTUALIZADO
+   ESTILOS ESPECÍFICOS DE LA PÁGINA 404
    ====================================== */
 
-/* Tablet: 848px - 1312px */
-@media (max-width: 82rem) and (min-width: 53rem) {
+/* ======================================
+   RESPONSIVE ESPECÍFICO DE 404
+   ====================================== */
+
+/* Tablet */
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
+    .error-404 {
+        grid-template-columns: 1fr 1fr; /* Mantener grid 2x1 */
+    }
+    
     .error-content {
         padding: 1.5rem;
     }
@@ -317,22 +325,20 @@
     }
 }
 
-/* Mobile: Hasta 848px */
+/* Mobile */
 @media (max-width: 53rem) {
-    /* OVERRIDE: Cambiar grid-2-2-2 a flex en mobile para centrar mejor */
-    .error-404.grid-2-2-2 {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
+    .error-404 {
         height: 100vh;
         background-position: center center;
         background-size: cover;
+        display: flex; /* Cambiar a flex en mobile */
+        align-items: center;
+        justify-content: center;
     }
     
     .error-content {
         padding: 1rem;
-        width: 100%;
-        max-width: 90%;
+        justify-self: auto; /* Reset grid properties */
     }
     
     .glitch {
@@ -357,6 +363,35 @@
     
     .glitch {
         animation-duration: 5s;
+    }
+}
+
+/* Mobile muy pequeño */
+@media (max-width: 360px) {
+    .error-content {
+        padding: 0.5rem;
+    }
+    
+    .glitch {
+        font-size: clamp(6rem, 35vw, 10rem);
+    }
+    
+    .error-message {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    /* Animaciones más suaves en pantallas muy pequeñas */
+    .line:nth-child(n) {
+        animation-duration: 5000ms, 1000ms, 5000ms;
+    }
+    
+    .crazy-text {
+        animation-duration: 4s;
+    }
+    
+    .glitch {
+        animation-duration: 6s;
     }
 }
 
@@ -510,6 +545,10 @@
     z-index: -1;
     pointer-events: none;
 }
+
+/* ===== FADE-IN ANIMATIONS - ESPECÍFICO 404 ===== */
+/* Los estilos del botón primary se definen completamente en components/buttons.css */
+/* Sin modificaciones específicas para 404 */
 
 /* Asegurar que el footer no se superponga */
 .error-404 + .footer {

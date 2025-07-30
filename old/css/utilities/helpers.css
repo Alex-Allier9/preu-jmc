@@ -1,0 +1,633 @@
+/* ======================================
+   HELPERS.CSS - Clases Utilitarias
+   ====================================== */
+
+/* ======================================
+   NUEVO SISTEMA UNIVERSAL DE ENLACES
+   ====================================== */
+
+/* ENLACE BASE UNIVERSAL */
+.link, 
+.universal-link,
+.inline-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: var(--transition-color);
+    display: inline-block;
+}
+
+/* Estado visitado - Primary dark */
+.link:visited,
+.universal-link:visited,
+.inline-link:visited {
+    color: var(--primary-dark);
+}
+
+/* Estado hover - Mantener color primario */
+.link:hover,
+.universal-link:hover,
+.inline-link:hover {
+    color: var(--primary);
+}
+
+/* Línea amarilla universal - Mismo estilo que el header */
+.link::after,
+.universal-link::after,
+.inline-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+/* Activar línea en hover */
+.link:hover::after,
+.universal-link:hover::after,
+.inline-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* ENLACE PARA TEXTO CORRIDO */
+.link-text {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500; /* Menos peso para texto corrido */
+    position: relative;
+    transition: var(--transition-color);
+    display: inline;
+}
+
+.link-text:visited {
+    color: var(--primary-dark);
+}
+
+.link-text:hover {
+    color: var(--primary);
+}
+
+.link-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+.link-text:hover::after {
+    transform: scaleX(1);
+}
+
+/* ENLACE DESTACADO */
+.link-featured {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    position: relative;
+    transition: var(--transition-color);
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(var(--primary-rgb), 0.1);
+}
+
+.link-featured:visited {
+    color: var(--primary-dark);
+    background: rgba(var(--primary-dark), 0.1);
+}
+
+.link-featured:hover {
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(var(--primary-rgb), 0.2);
+}
+
+.link-featured::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.link-featured:hover::after {
+    width: 90%;
+}
+
+/* ENLACE PARA FONDOS OSCUROS */
+.link-dark-bg {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: var(--transition-color);
+    display: inline-block;
+}
+
+.link-dark-bg:visited {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.link-dark-bg:hover {
+    color: var(--accent);
+}
+
+.link-dark-bg::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+.link-dark-bg:hover::after {
+    transform: scaleX(1);
+}
+
+/* ======================================
+   TEXT UTILITIES
+   ====================================== */
+
+/* Text utilities */
+.text-center { 
+    text-align: center; 
+}
+
+.text-left { 
+    text-align: left; 
+}
+
+.text-right { 
+    text-align: right; 
+}
+
+.text-justify { 
+    text-align: justify; 
+}
+
+/* Font weight utilities */
+.fw-light { 
+    font-weight: 300; 
+}
+
+.fw-normal { 
+    font-weight: 400; 
+}
+
+.fw-medium { 
+    font-weight: 500; 
+}
+
+.fw-semibold { 
+    font-weight: 600; 
+}
+
+.fw-bold { 
+    font-weight: 700; 
+}
+
+/* Margin utilities */
+.m-0 { margin: 0; }
+.m-1 { margin: 1rem; }
+.m-2 { margin: 2rem; }
+.m-3 { margin: 3rem; }
+.m-4 { margin: 4rem; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 3rem; }
+.mt-4 { margin-top: 4rem; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--margin-bottom-small); }
+.mb-2 { margin-bottom: var(--margin-bottom-standard); }
+.mb-3 { margin-bottom: var(--margin-bottom-large); }
+.mb-4 { margin-bottom: 4rem; }
+
+.ml-0 { margin-left: 0; }
+.ml-1 { margin-left: 1rem; }
+.ml-2 { margin-left: 2rem; }
+.ml-3 { margin-left: 3rem; }
+
+.mr-0 { margin-right: 0; }
+.mr-1 { margin-right: 1rem; }
+.mr-2 { margin-right: 2rem; }
+.mr-3 { margin-right: 3rem; }
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Padding utilities */
+.p-0 { padding: 0; }
+.p-1 { padding: 1rem; }
+.p-2 { padding: 2rem; }
+.p-3 { padding: 3rem; }
+.p-4 { padding: 4rem; }
+
+.pt-0 { padding-top: 0; }
+.pt-1 { padding-top: 1rem; }
+.pt-2 { padding-top: 2rem; }
+.pt-3 { padding-top: 3rem; }
+
+.pb-0 { padding-bottom: 0; }
+.pb-1 { padding-bottom: 1rem; }
+.pb-2 { padding-bottom: 2rem; }
+.pb-3 { padding-bottom: 3rem; }
+
+/* Display utilities */
+.d-none { 
+    display: none; 
+}
+
+.d-block { 
+    display: block; 
+}
+
+.d-inline { 
+    display: inline; 
+}
+
+.d-inline-block { 
+    display: inline-block; 
+}
+
+.d-flex { 
+    display: flex; 
+}
+
+.d-grid { 
+    display: grid; 
+}
+
+/* Flexbox utilities */
+.flex-row { 
+    flex-direction: row; 
+}
+
+.flex-column { 
+    flex-direction: column; 
+}
+
+.flex-wrap { 
+    flex-wrap: wrap; 
+}
+
+.flex-nowrap { 
+    flex-wrap: nowrap; 
+}
+
+.justify-start { 
+    justify-content: flex-start; 
+}
+
+.justify-center { 
+    justify-content: center; 
+}
+
+.justify-end { 
+    justify-content: flex-end; 
+}
+
+.justify-between { 
+    justify-content: space-between; 
+}
+
+.justify-around { 
+    justify-content: space-around; 
+}
+
+.align-start { 
+    align-items: flex-start; 
+}
+
+.align-center { 
+    align-items: center; 
+}
+
+.align-end { 
+    align-items: flex-end; 
+}
+
+.align-stretch { 
+    align-items: stretch; 
+}
+
+.flex-1 { 
+    flex: 1; 
+}
+
+.flex-auto { 
+    flex: auto; 
+}
+
+.flex-none { 
+    flex: none; 
+}
+
+/* Position utilities */
+.position-relative { 
+    position: relative; 
+}
+
+.position-absolute { 
+    position: absolute; 
+}
+
+.position-fixed { 
+    position: fixed; 
+}
+
+.position-sticky { 
+    position: sticky; 
+}
+
+/* Width utilities */
+.w-25 { width: 25%; }
+.w-50 { width: 50%; }
+.w-75 { width: 75%; }
+.w-100 { width: 100%; }
+.w-auto { width: auto; }
+
+/* Height utilities */
+.h-25 { height: 25%; }
+.h-50 { height: 50%; }
+.h-75 { height: 75%; }
+.h-100 { height: 100%; }
+.h-auto { height: auto; }
+
+/* Overflow utilities */
+.overflow-hidden { 
+    overflow: hidden; 
+}
+
+.overflow-visible { 
+    overflow: visible; 
+}
+
+.overflow-scroll { 
+    overflow: scroll; 
+}
+
+.overflow-auto { 
+    overflow: auto; 
+}
+
+/* Z-index utilities */
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+/* Border utilities */
+.border-0 { 
+    border: none; 
+}
+
+.border-1 { 
+    border: 1px solid var(--gray-light); 
+}
+
+.border-2 { 
+    border: 2px solid var(--gray-light); 
+}
+
+.border-radius-sm { 
+    border-radius: 0.5rem; 
+}
+
+.border-radius-lg { 
+    border-radius: 1.5rem; 
+}
+
+.border-radius-full { 
+    border-radius: 50%; 
+}
+
+/* Shadow utilities */
+.shadow-none { 
+    box-shadow: none; 
+}
+
+.shadow-sm { 
+    box-shadow: 0 2px 10px rgba(var(--black-rgb), 0.05); 
+}
+
+.shadow { 
+    box-shadow: var(--shadow-light); 
+}
+
+.shadow-lg { 
+    box-shadow: var(--shadow-medium); 
+}
+
+.shadow-xl { 
+    box-shadow: 0 25px 50px rgba(var(--black-rgb), 0.25); 
+}
+
+/* Color utilities */
+.text-primary { 
+    color: var(--primary); 
+}
+
+.text-secondary { 
+    color: var(--primary-dark); 
+}
+
+.text-accent { 
+    color: var(--accent); 
+}
+
+.text-dark { 
+    color: var(--black); 
+}
+
+.text-white { 
+    color: white; 
+}
+
+.text-muted { 
+    color: var(--gray-light); 
+}
+
+.bg-primary { 
+    background-color: var(--primary); 
+}
+
+.bg-secondary { 
+    background-color: var(--primary-dark); 
+}
+
+.bg-accent { 
+    background-color: var(--accent); 
+}
+
+.bg-dark { 
+    background-color: var(--black); 
+}
+
+.bg-white { 
+    background-color: white; 
+}
+
+.bg-transparent { 
+    background-color: transparent; 
+}
+
+/* Visibility utilities */
+.visible { 
+    visibility: visible; 
+}
+
+.invisible { 
+    visibility: hidden; 
+}
+
+/* Screen reader utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ======================================
+   GLASSMORPHISM UTILITIES
+   ====================================== */
+
+/* Glass background utilities */
+.glass-bg {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-bg-light {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.glass-bg-strong {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(22px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.glass-bg-dark {
+    background: rgba(var(--black-rgb), 0.3);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Blur utilities */
+.blur-light {
+    backdrop-filter: blur(8px);
+}
+
+.blur-medium {
+    backdrop-filter: blur(12px);
+}
+
+.blur-strong {
+    backdrop-filter: blur(20px);
+}
+
+/* Glass borders */
+.glass-border {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-border-light {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-border-strong {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Transparency utilities */
+.transparent-10 { background: rgba(255, 255, 255, 0.1); }
+.transparent-20 { background: rgba(255, 255, 255, 0.2); }
+.transparent-30 { background: rgba(255, 255, 255, 0.3); }
+.transparent-40 { background: rgba(255, 255, 255, 0.4); }
+.transparent-50 { background: rgba(255, 255, 255, 0.5); }
+.transparent-60 { background: rgba(255, 255, 255, 0.6); }
+.transparent-70 { background: rgba(255, 255, 255, 0.7); }
+.transparent-80 { background: rgba(255, 255, 255, 0.8); }
+.transparent-90 { background: rgba(255, 255, 255, 0.9); }
+
+.transparent-dark-10 { background: rgba(var(--black-rgb), 0.1); }
+.transparent-dark-20 { background: rgba(var(--black-rgb), 0.2); }
+.transparent-dark-30 { background: rgba(var(--black-rgb), 0.3); }
+.transparent-dark-40 { background: rgba(var(--black-rgb), 0.4); }
+.transparent-dark-50 { background: rgba(var(--black-rgb), 0.5); }
+.transparent-dark-60 { background: rgba(var(--black-rgb), 0.6); }
+.transparent-dark-70 { background: rgba(var(--black-rgb), 0.7); }
+.transparent-dark-80 { background: rgba(var(--black-rgb), 0.8); }
+.transparent-dark-90 { background: rgba(var(--black-rgb), 0.9); }
+
+/* ======================================
+   GUÍA DE USO DEL SISTEMA DE ENLACES
+   ====================================== */
+
+/*
+GUÍA DE USO:
+
+1. ENLACE ESTÁNDAR (.link):
+   - Para enlaces generales en contenido
+   - Peso: 600 (semibold)
+   - Uso: <a href="#" class="link">Enlace normal</a>
+
+2. ENLACE EN TEXTO (.link-text):
+   - Para enlaces dentro de párrafos
+   - Peso: 500 (medium) - menos prominente
+   - Uso: Los estudiantes pueden ver más en <a href="#" class="link-text">nuestra sección</a> de testimonios.
+
+3. ENLACE DESTACADO (.link-featured):
+   - Para enlaces importantes con background
+   - Peso: 700 (bold) + background sutil
+   - Uso: <a href="#" class="link-featured">Ver todos los testimonios</a>
+
+4. ENLACE CLARO (.link-dark-bg):
+   - Para fondos oscuros
+   - Color: blanco -> accent en hover
+   - Uso: En footers y secciones oscuras
+
+COLORES UNIFICADOS:
+- Normal: var(--primary) (#41B6E6)
+- Visitado: var(--primary-dark) (#165C7D)
+- Hover: var(--primary) (#41B6E6)
+- Línea: var(--accent) (#F4DA40)
+
+NOTA: El footer mantiene su propio sistema especial de enlaces (.footer-nav-link, .footer-author)
+*/

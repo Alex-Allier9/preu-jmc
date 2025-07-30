@@ -227,7 +227,7 @@
    ====================================== */
 
 /* Tablet */
-@media (max-width: 82re) {
+@media (max-width: 82rem) {
     /* Contenedores principales */
     .main-icon-container {
         height: 8.75rem;

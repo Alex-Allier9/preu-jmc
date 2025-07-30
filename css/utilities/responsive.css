@@ -4,12 +4,12 @@
 
 /* ======================================
    BREAKPOINTS CORRECTOS:
-   --tablet: 82rem (1312px)
+   --tablet: 82remm (1312px)
    --mobile: 53rem (848px)
    ====================================== */
 
 /* Tablet: 848px - 1312px */
-@media (max-width: 82re) and (min-width: 53rem) {
+@media (max-width: 82rem) and (min-width: 53rem) {
     /* ===== GENERAL LAYOUT ===== */
     .container {
         padding: 0 1.5rem;

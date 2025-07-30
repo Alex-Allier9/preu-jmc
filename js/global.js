@@ -976,7 +976,7 @@ function handleUniversalStatsGridResize() {
             : grid.querySelectorAll('.stat-card');
 
         // Vista tablet - asegurar exactamente 4 cards (2x2)
-        if (windowWidth <= 1312 && windowWidth > 848) { // 82re y 53rem
+        if (windowWidth <= 1312 && windowWidth > 848) { // 82rem y 53rem
             cards.forEach((card, index) => {
                 card.style.display = index < 4 ? 'flex' : 'none';
             });

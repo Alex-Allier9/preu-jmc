@@ -201,7 +201,7 @@
 /* ===== RESPONSIVE BUTTONS ===== */
 
 /* Tablet */
-@media (max-width: 82rem) and (min-width: 53rem) {
+@media (max-width: 82rem) and (min-width: 53.0625rem) {
     .btn-primary,
     .btn-primary-dark,
     .btn-primary-outlined,
