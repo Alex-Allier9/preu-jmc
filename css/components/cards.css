@@ -337,6 +337,38 @@
    7. GLASS CARDS
    ====================================== */
 
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--blur-standard);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    text-align: center;
+    position: relative;
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    box-shadow: var(--shadow-light);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.glass-card h3 {
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.glass-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: white;
+}
+
 .glass-card-light {
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(18px);
@@ -514,40 +546,36 @@
    ====================================== */
 
 .quote-card {
-    /* Base universal */
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--blur-standard);
     border-radius: var(--border-radius-standard);
     box-shadow: var(--shadow-light);
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-    position: relative;
-    /* Específico */
     padding: var(--card-padding-large);
     text-align: center;
-    border-left: 5px solid var(--accent);
-}
-
-.quote-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.95);
+    margin: var(--margin-bottom-large) auto;
+    max-width: 600px;
+    transition: var(--transition-standard);
+    cursor: pointer;
+    position: relative;
 }
 
 .quote-text {
-    font-size: 1.4rem;
+    font-family: var(--font-body);
     font-style: italic;
-    line-height: 1.5;
-    color: var(--primary-dark);
-    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: var(--gap-medium);
+    line-height: 1.6;
     position: relative;
     z-index: 2;
+    color: white;
 }
 
 .quote-text::before,
 .quote-text::after {
     content: '"';
-    font-size: 6rem;
+    font-family: var(--font-title);
+    font-size: 4rem;
     color: var(--accent);
     position: absolute;
     opacity: 0.6;
@@ -577,6 +605,11 @@
     position: relative;
     z-index: 2;
     text-align: right;
+}
+
+.quote-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
 }
 
 /* ======================================
@@ -820,5 +853,10 @@
         font-size: 1.3rem;
         text-align: center;
         margin-bottom: 1rem;
+    }
+
+    .quote-text::before,
+    .quote-text::after {
+        font-size: 3rem;
     }
 }

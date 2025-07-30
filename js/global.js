@@ -115,19 +115,76 @@ function animateValue(element, start, end, duration, config = {}) {
     requestAnimationFrame(step);
 }
 
-// Contador universal automático (DRY)
+// Counter animation universal - MANEJA NÚMEROS Y TIEMPOS
 function animateCountersUniversal() {
-    const counters = document.querySelectorAll('[data-count]');
-    
+    const counters = document.querySelectorAll('.stat-number');
+
     counters.forEach(counter => {
-        const targetValue = parseInt(counter.dataset.count);
-        const isTime = counter.dataset.time === 'true';
-        const originalText = counter.textContent;
-        
-        animateValue(counter, 0, targetValue, 2000, {
-            isTime,
-            originalText
-        });
+        const target = counter.textContent.trim();
+
+        // 1. VERIFICAR SI ES UN FORMATO DE TIEMPO
+        const timeMinutes = parseTimeText(target);
+        if (timeMinutes !== null) {
+            // Es un tiempo - usar animación de tiempo
+            counter.textContent = '0min';
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animación más lenta para tiempos (2.5 segundos)
+                        animateTimeValue(counter, timeMinutes, 2500, target);
+                        counterObserver.unobserve(counter);
+                    }
+                });
+            });
+
+            counterObserver.observe(counter);
+            return;
+        }
+
+        // 2. VERIFICAR SI ES UN NÚMERO PURO
+        const cleanNumber = target.replace('+', '').replace('%', '');
+        if (!isNaN(cleanNumber) && cleanNumber !== '') {
+            // Es un número - usar animación normal
+            counter.textContent = '0';
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateValue(counter, 0, parseInt(cleanNumber), 1600, target);
+                        counterObserver.unobserve(counter);
+                    }
+                });
+            });
+
+            counterObserver.observe(counter);
+            return;
+        }
+
+        // 3. VERIFICAR SI EMPIEZA CON NÚMERO (para futuros casos como "3 Cumbres")
+        const numberMatch = target.match(/^(\d+)/);
+        if (numberMatch) {
+            const numberPart = parseInt(numberMatch[1]);
+            if (numberPart > 0) {
+                const originalText = target;
+                counter.textContent = originalText.replace(/^\d+/, '0');
+
+                const counterObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateValueWithText(counter, 0, numberPart, 1600, originalText);
+                            counterObserver.unobserve(counter);
+                        }
+                    });
+                });
+
+                counterObserver.observe(counter);
+                return;
+            }
+        }
+
+        // 4. TEXTO PURO - No animar (placeholders como "XX")
+        // Se queda como está
     });
 }
 
@@ -290,65 +347,154 @@ function initSmoothScroll() {
 // SISTEMA BÁSICO DE GALERÍA
 // ======================================
 
-// Lightbox simple y eficiente (DRY)
-function initBasicLightbox() {
-    const galleryCards = document.querySelectorAll('.gallery-card');
-    if (galleryCards.length === 0) return;
+// Gallery Lightbox functionality
+function initGalleryLightbox() {
+    const galleryItems = document.querySelectorAll('.gallery-card');
 
-    // Crear lightbox una sola vez
+    if (galleryItems.length === 0) return;
+
+    // Create lightbox element
     const lightbox = document.createElement('div');
-    lightbox.className = 'lightbox-overlay';
+    lightbox.className = 'lightbox';
     lightbox.innerHTML = `
         <div class="lightbox-content">
-            <span class="lightbox-close">&times;</span>
-            <img class="lightbox-image" src="" alt="">
-            <div class="lightbox-info">
-                <h3 class="lightbox-title"></h3>
+            <span class="close-lightbox">&times;</span>
+            <img src="" alt="" class="lightbox-img">
+            <div class="lightbox-caption">
+                <h4 class="lightbox-title"></h4>
                 <p class="lightbox-description"></p>
             </div>
         </div>
     `;
     document.body.appendChild(lightbox);
 
-    const lightboxImg = lightbox.querySelector('.lightbox-image');
-    const lightboxTitle = lightbox.querySelector('.lightbox-title');
-    const lightboxDesc = lightbox.querySelector('.lightbox-description');
-    const closeBtn = lightbox.querySelector('.lightbox-close');
-
-    // Función para abrir lightbox
-    const openLightbox = (card) => {
-        const img = card.querySelector('.gallery-image');
-        const title = card.querySelector('.gallery-title')?.textContent || '';
-        const desc = card.querySelector('.gallery-description')?.textContent || '';
-
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightboxTitle.textContent = title;
-        lightboxDesc.textContent = desc;
+    // Lightbox styles
+    const lightboxStyles = `
+        <style>
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
         
-        lightbox.classList.add('active');
+        .lightbox-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            transition: color 0.3s ease;
+        }
+        
+        .close-lightbox:hover {
+            color: var(--accent);
+        }
+        
+        .lightbox-caption {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+        }
+        
+        .lightbox-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .lightbox-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .lightbox-content {
+                padding: 10px;
+            }
+            
+            .close-lightbox {
+                font-size: 30px;
+            }
+            
+            .lightbox-img {
+                max-height: 60vh;
+            }
+        }
+        </style>
+    `;
+    document.head.insertAdjacentHTML('beforeend', lightboxStyles);
+
+    // Function to open lightbox
+    function openLightbox(item) {
+        const img = item.querySelector('img');
+        const overlay = item.querySelector('.gallery-overlay');
+
+        lightbox.querySelector('.lightbox-img').src = img.src;
+        lightbox.querySelector('.lightbox-img').alt = img.alt;
+
+        if (overlay) {
+            lightbox.querySelector('.lightbox-title').textContent = overlay.querySelector('h4').textContent;
+            lightbox.querySelector('.lightbox-description').textContent = overlay.querySelector('p').textContent;
+        }
+
+        lightbox.style.display = 'flex';
         document.body.style.overflow = 'hidden';
-    };
+    }
 
-    // Función para cerrar lightbox
-    const closeLightbox = () => {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    };
+    // Function to close lightbox
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 
-    // Event listeners
-    galleryCards.forEach(card => {
-        card.addEventListener('click', () => openLightbox(card));
+    // Add click listeners to gallery items
+    galleryItems.forEach((item) => {
+        item.addEventListener('click', () => openLightbox(item));
     });
 
-    closeBtn.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
+    // Lightbox controls
+    lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
+
+    // Close on background click
+    lightbox.addEventListener('click', function (e) {
+        if (e.target === this) {
+            closeLightbox();
+        }
     });
 
-    // Teclado
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+    // Close on escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.style.display === 'flex') {
             closeLightbox();
         }
     });
@@ -377,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         addUniversalCardEffects();
         addCardRevealAnimation();
-        initBasicLightbox();
+        initGalleryLightbox();
     }, 300);
 });
 

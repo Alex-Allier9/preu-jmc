@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/fundador.css">
 </head>
 
-<body>
+<body class="font-optimized">
     <!-- Header -->
     <header class="header" id="header">
         <nav class="nav-container">
@@ -53,14 +53,13 @@
         </div>
     </section>
 
-
     <!-- Background wrapper -->
     <div class="background-wrapper-primary">
         <!-- Mountain Background Image -->
         <div class="mountain-background"></div>
 
         <!-- Profile Header Section -->
-        <section class="section profile-header">
+        <section class="section glass-section profile-header" aria-label="Información personal de José Manuel Cartes">
             <div class="container">
                 <div class="grid-profile fade-in">
                     <div class="profile-image-container">
@@ -68,19 +67,14 @@
                             style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-light);">
                     </div>
 
-                    <!-- Contenido completo (70%) -->
+                    <!-- Contenido completo (80%) -->
                     <div class="profile-content-container">
                         <!-- Información del perfil -->
-                        <div class="profile-info">
-                            <h1
-                                style="font-family: var(--font-title); font-size: clamp(2.5rem, 4vw, 3.5rem); color: var(--primary-dark); margin-bottom: 0.5rem; letter-spacing: var(--title-letter-spacing); line-height: 1.2;">
-                                José Manuel Cartes Urzúa</h1>
-                            <h2
-                                style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">
-                                Fundador Preuniversitario JMC</h2>
-                            <p style="font-size: 1.1rem; color: var(--black); margin-bottom: 2rem; opacity: 0.8;">
-                                Ingeniero Civil UC • Profesor • Montañista</p>
-                        </div>
+                        <header class="profile-info" role="banner" aria-label="Información de José Manuel Cartes">
+                            <h1 class="profile-main-title">José Manuel Cartes Urzúa</h1>
+                            <h2 class="profile-subtitle">Fundador Preuniversitario JMC</h2>
+                            <p class="profile-description">Ingeniero Civil UC • Profesor • Montañista</p>
+                        </header>
 
                         <!-- Botones de contacto usando grid global 3-1-1 -->
                         <div class="grid-3-1-1">
@@ -129,81 +123,81 @@
         </section>
 
         <!-- About Section -->
-        <section class="section about-section">
+        <section class="section glass-section about-section" aria-label="Biografía personal">
             <div class="container">
                 <h2 class="section-title fade-in">Sobre mí</h2>
                 <div class="section-subtitle fade-in"></div>
-                <div class="universal-card extensive fade-in">
-                    <h3>Mi Historia</h3>
-                    <p>Mi nombre es José Manuel Cartes Urzúa, soy profesor, ingeniero Civil UC y montañista, además
+                <article class="universal-card extensive fade-in" role="article">
+                    <h3 class="card-title">Mi Historia</h3>
+                    <p class="card-text">Mi nombre es José Manuel Cartes Urzúa, soy profesor, ingeniero Civil UC y montañista, además
                         de un ser humano creyente en Dios. Cuento con más de 18 años de experiencia en aula como
                         profesor del Colegio Epullay Montessori y de mi preuniversitario.</p>
 
-                    <p>Dentro de mis años en el mundo de la educación, he sido testigo de que el ser humano tiene un
+                    <p class="card-text">Dentro de mis años en el mundo de la educación, he sido testigo de que el ser humano tiene un
                         potencial infinito para crecer, aprender y contribuir a los demás. Cada persona, si
                         desarrolla con perseverancia y amor sus talentos únicos, puede construir un proyecto de vida
                         realmente valioso y aportar en la creación de un mundo mejor.</p>
 
-                    <p>Mi compromiso es dar lo mejor que tengo como persona y como profesional, para que cada
+                    <p class="card-text">Mi compromiso es dar lo mejor que tengo como persona y como profesional, para que cada
                         estudiante que trabaje conmigo desarrolle su máximo potencial en el área matemática, pero
                         también potencie su disciplina, autoconfianza y valores que le permitan convertirse en un
                         mejor ser humano.</p>
-                </div>
+                </article>
             </div>
         </section>
 
         <!-- Experience Timeline -->
-        <section class="section experience-section">
+        <section class="section glass-section experience-section" aria-label="Trayectoria profesional">
             <div class="container">
                 <h2 class="section-title fade-in">Trayectoria Profesional</h2>
                 <div class="section-subtitle fade-in"></div>
 
-                <div class="timeline">
-                    <div class="timeline-item fade-in">
-                        <div class="timeline-year">2007 - Presente</div>
+                <section class="timeline" aria-label="Cronología profesional">
+                    <article class="timeline-item fade-in" role="article">
+                        <time class="timeline-year" datetime="2007">2007 - Presente</time>
                         <div class="timeline-content">
-                            <h3>Profesor Colegio Epullay Montessori</h3>
-                            <p>Docencia en matemáticas con metodología Montessori para enseñanza media. Desarrollo de
+                            <h3 class="card-title">Profesor Colegio Epullay Montessori</h3>
+                            <p class="card-text">Docencia en matemáticas con metodología Montessori para enseñanza media. Desarrollo de
                                 habilidades matemáticas y formación integral de estudiantes.</p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="timeline-item fade-in">
-                        <div class="timeline-year">2009</div>
+                    <article class="timeline-item fade-in" role="article">
+                        <time class="timeline-year" datetime="2009">2009</time>
                         <div class="timeline-content">
-                            <h3>Publicación "Matemáticas Enseñanza Media"</h3>
-                            <p>Creación y publicación de texto de estudio propio, desarrollado específicamente para
+                            <h3 class="card-title">Publicación "Matemáticas Enseñanza Media"</h3>
+                            <p class="card-text">Creación y publicación de texto de estudio propio, desarrollado específicamente para
                                 estudiantes chilenos de enseñanza media.</p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="timeline-item fade-in">
-                        <div class="timeline-year">2015 - Presente</div>
+                    <article class="timeline-item fade-in" role="article">
+                        <time class="timeline-year" datetime="2015">2015 - Presente</time>
                         <div class="timeline-content">
-                            <h3>Fundador Preuniversitario JMC</h3>
-                            <p>Creación y dirección del preuniversitario personalizado con metodología propia enfocada
+                            <h3 class="card-title">Fundador Preuniversitario JMC</h3>
+                            <p class="card-text">Creación y dirección del preuniversitario personalizado con metodología propia enfocada
                                 en grupos pequeños y atención individualizada.</p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="timeline-item fade-in">
-                        <div class="timeline-year">2018 - 2022</div>
+                    <article class="timeline-item fade-in" role="article">
+                        <time class="timeline-year" datetime="2018">2018 - 2022</time>
                         <div class="timeline-content">
-                            <h3>Presidente Fundación CEN</h3>
-                            <p>Liderazgo en fundación educacional comprometida con la excelencia académica y desarrollo
+                            <h3 class="card-title">Presidente Fundación CEN</h3>
+                            <p class="card-text">Liderazgo en fundación educacional comprometida con la excelencia académica y desarrollo
                                 de políticas educativas.</p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="timeline-item fade-in">
-                        <div class="timeline-year">2020 - Presente</div>
+                    <article class="timeline-item fade-in" role="article">
+                        <time class="timeline-year" datetime="2020">2020 - Presente</time>
                         <div class="timeline-content">
-                            <h3>Presidente Club Deportivo Viverunning</h3>
-                            <p>Promoción del deporte y vida saludable a través del running y montañismo en la comunidad.
+                            <h3 class="card-title">Presidente Club Deportivo Viverunning</h3>
+                            <p class="card-text">Promoción del deporte y vida saludable a través del running y montañismo en la comunidad.
                             </p>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                </section>
             </div>
         </section>
     </div>
@@ -214,51 +208,51 @@
         <div class="secondary-background"></div>
 
         <!-- Philosophy Section -->
-        <section class="section primary-gradient-section">
+        <section class="section gradient-section primary-gradient-section" aria-label="Filosofía educativa">
             <div class="container">
                 <h2 class="section-title fade-in">Filosofía Educativa</h2>
                 <div class="section-subtitle fade-in"></div>
 
                 <div class="grid-3-2-1">
-                    <div class="glass-card fade-in">
+                    <article class="glass-card fade-in" role="article">
                         <div class="card-icon">
-                            <span class="material-symbols-rounded">self_improvement</span>
+                            <span class="material-symbols-rounded icon-large">self_improvement</span>
                         </div>
-                        <h3>Potencial Infinito</h3>
-                        <p>Cada ser humano cuenta con un potencial enorme para crecer, aprender y contribuir a los demás
+                        <h3 class="card-title">Potencial Infinito</h3>
+                        <p class="card-text">Cada ser humano cuenta con un potencial enorme para crecer, aprender y contribuir a los demás
                             cuando desarrolla sus talentos únicos.</p>
-                    </div>
+                    </article>
 
-                    <div class="glass-card fade-in">
+                    <article class="glass-card fade-in" role="article">
                         <div class="card-icon">
-                            <span class="material-symbols-rounded">volunteer_activism</span>
+                            <span class="material-symbols-rounded icon-large">volunteer_activism</span>
                         </div>
-                        <h3>Formación Integral</h3>
-                        <p>Desarrollo no solo de habilidades académicas, sino también de disciplina, autoconfianza y
+                        <h3 class="card-title">Formación Integral</h3>
+                        <p class="card-text">Desarrollo no solo de habilidades académicas, sino también de disciplina, autoconfianza y
                             valores
                             para ser mejores seres humanos.</p>
-                    </div>
+                    </article>
 
-                    <div class="glass-card fade-in">
+                    <article class="glass-card fade-in" role="article">
                         <div class="card-icon">
-                            <span class="material-symbols-rounded">star_shine</span>
+                            <span class="material-symbols-rounded icon-large">star_shine</span>
                         </div>
-                        <h3>Proyecto de Vida</h3>
-                        <p>Acompañamiento en la construcción de un proyecto de vida valioso que permita aportar
+                        <h3 class="card-title">Proyecto de Vida</h3>
+                        <p class="card-text">Acompañamiento en la construcción de un proyecto de vida valioso que permita aportar
                             positivamente al mundo.</p>
-                    </div>
+                    </article>
                 </div>
 
-                <div class="quote-card fade-in">
+                <blockquote class="quote-card fade-in" role="quote" aria-label="Cita de María Montessori">
                     <p class="quote-text">"El niño, guiado por un maestro interior, trabaja infatigablemente con alegría
                         para construir al hombre."</p>
-                    <p class="quote-author">- María Montessori</p>
-                </div>
+                    <cite class="quote-author">- María Montessori</cite>
+                </blockquote>
             </div>
         </section>
 
         <!-- Mountaineering Section -->
-        <section class="section mountaineering-section">
+        <section class="section glass-section mountaineering-section" aria-label="Experiencia montañística">
             <div class="container">
                 <h2 class="section-title fade-in">Pasión por el Montañismo</h2>
                 <div class="section-subtitle fade-in"></div>
@@ -272,46 +266,46 @@
 
                 <div class="grid-3-2-1">
                     <!-- Cerro El Plomo -->
-                    <div class="achievement-card fade-in">
-                        <div class="achievement-icon">
-                            <span class="material-symbols-rounded">mountain_flag</span>
+                    <article class="achievement-card fade-in" role="article" aria-label="Logro: Cerro El Plomo">
+                        <div class="achievement-icon card-icon">
+                            <span class="material-symbols-rounded icon-large">mountain_flag</span>
                         </div>
-                        <h3 class="achievement-title">Cerro El Plomo</h3>
+                        <h3 class="achievement-title card-title">Cerro El Plomo</h3>
                         <div class="achievement-stats">
-                            <span class="stat-number">XX</span>
+                            <span class="stat-number" data-count="12">XX</span>
                             <span class="stat-label">Cumbres Alcanzadas</span>
                         </div>
-                        <p class="achievement-description">Varias ascensiones invernales, incluyendo una trotando desde
+                        <p class="achievement-description card-text">Varias ascensiones invernales, incluyendo una trotando desde
                             Plaza de Armas en 13h 39min.</p>
-                    </div>
+                    </article>
 
                     <!-- Volcán San José -->
-                    <div class="achievement-card fade-in">
-                        <div class="achievement-icon">
-                            <span class="material-symbols-rounded">emoji_events</span>
+                    <article class="achievement-card fade-in" role="article" aria-label="Logro: Volcán San José">
+                        <div class="achievement-icon card-icon">
+                            <span class="material-symbols-rounded icon-large">emoji_events</span>
                         </div>
-                        <h3 class="achievement-title">Volcán San José</h3>
+                        <h3 class="achievement-title card-title">Volcán San José</h3>
                         <div class="achievement-stats">
                             <span class="stat-number">5h 48min</span>
                             <span class="stat-label">Récord Ascenso</span>
                         </div>
-                        <p class="achievement-description">Récord de ascenso en 5h 48min y récord global con 9h 37min
+                        <p class="achievement-description card-text">Récord de ascenso en 5h 48min y récord global con 9h 37min
                             desde base hasta cumbre.</p>
-                    </div>
+                    </article>
 
                     <!-- Cerro Marmolejo -->
-                    <div class="achievement-card fade-in">
-                        <div class="achievement-icon">
-                            <span class="material-symbols-rounded">elevation</span>
+                    <article class="achievement-card fade-in" role="article" aria-label="Logro: Cerro Marmolejo">
+                        <div class="achievement-icon card-icon">
+                            <span class="material-symbols-rounded icon-large">elevation</span>
                         </div>
-                        <h3 class="achievement-title">Cerro Marmolejo</h3>
+                        <h3 class="achievement-title card-title">Cerro Marmolejo</h3>
                         <div class="achievement-stats">
                             <span class="stat-number">3</span>
                             <span class="stat-label">Cumbres</span>
                         </div>
-                        <p class="achievement-description">3 cumbres alcanzadas con récord de ascenso en 11h 51min,
+                        <p class="achievement-description card-text">3 cumbres alcanzadas con récord de ascenso en 11h 51min,
                             demostrando constancia y resistencia.</p>
-                    </div>
+                    </article>
                 </div>
 
                 <!-- GALERÍA UNIVERSAL - NUEVA IMPLEMENTACIÓN -->
@@ -322,54 +316,62 @@
                         </p>
                     </div>
 
-                    <div class="gallery-grid">
-                        <div class="gallery-card">
-                            <img src="media/images/fundador/el-plomo_0003.jpg" alt="Expedición Cerro El Plomo"
-                                class="gallery-image">
-                            <div class="gallery-zoom-icon">
+                    <div class="grid-4-2-1">
+                        <article class="gallery-card" role="article" aria-label="Foto: Expedición Cerro El Plomo">
+                            <img src="media/images/fundador/el-plomo_0003.jpg" 
+                                 alt="José Manuel Cartes en expedición al Cerro El Plomo"
+                                 class="gallery-image"
+                                 loading="lazy">
+                            <div class="gallery-zoom-icon" aria-label="Ampliar imagen">
                                 <span class="material-symbols-rounded">zoom_in</span>
                             </div>
                             <div class="gallery-overlay">
                                 <h4 class="gallery-title">Cerro El Plomo</h4>
                                 <p class="gallery-description">Ascenso invernal en condiciones extremas</p>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="gallery-card">
-                            <img src="media/images/fundador/volcan-san-jose_0003.jpg" alt="Volcán San José"
-                                class="gallery-image">
-                            <div class="gallery-zoom-icon">
+                        <article class="gallery-card" role="article" aria-label="Foto: Volcán San José">
+                            <img src="media/images/fundador/volcan-san-jose_0003.jpg" 
+                                 alt="José Manuel Cartes en el Volcán San José"
+                                 class="gallery-image"
+                                 loading="lazy">
+                            <div class="gallery-zoom-icon" aria-label="Ampliar imagen">
                                 <span class="material-symbols-rounded">zoom_in</span>
                             </div>
                             <div class="gallery-overlay">
                                 <h4 class="gallery-title">Volcán San José</h4>
                                 <p class="gallery-description">Récord personal de ascenso</p>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="gallery-card">
-                            <img src="media/images/fundador/marmolejo_0004.jpg" alt="Cerro Marmolejo"
-                                class="gallery-image">
-                            <div class="gallery-zoom-icon">
+                        <article class="gallery-card" role="article" aria-label="Foto: Cerro Marmolejo">
+                            <img src="media/images/fundador/marmolejo_0004.jpg" 
+                                 alt="José Manuel Cartes en el Cerro Marmolejo"
+                                 class="gallery-image"
+                                 loading="lazy">
+                            <div class="gallery-zoom-icon" aria-label="Ampliar imagen">
                                 <span class="material-symbols-rounded">zoom_in</span>
                             </div>
                             <div class="gallery-overlay">
                                 <h4 class="gallery-title">Cerro Marmolejo</h4>
                                 <p class="gallery-description">Cumbre alcanzada después de 11h 51min</p>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="gallery-card">
-                            <img src="media/images/fundador/sierras-santiago_0012.jpg" alt="Cordillera de los Andes"
-                                class="gallery-image">
-                            <div class="gallery-zoom-icon">
+                        <article class="gallery-card" role="article" aria-label="Foto: Cordillera de los Andes">
+                            <img src="media/images/fundador/sierras-santiago_0012.jpg" 
+                                 alt="Vista panorámica de la Cordillera de los Andes"
+                                 class="gallery-image"
+                                 loading="lazy">
+                            <div class="gallery-zoom-icon" aria-label="Ampliar imagen">
                                 <span class="material-symbols-rounded">zoom_in</span>
                             </div>
                             <div class="gallery-overlay">
                                 <h4 class="gallery-title">Cordillera de los Andes</h4>
                                 <p class="gallery-description">Paisaje montañoso desde las alturas</p>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </div>
