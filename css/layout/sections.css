@@ -1,13 +1,17 @@
 /* ======================================
-   SECTIONS.CSS - LAYOUT UNIVERSAL DE SECCIONES CON HERO GLOBAL
-   VERSIÓN CORREGIDA - COMBINA NUEVO HERO + CTA + GRADIENTS
+   SECTIONS.CSS - LAYOUT UNIVERSAL OPTIMIZADO (DRY)
    ====================================== */
 
-/* Sections - UNIVERSAL */
+/* ======================================
+   CONFIGURACIÓN BASE SECTIONS
+   ====================================== */
+
+/* Sección universal base */
 .section {
     padding: var(--section-padding);
 }
 
+/* Título universal - UNA SOLA DEFINICIÓN (DRY) */
 .section-title {
     font-family: var(--font-title);
     font-size: clamp(2.5rem, 5vw, 4rem);
@@ -16,46 +20,6 @@
     color: var(--primary-dark);
     line-height: 1;
     letter-spacing: var(--title-letter-spacing);
-}
-
-/* Glassmorphism Section Title Override */
-.glass-section .section-title,
-.glass-section-light .section-title,
-.profile-header .section-title,
-.about-section .section-title,
-.experience-section .section-title,
-.mountaineering-section .section-title,
-.about .section-title,
-.mvp-section .section-title,
-.stats .section-title,
-.results .section-title,
-.values-section .section-title,
-.commitment-section .section-title,
-.first-section .section-title,
-.second-section .section-title,
-.third-section .section-title,
-.fourth-section .section-title,
-.regular-section .section-title {
-    color: var(--primary-dark);
-}
-
-/* Glassmorphism Content Legibility */
-.profile-header p,
-.about-section p,
-.experience-section p,
-.mountaineering-section p,
-.about p,
-.mvp-section p,
-.stats p,
-.results p,
-.values-section p,
-.commitment-section p,
-.first-section p,
-.second-section p,
-.third-section p,
-.fourth-section p,
-.regular-section p {
-    color: var(--black);
 }
 
 /* Línea amarilla universal */
@@ -70,20 +34,24 @@
 }
 
 /* ======================================
-   SISTEMA GLOBAL DE HERO
+   SISTEMA HERO UNIVERSAL (DRY)
    ====================================== */
 
-/* Hero Base Universal - Todos los heros usan esto */
+/* Hero base - UNA SOLA DEFINICIÓN para todos */
 .hero {
     height: 100vh;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     color: white;
 }
 
-/* Overlay universal para todos los heros */
+/* Overlay universal */
 .hero::before {
     content: '';
     position: absolute;
@@ -95,15 +63,8 @@
     z-index: 1;
 }
 
-/* Hero - Para todas las páginas */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.hero .hero-content {
+/* Contenido hero universal */
+.hero-content {
     position: relative;
     z-index: 2;
     max-width: 1200px;
@@ -111,114 +72,105 @@
     padding: 0 2rem;
 }
 
-/* ======================================
-   TIPOGRAFÍA DE HERO
-   ====================================== */
-
-/* Estilos base para todos los heros */
+/* Tipografía hero base */
 .hero h1 {
     font-family: var(--font-title);
+    font-size: clamp(3rem, 8vw, 6rem);
     color: white;
     letter-spacing: var(--title-letter-spacing);
     line-height: 1.2;
     margin-bottom: 1rem;
-}
-
-.hero p {
-    color: white;
-    font-style: italic;
-    opacity: 0.95;
-}
-
-/* Tipografía específica para Hero */
-.hero h1 {
-    font-size: clamp(3rem, 8vw, 6rem);
     animation: fadeInUp 1s ease;
-    text-align: center;
 }
 
 .hero p {
     font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: white;
+    font-style: italic;
+    opacity: 0.95;
     max-width: 800px;
     margin: 0 auto;
     animation: fadeInUp 1s ease 0.3s both;
-    text-align: center;
 }
 
 /* ======================================
-   SPECIAL BACKGROUND SECTIONS - GLOBAL
+   SISTEMA GLASSMORPHISM OPTIMIZADO (DRY)
    ====================================== */
 
-/* Glass Section - Glassmorphism effect for sections over backgrounds */
+/* Glass section base - UNA SOLA DEFINICIÓN */
 .glass-section {
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(20px);
+    /* Variables CSS para customización dinámica */
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-blur: 20px;
+    --glass-border: rgba(255, 255, 255, 0.55);
+    --glass-text-color: var(--black);
+    --glass-title-color: var(--primary-dark);
+    
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
     border-radius: var(--border-radius-large);
     margin: 2rem 8.33%;
     box-shadow: var(--shadow-medium);
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    border: 1px solid var(--glass-border);
     position: relative;
     z-index: 2;
+    color: var(--glass-text-color);
 }
 
-/* Glass Section Light - Más transparente */
-.glass-section-light {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(18px);
-    border-radius: var(--border-radius-large);
-    margin: 2rem 8.33%;
-    box-shadow: var(--shadow-light);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-    z-index: 2;
+/* Modificadores de glass section (DRY) */
+.glass-section--light {
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-blur: 18px;
+    --glass-border: rgba(255, 255, 255, 0.2);
 }
 
-/* Glass Section Dark - Para fondos claros */
-.glass-section-dark {
-    background: rgba(var(--black-rgb), 0.25);
-    backdrop-filter: blur(20px);
-    border-radius: var(--border-radius-large);
-    margin: 2rem 8.33%;
-    box-shadow: var(--shadow-medium);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    z-index: 2;
-    color: white;
+.glass-section--dark {
+    --glass-bg: rgba(var(--black-rgb), 0.25);
+    --glass-blur: 20px;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-text-color: white;
+    --glass-title-color: white;
 }
 
-.glass-section-dark .section-title {
-    color: white;
+/* Títulos en glass sections - UNA REGLA UNIVERSAL (DRY) */
+.glass-section .section-title {
+    color: var(--glass-title-color);
+}
+
+/* Contenido en glass sections */
+.glass-section p {
+    color: var(--glass-text-color);
 }
 
 /* ======================================
-   GRADIENT SECTIONS - RECUPERADOS
+   GRADIENTS SECTIONS (DRY)
    ====================================== */
 
-/* Primary Gradient Section - Universal blue gradient background */
-.primary-gradient-section {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+/* Section con gradient base */
+.gradient-section {
+    --gradient-color-1: var(--primary);
+    --gradient-color-2: var(--primary-dark);
+    --gradient-text-color: white;
+    
+    background: linear-gradient(135deg, var(--gradient-color-1) 0%, var(--gradient-color-2) 100%);
+    color: var(--gradient-text-color);
 }
 
-.primary-gradient-section .section-title {
-    color: white;
+/* Modificadores de gradient */
+.gradient-section--dark {
+    --gradient-color-1: var(--primary-dark);
+    --gradient-color-2: #0f3a4a;
 }
 
-/* Primary Dark Gradient Section - Darker gradient background */
-.primary-dark-gradient-section {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, #0f3a4a 100%);
-    color: white;
-}
-
-.primary-dark-gradient-section .section-title {
-    color: white;
+/* Títulos en gradient sections */
+.gradient-section .section-title {
+    color: var(--gradient-text-color);
 }
 
 /* ======================================
-   CTA SECTION - RECUPERADA
+   CTA SECTION UNIVERSAL (DRY)
    ====================================== */
 
-/* CTA Section Base - Universal styling */
 .cta {
     padding: 5rem 0;
     text-align: center;
@@ -248,55 +200,26 @@
 }
 
 /* ======================================
-   RESPONSIVE PARA HERO
+   RESPONSIVE UNIVERSAL
    ====================================== */
 
 /* Tablet */
 @media (max-width: 82rem) {
-    .hero h1 {
-        font-size: clamp(2.5rem, 7vw, 4.5rem) !important;
+    .glass-section {
+        margin: 1.5rem 5%;
     }
     
-    .hero p {
-        font-size: clamp(1rem, 3vw, 1.3rem) !important;
+    .cta {
+        padding: 4rem 0;
     }
 }
 
 /* Mobile */
 @media (max-width: 53rem) {
-    .hero h1 {
-        font-size: clamp(2rem, 8vw, 3.5rem) !important;
+    .glass-section {
+        margin: 1rem 2%;
     }
     
-    .hero p {
-        font-size: clamp(1rem, 4vw, 1.3rem) !important;
-    }
-    
-    .hero .hero-content {
-        padding: 0 1.5rem;
-    }
-}
-
-/* ======================================
-   CTA RESPONSIVE - RECUPERADO
-   ====================================== */
-
-@media (max-width: 82rem) {
-    .cta {
-        padding: 4rem 0;
-    }
-    
-    .cta h2 {
-        font-size: 2.5rem;
-    }
-    
-    .cta p {
-        font-size: 1.1rem;
-        padding: 0 1rem;
-    }
-}
-
-@media (max-width: 53rem) {
     .cta {
         padding: 3rem 0;
     }
@@ -307,5 +230,6 @@
     
     .cta p {
         font-size: 1rem;
+        padding: 0 1rem;
     }
 }

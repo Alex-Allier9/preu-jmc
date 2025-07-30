@@ -1,5 +1,5 @@
 /* ======================================
-   FONTS.CSS - FUENTES LOCALES
+   FONTS.CSS - FUENTES LOCALES (CSS PURO SIMPLIFICADO)
    ====================================== */
 
 /* ===== MATERIAL SYMBOLS ROUNDED ===== */
@@ -12,7 +12,6 @@
 }
 
 /* ===== DM SERIF TEXT ===== */
-/* DM Serif Text Regular */
 @font-face {
     font-family: 'DM Serif Text';
     font-style: normal;
@@ -21,7 +20,6 @@
     src: url('../../media/fonts/dm-serif-text/DMSerifText-Regular.ttf') format('truetype');
 }
 
-/* DM Serif Text Italic */
 @font-face {
     font-family: 'DM Serif Text';
     font-style: italic;
@@ -31,7 +29,7 @@
 }
 
 /* ===== RALEWAY VARIABLE ===== */
-/* Raleway Variable - Normal */
+/* Una sola declaración maneja todos los pesos (100-900) */
 @font-face {
     font-family: 'Raleway';
     font-style: normal;
@@ -40,7 +38,6 @@
     src: url('../../media/fonts/raleway/Raleway-Variable.ttf') format('truetype-variations');
 }
 
-/* Raleway Variable - Italic */
 @font-face {
     font-family: 'Raleway';
     font-style: italic;
@@ -49,65 +46,9 @@
     src: url('../../media/fonts/raleway/Raleway-Italic-Variable.ttf') format('truetype-variations');
 }
 
-/* ===== FALLBACKS PARA NAVEGADORES ANTIGUOS ===== */
-/* Raleway Static Weights para navegadores sin soporte de fuentes variables */
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url('../../media/fonts/raleway/Raleway-Variable.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('../../media/fonts/raleway/Raleway-Variable.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url('../../media/fonts/raleway/Raleway-Variable.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url('../../media/fonts/raleway/Raleway-Variable.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('../../media/fonts/raleway/Raleway-Variable.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 800;
-    font-display: swap;
-    src: url('../../media/fonts/raleway/Raleway-Variable.ttf') format('truetype');
-}
-
-/* ===== CONFIGURACIÓN DE FONT-FEATURE-SETTINGS ===== */
-/* Optimizaciones para mejor renderizado */
-.raleway-optimized {
-    font-feature-settings: 'kern' 1, 'liga' 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.dm-serif-optimized {
+/* ===== OPTIMIZACIONES UNIVERSALES ===== */
+/* Una clase para todas las fuentes optimizadas */
+.font-optimized {
     font-feature-settings: 'kern' 1, 'liga' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

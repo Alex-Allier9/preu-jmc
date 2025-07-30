@@ -1,5 +1,5 @@
 /* ======================================
-   MAIN.CSS - COORDINADOR PRINCIPAL
+   MAIN.CSS - COORDINADOR PRINCIPAL (OPTIMIZADO DRY)
    ====================================== */
 
 /* ===== CORE - FUNDAMENTALES ===== */
@@ -25,36 +25,8 @@
 @import url('./utilities/responsive.css'); /* Media queries */
 @import url('./utilities/helpers.css');    /* Clases utilitarias */
 
-/* ===== GLOBAL UTILITIES ===== */
-/* Utilidades de espaciado */
-.text-center { text-align: center; }
-.mb-0 { margin-bottom: 0; }
-.mb-1 { margin-bottom: var(--gap-small); }        /* 1rem */
-.mb-2 { margin-bottom: var(--margin-bottom-standard); } /* 2rem */
-.mb-3 { margin-bottom: var(--margin-bottom-large); }    /* 3rem */
-
-/* Utilidades de padding */
-.p-small { padding: var(--small-padding); }       /* 0.3rem */
-.p-standard { padding: var(--card-padding); }     /* 2rem */
-.p-large { padding: var(--card-padding-large); }  /* 3rem */
-
-/* Utilidades de gap */
-.gap-small { gap: var(--gap-small); }             /* 1rem */
-.gap-medium { gap: var(--gap-medium); }           /* 1.5rem */
-.gap-standard { gap: var(--gap-standard); }       /* 2rem */
-.gap-large { gap: var(--gap-large); }             /* 3rem */
-
-/* Utilidades de sombras */
-.shadow-light { box-shadow: var(--shadow-light); }
-.shadow-medium { box-shadow: var(--shadow-medium); }
-.shadow-heavy { box-shadow: var(--shadow-heavy); }
-
-/* Utilidades de transiciones */
-.transition-standard { transition: var(--transition-standard); }
-.transition-transform { transition: var(--transition-transform); }
-.transition-color { transition: var(--transition-color); }
-
-/* Utilidades de border-radius */
-.radius-small { border-radius: var(--border-radius-small); }
-.radius-standard { border-radius: var(--border-radius-standard); }
-.radius-large { border-radius: var(--border-radius-large); }
+/* ===== NOTA: UTILIDADES MOVIDAS A HELPERS.CSS =====
+ * Todas las utilidades (.text-center, .mb-*, .p-*, etc.) 
+ * han sido movidas a utilities/helpers.css para evitar duplicación
+ * y mantener el principio DRY
+ */

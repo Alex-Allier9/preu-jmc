@@ -1,13 +1,195 @@
 /* ======================================
-   CARDS.CSS - SISTEMA UNIVERSAL DE CARDS  
+   CARDS.CSS - SISTEMA UNIVERSAL OPTIMIZADO
    ====================================== */
 
 /* ======================================
-   UNIVERSAL CARD SYSTEM - NUEVA IMPLEMENTACIÓN
+   1. CLASES BASE UNIVERSALES
    ====================================== */
 
-/* Universal Card */
-.universal-card {
+/* Estilos base que comparten TODAS las cards */
+.card-base {
+    border-radius: var(--border-radius-standard);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    position: relative;
+}
+
+/* Background universal - usado por la mayoría */
+.card-bg-white {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-light);
+}
+
+.card-bg-white:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Hover effect universal - usado por 90% de las cards */
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Hover especial para stat cards */
+.card-hover-light:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Padding universales */
+.card-padding {
+    padding: var(--card-padding);
+}
+
+.card-padding-large {
+    padding: var(--card-padding-large);
+}
+
+.card-padding-xl {
+    padding: 2.5rem;
+}
+
+/* Text alignment universales */
+.card-center {
+    text-align: center;
+}
+
+.card-left {
+    text-align: left;
+}
+
+/* ======================================
+   2. TYPOGRAPHY UNIVERSAL
+   ====================================== */
+
+/* Títulos universales */
+.card-title {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: var(--gap-medium);
+    font-size: 1.4rem;
+}
+
+.card-title-large {
+    color: var(--primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.card-title-accent {
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.card-title-white {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* Texto universal */
+.card-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--black);
+    margin-bottom: var(--gap-medium);
+}
+
+.card-text:last-child {
+    margin-bottom: 0;
+}
+
+.card-text-small {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+.card-text-white {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ======================================
+   3. ICONOS UNIVERSALES
+   ====================================== */
+
+/* Contenedor de icono universal */
+.card-icon {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Tamaños de iconos */
+.card-icon-xl .material-symbols-rounded {
+    font-size: 4.5rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+.card-icon-large .material-symbols-rounded {
+    font-size: 3.5rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+.card-icon-medium .material-symbols-rounded {
+    font-size: 3rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+/* Hover universal para iconos */
+.card-icon-hover:hover .material-symbols-rounded {
+    transform: scale(1.1);
+}
+
+/* ======================================
+   4. LISTAS UNIVERSALES
+   ====================================== */
+
+.card-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--gap-medium) 0 0 0;
+}
+
+.card-list-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--gray-light);
+    color: var(--primary-dark);
+    font-weight: 500;
+    position: relative;
+    padding-left: 1.5rem;
+    text-align: left;
+}
+
+.card-list-item:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.card-list-item:last-child {
+    border-bottom: none;
+}
+
+/* ======================================
+   5. UNIVERSAL CARD
+   ====================================== */
+
+/* Aplicar estilos base a universal card */
+.universal-card,
+.universal-card.extensive,
+.universal-card.technical {
     background: rgba(255, 255, 255, 0.9);
     border-radius: var(--border-radius-standard);
     padding: var(--card-padding);
@@ -16,17 +198,17 @@
     margin-bottom: var(--margin-bottom-standard);
     width: 100%;
     text-align: left;
-    /* Alineación izquierda consistente */
     position: relative;
 }
 
-.universal-card:hover {
+.universal-card:hover,
+.universal-card.extensive:hover,
+.universal-card.technical:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-medium);
     background: rgba(255, 255, 255, 0.95);
 }
 
-/* Icono opcional en universal card */
 .universal-card .card-icon {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -35,7 +217,6 @@
 .universal-card .card-icon .material-symbols-rounded {
     font-size: 4.5rem;
     color: var(--primary);
-    /* Color primary siempre */
     transition: var(--transition-standard);
 }
 
@@ -43,31 +224,26 @@
     transform: scale(1.1);
 }
 
-/* Título de universal card */
 .universal-card h3 {
     color: var(--primary-dark);
     font-weight: 700;
     margin-bottom: var(--gap-medium);
     font-size: 1.4rem;
     text-align: left;
-    /* Siempre alineado a la izquierda */
 }
 
-/* Párrafos en universal card */
 .universal-card p {
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--black);
     margin-bottom: var(--gap-medium);
     text-align: left;
-    /* Alineación izquierda consistente */
 }
 
 .universal-card p:last-child {
     margin-bottom: 0;
 }
 
-/* Soporte para listas en universal card */
 .universal-card ul {
     list-style: none;
     padding: 0;
@@ -89,7 +265,6 @@
     position: absolute;
     left: 0;
     color: var(--primary);
-    /* Checkmarks en color primary */
     font-weight: bold;
 }
 
@@ -97,7 +272,7 @@
     border-bottom: none;
 }
 
-/* Modificador para contenido extenso (reemplaza standard-card) */
+/* Variantes de universal card */
 .universal-card.extensive {
     padding: var(--card-padding-large);
 }
@@ -105,10 +280,8 @@
 .universal-card.extensive p {
     margin-bottom: 1.5rem;
     text-align: justify;
-    /* Solo para contenido extenso, justificado */
 }
 
-/* Modificador para servicios técnicos (reemplaza complementary-card) */
 .universal-card.technical h3 {
     font-size: 1.5rem;
 }
@@ -117,504 +290,53 @@
     margin-bottom: 1.5rem;
 }
 
-/* Hover effect para cards con backgrounds específicos */
-.quote-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-}
-
 /* ======================================
-   SISTEMA UNIVERSAL DE CARDS
+   6. GRADIENT BORDER CARD
    ====================================== */
 
-/* ===== CARDS BASE - SHARED STYLES ===== */
-
-/* Base styles for all universal cards */
-.gradient-border-card,
-.glass-card,
-.basic-card,
-.stat-card {
-    border-radius: var(--border-radius-standard);
-    padding: var(--card-padding);
-    text-align: center;
-    position: relative;
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-    box-shadow: var(--shadow-light);
-}
-
-/* Base styles adicionales para cards con backgrounds específicos */
-
-/* Hover effect for all service cards */
-.gradient-border-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-}
-
-/* Hover effect for universal cards with solid background */
-.basic-card:hover,
-.stat-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.95);
-}
-
-/* Hover effect para cards con backgrounds específicos */
-.quote-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-}
-
-/* Quote Card - UNIFICADO con glass-card background */
-.quote-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: var(--blur-standard);
-    border-radius: var(--border-radius-standard);
-    box-shadow: var(--shadow-light);
-    padding: var(--card-padding-large);
-    text-align: center;
-    margin: var(--margin-bottom-large) auto;
-    max-width: 600px;
-    transition: var(--transition-standard);
-    cursor: pointer;
-    position: relative;
-}
-
-.quote-text {
-    font-family: var(--font-body);
-    font-style: italic;
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: var(--gap-medium);
-    line-height: 1.6;
-    position: relative;
-    z-index: 2;
-    color: white;
-}
-
-.quote-text::before,
-.quote-text::after {
-    content: '"';
-    font-family: var(--font-title);
-    font-size: 4rem;
-    color: var(--accent);
-    position: absolute;
-    opacity: 0.6;
-    font-weight: 300;
-    line-height: 1;
-    z-index: 1;
-    font-style: normal;
-}
-
-.quote-text::before {
-    top: -0.2rem;
-    left: -0.8rem;
-    transform: rotate(-5deg);
-}
-
-.quote-text::after {
-    bottom: -1.6rem;
-    right: -0.8rem;
-    transform: rotate(5deg);
-}
-
-.quote-author {
-    color: var(--accent);
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 1.1rem;
-    position: relative;
-    z-index: 2;
-    text-align: right;
-}
-
-/* ===== UNIVERSAL CARDS ===== */
-
-/* Basic card - Universal card for mission, vision, purpose and value propositions */
-.basic-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    text-align: center;
-}
-
-.basic-card h3 {
-    color: var(--primary);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.basic-card p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* Stat Card - Universal card for statistics and numerical data */
-.stat-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2.5rem;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    min-height: 200px;
-    min-width: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: var(--transition-standard);
-    cursor: pointer;
-}
-
-.stat-card:hover {
-    transform: translateY(-5px);
-    backdrop-filter: blur(15px);
-}
-
-.stat-number {
-    font-family: 'DM Serif Text', serif;
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    color: var(--primary);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1;
-    letter-spacing: var(--title-letter-spacing);
-    transition: var(--transition-standard);
-}
-
-.stat-number.red {
-    color: var(--accent-red);
-}
-
-/* Hover effects for stat numbers */
-.stat-card:hover .stat-number {
-    color: var(--accent);
-    transform: scale(1.1);
-}
-
-.stat-card:hover .stat-number.red {
-    color: var(--accent);
-    transform: scale(1.1);
-}
-
-.stat-card p {
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-/* Achievement Card */
-.achievement-card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: var(--border-radius-standard);
-    padding: var(--card-padding);
-    text-align: center;
-    position: relative;
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-    box-shadow: var(--shadow-light);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.achievement-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 1);
-}
-
-/* Icono del achievement */
-.achievement-card .achievement-icon {
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.achievement-card .achievement-icon .material-symbols-rounded {
-    font-size: 3.5rem;
-    color: var(--primary);
-    transition: var(--transition-standard);
-}
-
-.achievement-card:hover .achievement-icon .material-symbols-rounded {
-    transform: scale(1.1);
-    color: var(--accent);
-}
-
-/* Título del achievement */
-.achievement-card .achievement-title {
-    color: var(--primary-dark);
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    font-size: 1.3rem;
-    line-height: 1.2;
-}
-
-/* Contenedor de estadística principal */
-.achievement-card .achievement-stats {
-    background: rgba(var(--primary-rgb), 0.1);
-    border-radius: 10px;
-    padding: 0.25rem;
-    margin-bottom: 1.5rem;
-    transition: var(--transition-standard);
-}
-
-.achievement-card:hover .achievement-stats {
-    background: rgba(var(--accent-rgb), 0.15);
-    transform: scale(1.02);
-}
-
-/* Número grande de la estadística */
-.achievement-card .stat-number {
-    font-family: var(--font-title);
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--primary);
-    line-height: 1;
-    display: block;
-    margin-bottom: 0.5rem;
-    transition: var(--transition-standard);
-}
-
-.achievement-card:hover .stat-number {
-    color: var(--accent);
-}
-
-/* Etiqueta de la estadística */
-.achievement-card .stat-label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--primary-dark);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1.2;
-}
-
-/* Descripción detallada */
-.achievement-card .achievement-description {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--black);
-    text-align: center;
-}
-
-/* ===== CARDS ESPECÍFICAS - SERVICIOS ===== */
-
-/* Gradient Border Card - Universal card para características destacadas */
 .gradient-border-card {
-    background:
+    /* Base styles */
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    text-align: center;
+    position: relative;
+    /* Gradient specific */
+    background: 
         linear-gradient(white, white) padding-box,
         linear-gradient(135deg, #A9D9F3 0%, #FDEBA4 100%) border-box;
     border: 9px solid transparent;
+}
+
+.gradient-border-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
 }
 
 .gradient-border-card h3 {
     color: var(--primary-dark);
     font-weight: 700;
     margin-bottom: 1rem;
+    font-size: 1.3rem;
     position: relative;
     z-index: 1;
-    font-size: 1.3rem;
 }
 
 .gradient-border-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--black);
     position: relative;
     z-index: 1;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    text-align: center;
-}
-
-/* ===== CONTENT CARDS UNIVERSAL ===== */
-
-/* Glass Card Universal - para cards con background glass y iconos centrales */
-.glass-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: var(--blur-standard);
-    border-radius: var(--border-radius-standard);
-    padding: var(--card-padding);
-    text-align: center;
-    position: relative;
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-    box-shadow: var(--shadow-light);
-}
-
-.glass-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.glass-card h3 {
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.glass-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: white;
-}
-
-/* icon Card */
-.icon-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: var(--blur-standard);
-    border-radius: var(--border-radius-standard);
-    padding: var(--card-padding);
-    text-align: center;
-    position: relative;
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
-    width: 100%;
-    box-shadow: var(--shadow-light);
-}
-
-.icon-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-/* Icono de la icon card */
-.icon-card .card-icon {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-.icon-card .card-icon .material-symbols-rounded {
-    font-size: 4.5rem;
-    color: var(--primary);
-    transition: var(--transition-standard);
-}
-
-.icon-card:hover .card-icon .material-symbols-rounded {
-    transform: scale(1.1);
-}
-
-/* Título de la icon card */
-.icon-card h3 {
-    color: var(--primary-dark); /* Color amarillo como en valores fundamentales */
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-    line-height: 1.3;
-    hyphens: auto;
-    word-wrap: break-word;
-}
-
-/* Texto de la icon card */
-.icon-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: white;
-}
-
-/* ===== RESPONSIVE BREAKPOINTS ===== */
-
-/* Tablet - 82rem */
-@media (max-width: 82rem) {
-    .profile-contact-items {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .stat-number {
-        font-size: 3.75rem;
-    }
-
-    .basic-card h3 {
-        font-size: 1.5rem;
-    }
-
-    .requisito-card h3,
-    .universal-card h3 {
-        font-size: 1.2rem;
-    }
-
-    .universal-card.technical h3 {
-        font-size: 1.3rem;
-    }
-
-    .icon-card {
-        min-height: 10rem;
-        padding: 1.2rem;
-    }
-    
-    .icon-card h3 {
-        font-size: 1.1rem;
-    }
-    
-    .icon-card .card-icon .material-symbols-rounded {
-        font-size: 3.5rem;
-    }
-}
-
-/* Mobile - 53rem */
-@media (max-width: 53rem) {
-    .profile-name {
-        font-size: 2rem;
-    }
-
-    .profile-title {
-        font-size: 1.2rem;
-    }
-
-    .quote-text {
-        font-size: 1.5rem;
-    }
-
-    .quote-text::before,
-    .quote-text::after {
-        font-size: 3rem;
-    }
-
-    .stat-number {
-        font-size: 2.5rem;
-    }
-
-    .achievement-card {
-        padding: 1.5rem;
-    }
-
-    .universal-card {
-        padding: 1.5rem;
-    }
-
-    .universal-card.extensive {
-        padding: 2rem;
-    }
-
-    .universal-card .card-icon .material-symbols-rounded {
-        font-size: 3.5rem;
-    }
-
-    .icon-card {
-        min-height: 8.75rem;
-        padding: 1.2rem;
-    }
-    
-    .icon-card h3 {
-        font-size: 0.95rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .icon-card .card-icon .material-symbols-rounded {
-        font-size: 3rem;
-    }
-    
-    .icon-card .card-icon {
-        margin-bottom: 1rem;
-    }
 }
 
 /* ======================================
-   GLASSMORPHISM VARIANTS
+   7. GLASS CARDS
    ====================================== */
 
-/* Glass Cards - Glassmorphism variants (solo las variaciones) */
 .glass-card-light {
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(18px);
@@ -650,7 +372,7 @@
 }
 
 .glass-card-dark {
-    background: rgba(var(--black-rgb), 0.6);
+    background: rgba(var(--black-rgb), 0.3);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius-large);
@@ -686,76 +408,312 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* ===== PROCESO CARD FULL - Movida desde servicios.css ===== */
-.proceso-card-full {
+/* ======================================
+   8. STAT CARD
+   ====================================== */
+
+.stat-card {
+    /* Base universal */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    position: relative;
+    /* Específico de stat */
+    padding: 2.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    min-height: 200px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    backdrop-filter: blur(15px);
+    box-shadow: var(--shadow-medium);
     background: rgba(255, 255, 255, 0.95);
+}
+
+.stat-number {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1;
+    letter-spacing: var(--title-letter-spacing);
+    transition: var(--transition-standard);
+}
+
+.stat-number.red {
+    color: var(--accent-red);
+}
+
+.stat-card:hover .stat-number {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+.stat-card:hover .stat-number.red {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+.stat-card p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+/* ======================================
+   9. BASIC CARD
+   ====================================== */
+
+.basic-card {
+    /* Base universal */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    position: relative;
+    /* Específico */
+    padding: 2rem;
+    text-align: center;
+}
+
+.basic-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.basic-card h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.basic-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+/* ======================================
+   10. QUOTE CARD
+   ====================================== */
+
+.quote-card {
+    /* Base universal */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    position: relative;
+    /* Específico */
+    padding: var(--card-padding-large);
+    text-align: center;
+    border-left: 5px solid var(--accent);
+}
+
+.quote-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.quote-text {
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.quote-text::before,
+.quote-text::after {
+    content: '"';
+    font-size: 6rem;
+    color: var(--accent);
+    position: absolute;
+    opacity: 0.6;
+    font-weight: 300;
+    line-height: 1;
+    z-index: 1;
+    font-style: normal;
+}
+
+.quote-text::before {
+    top: -0.2rem;
+    left: -0.8rem;
+    transform: rotate(-5deg);
+}
+
+.quote-text::after {
+    bottom: -1.6rem;
+    right: -0.8rem;
+    transform: rotate(5deg);
+}
+
+.quote-author {
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+    text-align: right;
+}
+
+/* ======================================
+   11. ACHIEVEMENT CARD
+   ====================================== */
+
+.achievement-card {
+    /* Base universal */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    position: relative;
+    /* Específico */
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.achievement-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 1);
+}
+
+.achievement-card .achievement-icon {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.achievement-card .achievement-icon .material-symbols-rounded {
+    font-size: 3.5rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+.achievement-card:hover .achievement-icon .material-symbols-rounded {
+    transform: scale(1.1);
+    color: var(--accent);
+}
+
+.achievement-card .achievement-title {
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 1.2;
+}
+
+.achievement-card .achievement-stats {
+    background: rgba(var(--primary-rgb), 0.1);
+    border-radius: 10px;
+    padding: 0.25rem;
+    margin-bottom: 1.5rem;
+    transition: var(--transition-standard);
+}
+
+.achievement-card:hover .achievement-stats {
+    background: rgba(var(--accent-rgb), 0.15);
+    transform: scale(1.02);
+}
+
+.achievement-card .stat-number {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: var(--transition-standard);
+}
+
+.achievement-card:hover .stat-number {
+    color: var(--accent);
+}
+
+.achievement-card .stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.achievement-card .achievement-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--black);
+    text-align: center;
+}
+
+/* ======================================
+   12. PROCESSO CARD FULL
+   ====================================== */
+
+.processo-card-full {
+    /* Base universal */
+    background: rgba(255, 255, 255, 0.95);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    position: relative;
+    /* Específico */
     border-radius: var(--border-radius-large);
     padding: var(--card-padding-large);
     box-shadow: var(--shadow-medium);
-    transition: var(--transition-standard);
-    margin-bottom: var(--margin-bottom-standard);
     display: flex;
     align-items: center;
     text-align: left;
     gap: 2rem;
 }
 
-.proceso-card-full:hover {
+.processo-card-full:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-heavy);
 }
 
 /* ======================================
-   RESPONSIVE ESPECÍFICO PARA CARDS
+   13. GALLERY CARD
    ====================================== */
 
-/* Mobile responsive para proceso-card-full */
-@media (max-width: 53rem) {
-    .proceso-card-full {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem;
-        gap: 1.5rem;
-    }
-
-    .process-step-icon {
-        min-width: 60px;
-        width: 60px;
-        height: 60px;
-        margin: 0 auto;
-    }
-
-    .process-step-icon .process-icon {
-        font-size: 2rem;
-    }
-
-    .card-content h3 {
-        font-size: 1.3rem;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-}
-
-/* ======================================
-   GALLERY CARDS UNIVERSAL SYSTEM
-   Para agregar a components/cards.css
-   ====================================== */
-
-/* ======================================
-   GALLERY CARD UNIVERSAL
-   ====================================== */
-
-/* Gallery Card - Card especializada para galerías de imágenes */
 .gallery-card {
-    position: relative;
-    aspect-ratio: 1 / 1;
+    /* Base universal */
     border-radius: var(--border-radius-standard);
-    overflow: hidden;
-    cursor: pointer;
     transition: var(--transition-standard);
-    box-shadow: var(--shadow-light);
     margin-bottom: var(--margin-bottom-standard);
     width: 100%;
+    position: relative;
+    /* Específico */
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow-light);
     background: var(--black);
 }
 
@@ -764,7 +722,6 @@
     box-shadow: var(--shadow-heavy);
 }
 
-/* Imagen de la gallery card */
 .gallery-card .gallery-image {
     width: 100%;
     height: 100%;
@@ -777,7 +734,6 @@
     transform: scale(1.1);
 }
 
-/* Overlay con información */
 .gallery-overlay {
     position: absolute;
     bottom: 0;
@@ -794,7 +750,6 @@
     transform: translateY(0);
 }
 
-/* Título y descripción del overlay */
 .gallery-overlay .gallery-title {
     font-size: 1.1rem;
     font-weight: 600;
@@ -811,7 +766,6 @@
     margin: 0;
 }
 
-/* Icono de zoom opcional */
 .gallery-zoom-icon {
     position: absolute;
     top: 1rem;
@@ -840,411 +794,31 @@
 }
 
 /* ======================================
-   GALLERY CONTAINER
+   14. RESPONSIVE
    ====================================== */
 
-/* Contenedor completo de galería */
-.gallery-container {
-    margin-bottom: var(--margin-bottom-large);
-}
-
-.gallery-header {
-    text-align: center;
-    margin-bottom: var(--margin-bottom-standard);
-}
-
-.gallery-header .gallery-main-title {
-    font-family: var(--font-title);
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    color: var(--primary-dark);
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.gallery-header .gallery-subtitle {
-    font-size: 1.1rem;
-    color: var(--black);
-    opacity: 0.8;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-/* Grid para la galería usando sistema existente */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--gap-standard);
-    margin-top: 0;
-}
-
-/* ======================================
-   LIGHTBOX UNIVERSAL
-   ====================================== */
-
-/* Lightbox overlay */
-.universal-lightbox {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(var(--black-rgb), 0.95);
-    backdrop-filter: blur(5px);
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.universal-lightbox.active {
-    opacity: 1;
-}
-
-/* Contenido del lightbox */
-.lightbox-content {
-    position: relative;
-    margin: auto;
-    padding: 2rem;
-    width: 90%;
-    max-width: 900px;
-    text-align: center;
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-}
-
-.universal-lightbox.active .lightbox-content {
-    transform: scale(1);
-}
-
-/* Imagen principal del lightbox */
-.lightbox-image {
-    max-width: 100%;
-    max-height: 70vh;
-    object-fit: contain;
-    border-radius: var(--border-radius-standard);
-    box-shadow: var(--shadow-heavy);
-    margin-bottom: 1.5rem;
-}
-
-/* Botón de cerrar */
-.lightbox-close {
-    position: absolute;
-    top: -10px;
-    right: 10px;
-    color: white;
-    font-size: 2.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10001;
-    transition: var(--transition-color);
-    background: rgba(var(--black-rgb), 0.5);
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(10px);
-}
-
-.lightbox-close:hover {
-    color: var(--accent);
-    background: rgba(var(--black-rgb), 0.8);
-}
-
-/* Información de la imagen en lightbox */
-.lightbox-info {
-    text-align: center;
-    color: white;
-    margin-top: 1.5rem;
-}
-
-.lightbox-info .lightbox-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--accent);
-    font-family: var(--font-title);
-}
-
-.lightbox-info .lightbox-description {
-    font-size: 1rem;
-    opacity: 0.9;
-    line-height: 1.6;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-/* Navegación del lightbox (opcional para múltiples imágenes) */
-.lightbox-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(var(--black-rgb), 0.7);
-    color: white;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    transition: var(--transition-standard);
-    backdrop-filter: blur(10px);
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lightbox-nav:hover {
-    background: rgba(var(--primary-rgb), 0.8);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.lightbox-nav.prev {
-    left: 2rem;
-}
-
-.lightbox-nav.next {
-    right: 2rem;
-}
-
-.lightbox-nav .material-symbols-rounded {
-    font-size: 1.5rem;
-}
-
-/* ======================================
-   VARIANTES DE GALLERY CARDS
-   ====================================== */
-
-/* Gallery Card Redonda */
-.gallery-card.round {
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
-}
-
-.gallery-card.round .gallery-overlay {
-    border-radius: 0 0 50% 50%;
-}
-
-/* Gallery Card Rectangular */
-.gallery-card.rectangular {
-    aspect-ratio: 16 / 9;
-}
-
-/* Gallery Card Pequeña */
-.gallery-card.small {
-    aspect-ratio: 1 / 1;
-    border-radius: var(--border-radius-small);
-}
-
-.gallery-card.small .gallery-overlay {
-    padding: 1rem 0.8rem 0.8rem;
-}
-
-.gallery-card.small .gallery-title {
-    font-size: 0.9rem;
-}
-
-.gallery-card.small .gallery-description {
-    font-size: 0.8rem;
-}
-
-/* Gallery Card Grande */
-.gallery-card.large {
-    aspect-ratio: 4 / 3;
-}
-
-.gallery-card.large .gallery-overlay {
-    padding: 2rem 1.5rem 1.5rem;
-}
-
-.gallery-card.large .gallery-title {
-    font-size: 1.3rem;
-}
-
-/* ======================================
-   RESPONSIVE GALLERY SYSTEM
-   ====================================== */
-
-/* Tablet: 848px - 1312px */
-@media (max-width: 82rem) and (min-width: 53rem) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--gap-medium);
-    }
-
-    .gallery-header .gallery-main-title {
-        font-size: clamp(1.6rem, 4vw, 2rem);
-    }
-
-    .lightbox-content {
-        padding: 1.5rem;
-    }
-
-    .lightbox-nav {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-
-    .lightbox-nav.prev {
-        left: 1rem;
-    }
-
-    .lightbox-nav.next {
-        right: 1rem;
-    }
-}
-
-/* Mobile: Hasta 848px */
 @media (max-width: 53rem) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--gap-small);
+    .processo-card-full {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        gap: 1.5rem;
     }
 
-    .gallery-header .gallery-main-title {
-        font-size: clamp(1.4rem, 5vw, 1.8rem);
+    .process-step-icon {
+        min-width: 60px;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
     }
 
-    .gallery-header .gallery-subtitle {
-        font-size: 1rem;
-        padding: 0 1rem;
-    }
-
-    /* Lightbox mobile */
-    .lightbox-content {
-        padding: 1rem;
-        width: 95%;
-    }
-
-    .lightbox-image {
-        max-height: 60vh;
-    }
-
-    .lightbox-close {
+    .process-step-icon .process-icon {
         font-size: 2rem;
-        width: 2.5rem;
-        height: 2.5rem;
-        top: -5px;
-        right: 5px;
     }
 
-    .lightbox-info .lightbox-title {
-        font-size: 1.2rem;
-    }
-
-    .lightbox-info .lightbox-description {
-        font-size: 0.9rem;
-        padding: 0 1rem;
-    }
-
-    /* Navegación simplificada en mobile */
-    .lightbox-nav {
-        width: 2rem;
-        height: 2rem;
-        font-size: 1rem;
-    }
-
-    .lightbox-nav.prev {
-        left: 0.5rem;
-    }
-
-    .lightbox-nav.next {
-        right: 0.5rem;
-    }
-
-    /* Gallery cards más pequeñas en mobile */
-    .gallery-card .gallery-overlay {
-        padding: 1rem 0.8rem 0.8rem;
-    }
-
-    .gallery-overlay .gallery-title {
-        font-size: 0.9rem;
-    }
-
-    .gallery-overlay .gallery-description {
-        font-size: 0.8rem;
-    }
-
-    .gallery-zoom-icon {
-        width: 2rem;
-        height: 2rem;
-        top: 0.5rem;
-        right: 0.5rem;
-    }
-
-    .gallery-zoom-icon .material-symbols-rounded {
-        font-size: 1rem;
-    }
-}
-
-/* ======================================
-   UTILIDADES PARA GALLERY
-   ====================================== */
-
-/* Centrar galería */
-.gallery-centered {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1200px;
-}
-
-/* Galería con espaciado extra */
-.gallery-spaced {
-    margin-top: var(--margin-bottom-large);
-    margin-bottom: var(--margin-bottom-large);
-}
-
-/* Galería compacta */
-.gallery-compact .gallery-grid {
-    gap: var(--gap-small);
-}
-
-/* Galería expandida */
-.gallery-expanded .gallery-grid {
-    gap: var(--gap-large);
-}
-
-/* ======================================
-   PERFORMANCE OPTIMIZATIONS
-   ====================================== */
-
-/* Optimizaciones para animaciones suaves */
-.gallery-card,
-.gallery-image,
-.gallery-overlay {
-    will-change: transform;
-}
-
-.universal-lightbox {
-    will-change: opacity;
-}
-
-.lightbox-content {
-    will-change: transform;
-}
-
-/* Reducir animaciones para usuarios sensibles */
-@media (prefers-reduced-motion: reduce) {
-
-    .gallery-card,
-    .gallery-image,
-    .gallery-overlay,
-    .universal-lightbox,
-    .lightbox-content {
-        transition: none !important;
-        animation: none !important;
-    }
-
-    .gallery-card:hover {
-        transform: translateY(-2px) !important;
-    }
-
-    .gallery-card:hover .gallery-image {
-        transform: none !important;
+    .card-content h3 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
     }
 }
