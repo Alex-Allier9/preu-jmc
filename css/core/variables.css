@@ -30,6 +30,12 @@
     --accent-red: #EF3340;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
     --accent-red-rgb: 239, 51, 64;
 
+    --accent-orange: #D69A2D;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
+    --accent-orange-rgb: 214, 154, 45;
+
+    --accent-green: #47D7AC;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
+    --accent-green-rgb: 71, 215, 172;
+
     --gray-light: #F4F4F4;        /* Usado para borders (3 usos) */
     --gray-light-rgb: 244, 244, 244; /* RGB del color gris claro para rgba() */
     
