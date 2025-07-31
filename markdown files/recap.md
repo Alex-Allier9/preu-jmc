@@ -23,6 +23,7 @@
 - 🟡 **Accent Light:**      `#F2F0A1` - Yellow 0131 C
 - ⚫ **Black:**             `#101820` - Black 6 C
 - 🔴 **Accent Red:**        `#EF3340` - Red 032 C
+- 🟠 **Accent Orange:**     `#D69A2D` - 7563 C
 - ⚪ **Gray Light:**        `#F4F4F4`
 
 ### **✅ MIGRACIÓN CSS COMPLETADA (Julio 26-27, 2025):**

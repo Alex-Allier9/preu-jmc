@@ -572,78 +572,9 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         addUniversalCardEffects(); // INCLUYE ICON CARDS
         addCardRevealAnimation();   // INCLUYE ICON CARDS
-        initBasicLightbox();
+        // REMOVIDO: initBasicLightbox(); - ESTA FUNCIÓN NO EXISTE
     }, 300);
 });
-
-// ======================================
-// ESTILOS CSS PARA LIGHTBOX (INLINE MÍNIMO)
-// ======================================
-
-// Agregar estilos básicos para lightbox si no existen
-if (!document.querySelector('#lightbox-styles')) {
-    const lightboxStyles = document.createElement('style');
-    lightboxStyles.id = 'lightbox-styles';
-    lightboxStyles.textContent = `
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .lightbox-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .lightbox-content {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 30px;
-            cursor: pointer;
-            z-index: 10001;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .lightbox-image {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .lightbox-info {
-            padding: 1rem;
-        }
-    `;
-    document.head.appendChild(lightboxStyles);
-}
 
 // Hacer funciones disponibles globalmente
 if (typeof window !== 'undefined') {
@@ -662,11 +593,10 @@ if (typeof window !== 'undefined') {
     // Funciones principales
     window.addUniversalCardEffects = addUniversalCardEffects;
     window.addCardRevealAnimation = addCardRevealAnimation;
-    window.initBasicLightbox = initBasicLightbox;
 }
 
 // Console para debugging
-console.log('🚀 Preuniversitario JMC - Sistema corregido y completo cargado');
+console.log('🚀 Preuniversitario JMC - Sistema global cargado (CORREGIDO)');
 console.log('🔢 Sistema de contadores con detección múltiple activo');
 console.log('🎨 Icon cards incluidas en sistema de hover effects');
 console.log('📊 DRY optimizations applied: -60% code duplication');

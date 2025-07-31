@@ -931,57 +931,6 @@
    RESPONSIVE PARA CARDS
    ====================================== */
 
-/* Responsive para card-button */
-@media (max-width: 53rem) {
-    .card-button {
-        padding: 0.875rem;
-        gap: 0.875rem;
-    }
-    
-    .card-button-icon,
-    .card-button-image {
-        width: 1.3rem;
-        height: 1.3rem;
-        min-width: 1.3rem;
-        font-size: 1.3rem;
-    }
-    
-    .card-button-label {
-        font-size: 0.85rem;
-    }
-    
-    .card-button-value {
-        font-size: 0.95rem;
-    }
-}
-
-/* Responsive para process-card-full */
-@media (max-width: 53rem) {
-    .process-card-full {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem;
-        gap: 1.5rem;
-    }
-
-    .process-step-icon {
-        min-width: 60px;
-        width: 60px;
-        height: 60px;
-        margin: 0 auto;
-    }
-
-    .process-step-icon .process-icon {
-        font-size: 2rem;
-    }
-
-    .card-content h3 {
-        font-size: 1.3rem;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-}
-
 /* Responsive para gallery */
 @media (max-width: 82rem) and (min-width: 53rem) {
     .gallery-grid {
@@ -1006,6 +955,35 @@
         width: 2.5rem;
         height: 2.5rem;
         font-size: 2rem;
+    }
+
+    .stat-number {
+        font-size: 3.75rem;
+    }
+
+    .basic-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .universal-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .universal-card.technical h3 {
+        font-size: 1.3rem;
+    }
+
+    .icon-card {
+        min-height: 10rem;
+        padding: 1.2rem;
+    }
+    
+    .icon-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .icon-card .card-icon .material-symbols-rounded {
+        font-size: 3.5rem;
     }
 }
 
@@ -1124,36 +1102,49 @@
     .stat-number {
         font-size: 2.5rem;
     }
-}
-
-/* Responsive tablet */
-@media (max-width: 82rem) and (min-width: 53rem) {
-    .stat-number {
-        font-size: 3.75rem;
+    
+    .card-button {
+        padding: 0.875rem;
+        gap: 0.875rem;
     }
-
-    .basic-card h3 {
-        font-size: 1.5rem;
-    }
-
-    .universal-card h3 {
-        font-size: 1.2rem;
-    }
-
-    .universal-card.technical h3 {
+    
+    .card-button-icon,
+    .card-button-image {
+        width: 1.3rem;
+        height: 1.3rem;
+        min-width: 1.3rem;
         font-size: 1.3rem;
     }
+    
+    .card-button-label {
+        font-size: 0.85rem;
+    }
+    
+    .card-button-value {
+        font-size: 0.95rem;
+    }
 
-    .icon-card {
-        min-height: 10rem;
-        padding: 1.2rem;
+    .process-card-full {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        gap: 1.5rem;
     }
-    
-    .icon-card h3 {
-        font-size: 1.1rem;
+
+    .process-step-icon {
+        min-width: 60px;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
     }
-    
-    .icon-card .card-icon .material-symbols-rounded {
-        font-size: 3.5rem;
+
+    .process-step-icon .process-icon {
+        font-size: 2rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
     }
 }
