@@ -696,7 +696,7 @@
 }
 
 /* ======================================
-   GALLERY CARDS - CORREGIDAS
+   GALLERY CARDS
    ====================================== */
 
 .gallery-card {
@@ -791,7 +791,7 @@
 }
 
 /* ======================================
-   GALLERY CONTAINER Y GRID
+   GALLERY CONTAINER
    ====================================== */
 
 .gallery-container {
@@ -818,13 +818,6 @@
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--gap-standard);
-    margin-top: 0;
 }
 
 /* ======================================
