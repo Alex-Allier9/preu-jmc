@@ -17,7 +17,7 @@
 }
 /* CTA section background - ESPECÍFICO DE NOSOTROS */
 .cta {
-    background: rgba(var(--black-rgb), 0.6),
+    background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
         url('../media/images/nosotros/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
 }
 

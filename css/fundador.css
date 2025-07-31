@@ -38,7 +38,7 @@
 
 /* CTA section background - ESPECÍFICO DE FUNDADOR */
 .cta {
-    background: rgba(var(--black-rgb), 0.6),
+    background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
         url('../media/images/fundador/sergey-pesterev-tMvuB9se2uQ-unsplash.jpg') center/cover;
 }
 
