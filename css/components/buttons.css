@@ -312,3 +312,70 @@
         margin: 0 auto;
     }
 }
+
+/* ======================================
+   BOTONES DE CONTACTO ESPECIALES
+   ====================================== */
+
+/* Botón de contacto tipo card - con icono y texto */
+.btn-contact {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--black);
+    cursor: pointer;
+    box-shadow: var(--shadow-light);
+    position: relative;
+}
+
+.btn-contact:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-contact:active {
+    transform: translateY(-1px);
+}
+
+/* Icono del botón de contacto */
+.btn-contact .btn-contact-icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+    min-width: 1.5rem;
+    flex-shrink: 0;
+    transition: var(--transition-standard);
+    font-variation-settings: 'wght' 600;
+}
+
+/* Para imágenes como iconos (Instagram, LinkedIn) */
+.btn-contact img.btn-contact-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+}
+
+/* Contenido de texto del botón de contacto */
+.btn-contact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+}
+
+.btn-contact-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--black);
+    display: block;
+}
+
+.btn-contact-text {
+    font-size: 1rem;
+    color: var(--black);
+}
