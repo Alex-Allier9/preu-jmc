@@ -5,10 +5,15 @@
     "basePath": "media/images/fundador/gallery/",
     "supportedFormats": ["jpg"],
     "photoFilePattern": "_\\d{4}\\.jpg$",
-    "coverFilePattern": "_cover\\.jpg$",
-    "maxPhotosPerExpedition": 20,
-    "maxConsecutiveFailures": 3,
-    "imageTimeout": 2000
+    "coverFilePattern": "_cover\\.jpg$"
+  },
+  
+  "detection": {
+    "enabled": false,
+    "maxPhotos": 15,
+    "maxGaps": 2,
+    "timeout": 1000,
+    "mode": "predefined"
   },
   
   "ui": {
@@ -17,8 +22,7 @@
     "photoCounterFormat": "{current} / {total}",
     "loadingText": "Cargando...",
     "errorText": "Error al cargar",
-    "noPhotosText": "Sin fotos disponibles",
-    "imageNotFound": "Imagen no disponible"
+    "noPhotosText": "Sin fotos disponibles"
   },
   
   "filters": {
@@ -126,19 +130,17 @@
       "swipeUp": "closeGallery",
       "swipeDown": "showInfo",
       "singleTap": "toggleUI",
-      "doubleTap": "zoomPhoto"
+      "doubleTap": "disabled"
     }
   },
 
   "performance": {
     "lazyLoading": true,
     "preloadNext": 1,
-    "thumbnailQuality": 60,
-    "maxPhotoSize": "1920x1080",
+    "thumbnailQuality": 70,
+    "maxPhotoSize": "1200x900",
     "cacheDuration": 3600000,
-    "optimizedDetection": true,
-    "useHeadRequests": true,
-    "timeoutMs": 2000
+    "enableOptimizations": true
   },
 
   "accessibility": {
@@ -152,7 +154,6 @@
     "enabled": true,
     "logLevel": "info",
     "showLoadTimes": true,
-    "photoDetectionLog": true,
-    "maxLogEntries": 100
+    "photoDetectionLog": true
   }
 }

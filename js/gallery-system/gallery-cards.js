@@ -21,7 +21,7 @@ class GalleryCards {
      * Renderiza todas las cards en el grid
      */
     render() {
-        this.container = this.gallery.container.querySelector('#expeditions-grid');
+        this.container = this.gallery.container.querySelector('#grid-2-2-1');
         if (!this.container) {
             console.error('❌ Grid container no encontrado');
             return;
