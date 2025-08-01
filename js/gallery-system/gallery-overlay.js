@@ -54,7 +54,7 @@ class GalleryOverlay {
                     <div class="main-photo-container">
                         <!-- Botón anterior -->
                         <button class="nav-button prev">
-                            <span class="material-symbols-rounded">arrow_back_ios</span>
+                            <span class="material-symbols-rounded">arrow_back_ios_new</span>
                         </button>
 
                         <!-- Foto principal -->
@@ -81,26 +81,62 @@ class GalleryOverlay {
     }
 
     setupOverlayEvents() {
-        // Botón cerrar
-        const closeButton = this.overlay.querySelector('.overlay-close');
-        closeButton.addEventListener('click', () => this.close());
-
-        // Botones de navegación
-        const prevButton = this.overlay.querySelector('.nav-button.prev');
-        const nextButton = this.overlay.querySelector('.nav-button.next');
-        
-        prevButton.addEventListener('click', () => this.previousPhoto());
-        nextButton.addEventListener('click', () => this.nextPhoto());
-
-        // Click en overlay para cerrar (solo en el fondo)
-        this.overlay.addEventListener('click', (e) => {
-            if (e.target === this.overlay) {
-                this.close();
+        try {
+            // Botón cerrar
+            const closeButton = this.overlay.querySelector('.overlay-close');
+            if (closeButton) {
+                closeButton.addEventListener('click', () => this.close());
+                console.log('✅ Evento de botón cerrar configurado');
+            } else {
+                console.error('❌ No se encontró el botón cerrar');
             }
-        });
 
-        // Touch events para móviles
-        this.setupTouchEvents();
+            // Botones de navegación
+            const prevButton = this.overlay.querySelector('.nav-button.prev');
+            const nextButton = this.overlay.querySelector('.nav-button.next');
+            
+            if (prevButton && nextButton) {
+                prevButton.addEventListener('click', () => this.previousPhoto());
+                nextButton.addEventListener('click', () => this.nextPhoto());
+                console.log('✅ Eventos de navegación configurados');
+            } else {
+                console.error('❌ No se encontraron botones de navegación');
+            }
+
+            // Click en overlay para cerrar (solo en el fondo)
+            this.overlay.addEventListener('click', (e) => {
+                if (e.target === this.overlay) {
+                    this.close();
+                }
+            });
+
+            // Touch events para móviles
+            this.setupTouchEvents();
+            
+            // Eventos de teclado
+            document.addEventListener('keydown', this.handleKeyPress.bind(this));
+            
+            console.log('✅ Todos los eventos del overlay configurados');
+            
+        } catch (error) {
+            console.error('❌ Error configurando eventos del overlay:', error);
+        }
+    }
+
+    handleKeyPress(event) {
+        if (!this.isOpen) return;
+        
+        switch(event.key) {
+            case 'Escape':
+                this.close();
+                break;
+            case 'ArrowLeft':
+                this.previousPhoto();
+                break;
+            case 'ArrowRight':
+                this.nextPhoto();
+                break;
+        }
     }
 
     setupTouchEvents() {

@@ -55,10 +55,26 @@ class GallerySystem {
         
         if (missing.length > 0) {
             console.error('❌ Dependencias faltantes:', missing);
-            this.showErrorMessage(`Error: Faltan archivos del sistema (${missing.join(', ')})`);
+            console.log('🔍 Verificando disponibilidad de objetos globales:');
+            requiredGlobals.forEach(dep => {
+                console.log(`  - ${dep}:`, window[dep] ? '✅ Disponible' : '❌ Faltante');
+            });
+            
+            // Intentar reinicializar después de un breve delay
+            console.log('🔄 Reintentando inicialización en 2 segundos...');
+            setTimeout(() => {
+                if (this.checkDependencies()) {
+                    console.log('🎯 Dependencias ahora disponibles, reinicializando...');
+                    this.init();
+                } else {
+                    this.showErrorMessage(`Error: Faltan archivos del sistema. Verifica que todos los archivos JS se hayan cargado correctamente.`);
+                }
+            }, 2000);
+            
             return false;
         }
         
+        console.log('✅ Todas las dependencias están disponibles');
         return true;
     }
 
@@ -299,16 +315,38 @@ class GallerySystem {
     }
 
     initializeComponents() {
+        console.log('🔧 Inicializando componentes...');
+        
         // Inicializar generador de cards
         if (window.GalleryCards) {
-            this.galleryCards = new window.GalleryCards(this.detectedPhotos);
-            this.galleryCards.init();
+            try {
+                this.galleryCards = new window.GalleryCards(this.detectedPhotos);
+                this.galleryCards.init();
+                console.log('✅ GalleryCards inicializado correctamente');
+            } catch (error) {
+                console.error('❌ Error inicializando GalleryCards:', error);
+            }
+        } else {
+            console.error('❌ GalleryCards no está disponible');
         }
         
         // Inicializar sistema de overlay
         if (window.GalleryOverlay) {
-            this.galleryOverlay = new window.GalleryOverlay(this.detectedPhotos);
-            this.galleryOverlay.init();
+            try {
+                this.galleryOverlay = new window.GalleryOverlay(this.detectedPhotos);
+                this.galleryOverlay.init();
+                console.log('✅ GalleryOverlay inicializado correctamente');
+            } catch (error) {
+                console.error('❌ Error inicializando GalleryOverlay:', error);
+            }
+        } else {
+            console.error('❌ GalleryOverlay no está disponible');
+        }
+        
+        // Verificar que al menos uno de los componentes se haya inicializado
+        if (!this.galleryCards && !this.galleryOverlay) {
+            console.error('❌ Ningún componente de galería se pudo inicializar');
+            this.showErrorMessage('Error: No se pudieron cargar los componentes de la galería.');
         }
     }
 
@@ -521,3 +559,93 @@ const gallerySystem = new GallerySystem();
 // Exportar para acceso global
 window.GallerySystem = GallerySystem;
 window.gallerySystem = gallerySystem;
+
+// 🔍 FUNCIONES DE DEBUGGING (ejecutar desde consola del navegador)
+window.debugGallery = {
+    // Verificar estado del sistema
+    checkStatus: () => {
+        console.log('🔍 DIAGNÓSTICO DEL SISTEMA DE GALERÍA');
+        console.log('=====================================');
+        
+        // Verificar dependencias
+        const deps = ['expeditionsData', 'galleryConfig', 'GalleryCards', 'GalleryOverlay'];
+        console.log('📦 Dependencias:');
+        deps.forEach(dep => {
+            const status = window[dep] ? '✅' : '❌';
+            console.log(`  ${status} ${dep}:`, window[dep]);
+        });
+        
+        // Verificar sistema principal
+        console.log('\n🏔️ Sistema Principal:');
+        console.log('  Estado:', window.gallerySystem?.initialized ? '✅ Inicializado' : '❌ No inicializado');
+        console.log('  Fotos detectadas:', Object.keys(window.gallerySystem?.detectedPhotos || {}).length);
+        
+        // Verificar componentes
+        console.log('\n🔧 Componentes:');
+        console.log('  GalleryCards:', window.gallerySystem?.galleryCards ? '✅ OK' : '❌ Falta');
+        console.log('  GalleryOverlay:', window.gallerySystem?.galleryOverlay ? '✅ OK' : '❌ Falta');
+        
+        // Verificar DOM
+        console.log('\n📄 Elementos DOM:');
+        const containers = document.querySelectorAll('.gallery-grid-container');
+        console.log(`  Contenedores de galería: ${containers.length}`);
+        
+        return {
+            dependencies: deps.map(dep => ({ name: dep, available: !!window[dep] })),
+            initialized: window.gallerySystem?.initialized || false,
+            photosDetected: Object.keys(window.gallerySystem?.detectedPhotos || {}).length,
+            components: {
+                cards: !!window.gallerySystem?.galleryCards,
+                overlay: !!window.gallerySystem?.galleryOverlay
+            }
+        };
+    },
+    
+    // Forzar reinicialización
+    forceRestart: () => {
+        console.log('🔄 Forzando reinicialización del sistema...');
+        if (window.gallerySystem) {
+            window.gallerySystem.initialized = false;
+            window.gallerySystem.init();
+        } else {
+            console.log('⚠️ Sistema no disponible, creando nueva instancia...');
+            window.gallerySystem = new GallerySystem();
+        }
+    },
+    
+    // Verificar scripts cargados
+    checkScripts: () => {
+        console.log('📜 Scripts cargados:');
+        const scripts = document.querySelectorAll('script[src]');
+        scripts.forEach(script => {
+            const src = script.src;
+            if (src.includes('gallery') || src.includes('global')) {
+                console.log(`  📄 ${src.split('/').pop()}: ${script.loaded !== false ? '✅' : '❌'}`);
+            }
+        });
+    },
+    
+    // Test manual de apertura de galería
+    testOpen: (expeditionId = 'aconcagua') => {
+        console.log(`🧪 Probando apertura de galería: ${expeditionId}`);
+        if (window.gallerySystem?.galleryOverlay) {
+            const photos = window.gallerySystem.detectedPhotos[expeditionId] || [];
+            const expedition = window.expeditionsData[expeditionId];
+            
+            if (expedition && photos.length > 0) {
+                window.gallerySystem.galleryOverlay.open(expedition, photos, 0);
+                console.log('✅ Galería abierta correctamente');
+            } else {
+                console.log('❌ No se encontraron datos o fotos para la expedición');
+            }
+        } else {
+            console.log('❌ GalleryOverlay no está disponible');
+        }
+    }
+};
+
+console.log('🔍 Funciones de debugging disponibles:');
+console.log('  - debugGallery.checkStatus() - Verificar estado del sistema');
+console.log('  - debugGallery.forceRestart() - Forzar reinicialización');
+console.log('  - debugGallery.checkScripts() - Verificar scripts cargados');
+console.log('  - debugGallery.testOpen("expeditionId") - Probar apertura manual');
