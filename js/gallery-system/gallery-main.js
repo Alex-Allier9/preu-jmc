@@ -1,11 +1,11 @@
 /* ======================================
-   GALLERY-MAIN.JS - COORDINADOR PRINCIPAL DEL SISTEMA DE GALERÍA
+   GALLERY-MAIN.JS - COORDINADOR PRINCIPAL DEL SISTEMA DE GALERÍA (OPTIMIZADO)
    Preuniversitario JMC - Sistema Dinámico de Expediciones
    ====================================== */
 
 /**
  * GallerySystem - Coordinador principal del sistema de galería dinámico
- * Maneja la inicialización, datos, y coordinación entre componentes
+ * VERSIÓN OPTIMIZADA: Detección inteligente de fotos sin causar crash
  */
 class GallerySystem {
     constructor(containerId = 'mountaineering-gallery') {
@@ -18,7 +18,7 @@ class GallerySystem {
         this.utils = null;
         this.isInitialized = false;
         
-        console.log('🏔️ GallerySystem inicializando...');
+        console.log('🏔️ GallerySystem inicializando (versión optimizada)...');
     }
 
     /**
@@ -39,8 +39,8 @@ class GallerySystem {
             
             console.log(`✅ Datos cargados: ${Object.keys(this.expeditions).length} expediciones`);
 
-            // Detectar fotos automáticamente
-            await this.detectPhotos();
+            // Detectar fotos automáticamente (OPTIMIZADO)
+            await this.detectPhotosOptimized();
 
             // Encontrar o crear contenedor
             this.container = document.getElementById(this.containerId);
@@ -71,6 +71,126 @@ class GallerySystem {
     }
 
     /**
+     * NUEVA FUNCIÓN: Detecta fotos de manera optimizada
+     * - Solo busca en JPG
+     * - Se detiene en secuencias rotas
+     * - Máximo 20 intentos por expedición
+     */
+    async detectPhotosOptimized() {
+        console.log('🔍 Detectando fotos de manera optimizada...');
+        
+        for (const [expeditionId, expedition] of Object.entries(this.expeditions)) {
+            try {
+                const photos = await this.detectExpeditionPhotosOptimized(expeditionId);
+                expedition.photos = photos;
+                expedition.photoCount = photos.length;
+                
+                console.log(`📸 ${expeditionId}: ${photos.length} fotos detectadas`);
+            } catch (error) {
+                console.warn(`⚠️ Error detectando fotos para ${expeditionId}:`, error);
+                expedition.photos = [];
+                expedition.photoCount = 0;
+            }
+        }
+    }
+
+    /**
+     * NUEVA FUNCIÓN: Detecta fotos de una expedición de manera inteligente
+     * - Solo formato JPG
+     * - Se detiene al encontrar gaps
+     * - Verificación rápida sin crear elementos DOM
+     */
+    async detectExpeditionPhotosOptimized(expeditionId) {
+        const basePath = this.config.gallery.basePath;
+        const expeditionPath = `${basePath}${expeditionId}/`;
+        
+        const photos = [];
+        let consecutiveFailures = 0;
+        const maxConsecutiveFailures = 3; // Se detiene después de 3 fallos consecutivos
+        const maxPhotos = 20; // Máximo 20 fotos por expedición
+        
+        console.log(`🔍 Detectando fotos para ${expeditionId}...`);
+        
+        for (let i = 1; i <= maxPhotos && consecutiveFailures < maxConsecutiveFailures; i++) {
+            const paddedNumber = i.toString().padStart(4, '0');
+            const filename = `${expeditionId}_${paddedNumber}.jpg`; // Solo JPG
+            const fullPath = `${expeditionPath}${filename}`;
+            
+            try {
+                // Verificación optimizada sin crear elementos DOM
+                const exists = await this.imageExistsOptimized(fullPath);
+                
+                if (exists) {
+                    photos.push({
+                        id: `${expeditionId}_${paddedNumber}`,
+                        filename: filename,
+                        path: fullPath,
+                        alt: `${this.expeditions[expeditionId].name} - Foto ${i}`,
+                        index: i
+                    });
+                    consecutiveFailures = 0; // Reset contador
+                    console.log(`✅ Encontrada: ${filename}`);
+                } else {
+                    consecutiveFailures++;
+                    console.log(`❌ No encontrada: ${filename} (fallos consecutivos: ${consecutiveFailures})`);
+                }
+            } catch (error) {
+                consecutiveFailures++;
+                console.warn(`⚠️ Error verificando ${filename}:`, error);
+            }
+        }
+        
+        console.log(`📊 ${expeditionId}: ${photos.length} fotos encontradas, ${consecutiveFailures} fallos finales`);
+        return photos.sort((a, b) => a.index - b.index);
+    }
+
+    /**
+     * NUEVA FUNCIÓN: Verificación optimizada de existencia de imagen
+     * Usa fetch con AbortController para evitar timeouts largos
+     */
+    async imageExistsOptimized(url) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000); // Timeout de 2 segundos
+        
+        try {
+            const response = await fetch(url, {
+                method: 'HEAD', // Solo headers, no descargar contenido
+                signal: controller.signal,
+                cache: 'no-cache'
+            });
+            
+            clearTimeout(timeoutId);
+            return response.ok; // Status 200-299
+        } catch (error) {
+            clearTimeout(timeoutId);
+            if (error.name === 'AbortError') {
+                console.warn(`⏱️ Timeout verificando: ${url}`);
+            }
+            return false;
+        }
+    }
+
+    /**
+     * FUNCIÓN ORIGINAL (FALLBACK): Verifica si una imagen existe
+     * Solo se usa si la optimizada falla
+     */
+    async imageExists(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
+            
+            // Timeout de seguridad
+            setTimeout(() => {
+                img.onload = null;
+                img.onerror = null;
+                resolve(false);
+            }, 3000);
+        });
+    }
+
+    /**
      * Carga archivos JSON con manejo de errores
      */
     async loadJSON(url) {
@@ -87,82 +207,10 @@ class GallerySystem {
     }
 
     /**
-     * Detecta automáticamente las fotos en cada expedición
-     */
-    async detectPhotos() {
-        console.log('🔍 Detectando fotos automáticamente...');
-        
-        for (const [expeditionId, expedition] of Object.entries(this.expeditions)) {
-            try {
-                const photos = await this.detectExpeditionPhotos(expeditionId);
-                expedition.photos = photos;
-                expedition.photoCount = photos.length;
-                
-                console.log(`📸 ${expeditionId}: ${photos.length} fotos detectadas`);
-            } catch (error) {
-                console.warn(`⚠️ Error detectando fotos para ${expeditionId}:`, error);
-                expedition.photos = [];
-                expedition.photoCount = 0;
-            }
-        }
-    }
-
-    /**
-     * Detecta fotos de una expedición específica
-     */
-    async detectExpeditionPhotos(expeditionId) {
-        const basePath = this.config.gallery.basePath;
-        const expeditionPath = `${basePath}${expeditionId}/`;
-        const supportedFormats = this.config.gallery.supportedFormats;
-        const photoPattern = new RegExp(this.config.gallery.photoFilePattern);
-        
-        const photos = [];
-        
-        // Intentar detectar fotos con diferentes patrones
-        for (let i = 1; i <= 50; i++) { // Máximo 50 fotos por expedición
-            const paddedNumber = i.toString().padStart(4, '0');
-            
-            for (const format of supportedFormats) {
-                const filename = `${expeditionId}_${paddedNumber}.${format}`;
-                const fullPath = `${expeditionPath}${filename}`;
-                
-                // Verificar si la imagen existe
-                if (await this.imageExists(fullPath)) {
-                    photos.push({
-                        id: `${expeditionId}_${paddedNumber}`,
-                        filename: filename,
-                        path: fullPath,
-                        alt: `${this.expeditions[expeditionId].name} - Foto ${i}`,
-                        index: i
-                    });
-                    break; // Solo agregar una vez por número
-                }
-            }
-        }
-        
-        return photos.sort((a, b) => a.index - b.index);
-    }
-
-    /**
-     * Verifica si una imagen existe sin generar errores en consola
-     */
-    async imageExists(url) {
-        return new Promise((resolve) => {
-            const img = new Image();
-            img.onload = () => resolve(true);
-            img.onerror = () => resolve(false);
-            img.src = url;
-        });
-    }
-
-    /**
      * Inicializa los componentes del sistema
      */
     async initializeComponents() {
         console.log('🔧 Inicializando componentes...');
-
-        // Importar dinámicamente los componentes (si están en módulos separados)
-        // Por ahora los incluiremos como clases globales
 
         if (typeof GalleryCards !== 'undefined') {
             this.cards = new GalleryCards(this);
@@ -289,7 +337,7 @@ class GallerySystem {
     }
 
     /**
-     * Crea una card básica de expedición
+     * Crea una card básica de expedición con imagen responsiva
      */
     createBasicCard(expedition) {
         const isNew = this.isNewExpedition(expedition);
@@ -298,6 +346,8 @@ class GallerySystem {
                 `<span class="achievement-badge material-symbols-rounded">${achievement.icon}</span>`
             ).join('') : '';
 
+        const imagePath = `${this.config.gallery.basePath}${expedition.id}/${expedition.coverImage}`;
+
         return `
             <div class="expedition-card fade-in" 
                  data-expedition="${expedition.id}" 
@@ -305,10 +355,24 @@ class GallerySystem {
                 ${isNew ? '<div class="new-badge">NUEVO</div>' : ''}
                 ${achievementBadges ? `<div class="achievement-badges">${achievementBadges}</div>` : ''}
                 
-                <img src="${this.config.gallery.basePath}${expedition.id}/${expedition.coverImage}" 
-                     alt="${expedition.name}" 
-                     class="expedition-image"
-                     loading="lazy">
+                <div class="expedition-image-container">
+                    <img src="${imagePath}" 
+                         alt="${expedition.name}" 
+                         class="expedition-image"
+                         loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    
+                    <!-- Placeholder de error -->
+                    <div style="display: none; width: 100%; height: 200px; background: #f4f4f4; align-items: center; justify-content: center; color: #999; font-size: 14px;">
+                        Imagen no disponible
+                    </div>
+                    
+                    <!-- Overlay de hover -->
+                    <div class="expedition-image-overlay">
+                        <span class="material-symbols-rounded">zoom_in</span>
+                    </div>
+                </div>
                 
                 <div class="expedition-content">
                     <h3 class="expedition-title">${expedition.name}</h3>
@@ -526,9 +590,9 @@ class GallerySystem {
         if (this.container) {
             this.container.innerHTML = `
                 <div class="container">
-                    <div class="error-message">
-                        <h3>Error al cargar la galería</h3>
-                        <p>No se pudieron cargar las expediciones. Por favor, intenta recargar la página.</p>
+                    <div class="error-message" style="text-align: center; padding: 3rem; background: rgba(255,255,255,0.9); border-radius: 15px; margin: 2rem;">
+                        <h3 style="color: var(--primary-dark); margin-bottom: 1rem;">Error al cargar la galería</h3>
+                        <p style="margin-bottom: 2rem;">No se pudieron cargar las expediciones. El sistema detectará automáticamente las fotos disponibles.</p>
                         <button onclick="window.location.reload()" class="btn-primary">Recargar</button>
                     </div>
                 </div>
@@ -591,7 +655,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.body.contains(document.querySelector('.mountaineering-section')) || 
         window.location.pathname.includes('fundador')) {
         
-        console.log('🏔️ Inicializando sistema de galería automáticamente...');
+        console.log('🏔️ Inicializando sistema de galería optimizado...');
         
         // Crear instancia global del sistema
         window.gallerySystem = new GallerySystem();
@@ -610,6 +674,7 @@ if (typeof window !== 'undefined') {
     window.GallerySystem = GallerySystem;
 }
 
-console.log('📦 GallerySystem cargado y listo');
+console.log('📦 GallerySystem OPTIMIZADO cargado y listo');
 console.log('🏔️ Sistema de Galería Dinámico - Preuniversitario JMC');
+console.log('⚡ OPTIMIZACIONES: Solo JPG, detección inteligente, sin crash');
 console.log('💻 Desarrollado por Alexandre Castillo - ACastillo DG');

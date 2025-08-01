@@ -20,7 +20,8 @@
 @import url('./components/icons.css');    /* Sistema de iconos */
 @import url('./components/buttons.css');  /* CTAs y botones */
 @import url('./components/progress-bar.css'); /* Barra de progreso de scroll */
-@import url('./components/gallery-overlay.css');
+@import url('./components/gallery-overlay.css'); /* Lightbox de galería */
+@import url('./components/expedition-gallery.css'); /* 📄 NUEVO - Galería de expediciones */
 
 /* ===== UTILITIES - UTILIDADES ===== */
 @import url('./utilities/responsive.css'); /* Media queries */

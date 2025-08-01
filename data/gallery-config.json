@@ -3,9 +3,12 @@
     "title": "Expediciones Montañísticas",
     "subtitle": "Momentos capturados en las cumbres más desafiantes de la cordillera chilena e internacional",
     "basePath": "media/images/fundador/gallery/",
-    "supportedFormats": ["jpg", "jpeg", "png", "webp"],
-    "photoFilePattern": "_\\d{4}\\.(jpg|jpeg|png|webp)$",
-    "coverFilePattern": "_cover\\.(jpg|jpeg|png|webp)$"
+    "supportedFormats": ["jpg"],
+    "photoFilePattern": "_\\d{4}\\.jpg$",
+    "coverFilePattern": "_cover\\.jpg$",
+    "maxPhotosPerExpedition": 20,
+    "maxConsecutiveFailures": 3,
+    "imageTimeout": 2000
   },
   
   "ui": {
@@ -14,7 +17,8 @@
     "photoCounterFormat": "{current} / {total}",
     "loadingText": "Cargando...",
     "errorText": "Error al cargar",
-    "noPhotosText": "Sin fotos disponibles"
+    "noPhotosText": "Sin fotos disponibles",
+    "imageNotFound": "Imagen no disponible"
   },
   
   "filters": {
@@ -114,7 +118,7 @@
 
   "mobile": {
     "swipeThreshold": 50,
-    "doubleTapZoom": true,
+    "doubleTapZoom": false,
     "uiHideDelay": 3000,
     "gestures": {
       "swipeLeft": "nextPhoto",
@@ -128,10 +132,13 @@
 
   "performance": {
     "lazyLoading": true,
-    "preloadNext": 2,
+    "preloadNext": 1,
     "thumbnailQuality": 60,
     "maxPhotoSize": "1920x1080",
-    "cacheDuration": 3600000
+    "cacheDuration": 3600000,
+    "optimizedDetection": true,
+    "useHeadRequests": true,
+    "timeoutMs": 2000
   },
 
   "accessibility": {
@@ -142,9 +149,10 @@
   },
 
   "debug": {
-    "enabled": false,
+    "enabled": true,
     "logLevel": "info",
-    "showLoadTimes": false,
-    "photoDetectionLog": false
+    "showLoadTimes": true,
+    "photoDetectionLog": true,
+    "maxLogEntries": 100
   }
 }
