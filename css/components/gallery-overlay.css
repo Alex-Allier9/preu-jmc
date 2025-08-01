@@ -1,13 +1,8 @@
-/* ======================================
-   GALLERY-OVERLAY.CSS - ESTILOS DEL LIGHTBOX/OVERLAY
-   Sistema de Galería Dinámico - Preuniversitario JMC
-   ====================================== */
+/* 🏔️ SISTEMA DE GALERÍA DINÁMICO COMPLETO - PREUNIVERSITARIO JMC */
+/* Estilos para overlay/lightbox Y sistema de tarjetas de galería */
 
-/* ======================================
-   OVERLAY PRINCIPAL
-   ====================================== */
-
-.gallery-overlay {
+/* ===== OVERLAY PRINCIPAL ===== */
+.gallery-lightbox {
     position: fixed;
     top: 0;
     left: 0;
@@ -15,19 +10,17 @@
     height: 100vh;
     background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
-    z-index: 10000;
+    z-index: 15000;
     display: flex;
     opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease-in-out;
+    transition: opacity 0.3s ease;
 }
 
-.gallery-overlay.active {
+.gallery-lightbox.show {
     opacity: 1;
-    visibility: visible;
 }
 
-/* Botón cerrar universal */
+/* ===== BOTÓN CERRAR ===== */
 .overlay-close {
     position: absolute;
     top: 1.5rem;
@@ -37,40 +30,41 @@
     background: rgba(var(--black-rgb), 0.8);
     border: none;
     border-radius: 50%;
-    color: white;
+    color: var(--primary) !important;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    z-index: 10001;
+    z-index: 15001;
     transition: var(--transition-standard);
     backdrop-filter: blur(10px);
 }
 
+.overlay-close .material-symbols-rounded {
+    color: var(--primary) !important;
+    transition: color 0.3s ease !important;
+    font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+
 .overlay-close:hover {
     background: rgba(var(--black-rgb), 1);
-    color: var(--accent);
+    color: var(--accent) !important;
     transform: scale(1.1);
 }
 
-/* ======================================
-   LAYOUT PRINCIPAL: 1/3 - 2/3
-   ====================================== */
+.overlay-close:hover .material-symbols-rounded {
+    color: var(--accent) !important;
+}
 
+/* ===== LAYOUT PRINCIPAL: 1/3 - 2/3 ===== */
 .overlay-content {
     display: flex;
     width: 100%;
     height: 100vh;
-    transform: scale(0.9);
-    transition: transform 0.4s ease-in-out;
 }
 
-.gallery-overlay.active .overlay-content {
-    transform: scale(1);
-}
-
-/* Panel izquierdo - Información (1/3) */
+/* ===== PANEL DE INFORMACIÓN (1/3) ===== */
 .info-panel {
     width: 33.333%;
     background: rgba(255, 255, 255, 0.95);
@@ -80,33 +74,19 @@
     border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Panel derecho - Fotos (2/3) */
-.photos-panel {
-    width: 66.667%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.8);
-}
-
-/* ======================================
-   PANEL DE INFORMACIÓN - ESTILOS
-   ====================================== */
-
 /* Header de la expedición */
 .expedition-header {
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid var(--primary-dark);
     padding-bottom: 1.5rem;
     margin-bottom: 2rem;
 }
 
 .expedition-title {
     font-family: var(--font-title);
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     color: var(--primary-dark);
     margin-bottom: 0.5rem;
     line-height: 1.2;
-    letter-spacing: var(--title-letter-spacing);
 }
 
 .expedition-location {
@@ -116,25 +96,19 @@
     margin-bottom: 1rem;
 }
 
-/* Metadatos principales */
-.main-metadata {
+/* Metadatos principales del overlay */
+.gallery-main-metadata {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
 
-.metadata-item {
+.gallery-metadata-item {
     background: rgba(var(--primary-rgb), 0.1);
     padding: 1rem;
     border-radius: var(--border-radius-standard);
     text-align: center;
-    transition: var(--transition-standard);
-}
-
-.metadata-item:hover {
-    background: rgba(var(--primary-rgb), 0.15);
-    transform: translateY(-2px);
 }
 
 .metadata-label {
@@ -161,19 +135,43 @@
     border-radius: var(--border-radius-standard);
     text-align: center;
     margin-bottom: 1.5rem;
-    transition: var(--transition-standard);
 }
 
-.difficulty-display:hover {
-    transform: scale(1.02);
-    box-shadow: var(--shadow-light);
+/* ===== COLORES PARA DIFFICULTY-DISPLAY EN OVERLAY ===== */
+.difficulty-display.difficulty-F {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    color: var(--black);
+}
+
+.difficulty-display.difficulty-PD {
+    background: linear-gradient(135deg, var(--accent-green-light), var(--accent-green));
+    color: var(--black);
+}
+
+.difficulty-display.difficulty-AD {
+    background: linear-gradient(135deg, var(--accent-light), var(--accent));
+    color: var(--black);
+}
+
+.difficulty-display.difficulty-D {
+    background: linear-gradient(135deg, var(--accent-orange-light), var(--accent-orange));
+    color: var(--black);
+}
+
+.difficulty-display.difficulty-TD {
+    background: linear-gradient(135deg, var(--accent-red-light), var(--accent-red));
+    color: var(--black);
+}
+
+.difficulty-display.difficulty-ED {
+    background: linear-gradient(135deg, var(--primary-darker), var(--black));
+    color: white;
 }
 
 .difficulty-grade {
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 0.3rem;
-    font-family: var(--font-title);
 }
 
 .difficulty-description {
@@ -181,12 +179,9 @@
     opacity: 0.8;
 }
 
-/* Secciones del panel */
-.panel-section {
-    margin-bottom: 1.5rem;
-}
-
-.section-title {
+/* Secciones del overlay */
+.gallery-section-title {
+    font-family: var(--font-body);
     font-size: 1.2rem;
     color: var(--primary-dark);
     font-weight: 600;
@@ -194,49 +189,79 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    letter-spacing: normal;
 }
 
-.section-title .material-symbols-rounded {
-    font-size: 1.3rem;
-    color: var(--primary);
+.gallery-section-title .material-symbols-rounded {
+    color: var(--primary-dark);
+    font-size: 1.6rem;
 }
 
 /* Logros */
-.achievements-list {
+.gallery-lightbox .info-panel .achievements-section {
+    margin-bottom: 1.5rem;
+}
+
+.gallery-lightbox .info-panel .achievements-list {
     display: flex;
     gap: 0.8rem;
     flex-wrap: wrap;
+    align-items: center;
 }
 
-.achievement-badge-detailed {
-    display: flex;
+.gallery-lightbox .info-panel .achievement-badge {
+    display: flex !important;
     align-items: center;
     gap: 0.5rem;
     background: var(--accent);
     color: var(--black);
     padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
+    border-radius: 50px;
+    font-size: 1rem;
     font-weight: 600;
-    transition: var(--transition-standard);
+    width: auto !important;
+    flex: none !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap;
+    line-height: 1.2;
+    min-height: 2.2rem;
+    box-sizing: border-box;
 }
 
-.achievement-badge-detailed:hover {
-    background: var(--accent-green);
-    transform: scale(1.05);
+.gallery-lightbox .info-panel .achievement-badge .gallery-badge-icon {
+    color: var(--black);
+    font-size: 1.6rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
-.achievement-icon {
+.gallery-badge-icon {
     font-size: 1.1rem;
+    color: var(--black);
+    line-height: 1;
 }
 
 /* Descripción */
+.description-section {
+    margin-bottom: 1.5rem;
+}
+
 .description-text {
     color: var(--black);
     line-height: 1.8;
     font-size: 1rem;
     text-align: justify;
-    white-space: pre-line; /* Permite saltos de línea del JSON */
+}
+
+.description-text p {
+    margin-bottom: 1rem;
+}
+
+.description-text p:last-child {
+    margin-bottom: 0;
 }
 
 /* Información técnica */
@@ -262,7 +287,7 @@
 
 .info-icon {
     color: var(--primary);
-    font-size: 1.1rem;
+    font-size: 1.6rem;
 }
 
 /* Botón Google Maps */
@@ -272,16 +297,17 @@
     border: none;
     padding: 1rem;
     border-radius: var(--border-radius-standard);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     transition: var(--transition-standard);
-    margin-top: auto;
     width: 100%;
+    font-family: var(--font-body);
+    margin-top: 1.5rem;
 }
 
 .maps-button:hover {
@@ -289,18 +315,29 @@
     box-shadow: var(--shadow-medium);
 }
 
-/* ======================================
-   PANEL DE FOTOS - ESTILOS
-   ====================================== */
+.maps-button .material-symbols-rounded {
+    color: white;
+    font-size: 1.6rem;
+}
+
+/* ===== PANEL DE FOTOS (2/3) ===== */
+.photos-panel {
+    width: 66.667%;
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
+    height: 100vh;
+}
 
 /* Contenedor de foto principal */
 .main-photo-container {
-    flex: 1;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    height: calc(100vh - 100px); /* Alto fijo: altura total menos espacio para thumbnails */
+    max-height: calc(100vh - 100px);
+    overflow: hidden;
 }
 
 .main-photo {
@@ -309,7 +346,7 @@
     object-fit: contain;
     border-radius: var(--border-radius-standard);
     box-shadow: var(--shadow-heavy);
-    transition: all 0.3s ease;
+    transition: var(--transition-standard);
 }
 
 /* Botones de navegación */
@@ -322,7 +359,7 @@
     background: rgba(var(--black-rgb), 0.8);
     border: none;
     border-radius: 50%;
-    color: white;
+    color: var(--primary) !important;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -333,21 +370,20 @@
     z-index: 100;
 }
 
+.nav-button .material-symbols-rounded {
+    color: var(--primary) !important;
+    transition: color 0.3s ease !important;
+    font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+
 .nav-button:hover {
     background: rgba(var(--black-rgb), 1);
-    color: var(--accent);
+    color: var(--accent) !important;
     transform: translateY(-50%) scale(1.1);
 }
 
-.nav-button:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.nav-button:disabled:hover {
-    transform: translateY(-50%) scale(1);
-    color: white;
-    background: rgba(var(--black-rgb), 0.8);
+.nav-button:hover .material-symbols-rounded {
+    color: var(--accent) !important;
 }
 
 .nav-button.prev {
@@ -358,7 +394,13 @@
     right: 1rem;
 }
 
-/* Información de la foto actual */
+.nav-button:disabled,
+.nav-button[style*="opacity: 0.5"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Contador de fotos */
 .photo-counter {
     position: absolute;
     top: 1rem;
@@ -370,17 +412,23 @@
     border-radius: 20px;
     font-size: 0.9rem;
     backdrop-filter: blur(10px);
-    font-weight: 600;
+    z-index: 100;
 }
 
 /* Thumbnails */
 .thumbnails-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background: rgba(var(--black-rgb), 0.9);
     padding: 1rem;
     display: flex;
     gap: 0.5rem;
     overflow-x: auto;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100px;
+    min-height: 100px;
 }
 
 .thumbnail {
@@ -396,7 +444,7 @@
 
 .thumbnail:hover {
     transform: scale(1.05);
-    border-color: var(--accent);
+    border-color: var(--primary-dark);
 }
 
 .thumbnail.active {
@@ -404,32 +452,45 @@
     transform: scale(1.05);
 }
 
-/* Estados de carga */
-.loading-placeholder {
-    background: var(--gray-light);
-    border-radius: var(--border-radius-standard);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--black);
-    opacity: 0.5;
+/* Scrollbar para thumbnails */
+.thumbnails-container::-webkit-scrollbar {
+    height: 6px;
 }
 
-.error-placeholder {
-    background: rgba(var(--accent-red), 0.1);
-    border: 2px dashed var(--accent-red);
-    border-radius: var(--border-radius-standard);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-red);
-    font-weight: 600;
+.thumbnails-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
 }
 
-/* ======================================
-   RESPONSIVE MOBILE
-   ====================================== */
+.thumbnails-container::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 3px;
+}
 
+.thumbnails-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Scrollbar personalizado para panel de información */
+.info-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.info-panel::-webkit-scrollbar-track {
+    background: rgba(var(--gray-light), 0.3);
+    border-radius: 3px;
+}
+
+.info-panel::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 3px;
+}
+
+.info-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* ===== RESPONSIVE MOBILE ===== */
 @media (max-width: 768px) {
     .overlay-content {
         flex-direction: column;
@@ -448,13 +509,14 @@
         width: 100%;
         height: 60%;
         order: 1;
+        position: relative;
     }
     
     .expedition-title {
         font-size: 1.8rem;
     }
     
-    .main-metadata {
+    .gallery-main-metadata {
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
@@ -485,60 +547,31 @@
         height: 2.5rem;
         font-size: 1.2rem;
     }
-
+    
     .main-photo-container {
         padding: 1rem;
+        height: calc(60vh - 70px); /* Ajuste para móviles */
+        max-height: calc(60vh - 70px);
+    }
+    
+    .thumbnails-container {
+        height: 70px;
+        min-height: 70px;
+        padding: 0.5rem;
+    }
+    
+    .photo-counter {
+        top: 0.5rem;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
     }
 }
 
-/* ======================================
-   SCROLLBAR PERSONALIZADO
-   ====================================== */
-
-.info-panel::-webkit-scrollbar {
-    width: 6px;
-}
-
-.info-panel::-webkit-scrollbar-track {
-    background: rgba(var(--gray-light), 0.3);
-    border-radius: 3px;
-}
-
-.info-panel::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 3px;
-}
-
-.info-panel::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
-}
-
-.thumbnails-container::-webkit-scrollbar {
-    height: 6px;
-}
-
-.thumbnails-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-}
-
-.thumbnails-container::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-}
-
-.thumbnails-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-/* ======================================
-   ANIMACIONES ESPECÍFICAS
-   ====================================== */
-
-@keyframes fadeInScale {
+/* ===== ANIMACIONES Y TRANSICIONES ===== */
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.95);
     }
     to {
         opacity: 1;
@@ -546,82 +579,620 @@
     }
 }
 
-@keyframes slideInLeft {
+@keyframes slideInFromBottom {
     from {
-        transform: translateX(-100%);
         opacity: 0;
+        transform: translateY(50px);
     }
     to {
-        transform: translateX(0);
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.gallery-lightbox {
+    animation: fadeIn 0.3s ease;
 }
 
-/* Aplicar animaciones al abrir */
-.gallery-overlay.active .info-panel {
-    animation: slideInLeft 0.4s ease-out;
+.main-photo {
+    animation: slideInFromBottom 0.4s ease;
 }
 
-.gallery-overlay.active .photos-panel {
-    animation: slideInRight 0.4s ease-out;
+/* ===== EFECTOS ESPECIALES ===== */
+.main-photo[style*="scale(1.5)"] {
+    cursor: zoom-out;
+    transition: transform 0.3s ease;
 }
 
-/* ======================================
-   ACCESIBILIDAD
-   ====================================== */
-
-/* Focus states */
-.nav-button:focus,
-.overlay-close:focus,
-.maps-button:focus,
-.thumbnail:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+/* Estados de carga */
+.main-photo:not([src]) {
+    background: rgba(var(--primary-rgb), 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Reducir movimiento para usuarios sensibles */
+.main-photo:not([src])::after {
+    content: "Cargando...";
+    color: var(--primary);
+    font-family: var(--font-body);
+}
+
+/* ===== ACCESIBILIDAD ===== */
 @media (prefers-reduced-motion: reduce) {
-    .gallery-overlay,
-    .overlay-content,
-    .nav-button,
-    .thumbnail,
-    .achievement-badge-detailed,
-    .metadata-item {
-        transition: none;
+    .gallery-lightbox,
+    .main-photo {
         animation: none;
     }
     
-    .nav-button:hover,
-    .thumbnail:hover {
-        transform: none;
+    .nav-button,
+    .thumbnail,
+    .overlay-close {
+        transition: color 0.3s ease, background-color 0.3s ease !important;
     }
 }
 
-/* Alto contraste */
-@media (prefers-contrast: high) {
-    .gallery-overlay {
-        background: rgba(0, 0, 0, 0.98);
+/* Focus visible para navegación por teclado */
+.nav-button:focus-visible,
+.overlay-close:focus-visible,
+.thumbnail:focus-visible,
+.maps-button:focus-visible {
+    outline: 2px solid var(--primary-dark);
+    outline-offset: 2px;
+}
+
+/* ===== ESTADOS DE ERROR ===== */
+.main-photo[alt*="error"],
+.thumbnail[alt*="error"] {
+    background: rgba(var(--accent-red), 0.1);
+    color: var(--accent-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.main-photo[alt*="error"]::after {
+    content: "Error cargando imagen";
+}
+
+/* ===== UTILIDADES ===== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ========================================
+   SISTEMA DE TARJETAS DE GALERÍA
+   ======================================== */
+
+/* ===== HEADER DE LA GALERÍA ===== */
+.gallery-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gallery-main-title {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.gallery-subtitle {
+    font-size: 1.2rem;
+    color: var(--black);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+/* ===== CONTROLES DE GALERÍA EN LÍNEA ===== */
+.gallery-controls-inline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+/* ===== FILTROS CON BOTONES ===== */
+.gallery-filters {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.control-label {
+    font-weight: 600;
+    color: var(--primary-dark);
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    /* Usar estilos base de buttons.css con ajustes para tamaño compacto */
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: var(--transition-standard);
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    
+    /* Estilo primary outlined compacto */
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+}
+
+/* ===== SEPARADOR VISUAL ===== */
+.controls-separator {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+    opacity: 0.3;
+}
+
+/* ===== DROPDOWN DE ORDENAMIENTO ===== */
+.gallery-sort-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.dropdown-container {
+    position: relative;
+    min-width: 200px;
+}
+
+.dropdown-toggle {
+    /* Usar estilos base de buttons.css con ajustes para dropdown */
+    padding: 0.6rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: var(--transition-standard);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+    /* Estilo primary outlined compacto */
+    background: white;
+    border: 2px solid var(--primary);
+    color: var(--primary-dark);
+    box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.1);
+}
+
+.dropdown-toggle:hover {
+    border-color: var(--primary-dark);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+    transform: translateY(-1px);
+}
+
+.dropdown-toggle.active {
+    border-color: var(--primary-dark);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.25);
+    background: rgba(var(--primary-rgb), 0.05);
+}
+
+.dropdown-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.dropdown-text .material-symbols-rounded {
+    font-size: 1rem;
+    color: var(--primary-dark);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.dropdown-arrow {
+    font-size: 1.2rem !important;
+    color: var(--primary-dark) !important;
+    transition: transform 0.3s ease;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 !important;
+}
+
+.dropdown-toggle.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* ===== MENÚ DESPLEGABLE ===== */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(var(--black-rgb), 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--black);
+    transition: var(--transition-standard);
+    text-align: left;
+}
+
+.dropdown-item:hover {
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-dark);
+}
+
+.dropdown-item.active {
+    background: rgba(var(--primary-rgb), 0.15);
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+.dropdown-item .material-symbols-rounded {
+    font-size: 1rem;
+    color: var(--primary-dark);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.dropdown-item.active .material-symbols-rounded {
+    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Separador visual entre items */
+.dropdown-item:not(:last-child) {
+    border-bottom: 1px solid rgba(var(--primary-rgb), 0.1);
+}
+
+/* ===== GRID DE EXPEDICIONES ===== */
+.expeditions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* ===== CARD DE EXPEDICIÓN ===== */
+.expedition-card {
+    position: relative;
+    background: white;
+    border-radius: var(--border-radius-large);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    cursor: pointer;
+    /* Altura completamente flexible según el contenido */
+    height: auto;
+}
+
+.expedition-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Imagen cover - Aspecto 1:1 (cuadrado) */
+.expedition-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: var(--transition-standard);
+}
+
+.expedition-card:hover .expedition-image {
+    transform: scale(1.05);
+}
+
+/* ===== ETIQUETAS DE CARDS ===== */
+/* Etiqueta NUEVO */
+.new-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--accent-red);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
+/* Logros especiales en las tarjetas (SOLO para cards, NO overlay) */
+.expedition-card .achievement-badges {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.expedition-card .achievement-badges .achievement-badge {
+    background: rgba(var(--accent-rgb), 0.9);
+    color: var(--black);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+/* ===== CONTENIDO DE LA CARD ===== */
+.expedition-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Título específico para las cards (más pequeño que el del overlay) */
+.expedition-card .expedition-title {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.expedition-description {
+    color: var(--black);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    /* Mostrar toda la descripción sin truncar */
+}
+
+/* ===== METADATOS DE CARDS ===== */
+.expedition-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.expedition-difficulty {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(var(--primary-rgb), 0.1);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    flex-shrink: 0;
+}
+
+/* ===== COLORES POR NIVEL DE DIFICULTAD ===== */
+.expedition-difficulty.difficulty-F {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    color: var(--black);
+}
+
+.expedition-difficulty.difficulty-PD {
+    background: linear-gradient(135deg, var(--accent-green-light), var(--accent-green));
+    color: var(--black);
+}
+
+.expedition-difficulty.difficulty-AD {
+    background: linear-gradient(135deg, var(--accent-light), var(--accent));
+    color: var(--black);
+}
+
+.expedition-difficulty.difficulty-D {
+    background: linear-gradient(135deg, var(--accent-orange-light), var(--accent-orange));
+    color: var(--black);
+}
+
+.expedition-difficulty.difficulty-TD {
+    background: linear-gradient(135deg, var(--accent-red-light), var(--accent-red));
+    color: var(--black);
+}
+
+.expedition-difficulty.difficulty-ED {
+    background: linear-gradient(135deg, var(--primary-darker), var(--black));
+    color: white;
+}
+
+.difficulty-icon {
+    font-size: 1rem;
+}
+
+.expedition-altitude {
+    font-size: 0.9rem;
+    color: var(--black);
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+/* ===== STATS RÁPIDAS DE CARDS ===== */
+.expedition-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--black);
+    opacity: 0.7;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.stat-icon {
+    font-size: 0.9rem;
+    color: var(--primary);
+}
+
+/* ===== RESPONSIVE PARA CARDS ===== */
+@media (max-width: 768px) {
+    .expeditions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
-    .info-panel {
-        background: rgba(255, 255, 255, 0.98);
-        border-right: 2px solid var(--black);
+    .expedition-card {
+        height: auto;
     }
     
-    .nav-button,
-    .overlay-close {
-        background: var(--black);
-        border: 2px solid white;
+    .expedition-image {
+        aspect-ratio: 1 / 1;
+    }
+    
+    .gallery-controls-inline {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .controls-separator {
+        width: 80%;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--primary), transparent);
+    }
+    
+    .gallery-filters {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+    
+    .filter-buttons {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .gallery-sort-dropdown {
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .dropdown-container {
+        width: 100%;
+    }
+    
+    .dropdown-toggle {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .dropdown-item {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .expedition-stats {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-controls-inline {
+        gap: 1rem;
+    }
+    
+    .filter-buttons {
+        justify-content: center;
+    }
+    
+    .filter-btn {
+        padding: 0.45rem 0.9rem;
+        font-size: 0.8rem;
+    }
+    
+    .control-label {
+        font-size: 0.85rem;
+    }
+    
+    .dropdown-toggle {
+        padding: 0.55rem 0.9rem;
+        font-size: 0.8rem;
+    }
+    
+    .dropdown-text .material-symbols-rounded {
+        font-size: 0.9rem;
+    }
+    
+    .dropdown-arrow {
+        font-size: 1.1rem !important;
+    }
+    
+    .dropdown-item {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.75rem;
+    }
+    
+    .dropdown-item .material-symbols-rounded {
+        font-size: 0.9rem;
     }
 }

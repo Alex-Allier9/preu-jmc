@@ -1,189 +1,203 @@
-/* ======================================
-   GALLERY-MAIN.JS - VERSIÓN OPTIMIZADA SIN REQUESTS MASIVOS
-   Preuniversitario JMC - Sistema Dinámico de Expediciones
-   ====================================== */
+// 🏔️ SISTEMA DE GALERÍA DINÁMICO - PREUNIVERSITARIO JMC
+// Coordinador principal del sistema de galería
+// Maneja la detección automática de fotos y coordinación de componentes
 
-/**
- * GallerySystem - Coordinador principal OPTIMIZADO
- */
 class GallerySystem {
-    constructor(containerId = 'mountaineering-gallery') {
-        this.containerId = containerId;
-        this.container = null;
-        this.expeditions = {};
-        this.config = {};
-        this.cards = null;
-        this.overlay = null;
-        this.utils = null;
-        this.isInitialized = false;
+    constructor() {
+        this.initialized = false;
+        this.detectedPhotos = {};
+        this.currentOverlay = null;
         
-        console.log('🏔️ GallerySystem inicializando (OPTIMIZADO)...');
+        // Esperar a que el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.init());
+        } else {
+            this.init();
+        }
     }
 
-    /**
-     * Inicialización principal del sistema
-     */
     async init() {
         try {
-            console.log('📊 Cargando datos y configuración...');
+            console.log('🏔️ Inicializando Sistema de Galería JMC...');
             
-            // Cargar datos y configuración en paralelo
-            const [expeditionsData, configData] = await Promise.all([
-                this.loadJSON('data/expeditions.json'),
-                this.loadJSON('data/gallery-config.json')
-            ]);
-
-            this.expeditions = expeditionsData.expeditions;
-            this.config = configData;
-            
-            console.log(`✅ Datos cargados: ${Object.keys(this.expeditions).length} expediciones`);
-
-            // OPTIMIZACIÓN: Usar fotos predefinidas en lugar de detección automática
-            this.setupPredefinedPhotos();
-
-            // Encontrar o crear contenedor
-            this.container = document.getElementById(this.containerId);
-            if (!this.container) {
-                console.warn(`⚠️ Contenedor '${this.containerId}' no encontrado, creando uno nuevo`);
-                this.container = this.createContainer();
+            // Verificar dependencias
+            if (!this.checkDependencies()) {
+                return;
             }
 
+            // Detectar fotos automáticamente
+            await this.detectAllPhotos();
+            
             // Inicializar componentes
-            await this.initializeComponents();
-
-            // Renderizar galería
-            this.render();
-
-            this.isInitialized = true;
-            console.log('🎉 GallerySystem inicializado exitosamente (SIN REQUESTS MASIVOS)');
-
-            // Disparar evento personalizado
-            this.dispatchEvent('galleryInitialized', {
-                expeditions: Object.keys(this.expeditions).length,
-                totalPhotos: this.getTotalPhotoCount()
-            });
-
+            this.initializeComponents();
+            
+            // Configurar eventos globales
+            this.setupGlobalEvents();
+            
+            this.initialized = true;
+            console.log('✅ Sistema de Galería JMC inicializado correctamente');
+            
         } catch (error) {
-            console.error('❌ Error inicializando GallerySystem:', error);
-            this.handleError(error);
+            console.error('❌ Error inicializando Sistema de Galería:', error);
+            this.showErrorMessage('Error inicializando la galería. Por favor recarga la página.');
         }
     }
 
-    /**
-     * NUEVO: Configurar fotos predefinidas (SIN detección automática)
-     */
-    setupPredefinedPhotos() {
-        console.log('📸 Configurando fotos predefinidas (OPTIMIZADO)...');
+    checkDependencies() {
+        const requiredGlobals = [
+            'expeditionsData', 
+            'galleryConfig', 
+            'GalleryCards', 
+            'GalleryOverlay'
+        ];
         
-        // CONFIGURACIÓN ESTÁTICA - EDITAR AQUÍ PARA AGREGAR/QUITAR FOTOS
-        const predefinedPhotos = {
-            'aconcagua': [
-                { filename: 'aconcagua_0001.jpg', alt: 'Aconcagua - Vista base' },
-                { filename: 'aconcagua_0002.jpg', alt: 'Aconcagua - Ascenso' },
-                { filename: 'aconcagua_0003.jpg', alt: 'Aconcagua - Cumbre' },
-                { filename: 'aconcagua_0004.jpg', alt: 'Aconcagua - Descenso' }
-            ],
-            'el-plomo': [
-                { filename: 'el-plomo_0001.jpg', alt: 'El Plomo - Inicio' },
-                { filename: 'el-plomo_0002.jpg', alt: 'El Plomo - Sendero' },
-                { filename: 'el-plomo_0003.jpg', alt: 'El Plomo - Refugio' },
-                { filename: 'el-plomo_0004.jpg', alt: 'El Plomo - Cumbre' },
-                { filename: 'el-plomo_0005.jpg', alt: 'El Plomo - Vista' },
-                { filename: 'el-plomo_0006.jpg', alt: 'El Plomo - Invernal' },
-                { filename: 'el-plomo_0007.jpg', alt: 'El Plomo - Running' },
-                { filename: 'el-plomo_0008.jpg', alt: 'El Plomo - Panorámica' }
-            ],
-            'volcan-san-jose': [
-                { filename: 'volcan-san-jose_0001.jpg', alt: 'Volcán San José - Base' },
-                { filename: 'volcan-san-jose_0002.jpg', alt: 'Volcán San José - Cráter' },
-                { filename: 'volcan-san-jose_0003.jpg', alt: 'Volcán San José - Cumbre' }
-            ],
-            'marmolejo': [
-                { filename: 'marmolejo_0001.jpg', alt: 'Marmolejo - Ascenso técnico' },
-                { filename: 'marmolejo_0002.jpg', alt: 'Marmolejo - Nieve y hielo' },
-                { filename: 'marmolejo_0003.jpg', alt: 'Marmolejo - Cumbre lograda' },
-                { filename: 'marmolejo_0004.jpg', alt: 'Marmolejo - Descenso' }
-            ],
-            'ojos-salado': [
-                { filename: 'ojos-salado_0001.jpg', alt: 'Ojos del Salado - Desierto' },
-                { filename: 'ojos-salado_0002.jpg', alt: 'Ojos del Salado - Altitud' },
-                { filename: 'ojos-salado_0003.jpg', alt: 'Ojos del Salado - Volcán más alto' },
-                { filename: 'ojos-salado_0004.jpg', alt: 'Ojos del Salado - Condiciones extremas' },
-                { filename: 'ojos-salado_0005.jpg', alt: 'Ojos del Salado - Cumbre mundial' }
-            ],
-            'sierras-santiago': [
-                { filename: 'sierras-santiago_0001.jpg', alt: 'Sierras - Entrenamiento' },
-                { filename: 'sierras-santiago_0002.jpg', alt: 'Sierras - Trail running' },
-                { filename: 'sierras-santiago_0003.jpg', alt: 'Sierras - Vista Santiago' },
-                { filename: 'sierras-santiago_0004.jpg', alt: 'Sierras - Senderos' },
-                { filename: 'sierras-santiago_0005.jpg', alt: 'Sierras - Amanecer' },
-                { filename: 'sierras-santiago_0006.jpg', alt: 'Sierras - Grupo' },
-                { filename: 'sierras-santiago_0007.jpg', alt: 'Sierras - Naturaleza' },
-                { filename: 'sierras-santiago_0008.jpg', alt: 'Sierras - Cordillera' },
-                { filename: 'sierras-santiago_0009.jpg', alt: 'Sierras - Ejercicio' },
-                { filename: 'sierras-santiago_0010.jpg', alt: 'Sierras - Aire libre' }
-            ]
-        };
-
-        // Asignar fotos a cada expedición
-        for (const [expeditionId, expedition] of Object.entries(this.expeditions)) {
-            const photoList = predefinedPhotos[expeditionId] || [];
-            const basePath = this.config.gallery.basePath;
-            
-            expedition.photos = photoList.map((photo, index) => ({
-                id: `${expeditionId}_${String(index + 1).padStart(4, '0')}`,
-                filename: photo.filename,
-                path: `${basePath}${expeditionId}/${photo.filename}`,
-                alt: photo.alt,
-                index: index + 1
-            }));
-            
-            expedition.photoCount = photoList.length;
-            
-            console.log(`📸 ${expeditionId}: ${expedition.photoCount} fotos configuradas`);
+        const missing = requiredGlobals.filter(dep => !window[dep]);
+        
+        if (missing.length > 0) {
+            console.error('❌ Dependencias faltantes:', missing);
+            this.showErrorMessage(`Error: Faltan archivos del sistema (${missing.join(', ')})`);
+            return false;
         }
+        
+        return true;
     }
 
-    /**
-     * OPTIMIZADO: Detección inteligente con límites y gaps
-     * Solo se usa si setupPredefinedPhotos() no tiene datos
-     */
-    async detectExpeditionPhotosOptimized(expeditionId) {
-        const basePath = this.config.gallery.basePath;
-        const expeditionPath = `${basePath}${expeditionId}/`;
-        const maxPhotos = this.config.detection?.maxPhotos || 20; // Reducido de 50 a 20
-        const maxConsecutiveFailures = this.config.detection?.maxGaps || 3; // Parar después de 3 fallos consecutivos
+    async detectAllPhotos() {
+        console.log('📸 Detectando fotos automáticamente...');
         
+        const expeditions = Object.keys(window.expeditionsData);
+        const detectionPromises = expeditions.map(expeditionId => 
+            this.detectExpeditionPhotos(expeditionId)
+        );
+        
+        const results = await Promise.all(detectionPromises);
+        
+        // Procesar resultados
+        expeditions.forEach((expeditionId, index) => {
+            this.detectedPhotos[expeditionId] = results[index];
+            console.log(`📂 ${expeditionId}: ${results[index].length} fotos detectadas`);
+        });
+    }
+
+    async detectExpeditionPhotos(expeditionId) {
         const photos = [];
-        let consecutiveFailures = 0;
+        const basePath = window.galleryConfig.basePath + expeditionId + '/';
+        const format = window.galleryConfig.photoFormat;
         
-        console.log(`🔍 Detección optimizada para ${expeditionId} (máx: ${maxPhotos}, gaps: ${maxConsecutiveFailures})`);
+        console.log(`🔍 Detectando fotos para ${expeditionId}: listando archivos en carpeta`);
+        
+        try {
+            // Obtener lista de archivos de la carpeta
+            const fileList = await this.fetchDirectoryListing(basePath);
+            
+            // Filtrar solo las fotos de la expedición (excluir cover)
+            const photoFiles = fileList
+                .filter(filename => {
+                    return filename.startsWith(`${expeditionId}_`) && 
+                           filename.endsWith(`.${format}`) &&
+                           !filename.includes('cover') &&
+                           /\d{4}\.jpg$/.test(filename); // Debe terminar con 4 dígitos + .jpg
+                })
+                .sort(); // Ordenar alfabéticamente
+            
+            console.log(`� Archivos encontrados para ${expeditionId}:`, photoFiles);
+            
+            // Procesar cada archivo encontrado
+            photoFiles.forEach(filename => {
+                // Extraer número de índice del filename
+                const match = filename.match(/_(\d{4})\./);
+                const index = match ? parseInt(match[1]) : 0;
+                
+                photos.push({
+                    filename: filename,
+                    path: basePath + filename,
+                    index: index
+                });
+            });
+            
+            // Ordenar por índice para mantener secuencia correcta
+            photos.sort((a, b) => a.index - b.index);
+            
+        } catch (error) {
+            console.warn(`⚠️ Error listando archivos para ${expeditionId}, usando método fallback:`, error);
+            // Fallback: usar método anterior si falla la lista de archivos
+            return await this.detectExpeditionPhotosLegacy(expeditionId);
+        }
+        
+        return photos;
+    }
+
+    async fetchDirectoryListing(directoryPath) {
+        // Intentar diferentes métodos para obtener lista de archivos
+        
+        // Método 1: Fetch directo del directorio (funciona en algunos servidores)
+        try {
+            const response = await fetch(directoryPath);
+            if (response.ok) {
+                const html = await response.text();
+                return this.parseDirectoryHTML(html);
+            }
+        } catch (error) {
+            console.log('Método 1 falló, probando método alternativo...');
+        }
+        
+        // Método 2: Probar archivos secuencialmente pero más eficientemente
+        return await this.detectFilesByPattern(directoryPath);
+    }
+
+    parseDirectoryHTML(html) {
+        const files = [];
+        // Patrones comunes para diferentes servidores web
+        const patterns = [
+            /<a[^>]*href=["']([^"']*\.jpg)["'][^>]*>/gi,  // Apache/Nginx
+            /<td><a href="([^"]*\.jpg)">/gi,              // Lighttpd
+            /href=["']([^"']*\.jpg)["']/gi                 // General
+        ];
+        
+        for (const pattern of patterns) {
+            let match;
+            while ((match = pattern.exec(html)) !== null) {
+                const filename = match[1];
+                if (filename && !filename.includes('/') && filename.endsWith('.jpg')) {
+                    files.push(filename);
+                }
+            }
+            if (files.length > 0) break;
+        }
+        
+        return [...new Set(files)]; // Eliminar duplicados
+    }
+
+    async detectFilesByPattern(basePath) {
+        const files = [];
+        const format = window.galleryConfig.photoFormat;
+        const maxPhotos = window.galleryConfig.maxPhotosToDetect;
+        
+        // Extraer expedition ID del path
+        const expeditionId = basePath.split('/').slice(-2, -1)[0];
+        
+        console.log(`🔄 Detectando archivos secuencialmente para ${expeditionId}...`);
+        
+        // Método secuencial mejorado: continuar buscando después de gaps pequeños
+        let consecutiveFailures = 0;
+        const maxConsecutiveFailures = 3; // Parar después de 3 fallos consecutivos
         
         for (let i = 1; i <= maxPhotos; i++) {
-            const paddedNumber = i.toString().padStart(4, '0');
-            const filename = `${expeditionId}_${paddedNumber}.jpg`; // Solo JPG
-            const fullPath = `${expeditionPath}${filename}`;
+            const filename = `${expeditionId}_${i.toString().padStart(4, '0')}.${format}`;
             
             try {
-                const exists = await this.imageExistsOptimized(fullPath);
-                
+                const exists = await this.checkImageExists(basePath + filename);
                 if (exists) {
-                    photos.push({
-                        id: `${expeditionId}_${paddedNumber}`,
-                        filename: filename,
-                        path: fullPath,
-                        alt: `${this.expeditions[expeditionId].name} - Foto ${i}`,
-                        index: i
-                    });
+                    files.push(filename);
                     consecutiveFailures = 0; // Reset contador
-                    console.log(`✅ ${filename} encontrada`);
+                    console.log(`✅ Encontrada: ${filename}`);
                 } else {
                     consecutiveFailures++;
-                    console.log(`❌ ${filename} no encontrada (${consecutiveFailures}/${maxConsecutiveFailures})`);
+                    console.log(`❌ No encontrada: ${filename} (fallos consecutivos: ${consecutiveFailures})`);
                     
-                    // Parar si hay demasiados fallos consecutivos
+                    // Solo parar después de varios fallos consecutivos
                     if (consecutiveFailures >= maxConsecutiveFailures) {
-                        console.log(`🛑 Deteniendo detección después de ${consecutiveFailures} fallos consecutivos`);
+                        console.log(`🛑 Deteniendo búsqueda después de ${maxConsecutiveFailures} fallos consecutivos`);
                         break;
                     }
                 }
@@ -192,24 +206,83 @@ class GallerySystem {
                 console.warn(`⚠️ Error verificando ${filename}:`, error);
                 
                 if (consecutiveFailures >= maxConsecutiveFailures) {
+                    console.log(`🛑 Deteniendo búsqueda por errores consecutivos`);
                     break;
                 }
             }
         }
         
-        console.log(`📊 Detección completada: ${photos.length} fotos encontradas`);
+        console.log(`📊 ${expeditionId}: ${files.length} archivos encontrados`);
+        return files;
+    }
+
+    // Método legacy como fallback
+    async detectExpeditionPhotosLegacy(expeditionId) {
+        const photos = [];
+        const basePath = window.galleryConfig.basePath + expeditionId + '/';
+        const format = window.galleryConfig.photoFormat;
+        const maxPhotos = window.galleryConfig.maxPhotosToDetect;
+        
+        console.log(`� Usando método legacy para ${expeditionId}`);
+        
+        for (let i = 1; i <= maxPhotos; i++) {
+            const filename = `${expeditionId}_${i.toString().padStart(4, '0')}.${format}`;
+            const fullPath = basePath + filename;
+            
+            const exists = await this.checkImageExistsWithRetry(fullPath, 1); // Solo 1 reintento en legacy
+            if (exists) {
+                photos.push({
+                    filename: filename,
+                    path: fullPath,
+                    index: i
+                });
+            } else {
+                break;
+            }
+        }
+        
         return photos;
     }
 
-    /**
-     * OPTIMIZADO: Verificación de imagen más eficiente
-     */
-    async imageExistsOptimized(url) {
-        return new Promise((resolve) => {
+    async checkImageExistsWithRetry(imagePath, maxRetries = 2) {
+        for (let attempt = 1; attempt <= maxRetries + 1; attempt++) {
+            try {
+                const exists = await this.checkImageExists(imagePath);
+                if (exists) {
+                    if (attempt > 1) {
+                        console.log(`✅ Imagen encontrada en intento ${attempt}: ${imagePath}`);
+                    }
+                    return true;
+                }
+                
+                // Si no existe en el primer intento, no reintentar (la imagen realmente no existe)
+                if (attempt === 1) {
+                    return false;
+                }
+            } catch (error) {
+                console.warn(`⚠️ Error en intento ${attempt} para ${imagePath}:`, error);
+                
+                // Si es el último intento, fallar
+                if (attempt === maxRetries + 1) {
+                    console.error(`❌ Falló después de ${maxRetries + 1} intentos: ${imagePath}`);
+                    return false;
+                }
+                
+                // Esperar un poco antes del siguiente intento (aumenta progresivamente)
+                await new Promise(resolve => setTimeout(resolve, attempt * 500));
+            }
+        }
+        
+        return false;
+    }
+
+    checkImageExists(imagePath) {
+        return new Promise((resolve, reject) => {
             const img = new Image();
+            
             const timeout = setTimeout(() => {
-                resolve(false);
-            }, 1000); // Timeout de 1 segundo
+                reject(new Error(`Timeout: ${imagePath}`));
+            }, 3000);
             
             img.onload = () => {
                 clearTimeout(timeout);
@@ -221,477 +294,230 @@ class GallerySystem {
                 resolve(false);
             };
             
-            img.src = url;
+            img.src = imagePath;
         });
     }
 
-    /**
-     * Carga archivos JSON con manejo de errores
-     */
-    async loadJSON(url) {
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error(`❌ Error cargando ${url}:`, error);
-            throw new Error(`No se pudo cargar ${url}: ${error.message}`);
+    initializeComponents() {
+        // Inicializar generador de cards
+        if (window.GalleryCards) {
+            this.galleryCards = new window.GalleryCards(this.detectedPhotos);
+            this.galleryCards.init();
         }
-    }
-
-    /**
-     * Inicializa los componentes del sistema
-     */
-    async initializeComponents() {
-        console.log('🔧 Inicializando componentes...');
-
-        if (typeof GalleryCards !== 'undefined') {
-            this.cards = new GalleryCards(this);
-        }
-
-        if (typeof GalleryOverlay !== 'undefined') {
-            this.overlay = new GalleryOverlay(this);
-        }
-
-        console.log('✅ Componentes inicializados');
-    }
-
-    /**
-     * Crea el contenedor principal si no existe
-     */
-    createContainer() {
-        const section = document.createElement('section');
-        section.id = this.containerId;
-        section.className = 'section mountaineering-section';
         
-        // Buscar donde insertar (después de achievement cards si existen)
-        const achievementSection = document.querySelector('.achievement-card');
-        if (achievementSection && achievementSection.parentNode) {
-            const parentSection = achievementSection.closest('.section');
-            if (parentSection && parentSection.parentNode) {
-                parentSection.parentNode.insertBefore(section, parentSection.nextSibling);
-            }
-        } else {
-            // Fallback: agregar al final del container principal
-            const container = document.querySelector('.container');
-            if (container) {
-                container.appendChild(section);
-            }
+        // Inicializar sistema de overlay
+        if (window.GalleryOverlay) {
+            this.galleryOverlay = new window.GalleryOverlay(this.detectedPhotos);
+            this.galleryOverlay.init();
         }
-
-        return section;
     }
 
-    /**
-     * Renderiza la galería completa
-     */
-    render() {
-        if (!this.container) {
-            console.error('❌ No se puede renderizar: contenedor no disponible');
+    setupGlobalEvents() {
+        // Evento personalizado para abrir galería
+        document.addEventListener('openGallery', (event) => {
+            const { expeditionId, photoIndex = 0 } = event.detail;
+            this.openExpeditionGallery(expeditionId, photoIndex);
+        });
+        
+        // Evento personalizado para cerrar galería
+        document.addEventListener('closeGallery', () => {
+            this.closeGallery();
+        });
+        
+        // Navegación por teclado global
+        document.addEventListener('keydown', (event) => {
+            if (this.currentOverlay) {
+                this.handleGlobalKeyboard(event);
+            }
+        });
+        
+        // Prevenir scroll del body cuando overlay está abierto
+        document.addEventListener('overlayOpen', () => {
+            document.body.style.overflow = 'hidden';
+        });
+        
+        document.addEventListener('overlayClose', () => {
+            document.body.style.overflow = '';
+        });
+    }
+
+    openExpeditionGallery(expeditionId, photoIndex = 0) {
+        if (!this.initialized) {
+            console.warn('⚠️ Sistema no inicializado aún');
             return;
         }
 
-        console.log('🎨 Renderizando galería...');
-
-        // Limpiar contenedor
-        this.container.innerHTML = '';
-
-        // Crear estructura HTML
-        const galleryHTML = this.createGalleryHTML();
-        this.container.innerHTML = galleryHTML;
-
-        // Renderizar cards si el componente está disponible
-        if (this.cards) {
-            this.cards.render();
-        } else {
-            console.warn('⚠️ GalleryCards no disponible, renderizando fallback');
-            this.renderFallback();
+        const expedition = window.getExpeditionById(expeditionId);
+        const photos = this.detectedPhotos[expeditionId];
+        
+        if (!expedition || !photos || photos.length === 0) {
+            console.error('❌ Error: Expedición o fotos no encontradas', { expeditionId, expedition, photos });
+            return;
         }
 
-        // Configurar eventos
-        this.setupEvents();
-
-        console.log('✅ Galería renderizada exitosamente');
-    }
-
-    /**
-     * Crea la estructura HTML base de la galería
-     */
-    createGalleryHTML() {
-        const config = this.config;
-        
-        return `
-            <div class="container">
-                <!-- Header de la galería -->
-                <div class="gallery-header">
-                    <h2 class="gallery-main-title fade-in">${config.gallery.title}</h2>
-                    <p class="gallery-subtitle fade-in">${config.gallery.subtitle}</p>
-                    
-                    <!-- Filtros -->
-                    <div class="gallery-filters fade-in">
-                        ${config.filters.buttons.map(button => `
-                            <button class="filter-btn ${button.id === config.filters.defaultFilter ? 'active' : ''}" 
-                                    data-filter="${button.category || 'all'}">
-                                ${button.label}
-                            </button>
-                        `).join('')}
-                    </div>
-                </div>
-
-                <!-- Grid de expediciones -->
-                <div class="expeditions-grid" id="expeditions-grid">
-                    <!-- Las cards se generan dinámicamente -->
-                </div>
-                
-                <!-- Overlay del lightbox (se genera dinámicamente) -->
-                <div id="gallery-overlay" class="gallery-overlay" style="display: none;">
-                    <!-- El contenido se genera dinámicamente -->
-                </div>
-            </div>
-        `;
-    }
-
-    /**
-     * Renderiza una versión fallback sin componentes avanzados
-     */
-    renderFallback() {
-        const grid = this.container.querySelector('#expeditions-grid');
-        if (!grid) return;
-
-        const expeditions = this.getFilteredExpeditions();
-        
-        grid.innerHTML = expeditions.map(expedition => this.createBasicCard(expedition)).join('');
-        
-        console.log('📦 Renderizado fallback completado');
-    }
-
-    /**
-     * Crea una card básica de expedición
-     */
-    createBasicCard(expedition) {
-        const isNew = this.isNewExpedition(expedition);
-        const achievementBadges = expedition.achievements ? 
-            expedition.achievements.slice(0, 2).map(achievement => 
-                `<span class="achievement-badge material-symbols-rounded">${achievement.icon}</span>`
-            ).join('') : '';
-
-        return `
-            <div class="expedition-card fade-in" 
-                 data-expedition="${expedition.id}" 
-                 data-category="${expedition.category}">
-                ${isNew ? '<div class="new-badge">NUEVO</div>' : ''}
-                ${achievementBadges ? `<div class="achievement-badges">${achievementBadges}</div>` : ''}
-                
-                <img src="${this.config.gallery.basePath}${expedition.id}/${expedition.coverImage}" 
-                     alt="${expedition.name}" 
-                     class="expedition-image"
-                     loading="lazy"
-                     style="width: 100%; height: 300px; object-fit: cover;">
-                
-                <div class="expedition-content">
-                    <h3 class="expedition-title">${expedition.name}</h3>
-                    <p class="expedition-description">${expedition.shortDescription}</p>
-                    
-                    <div class="expedition-meta">
-                        <div class="expedition-difficulty">
-                            <span class="difficulty-icon">${this.getDifficultyIcon(expedition.type)}</span>
-                            ${expedition.difficulty.grade} - ${expedition.difficulty.name}
-                        </div>
-                        <span class="expedition-altitude">${expedition.altitude.toLocaleString()} ${expedition.altitudeUnit}</span>
-                    </div>
-                    
-                    <div class="expedition-stats">
-                        <div class="stat-item">
-                            <span class="material-symbols-rounded stat-icon">photo_camera</span>
-                            <span>${expedition.photoCount} fotos</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="material-symbols-rounded stat-icon">trending_up</span>
-                            <span>${expedition.ascents} ascensos</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    /**
-     * Configura los eventos del sistema
-     */
-    setupEvents() {
-        // Filtros
-        const filterButtons = this.container.querySelectorAll('.filter-btn');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', (e) => this.handleFilterClick(e));
-        });
-
-        // Cards
-        const cards = this.container.querySelectorAll('.expedition-card');
-        cards.forEach(card => {
-            card.addEventListener('click', (e) => this.handleCardClick(e));
-        });
-
-        // Overlay close
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.overlay && this.overlay.isOpen) {
-                this.overlay.close();
-            }
-        });
-
-        console.log('🎯 Eventos configurados');
-    }
-
-    // ... [RESTO DE MÉTODOS IGUAL QUE ANTES] ...
-
-    /**
-     * Maneja clicks en botones de filtro
-     */
-    handleFilterClick(event) {
-        const button = event.target;
-        const filter = button.dataset.filter;
-
-        // Actualizar botones activos
-        this.container.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        button.classList.add('active');
-
-        // Filtrar expediciones
-        this.filterExpeditions(filter);
-
-        console.log(`🔍 Filtro aplicado: ${filter}`);
-    }
-
-    /**
-     * Maneja clicks en cards de expedición
-     */
-    handleCardClick(event) {
-        const card = event.currentTarget;
-        const expeditionId = card.dataset.expedition;
-        
-        if (expeditionId && this.expeditions[expeditionId]) {
-            this.openExpedition(expeditionId);
-        }
-    }
-
-    /**
-     * Abre una expedición en el overlay
-     */
-    openExpedition(expeditionId) {
-        console.log(`🖼️ Abriendo expedición: ${expeditionId}`);
-        
-        if (this.overlay) {
-            this.overlay.open(expeditionId);
-        } else {
-            console.warn('⚠️ GalleryOverlay no disponible');
-            // Fallback: alert básico
-            const expedition = this.expeditions[expeditionId];
-            alert(`${expedition.name}\n${expedition.shortDescription}`);
-        }
-    }
-
-    /**
-     * Filtra las expediciones por categoría
-     */
-    filterExpeditions(filter) {
-        const cards = this.container.querySelectorAll('.expedition-card');
-        
-        cards.forEach(card => {
-            const category = card.dataset.category;
-            const shouldShow = filter === 'all' || filter === category;
+        // Abrir overlay
+        if (this.galleryOverlay) {
+            this.currentOverlay = expeditionId;
+            this.galleryOverlay.open(expedition, photos, photoIndex);
             
-            if (shouldShow) {
-                card.style.display = 'block';
-                card.classList.add('fade-in');
-            } else {
-                card.style.display = 'none';
-                card.classList.remove('fade-in');
-            }
-        });
-    }
-
-    /**
-     * Obtiene expediciones filtradas y ordenadas
-     */
-    getFilteredExpeditions(filter = 'all', sort = 'featured') {
-        let expeditions = Object.values(this.expeditions)
-            .filter(exp => exp.status === 'active');
-
-        // Aplicar filtro
-        if (filter && filter !== 'all') {
-            expeditions = expeditions.filter(exp => exp.category === filter);
+            // Disparar evento
+            document.dispatchEvent(new CustomEvent('overlayOpen', {
+                detail: { expeditionId, photoIndex }
+            }));
         }
-
-        // Aplicar ordenamiento
-        expeditions = this.sortExpeditions(expeditions, sort);
-
-        return expeditions;
     }
 
-    /**
-     * Ordena las expediciones según criterio
-     */
-    sortExpeditions(expeditions, sortBy) {
-        const sortConfig = this.config.sorting.options.find(opt => opt.id === sortBy);
-        
-        if (!sortConfig) {
-            return expeditions;
+    closeGallery() {
+        if (this.galleryOverlay && this.currentOverlay) {
+            this.galleryOverlay.close();
+            this.currentOverlay = null;
+            
+            // Disparar evento
+            document.dispatchEvent(new CustomEvent('overlayClose'));
         }
-
-        return expeditions.sort((a, b) => {
-            let valueA = this.getNestedValue(a, sortConfig.field);
-            let valueB = this.getNestedValue(b, sortConfig.field);
-
-            // Manejar valores especiales
-            if (sortConfig.field === 'featured') {
-                valueA = a.featured ? 1 : 0;
-                valueB = b.featured ? 1 : 0;
-            }
-
-            // Ordenar
-            if (sortConfig.direction === 'desc') {
-                return valueB > valueA ? 1 : -1;
-            } else {
-                return valueA > valueB ? 1 : -1;
-            }
-        });
     }
 
-    /**
-     * Obtiene valor anidado de un objeto (ej: "difficulty.grade")
-     */
-    getNestedValue(obj, path) {
-        return path.split('.').reduce((current, key) => current && current[key], obj);
+    handleGlobalKeyboard(event) {
+        switch (event.key) {
+            case 'Escape':
+                event.preventDefault();
+                this.closeGallery();
+                break;
+            case 'ArrowLeft':
+                event.preventDefault();
+                this.galleryOverlay?.previousPhoto();
+                break;
+            case 'ArrowRight':
+            case ' ': // Espacio
+                event.preventDefault();
+                this.galleryOverlay?.nextPhoto();
+                break;
+        }
     }
 
-    /**
-     * Verifica si una expedición es nueva
-     */
-    isNewExpedition(expedition) {
-        if (!expedition.lastUpdate) return false;
-        
-        const updateDate = new Date(expedition.lastUpdate);
-        const now = new Date();
-        const daysDiff = (now - updateDate) / (1000 * 60 * 60 * 24);
-        
-        return daysDiff <= this.config.ui.newBadgeDuration;
+    // Métodos de utilidad
+    getDetectedPhotos(expeditionId) {
+        return this.detectedPhotos[expeditionId] || [];
     }
 
-    /**
-     * Obtiene el icono según el tipo de expedición
-     */
-    getDifficultyIcon(type) {
-        const icons = {
-            'Cerro': '⛰️',
-            'Volcán': '🌋',
-            'Sierra': '🏔️'
-        };
-        return icons[type] || '🥾';
+    getPhotoCount(expeditionId) {
+        return this.getDetectedPhotos(expeditionId).length;
     }
 
-    /**
-     * Obtiene el total de fotos en todas las expediciones
-     */
-    getTotalPhotoCount() {
-        return Object.values(this.expeditions)
-            .reduce((total, exp) => total + (exp.photoCount || 0), 0);
+    refreshPhotos(expeditionId = null) {
+        if (expeditionId) {
+            // Refrescar fotos de una expedición específica
+            return this.detectExpeditionPhotos(expeditionId).then(photos => {
+                this.detectedPhotos[expeditionId] = photos;
+                return photos;
+            });
+        } else {
+            // Refrescar todas las fotos
+            return this.detectAllPhotos();
+        }
     }
 
-    /**
-     * Maneja errores del sistema
-     */
-    handleError(error) {
-        console.error('❌ GallerySystem Error:', error);
-        
-        if (this.container) {
-            this.container.innerHTML = `
-                <div class="container">
-                    <div class="error-message">
-                        <h3>Error al cargar la galería</h3>
-                        <p>No se pudieron cargar las expediciones. Por favor, intenta recargar la página.</p>
-                        <button onclick="window.location.reload()" class="btn-primary">Recargar</button>
-                    </div>
+    showErrorMessage(message) {
+        const container = document.querySelector('#mountaineering-gallery .container');
+        if (container) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 3rem; color: var(--accent-red);">
+                    <h3>⚠️ Error del Sistema</h3>
+                    <p>${message}</p>
+                    <button onclick="location.reload()" style="
+                        margin-top: 1rem; 
+                        padding: 0.75rem 1.5rem; 
+                        background: var(--primary); 
+                        color: white; 
+                        border: none; 
+                        border-radius: 25px; 
+                        cursor: pointer;
+                        font-family: var(--font-body);
+                    ">
+                        Recargar Página
+                    </button>
                 </div>
             `;
         }
     }
 
-    /**
-     * Dispara eventos personalizados
-     */
-    dispatchEvent(eventName, detail = {}) {
-        const event = new CustomEvent(`gallery:${eventName}`, {
-            detail: detail,
-            bubbles: true
+    // API pública para debugging
+    debug() {
+        return {
+            initialized: this.initialized,
+            detectedPhotos: this.detectedPhotos,
+            currentOverlay: this.currentOverlay,
+            totalExpeditions: Object.keys(this.detectedPhotos).length,
+            totalPhotos: Object.values(this.detectedPhotos).reduce((total, photos) => total + photos.length, 0)
+        };
+    }
+}
+
+// Utilidades globales para el sistema
+window.GalleryUtils = {
+    // Formatear números con separadores de miles
+    formatNumber: (num) => {
+        return new Intl.NumberFormat('es-CL').format(num);
+    },
+    
+    // Formatear fecha para mostrar
+    formatDate: (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('es-CL', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
         });
-        document.dispatchEvent(event);
+    },
+    
+    // Truncar texto
+    truncateText: (text, maxLength) => {
+        if (text.length <= maxLength) return text;
+        return text.substring(0, maxLength).trim() + '...';
+    },
+    
+    // Generar ID único
+    generateId: () => {
+        return 'gallery_' + Math.random().toString(36).substr(2, 9);
+    },
+    
+    // Detectar dispositivo móvil
+    isMobile: () => {
+        return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    },
+    
+    // Throttle para eventos
+    throttle: (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    },
+    
+    // Debounce para eventos
+    debounce: (func, wait, immediate) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                timeout = null;
+                if (!immediate) func(...args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func(...args);
+        };
     }
+};
 
-    /**
-     * API pública del sistema
-     */
-    getExpedition(id) {
-        return this.expeditions[id];
-    }
+// Inicializar sistema automáticamente
+const gallerySystem = new GallerySystem();
 
-    getAllExpeditions() {
-        return this.expeditions;
-    }
-
-    getConfig() {
-        return this.config;
-    }
-
-    isReady() {
-        return this.isInitialized;
-    }
-
-    refresh() {
-        if (this.isInitialized) {
-            this.render();
-        }
-    }
-
-    destroy() {
-        if (this.container) {
-            this.container.innerHTML = '';
-        }
-        this.isInitialized = false;
-        console.log('🗑️ GallerySystem destruido');
-    }
-}
-
-/* ======================================
-   INICIALIZACIÓN AUTOMÁTICA OPTIMIZADA
-   ====================================== */
-
-// Inicializar automáticamente cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    // Solo inicializar si estamos en la página del fundador
-    if (document.body.contains(document.querySelector('.mountaineering-section')) || 
-        window.location.pathname.includes('fundador')) {
-        
-        console.log('🏔️ Inicializando sistema de galería OPTIMIZADO...');
-        
-        // Crear instancia global del sistema
-        window.gallerySystem = new GallerySystem();
-        
-        // Inicializar con delay para asegurar que otros scripts estén listos
-        setTimeout(() => {
-            window.gallerySystem.init().catch(error => {
-                console.error('❌ Error en inicialización automática:', error);
-            });
-        }, 500);
-    }
-});
-
-// Hacer disponible globalmente
-if (typeof window !== 'undefined') {
-    window.GallerySystem = GallerySystem;
-}
-
-console.log('📦 GallerySystem OPTIMIZADO cargado y listo');
-console.log('🏔️ Sistema de Galería Dinámico - SIN REQUESTS MASIVOS');
-console.log('💻 Desarrollado por Alexandre Castillo - ACastillo DG');
+// Exportar para acceso global
+window.GallerySystem = GallerySystem;
+window.gallerySystem = gallerySystem;

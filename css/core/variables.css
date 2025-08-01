@@ -27,14 +27,35 @@
     --accent-light: #F2F0A1;      /* Color claro del acento - Fondos, elementos secundarios */
     --accent-light-rgb: 242, 240, 161;
 
+    --accent-dark: #897A27;       /* Color oscuro del acento - Elementos destacados */
+    --accent-dark-rgb: 137, 122, 39;
+
     --accent-red: #EF3340;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
     --accent-red-rgb: 239, 51, 64;
 
-    --accent-orange: #D69A2D;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
+    --accent-red-light: #FCAEBB;  /* Color claro del acento rojo */
+    --accent-red-light-rgb: 252, 174, 187;
+
+    --accent-red-dark: #7C2529;   /* Color oscuro del acento rojo */
+    --accent-red-dark-rgb: 124, 37, 41;
+
+    --accent-orange: #D69A2D;     /* Color de acento secundario - Estadísticas destacadas, animaciones */
     --accent-orange-rgb: 214, 154, 45;
 
-    --accent-green: #47D7AC;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
+    --accent-orange-light: #EFBE7D; /* Color claro del acento naranja */
+    --accent-orange-light-rgb: 239, 190, 125;
+
+    --accent-orange-dark: #D69A2D; /* Color oscuro del acento naranja */
+    --accent-orange-dark-rgb: 214, 154, 45;
+
+    --accent-green: #47D7AC;      /* Color de acento secundario - Estadísticas destacadas, animaciones */
     --accent-green-rgb: 71, 215, 172;
+
+    --accent-green-light: #9DE7D7; /* Color claro del acento verde */
+    --accent-green-light-rgb: 157, 231, 215;
+
+    --accent-green-dark: #28724F;  /* Color oscuro del acento verde */
+    --accent-green-dark-rgb: 40, 114, 79;
 
     --gray-light: #F4F4F4;        /* Usado para borders (3 usos) */
     --gray-light-rgb: 244, 244, 244; /* RGB del color gris claro para rgba() */

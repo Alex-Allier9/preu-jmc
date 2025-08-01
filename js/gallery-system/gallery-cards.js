@@ -1,503 +1,464 @@
-/* ======================================
-   GALLERY-CARDS.JS - GENERADOR DINÁMICO DE CARDS
-   Preuniversitario JMC - Sistema de Expediciones
-   ====================================== */
+// 🏔️ SISTEMA DE GALERÍA DINÁMICO - PREUNIVERSITARIO JMC
+// Generador dinámico de cards y sistema de filtros
 
-/**
- * GalleryCards - Maneja la generación y comportamiento de las cards de expediciones
- */
 class GalleryCards {
-    constructor(gallerySystem) {
-        this.gallery = gallerySystem;
-        this.container = null;
+    constructor(detectedPhotos) {
+        this.detectedPhotos = detectedPhotos;
         this.currentFilter = 'all';
-        this.currentSort = 'featured';
-        this.animations = [];
-        
-        console.log('🃏 GalleryCards inicializando...');
+        this.currentSort = 'name'; // Cambiar default a orden alfabético
+        this.container = null;
+        this.filterButtons = null;
+        this.expeditionsGrid = null;
     }
 
-    /**
-     * Renderiza todas las cards en el grid
-     */
-    render() {
-        this.container = this.gallery.container.querySelector('#grid-2-2-1');
+    init() {
+        console.log('🎴 Inicializando generador de cards...');
+        
+        // Encontrar contenedor principal
+        this.container = document.querySelector('#mountaineering-gallery');
         if (!this.container) {
-            console.error('❌ Grid container no encontrado');
+            console.error('❌ Error: No se encontró el contenedor de la galería');
             return;
         }
 
-        console.log('🎨 Renderizando cards dinámicamente...');
-
-        // Obtener expediciones filtradas y ordenadas
-        const expeditions = this.gallery.getFilteredExpeditions(this.currentFilter, this.currentSort);
-
-        // Limpiar contenedor
-        this.container.innerHTML = '';
-
-        // Crear y agregar cards
-        expeditions.forEach((expedition, index) => {
-            const cardElement = this.createCard(expedition, index);
-            this.container.appendChild(cardElement);
-        });
-
-        // Configurar eventos
-        this.setupCardEvents();
-
-        // Animar entrada
-        this.animateCardsEntrance();
-
-        console.log(`✅ ${expeditions.length} cards renderizadas`);
-    }
-
-    /**
-     * Crea una card de expedición
-     */
-    createCard(expedition, index = 0) {
-        const card = document.createElement('div');
-        card.className = 'expedition-card fade-in';
-        card.dataset.expedition = expedition.id;
-        card.dataset.category = expedition.category;
-        card.dataset.index = index;
-
-        // Verificar si es nueva
-        const isNew = this.gallery.isNewExpedition(expedition);
-
-        // Crear badges de logros
-        const achievementBadges = this.createAchievementBadges(expedition.achievements || []);
-
-        // Crear imagen con manejo de errores
-        const imageElement = this.createImageElement(expedition);
-
-        // Crear contenido
-        const content = this.createCardContent(expedition);
-
-        // Ensamblar card
-        card.innerHTML = `
-            ${isNew ? `<div class="new-badge">${this.gallery.config.ui.newBadgeText}</div>` : ''}
-            ${achievementBadges}
-            ${imageElement}
-            ${content}
-        `;
-
-        // Agregar eventos específicos de la card
-        this.setupSingleCardEvents(card, expedition);
-
-        return card;
-    }
-
-    /**
-     * Crea el elemento de imagen con lazy loading y manejo de errores
-     */
-    createImageElement(expedition) {
-        const basePath = this.gallery.config.gallery.basePath;
-        const imagePath = `${basePath}${expedition.id}/${expedition.coverImage}`;
+        // Generar estructura completa
+        this.generateGalleryStructure();
         
-        return `
-            <div class="expedition-image-container">
-                <img src="${imagePath}" 
-                     alt="${expedition.name}" 
-                     class="expedition-image"
-                     loading="lazy"
-                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y0ZjRmNCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZW4gbm8gZGlzcG9uaWJsZTwvdGV4dD48L3N2Zz4='">
+        // Configurar eventos
+        this.setupEvents();
+        
+        // Generar cards iniciales
+        this.renderExpeditions();
+        
+        console.log('✅ Generador de cards inicializado');
+    }
+
+    generateGalleryStructure() {
+        this.container.innerHTML = `
+            <!-- Header de la galería -->
+            <div class="gallery-header">
+                <h2 class="gallery-main-title">Expediciones Montañísticas</h2>
+                <p class="gallery-subtitle">Momentos capturados en las cumbres más desafiantes de la cordillera chilena e internacional</p>
                 
-                <!-- Overlay de hover -->
-                <div class="expedition-image-overlay">
-                    <span class="material-symbols-rounded">zoom_in</span>
+                <!-- Controles en una línea -->
+                <div class="gallery-controls-inline">
+                    <!-- Filtros por categoría (botones) -->
+                    <div class="gallery-filters">
+                        <span class="control-label">Filtrar:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">Todos</button>
+                            <button class="filter-btn" data-filter="cerros">Cerros</button>
+                            <button class="filter-btn" data-filter="volcanes">Volcanes</button>
+                            <button class="filter-btn" data-filter="sierras">Sierras</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Separador visual -->
+                    <div class="controls-separator"></div>
+                    
+                    <!-- Control de ordenamiento (dropdown) -->
+                    <div class="gallery-sort-dropdown">
+                        <span class="control-label">Ordenar:</span>
+                        <div class="dropdown-container">
+                            <button class="dropdown-toggle" data-dropdown="sort">
+                                <span class="dropdown-text">
+                                    <span class="material-symbols-rounded">sort_by_alpha</span>
+                                    Nombre (A-Z)
+                                </span>
+                                <span class="material-symbols-rounded dropdown-arrow">expand_more</span>
+                            </button>
+                            <div class="dropdown-menu" data-dropdown-menu="sort">
+                                <button class="dropdown-item" data-sort="altitude-desc">
+                                    <span class="material-symbols-rounded">trending_up</span>
+                                    Altura ↓ (Mayor primero)
+                                </button>
+                                <button class="dropdown-item" data-sort="altitude-asc">
+                                    <span class="material-symbols-rounded">trending_down</span>
+                                    Altura ↑ (Menor primero)
+                                </button>
+                                <button class="dropdown-item" data-sort="difficulty-desc">
+                                    <span class="material-symbols-rounded">emergency</span>
+                                    Dificultad ↓ (Más difícil)
+                                </button>
+                                <button class="dropdown-item" data-sort="difficulty-asc">
+                                    <span class="material-symbols-rounded">hiking</span>
+                                    Dificultad ↑ (Más fácil)
+                                </button>
+                                <button class="dropdown-item active" data-sort="name">
+                                    <span class="material-symbols-rounded">sort_by_alpha</span>
+                                    Nombre (A-Z)
+                                </button>
+                                <button class="dropdown-item" data-sort="photos">
+                                    <span class="material-symbols-rounded">photo_library</span>
+                                    Fotos (Más fotos)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Grid de expediciones -->
+            <div class="expeditions-grid"></div>
         `;
+
+        // Obtener referencias
+        this.filterButtons = this.container.querySelectorAll('.filter-btn');
+        this.sortDropdown = this.container.querySelector('[data-dropdown="sort"]');
+        this.sortMenu = this.container.querySelector('[data-dropdown-menu="sort"]');
+        this.sortItems = this.container.querySelectorAll('[data-sort]');
+        this.expeditionsGrid = this.container.querySelector('.expeditions-grid');
     }
 
-    /**
-     * Crea los badges de logros
-     */
-    createAchievementBadges(achievements) {
-        if (!achievements.length) return '';
+    setupEvents() {
+        // Eventos de filtros (botones)
+        this.filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const filter = e.target.dataset.filter;
+                this.setFilter(filter);
+            });
+        });
+        
+        // Eventos de dropdown de ordenamiento
+        this.setupDropdownEvents();
+        
+        // Eventos de ordenamiento
+        this.sortItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const sort = e.currentTarget.dataset.sort;
+                this.setSort(sort);
+            });
+        });
+    }
 
-        const badges = achievements.slice(0, 3).map(achievement => `
-            <span class="achievement-badge material-symbols-rounded" 
-                  title="${achievement.description}">
+    setupDropdownEvents() {
+        // Eventos para abrir/cerrar dropdown de ordenamiento
+        this.sortDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleDropdown();
+        });
+        
+        // Cerrar dropdown al hacer clic fuera
+        document.addEventListener('click', () => {
+            this.closeDropdown();
+        });
+        
+        // Prevenir que el menú se cierre al hacer clic dentro
+        this.sortMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+
+    toggleDropdown() {
+        const isOpen = this.sortMenu.classList.contains('show');
+        if (isOpen) {
+            this.sortMenu.classList.remove('show');
+            this.sortDropdown.classList.remove('active');
+        } else {
+            this.sortMenu.classList.add('show');
+            this.sortDropdown.classList.add('active');
+        }
+    }
+
+    closeDropdown() {
+        this.sortMenu.classList.remove('show');
+        this.sortDropdown.classList.remove('active');
+    }
+
+    setFilter(filter) {
+        if (this.currentFilter === filter) return;
+        
+        this.currentFilter = filter;
+        
+        // Actualizar botones activos
+        this.filterButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filter === filter);
+        });
+        
+        // Re-renderizar expediciones
+        this.renderExpeditions();
+    }
+    
+    setSort(sort) {
+        if (this.currentSort === sort) return;
+        
+        this.currentSort = sort;
+        
+        // Actualizar items activos en dropdown
+        this.sortItems.forEach(item => {
+            item.classList.toggle('active', item.dataset.sort === sort);
+        });
+        
+        // Actualizar texto del dropdown - extraer solo el texto visible
+        const activeItem = this.container.querySelector(`[data-sort="${sort}"]`);
+        const sortToggle = this.sortDropdown.querySelector('.dropdown-text');
+        if (activeItem && sortToggle) {
+            const icon = activeItem.querySelector('.material-symbols-rounded');
+            
+            // Obtener solo el texto visible (no el contenido del ícono)
+            let text = '';
+            activeItem.childNodes.forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    text += node.textContent.trim();
+                }
+            });
+            
+            // Si no hay texto directo, usar textContent y limpiar
+            if (!text) {
+                text = activeItem.textContent.trim();
+                // Remover texto de iconos material symbols comunes
+                text = text.replace(/^(trending_up|trending_down|emergency|hiking|sort_by_alpha|photo_library)\s*/, '');
+            }
+            
+            // Limpiar el contenido anterior
+            sortToggle.innerHTML = '';
+            
+            // Agregar icono clonado
+            if (icon) {
+                const newIcon = icon.cloneNode(true);
+                sortToggle.appendChild(newIcon);
+            }
+            
+            // Agregar texto limpio
+            const textNode = document.createTextNode(text);
+            sortToggle.appendChild(textNode);
+        }
+        
+        // Cerrar dropdown
+        this.closeDropdown();
+        
+        // Re-renderizar expediciones
+        this.renderExpeditions();
+    }
+
+    renderExpeditions() {
+        const expeditions = this.getFilteredExpeditions();
+        const expeditionsHTML = expeditions.map(expedition => 
+            this.generateExpeditionCard(expedition)
+        ).join('');
+        
+        this.expeditionsGrid.innerHTML = expeditionsHTML;
+        
+        // Configurar eventos de cards
+        this.setupCardEvents();
+    }
+
+    getFilteredExpeditions() {
+        let expeditions = Object.values(window.expeditionsData);
+        
+        // Filtrar por categoría
+        if (this.currentFilter !== 'all') {
+            expeditions = expeditions.filter(exp => exp.category === this.currentFilter);
+        }
+        
+        // Ordenar según el criterio seleccionado
+        expeditions.sort((a, b) => {
+            switch (this.currentSort) {
+                case 'altitude-desc':
+                    // Mayor altitud primero
+                    return b.altitude - a.altitude;
+                
+                case 'altitude-asc':
+                    // Menor altitud primero
+                    return a.altitude - b.altitude;
+                
+                case 'difficulty-desc':
+                    // Más difícil primero
+                    const diffA = this.getDifficultyLevel(a.difficulty.grade);
+                    const diffB = this.getDifficultyLevel(b.difficulty.grade);
+                    if (diffB !== diffA) {
+                        return diffB - diffA;
+                    }
+                    // En caso de empate, ordenar por altitud descendente
+                    return b.altitude - a.altitude;
+                
+                case 'difficulty-asc':
+                    // Más fácil primero
+                    const diffAsc_A = this.getDifficultyLevel(a.difficulty.grade);
+                    const diffAsc_B = this.getDifficultyLevel(b.difficulty.grade);
+                    if (diffAsc_A !== diffAsc_B) {
+                        return diffAsc_A - diffAsc_B;
+                    }
+                    // En caso de empate, ordenar por altitud descendente
+                    return b.altitude - a.altitude;
+                
+                case 'name':
+                    // Orden alfabético
+                    return a.name.localeCompare(b.name, 'es', { sensitivity: 'base' });
+                
+                case 'photos':
+                    // Mayor cantidad de fotos primero
+                    const photosA = this.detectedPhotos[a.id]?.length || 0;
+                    const photosB = this.detectedPhotos[b.id]?.length || 0;
+                    if (photosB !== photosA) {
+                        return photosB - photosA;
+                    }
+                    // En caso de empate, ordenar por altitud descendente
+                    return b.altitude - a.altitude;
+                
+                default:
+                    return 0;
+            }
+        });
+        
+        return expeditions;
+    }
+
+    // Convertir grado de dificultad a número para ordenamiento
+    getDifficultyLevel(grade) {
+        const difficultyMap = {
+            'F': 1,     // Fácil
+            'PD': 2,    // Poco Difícil
+            'AD': 3,    // Algo Difícil
+            'D': 4,     // Difícil
+            'TD': 5,    // Muy Difícil
+            'ED': 6     // Extremadamente Difícil
+        };
+        return difficultyMap[grade] || 0;
+    }
+
+    generateExpeditionCard(expedition) {
+        const photoCount = this.detectedPhotos[expedition.id]?.length || 0;
+        const isNew = window.isNewItem(expedition.lastUpdate);
+        const difficulty = expedition.difficulty;
+        const achievements = expedition.achievements || [];
+        
+        // Generar badges de logros
+        const achievementBadges = achievements.slice(0, 2).map(achievement => `
+            <span class="achievement-badge material-symbols-rounded" title="${achievement.description}">
                 ${achievement.icon}
             </span>
         `).join('');
 
-        return `<div class="achievement-badges">${badges}</div>`;
-    }
-
-    /**
-     * Crea el contenido principal de la card
-     */
-    createCardContent(expedition) {
-        const difficultyIcon = this.gallery.getDifficultyIcon(expedition.type);
-        const stats = this.createStatsSection(expedition);
-
         return `
-            <div class="expedition-content">
-                <h3 class="expedition-title">${expedition.name}</h3>
-                <p class="expedition-description">${expedition.shortDescription}</p>
+            <div class="expedition-card" 
+                 data-category="${expedition.category}" 
+                 data-expedition="${expedition.id}"
+                 data-photos="${photoCount}">
                 
-                <div class="expedition-meta">
-                    <div class="expedition-difficulty">
-                        <span class="difficulty-icon">${difficultyIcon}</span>
-                        ${expedition.difficulty.grade} - ${expedition.difficulty.name}
+                ${isNew ? '<div class="new-badge">NUEVO</div>' : ''}
+                
+                ${achievementBadges ? `<div class="achievement-badges">${achievementBadges}</div>` : ''}
+                
+                <img src="${window.galleryConfig.basePath}${expedition.id}/${expedition.coverImage}" 
+                     alt="${expedition.name}" 
+                     class="expedition-image"
+                     onerror="this.src='https://images.unsplash.com/photo-1464822759844-d150df1ca4b8?w=600&h=400&fit=crop'">
+                
+                <div class="expedition-content">
+                    <h3 class="expedition-title">${expedition.name}</h3>
+                    <p class="expedition-description">${expedition.shortDescription}</p>
+                    
+                    <div class="expedition-meta">
+                        <div class="expedition-difficulty difficulty-${difficulty.grade}">
+                            <span class="difficulty-icon">${this.getDifficultyIcon(difficulty.grade)}</span>
+                            ${difficulty.grade} - ${difficulty.name}
+                        </div>
+                        <span class="expedition-altitude">${window.GalleryUtils.formatNumber(expedition.altitude)} ${expedition.altitudeUnit}</span>
                     </div>
-                    <span class="expedition-altitude">
-                        ${expedition.altitude.toLocaleString()} ${expedition.altitudeUnit}
-                    </span>
-                </div>
-                
-                ${stats}
-            </div>
-        `;
-    }
-
-    /**
-     * Crea la sección de estadísticas
-     */
-    createStatsSection(expedition) {
-        return `
-            <div class="expedition-stats">
-                <div class="stat-item">
-                    <span class="material-symbols-rounded stat-icon">photo_camera</span>
-                    <span>${expedition.photoCount} fotos</span>
-                </div>
-                <div class="stat-item">
-                    <span class="material-symbols-rounded stat-icon">trending_up</span>
-                    <span>${expedition.ascents} ${expedition.ascents === 1 ? 'ascenso' : 'ascensos'}</span>
+                    
+                    <div class="expedition-stats">
+                        <div class="stat-item">
+                            <span class="material-symbols-rounded stat-icon">photo_camera</span>
+                            <span>${photoCount} fotos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="material-symbols-rounded stat-icon">location_on</span>
+                            <span>${expedition.location.country}</span>
+                        </div>
+                        ${expedition.ascents >= 1 ? `
+                        <div class="stat-item">
+                            <span class="material-symbols-rounded stat-icon">flag</span>
+                            <span>${expedition.ascents} ${expedition.ascents === 1 ? 'ascenso' : 'ascensos'}</span>
+                        </div>
+                        ` : ''}
+                    </div>
                 </div>
             </div>
         `;
     }
 
-    /**
-     * Configura eventos para todas las cards
-     */
+    getDifficultyIcon(grade) {
+        const icons = {
+            'F': '🥾',
+            'PD': '⛰️',
+            'AD': '🧗',
+            'D': '⚡',
+            'TD': '🔥',
+            'ED': '💀'
+        };
+        return icons[grade] || '⛰️';
+    }
+
     setupCardEvents() {
-        const cards = this.container.querySelectorAll('.expedition-card');
-        
-        cards.forEach(card => {
-            // Click para abrir overlay
-            card.addEventListener('click', (e) => this.handleCardClick(e));
-            
-            // Hover effects mejorados
-            this.setupCardHoverEffects(card);
-        });
-
-        console.log(`🎯 Eventos configurados para ${cards.length} cards`);
-    }
-
-    /**
-     * Configura eventos específicos de una card
-     */
-    setupSingleCardEvents(card, expedition) {
-        // Hover personalizado con información adicional
-        card.addEventListener('mouseenter', () => {
-            this.showCardTooltip(card, expedition);
-        });
-
-        card.addEventListener('mouseleave', () => {
-            this.hideCardTooltip(card);
-        });
-
-        // Accesibilidad: navegación por teclado
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', `Ver expedición ${expedition.name}`);
-
-        card.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.handleCardClick(e);
-            }
-        });
-    }
-
-    /**
-     * Configura efectos de hover avanzados
-     */
-    setupCardHoverEffects(card) {
-        if (!this.gallery.config.animations.cardHover.enabled) return;
-
-        const image = card.querySelector('.expedition-image');
-        const overlay = card.querySelector('.expedition-image-overlay');
-        const achievements = card.querySelectorAll('.achievement-badge');
-
-        card.addEventListener('mouseenter', () => {
-            // Efecto de imagen
-            if (image) {
-                image.style.transform = 'scale(1.05)';
-            }
-            
-            // Mostrar overlay
-            if (overlay) {
-                overlay.style.opacity = '1';
-                overlay.style.transform = 'scale(1)';
-            }
-
-            // Animar badges
-            achievements.forEach((badge, index) => {
-                setTimeout(() => {
-                    badge.style.transform = 'scale(1.1) rotate(5deg)';
-                }, index * 100);
-            });
-        });
-
-        card.addEventListener('mouseleave', () => {
-            // Resetear imagen
-            if (image) {
-                image.style.transform = 'scale(1)';
-            }
-            
-            // Ocultar overlay
-            if (overlay) {
-                overlay.style.opacity = '0';
-                overlay.style.transform = 'scale(0.8)';
-            }
-
-            // Resetear badges
-            achievements.forEach(badge => {
-                badge.style.transform = 'scale(1) rotate(0deg)';
-            });
-        });
-    }
-
-    /**
-     * Maneja clicks en las cards
-     */
-    handleCardClick(event) {
-        const card = event.currentTarget;
-        const expeditionId = card.dataset.expedition;
-        
-        // Efecto visual de click
-        this.animateCardClick(card);
-        
-        // Abrir expedición
-        if (expeditionId) {
-            this.gallery.openExpedition(expeditionId);
-        }
-
-        console.log(`🖱️ Card clickeada: ${expeditionId}`);
-    }
-
-    /**
-     * Anima el click en una card
-     */
-    animateCardClick(card) {
-        card.style.transform = 'scale(0.98)';
-        
-        setTimeout(() => {
-            card.style.transform = '';
-        }, 150);
-    }
-
-    /**
-     * Muestra tooltip con información adicional
-     */
-    showCardTooltip(card, expedition) {
-        // Implementación simple de tooltip
-        const tooltip = document.createElement('div');
-        tooltip.className = 'card-tooltip';
-        tooltip.innerHTML = `
-            <strong>${expedition.name}</strong><br>
-            Dificultad: ${expedition.difficulty.name}<br>
-            Última actualización: ${new Date(expedition.lastUpdate).toLocaleDateString()}
-        `;
-        
-        card.appendChild(tooltip);
-        
-        // Posicionar tooltip
-        setTimeout(() => {
-            tooltip.style.opacity = '1';
-            tooltip.style.transform = 'translateY(-10px)';
-        }, 10);
-    }
-
-    /**
-     * Oculta tooltip
-     */
-    hideCardTooltip(card) {
-        const tooltip = card.querySelector('.card-tooltip');
-        if (tooltip) {
-            tooltip.remove();
-        }
-    }
-
-    /**
-     * Anima la entrada de las cards
-     */
-    animateCardsEntrance() {
-        const cards = this.container.querySelectorAll('.expedition-card');
-        
-        // Limpiar animaciones anteriores
-        this.clearAnimations();
-
-        cards.forEach((card, index) => {
-            // Estado inicial
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            
-            // Animar con delay escalonado
-            const delay = index * 100;
-            
-            const animation = setTimeout(() => {
-                card.style.transition = 'all 0.6s ease';
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, delay);
-            
-            this.animations.push(animation);
-        });
-
-        console.log('✨ Animaciones de entrada iniciadas');
-    }
-
-    /**
-     * Limpia las animaciones activas
-     */
-    clearAnimations() {
-        this.animations.forEach(animation => clearTimeout(animation));
-        this.animations = [];
-    }
-
-    /**
-     * Filtra cards por categoría
-     */
-    filter(category) {
-        this.currentFilter = category;
-        
-        const cards = this.container.querySelectorAll('.expedition-card');
-        
-        cards.forEach(card => {
-            const cardCategory = card.dataset.category;
-            const shouldShow = category === 'all' || category === cardCategory;
-            
-            if (shouldShow) {
-                card.style.display = 'block';
-                setTimeout(() => {
-                    card.classList.add('fade-in');
-                }, 10);
-            } else {
-                card.classList.remove('fade-in');
-                setTimeout(() => {
-                    card.style.display = 'none';
-                }, 300);
-            }
-        });
-
-        console.log(`🔍 Filtro aplicado: ${category}`);
-    }
-
-    /**
-     * Ordena cards según criterio
-     */
-    sort(criteria) {
-        this.currentSort = criteria;
-        this.render(); // Re-renderizar con nuevo orden
-        
-        console.log(`📊 Ordenamiento aplicado: ${criteria}`);
-    }
-
-    /**
-     * Busca expediciones por texto
-     */
-    search(query) {
-        if (!query || query.length < 2) {
-            this.showAllCards();
-            return;
-        }
-
-        const cards = this.container.querySelectorAll('.expedition-card');
-        const searchTerm = query.toLowerCase();
+        const cards = this.expeditionsGrid.querySelectorAll('.expedition-card');
         
         cards.forEach(card => {
             const expeditionId = card.dataset.expedition;
-            const expedition = this.gallery.getExpedition(expeditionId);
+            const photoCount = parseInt(card.dataset.photos);
             
-            const searchableText = [
-                expedition.name,
-                expedition.shortDescription,
-                expedition.location.country,
-                expedition.location.region,
-                expedition.difficulty.name,
-                expedition.type
-            ].join(' ').toLowerCase();
+            // Click en la card
+            card.addEventListener('click', () => {
+                if (photoCount > 0) {
+                    // Abrir galería
+                    document.dispatchEvent(new CustomEvent('openGallery', {
+                        detail: { expeditionId, photoIndex: 0 }
+                    }));
+                } else {
+                    // Mostrar mensaje si no hay fotos
+                    this.showNoPhotosMessage(expeditionId);
+                }
+            });
             
-            const matches = searchableText.includes(searchTerm);
+            // Hover effects adicionales
+            card.addEventListener('mouseenter', () => {
+                this.handleCardHover(card, true);
+            });
             
-            card.style.display = matches ? 'block' : 'none';
-            
-            if (matches) {
-                card.classList.add('search-highlight');
-            } else {
-                card.classList.remove('search-highlight');
-            }
-        });
-
-        console.log(`🔎 Búsqueda realizada: "${query}"`);
-    }
-
-    /**
-     * Muestra todas las cards
-     */
-    showAllCards() {
-        const cards = this.container.querySelectorAll('.expedition-card');
-        
-        cards.forEach(card => {
-            card.style.display = 'block';
-            card.classList.remove('search-highlight');
+            card.addEventListener('mouseleave', () => {
+                this.handleCardHover(card, false);
+            });
         });
     }
 
-    /**
-     * Obtiene estadísticas de las cards
-     */
+    handleCardHover(card, isHovering) {
+        // Animaciones adicionales si se requieren
+        if (isHovering) {
+            card.style.transform = 'translateY(-8px)';
+        } else {
+            card.style.transform = '';
+        }
+    }
+
+    showNoPhotosMessage(expeditionId) {
+        const expedition = window.getExpeditionById(expeditionId);
+        alert(`Lo sentimos, aún no hay fotos disponibles para ${expedition.name}. ¡Pronto subiremos más contenido!`);
+    }
+
+    // Método para refrescar cards (útil después de detectar nuevas fotos)
+    refresh() {
+        this.renderExpeditions();
+    }
+
+    // Método para obtener estadísticas
     getStats() {
-        const cards = this.container.querySelectorAll('.expedition-card');
-        const visibleCards = this.container.querySelectorAll('.expedition-card[style*="block"], .expedition-card:not([style*="none"])');
+        const expeditions = Object.values(window.expeditionsData);
+        const totalPhotos = Object.values(this.detectedPhotos)
+            .reduce((total, photos) => total + photos.length, 0);
         
         return {
-            total: cards.length,
-            visible: visibleCards.length,
-            filter: this.currentFilter,
-            sort: this.currentSort
+            totalExpeditions: expeditions.length,
+            totalPhotos: totalPhotos,
+            byCategory: {
+                cerros: expeditions.filter(e => e.category === 'cerros').length,
+                volcanes: expeditions.filter(e => e.category === 'volcanes').length,
+                sierras: expeditions.filter(e => e.category === 'sierras').length
+            },
+            featured: expeditions.filter(e => e.featured).length,
+            newItems: expeditions.filter(e => window.isNewItem(e.lastUpdate)).length
         };
     }
-
-    /**
-     * Actualiza una card específica
-     */
-    updateCard(expeditionId) {
-        const card = this.container.querySelector(`[data-expedition="${expeditionId}"]`);
-        const expedition = this.gallery.getExpedition(expeditionId);
-        
-        if (card && expedition) {
-            const newCard = this.createCard(expedition);
-            card.replaceWith(newCard);
-            this.setupSingleCardEvents(newCard, expedition);
-            
-            console.log(`🔄 Card actualizada: ${expeditionId}`);
-        }
-    }
-
-    /**
-     * Destructor del componente
-     */
-    destroy() {
-        this.clearAnimations();
-        
-        if (this.container) {
-            this.container.innerHTML = '';
-        }
-        
-        console.log('🗑️ GalleryCards destruido');
-    }
 }
 
-// Hacer disponible globalmente
-if (typeof window !== 'undefined') {
-    window.GalleryCards = GalleryCards;
-}
-
-console.log('🃏 GalleryCards cargado');
-console.log('✨ Generador Dinámico de Cards - Sistema JMC');
+// Exportar clase sin estilos CSS inlineados
+window.GalleryCards = GalleryCards;
