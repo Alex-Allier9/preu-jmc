@@ -1,0 +1,150 @@
+{
+  "gallery": {
+    "title": "Expediciones Montañísticas",
+    "subtitle": "Momentos capturados en las cumbres más desafiantes de la cordillera chilena e internacional",
+    "basePath": "media/images/fundador/gallery/",
+    "supportedFormats": ["jpg", "jpeg", "png", "webp"],
+    "photoFilePattern": "_\\d{4}\\.(jpg|jpeg|png|webp)$",
+    "coverFilePattern": "_cover\\.(jpg|jpeg|png|webp)$"
+  },
+  
+  "ui": {
+    "newBadgeDuration": 21,
+    "newBadgeText": "NUEVO",
+    "photoCounterFormat": "{current} / {total}",
+    "loadingText": "Cargando...",
+    "errorText": "Error al cargar",
+    "noPhotosText": "Sin fotos disponibles"
+  },
+  
+  "filters": {
+    "showAll": true,
+    "defaultFilter": "todos",
+    "buttons": [
+      {
+        "id": "todos", 
+        "label": "Todos",
+        "category": null
+      },
+      {
+        "id": "cerros",
+        "label": "Cerros", 
+        "category": "cerros"
+      },
+      {
+        "id": "volcanes",
+        "label": "Volcanes",
+        "category": "volcanes"
+      },
+      {
+        "id": "sierras", 
+        "label": "Sierras",
+        "category": "sierras"
+      }
+    ]
+  },
+
+  "sorting": {
+    "defaultSort": "featured",
+    "options": [
+      {
+        "id": "featured",
+        "label": "Destacados",
+        "field": "featured",
+        "direction": "desc"
+      },
+      {
+        "id": "altitude", 
+        "label": "Altitud",
+        "field": "altitude",
+        "direction": "desc"
+      },
+      {
+        "id": "name",
+        "label": "Nombre",
+        "field": "name", 
+        "direction": "asc"
+      },
+      {
+        "id": "difficulty",
+        "label": "Dificultad",
+        "field": "difficulty.grade",
+        "direction": "asc"
+      },
+      {
+        "id": "ascents",
+        "label": "Ascensos", 
+        "field": "ascents",
+        "direction": "desc"
+      }
+    ]
+  },
+
+  "layout": {
+    "cardsPerRow": {
+      "desktop": 3,
+      "tablet": 2, 
+      "mobile": 1
+    },
+    "cardMinWidth": "350px",
+    "cardAspectRatio": "4:5",
+    "overlayLayout": {
+      "infoPanel": "33.333%",
+      "photosPanel": "66.667%"
+    }
+  },
+
+  "animations": {
+    "cardHover": {
+      "enabled": true,
+      "transformY": "-8px",
+      "duration": "0.3s"
+    },
+    "overlayTransition": {
+      "enabled": true,
+      "duration": "0.4s",
+      "easing": "ease-in-out"
+    },
+    "photoTransition": {
+      "enabled": true,
+      "duration": "0.3s", 
+      "easing": "ease"
+    }
+  },
+
+  "mobile": {
+    "swipeThreshold": 50,
+    "doubleTapZoom": true,
+    "uiHideDelay": 3000,
+    "gestures": {
+      "swipeLeft": "nextPhoto",
+      "swipeRight": "prevPhoto", 
+      "swipeUp": "closeGallery",
+      "swipeDown": "showInfo",
+      "singleTap": "toggleUI",
+      "doubleTap": "zoomPhoto"
+    }
+  },
+
+  "performance": {
+    "lazyLoading": true,
+    "preloadNext": 2,
+    "thumbnailQuality": 60,
+    "maxPhotoSize": "1920x1080",
+    "cacheDuration": 3600000
+  },
+
+  "accessibility": {
+    "altTextPattern": "{expedition} - Foto {number}",
+    "keyboardNavigation": true,
+    "screenReaderSupport": true,
+    "highContrastMode": false
+  },
+
+  "debug": {
+    "enabled": false,
+    "logLevel": "info",
+    "showLoadTimes": false,
+    "photoDetectionLog": false
+  }
+}

@@ -20,6 +20,7 @@
 @import url('./components/icons.css');    /* Sistema de iconos */
 @import url('./components/buttons.css');  /* CTAs y botones */
 @import url('./components/progress-bar.css'); /* Barra de progreso de scroll */
+@import url('./components/gallery-overlay.css');
 
 /* ===== UTILITIES - UTILIDADES ===== */
 @import url('./utilities/responsive.css'); /* Media queries */

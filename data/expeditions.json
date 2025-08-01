@@ -1,0 +1,340 @@
+{
+  "expeditions": {
+    "aconcagua": {
+      "id": "aconcagua",
+      "name": "Aconcagua",
+      "shortDescription": "La cumbre más alta de América, conocida como el 'Coloso de América'. Un desafío técnico por altitud extrema y condiciones climáticas impredecibles.",
+      "longDescription": "El Aconcagua es la montaña más alta de América y la cumbre más elevada del hemisferio sur. Conocido como el 'Coloso de América', presenta un desafío único por su altitud extrema, clima impredecible y condiciones físicas demandantes.\n\nLa ascensión requiere una preparación física excepcional y experiencia en alta montaña. Las condiciones meteorológicas pueden cambiar rápidamente, con vientos que superan los 100 km/h y temperaturas que descienden a -30°C.\n\nEsta expedición representa uno de los mayores desafíos personales, combinando resistencia física, mental y técnica para alcanzar la cumbre más alta del continente americano.",
+      "altitude": 6962,
+      "altitudeUnit": "msnm",
+      "difficulty": {
+        "grade": "PD",
+        "name": "Poco Difícil",
+        "system": "Sistema Alpino Francés"
+      },
+      "type": "Cerro",
+      "category": "cerros",
+      "location": {
+        "country": "Argentina",
+        "region": "Mendoza",
+        "coordinates": {
+          "lat": -32.6532,
+          "lng": -70.0109
+        },
+        "mapsUrl": "https://maps.google.com/?q=-32.6532,-70.0109"
+      },
+      "ascents": 2,
+      "achievements": [
+        {
+          "icon": "emoji_events",
+          "name": "Cumbre América",
+          "description": "Punto más alto de América"
+        },
+        {
+          "icon": "military_tech", 
+          "name": "Récord Personal",
+          "description": "Mejor tiempo personal"
+        },
+        {
+          "icon": "ac_unit",
+          "name": "Condiciones Extremas", 
+          "description": "Ascenso en condiciones adversas"
+        }
+      ],
+      "technicalInfo": {
+        "climate": "Extremo",
+        "route": "Normal",
+        "duration": "18-21 días",
+        "preparation": "Avanzada",
+        "modality": "Expedición",
+        "season": "Diciembre-Febrero"
+      },
+      "coverImage": "aconcagua_cover.jpg",
+      "photoCount": 4,
+      "lastUpdate": "2024-12-15T10:30:00Z",
+      "featured": true,
+      "status": "active"
+    },
+    
+    "el-plomo": {
+      "id": "el-plomo",
+      "name": "Cerro El Plomo", 
+      "shortDescription": "Montaña emblemática de Santiago, ideal para iniciación en alta altitud. Ofrece vistas espectaculares de la capital y la cordillera.",
+      "longDescription": "El Cerro El Plomo es una de las montañas más emblemáticas de la Región Metropolitana y un excelente campo de entrenamiento para montañistas que buscan ganar experiencia en alta altitud.\n\nSituado en la cordillera de los Andes, ofrece una ruta accesible pero desafiante, con vistas panorámicas excepcionales de Santiago y el valle central. Es considerado una montaña 'escuela' para quienes aspiran a ascensos más técnicos.\n\nLa cumbre recompensa con una vista de 360 grados que abarca desde el océano Pacífico hasta las altas cumbres andinas, siendo especialmente espectacular durante los amaneceres.",
+      "altitude": 5434,
+      "altitudeUnit": "msnm", 
+      "difficulty": {
+        "grade": "F",
+        "name": "Fácil",
+        "system": "Sistema Alpino Francés"
+      },
+      "type": "Cerro",
+      "category": "cerros",
+      "location": {
+        "country": "Chile",
+        "region": "Región Metropolitana",
+        "coordinates": {
+          "lat": -33.2167,
+          "lng": -70.2167
+        },
+        "mapsUrl": "https://maps.google.com/?q=-33.2167,-70.2167"
+      },
+      "ascents": 15,
+      "achievements": [
+        {
+          "icon": "timer",
+          "name": "Récord Running",
+          "description": "13h 39min desde Plaza de Armas"
+        },
+        {
+          "icon": "ac_unit",
+          "name": "Ascensos Invernales",
+          "description": "Múltiples ascensos en invierno"
+        }
+      ],
+      "technicalInfo": {
+        "climate": "Templado-Frío",
+        "route": "Normal",
+        "duration": "2-3 días",
+        "preparation": "Intermedia", 
+        "modality": "Trekking",
+        "season": "Octubre-Abril"
+      },
+      "coverImage": "el-plomo_cover.jpg",
+      "photoCount": 8,
+      "lastUpdate": "2024-11-20T14:15:00Z",
+      "featured": true,
+      "status": "active"
+    },
+
+    "volcan-san-jose": {
+      "id": "volcan-san-jose",
+      "name": "Volcán San José",
+      "shortDescription": "Volcán activo en la frontera chileno-argentina. Desafío moderado con paisajes volcánicos únicos y vistas panorámicas excepcionales.",
+      "longDescription": "El Volcán San José es un estratovolcán activo ubicado en la frontera entre Chile y Argentina, formando parte de la cordillera de los Andes. Su ascenso ofrece una experiencia única combinando desafío físico con paisajes volcánicos espectaculares.\n\nLa ruta atraviesa diferentes ecosistemas, desde zonas áridas hasta campos de nieve y hielo en las cercanías de la cumbre. El volcán es conocido por sus vistas panorámicas excepcionales y por ser un excelente punto de observación de otros gigantes andinos.\n\nAunque técnicamente no es extremadamente difícil, requiere una buena preparación física y experiencia en montaña, especialmente para manejar la altitud y las condiciones climáticas variables propias de la alta cordillera.",
+      "altitude": 5856,
+      "altitudeUnit": "msnm",
+      "difficulty": {
+        "grade": "PD",
+        "name": "Poco Difícil", 
+        "system": "Sistema Alpino Francés"
+      },
+      "type": "Volcán",
+      "category": "volcanes",
+      "location": {
+        "country": "Chile-Argentina",
+        "region": "Frontera",
+        "coordinates": {
+          "lat": -33.7833,
+          "lng": -69.8975
+        },
+        "mapsUrl": "https://maps.google.com/?q=-33.7833,-69.8975"
+      },
+      "ascents": 1,
+      "achievements": [
+        {
+          "icon": "speed",
+          "name": "Récord Ascenso",
+          "description": "5h 48min tiempo récord"
+        },
+        {
+          "icon": "emoji_events",
+          "name": "Récord Global", 
+          "description": "9h 37min ida y vuelta"
+        }
+      ],
+      "technicalInfo": {
+        "climate": "Árido-Frío",
+        "route": "Normal",
+        "duration": "2-3 días",
+        "preparation": "Intermedia-Avanzada",
+        "modality": "Montañismo",
+        "season": "Noviembre-Marzo"
+      },
+      "coverImage": "volcan-san-jose_cover.jpg", 
+      "photoCount": 3,
+      "lastUpdate": "2024-10-08T09:20:00Z",
+      "featured": false,
+      "status": "active"
+    },
+
+    "marmolejo": {
+      "id": "marmolejo", 
+      "name": "Cerro Marmolejo",
+      "shortDescription": "Cumbre técnicamente desafiante que requiere experiencia en alta montaña. Conocido por sus condiciones meteorológicas variables y terreno exigente.",
+      "longDescription": "El Cerro Marmolejo es una de las montañas más desafiantes de la cordillera central de Chile. Con una altitud considerable y condiciones técnicas demandantes, representa un verdadero test para montañistas experimentados.\n\nLa montaña es conocida por sus condiciones meteorológicas impredecibles y su terreno técnico que requiere el uso de equipo especializado como crampones y piolet. Las secciones de nieve y hielo en la ruta final hacia la cumbre añaden complejidad técnica al ascenso.\n\nLa cumbre ofrece vistas espectaculares de la cordillera circundante y es considerada una preparación excelente para montañas de mayor envergadura. El descenso requiere especial cuidado debido a las condiciones del terreno.",
+      "altitude": 6108,
+      "altitudeUnit": "msnm",
+      "difficulty": {
+        "grade": "AD",
+        "name": "Bastante Difícil",
+        "system": "Sistema Alpino Francés"
+      },
+      "type": "Cerro",
+      "category": "cerros", 
+      "location": {
+        "country": "Chile",
+        "region": "Región Metropolitana",
+        "coordinates": {
+          "lat": -33.6333,
+          "lng": -70.3167
+        },
+        "mapsUrl": "https://maps.google.com/?q=-33.6333,-70.3167"
+      },
+      "ascents": 3,
+      "achievements": [
+        {
+          "icon": "timer",
+          "name": "Récord Ascenso",
+          "description": "11h 51min tiempo récord"
+        },
+        {
+          "icon": "military_tech",
+          "name": "Persistencia",
+          "description": "3 ascensos exitosos"
+        }
+      ],
+      "technicalInfo": {
+        "climate": "Extremo", 
+        "route": "Técnica",
+        "duration": "3-4 días",
+        "preparation": "Avanzada",
+        "modality": "Montañismo Técnico",
+        "season": "Noviembre-Febrero"
+      },
+      "coverImage": "marmolejo_cover.jpg",
+      "photoCount": 4,
+      "lastUpdate": "2024-09-15T16:45:00Z",
+      "featured": false,
+      "status": "active"
+    },
+
+    "ojos-salado": {
+      "id": "ojos-salado",
+      "name": "Ojos del Salado",
+      "shortDescription": "El volcán activo más alto del mundo. Un desafío extremo por altitud, condiciones áridas y la dificultad técnica de la cumbre final.",
+      "longDescription": "Ojos del Salado es el volcán activo más alto del mundo y la segunda cumbre más alta de América. Ubicado en la frontera entre Chile y Argentina, representa uno de los desafíos más extremos del montañismo sudamericano.\n\nEl ascenso combina la dificultad de la gran altitud con las condiciones áridas del desierto de Atacama. La ruta final hacia la cumbre incluye una sección técnica corta de 30 metros con cuerda fija, lo que añade un elemento técnico al desafío físico.\n\nLas condiciones climáticas son extremas, con vientos severos y cambios bruscos de temperatura. La preparación para esta montaña debe incluir aclimatación adecuada y experiencia previa en grandes altitudes.",
+      "altitude": 6893,
+      "altitudeUnit": "msnm",
+      "difficulty": {
+        "grade": "PD", 
+        "name": "Poco Difícil",
+        "system": "Sistema Alpino Francés"
+      },
+      "type": "Volcán",
+      "category": "volcanes",
+      "location": {
+        "country": "Chile-Argentina",
+        "region": "Frontera Atacama",
+        "coordinates": {
+          "lat": -27.1092,
+          "lng": -68.5428
+        },
+        "mapsUrl": "https://maps.google.com/?q=-27.1092,-68.5428"
+      },
+      "ascents": 1,
+      "achievements": [
+        {
+          "icon": "public",
+          "name": "Volcán Más Alto",
+          "description": "Volcán activo más alto del mundo"
+        },
+        {
+          "icon": "emoji_events",
+          "name": "Segunda Cumbre América",
+          "description": "Segunda montaña más alta de América"
+        }
+      ],
+      "technicalInfo": {
+        "climate": "Desértico Extremo",
+        "route": "Normal con sección técnica",
+        "duration": "7-10 días", 
+        "preparation": "Experta",
+        "modality": "Alta Montaña",
+        "season": "Noviembre-Marzo"
+      },
+      "coverImage": "ojos-salado_cover.jpg",
+      "photoCount": 5,
+      "lastUpdate": "2024-08-22T11:10:00Z",
+      "featured": true,
+      "status": "active"
+    },
+
+    "sierras-santiago": {
+      "id": "sierras-santiago",
+      "name": "Sierras de Santiago", 
+      "shortDescription": "Conjunto montañoso cercano a Santiago, ideal para entrenamiento y aclimatación. Ofrece rutas variadas y acceso relativamente fácil.",
+      "longDescription": "Las Sierras de Santiago comprenden un conjunto de elevaciones menores ubicadas en la pre-cordillera de la Región Metropolitana. Estas montañas ofrecen un campo de entrenamiento ideal para montañistas de todos los niveles.\n\nLa facilidad de acceso desde Santiago y la variedad de rutas disponibles las convierten en el lugar perfecto para desarrollar técnicas de montaña, probar equipos y mantener la condición física. Los senderos están bien marcados y ofrecen diferentes niveles de dificultad.\n\nAdemás de su valor como campo de entrenamiento, estas sierras ofrecen vistas panorámicas de Santiago y son un escape perfecto de la ciudad para disfrutar de la naturaleza y el aire puro de la montaña.",
+      "altitude": 2200,
+      "altitudeUnit": "msnm", 
+      "difficulty": {
+        "grade": "F",
+        "name": "Fácil",
+        "system": "Sistema Alpino Francés"
+      },
+      "type": "Sierra",
+      "category": "sierras",
+      "location": {
+        "country": "Chile",
+        "region": "Región Metropolitana",
+        "coordinates": {
+          "lat": -33.3500,
+          "lng": -70.5500
+        },
+        "mapsUrl": "https://maps.google.com/?q=-33.3500,-70.5500"
+      },
+      "ascents": 25,
+      "achievements": [
+        {
+          "icon": "fitness_center",
+          "name": "Campo Entrenamiento",
+          "description": "Base para preparación física"
+        },
+        {
+          "icon": "explore",
+          "name": "Múltiples Rutas",
+          "description": "Exploración de rutas variadas"
+        }
+      ],
+      "technicalInfo": {
+        "climate": "Mediterráneo",
+        "route": "Múltiples",
+        "duration": "Medio día",
+        "preparation": "Básica",
+        "modality": "Senderismo-Trekking", 
+        "season": "Todo el año"
+      },
+      "coverImage": "sierras-santiago_cover.jpg",
+      "photoCount": 18,
+      "lastUpdate": "2024-12-01T08:30:00Z",
+      "featured": false,
+      "status": "active"
+    }
+  },
+  
+  "categories": {
+    "cerros": {
+      "name": "Cerros",
+      "description": "Montañas y cerros de diferentes altitudes",
+      "icon": "terrain"
+    },
+    "volcanes": {
+      "name": "Volcanes", 
+      "description": "Volcanes activos e inactivos",
+      "icon": "volcano"
+    },
+    "sierras": {
+      "name": "Sierras",
+      "description": "Conjuntos montañosos menores",
+      "icon": "landscape"
+    }
+  },
+
+  "metadata": {
+    "totalExpeditions": 6,
+    "totalPhotos": 42,
+    "totalAscents": 47,
+    "lastGlobalUpdate": "2024-12-15T10:30:00Z",
+    "version": "1.0.0"
+  }
+}
