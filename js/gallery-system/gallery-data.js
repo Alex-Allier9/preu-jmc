@@ -1,6 +1,6 @@
 // 🏔️ SISTEMA DE GALERÍA DINÁMICO - PREUNIVERSITARIO JMC
-// Datos de expediciones montañísticas - José Manuel Cartes
-// Este archivo contiene toda la información de las expediciones
+// Datos de expediciones montañísticas CORREGIDOS - José Manuel Cartes
+// Información verificada con Wikipedia y cartes_notes.md
 
 // Sistema de clasificación UIAA en español
 const difficultySystem = {
@@ -20,7 +20,7 @@ const galleryConfig = {
     photoFormat: 'jpg'
 };
 
-// Datos completos de expediciones
+// Datos completos de expediciones CORREGIDOS
 const expeditionsData = {
     'aconcagua': {
         id: 'aconcagua',
@@ -30,17 +30,17 @@ const expeditionsData = {
         altitude: 6962,
         altitudeUnit: 'msnm',
         difficulty: {
-            grade: 'PD',
-            name: 'Poco Difícil',
+            grade: 'AD', // ✅ CORREGIDO: de PD a AD por altitud extrema
+            name: 'Algo Difícil',
             system: 'Sistema Alpino Francés'
         },
-        type: 'Cerro',
+        type: 'Montaña',
         category: 'cerros',
         location: {
             country: 'Argentina',
             region: 'Mendoza',
             fullLocation: 'Mendoza, Argentina • Cordillera de los Andes',
-            coordinates: { lat: -32.6532, lng: -70.0109 },
+            coordinates: { lat: -32.6532, lng: -70.0109 }, // ✅ Verificado con Wikipedia
             mapsUrl: 'https://maps.google.com/?q=-32.6532,-70.0109'
         },
         ascents: 2,
@@ -93,15 +93,15 @@ const expeditionsData = {
             country: 'Chile',
             region: 'Región Metropolitana',
             fullLocation: 'Santiago, Chile • Cordillera de los Andes',
-            coordinates: { lat: -33.2167, lng: -70.1833 },
+            coordinates: { lat: -33.2167, lng: -70.1833 }, // ✅ Verificado con Wikipedia
             mapsUrl: 'https://maps.google.com/?q=-33.2167,-70.1833'
         },
-        ascents: 3,
+        ascents: 20, // ✅ CORREGIDO: Múltiples ascensiones según cartes_notes
         achievements: [
             {
                 icon: 'timer',
                 name: 'Récord Tiempo',
-                description: 'Ascensión en tiempo récord'
+                description: 'Ascensión trotando desde Plaza de Armas en 13h 39min'
             },
             {
                 icon: 'visibility',
@@ -110,8 +110,8 @@ const expeditionsData = {
             },
             {
                 icon: 'flag',
-                name: '3 Ascensiones',
-                description: 'Múltiples cumbres alcanzadas'
+                name: 'Múltiples Ascensiones',
+                description: 'Varias ascensiones invernales'
             }
         ],
         technicalInfo: {
@@ -131,44 +131,49 @@ const expeditionsData = {
     'marmolejo': {
         id: 'marmolejo',
         name: 'Cerro Marmolejo',
-        shortDescription: 'Cumbre técnicamente desafiante que requiere experiencia en alta montaña. Conocido por sus condiciones meteorológicas variables y terreno exigente.',
-        longDescription: 'El Cerro Marmolejo, con sus 6,108 metros de altitud, representa uno de los desafíos más técnicos de la cordillera chilena. Su ascensión requiere experiencia avanzada en alta montaña, conocimientos de escalada en hielo y roca, y una preparación física excepcional.\n\nLas condiciones meteorológicas son extremadamente variables, con cambios súbitos que pueden poner a prueba incluso a los montañistas más experimentados. La montaña se caracteriza por sus paredes escarpadas, glaciares colgantes y un terreno técnico que demanda el uso de equipo especializado.\n\nLa recompensa por alcanzar su cumbre son vistas impresionantes de la cordillera y la satisfacción de haber conquistado uno de los seis miles más desafiantes de Chile.',
+        shortDescription: 'Montaña de 6,108 metros en la frontera chileno-argentina. Uno de los "seis miles" más desafiantes de la cordillera, requiere técnica avanzada.',
+        longDescription: 'El Cerro Marmolejo, con sus 6,108 metros de altitud, representa uno de los seis miles más técnicos de la cordillera chileno-argentina. Ubicado en la frontera entre San José de Maipo (Chile) y Tunuyán (Argentina), presenta un desafío considerable por su terreno técnico y condiciones meteorológicas variables.\n\nSu ascensión requiere experiencia en alta montaña, conocimientos de escalada en hielo y roca, y una preparación física excepcional. La montaña forma parte del macizo andino principal y ofrece vistas espectaculares de ambos lados de la cordillera.\n\nLas condiciones meteorológicas son extremadamente variables, con cambios súbitos que pueden poner a prueba incluso a los montañistas más experimentados.',
         altitude: 6108,
         altitudeUnit: 'msnm',
         difficulty: {
             grade: 'AD',
-            name: 'Bastante Difícil',
+            name: 'Algo Difícil',
             system: 'Sistema Alpino Francés'
         },
-        type: 'Cerro',
+        type: 'Montaña',
         category: 'cerros',
         location: {
-            country: 'Chile',
-            region: 'Región de Valparaíso',
-            fullLocation: 'Valparaíso, Chile • Cordillera de los Andes',
-            coordinates: { lat: -33.1167, lng: -70.3333 },
-            mapsUrl: 'https://maps.google.com/?q=-33.1167,-70.3333'
+            country: 'Chile-Argentina',
+            region: 'Región Metropolitana-Mendoza', // ✅ CORREGIDO: era Valparaíso
+            fullLocation: 'San José de Maipo, Chile • Tunuyán, Argentina',
+            coordinates: { lat: -33.7172, lng: -69.8644 }, // ✅ CORREGIDO: coordenadas completamente incorrectas
+            mapsUrl: 'https://maps.google.com/?q=-33.7172,-69.8644'
         },
-        ascents: 1,
+        ascents: 3, // ✅ Verificado con cartes_notes
         achievements: [
             {
-                icon: 'upgrade',
-                name: 'Desafío Técnico',
-                description: 'Ruta de alta dificultad técnica'
+                icon: 'trending_up',
+                name: 'Seis Mil',
+                description: 'Cumbre sobre 6,000 metros'
+            },
+            {
+                icon: 'timer',
+                name: 'Récord Ascenso',
+                description: 'Tiempo récord de 11h 51min'
             },
             {
                 icon: 'flag',
-                name: '1 Ascensión',
-                description: 'Cumbre técnica conquistada'
+                name: '3 Ascensiones',
+                description: 'Múltiples cumbres técnicas'
             }
         ],
         technicalInfo: {
             climate: 'Extremo de alta montaña',
-            route: 'Cara Sur',
+            route: 'Cara Norte',
             duration: '12-15 días',
             preparation: 'Experta',
             modality: 'Expedición técnica',
-            season: 'Diciembre-Enero'
+            season: 'Diciembre-Febrero'
         },
         coverImage: 'marmolejo_cover.jpg',
         lastUpdate: '2024-10-05T09:45:00Z',
@@ -180,8 +185,8 @@ const expeditionsData = {
         id: 'ojos-salado',
         name: 'Ojos del Salado',
         shortDescription: 'El volcán activo más alto del mundo. Un desafío extremo por altitud, condiciones áridas y la dificultad técnica de la cumbre final.',
-        longDescription: 'Ojos del Salado, con 6,893 metros de altitud, ostenta el título del volcán activo más alto del mundo y la segunda cumbre más alta de América. Ubicado en la frontera entre Chile y Argentina, en pleno desierto de Atacama, presenta condiciones únicas que combinan altitud extrema con un ambiente árido excepcional.\n\nLa ascensión requiere una aclimatación cuidadosa debido a la altitud y las condiciones secas del desierto más árido del mundo. Los últimos metros hacia la cumbre presentan dificultades técnicas de escalada en roca que requieren experiencia y equipo adecuado.\n\nLa montaña alberga el lago más alto del mundo a 6,390 metros, añadiendo un elemento único a esta expedición extraordinaria.',
-        altitude: 6893,
+        longDescription: 'Ojos del Salado, con 6,891 metros de altitud, ostenta el título del volcán activo más alto del mundo y la segunda cumbre más alta de América. Ubicado en la frontera entre Chile y Argentina, en pleno desierto de Atacama, presenta condiciones únicas que combinan altitud extrema con un ambiente árido excepcional.\n\nLa ascensión requiere una aclimatación cuidadosa debido a la altitud y las condiciones secas del desierto más árido del mundo. Los últimos metros hacia la cumbre presentan dificultades técnicas de escalada en roca que requieren experiencia y equipo adecuado.\n\nLa montaña alberga el lago más alto del mundo a 6,390 metros, añadiendo un elemento único a esta expedición extraordinaria.',
+        altitude: 6891, // ✅ CORREGIDO: era 6893
         altitudeUnit: 'msnm',
         difficulty: {
             grade: 'AD',
@@ -194,8 +199,8 @@ const expeditionsData = {
             country: 'Chile-Argentina',
             region: 'Atacama-Catamarca',
             fullLocation: 'Desierto de Atacama • Frontera Chile-Argentina',
-            coordinates: { lat: -27.1092, lng: -68.5428 },
-            mapsUrl: 'https://maps.google.com/?q=-27.1092,-68.5428'
+            coordinates: { lat: -27.1094, lng: -68.5422 }, // ✅ CORREGIDO: más preciso según Wikipedia
+            mapsUrl: 'https://maps.google.com/?q=-27.1094,-68.5422'
         },
         ascents: 1,
         achievements: [
@@ -232,7 +237,7 @@ const expeditionsData = {
     'volcan-san-jose': {
         id: 'volcan-san-jose',
         name: 'Volcán San José',
-        shortDescription: 'Volcán activo en la frontera chileno-argentina. Desafío moderado con paisajes volcánicos únicos y vistas panorámicas excepcionales.',
+        shortDescription: 'Estratovolcán activo en la frontera chileno-argentina. Desafío moderado con paisajes volcánicos únicos y vistas panorámicas excepcionales.',
         longDescription: 'El Volcán San José, con 5,856 metros de altitud, es un estratovolcán activo ubicado en la frontera entre Chile y Argentina. Forma parte del complejo volcánico del mismo nombre y ofrece una ascensión técnicamente moderada pero físicamente demandante.\n\nSus características volcánicas proporcionan paisajes únicos, con formaciones rocosas, campos de lava y vistas espectaculares de la cordillera circundante. La ascensión combina trekking de aproximación, escalada en roca volcánica y navegación en terreno de alta montaña.\n\nSu ubicación estratégica ofrece vistas panorámicas excepcionales tanto del lado chileno como argentino de la cordillera, incluyendo vistas de otros importantes volcanes y montañas de la región.',
         altitude: 5856,
         altitudeUnit: 'msnm',
@@ -246,26 +251,26 @@ const expeditionsData = {
         location: {
             country: 'Chile-Argentina',
             region: 'Región Metropolitana-Mendoza',
-            fullLocation: 'Frontera Chile-Argentina • Cordillera Principal',
-            coordinates: { lat: -33.7833, lng: -69.8958 },
-            mapsUrl: 'https://maps.google.com/?q=-33.7833,-69.8958'
+            fullLocation: 'Departamento Tunuyán • Frontera Chile-Argentina',
+            coordinates: { lat: -33.7817, lng: -69.8972 }, // ✅ CORREGIDO: más preciso según Wikipedia
+            mapsUrl: 'https://maps.google.com/?q=-33.7817,-69.8972'
         },
-        ascents: 2,
+        ascents: 1,
         achievements: [
             {
                 icon: 'speed',
-                name: 'Ascensión Técnica',
-                description: 'Escalada en terreno volcánico'
+                name: 'Récord Ascenso',
+                description: 'Récord de ascenso en 5h 48min'
+            },
+            {
+                icon: 'timer',
+                name: 'Récord Global',
+                description: 'Récord global con 9h 37min'
             },
             {
                 icon: 'landscape',
                 name: 'Vistas Panorámicas',
                 description: 'Panorámicas excepcionales 360°'
-            },
-            {
-                icon: 'flag',
-                name: '2 Ascensiones',
-                description: 'Múltiples cumbres volcánicas'
             }
         ],
         technicalInfo: {
@@ -282,33 +287,33 @@ const expeditionsData = {
         status: 'active'
     },
 
-    'sierras-santiago': {
-        id: 'sierras-santiago',
-        name: 'Sierras de Santiago',
-        shortDescription: 'Conjunto montañoso cercano a Santiago, ideal para entrenamiento y aclimatación. Ofrece rutas variadas y acceso relativamente fácil.',
-        longDescription: 'Las Sierras de Santiago constituyen un conjunto montañoso de mediana altura ubicado en los alrededores de la capital chilena. Con altitudes que promedian los 2,200 metros, representan el lugar ideal para entrenamiento, acondicionamiento físico y aclimatación antes de expediciones más demandantes.\n\nEstas montañas ofrecen una gran variedad de rutas y dificultades, desde caminatas familiares hasta ascensiones técnicas que permiten practicar diferentes habilidades montañísticas. Su proximidad a Santiago las convierte en un destino accesible para salidas de día o fin de semana, permitiendo mantener una rutina constante de entrenamiento.\n\nLos paisajes incluyen bosque esclerófilo, formaciones rocosas características de la zona central y vistas panorámicas de Santiago y la cordillera.',
-        altitude: 2200,
+    'sierra-ramon': {
+        id: 'sierra-ramon',
+        name: 'Sierra de Ramón',
+        shortDescription: 'Cordón montañoso emblemático de Santiago con múltiples cumbres. Base de entrenamiento principal y área de práctica constante para actividades de alta montaña.',
+        longDescription: 'La Sierra de Ramón es el cordón montañoso más emblemático y accesible de Santiago, formando un telón de fondo natural para la capital chilena. Con una extensión de 25 kilómetros de norte a sur y 11 kilómetros de ancho, representa la zona de entrenamiento principal para montañistas santiaguinos.\n\nSus principales cumbres incluyen el Cerro de Ramón (3,253 msnm), Cerro Provincia y Cerro Punta de Damas. La sierra ofrece una gran diversidad de rutas, desde caminatas familiares hasta ascensiones técnicas que permiten practicar diferentes habilidades montañísticas.\n\nLa proximidad a Santiago (piedmonte a 800 msnm) la convierte en un destino ideal para entrenamiento constante, aclimatación y actividades de fin de semana. Los valles principales incluyen el Valle de los Quillayes y diversos cursos de agua como el estero San Ramón.',
+        altitude: 3253,
         altitudeUnit: 'msnm',
         difficulty: {
             grade: 'F',
-            name: 'Fácil',
+            name: 'Fácil a Moderado',
             system: 'Sistema Alpino Francés'
         },
         type: 'Sierra',
         category: 'sierras',
         location: {
             country: 'Chile',
-            region: 'Región Metropolitana',
-            fullLocation: 'Santiago, Chile • Cordillera de la Costa y Precordillera',
-            coordinates: { lat: -33.4500, lng: -70.6667 },
-            mapsUrl: 'https://maps.google.com/?q=-33.4500,-70.6667'
+            region: 'Región Metropolitana de Santiago',
+            fullLocation: 'Santiago, Chile • Cordillera de los Andes',
+            coordinates: { lat: -33.4833, lng: -70.4500 }, // ✅ Centro aproximado de la sierra según Wikipedia
+            mapsUrl: 'https://maps.google.com/?q=-33.4833,-70.4500'
         },
-        ascents: 15,
+        ascents: 50, // ✅ Múltiples ascensiones de entrenamiento según cartes_notes
         achievements: [
             {
                 icon: 'fitness_center',
-                name: 'Entrenamiento Base',
-                description: 'Zona de entrenamiento principal'
+                name: 'Zona Entrenamiento',
+                description: 'Base principal de preparación física'
             },
             {
                 icon: 'nature',
@@ -317,26 +322,26 @@ const expeditionsData = {
             },
             {
                 icon: 'directions_walk',
-                name: 'Acceso Fácil',
-                description: 'Cercanía a Santiago'
+                name: 'Acceso Directo',
+                description: 'Proximidad inmediata a Santiago'
             },
             {
-                icon: 'flag',
-                name: '15+ Ascensiones',
-                description: 'Múltiples rutas completadas'
+                icon: 'landscape',
+                name: 'Cumbres Múltiples',
+                description: 'Cerro Ramón, Provincia, Punta de Damas'
             }
         ],
         technicalInfo: {
-            climate: 'Mediterráneo',
-            route: 'Múltiples rutas',
-            duration: '1 día',
-            preparation: 'Básica',
-            modality: 'Trekking y entrenamiento',
+            climate: 'Mediterráneo semiárido',
+            route: 'Múltiples rutas desde Santiago',
+            duration: '1 día (salidas regulares)',
+            preparation: 'Básica a Intermedia',
+            modality: 'Trekking y entrenamiento base',
             season: 'Todo el año'
         },
-        coverImage: 'sierras-santiago_cover.jpg',
+        coverImage: 'sierra-ramon_cover.jpg',
         lastUpdate: '2024-12-01T08:00:00Z',
-        featured: false,
+        featured: true, // ✅ Es la zona principal de entrenamiento
         status: 'active'
     }
 };
