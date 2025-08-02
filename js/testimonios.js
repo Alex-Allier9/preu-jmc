@@ -152,16 +152,31 @@ class TestimoniosManager {
     }
 
     parseCSVManual(csvText) {
+        console.log('📊 Parseando CSV manualmente...');
         const lines = csvText.split('\n');
-        const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+        
+        if (lines.length < 2) {
+            console.log('❌ CSV inválido: menos de 2 líneas');
+            return [];
+        }
+        
+        // Parsear headers
+        const headers = this.parseCSVLine(lines[0]);
+        console.log('📋 Headers encontrados:', headers);
+        
         const data = [];
 
         for (let i = 1; i < lines.length; i++) {
             if (lines[i].trim() === '') continue;
             
-            const values = lines[i].split(',').map(v => v.trim().replace(/"/g, ''));
-            const row = {};
+            const values = this.parseCSVLine(lines[i]);
             
+            // Asegurar que tenemos el mismo número de valores que headers
+            while (values.length < headers.length) {
+                values.push('');
+            }
+            
+            const row = {};
             headers.forEach((header, index) => {
                 row[header] = values[index] || '';
             });
@@ -169,40 +184,86 @@ class TestimoniosManager {
             data.push(row);
         }
 
+        console.log('✅ CSV parseado:', data.length, 'filas');
         return data;
     }
 
+    // Nuevo método para parsear líneas CSV respetando comillas
+    parseCSVLine(line) {
+        const result = [];
+        let current = '';
+        let inQuotes = false;
+        
+        for (let i = 0; i < line.length; i++) {
+            const char = line[i];
+            
+            if (char === '"') {
+                inQuotes = !inQuotes;
+            } else if (char === ',' && !inQuotes) {
+                result.push(current.trim());
+                current = '';
+            } else {
+                current += char;
+            }
+        }
+        
+        result.push(current.trim());
+        return result;
+    }
+
     processTestimoniosData(rawData) {
+        console.log('🔍 Datos raw recibidos:', rawData);
+        console.log('📋 Headers encontrados:', Object.keys(rawData[0] || {}));
+        
         return rawData.map(row => {
+            console.log('📝 Procesando fila:', row);
+            
             // Procesar y validar cada testimonio
-            return {
+            const puntajeM1 = parseInt(row.puntajeM1) || null;
+            const puntajeM2 = parseInt(row.puntajeM2) || null;
+            
+            const testimonio = {
                 id: this.generateId(),
                 nombre: row.nombre || '',
                 carrera: row.carrera || '',
                 universidad: row.universidad || '',
                 año: parseInt(row.año) || new Date().getFullYear(),
                 testimonio: row.testimonio || '',
-                puntajeM1: parseInt(row.puntajeM1) || null,
-                puntajeM2: parseInt(row.puntajeM2) || null,
-                puntajeLenguaje: parseInt(row.puntajeLenguaje) || null,
-                maximoNacional: (row.maximoNacional || '').toLowerCase() === 'true',
-                destacado: (row.destacado || '').toLowerCase() === 'true',
-                foto: row.foto || null, // URL de la foto del estudiante
+                puntajeM1: puntajeM1,
+                puntajeM2: puntajeM2,
+                // Verificar si existe puntajeLenguaje o usar un campo alternativo
+                puntajeLenguaje: parseInt(row.puntajeLenguaje || row.lenguaje) || null,
+                // Determinar Máximo Nacional automáticamente: M1 = 1000 y/o M2 = 1000
+                maximoNacional: (puntajeM1 === 1000) || (puntajeM2 === 1000),
+                // Conservar destacado si existe en el CSV, sino false
+                destacado: String(row.destacado || '').toLowerCase() === 'true',
+                foto: (row.foto && String(row.foto).trim() && String(row.foto).trim() !== '') ? String(row.foto).trim() : null,
                 fechaTestimonio: row.fechaTestimonio || new Date().toISOString(),
-                categoria: this.determineCategory(row),
+                categoria: '', // Se determinará después
                 isRecent: this.isRecentTestimonio(row.fechaTestimonio)
             };
-        }).filter(testimonio => 
+            
+            // Determinar categoría basada en la nueva lógica
+            testimonio.categoria = this.determineCategory(testimonio);
+            
+            console.log('✅ Testimonio procesado:', testimonio);
+            return testimonio;
+        }).filter(testimonio => {
             // Filtrar testimonios válidos (deben tener al menos nombre y testimonio)
-            testimonio.nombre && testimonio.testimonio
-        );
+            const isValid = testimonio.nombre && testimonio.testimonio;
+            if (!isValid) {
+                console.log('❌ Testimonio inválido filtrado:', testimonio);
+            }
+            return isValid;
+        });
     }
 
-    determineCategory(row) {
-        if ((row.maximoNacional || '').toLowerCase() === 'true') {
+    determineCategory(testimonio) {
+        // Categoría basada en puntajes automáticamente
+        if (testimonio.maximoNacional) {
             return 'maximo';
         }
-        if ((row.destacado || '').toLowerCase() === 'true') {
+        if (testimonio.destacado) {
             return 'destacado';
         }
         return 'regular';
@@ -332,8 +393,17 @@ class TestimoniosManager {
                          testimonio.destacado ? 'Destacado' : 
                          testimonio.isRecent ? 'Reciente' : '';
         
-        const photoHTML = testimonio.foto ? 
-            `<img src="${testimonio.foto}" alt="${testimonio.nombre}" class="student-photo">` :
+        // Determinar si hay una foto válida
+        const hasValidPhoto = testimonio.foto && 
+                             testimonio.foto.trim() !== '' && 
+                             (testimonio.foto.startsWith('http') || testimonio.foto.startsWith('/') || testimonio.foto.startsWith('media/'));
+        
+        const photoHTML = hasValidPhoto ? 
+            `<img src="${testimonio.foto}" alt="${testimonio.nombre}" class="student-photo" 
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.avatar-fallback').style.display='flex';">
+             <div class="student-photo avatar-fallback ${this.getRandomAvatarClass(testimonio.nombre)}" style="display: none;">
+                ${this.generateInitials(testimonio.nombre)}
+             </div>` :
             `<div class="student-photo ${this.getRandomAvatarClass(testimonio.nombre)}">
                 ${this.generateInitials(testimonio.nombre)}
             </div>`;
@@ -556,6 +626,68 @@ window.debugTestimonios = {
         };
     },
     
+    // Verificar mapeo de datos
+    checkDataMapping: () => {
+        console.log('� Verificación de mapeo de datos:');
+        console.log('📊 Total testimonios cargados:', testimoniosData.length);
+        
+        if (testimoniosData.length > 0) {
+            const sample = testimoniosData[0];
+            console.log('📋 Estructura del primer testimonio:');
+            console.log(sample);
+            
+            console.log('🔍 Análisis detallado por testimonio:');
+            testimoniosData.forEach((testimonio, index) => {
+                const isMaximoM1 = testimonio.puntajeM1 === 1000;
+                const isMaximoM2 = testimonio.puntajeM2 === 1000;
+                
+                console.log(`${index + 1}. ${testimonio.nombre}:`);
+                console.log(`   Carrera: "${testimonio.carrera}"`);
+                console.log(`   Universidad: "${testimonio.universidad}"`);
+                console.log(`   Puntajes: M1=${testimonio.puntajeM1}${isMaximoM1 ? ' ⭐' : ''}, M2=${testimonio.puntajeM2}${isMaximoM2 ? ' ⭐' : ''}, LEN=${testimonio.puntajeLenguaje}`);
+                console.log(`   Máximo Nacional: ${testimonio.maximoNacional} ${testimonio.maximoNacional ? '🏆' : ''} (auto-detectado por puntajes)`);
+                console.log(`   Destacado: ${testimonio.destacado} ${testimonio.destacado ? '⭐' : ''} (desde CSV)`);
+                console.log(`   Categoría: ${testimonio.categoria}`);
+                console.log(`   Foto: "${testimonio.foto}"`);
+                console.log('---');
+            });
+            
+            // Resumen estadístico
+            const maximos = testimoniosData.filter(t => t.maximoNacional).length;
+            const destacados = testimoniosData.filter(t => t.destacado).length;
+            const regulares = testimoniosData.filter(t => t.categoria === 'regular').length;
+            
+            console.log('📈 Resumen estadístico:');
+            console.log(`   🏆 Máximos Nacionales: ${maximos} (puntaje = 1000)`);
+            console.log(`   ⭐ Destacados: ${destacados} (desde CSV)`);
+            console.log(`   📝 Regulares: ${regulares}`);
+        } else {
+            console.log('❌ No hay testimonios cargados');
+        }
+    },
+    
+    // Verificar detección automática de máximos nacionales
+    checkMaximoDetection: () => {
+        console.log('🏆 Verificación de detección automática de Máximos Nacionales:');
+        console.log('📊 Criterio: M1 = 1000 y/o M2 = 1000');
+        
+        testimoniosData.forEach((testimonio, index) => {
+            const isMaximoM1 = testimonio.puntajeM1 === 1000;
+            const isMaximoM2 = testimonio.puntajeM2 === 1000;
+            const shouldBeMaximo = isMaximoM1 || isMaximoM2;
+            
+            console.log(`${index + 1}. ${testimonio.nombre}:`);
+            console.log(`   M1: ${testimonio.puntajeM1} ${isMaximoM1 ? '✅ MÁXIMO' : ''}`);
+            console.log(`   M2: ${testimonio.puntajeM2} ${isMaximoM2 ? '✅ MÁXIMO' : ''}`);
+            console.log(`   Detectado como Máximo: ${testimonio.maximoNacional} ${shouldBeMaximo === testimonio.maximoNacional ? '✅' : '❌'}`);
+            console.log(`   Categoría: ${testimonio.categoria}`);
+            console.log('---');
+        });
+        
+        const totalMaximos = testimoniosData.filter(t => t.maximoNacional).length;
+        console.log(`🎯 Total Máximos Nacionales detectados: ${totalMaximos}`);
+    },
+    
     // Test de conexión
     testConnection: async () => {
         try {
@@ -580,4 +712,7 @@ console.log('🔍 Funciones de debugging disponibles:');
 console.log('  - debugTestimonios.status() - Ver estado del sistema');
 console.log('  - debugTestimonios.reload() - Recargar testimonios');
 console.log('  - debugTestimonios.data() - Ver datos cargados');
+console.log('  - debugTestimonios.checkDataMapping() - Verificar mapeo de campos');
+console.log('  - debugTestimonios.checkMaximoDetection() - Verificar detección automática de máximos');
+console.log('  - debugTestimonios.checkPhotos() - Verificar estado de fotos');
 console.log('  - debugTestimonios.testConnection() - Probar conexión Google Sheets');
