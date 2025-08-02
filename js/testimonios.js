@@ -213,7 +213,7 @@ class TestimoniosManager {
                 nombre: row.nombre || '',
                 carrera: row.carrera || '',
                 universidad: row.universidad || '',
-                año: parseInt(row.año) || parseInt(row.ano) || null, // Maneja tanto 'año' como 'ano'
+                año: this.parseYear(row.año || row.ano), // Maneja tanto 'año' como 'ano' y limpia valores nulos
                 testimonio: row.testimonio || '',
                 puntajeM1: puntajeM1,
                 puntajeM2: puntajeM2,
@@ -264,6 +264,32 @@ class TestimoniosManager {
         return 'testimonio_' + Math.random().toString(36).substr(2, 9);
     }
 
+    parseYear(yearValue) {
+        // Si no hay valor o es explícitamente null/undefined
+        if (!yearValue || yearValue === null || yearValue === undefined) {
+            return null;
+        }
+        
+        // Convertir a string para verificar casos problemáticos
+        const yearStr = String(yearValue).trim().toLowerCase();
+        
+        // Si es "null" como string o está vacío
+        if (yearStr === 'null' || yearStr === '' || yearStr === 'undefined') {
+            return null;
+        }
+        
+        // Intentar parsear como número
+        const yearNum = parseInt(yearStr);
+        
+        // Verificar que sea un año válido (entre 2000 y año actual + 5)
+        const currentYear = new Date().getFullYear();
+        if (isNaN(yearNum) || yearNum < 2000 || yearNum > currentYear + 5) {
+            return null;
+        }
+        
+        return yearNum;
+    }
+
     setFilter(filter) {
         if (TESTIMONIOS_CONFIG.filters.current === filter) return;
         
@@ -279,10 +305,6 @@ class TestimoniosManager {
         this.renderTestimonios();
         
         console.log('🔍 Filtro aplicado:', filter);
-    }
-
-    generateId() {
-        return 'testimonio_' + Math.random().toString(36).substr(2, 9);
     }
 
     applyCurrentFilters() {
@@ -463,9 +485,7 @@ class TestimoniosManager {
                         <div class="metadata-scores">
                             ${scoresHTML}
                         </div>
-                        <div class="metadata-year">
-                            ${testimonio.año && testimonio.año !== 'null' && testimonio.año !== null && testimonio.año.trim() !== '' ? testimonio.año : 'Sin año'}
-                        </div>
+                        ${testimonio.año ? `<div class="metadata-year">${testimonio.año}</div>` : ''}
                     </div>
                 </div>
                 
