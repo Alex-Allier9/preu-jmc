@@ -1,5 +1,5 @@
 # ESTRUCTURA DEL PROYECTO - PREUNIVERSITARIO JMC
-**Actualizado:** Julio 27, 2025 | **Estado:** Sistema técnico optimizado - Fase de contenido
+**Actualizado:** Agosto 1, 2025 | **Estado:** Sistemas avanzados implementados - Testimonios y Galería completos
 
 ---
 
@@ -8,107 +8,129 @@
 ```
 preu-jmc/
 │
-├── index.html                # 🏠 INICIO (PENDIENTE - PRÓXIMA PRIORIDAD)
-├── nosotros.html             # 👥 NOSOTROS (✅ COMPLETADA)
-├── fundador.html             # 👨‍🏫 FUNDADOR (✅ COMPLETADA)
-├── servicios.html            # 🎓 SERVICIOS (✅ COMPLETADA)
-├── testimonios.html          # 💬 TESTIMONIOS (PENDIENTE)
-├── contacto.html             # 📞 CONTACTO (PENDIENTE)
-├── recursos.html             # 📚 RECURSOS (PENDIENTE - OCULTA)
-├── 404.html                  # 🚨 ERROR 404 (✅ COMPLETADA)
+├── index.html                    # 🏠 INICIO (PENDIENTE - PRÓXIMA PRIORIDAD)
+├── nosotros.html                 # 👥 NOSOTROS (✅ COMPLETADA)
+├── fundador.html                 # 👨‍🏫 FUNDADOR (✅ COMPLETADA + GALERÍA AVANZADA)
+├── servicios.html                # 🎓 SERVICIOS (✅ COMPLETADA)
+├── testimonios.html              # 💬 TESTIMONIOS (✅ COMPLETADA + GOOGLE SHEETS)
+├── contacto.html                 # 📞 CONTACTO (PENDIENTE)
+├── recursos.html                 # 📚 RECURSOS (PENDIENTE - OCULTA)
+├── 404.html                      # 🚨 ERROR 404 (✅ COMPLETADA)
 │
-├── .htaccess                 # Configuración Apache para 404
-├── nginx.conf                # Configuración Nginx para 404
+├── css/                          # 🎨 SISTEMA CSS MODULAR COMPLETO
+│   ├── main.css                  # Archivo principal de CSS
+│   │
+│   ├── core/                     # 🏗️ FUNDAMENTOS DEL SISTEMA
+│   │   ├── variables.css         # Variables CSS unificadas (129 activas)
+│   │   ├── reset.css             # Reset y normalización
+│   │   ├── fonts.css             # Tipografías locales optimizadas
+│   │   └── animations.css        # Animaciones y keyframes
+│   │
+│   ├── layout/                   # 📐 ESTRUCTURA Y LAYOUT
+│   │   ├── header.css            # Header fijo con glassmorphism
+│   │   ├── footer.css            # Footer con iconos y enlaces
+│   │   ├── sections.css          # Secciones generales
+│   │   └── backgrounds.css       # Fondos y efectos de fondo
+│   │
+│   ├── components/               # 🧩 COMPONENTES REUTILIZABLES
+│   │   ├── buttons.css           # 11 tipos de botones
+│   │   ├── cards.css             # 15+ tipos de cards universales
+│   │   ├── grids.css             # 8 sistemas de grid responsivos
+│   │   ├── icons.css             # 4 tamaños de iconos
+│   │   ├── gallery-overlay.css   # Overlay para sistema galería
+│   │   └── progress-bar.css      # Barra de progreso de scroll
+│   │
+│   ├── utilities/                # 🛠️ UTILIDADES Y HELPERS
+│   │   ├── helpers.css           # Clases auxiliares (spacing, text, etc.)
+│   │   └── responsive.css        # Media queries centralizadas
+│   │
+│   └── pages/                    # 📄 ESTILOS ESPECÍFICOS POR PÁGINA
+│       ├── 404.css               # Efectos glitch y animaciones error
+│       ├── fundador.css          # Timeline, profile cards, galería montañística
+│       ├── nosotros.css          # Philosophy cards, achievement cards
+│       ├── servicios.css         # Process cards, pricing, requisitos
+│       └── testimonios.css       # Cards horizontales, avatares, badges máximos
 │
-├── css/                      # 🎨 SISTEMA CSS MODULAR COMPLETO
-│   ├── main.css              # Archivo principal de CSS
+├── js/                           # ⚡ JAVASCRIPT ES6+ OPTIMIZADO
+│   ├── global.js                 # Funcionalidad compartida optimizada
+│   ├── 404.js                    # Sistema detección URLs similares
+│   ├── testimonios.js            # 🏆 Sistema Google Sheets + detección automática
 │   │
-│   ├── core/                 # 🏗️ FUNDAMENTOS DEL SISTEMA
-│   │   ├── variables.css     # Variables CSS unificadas (129 activas)
-│   │   ├── reset.css         # Reset y normalización
-│   │   ├── fonts.css         # Tipografías locales optimizadas
-│   │   └── animations.css    # Animaciones y keyframes
-│   │
-│   ├── layout/               # 📐 ESTRUCTURA Y LAYOUT
-│   │   ├── header.css        # Header fijo con glassmorphism
-│   │   ├── footer.css        # Footer con iconos y enlaces
-│   │   ├── sections.css      # Secciones generales
-│   │   └── backgrounds.css   # Fondos y efectos de fondo
-│   │
-│   ├── components/           # 🧩 COMPONENTES REUTILIZABLES
-│   │   ├── buttons.css       # 11 tipos de botones
-│   │   ├── cards.css         # 15+ tipos de cards universales
-│   │   ├── grids.css         # 8 sistemas de grid responsivos
-│   │   └── icons.css         # 4 tamaños de iconos
-│   │
-│   ├── utilities/            # 🛠️ UTILIDADES Y HELPERS
-│   │   ├── helpers.css       # Clases auxiliares (spacing, text, etc.)
-│   │   ├── responsive.css    # Media queries centralizadas
-│   │   └── utilities.css     # Utilidades generales y flexbox
-│   │
-│   └── pages/                # 📄 ESTILOS ESPECÍFICOS POR PÁGINA
-│       ├── 404.css           # Efectos glitch y animaciones error
-│       ├── fundador.css      # Timeline, profile cards, montaña
-│       ├── nosotros.css      # Philosophy cards, achievement cards
-│       └── servicios.css     # Process cards, pricing, requisitos
-│
-├── js/                       # ⚡ JAVASCRIPT ES6+ OPTIMIZADO
-│   ├── global.js             # Funcionalidad compartida optimizada
-│   ├── 404.js                # Sistema detección URLs similares
-│   ├── fundador.js           # Timeline, lightbox, estadísticas
-│   ├── nosotros.js           # Animaciones filosofía y valores
-│   └── servicios.js          # Process steps, formularios, effects
+│   ├── gallery-system/           # SISTEMA GALERÍA MODULAR AVANZADO
+│   │   ├── gallery-main.js       # Core del sistema galería
+│   │   ├── gallery-overlay.js    # Overlay con carousel infinito
+│   │   ├── gallery-cards.js      # Generación de cards montañísticas
+│   │   └── gallery-data.js       # Datos montañas con clasificación
 │   │
 │   │ # 🚧 ARCHIVOS JS PENDIENTES:
-│   │ # ├── inicio.js         # Para index.html (PENDIENTE)
-│   │ # ├── testimonios.js    # Para testimonios.html (PENDIENTE)
-│   │ # ├── contacto.js       # Para contacto.html (PENDIENTE)
-│   │ # └── recursos.js       # Para recursos.html (PENDIENTE)
+│   │ # ├── contacto.js           # Para contacto.html (PENDIENTE)
+│   │ # └── recursos.js           # Para recursos.html (PENDIENTE)
 │
-├── markdown files/           # 📚 DOCUMENTACIÓN DEL PROYECTO
-│   ├── structure.md          # Este archivo - estructura actualizada
-│   ├── recap.md              # Estado del proyecto actualizado
-│   ├── css-audit-complete.md # Auditoría completa CSS (150+ estilos)
-│   └── cartes_notes.md       # Notas y contenido de José Manuel
+├── markdown files/               # 📚 DOCUMENTACIÓN DEL PROYECTO
+│   ├── structure.md              # Este archivo - estructura actualizada
+│   ├── recap.md                  # Estado del proyecto actualizado
+│   ├── plantilla-testimonios.md  # Plantilla Google Sheets actualizada
+│   └── cartes_notes.md           # Notas y contenido de José Manuel
 │
-└── media/                    # 🎭 ARCHIVOS MULTIMEDIA ORGANIZADOS
-    ├── logos/                # Logos de la marca
-    ├── icons/                # Iconografía del sitio
-    ├── images/               # Imágenes organizadas por página
-    │   ├── inicio/           # Específicas para index.html
-    │   ├── nosotros/         # Específicas para nosotros.html
-    │   ├── fundador/         # Específicas para fundador.html (montaña)
-    │   ├── servicios/        # Específicas para servicios.html
-    │   ├── testimonios/      # Específicas para testimonios.html
-    │   ├── contacto/         # Específicas para contacto.html
-    │   ├── recursos/         # Específicas para recursos.html
-    │   └── 404/              # Específicas para 404.html
-    └── downloads/            # Archivos descargables (PDFs, material)
+└── media/                        # 🎭 ARCHIVOS MULTIMEDIA ORGANIZADOS
+    ├── logos/                    # Logos de la marca
+    ├── icons/                    # Iconografía del sitio
+    ├── fonts/                    # Tipografías locales
+    │   ├── dm-serif-text/        # Fuente para títulos
+    │   ├── raleway/              # Fuente para cuerpo
+    │   └── material-symbols/     # Iconos Material Symbols
+    │
+    ├── favicon/                  # Iconos del sitio web
+    ├── images/                   # 📸 IMÁGENES ORGANIZADAS POR PÁGINA
+    │   ├── inicio/               # Específicas para index.html
+    │   ├── nosotros/             # Específicas para nosotros.html
+    │   ├── fundador/             # 👨‍🏫 FUNDADOR + GALERÍA MONTAÑÍSTICA
+    │   │   └── gallery/          # 🏔️ GALERÍA MONTAÑÍSTICA COMPLETA
+    │   │       ├── aconcagua/    # Montañas por categoría
+    │   │       ├── el-plomo/
+    │   │       ├── cerro-provincia/
+    │   │       ├── nevado-de-longavi/
+    │   │       ├── volcan-antuco/
+    │   │       ├── cerro-el-roble/
+    │   │       ├── alto-del-naranjo/
+    │   │       ├── cerro-manquehue/
+    │   │       └── [más montañas organizadas por carpeta]
+    │   │
+    │   ├── servicios/            # Específicas para servicios.html
+    │   ├── testimonios/          # Específicas para testimonios.html
+    │   │   └── profile-picture/  # 🏆 FOTOS ESTUDIANTES TESTIMONIOS
+    │   │
+    │   ├── contacto/             # Específicas para contacto.html
+    │   ├── recursos/             # Específicas para recursos.html
+    │   └── 404/                  # Específicas para 404.html
+    └── downloads/                # 📚 ARCHIVOS DESCARGABLES
 ```
 
 ---
 
 ## **📊 ESTADO ACTUAL DEL PROYECTO**
 
-### **✅ PÁGINAS COMPLETADAS (4/8) - TODAS OPTIMIZADAS**
+### **✅ PÁGINAS COMPLETADAS (5/8) - TODAS OPTIMIZADAS**
 - ✅ **404.html** - Página de error con efectos glitch avanzados
-- ✅ **fundador.html** - Perfil José Manuel Cartes con timeline montañístico
+- ✅ **fundador.html** - Perfil José Manuel Cartes con timeline montañístico + galería avanzada
 - ✅ **nosotros.html** - Información institucional, misión, valores, metodología
 - ✅ **servicios.html** - Proceso completo, modalidades, precios, ubicación
+- ✅ **testimonios.html** - Sistema completo Google Sheets + detección automática máximos
 
-### **⏳ PÁGINAS PENDIENTES (4/8) - FASE DE CONTENIDO**
-- 🚧 **index.html** - Página de inicio (PRÓXIMA PRIORIDAD)
-- 🚧 **testimonios.html** - Testimonios y casos de éxito (PLANIFICADA)
-- 🚧 **contacto.html** - Formulario y ubicación (PLANIFICADA)
-- 🚧 **recursos.html** - Material descargable (FUTURA - OCULTA)
+### **⏳ PÁGINAS PENDIENTES (3/8) - FASE DE CONTENIDO**
+- 🏠 **index.html** - Página principal (PRÓXIMA PRIORIDAD)
+- � **contacto.html** - Formulario, mapa, ubicación
+- � **recursos.html** - Material educativo, descargas (FUTURA - OCULTA)
 
 ### **🎨 SISTEMA CSS COMPLETAMENTE IMPLEMENTADO**
-- ✅ **Arquitectura Modular** - 15 archivos CSS organizados profesionalmente
+- ✅ **Arquitectura Modular** - 17 archivos CSS organizados profesionalmente
 - ✅ **Variables Unificadas** - 129 referencias activas, 0 obsoletas
-- ✅ **Componentes Universales** - Botones, cards, grids, iconos reutilizables
+- ✅ **Componentes Universales** - Botones, cards, grids, iconos, gallery-overlay, progress-bar
 - ✅ **Layout Responsive** - Header, footer, secciones optimizadas
-- ✅ **Utilidades Completas** - Helpers, responsive, utilidades tipo framework
+- ✅ **Utilidades Completas** - Helpers, responsive centralizadas
 - ✅ **Core Optimizado** - Reset, tipografías, animaciones, variables
+- ✅ **Páginas Específicas** - CSS especializado para cada página implementada
+- ✅ **Componentes Avanzados** - Gallery overlay, testimonios cards, badges automáticos
 
 ### **⚡ JAVASCRIPT ES6+ OPTIMIZADO**
 - ✅ **global.js** - Funcionalidad compartida centralizada
@@ -116,12 +138,37 @@ preu-jmc/
 - ✅ **Hover Effects** - Sistema unificado sin duplicaciones
 - ✅ **Scroll Effects** - Progress bar, animaciones de scroll
 - ✅ **ES6+ Patterns** - Código moderno optimizado
-- 🚧 **4 archivos JS pendientes** para páginas restantes
+- ✅ **Sistema Galería Modular** - 4 archivos especializados con overlay infinito
+- ✅ **Sistema Testimonios** - Integración Google Sheets + detección automática
+- 🚧 **3 archivos JS pendientes** para páginas restantes
+
+### **🚀 SISTEMAS AVANZADOS IMPLEMENTADOS**
+
+#### **🖼️ Sistema Galería Montañística (fundador.html)**
+- **Arquitectura modular:** 4 archivos JavaScript especializados
+- **Carousel infinito:** Navegación sin límites con Material Symbols wght 600
+- **Ordenamiento dinámico:** Por dificultad y altura con controles inline
+- **6 niveles de dificultad:** Colores automáticos (F→PD→AD→D→TD→ED)
+- **Performance optimizada:** Lazy loading de imágenes
+- **Responsive completo:** Breakpoints optimizados para todos los dispositivos
+
+#### **🏆 Sistema Testimonios (testimonios.html)**
+- **Integración Google Sheets:** Parser CSV manual robusto sin dependencias
+- **Detección automática:** Máximos Nacionales por puntajes (M1/M2 = 1000)
+- **Sistema de avatares:** Iniciales consistentes con 8 gradientes aleatorios
+- **Layout responsivo horizontal:** Fotos grandes (160px) y metadata reorganizada
+- **Filtros dinámicos:** Todos, Máximos Nacionales, Universidad, Carrera
+- **Ordenamiento inteligente:** Recientes, Mayor puntaje, Alfabético, Universidad
+- **Altura dinámica:** Se ajusta automáticamente al contenido
+- **Badges posicionados:** Sin superposición con el contenido
+- **Sistema debugging:** Funciones completas de consola para desarrollo
 
 ### **🔧 HERRAMIENTAS DE DESARROLLO MADURAS**
 - ✅ **test-complete.html** - Archivo de prueba con 150+ estilos v2.0
+- ✅ **server.py + test-server.bat** - Servidor local Python con auto-routing
 - ✅ **Scripts PowerShell** - Migración y optimización automática
-- ✅ **Documentación completa** - Auditorías, estructura, estado
+- ✅ **Funciones debugging** - Sistema completo para testimonios y galería
+- ✅ **Documentación completa** - Auditorías, estructura, estado actualizado
 - ✅ **Sistema de backup** - Versión anterior preservada
 
 ---
@@ -185,7 +232,15 @@ preu-jmc/
 - ✅ Timeline montañístico interactivo
 - ✅ Logros deportivos destacados
 - ✅ Filosofía personal y educativa
-- ✅ Galería fotográfica con lightbox
+- ✅ **Sistema galería montañística avanzado:**
+  - 🖼️ Overlay completo con navegación infinita
+  - 🔄 Carousel sin límites con controles mejorados (Material Symbols wght 600)
+  - 🎯 Ordenamiento por dificultad y altura con controles inline
+  - 🎨 6 niveles de dificultad con colores automáticos (F→PD→AD→D→TD→ED)
+  - 📱 Responsive completo con breakpoints optimizados
+  - 📂 **Ubicación fotos:** `media/images/fundador/gallery/[montaña]/[foto].jpg`
+  - 🏔️ **Montañas incluidas:** Aconcagua, El Plomo, Cerro Provincia, Nevado de Longaví, 
+    Volcán Antuco, Cerro El Roble, Alto del Naranjo, Cerro Manquehue, y más
 - ✅ Estadísticas montañísticas actualizadas
 
 ---
@@ -204,32 +259,34 @@ preu-jmc/
 
 ---
 
-### **💬 PÁGINA: TESTIMONIOS (PENDIENTE)**
+### **💬 PÁGINA: TESTIMONIOS (✅ COMPLETADA)**
 **Archivos:** `testimonios.html`, `css/testimonios.css`, `js/testimonios.js`
 
-#### **Contenido Planificado:**
-- **Testimonios Detallados de Estudiantes**
-  - Historias completas de éxito
-  - Antes/después del preuniversitario
-  - Universidades de destino finales
+#### **Contenido Implementado:**
+- ✅ **Sistema completo integración Google Sheets:**
+  - 📊 Parser CSV manual robusto sin dependencias
+  - 🔄 Actualización automática de contenido
+  - 🏆 Detección automática Máximos Nacionales (M1/M2 = 1000)
   
-- **Resultados Académicos Estadísticos**
-  - Máximos nacionales por año (listado completo)
-  - Porcentajes de mejora promedio
-  - Estadísticas de ingreso universitario
+- ✅ **Testimonios dinámicos con datos reales**
   
-- **Casos de Éxito Específicos**
-  - Estudiantes destacados con puntajes altos
-  - Historias de superación personal
-  - Logros en diferentes áreas académicas
+- ✅ **Sistema de avatares inteligente:**
+  - 👤 Iniciales automáticas consistentes (hash-based)
+  - 🎨 8 gradientes aleatorios usando variables light del sistema
+  - 🔄 Fallback automático cuando no hay foto válida
   
-- **Video Testimonios** *(si disponibles)*
-  - Entrevistas con ex-estudiantes
-  - Padres de familia compartiendo experiencias
+- ✅ **Layout responsivo horizontal:**
+  - 📱 Fotos grandes (160px) en tablet/desktop
+  - 📏 Altura dinámica que se ajusta al contenido
+  - 🏷️ Badges posicionados sin superposición
   
-- **Galería de Graduados**
-  - Fotos de ceremonias de graduación
-  - Celebraciones de logros académicos
+- ✅ **Filtros y ordenamiento dinámicos:**
+  - 🔍 Filtros: Todos, Máximos Nacionales, Universidad, Carrera
+  - 📊 Ordenamiento: Recientes, Mayor puntaje, Alfabético, Universidad
+  
+- ✅ **Herramientas de desarrollo:**
+  - 🛠️ Sistema debugging completo con funciones de consola
+  - 🖥️ Servidor local Python para testing sin GitHub
 
 ---
 
@@ -313,13 +370,20 @@ Recursos | Términos y Condiciones | Política de Privacidad | Reglamento Intern
 ## **📈 ESTADÍSTICAS TÉCNICAS DEL SISTEMA**
 
 ### **📊 Sistema CSS Completo:**
-- **Total archivos CSS:** 15 archivos organizados modularmente
+- **Total archivos CSS:** 17 archivos organizados modularmente
+  - **Core:** 4 archivos (variables, reset, fonts, animations)
+  - **Layout:** 4 archivos (header, footer, sections, backgrounds)
+  - **Components:** 5 archivos (buttons, cards, grids, icons, gallery-overlay, progress-bar)
+  - **Utilities:** 2 archivos (helpers, responsive)
+  - **Pages:** 5 archivos (404, fundador, nosotros, servicios, testimonios)
+  - **Main:** 1 archivo (main.css)
 - **Total clases CSS:** 150+ clases catalogadas y documentadas
 - **Variables CSS:** 60+ variables del sistema unificado
 - **Grids responsivos:** 8 sistemas (4-2-1, 3-2-1, footer-grid, etc.)
 - **Card types:** 15+ tipos universales (feature, service, info, glass, etc.)
 - **Button variants:** 11 tipos (sólidos, outlined, glassmorphism)
 - **Icon sizes:** 4 tamaños responsivos con colores variables
+- **Componentes avanzados:** Gallery overlay, progress bar, testimonios cards
 
 ### **⚡ JavaScript Optimizado:**
 - **Arquitectura ES6+:** Módulos modernos y funciones optimizadas

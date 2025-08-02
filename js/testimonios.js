@@ -235,8 +235,6 @@ class TestimoniosManager {
                 puntajeLenguaje: parseInt(row.puntajeLenguaje || row.lenguaje) || null,
                 // Determinar Máximo Nacional automáticamente: M1 = 1000 y/o M2 = 1000
                 maximoNacional: (puntajeM1 === 1000) || (puntajeM2 === 1000),
-                // Conservar destacado si existe en el CSV, sino false
-                destacado: String(row.destacado || '').toLowerCase() === 'true',
                 foto: (row.foto && String(row.foto).trim() && String(row.foto).trim() !== '') ? String(row.foto).trim() : null,
                 fechaTestimonio: row.fechaTestimonio || new Date().toISOString(),
                 categoria: '', // Se determinará después
@@ -259,12 +257,9 @@ class TestimoniosManager {
     }
 
     determineCategory(testimonio) {
-        // Categoría basada en puntajes automáticamente
+        // Categoría basada únicamente en puntajes automáticamente
         if (testimonio.maximoNacional) {
             return 'maximo';
-        }
-        if (testimonio.destacado) {
-            return 'destacado';
         }
         return 'regular';
     }
@@ -385,13 +380,12 @@ class TestimoniosManager {
     }
 
     generateTestimonioHTML(testimonio) {
-        const badgeClass = testimonio.maximoNacional ? 'badge-maximo' : 
-                          testimonio.destacado ? 'badge-destacado' : 
+        const badgeClass = testimonio.maximoNacional ? 'badge-maximo-nacional' : 
                           testimonio.isRecent ? 'badge-reciente' : '';
         
-        const badgeText = testimonio.maximoNacional ? 'Máximo Nacional' : 
-                         testimonio.destacado ? 'Destacado' : 
-                         testimonio.isRecent ? 'Reciente' : '';
+        const badgeText = testimonio.maximoNacional ? 
+            '<span class="material-symbols-rounded trophy-icon">trophy</span>Máximo Nacional' : 
+            testimonio.isRecent ? 'Reciente' : '';
         
         // Determinar si hay una foto válida
         const hasValidPhoto = testimonio.foto && 
@@ -411,7 +405,7 @@ class TestimoniosManager {
         const scoresHTML = this.generateScoresHTML(testimonio);
         
         return `
-            <div class="testimonio-card" data-categoria="${testimonio.categoria}" data-universidad="${testimonio.universidad}" data-carrera="${testimonio.carrera}">
+            <div class="testimonio-card ${testimonio.maximoNacional ? 'maximo-nacional' : ''} ${badgeText ? 'has-badge' : ''}" data-categoria="${testimonio.categoria}" data-universidad="${testimonio.universidad}" data-carrera="${testimonio.carrera}">
                 ${badgeText ? `<div class="testimonio-badge ${badgeClass}">${badgeText}</div>` : ''}
                 
                 <div class="testimonio-header">
@@ -419,20 +413,19 @@ class TestimoniosManager {
                     <h3 class="student-name">${testimonio.nombre}</h3>
                     <p class="student-info">${testimonio.carrera}</p>
                     <p class="student-university">${testimonio.universidad}</p>
+                    <div class="header-metadata">
+                        <div class="metadata-scores">
+                            ${scoresHTML}
+                        </div>
+                        <div class="metadata-year">
+                            ${testimonio.año}
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="testimonio-content">
                     <div class="testimonio-text">
                         ${this.formatTestimonioText(testimonio.testimonio)}
-                    </div>
-                </div>
-                
-                <div class="testimonio-metadata">
-                    <div class="metadata-scores">
-                        ${scoresHTML}
-                    </div>
-                    <div class="metadata-year">
-                        ${testimonio.año}
                     </div>
                 </div>
             </div>
@@ -646,7 +639,6 @@ window.debugTestimonios = {
                 console.log(`   Universidad: "${testimonio.universidad}"`);
                 console.log(`   Puntajes: M1=${testimonio.puntajeM1}${isMaximoM1 ? ' ⭐' : ''}, M2=${testimonio.puntajeM2}${isMaximoM2 ? ' ⭐' : ''}, LEN=${testimonio.puntajeLenguaje}`);
                 console.log(`   Máximo Nacional: ${testimonio.maximoNacional} ${testimonio.maximoNacional ? '🏆' : ''} (auto-detectado por puntajes)`);
-                console.log(`   Destacado: ${testimonio.destacado} ${testimonio.destacado ? '⭐' : ''} (desde CSV)`);
                 console.log(`   Categoría: ${testimonio.categoria}`);
                 console.log(`   Foto: "${testimonio.foto}"`);
                 console.log('---');
@@ -654,12 +646,10 @@ window.debugTestimonios = {
             
             // Resumen estadístico
             const maximos = testimoniosData.filter(t => t.maximoNacional).length;
-            const destacados = testimoniosData.filter(t => t.destacado).length;
             const regulares = testimoniosData.filter(t => t.categoria === 'regular').length;
             
             console.log('📈 Resumen estadístico:');
             console.log(`   🏆 Máximos Nacionales: ${maximos} (puntaje = 1000)`);
-            console.log(`   ⭐ Destacados: ${destacados} (desde CSV)`);
             console.log(`   📝 Regulares: ${regulares}`);
         } else {
             console.log('❌ No hay testimonios cargados');
@@ -686,6 +676,28 @@ window.debugTestimonios = {
         
         const totalMaximos = testimoniosData.filter(t => t.maximoNacional).length;
         console.log(`🎯 Total Máximos Nacionales detectados: ${totalMaximos}`);
+    },
+    
+    // Verificar estado de fotos
+    checkPhotos: () => {
+        console.log('📸 Estado de las fotos:');
+        testimoniosData.forEach((testimonio, index) => {
+            const hasPhoto = testimonio.foto && testimonio.foto.trim() !== '';
+            const isValidUrl = hasPhoto && (
+                testimonio.foto.startsWith('http') || 
+                testimonio.foto.startsWith('/') || 
+                testimonio.foto.startsWith('media/')
+            );
+            
+            console.log(`${index + 1}. ${testimonio.nombre}:`);
+            console.log(`   Foto: "${testimonio.foto}"`);
+            console.log(`   Tiene foto: ${hasPhoto}`);
+            console.log(`   URL válida: ${isValidUrl}`);
+            console.log(`   Iniciales: ${window.testimoniosManager?.generateInitials(testimonio.nombre)}`);
+            console.log(`   Avatar class: ${window.testimoniosManager?.getRandomAvatarClass(testimonio.nombre)}`);
+            console.log(`   Es Máximo Nacional: ${testimonio.maximoNacional ? '🏆' : '❌'}`);
+            console.log('---');
+        });
     },
     
     // Test de conexión

@@ -187,6 +187,11 @@
     100% { transform: rotate(360deg); }
 }
 
+@keyframes goldGlow {
+    0% { box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4); }
+    100% { box-shadow: 0 4px 20px rgba(255, 215, 0, 0.7); }
+}
+
 .error-message {
     max-width: 400px;
     margin: 0 auto;
@@ -213,6 +218,21 @@
     margin-top: 2rem;
 }
 
+/* Grid ajustado para responsive */
+@media (min-width: 53rem) {
+    .testimonios-grid {
+        grid-template-columns: 1fr; /* Una columna para layout vertical en tablet */
+        gap: 2.5rem;
+    }
+}
+
+@media (min-width: 82rem) {
+    .testimonios-grid {
+        grid-template-columns: 1fr; /* Mantener una columna en desktop también */
+        gap: 3rem;
+    }
+}
+
 /* ======================================
    CARDS DE TESTIMONIOS
    ====================================== */
@@ -225,11 +245,82 @@
     transition: var(--transition-standard);
     position: relative;
     overflow: hidden;
+    
+    /* Layout vertical por defecto (móvil) */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Layout horizontal SOLO para desktop grande */
+@media (min-width: 82rem) {
+    .testimonio-card {
+        display: grid;
+        grid-template-columns: 320px 1fr; /* Header fijo, content toma el resto */
+        gap: 2rem;
+        align-items: start;
+        min-height: auto; /* Altura automática */
+    }
+    
+    .testimonio-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: auto; /* Altura automática */
+    }
+    
+    .testimonio-content {
+        display: flex;
+        align-items: stretch; /* Estirar para ocupar altura disponible */
+        width: 100%; /* Todo el ancho disponible */
+        height: auto; /* Altura automática */
+    }
+    
+    .testimonio-spacer {
+        display: none; /* Eliminar spacer completamente */
+    }
 }
 
 .testimonio-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-heavy);
+}
+
+/* Card especial para máximos nacionales */
+.testimonio-card.maximo-nacional {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    box-shadow: 0 8px 32px rgba(255, 215, 0, 0.2);
+}
+
+.testimonio-card.maximo-nacional:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 16px 48px rgba(255, 215, 0, 0.4);
+}
+
+.testimonio-card.maximo-nacional .student-name {
+    color: #FFD700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.testimonio-card.maximo-nacional .student-info,
+.testimonio-card.maximo-nacional .student-university {
+    color: #E6E6E6;
+}
+
+.testimonio-card.maximo-nacional .testimonio-text {
+    color: #F0F0F0;
+}
+
+.testimonio-card.maximo-nacional .metadata-year {
+    color: #FFD700;
+    font-weight: 600;
+}
+
+.testimonio-card.maximo-nacional .student-photo {
+    border: 3px solid #FFD700;
+    box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
 }
 
 /* Badge superior */
@@ -243,16 +334,34 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    z-index: 10; /* Asegurar que esté por encima */
 }
 
-.badge-maximo {
-    background: linear-gradient(135deg, var(--accent-red), var(--accent-red-light));
-    color: white;
+/* Margen superior para el contenido cuando hay badge - SOLO en desktop horizontal */
+@media (min-width: 82rem) {
+    .testimonio-card:has(.testimonio-badge) .testimonio-content {
+        margin-top: 3.5rem; /* Espacio para el badge en desktop horizontal */
+    }
+    
+    /* Para navegadores que no soportan :has(), usar clase alternativa */
+    .testimonio-card.has-badge .testimonio-content {
+        margin-top: 3.5rem;
+    }
 }
 
-.badge-destacado {
-    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+.badge-maximo-nacional {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
     color: var(--black);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: goldGlow 2s ease-in-out infinite alternate;
+}
+
+.badge-maximo-nacional .trophy-icon {
+    font-size: 1rem;
+    font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20;
 }
 
 .badge-reciente {
@@ -283,6 +392,16 @@
     text-transform: uppercase;
     font-family: var(--font-body);
     background: var(--primary); /* Fallback */
+}
+
+/* Foto más grande para tablet y desktop */
+@media (min-width: 53rem) {
+    .student-photo {
+        width: 160px;
+        height: 160px;
+        margin: 0 auto 1.5rem auto;
+        font-size: 3rem;
+    }
 }
 
 /* Avatares con iniciales - gradientes aleatorios usando colores light */
@@ -346,6 +465,76 @@
     opacity: 0.8;
 }
 
+/* Tipografía ajustada para tablet y desktop */
+@media (min-width: 53rem) {
+    .student-name {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .student-info {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .student-university {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Metadatos en el header para layout horizontal */
+.header-metadata {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Estilos para móvil */
+@media (max-width: 52.9375rem) {
+    .header-metadata {
+        padding-top: 1rem;
+        border-top: 1px solid var(--gray-light);
+    }
+    
+    .header-metadata .metadata-scores {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    
+    .header-metadata .metadata-year {
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 500;
+        opacity: 0.7;
+    }
+}
+
+@media (min-width: 53rem) {
+    .header-metadata {
+        margin-top: 0;
+    }
+    
+    .header-metadata .metadata-scores {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .header-metadata .metadata-year {
+        align-self: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        background: rgba(var(--primary-rgb), 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        color: var(--primary-dark);
+    }
+}
+
 /* Contenido del testimonio */
 .testimonio-content {
     margin-bottom: 1.5rem;
@@ -361,6 +550,33 @@
     background: rgba(var(--primary-rgb), 0.05);
     border-radius: var(--border-radius-standard);
     border-left: 4px solid var(--primary);
+}
+
+/* Ajustes para tablet y desktop */
+@media (min-width: 53rem) {
+    .testimonio-content {
+        margin-bottom: 0;
+        width: 100%; /* Todo el ancho disponible */
+    }
+    
+    .testimonio-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: left;
+        padding: 1.5rem;
+        height: auto; /* Altura automática según contenido */
+        width: 100%; /* Todo el ancho disponible */
+        display: block; /* Cambiar de flex a block para mejor ajuste */
+        min-height: auto; /* Sin altura mínima forzada */
+    }
+}
+
+/* Ajustes específicos SOLO para desktop horizontal */
+@media (min-width: 82rem) {
+    .testimonio-text {
+        display: block; /* Mantener block en desktop horizontal */
+        align-self: stretch; /* Estirar en el grid horizontal */
+    }
 }
 
 .testimonio-text::before {
@@ -386,6 +602,13 @@
     gap: 1rem;
 }
 
+/* Ajustes para tablet y desktop */
+@media (min-width: 53rem) {
+    .testimonio-metadata {
+        display: none; /* Ocultar el metadata original en tablet y desktop */
+    }
+}
+
 .metadata-scores {
     display: flex;
     gap: 1rem;
@@ -408,6 +631,17 @@
     font-size: 1rem;
 }
 
+/* Estilos especiales para scores en cards de máximos nacionales */
+.testimonio-card.maximo-nacional .score-item {
+    background: rgba(255, 215, 0, 0.2);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+}
+
+.testimonio-card.maximo-nacional .score-icon {
+    color: #FFD700;
+}
+
 .metadata-year {
     color: var(--black);
     font-size: 0.9rem;
@@ -419,8 +653,8 @@
    RESPONSIVE ESPECÍFICO DE TESTIMONIOS
    ====================================== */
 
-/* Tablet: 848px - 1312px (82rem y 53rem) */
-@media (max-width: 82rem) and (min-width: 53rem) {
+/* Tablet: 53rem - 82rem (848px - 1312px) */
+@media (max-width: 81.9375rem) and (min-width: 53rem) {
     .stats-destacados {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
@@ -446,8 +680,8 @@
     }
 }
 
-/* Mobile: Hasta 848px (53rem) */
-@media (max-width: 53rem) {
+/* Mobile: Hasta 53rem (848px) */
+@media (max-width: 52.9375rem) {
     /* Márgenes móviles específicos */
     .first-section,
     .filtros-section,

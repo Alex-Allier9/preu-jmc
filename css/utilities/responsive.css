@@ -4,15 +4,16 @@
 
 /* ======================================
    BREAKPOINTS DEFINIDOS:
-   --tablet: 82rem (1312px)
-   --mobile: 53rem (848px)
+   --desktop: >82rem (>1312px)
+   --tablet: 53rem - 82rem (848px - 1312px)
+   --mobile: <53rem (<848px)
    ====================================== */
 
 /* ======================================
-   TABLET: 848px - 1312px
+   TABLET: 53rem - 82rem (848px - 1312px)
    ====================================== */
 
-@media (max-width: 82rem) and (min-width: 53rem) {
+@media (max-width: 81.9375rem) and (min-width: 53rem) {
     
     /* LAYOUT GENERAL */
     .container {
@@ -50,10 +51,10 @@
 }
 
 /* ======================================
-   MOBILE: Hasta 848px
+   MOBILE: <53rem (<848px)
    ====================================== */
 
-@media (max-width: 53rem) {
+@media (max-width: 52.9375rem) {
     
     /* NAVEGACIÓN */
     .nav-menu {
@@ -99,14 +100,8 @@
     .p-2 {
         padding: 1.5rem;
     }
-}
-
-/* ======================================
-   RESPONSIVE PARA UTILIDADES ESPECÍFICAS
-   ====================================== */
-
-/* Botones responsive */
-@media (max-width: 53rem) {
+    
+    /* BOTONES RESPONSIVE */
     .btn-primary,
     .btn-primary-dark,
     .btn-primary-outlined,
@@ -122,14 +117,8 @@
         max-width: 300px;
         margin: 0 auto;
     }
-}
-
-/* ======================================
-   OPTIMIZACIONES DE PERFORMANCE
-   ====================================== */
-
-/* Reducir intensidad de animaciones en móvil */
-@media (max-width: 53rem) {
+    
+    /* ANIMACIONES OPTIMIZADAS */
     .fade-in {
         transition: all 0.4s ease;
     }
