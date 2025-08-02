@@ -350,7 +350,7 @@
     min-width: 1.5rem;
     flex-shrink: 0;
     transition: var(--transition-standard);
-    font-variation-settings: 'wght' 600;
+    font-variation-settings: 'wght' 400, 'opsz' 24;
 }
 
 /* Para imágenes como iconos (Instagram, LinkedIn) */

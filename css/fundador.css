@@ -39,7 +39,7 @@
 /* CTA section background - ESPECÍFICO DE FUNDADOR */
 .cta {
     background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
-        url('../media/images/fundador/sergey-pesterev-tMvuB9se2uQ-unsplash.jpg') center/cover;
+        url('../media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
 }
 
 /* ======================================
