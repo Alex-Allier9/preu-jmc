@@ -221,7 +221,6 @@
 
     /* Profile contact grid centrado en tablet */
     .profile-contact-items {
-        grid-template-columns: 1fr;
         justify-items: center;
     }
 
@@ -282,7 +281,6 @@
 
     /* Profile contact grid en mobile */
     .profile-contact-items {
-        grid-template-columns: 1fr;
         justify-items: center;
     }
 

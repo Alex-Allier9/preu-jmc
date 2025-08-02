@@ -57,7 +57,7 @@
                 <h2 class="section-title fade-in">Resultados que nos Respaldan</h2>
                 <div class="section-subtitle fade-in"></div>
                 
-                <div class="stats-destacados">
+                <div class="stat-card grid-4-2-1">
                     <div class="stat-card fade-in">
                         <div class="stat-number" data-count="4">4</div>
                         <p>Máximos Nacionales<br>Históricos</p>
@@ -94,26 +94,18 @@
                 <!-- Controles de filtros -->
                 <div class="testimonios-controls fade-in">
                     <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="all">Todos</button>
+                        <button class="filter-btn active" data-filter="recientes">Más Recientes</button>
                         <button class="filter-btn" data-filter="maximos">Máximos Nacionales</button>
                         <button class="filter-btn" data-filter="universidad">Por Universidad</button>
                         <button class="filter-btn" data-filter="carrera">Por Carrera</button>
-                    </div>
-                    
-                    <div class="sort-controls">
-                        <select class="sort-select" id="sortTestimonios">
-                            <option value="reciente">Más Recientes</option>
-                            <option value="puntaje-desc">Mayor Puntaje</option>
-                            <option value="nombre">Orden Alfabético</option>
-                            <option value="universidad">Por Universidad</option>
-                        </select>
+                        <button class="filter-btn" data-filter="puntaje-desc">Por Puntaje</button>
                     </div>
                 </div>
 
                 <!-- Loading state -->
                 <div class="testimonios-loading" id="testimoniosLoading">
                     <div class="loading-spinner"></div>
-                    <p>Cargando testimonios desde Google Sheets...</p>
+                    <p>Cargando testimonios...</p>
                 </div>
 
                 <!-- Error state -->
@@ -126,7 +118,7 @@
                 </div>
 
                 <!-- Grid de testimonios (se llena dinámicamente) -->
-                <div class="testimonios-grid" id="testimoniosGrid">
+                <div class="grid-1-1-1" id="testimoniosGrid">
                     <!-- Los testimonios se cargan aquí dinámicamente -->
                 </div>
             </div>
@@ -162,44 +154,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Background wrapper for lower sections -->
-    <div class="background-wrapper-secondary">
-        <!-- Second Background Image -->
-        <div class="secondary-background"></div>
-
-        <!-- Proceso de Admisión -->
-        <section class="section proceso-section">
-            <div class="container">
-                <h2 class="section-title fade-in">Únete a Nuestra Comunidad</h2>
-                <div class="section-subtitle fade-in"></div>
-                
-                <div class="grid-3-2-1">
-                    <div class="gradient-border-card fade-in">
-                        <div class="main-icon-container">
-                            <span class="material-symbols-rounded main-icon">assignment</span>
-                        </div>
-                        <h3>1. Prueba Diagnóstico</h3>
-                        <p>Evaluamos tu nivel inicial para diseñar una estrategia personalizada de aprendizaje.</p>
-                    </div>
-                    <div class="gradient-border-card fade-in">
-                        <div class="main-icon-container">
-                            <span class="material-symbols-rounded main-icon">forum</span>
-                        </div>
-                        <h3>2. Entrevista Personal</h3>
-                        <p>Conversamos sobre tus objetivos y determinamos si somos la mejor opción para ti.</p>
-                    </div>
-                    <div class="gradient-border-card fade-in">
-                        <div class="main-icon-container">
-                            <span class="material-symbols-rounded main-icon">school</span>
-                        </div>
-                        <h3>3. Inicio Clases</h3>
-                        <p>Comienza tu preparación en grupos pequeños con atención personalizada.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
 
     <!-- CTA Section -->
     <section class="cta">

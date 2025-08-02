@@ -11,14 +11,8 @@ const TESTIMONIOS_CONFIG = {
     
     // Configuración de filtros
     filters: {
-        current: 'all',
-        available: ['all', 'maximos', 'universidad', 'carrera']
-    },
-    
-    // Configuración de ordenamiento
-    sorting: {
-        current: 'reciente',
-        available: ['reciente', 'puntaje-desc', 'nombre', 'universidad']
+        current: 'recientes',
+        available: ['recientes', 'maximos', 'universidad', 'carrera', 'puntaje-desc']
     }
 };
 
@@ -38,7 +32,6 @@ class TestimoniosManager {
         this.errorElement = null;
         this.gridElement = null;
         this.filterButtons = null;
-        this.sortSelect = null;
         
         // Bind de métodos
         this.init = this.init.bind(this);
@@ -73,7 +66,6 @@ class TestimoniosManager {
         this.errorElement = document.getElementById('testimoniosError');
         this.gridElement = document.getElementById('testimoniosGrid');
         this.filterButtons = document.querySelectorAll('.filter-btn');
-        this.sortSelect = document.getElementById('sortTestimonios');
         
         // Verificar que existen los elementos necesarios
         if (!this.gridElement) {
@@ -90,21 +82,13 @@ class TestimoniosManager {
             });
         });
         
-        // Evento de ordenamiento
-        if (this.sortSelect) {
-            this.sortSelect.addEventListener('change', (e) => {
-                const sort = e.target.value;
-                this.setSort(sort);
-            });
-        }
-        
         console.log('✅ Eventos configurados');
     }
 
     async loadTestimonios() {
         try {
             this.showLoading();
-            console.log('📊 Cargando testimonios desde Google Sheets...');
+            console.log('📊 Cargando testimonios...');
             
             // Cargar datos desde Google Sheets
             const response = await fetch(TESTIMONIOS_CONFIG.SHEET_URL);
@@ -122,7 +106,9 @@ class TestimoniosManager {
             
             // Procesar y validar datos
             testimoniosData = this.processTestimoniosData(parsedData);
-            filteredTestimonios = [...testimoniosData];
+            
+            // Aplicar filtros iniciales (esto ordenará los datos por defecto)
+            this.applyCurrentFilters();
             
             // Renderizar testimonios
             this.hideLoading();
@@ -132,7 +118,7 @@ class TestimoniosManager {
             
         } catch (error) {
             console.error('❌ Error cargando testimonios:', error);
-            this.showError('No se pudieron cargar los testimonios. Verifica la conexión con Google Sheets.');
+            this.showError('No se pudieron cargar los testimonios. Verifica la conexión de Internet.');
         }
     }
 
@@ -227,7 +213,7 @@ class TestimoniosManager {
                 nombre: row.nombre || '',
                 carrera: row.carrera || '',
                 universidad: row.universidad || '',
-                año: parseInt(row.año) || new Date().getFullYear(),
+                año: parseInt(row.año) || parseInt(row.ano) || null, // Maneja tanto 'año' como 'ano'
                 testimonio: row.testimonio || '',
                 puntajeM1: puntajeM1,
                 puntajeM2: puntajeM2,
@@ -295,16 +281,8 @@ class TestimoniosManager {
         console.log('🔍 Filtro aplicado:', filter);
     }
 
-    setSort(sort) {
-        if (TESTIMONIOS_CONFIG.sorting.current === sort) return;
-        
-        TESTIMONIOS_CONFIG.sorting.current = sort;
-        
-        // Aplicar ordenamiento
-        this.applyCurrentFilters();
-        this.renderTestimonios();
-        
-        console.log('📊 Ordenamiento aplicado:', sort);
+    generateId() {
+        return 'testimonio_' + Math.random().toString(36).substr(2, 9);
     }
 
     applyCurrentFilters() {
@@ -314,40 +292,108 @@ class TestimoniosManager {
         const currentFilter = TESTIMONIOS_CONFIG.filters.current;
         
         switch (currentFilter) {
+            case 'recientes':
+                // Mostrar todos los testimonios ordenados por año (mayor a menor)
+                // Los años vacíos/inválidos van al final
+                filtered.sort((a, b) => {
+                    const yearA = a.año && !isNaN(a.año) ? a.año : 0;
+                    const yearB = b.año && !isNaN(b.año) ? b.año : 0;
+                    
+                    // Si ambos tienen años válidos, ordenar de mayor a menor
+                    if (yearA > 0 && yearB > 0) {
+                        return yearB - yearA;
+                    }
+                    // Si solo A tiene año válido, A va primero
+                    if (yearA > 0 && yearB === 0) {
+                        return -1;
+                    }
+                    // Si solo B tiene año válido, B va primero
+                    if (yearA === 0 && yearB > 0) {
+                        return 1;
+                    }
+                    // Si ambos son inválidos, mantener orden original
+                    return 0;
+                });
+                break;
             case 'maximos':
                 filtered = filtered.filter(t => t.maximoNacional);
+                filtered.sort((a, b) => {
+                    const yearA = a.año && !isNaN(a.año) ? a.año : 0;
+                    const yearB = b.año && !isNaN(b.año) ? b.año : 0;
+                    
+                    if (yearA > 0 && yearB > 0) {
+                        return yearB - yearA;
+                    }
+                    if (yearA > 0 && yearB === 0) {
+                        return -1;
+                    }
+                    if (yearA === 0 && yearB > 0) {
+                        return 1;
+                    }
+                    return 0;
+                });
                 break;
             case 'universidad':
-                // Agrupar por universidad (mostrar todos, pero se puede expandir)
+                // Mostrar todos ordenados por año
+                filtered.sort((a, b) => {
+                    const yearA = a.año && !isNaN(a.año) ? a.año : 0;
+                    const yearB = b.año && !isNaN(b.año) ? b.año : 0;
+                    
+                    if (yearA > 0 && yearB > 0) {
+                        return yearB - yearA;
+                    }
+                    if (yearA > 0 && yearB === 0) {
+                        return -1;
+                    }
+                    if (yearA === 0 && yearB > 0) {
+                        return 1;
+                    }
+                    return 0;
+                });
                 break;
             case 'carrera':
-                // Agrupar por carrera (mostrar todos, pero se puede expandir)
-                break;
-            case 'all':
-            default:
-                // Mostrar todos
-                break;
-        }
-        
-        // Aplicar ordenamiento
-        const currentSort = TESTIMONIOS_CONFIG.sorting.current;
-        
-        switch (currentSort) {
-            case 'reciente':
-                filtered.sort((a, b) => new Date(b.fechaTestimonio) - new Date(a.fechaTestimonio));
+                // Mostrar todos ordenados por año
+                filtered.sort((a, b) => {
+                    const yearA = a.año && !isNaN(a.año) ? a.año : 0;
+                    const yearB = b.año && !isNaN(b.año) ? b.año : 0;
+                    
+                    if (yearA > 0 && yearB > 0) {
+                        return yearB - yearA;
+                    }
+                    if (yearA > 0 && yearB === 0) {
+                        return -1;
+                    }
+                    if (yearA === 0 && yearB > 0) {
+                        return 1;
+                    }
+                    return 0;
+                });
                 break;
             case 'puntaje-desc':
+                // Ordenar por puntaje de mayor a menor
                 filtered.sort((a, b) => {
                     const puntajeA = Math.max(a.puntajeM1 || 0, a.puntajeM2 || 0, a.puntajeLenguaje || 0);
                     const puntajeB = Math.max(b.puntajeM1 || 0, b.puntajeM2 || 0, b.puntajeLenguaje || 0);
                     return puntajeB - puntajeA;
                 });
                 break;
-            case 'nombre':
-                filtered.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
-                break;
-            case 'universidad':
-                filtered.sort((a, b) => a.universidad.localeCompare(b.universidad, 'es'));
+            default:
+                // Por defecto ordenar por año
+                filtered.sort((a, b) => {
+                    const yearA = a.año && !isNaN(a.año) ? a.año : 0;
+                    const yearB = b.año && !isNaN(b.año) ? b.año : 0;
+                    
+                    if (yearA > 0 && yearB > 0) {
+                        return yearB - yearA;
+                    }
+                    if (yearA > 0 && yearB === 0) {
+                        return -1;
+                    }
+                    if (yearA === 0 && yearB > 0) {
+                        return 1;
+                    }
+                    return 0;
+                });
                 break;
         }
         
@@ -418,7 +464,7 @@ class TestimoniosManager {
                             ${scoresHTML}
                         </div>
                         <div class="metadata-year">
-                            ${testimonio.año}
+                            ${testimonio.año && testimonio.año !== 'null' && testimonio.año !== null && testimonio.año.trim() !== '' ? testimonio.año : 'Sin año'}
                         </div>
                     </div>
                 </div>
@@ -576,7 +622,6 @@ class TestimoniosManager {
             totalTestimonios: testimoniosData.length,
             filteredTestimonios: filteredTestimonios.length,
             currentFilter: TESTIMONIOS_CONFIG.filters.current,
-            currentSort: TESTIMONIOS_CONFIG.sorting.current,
             sheetURL: TESTIMONIOS_CONFIG.SHEET_URL
         };
     }
@@ -717,6 +762,33 @@ window.debugTestimonios = {
             console.error('❌ Error de conexión:', error);
             return false;
         }
+    },
+    
+    // Verificar ordenamiento por año
+    checkYearSorting: () => {
+        console.log('📅 Verificación de ordenamiento por año:');
+        console.log('📊 Datos actuales filtrados:', filteredTestimonios.length);
+        
+        filteredTestimonios.forEach((testimonio, index) => {
+            const year = testimonio.año && !isNaN(testimonio.año) ? testimonio.año : 'Sin año';
+            console.log(`${index + 1}. ${testimonio.nombre} - Año: ${year}`);
+        });
+        
+        // Verificar que el orden es correcto
+        let correctOrder = true;
+        for (let i = 1; i < filteredTestimonios.length; i++) {
+            const prevYear = filteredTestimonios[i-1].año && !isNaN(filteredTestimonios[i-1].año) ? filteredTestimonios[i-1].año : 0;
+            const currentYear = filteredTestimonios[i].año && !isNaN(filteredTestimonios[i].año) ? filteredTestimonios[i].año : 0;
+            
+            // Solo verificar si ambos tienen años válidos
+            if (prevYear > 0 && currentYear > 0 && prevYear < currentYear) {
+                correctOrder = false;
+                console.log(`❌ Error de orden entre posición ${i} y ${i+1}: ${prevYear} debería ser >= ${currentYear}`);
+            }
+        }
+        
+        console.log(correctOrder ? '✅ Ordenamiento correcto' : '❌ Hay errores en el ordenamiento');
+        return correctOrder;
     }
 };
 
@@ -727,4 +799,5 @@ console.log('  - debugTestimonios.data() - Ver datos cargados');
 console.log('  - debugTestimonios.checkDataMapping() - Verificar mapeo de campos');
 console.log('  - debugTestimonios.checkMaximoDetection() - Verificar detección automática de máximos');
 console.log('  - debugTestimonios.checkPhotos() - Verificar estado de fotos');
-console.log('  - debugTestimonios.testConnection() - Probar conexión Google Sheets');
+console.log('  - debugTestimonios.testConnection() - Probar conexión de datos');
+console.log('  - debugTestimonios.checkYearSorting() - Verificar ordenamiento por año');

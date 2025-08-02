@@ -99,7 +99,7 @@ class GalleryCards {
             </div>
 
             <!-- Grid de expediciones -->
-            <div class="expeditions-grid"></div>
+            <div class="grid-3-2-1"></div>
         `;
 
         // Obtener referencias
@@ -107,7 +107,7 @@ class GalleryCards {
         this.sortDropdown = this.container.querySelector('[data-dropdown="sort"]');
         this.sortMenu = this.container.querySelector('[data-dropdown-menu="sort"]');
         this.sortItems = this.container.querySelectorAll('[data-sort]');
-        this.expeditionsGrid = this.container.querySelector('.expeditions-grid');
+        this.expeditionsGrid = this.container.querySelector('.grid-3-2-1');
     }
 
     setupEvents() {

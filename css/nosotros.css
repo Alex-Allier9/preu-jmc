@@ -116,7 +116,6 @@
 @media (max-width: 82rem) and (min-width: 53rem) {
     /* Stats responsive - ya definido en components/grids.css */
     
-    
     /* Basic cards en tablet */
     .basic-card h3 {
         font-size: 1.5rem;

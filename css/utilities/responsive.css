@@ -13,7 +13,7 @@
    TABLET: 53rem - 82rem (848px - 1312px)
    ====================================== */
 
-@media (max-width: 81.9375rem) and (min-width: 53rem) {
+@media (max-width: 82rem) and (min-width: 53rem) {
     
     /* LAYOUT GENERAL */
     .container {
@@ -54,7 +54,7 @@
    MOBILE: <53rem (<848px)
    ====================================== */
 
-@media (max-width: 52.9375rem) {
+@media (max-width: 53rem) {
     
     /* NAVEGACIÓN */
     .nav-menu {
