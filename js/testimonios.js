@@ -334,8 +334,8 @@ class TestimoniosManager {
         
         const photoHTML = testimonio.foto ? 
             `<img src="${testimonio.foto}" alt="${testimonio.nombre}" class="student-photo">` :
-            `<div class="student-photo" style="background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem;">
-                ${testimonio.nombre.charAt(0)}
+            `<div class="student-photo ${this.getRandomAvatarClass(testimonio.nombre)}">
+                ${this.generateInitials(testimonio.nombre)}
             </div>`;
         
         const scoresHTML = this.generateScoresHTML(testimonio);
@@ -408,6 +408,40 @@ class TestimoniosManager {
             .replace(/\n/g, '<br>')
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/\*(.*?)\*/g, '<em>$1</em>');
+    }
+
+    // Generar iniciales del nombre completo
+    generateInitials(fullName) {
+        if (!fullName) return 'UN';
+        
+        const names = fullName.trim().split(' ');
+        
+        if (names.length === 1) {
+            // Si solo hay un nombre, tomar las dos primeras letras
+            return names[0].substring(0, 2).toUpperCase();
+        } else {
+            // Tomar primera letra del primer nombre y primera del último
+            const firstName = names[0];
+            const lastName = names[names.length - 1];
+            return (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+        }
+    }
+
+    // Obtener clase de avatar aleatoria basada en el nombre
+    getRandomAvatarClass(name) {
+        if (!name) return 'avatar-1';
+        
+        // Crear un hash simple del nombre para consistencia
+        let hash = 0;
+        for (let i = 0; i < name.length; i++) {
+            const char = name.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash; // Convertir a 32bit integer
+        }
+        
+        // Usar el hash para seleccionar una clase de avatar (1-8)
+        const avatarNumber = (Math.abs(hash) % 8) + 1;
+        return `avatar-${avatarNumber}`;
     }
 
     setupCardAnimations() {
