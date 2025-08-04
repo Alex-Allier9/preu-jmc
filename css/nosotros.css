@@ -1,0 +1,159 @@
+/* ======================================
+   NOSOTROS.CSS - ESTILOS ESPECÍFICOS DE LA PÁGINA
+   ====================================== */
+
+/* Background images - ESPECÍFICO DE NOSOTROS */
+.mountain-background {
+    background-image: url('../media/images/nosotros/cristina-gottardi-9TaYFMMapbA-unsplash.jpg');
+}
+
+.secondary-background {
+    background-image: url('../media/images/nosotros/annie-spratt-R2OQShb3nmk-unsplash.jpg');
+}
+
+/* Hero section background - ESPECÍFICO DE NOSOTROS */
+.hero {
+    background-image: url('../media/images/nosotros/redd-francisco-gdQnsMbhkUs-unsplash.jpg');
+}
+/* CTA section background - ESPECÍFICO DE NOSOTROS */
+.cta {
+    background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
+        url('../media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
+}
+
+/* ======================================
+   LAYOUT ESPECÍFICO DE NOSOTROS
+   ====================================== */
+
+/* Secciones con efecto glassmorphism */
+.about,
+.mvp-section,
+.stats,
+.results,
+.values-section,
+.commitment-section {
+    background: rgba(var(--white-rgb), 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(var(--white-rgb), 0.6);
+    margin-left: var(--section-margin-horizontal);
+    margin-right: var(--section-margin-horizontal);
+    margin-bottom: var(--section-margin-bottom);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-standard);
+}
+
+/* Hover effects para secciones glassmorphism */
+.about:hover,
+.mvp-section:hover,
+.stats:hover,
+.results:hover,
+.values-section:hover,
+.commitment-section:hover {
+    background: rgba(var(--white-rgb), 0.5);
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Márgenes superiores específicos */
+.about {
+    margin-top: var(--section-margin-bottom);
+}
+
+/* ======================================
+   PROGRAM SECTION - ESPECÍFICO DE NOSOTROS
+   ====================================== */
+
+.program {
+    background: linear-gradient(rgba(var(--white-rgb), 0.4), rgba(var(--white-rgb), 0.4)),
+        url('../media/images/nosotros/annie-spratt-R2OQShb3nmk-unsplash.jpg') center/cover;
+    color: var(--black);
+}
+
+.program .section-title {
+    color: var(--primary-dark);
+}
+
+/* Program grid ya está definido en components/grids.css */
+/* Program card ya está definido en components/cards.css */
+
+/* Quote card ya está definido en components/cards.css */
+
+/* ======================================
+   VALUES SECTION - ESPECÍFICO DE NOSOTROS
+   ====================================== */
+
+/* Values grid ya está definido en components/grids.css */
+/* Value card ya está definido en components/cards.css */
+/* Value icon ya está definido en components/icons.css */
+
+/* ======================================
+   SEDE SECTION - ESPECÍFICO DE NOSOTROS
+   ====================================== */
+
+.sede {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+}
+
+.sede .section-title {
+    color: var(--white);
+}
+
+/* Sede grid ya está definido en components/grids.css */
+/* Sede card ya está definido en components/cards.css */
+
+.values-section {
+    margin-top: 6rem;
+}
+
+/* ======================================
+   RESPONSIVE ESPECÍFICO DE NOSOTROS - CORREGIDO
+   ====================================== */
+
+/* Tablet: 848px - 1312px (82rem y 53rem) */
+@media (max-width: 82rem) and (min-width: 53rem) {
+    /* Stats responsive - ya definido en components/grids.css */
+    
+    /* Basic cards en tablet */
+    .basic-card h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile: Hasta 848px (53rem) */
+@media (max-width: 53rem) {
+    /* Márgenes móviles específicos */
+    .about,
+    .mvp-section,
+    .stats,
+    .results,
+    .values-section,
+    .commitment-section {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 3rem;
+    }
+
+    .values-section,
+    .about {
+        margin-top: 3rem;
+    }
+
+    /* Ajustar padding de cards en móvil */
+    .basic-card {
+        padding: 1.5rem !important;
+    }
+    
+    /* Quote card mobile */
+    .quote-text {
+        font-size: 1.5rem;
+    }
+    
+    .quote-text::before,
+    .quote-text::after {
+        font-size: 3rem;
+    }
+}

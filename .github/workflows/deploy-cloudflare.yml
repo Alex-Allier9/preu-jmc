@@ -1,0 +1,79 @@
+name: 🚀 Deploy to Cloudflare Pages
+
+on:
+  # Trigger on push to main branch
+  push:
+    branches: [ main, master ]
+  
+  # Trigger on pull request to main branch
+  pull_request:
+    branches: [ main, master ]
+  
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Cloudflare Pages
+    
+    steps:
+      - name: 📂 Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: 🔍 List files for debugging
+        run: |
+          echo "📁 Root directory contents:"
+          ls -la
+          echo "📄 HTML files:"
+          find . -name "*.html" -type f
+          echo "📁 CSS directory:"
+          ls -la css/ || echo "CSS directory not found"
+          echo "📁 JS directory:"  
+          ls -la js/ || echo "JS directory not found"
+          echo "📁 Media directory:"
+          ls -la media/ || echo "Media directory not found"
+          
+      - name: 🎯 Prepare deployment files
+        run: |
+          # Copy Cloudflare specific redirects file
+          if [ -f "_redirects_cloudflare" ]; then
+            cp _redirects_cloudflare _redirects
+            echo "✅ Using Cloudflare specific redirects"
+          else
+            echo "⚠️ Cloudflare redirects file not found, using default"
+          fi
+          
+          # Ensure 404.html exists
+          if [ ! -f "404.html" ]; then
+            echo "❌ 404.html not found!"
+            exit 1
+          fi
+          
+          # Verify required pages exist
+          required_pages=("index.html" "nosotros.html" "fundador.html" "servicios.html" "testimonios.html" "contacto.html")
+          for page in "${required_pages[@]}"; do
+            if [ ! -f "$page" ]; then
+              echo "❌ Required page $page not found!"
+              exit 1
+            else
+              echo "✅ Found $page"
+            fi
+          done
+          
+      - name: 🌐 Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: preuniversitario-jmc
+          directory: .
+          # Optional: Custom build command if needed
+          # buildCommand: echo "No build required for static site"
+          
+      - name: 📊 Deployment Summary
+        run: |
+          echo "🎉 Deployment completed!"
+          echo "📍 Primary: Cloudflare Pages"
+          echo "📍 Fallback: Netlify (auto-deployed from GitHub)"
+          echo "🔗 Site should be available at your custom domain"

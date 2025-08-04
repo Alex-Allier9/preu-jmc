@@ -1,0 +1,33 @@
+/* ======================================
+   MAIN.CSS - COORDINADOR PRINCIPAL (OPTIMIZADO DRY)
+   ====================================== */
+
+/* ===== CORE - FUNDAMENTALES ===== */
+@import url('./core/variables.css');      /* Variables CSS globales */
+@import url('./core/fonts.css');          /* Fuentes y tipografías */
+@import url('./core/reset.css');          /* Reset CSS y estilos base */
+@import url('./core/animations.css');     /* Keyframes y animaciones */
+
+/* ===== LAYOUT - ESTRUCTURA ===== */
+@import url('./layout/header.css');       /* Sistema de navegación */
+@import url('./layout/sections.css');     /* Layout de secciones */
+@import url('./layout/footer.css');       /* Footer universal */
+@import url('./layout/backgrounds.css');  /* Background wrappers */
+
+/* ===== COMPONENTS - COMPONENTES ===== */
+@import url('./components/cards.css');    /* Sistema de cards */
+@import url('./components/grids.css');    /* Grids universales */
+@import url('./components/icons.css');    /* Sistema de iconos */
+@import url('./components/buttons.css');  /* CTAs y botones */
+@import url('./components/progress-bar.css'); /* Barra de progreso de scroll */
+@import url('./components/gallery-overlay.css'); /* Sistema completo de galería */
+
+/* ===== UTILITIES - UTILIDADES ===== */
+@import url('./utilities/responsive.css'); /* Media queries */
+@import url('./utilities/helpers.css');    /* Clases utilitarias */
+
+/* ===== NOTA: UTILIDADES MOVIDAS A HELPERS.CSS =====
+ * Todas las utilidades (.text-center, .mb-*, .p-*, etc.) 
+ * han sido movidas a utilities/helpers.css para evitar duplicación
+ * y mantener el principio DRY
+ */

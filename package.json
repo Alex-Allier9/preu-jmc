@@ -1,0 +1,47 @@
+{
+  "name": "preuniversitario-jmc",
+  "version": "1.0.0",
+  "description": "Sitio web oficial del Preuniversitario José Manuel Cartes",
+  "main": "index.html",
+  "keywords": [
+    "preuniversitario",
+    "PAES",
+    "educación",
+    "chile",
+    "matemáticas",
+    "preparación universitaria"
+  ],
+  "author": {
+    "name": "Alexandre Castillo",
+    "email": "contacto@acastillodg.com",
+    "url": "https://www.behance.net/acastillo_dg"
+  },
+  "license": "MIT",
+  "homepage": "https://preujmc.cl",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/preu-jmc.git"
+  },
+  "scripts": {
+    "start": "python server.py",
+    "serve": "python -m http.server 8000",
+    "build": "echo 'Static site - no build required'",
+    "lint": "echo 'Linting HTML/CSS/JS files...'",
+    "test": "echo 'No tests specified'"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "python": ">=3.7.0"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "funding": {
+    "type": "individual",
+    "url": "https://preujmc.cl/contacto"
+  }
+}

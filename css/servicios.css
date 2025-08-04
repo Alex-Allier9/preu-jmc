@@ -1,0 +1,383 @@
+/* ======================================
+   SERVICIOS.CSS - PÁGINA DE SERVICIOS JMC
+   ====================================== */
+
+/* ======================================
+   BACKGROUND IMAGES - ESPECÍFICO DE SERVICIOS
+   ====================================== */
+
+/* Fondo principal con montañas para las primeras secciones */
+.mountain-background {
+    background-image: url('../media/images/servicios/thomas-griesbeck-Y2aNc1X7xLg-unsplash.jpg');
+    background-size: auto !important;
+}
+
+/* Fondo secundario para secciones posteriores */
+.secondary-background {
+    background-image: url('../media/images/servicios/alessio-soggetti-cfKC0UOZHJo-unsplash.jpg');
+    background-size: auto !important;
+}
+
+/* ======================================
+   HERO SECTION BACKGROUND - ESPECÍFICO DE SERVICIOS
+   ====================================== */
+
+.hero {
+    background-image: url('../media/images/servicios/gaetan-meyer-WemqIKiduMo-unsplash.jpg');
+}
+/* ======================================
+   CTA SECTION BACKGROUND - ESPECÍFICO DE SERVICIOS
+   ====================================== */
+
+.cta {
+    background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
+        url('../media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
+}
+
+/* ======================================
+   LAYOUT ESPECÍFICO DE SERVICIOS
+   ====================================== */
+
+/* Secciones con efecto glassmorphism */
+.first-section,
+.second-section,
+.third-section,
+.fourth-section {
+    background: rgba(var(--white-rgb), 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(var(--white-rgb), 0.6);
+    margin-left: var(--section-margin-horizontal);
+    margin-right: var(--section-margin-horizontal);
+    margin-bottom: var(--section-margin-bottom);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    z-index: 2;
+    padding: var(--card-padding-large);
+    transition: var(--transition-standard);
+}
+
+/* Hover effects para secciones glassmorphism */
+.first-section:hover,
+.second-section:hover,
+.third-section:hover,
+.fourth-section:hover {
+    background: rgba(var(--white-rgb), 0.5);
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Márgenes superiores específicos */
+.first-section {
+    margin-top: var(--section-margin-bottom);
+}
+
+.third-section,
+.fourth-section {
+    margin-top: var(--section-margin-bottom);
+}
+
+/* ======================================
+   SECCIÓN REGULAR - INFORMACIÓN PRÁCTICA CON GLASSMORPHISM
+   ====================================== */
+
+.regular-section {
+    background: rgba(var(--white-rgb), 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(var(--white-rgb), 0.3);
+    margin-left: var(--section-margin-horizontal);
+    margin-right: var(--section-margin-horizontal);
+    margin-bottom: var(--section-margin-bottom);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-standard);
+    color: var(--black);
+}
+
+.regular-section:hover {
+    background: rgba(var(--white-rgb), 0.15);
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-heavy);
+}
+
+.regular-section .section-title {
+    color: var(--primary-dark);
+}
+
+/* ======================================
+   CARDS - YA CENTRALIZADAS EN components/cards.css
+   ====================================== */
+
+/* Todas las cards ya están definidas en components/cards.css con el nuevo sistema unificado */
+
+.modern-payment-table {
+    background: var(--white);
+    border-radius: var(--border-radius-standard);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    margin-top: var(--margin-bottom-standard);
+    transition: var(--transition-standard);
+}
+
+.modern-payment-table:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-heavy);
+}
+
+.table-header {
+    background: var(--accent-green);
+    color: var(--white);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.table-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'DM Serif Text', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+/* Estilo específico para el icono de payments en el título */
+.payment-title-icon {
+    color: var(--white) !important;
+    font-size: 2.25rem !important; /* 1.5 veces más grande que el tamaño base de 1.5rem */
+}
+
+.table-body {
+    padding: 0;
+}
+
+.table-row {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+    gap: 1.5rem; /* AÑADIDO: Espacio entre icono y contenido */
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row:hover {
+    background: rgba(var(--primary-rgb), 0.05);
+    transform: translateX(5px);
+}
+
+/* NUEVO: Hover effect para table icon */
+.table-row:hover .table-icon {
+    background: var(--accent-green);
+    transform: var(--hover-scale-medium);
+    box-shadow: var(--shadow-medium);
+}
+
+.table-row:hover .table-icon .material-symbols-rounded {
+    transform: var(--hover-scale-medium);
+}
+
+.table-content {
+    flex: 1;
+    min-width: 0; /* AÑADIDO: Permite que el texto se envuelva correctamente */
+}
+
+.table-content strong {
+    color: var(--primary-dark);
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.table-content span {
+    color: var(--black);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Content Intro - Para textos introductorios */
+.content-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+.content-intro p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--black);
+}
+
+/* ======================================
+   TABLA MODERNA DE PAGOS - NUEVA
+   ====================================== */
+
+
+/* ======================================
+   PROCESS SECTION - ESPECÍFICO DE SERVICIOS
+   ====================================== */
+
+.process-cards-horizontal {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+}
+
+/* Process step icon ya está definido en components/icons.css */
+
+.card-content {
+    flex: 1;
+    text-align: left;
+}
+
+.card-content h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.card-content p {
+    color: var(--black);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    font-size: 1.1rem;
+}
+
+.card-meta {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 0.0625rem solid var(--gray-200);
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-weight: 600;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.meta-item .meta-icon {
+    color: var(--primary);
+}
+
+/* ======================================
+   RESPONSIVE ESPECÍFICO DE SERVICIOS - CORREGIDO
+   ====================================== */
+
+/* Tablet: 848px - 1312px (82rem y 53rem) */
+@media (max-width: 82rem) and (min-width: 53rem) {
+    /* Secciones en tablet */
+    .first-section,
+    .second-section,
+    .third-section,
+    .fourth-section {
+        padding: 2.5rem;
+    }
+    
+    /* Tabla moderna en tablet */
+    .table-row {
+        padding: 1rem 1.2rem;
+    }
+    
+    .table-icon .material-symbols-rounded {
+        font-size: 1.8rem;
+    }
+    
+    .table-content strong {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile: Hasta 848px (53rem) */
+@media (max-width: 53rem) {
+    /* Márgenes móviles específicos */
+    .first-section,
+    .second-section,
+    .third-section,
+    .fourth-section {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 3rem;
+        padding: 2rem;
+    }
+
+    .first-section {
+        margin-top: 3rem;
+    }
+
+    .third-section,
+    .fourth-section {
+        margin-top: 3rem;
+    }
+
+    /* Tabla moderna en móvil */
+    .table-row {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .table-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .table-content strong {
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .table-content span {
+        font-size: 0.9rem;
+    }
+
+    /* Cards responsive - ya centralizadas en components/cards.css */
+    .content-intro {
+        padding: 0;
+    }
+
+    .process-step-icon {
+        min-width: 60px;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+
+    .process-step-icon .process-icon {
+        font-size: 2rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .card-content p {
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .card-meta {
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+}

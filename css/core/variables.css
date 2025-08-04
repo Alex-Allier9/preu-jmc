@@ -1,0 +1,151 @@
+/* ======================================
+   VARIABLES.CSS - VARIABLES CSS GLOBALES
+   ====================================== */
+
+/* Variables CSS Globales */
+:root {
+    /* ===== COLORES PRINCIPALES ===== */
+    /* Variables más utilizadas: --black (39 usos), --primary (33 usos), --primary-dark (25 usos) */
+    --black: #101820;             /* Color de texto principal - MÁS USADO */
+    --black-rgb: 16, 24, 32;        /* RGB del color negro para rgba() */
+
+    --primary: #41B6E6;           /* Color principal de marca - Logo, enlaces, iconos */
+    --primary-rgb: 65, 182, 230;    /* RGB del color primario para rgba() */
+
+    --primary-light: #74D1EA;     /* Color claro del primario - Fondos, elementos secundarios */
+    --primary-light-rgb: 116, 209, 234;
+
+    --primary-dark: #426DA9;      /* Color secundario - Títulos, gradientes */
+    --primary-dark-rgb: 66, 109, 169;
+
+    --primary-darker: #165C7D;    /* Color más oscuro del primario - Fondos oscuros, elementos destacados */
+    --primary-darker-rgb: 22, 92, 125;
+
+    --accent: #F4DA40;            /* Color de acento principal - Líneas decorativas, hover states (23 usos) */
+    --accent-rgb: 244, 218, 64;
+
+    --accent-light: #F2F0A1;      /* Color claro del acento - Fondos, elementos secundarios */
+    --accent-light-rgb: 242, 240, 161;
+
+    --accent-dark: #A28E2A;       /* Color oscuro del acento - Elementos destacados */
+    --accent-dark-rgb: 162, 142, 42;
+
+    --accent-red: #C8102E;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
+    --accent-red-rgb: 200, 16, 46;
+
+    --accent-red-light: #FCAEBB;  /* Color claro del acento rojo */
+    --accent-red-light-rgb: 252, 174, 187;
+
+    --accent-red-dark: #7C2529;   /* Color oscuro del acento rojo */
+    --accent-red-dark-rgb: 124, 37, 41;
+
+    --accent-orange: #D69A2D;     /* Color de acento secundario - Estadísticas destacadas, animaciones */
+    --accent-orange-rgb: 214, 154, 45;
+
+    --accent-orange-light: #EFBE7D; /* Color claro del acento naranja */
+    --accent-orange-light-rgb: 239, 190, 125;
+
+    --accent-orange-dark: #897322; /* Color oscuro del acento naranja */
+    --accent-orange-dark-rgb: 137, 115, 34;
+
+    --accent-green: #47D7AC;      /* Color de acento secundario - Estadísticas destacadas, animaciones */
+    --accent-green-rgb: 71, 215, 172;
+
+    --accent-green-light: #9DE7D7; /* Color claro del acento verde */
+    --accent-green-light-rgb: 157, 231, 215;
+
+    --accent-green-dark: #279989;  /* Color oscuro del acento verde */
+    --accent-green-dark-rgb: 39, 153, 137;
+
+    /* ===== ESCALA DE GRISES (100-900) ===== */
+    --gray-100: #F4F4F4;         /* Gris más claro - borders, fondos sutiles */
+    --gray-100-rgb: 244, 244, 244;
+    
+    --gray-200: #F0F0F0;         /* Gris muy claro - textos sobre fondos oscuros */
+    --gray-200-rgb: 240, 240, 240;
+    
+    --gray-300: #E6E6E6;         /* Gris claro - divisores, bordes suaves */
+    --gray-300-rgb: 230, 230, 230;
+    
+    --gray-400: #CCCCCC;         /* Gris medio-claro - elementos deshabilitados */
+    --gray-400-rgb: 204, 204, 204;
+    
+    --gray-500: #888888;         /* Gris medio - texto secundario */
+    --gray-500-rgb: 136, 136, 136;
+    
+    --gray-600: #666666;         /* Gris medio-oscuro - iconos, texto terciario */
+    --gray-600-rgb: 102, 102, 102;
+    
+    --gray-700: #4A4A4A;         /* Gris oscuro - texto sobre fondos claros */
+    --gray-700-rgb: 74, 74, 74;
+    
+    --gray-800: #333333;         /* Gris muy oscuro - bordes, divisores */
+    --gray-800-rgb: 51, 51, 51;
+    
+    --gray-900: #2D2D2D;         /* Gris más oscuro - fondos, elementos destacados */
+    --gray-900-rgb: 45, 45, 45;
+    
+    /* ===== COLORES BASE ===== */
+    --white: #ffffff;             /* Blanco puro para fondos y texto claro */
+    --white-rgb: 255, 255, 255;   /* RGB del blanco para rgba() */
+    
+    /* ===== COLORES DE ESTADO ===== */
+    --danger: #EF4444;            /* Color de error - equivale a var(--accent-red) */
+    --danger-rgb: 239, 68, 68;    /* RGB del color de error para rgba() */
+    
+    --success: #10B981;           /* Color de éxito - equivale a var(--accent-green) */
+    --success-rgb: 16, 185, 129;  /* RGB del color de éxito para rgba() */
+    
+    /* ===== TIPOGRAFÍA ===== */
+    --title-letter-spacing: 0.2rem;  /* Usado en títulos principales (7 usos) */
+    --font-title: 'DM Serif Text', serif;   /* Fuente para títulos */
+    --font-body: 'Raleway', sans-serif;     /* Fuente para texto general */
+    
+    /* ===== ESPACIADO ===== */
+    --section-padding: 5rem 0;       /* Padding estándar de secciones */
+    --card-padding: 2rem;             /* Padding estándar de cards */
+    --card-padding-medium: 1.5rem;   /* Padding mediano de cards */
+    --card-padding-large: 3rem;      /* Padding de cards grandes */
+    --container-padding: 0 2rem;     /* Padding del container */
+    --small-padding: 0.3rem;         /* Padding pequeño (botones, etc.) */
+    
+    /* ===== GAPS Y MÁRGENES ===== */
+    --gap-small: 1rem;               /* Gap pequeño */
+    --gap-medium: 1.5rem;            /* Gap mediano */
+    --gap-standard: 2rem;            /* Gap estándar - MÁS USADO */
+    --gap-large: 3rem;               /* Gap grande */
+    --margin-bottom-small: 1rem;     /* Margin-bottom pequeño - MUY USADO */
+    --margin-bottom-standard: 2rem;  /* Margin-bottom estándar */
+    --margin-bottom-large: 3rem;     /* Margin-bottom grande */
+    
+    /* ===== BORDER RADIUS ===== */
+    --border-radius-small: 8px;      /* Radio pequeño */
+    --border-radius-standard: 15px;  /* Radio estándar de cards */
+    --border-radius-large: 20px;     /* Radio grande de secciones */
+    
+    /* ===== SOMBRAS ===== */
+    --shadow-light: 0 10px 30px rgba(var(--black-rgb), 0.1);      /* Sombra ligera - MÁS USADA */
+    --shadow-medium: 0 15px 40px rgba(var(--black-rgb), 0.15);    /* Sombra mediana */
+    --shadow-heavy: 0 25px 70px rgba(var(--black-rgb), 0.15);     /* Sombra pesada */
+    --shadow-strong: 0 20px 50px rgba(var(--black-rgb), 0.25);    /* Sombra fuerte para hover */
+    --shadow-header: 0 4px 20px rgba(var(--black-rgb), 0.1);      /* Sombra del header */
+    
+    /* ===== TRANSICIONES ===== */
+    --transition-standard: all 0.3s ease;         /* Transición estándar - MÁS USADA */
+    --transition-transform: transform 0.3s ease;  /* Transición de transform */
+    --transition-color: color 0.3s ease;          /* Transición de color */
+    
+    /* ===== EFECTOS HOVER UNIFICADOS ===== */
+    --hover-lift-button: translateY(-0.125rem);    /* Botones */
+    --hover-lift-medium: translateY(-5px);        /* Cards estándar */
+    --hover-scale-small: scale(1.05);             /* Logos, elementos sutiles */
+    --hover-scale-medium: scale(1.1);             /* Iconos */
+
+    /* ===== MÁRGENES DE LAYOUT ===== */
+    --section-margin-horizontal: 8.33%;  /* Márgenes laterales de secciones */
+    --section-margin-bottom: 6rem;       /* Margen inferior de secciones */
+    
+    /* ===== BLUR Y EFECTOS ===== */
+    --blur-standard: blur(10px);         /* Blur estándar */
+    --blur-heavy: blur(15px);            /* Blur pesado */
+}

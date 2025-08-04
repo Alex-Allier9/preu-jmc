@@ -1,0 +1,135 @@
+/* ======================================
+   FOOTER.CSS - SISTEMA DE PIE DE PÁGINA UNIVERSAL
+   ====================================== */
+
+/* Footer */
+.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: var(--card-padding-large) 0 1rem;
+}
+
+/* Footer grid ya está definido en components/grids.css */
+
+.footer-section h3 {
+    color: var(--accent);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Contact Items */
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    padding: var(--small-padding);
+    border-radius: var(--border-radius-small);
+    transition: var(--transition-standard);
+    text-decoration: none;
+}
+
+.contact-item .material-symbols-rounded {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    transition: var(--transition-standard);
+}
+
+.contact-item .instagram-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    transition: var(--transition-standard);
+}
+
+.contact-item:hover {
+    background: rgba(244, 218, 64, 0.1);
+    transform: translateX(5px);
+}
+
+.contact-item:hover .material-symbols-rounded {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.contact-item:hover .instagram-icon {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(93%) saturate(2206%) hue-rotate(180deg) brightness(96%) contrast(95%);
+    transform: scale(1.1);
+}
+
+.contact-item span {
+    color: white;
+    transition: var(--transition-color);
+}
+
+.contact-item:hover span {
+    color: var(--accent);
+}
+
+/* Footer Navigation Links */
+.footer-nav-link {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.25rem;
+    width: 100%;
+    text-align: left;
+}
+
+.footer-nav-link:hover {
+    color: var(--accent);
+    background: rgba(244, 218, 64, 0.1);
+    transform: translateX(0.3125rem);
+    padding-left: 0.5rem;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray-800);
+    color: var(--gray-500);
+}
+
+.footer-author {
+    color: var(--accent);
+    margin-top: 0.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-author:hover {
+    color: var(--primary);
+}
+
+/* Footer Responsive */
+@media (max-width: 53rem) {
+    /* Footer grid responsivo ya está en components/grids.css */
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    /* CORREGIDO - Contact items centrados en mobile */
+    .contact-item {
+        justify-content: center;
+    }
+    
+    .footer-nav-link {
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .footer-nav-link:hover {
+        transform: translateX(0);
+        padding-left: 0.3rem;
+    }
+}

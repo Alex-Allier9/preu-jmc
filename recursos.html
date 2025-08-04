@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos para Descargar | Preuniversitario JMC</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="media/favicon/favicon.svg">
+    <link rel="icon" type="image/png" href="media/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="shortcut icon" href="media/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="media/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="media/favicon/site.webmanifest">
+    <meta name="theme-color" content="#41B6E6">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/recursos.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">
+                <img src="media/logos/logo_web.svg" alt="JMC" style="height: 1.8rem;">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link active">Inicio</a></li>
+                <li><a href="nosotros" class="nav-link">Nosotros</a></li>
+                <li><a href="fundador" class="nav-link">Fundador</a></li>
+                <li><a href="servicios" class="nav-link">Servicios</a></li>
+                <li><a href="testimonios" class="nav-link">Testimonios</a></li>
+                <li><a href="contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Background -->
+    <div class="recursos-background"></div>
+    
+    <!-- Main Content -->
+    <main class="recursos-main">
+        <div class="container">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1 class="page-title fade-in">Recursos para Descargar</h1>
+                <p class="page-description fade-in">
+                    Materiales de estudio y recursos adicionales del Preuniversitario JMC
+                </p>
+            </header>
+        </div>
+
+        <!-- Background wrapper for glass sections -->
+        <div class="background-wrapper-primary">
+            <!-- Mountain Background Image -->
+            <div class="mountain-background"></div>
+
+            <!-- Loading State -->
+            <section class="section glass-section fade-in">
+                <div class="container">
+                    <div class="loading-section" id="loadingSection">
+                        <div class="resources-grid">
+                            <!-- Skeleton loaders for files -->
+                            <div class="resource-skeleton fade-in">
+                                <div class="skeleton skeleton-icon"></div>
+                                <div class="skeleton skeleton-filename"></div>
+                                <div class="skeleton skeleton-button"></div>
+                            </div>
+                            <div class="resource-skeleton fade-in">
+                                <div class="skeleton skeleton-icon"></div>
+                                <div class="skeleton skeleton-filename"></div>
+                                <div class="skeleton skeleton-button"></div>
+                            </div>
+                            <div class="resource-skeleton fade-in">
+                                <div class="skeleton skeleton-icon"></div>
+                                <div class="skeleton skeleton-filename"></div>
+                                <div class="skeleton skeleton-button"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error State -->
+                    <div class="error-section" id="errorSection" style="display: none;">
+                        <div class="error-card fade-in">
+                            <span class="material-symbols-rounded error-icon">error</span>
+                            <h3>Error al cargar recursos</h3>
+                            <p>No se pudieron cargar los archivos disponibles.</p>
+                            <button class="btn-primary" onclick="location.reload()">
+                                <span class="material-symbols-rounded">refresh</span>
+                                Reintentar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Resources Grid -->
+                    <div class="resources-section fade-in" id="resourcesSection" style="display: none;">
+                        <div class="resources-grid" id="resourcesGrid">
+                            <!-- Los archivos se cargarán aquí dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="empty-section" id="emptySection" style="display: none;">
+                        <div class="empty-card fade-in">
+                            <span class="material-symbols-rounded empty-icon">folder_open</span>
+                            <h3>No hay archivos disponibles</h3>
+                            <p>Actualmente no hay recursos para descargar.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section footer-main">
+                    <h3>Preuniversitario JMC</h3>
+                    <p>Desarrolla tu máximo potencial,<br>Construye tu proyecto de vida.</p>
+                </div>
+                <div class="footer-section footer-contact">
+                    <h3>Contacto</h3>
+                    <a href="mailto:jcartes@preujmc.cl" class="contact-item">
+                        <span class="material-symbols-rounded footer-icon">email</span>
+                        <span>jcartes@preujmc.cl</span>
+                    </a>
+                    <a href="https://instagram.com/josemanuelcartes" target="_blank" rel="noopener noreferrer"
+                        class="contact-item">
+                        <img src="media/icons/instagram_logo.svg" alt="Instagram" class="instagram-icon">
+                        <span>Instagram: @josemanuelcartes</span>
+                    </a>
+                    <a href="https://www.google.com/maps/place/Mateo+de+Toro+y+Zambrano+1491,+7850592+La+Reina,+Región+Metropolitana"
+                        target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <span class="material-symbols-rounded footer-icon">location_on</span>
+                        <span>Mateo de Toro y Zambrano 1491<br>Of. 303, La Reina, Santiago</span>
+                    </a>
+                </div>
+                <div class="footer-section footer-nav">
+                    <h3>Navegación</h3>
+                    <p><a href="/" class="footer-nav-link">Inicio</a></p>
+                    <p><a href="nosotros" class="footer-nav-link">Nosotros</a></p>
+                    <p><a href="fundador" class="footer-nav-link">Fundador</a></p>
+                    <p><a href="servicios" class="footer-nav-link">Servicios</a></p>
+                    <p><a href="testimonios" class="footer-nav-link">Testimonios</a></p>
+                    <p><a href="contacto" class="footer-nav-link">Contacto</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Preuniversitario JMC. Todos los derechos reservados.</p>
+                <p><a href="https://www.behance.net/acastillo_dg" target="_blank" class="footer-author">Alexandre
+                        Castillo · ACastillo DG</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+    <script src="js/recursos.js"></script>
+</body>
+
+</html>

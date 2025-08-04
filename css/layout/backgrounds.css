@@ -1,0 +1,61 @@
+/* ======================================
+   BACKGROUNDS.CSS - BACKGROUND WRAPPERS
+   ====================================== */
+
+/* Background wrappers - GLOBAL */
+.background-wrapper-primary,
+.background-wrapper-secondary {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background images - BASE (sin imágenes específicas) */
+.mountain-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100vh;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed;
+    z-index: -1;
+    will-change: transform;
+}
+
+.secondary-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100vh;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed;
+    z-index: -1;
+    will-change: transform;
+}
+
+/* Ajustes responsive para backgrounds */
+@media (max-width: 82rem) {
+    .mountain-background,
+    .secondary-background {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        min-height: 100vh;
+    }
+}
+
+@media (max-width: 53rem) {
+    .mountain-background,
+    .secondary-background {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
+        min-height: 120vh;
+    }
+}

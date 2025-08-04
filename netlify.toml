@@ -1,0 +1,83 @@
+[build]
+  # Directorio de publicación
+  publish = "."
+  
+  # Comando de build (opcional, para proyectos estáticos no se necesita)
+  # command = "npm run build"
+
+[build.environment]
+  # Variables de entorno para el build
+  NODE_VERSION = "18"
+
+# Configuración de headers
+[[headers]]
+  # Aplicar a todos los archivos
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  # CSS y JavaScript
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Imágenes y media
+  for = "/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # HTML pages
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Configuración de Forms (para formulario de contacto)
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# Configuración de funciones (si se necesitan en el futuro)
+[functions]
+  directory = "netlify/functions"
+
+# Plugin para optimizaciones
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+[[plugins]]
+  package = "netlify-plugin-minify-html"
+  
+  [plugins.inputs]
+    contexts = ['production']
+
+# Configuración de dominio personalizado (cuando esté listo)
+# [[redirects]]
+#   from = "https://preujmc.netlify.app/*"
+#   to = "https://www.preujmc.cl/:splat"
+#   status = 301
+#   force = true

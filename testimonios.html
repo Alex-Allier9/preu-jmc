@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonios | Preuniversitario JMC</title>
+    <meta name="description"
+        content="Testimonios reales de estudiantes del Preuniversitario JMC. Conoce sus experiencias, resultados PAES y logros universitarios.">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="media/favicon/favicon.svg">
+    <link rel="icon" type="image/png" href="media/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="shortcut icon" href="media/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="media/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="media/favicon/site.webmanifest">
+    <meta name="theme-color" content="#41B6E6">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/testimonios.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">
+                <img src="media/logos/logo_web.svg" alt="JMC" style="height: 1.8rem;">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Inicio</a></li>
+                <li><a href="nosotros" class="nav-link">Nosotros</a></li>
+                <li><a href="fundador" class="nav-link">Fundador</a></li>
+                <li><a href="servicios" class="nav-link">Servicios</a></li>
+                <li><a href="testimonios" class="nav-link active">Testimonios</a></li>
+                <li><a href="contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>Testimonios</h1>
+            <p>Historias reales de éxito y transformación académica</p>
+        </div>
+    </section>
+
+    <!-- Background wrapper for first sections -->
+    <div class="background-wrapper-primary">
+        <!-- Mountain Background Image -->
+        <div class="mountain-background"></div>
+
+        <!-- Resultados Destacados Section -->
+        <section class="section glass-section fade-in">
+            <div class="container">
+                <h2 class="section-title fade-in">Resultados que nos Respaldan</h2>
+                <div class="section-subtitle fade-in"></div>
+                
+                <div class="grid-4-2-1">
+                    <div class="stat-card fade-in">
+                        <div class="stat-number" data-count="4">4</div>
+                        <p>Máximos Nacionales<br>Históricos</p>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number" data-count="18">18+</div>
+                        <p>Años de<br>Experiencia</p>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number" data-count="200">200+</div>
+                        <p>Estudiantes<br>Exitosos</p>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number" data-count="95">95%</div>
+                        <p>Ingreso Primera<br>Opción</p>
+                    </div>
+                </div>
+
+                <div class="universal-card extensive fade-in">
+                    <h3>Máximos Nacionales PAES</h3>
+                    <p><strong>2023:</strong> Un estudiante logró máximo nacional en la prueba M1, consolidando nuestra metodología de enseñanza personalizada.</p>
+                    <p><strong>2022:</strong> Tres estudiantes alcanzaron máximo nacional, demostrando la efectividad de nuestro enfoque en grupos pequeños.</p>
+                    <p>Estos resultados reflejan no solo la preparación académica de excelencia, sino también nuestro proceso de selección que asegura estudiantes comprometidos con su crecimiento.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtros de Testimonios -->
+        <section class="section glass-section fade-in">
+            <div class="container">
+                <h2 class="section-title fade-in">Experiencias de Nuestros Estudiantes</h2>
+                <div class="section-subtitle fade-in"></div>
+                
+                <!-- Controles de filtros -->
+                <div class="testimonios-controls fade-in">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="recientes">Más Recientes</button>
+                        <button class="filter-btn" data-filter="maximos">Máximos Nacionales</button>
+                        <button class="filter-btn" data-filter="universidad">Por Universidad</button>
+                        <button class="filter-btn" data-filter="carrera">Por Carrera</button>
+                        <button class="filter-btn" data-filter="puntaje-desc">Por Puntaje</button>
+                    </div>
+                </div>
+
+                <!-- Loading state -->
+                <div class="testimonios-loading" id="testimoniosLoading">
+                    <div class="loading-spinner"></div>
+                    <p>Cargando testimonios...</p>
+                </div>
+
+                <!-- Error state -->
+                <div class="testimonios-error" id="testimoniosError" style="display: none;">
+                    <div class="error-message">
+                        <h3>⚠️ Error cargando testimonios</h3>
+                        <p>No se pudieron cargar los testimonios. Por favor recarga la página.</p>
+                        <button onclick="location.reload()" class="btn-primary">Reintentar</button>
+                    </div>
+                </div>
+
+                <!-- Grid de testimonios (se llena dinámicamente) -->
+                <div class="grid-1-1-1" id="testimoniosGrid">
+                    <!-- Los testimonios se cargan aquí dinámicamente -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sección de Invitación -->
+    <section class="section primary-gradient-section">
+        <div class="container">
+            <h2 class="section-title fade-in">¿Quieres ser el Próximo?</h2>
+            <div class="section-subtitle fade-in"></div>
+            
+            <div class="grid-2-2-1">
+                <div class="glass-card fade-in">
+                    <div class="card-icon">
+                        <span class="material-symbols-rounded">psychology</span>
+                    </div>
+                    <h3>Metodología Personalizada</h3>
+                    <p>Atención individual en grupos pequeños para potenciar tu máximo rendimiento académico.</p>
+                </div>
+                <div class="glass-card fade-in">
+                    <div class="card-icon">
+                        <span class="material-symbols-rounded">trending_up</span>
+                    </div>
+                    <h3>Resultados Comprobados</h3>
+                    <p>18+ años de experiencia con múltiples máximos nacionales y 95% de ingreso primera opción.</p>
+                </div>
+            </div>
+
+            <div class="quote-card fade-in">
+                <p class="quote-text">Cada estudiante que trabaja conmigo desarrolla no solo su potencial académico, sino también su disciplina, autoconfianza y valores.</p>
+                <p class="quote-author">- José Manuel Cartes</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="fade-in">¿Listo para Escribir tu Historia de Éxito?</h2>
+            <p class="fade-in" style="font-size: 1.2rem; margin-bottom: 2rem;">Contacta con nosotros para comenzar tu preparación personalizada</p>
+            <a href="contacto" class="btn-accent-inverse fade-in">CONTÁCTANOS AHORA</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section footer-main">
+                    <h3>Preuniversitario JMC</h3>
+                    <p>Desarrolla tu máximo potencial,<br>Construye tu proyecto de vida.</p>
+                </div>
+                <div class="footer-section footer-contact">
+                    <h3>Contacto</h3>
+                    <a href="mailto:jcartes@preujmc.cl" class="contact-item">
+                        <span class="material-symbols-rounded footer-icon">email</span>
+                        <span>jcartes@preujmc.cl</span>
+                    </a>
+                    <a href="https://instagram.com/josemanuelcartes" target="_blank" rel="noopener noreferrer"
+                        class="contact-item">
+                        <img src="media/icons/instagram_logo.svg" alt="Instagram" class="instagram-icon">
+                        <span>Instagram: @josemanuelcartes</span>
+                    </a>
+                    <a href="https://www.google.com/maps/place/Mateo+de+Toro+y+Zambrano+1491,+7850592+La+Reina,+Región+Metropolitana"
+                        target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <span class="material-symbols-rounded footer-icon">location_on</span>
+                        <span>Mateo de Toro y Zambrano 1491<br>Of. 303, La Reina, Santiago</span>
+                    </a>
+                </div>
+                <div class="footer-section footer-nav">
+                    <h3>Navegación</h3>
+                    <p><a href="/" class="footer-nav-link">Inicio</a></p>
+                    <p><a href="nosotros" class="footer-nav-link">Nosotros</a></p>
+                    <p><a href="fundador" class="footer-nav-link">Fundador</a></p>
+                    <p><a href="servicios" class="footer-nav-link">Servicios</a></p>
+                    <p><a href="testimonios" class="footer-nav-link">Testimonios</a></p>
+                    <p><a href="contacto" class="footer-nav-link">Contacto</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Preuniversitario JMC. Todos los derechos reservados.</p>
+                <p><a href="https://www.behance.net/acastillo_dg" target="_blank" class="footer-author">Alexandre
+                        Castillo · ACastillo DG</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+    <script src="js/testimonios.js"></script>
+</body>
+
+</html>

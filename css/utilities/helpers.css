@@ -1,0 +1,200 @@
+/* ======================================
+   HELPERS.CSS - UTILIDADES ESENCIALES OPTIMIZADAS
+   ====================================== */
+
+/* ======================================
+   SISTEMA DE ENLACES SIMPLIFICADO
+   ====================================== */
+
+/* Enlace estándar */
+.link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: var(--transition-color);
+    display: inline-block;
+}
+
+.link:visited {
+    color: var(--primary-dark);
+}
+
+.link:hover {
+    color: var(--primary);
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+.link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Enlace para texto corrido */
+.link-text {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: var(--transition-color);
+    display: inline;
+}
+
+.link-text:visited {
+    color: var(--primary-dark);
+}
+
+.link-text:hover {
+    color: var(--primary);
+}
+
+.link-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+.link-text:hover::after {
+    transform: scaleX(1);
+}
+
+/* ======================================
+   UTILIDADES DE TEXTO
+   ====================================== */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+.fw-normal { font-weight: 400; }
+.fw-medium { font-weight: 500; }
+.fw-semibold { font-weight: 600; }
+.fw-bold { font-weight: 700; }
+
+/* ======================================
+   UTILIDADES DE ESPACIADO
+   ====================================== */
+
+/* Margins */
+.m-0 { margin: 0; }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--margin-bottom-small); }
+.mb-2 { margin-bottom: var(--margin-bottom-standard); }
+.mb-3 { margin-bottom: var(--margin-bottom-large); }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Padding */
+.p-0 { padding: 0; }
+.p-1 { padding: 1rem; }
+.p-2 { padding: 2rem; }
+
+/* ======================================
+   UTILIDADES DE DISPLAY Y FLEXBOX
+   ====================================== */
+
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+.flex-column { flex-direction: column; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }
+.align-start { align-items: flex-start; }
+
+/* ======================================
+   UTILIDADES DE TAMAÑO
+   ====================================== */
+
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+
+/* ======================================
+   UTILIDADES DE POSICIÓN
+   ====================================== */
+
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }
+
+/* ======================================
+   UTILIDADES DE SOMBRAS
+   ====================================== */
+
+.shadow-none { box-shadow: none; }
+.shadow { box-shadow: var(--shadow-light); }
+.shadow-lg { box-shadow: var(--shadow-medium); }
+
+/* ======================================
+   UTILIDADES DE COLOR
+   ====================================== */
+
+.text-primary { color: var(--primary); }
+.text-accent { color: var(--accent); }
+.text-dark { color: var(--black); }
+.text-white { color: white; }
+
+.bg-white { background-color: white; }
+.bg-transparent { background-color: transparent; }
+
+/* ======================================
+   UTILIDADES DE VISIBILIDAD
+   ====================================== */
+
+.visible { visibility: visible; }
+.invisible { visibility: hidden; }
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ======================================
+   GLASSMORPHISM BÁSICO
+   ====================================== */
+
+.glass-bg {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-bg-light {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.glass-bg-dark {
+    background: rgba(var(--black-rgb), 0.3);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}

@@ -1,0 +1,694 @@
+/* ======================================
+   TESTIMONIOS.CSS - ESTILOS ESPECÍFICOS DE LA PÁGINA
+   ====================================== */
+
+/* ======================================
+   BACKGROUND IMAGES - ESPECÍFICO DE TESTIMONIOS
+   ====================================== */
+
+/* Fondo principal con montañas para las primeras secciones */
+.mountain-background {
+    background-image: url('../media/images/testimonios/thomas-griesbeck-Y2aNc1X7xLg-unsplash.jpg');
+    background-repeat: repeat !important;
+    background-size: auto !important;
+    background-attachment: fixed;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100vh !important;
+}
+
+/* Ajustes responsive para testimonios */
+@media (max-width: 82rem) {
+    .mountain-background {
+        background-attachment: scroll !important;
+        background-repeat: repeat !important;
+        background-size: contain !important;
+        min-height: 120vh !important;
+    }
+}
+
+@media (max-width: 53rem) {
+    .mountain-background {
+        background-attachment: scroll !important;
+        background-repeat: repeat !important;
+        background-size: auto !important;
+        min-height: 150vh !important;
+    }
+}
+
+/* Hero section background - ESPECÍFICO DE TESTIMONIOS */
+.hero {
+    background-image: url('../media/images/testimonios/ben-lowe-sqdY_rJg8wg-unsplash.jpg');
+}
+
+/* CTA section background - ESPECÍFICO DE TESTIMONIOS */
+.cta {
+    background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
+        url('../media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
+}
+
+/* ======================================
+   LAYOUT ESPECÍFICO DE TESTIMONIOS
+   ====================================== */
+
+/* Secciones con efecto glassmorphism */
+.first-section,
+.filtros-section {
+    background: rgba(var(--white-rgb), 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(var(--white-rgb), 0.6);
+    margin-left: var(--section-margin-horizontal);
+    margin-right: var(--section-margin-horizontal);
+    margin-bottom: var(--section-margin-bottom);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-standard);
+}
+
+/* Hover effects para secciones glassmorphism */
+.first-section:hover,
+.filtros-section:hover {
+    background: rgba(var(--white-rgb), 0.5);
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Márgenes superiores específicos */
+.first-section {
+    margin-top: var(--section-margin-bottom);
+}
+
+/* ======================================
+   CONTROLES DE TESTIMONIOS
+   ====================================== */
+
+.testimonios-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(var(--white-rgb), 0.8);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition-standard);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: var(--hover-lift-button);
+    box-shadow: var(--shadow-light);
+}
+
+.sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sort-select {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--primary);
+    border-radius: 25px;
+    background: var(--white);
+    color: var(--primary-dark);
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    min-width: 200px;
+    transition: var(--transition-standard);
+}
+
+.sort-select:hover,
+.sort-select:focus {
+    border-color: var(--primary-dark);
+    box-shadow: var(--shadow-light);
+    outline: none;
+}
+
+/* ======================================
+   ESTADOS DE CARGA Y ERROR
+   ====================================== */
+
+.testimonios-loading,
+.testimonios-error {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(var(--white-rgb), 0.9);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    margin: 2rem 0;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--gray-200);
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes goldGlow {
+    0% { box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.4); }
+    100% { box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.7); }
+}
+
+.error-message {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.error-message h3 {
+    color: var(--accent-red);
+    margin-bottom: 1rem;
+}
+
+.error-message p {
+    color: var(--black);
+    margin-bottom: 2rem;
+}
+
+/* ======================================
+   CARDS DE TESTIMONIOS
+   ====================================== */
+
+.testimonio-card {
+    background: var(--white);
+    border-radius: var(--border-radius-large);
+    padding: 2rem;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    position: relative;
+    overflow: hidden;
+    
+    /* Layout horizontal por defecto (desktop) */
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2rem;
+    align-items: start;
+    min-height: auto;
+}
+
+.testimonio-card:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Card especial para máximos nacionales */
+.testimonio-card.maximo-nacional {
+    background: linear-gradient(135deg, var(--black), var(--gray-900));
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    box-shadow: 0 8px 32px rgba(var(--accent-rgb), 0.2);
+}
+
+.testimonio-card.maximo-nacional:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: 0 16px 48px rgba(var(--accent-rgb), 0.4);
+}
+
+.testimonio-card.maximo-nacional .student-name {
+    color: var(--accent);
+    text-shadow: 0 2px 4px rgba(var(--black-rgb), 0.5);
+}
+
+.testimonio-card.maximo-nacional .student-info,
+.testimonio-card.maximo-nacional .student-university {
+    color: var(--gray-200);
+}
+
+.testimonio-card.maximo-nacional .testimonio-text {
+    color: var(--gray-200);
+}
+
+.testimonio-card.maximo-nacional .metadata-year {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.testimonio-card.maximo-nacional .student-photo {
+    border: 3px solid var(--accent);
+    box-shadow: 0 4px 16px rgba(var(--accent-dark-rgb), 0.3);
+}
+
+/* Badge superior */
+.testimonio-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10; /* Asegurar que esté por encima */
+}
+
+/* Margen para badges en desktop */
+.testimonio-card:has(.testimonio-badge) .testimonio-content {
+    margin-top: 3.5rem;
+}
+
+.testimonio-card.has-badge .testimonio-content {
+    margin-top: 3.5rem;
+}
+
+.testimonio-spacer {
+    display: none;
+}
+
+.badge-maximo-nacional {
+    background: linear-gradient(135deg, var(--accent), var(--accent-orange));
+    color: var(--black);
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.4);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: goldGlow 2s ease-in-out infinite alternate;
+}
+
+.badge-maximo-nacional .trophy-icon {
+    color: var(--black);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.badge-reciente {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: var(--white);
+}
+
+/* Header del testimonio */
+.testimonio-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+}
+
+.student-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem auto;
+    border: 3px solid var(--primary);
+    box-shadow: var(--shadow-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    background: var(--primary); /* Fallback */
+}
+
+/* Avatares con iniciales - gradientes aleatorios usando colores light */
+.student-photo.avatar-1 {
+    background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+}
+
+.student-photo.avatar-2 {
+    background: linear-gradient(135deg, var(--accent-light), var(--accent-green-light));
+}
+
+.student-photo.avatar-3 {
+    background: linear-gradient(135deg, var(--accent-green-light), var(--primary-light));
+}
+
+.student-photo.avatar-4 {
+    background: linear-gradient(135deg, var(--accent-orange-light), var(--accent-light));
+}
+
+.student-photo.avatar-5 {
+    background: linear-gradient(135deg, var(--primary-light), var(--accent-orange-light));
+}
+
+.student-photo.avatar-6 {
+    background: linear-gradient(135deg, var(--accent-red-light), var(--accent-light));
+}
+
+.student-photo.avatar-7 {
+    background: linear-gradient(135deg, var(--accent-green-light), var(--accent-red-light));
+}
+
+.student-photo.avatar-8 {
+    background: linear-gradient(135deg, var(--accent-light), var(--primary-light));
+}
+
+/* Cuando hay imagen, resetear los estilos de avatar */
+.student-photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.student-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 0.75rem;
+}
+
+.student-info {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.student-university {
+    font-size: 1rem;
+    color: var(--black);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Metadatos en el header para layout horizontal */
+.header-metadata {
+    width: 100%;
+    margin-top: 0;
+}
+
+.header-metadata .metadata-scores {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.header-metadata .metadata-year {
+    align-self: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: rgba(var(--primary-rgb), 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: var(--primary-dark);
+}
+
+/* Contenido del testimonio */
+.testimonio-content {
+    margin-bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    height: auto;
+}
+
+.testimonio-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--black);
+    text-align: left;
+    position: relative;
+    padding: 1.5rem;
+    background: rgba(var(--primary-rgb), 0.05);
+    border-radius: var(--border-radius-standard);
+    border-left: 4px solid var(--primary);
+    height: auto;
+    width: 100%;
+    display: block;
+    min-height: auto;
+    align-self: stretch;
+}
+
+/* Franja dorada para máximos nacionales */
+.testimonio-card.maximo-nacional .testimonio-text {
+    border-left: 4px solid var(--accent);
+    background: rgba(var(--accent-rgb), 0.1);
+}
+
+.testimonio-text::before {
+    content: '"';
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--primary);
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    opacity: 0.3;
+    line-height: 1;
+}
+
+/* Metadatos del testimonio - ocultos por defecto en desktop */
+.testimonio-metadata {
+    display: none;
+}
+
+.metadata-scores {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.score-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(var(--accent-rgb), 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--border-radius-standard);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.score-icon {
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+/* Estilos especiales para scores en cards de máximos nacionales */
+.testimonio-card.maximo-nacional .score-item {
+    background: rgba(var(--accent-rgb), 0.2);
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
+    color: var(--accent);
+}
+
+.testimonio-card.maximo-nacional .score-icon {
+    color: var(--accent);
+}
+
+.metadata-year {
+    color: var(--black);
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+/* ======================================
+   ANIMACIONES ESPECÍFICAS
+   ====================================== */
+
+/* Las tarjetas de testimonio ahora usan el sistema fade-in universal */
+/* Los transition-delay se eliminaron para evitar conflictos con hover effects */
+
+/* ======================================
+   MEDIA QUERIES CONSOLIDADAS
+   ====================================== */
+
+/* TABLET Y DESKTOP: min-width: 53rem */
+@media (min-width: 53rem) {
+    /* Controles de testimonios */
+    .testimonios-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+    
+    .filter-buttons {
+        justify-content: center;
+    }
+    
+    .sort-controls {
+        justify-content: center;
+    }
+}
+
+/* MOBILE: max-width: 53rem */
+@media (max-width: 53rem) {
+    /* Cards de testimonio - layout vertical en móvil */
+    .testimonio-card {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+    
+    .testimonio-header {
+        margin-bottom: 1.5rem;
+        text-align: center;
+        display: block;
+    }
+    
+    /* Contenido del testimonio en móvil */
+    .testimonio-content {
+        margin-bottom: 1.5rem;
+        display: block;
+    }
+    
+    /* Foto más pequeña en móvil */
+    .student-photo {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 1rem auto;
+        font-size: 1.4rem;
+    }
+    
+    /* Tipografía reducida en móvil */
+    .student-name {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .student-info {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .student-university {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+    
+    /* Texto del testimonio en móvil */
+    .testimonio-text {
+        font-size: 1rem;
+        line-height: 1.7;
+        text-align: justify;
+        padding: 1rem;
+    }
+    
+    /* Mostrar metadata original en móvil */
+    .testimonio-metadata {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid var(--gray-200);
+        flex-wrap: wrap;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .metadata-scores {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .metadata-year {
+        text-align: center;
+        color: var(--black);
+        font-size: 0.9rem;
+        opacity: 0.7;
+        font-weight: 500;
+    }
+    
+    /* Ocultar header metadata en móvil */
+    .header-metadata {
+        padding-top: 1rem;
+        border-top: 1px solid var(--gray-200);
+        margin-top: 1rem;
+    }
+    
+    .header-metadata .metadata-scores {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    
+    .header-metadata .metadata-year {
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 500;
+        opacity: 0.7;
+        background: none;
+        padding: 0;
+        border-radius: 0;
+        color: var(--black);
+    }
+    
+    /* Márgenes móviles específicos */
+    .first-section,
+    .filtros-section {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 3rem;
+    }
+
+    .first-section {
+        margin-top: 3rem;
+    }
+
+    /* Controles en mobile */
+    .testimonios-controls {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    .filter-buttons {
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .sort-select {
+        width: 100%;
+        min-width: auto;
+    }
+
+    /* Deshabilitar márgenes para badges en móvil */
+    .testimonio-card:has(.testimonio-badge) .testimonio-content,
+    .testimonio-card.has-badge .testimonio-content {
+        margin-top: 0;
+    }
+}

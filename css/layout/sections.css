@@ -1,0 +1,331 @@
+/* ======================================
+   SECTIONS.CSS - LAYOUT UNIVERSAL OPTIMIZADO (DRY)
+   ====================================== */
+
+/* ======================================
+   CONFIGURACIÓN BASE SECTIONS
+   ====================================== */
+
+/* Sección universal base */
+.section {
+    padding: var(--section-padding);
+}
+
+/* Título universal - UNA SOLA DEFINICIÓN (DRY) */
+.section-title {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+    margin-bottom: var(--margin-bottom-standard);
+    color: var(--primary-dark);
+    line-height: 1;
+    letter-spacing: var(--title-letter-spacing);
+}
+
+/* Línea amarilla universal */
+.section-subtitle {
+    display: block;
+    height: 4px;
+    margin: 0 auto var(--margin-bottom-large) auto;
+    width: 120px;
+    background: var(--accent);
+    border-radius: 2px;
+    position: relative;
+}
+
+/* ======================================
+   SISTEMA HERO UNIVERSAL (DRY)
+   ====================================== */
+
+/* Hero base - UNA SOLA DEFINICIÓN para todos */
+.hero {
+    height: 100vh;
+    min-height: 600px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* Overlay universal */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(var(--black-rgb), 0.3), rgba(var(--black-rgb), 0.3));
+    z-index: 1;
+}
+
+/* Contenido hero universal */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+/* Tipografía hero base */
+.hero h1 {
+    font-family: var(--font-title);
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: white;
+    letter-spacing: var(--title-letter-spacing);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease;
+}
+
+.hero p {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: white;
+    font-style: italic;
+    opacity: 0.95;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+/* ======================================
+   SISTEMA GLASSMORPHISM OPTIMIZADO (DRY)
+   ====================================== */
+
+/* Glass section base - UNA SOLA DEFINICIÓN */
+.glass-section {
+    /* Variables CSS para customización dinámica */
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-blur: 20px;
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-text-color: var(--black);
+    --glass-title-color: var(--primary-dark);
+    
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    margin-left: var(--section-margin-horizontal);
+    margin-right: var(--section-margin-horizontal);
+    margin-bottom: var(--section-margin-bottom);
+    margin-top: var(--section-margin-bottom);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    z-index: 2;
+    color: var(--glass-text-color);
+    transition: var(--transition-standard);
+}
+
+.glass-section:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Modificadores de glass section (DRY) */
+.glass-section--light {
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-blur: 18px;
+    --glass-border: rgba(255, 255, 255, 0.4);
+}
+
+.glass-section--light:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.glass-section--dark {
+    --glass-bg: rgba(var(--black-rgb), 0.25);
+    --glass-blur: 20px;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-text-color: var(--white);
+    --glass-title-color: var(--white);
+}
+
+.glass-section--dark:hover {
+    background: rgba(var(--black-rgb), 0.35);
+}
+
+/* Títulos en glass sections - UNA REGLA UNIVERSAL (DRY) */
+.glass-section .section-title {
+    color: var(--glass-title-color);
+}
+
+/* Contenido en glass sections */
+.glass-section p {
+    color: var(--glass-text-color);
+}
+
+/* ======================================
+   GRADIENTS SECTIONS (original)
+   ====================================== */
+
+/* Primary Gradient Section - Universal blue gradient background */
+.primary-gradient-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+}
+
+.primary-gradient-section .section-title,
+.primary-dark-gradient-section .section-title {
+    color: white;
+}
+
+/* Primary Dark Gradient Section - Darker gradient background */
+.primary-dark-gradient-section {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+    color: white;
+}
+
+/* ======================================
+   CTA SECTION UNIVERSAL (DRY)
+   ====================================== */
+
+.cta {
+    padding: 5rem 0;
+    text-align: center;
+    position: relative;
+    color: white;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cta h2 {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    color: white;
+    letter-spacing: var(--title-letter-spacing);
+}
+
+.cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+/* ======================================
+   RESPONSIVE UNIVERSAL
+   ====================================== */
+
+/* Tablet */
+@media (max-width: 82rem) {
+    .glass-section {
+        margin: 1.5rem 5%;
+    }
+    
+    .cta {
+        padding: 4rem 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 53rem) {
+    .glass-section {
+        margin: 1rem 2%;
+    }
+    
+    .cta {
+        padding: 3rem 0;
+    }
+    
+    .cta h2 {
+        font-size: 2rem;
+    }
+    
+    .cta p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+/* ======================================
+   OPTIMIZACIONES RESPONSIVE GLOBALES
+   ====================================== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        min-height: 80vh;
+        height: 80vh;
+    }
+    
+    .mountain-background,
+    .secondary-background {
+        background-attachment: scroll !important;
+        min-height: 100vh !important;
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    .hero {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
+        min-height: 70vh;
+        height: 70vh;
+    }
+    
+    .mountain-background,
+    .secondary-background {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
+        min-height: 120vh !important;
+    }
+}
+
+/* ======================================
+   OPTIMIZACIONES RESPONSIVE GLOBALES
+   ====================================== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        min-height: 80vh;
+        height: 80vh;
+    }
+    
+    .mountain-background,
+    .secondary-background {
+        background-attachment: scroll !important;
+        min-height: 100vh !important;
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    .hero {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
+        min-height: 70vh;
+        height: 70vh;
+    }
+    
+    .mountain-background,
+    .secondary-background {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
+        min-height: 120vh !important;
+    }
+}

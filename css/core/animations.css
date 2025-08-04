@@ -1,0 +1,27 @@
+/* ======================================
+   ANIMATIONS.CSS - KEYFRAMES Y ANIMACIONES
+   ====================================== */
+
+/* Keyframes universales */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Intersection Observer animations - UNIVERSAL */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

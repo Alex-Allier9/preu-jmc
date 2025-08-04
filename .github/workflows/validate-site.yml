@@ -1,0 +1,181 @@
+name: 🔍 Validate Site
+
+on:
+  # Run on all pushes and PRs
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+  
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate Website Files
+    
+    steps:
+      - name: 📂 Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: 🔍 Validate HTML structure
+        run: |
+          echo "🔍 Validating HTML files..."
+          
+          # Check required HTML files exist
+          required_files=("index.html" "nosotros.html" "fundador.html" "servicios.html" "testimonios.html" "contacto.html" "404.html")
+          
+          for file in "${required_files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ $file exists"
+              
+              # Basic HTML validation
+              if grep -q "<!DOCTYPE html>" "$file"; then
+                echo "✅ $file has DOCTYPE"
+              else
+                echo "❌ $file missing DOCTYPE"
+                exit 1
+              fi
+              
+              if grep -q "<title>" "$file"; then
+                echo "✅ $file has title tag"
+              else
+                echo "⚠️ $file missing title tag"
+              fi
+              
+              if grep -q 'lang="es"' "$file"; then
+                echo "✅ $file has Spanish language attribute"
+              else
+                echo "⚠️ $file missing or incorrect language attribute"
+              fi
+              
+            else
+              echo "❌ $file is missing!"
+              exit 1
+            fi
+          done
+          
+      - name: 🎨 Validate CSS files  
+        run: |
+          echo "🎨 Validating CSS files..."
+          
+          if [ -d "css" ]; then
+            css_files=$(find css -name "*.css" -type f | wc -l)
+            echo "✅ Found $css_files CSS files"
+            
+            # Check main CSS file exists
+            if [ -f "css/main.css" ]; then
+              echo "✅ Main CSS file exists"
+            else
+              echo "❌ Main CSS file missing"
+              exit 1
+            fi
+          else
+            echo "❌ CSS directory missing"
+            exit 1
+          fi
+          
+      - name: ⚡ Validate JavaScript files
+        run: |
+          echo "⚡ Validating JavaScript files..."
+          
+          if [ -d "js" ]; then
+            js_files=$(find js -name "*.js" -type f | wc -l)
+            echo "✅ Found $js_files JavaScript files"
+            
+            # Check global JS file exists
+            if [ -f "js/global.js" ]; then
+              echo "✅ Global JS file exists"
+            else
+              echo "⚠️ Global JS file missing"
+            fi
+          else
+            echo "⚠️ JavaScript directory missing"
+          fi
+          
+      - name: 🖼️ Validate media files
+        run: |
+          echo "🖼️ Validating media files..."
+          
+          if [ -d "media" ]; then
+            # Count different media types
+            images=$(find media -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" | wc -l)
+            fonts=$(find media -name "*.woff" -o -name "*.woff2" -o -name "*.ttf" | wc -l)
+            
+            echo "✅ Found $images image files"
+            echo "✅ Found $fonts font files"
+            
+            # Check favicon exists
+            if [ -f "media/favicon/favicon.ico" ] || [ -f "media/favicon/favicon.svg" ]; then
+              echo "✅ Favicon found"
+            else
+              echo "⚠️ Favicon not found"
+            fi
+          else
+            echo "❌ Media directory missing"
+            exit 1
+          fi
+          
+      - name: 🔧 Validate configuration files
+        run: |
+          echo "🔧 Validating configuration files..."
+          
+          # Check redirects file
+          if [ -f "_redirects" ]; then
+            echo "✅ _redirects file exists"
+            
+            # Validate redirects syntax (basic check)
+            if grep -q "404" "_redirects"; then
+              echo "✅ 404 handling configured in _redirects"
+            else
+              echo "⚠️ No 404 handling found in _redirects"
+            fi
+          else
+            echo "⚠️ _redirects file missing"
+          fi
+          
+          # Check headers file  
+          if [ -f "_headers" ]; then
+            echo "✅ _headers file exists"
+          else
+            echo "⚠️ _headers file missing"
+          fi
+          
+          # Check Netlify config
+          if [ -f "netlify.toml" ]; then
+            echo "✅ netlify.toml exists"
+          else
+            echo "⚠️ netlify.toml missing"
+          fi
+          
+      - name: 🌐 Check internal links
+        run: |
+          echo "🌐 Checking internal links..."
+          
+          # Check if pages link to each other correctly
+          for file in *.html; do
+            if [ -f "$file" ]; then
+              echo "Checking links in $file..."
+              
+              # Look for internal navigation links
+              if grep -q 'href="nosotros"' "$file" || grep -q 'href="/nosotros"' "$file"; then
+                echo "✅ $file has link to nosotros"
+              fi
+              
+              if grep -q 'href="servicios"' "$file" || grep -q 'href="/servicios"' "$file"; then
+                echo "✅ $file has link to servicios"
+              fi
+            fi
+          done
+          
+      - name: 📊 Generate validation report
+        run: |
+          echo "📊 VALIDATION REPORT"
+          echo "==================="
+          echo "✅ All required HTML files present"
+          echo "✅ CSS structure validated"
+          echo "✅ Media files checked"
+          echo "✅ Configuration files reviewed"
+          echo ""
+          echo "🚀 Site is ready for deployment!"

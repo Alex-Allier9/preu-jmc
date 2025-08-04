@@ -1,0 +1,55 @@
+/* ======================================
+   FONTS.CSS - FUENTES LOCALES (CSS PURO SIMPLIFICADO)
+   ====================================== */
+
+/* ===== MATERIAL SYMBOLS ROUNDED ===== */
+@font-face {
+    font-family: 'Material Symbols Rounded';
+    font-style: normal;
+    font-weight: 100 700;
+    font-display: swap;
+    src: url('../../media/fonts/material-symbols/MaterialSymbolsRounded.woff2') format('woff2');
+}
+
+/* ===== DM SERIF TEXT ===== */
+@font-face {
+    font-family: 'DM Serif Text';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../media/fonts/dm-serif-text/DMSerifText-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DM Serif Text';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../media/fonts/dm-serif-text/DMSerifText-Italic.ttf') format('truetype');
+}
+
+/* ===== RALEWAY VARIABLE ===== */
+/* Una sola declaración maneja todos los pesos (100-900) */
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../../media/fonts/raleway/Raleway-Variable.ttf') format('truetype-variations');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../../media/fonts/raleway/Raleway-Italic-Variable.ttf') format('truetype-variations');
+}
+
+/* ===== OPTIMIZACIONES UNIVERSALES ===== */
+/* Una clase para todas las fuentes optimizadas */
+.font-optimized {
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

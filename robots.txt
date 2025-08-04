@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://preujmc.cl/sitemap.xml
+
+# Archivos no indexables
+Disallow: /css/
+Disallow: /js/
+Disallow: /media/downloads/
+Disallow: /*.pdf
+Disallow: /netlify/
+Disallow: /server.py
+Disallow: /*.log
+
+# Permitir acceso a imágenes importantes
+Allow: /media/images/
+Allow: /media/logos/
+Allow: /media/favicon/
+
+# Crawl delay (opcional)
+Crawl-delay: 1

@@ -1,0 +1,715 @@
+/* ======================================
+   CARDS.CSS - SISTEMA UNIVERSAL DE CARDS  
+   ====================================== */
+
+/* ======================================
+   UNIVERSAL CARD SYSTEM - IMPLEMENTACIÓN COMPLETA
+   ====================================== */
+
+/* Universal Card Base */
+.universal-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    text-align: left;
+    position: relative;
+}
+
+.universal-card:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Icono opcional en universal card */
+.universal-card .card-icon {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.universal-card .card-icon .material-symbols-rounded {
+    font-size: 4.5rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+/* Título de universal card */
+.universal-card h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: var(--gap-medium);
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+/* Párrafos en universal card */
+.universal-card p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--black);
+    margin-bottom: var(--gap-medium);
+    text-align: left;
+}
+
+.universal-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Soporte para listas en universal card */
+.universal-card ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--gap-medium) 0 0 0;
+}
+
+.universal-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    color: var(--primary-dark);
+    font-weight: 500;
+    position: relative;
+    padding-left: 1.5rem;
+    text-align: left;
+}
+
+.universal-card li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.universal-card li:last-child {
+    border-bottom: none;
+}
+
+/* Modificador para contenido extenso */
+.universal-card.extensive {
+    padding: var(--card-padding-large);
+}
+
+.universal-card.extensive p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+/* Modificador para servicios técnicos */
+.universal-card.technical h3 {
+    font-size: 1.5rem;
+}
+
+.universal-card.technical p {
+    margin-bottom: 1.5rem;
+}
+
+/* ======================================
+   SISTEMA UNIVERSAL DE CARDS EXISTENTES
+   ====================================== */
+
+/* Base styles for all universal cards */
+.gradient-border-card,
+.glass-card,
+.basic-card,
+.stat-card {
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    text-align: center;
+    position: relative;
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    box-shadow: var(--shadow-light);
+}
+
+/* Hover effects universales */
+.gradient-border-card:hover,
+.basic-card:hover,
+.stat-card:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-medium);
+}
+
+.basic-card:hover,
+.stat-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.universal-card:hover .card-icon .material-symbols-rounded,
+.gradient-border-card:hover .material-symbols-rounded,
+.icon-card:hover .card-icon .material-symbols-rounded,
+.process-card-full:hover .process-step-icon .process-icon {
+    transform: scale(1.2);
+}
+
+.stat-card:hover .stat-number,
+.stat-card:hover .stat-number.red,
+.achievement-card:hover .achievement-icon .material-symbols-rounded {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* ======================================
+   GRADIENT BORDER CARD
+   ====================================== */
+
+.gradient-border-card {
+    background: 
+        linear-gradient(var(--white), var(--white)) padding-box,
+        linear-gradient(135deg, var(--primary-light) 0%, var(--accent-light) 100%) border-box;
+    border: 9px solid transparent;
+}
+
+.gradient-border-card h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.gradient-border-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--black);
+    position: relative;
+    z-index: 1;
+}
+
+/* ======================================
+   BASIC CARD
+   ====================================== */
+
+.basic-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    text-align: center;
+}
+
+.basic-card h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.basic-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+/* ======================================
+   STAT CARD
+   ====================================== */
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    min-height: 200px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-card:hover {
+    transform: var(--hover-lift-medium);
+    backdrop-filter: blur(15px);
+}
+
+.stat-number {
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1;
+    letter-spacing: var(--title-letter-spacing);
+    transition: var(--transition-standard);
+}
+
+.stat-number.red {
+    color: var(--accent-red);
+}
+
+
+
+.stat-card p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+/* ======================================
+   ACHIEVEMENT CARD
+   ====================================== */
+
+.achievement-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    text-align: center;
+    position: relative;
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    box-shadow: var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.achievement-card:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 1);
+}
+
+.achievement-card .achievement-icon {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.achievement-card .achievement-icon .material-symbols-rounded {
+    font-size: 3.5rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+.achievement-card .achievement-title {
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 1.2;
+}
+
+.achievement-card .achievement-stats {
+    background: rgba(var(--primary-rgb), 0.1);
+    border-radius: 10px;
+    padding: 0.25rem;
+    margin-bottom: 1.5rem;
+    transition: var(--transition-standard);
+}
+
+.achievement-card:hover .achievement-stats {
+    background: rgba(var(--accent-rgb), 0.15);
+    transform: scale(1.02);
+}
+
+.achievement-card .stat-number {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: var(--transition-standard);
+}
+
+.achievement-card:hover .stat-number {
+    color: var(--accent);
+}
+
+.achievement-card .stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.achievement-card .achievement-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--black);
+    text-align: center;
+}
+
+/* ======================================
+   GLASS CARDS
+   ====================================== */
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--blur-standard);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    text-align: center;
+    position: relative;
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    box-shadow: var(--shadow-light);
+}
+
+.glass-card:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.glass-card h3 {
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.glass-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: white;
+}
+
+/* Glass Card Variants */
+.glass-card-light {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-light);
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+}
+
+.glass-card-light:hover {
+    transform: var(--hover-lift-button);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.glass-card-light h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.glass-card-light p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+.glass-card-dark {
+    background: rgba(var(--black-rgb), 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem;
+    color: white;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+}
+
+.glass-card-dark:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-strong);
+    background: rgba(var(--black-rgb), 0.4);
+}
+
+.glass-card-dark h3,
+.glass-card-dark .card-title {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.glass-card-dark p,
+.glass-card-dark .card-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ======================================
+   ICON CARD
+   ====================================== */
+
+.icon-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--blur-standard);
+    border-radius: var(--border-radius-standard);
+    padding: var(--card-padding);
+    text-align: center;
+    position: relative;
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    width: 100%;
+    box-shadow: var(--shadow-light);
+}
+
+.icon-card:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.icon-card .card-icon {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.icon-card .card-icon .material-symbols-rounded {
+    font-size: 4.5rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+.icon-card h3 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    line-height: 1.3;
+}
+
+.icon-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: white;
+}
+
+/* ======================================
+   QUOTE CARD
+   ====================================== */
+
+.quote-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--blur-standard);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    padding: var(--card-padding-large);
+    text-align: center;
+    margin: var(--margin-bottom-large) auto;
+    max-width: 600px;
+    transition: var(--transition-standard);
+    position: relative;
+}
+
+.quote-card:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.quote-text {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: var(--gap-medium);
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.quote-text::before,
+.quote-text::after {
+    content: '"';
+    font-family: var(--font-title);
+    font-size: 4rem;
+    color: var(--accent);
+    position: absolute;
+    opacity: 0.6;
+    font-weight: 300;
+    line-height: 1;
+    z-index: 1;
+    font-style: normal;
+}
+
+.quote-text::before {
+    top: -0.2rem;
+    left: -0.8rem;
+    transform: rotate(-5deg);
+}
+
+.quote-text::after {
+    bottom: -1.6rem;
+    right: -0.8rem;
+    transform: rotate(5deg);
+}
+
+.quote-author {
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+    text-align: right;
+}
+
+/* ======================================
+   PROCESS CARD FULL
+   ====================================== */
+
+.process-card-full {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius-large);
+    padding: var(--card-padding-large);
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-standard);
+    margin-bottom: var(--margin-bottom-standard);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 2rem;
+}
+
+.process-card-full:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* ======================================
+   RESPONSIVE PARA CARDS
+   ====================================== */
+
+@media (max-width: 82rem) and (min-width: 53rem) {
+    .stat-number {
+        font-size: 3.75rem;
+    }
+
+    .basic-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .universal-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .universal-card.technical h3 {
+        font-size: 1.3rem;
+    }
+
+    .icon-card {
+        min-height: 10rem;
+        padding: 1.2rem;
+    }
+    
+    .icon-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .icon-card .card-icon .material-symbols-rounded {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 53rem) {
+    /* Responsive general para cards */
+    .achievement-card {
+        padding: 1.5rem;
+    }
+
+    .universal-card {
+        padding: 1.5rem;
+    }
+
+    .universal-card.extensive {
+        padding: 2rem;
+    }
+
+    .universal-card .card-icon .material-symbols-rounded {
+        font-size: 3.5rem;
+    }
+
+    .icon-card {
+        min-height: 8.75rem;
+        padding: 1.2rem;
+    }
+    
+    .icon-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .icon-card .card-icon .material-symbols-rounded {
+        font-size: 3rem;
+    }
+    
+    .icon-card .card-icon {
+        margin-bottom: 1rem;
+    }
+
+    .quote-text {
+        font-size: 1.5rem;
+    }
+
+    .quote-text::before,
+    .quote-text::after {
+        font-size: 3rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .card-button {
+        padding: 0.875rem;
+        gap: 0.875rem;
+    }
+    
+    .card-button-icon,
+    .card-button-image {
+        width: 1.3rem;
+        height: 1.3rem;
+        min-width: 1.3rem;
+        font-size: 1.3rem;
+    }
+    
+    .card-button-label {
+        font-size: 0.85rem;
+    }
+    
+    .card-button-value {
+        font-size: 0.95rem;
+    }
+
+    .process-card-full {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+
+    .process-step-icon {
+        min-width: 60px;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+
+    .process-step-icon .process-icon {
+        font-size: 2rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}

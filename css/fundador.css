@@ -1,0 +1,412 @@
+/* ======================================
+   FUNDADOR.CSS - ESTILOS ESPECÍFICOS DE LA PÁGINA
+   ====================================== */
+
+/* Background images - ESPECÍFICO DE FUNDADOR */
+.mountain-background {
+    background-image: url('../media/images/fundador/daniel-roe-lpjb_UMOyx8-unsplash.jpg');
+}
+
+.secondary-background {
+    background-image: url('../media/images/fundador/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg');
+}
+
+/* Hero section background - ESPECÍFICO DE FUNDADOR */
+/* Hero Section - Versión corregida */
+/* Hero section background - ESPECÍFICO DE FUNDADOR */
+.hero {
+    background-image: url('../media/images/fundador/ojos-salado_0002.jpg');
+}
+
+.hero h1 {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: var(--gap-medium);
+    letter-spacing: var(--title-letter-spacing);
+    line-height: 1.2;
+    color: var(--white);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--white);
+    opacity: 0.9;
+    max-width: 100%;
+    align-self: flex-start;
+}
+
+/* CTA section background - ESPECÍFICO DE FUNDADOR */
+.cta {
+    background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
+        url('../media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
+}
+
+/* ======================================
+   PROFILE HEADER SECTION
+   ====================================== */
+
+.profile-header {
+    padding: var(--section-padding);
+}
+
+/* Profile card ya está definido en components/cards.css */
+
+/* Profile card, profile-image, profile-info, profile-contact ya están definidos en components/cards.css */
+
+/* About card ya está definido en components/cards.css */
+
+.about-content {
+    font-size: 1.1rem;
+    hyphens: none;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ======================================
+   LAYOUT ESPECÍFICO DE FUNDADOR - BASADO EN NOSOTROS
+   ====================================== */
+
+/* Secciones con efecto glassmorphism */
+.profile-header,
+.about-section,
+.experience-section,
+.mountaineering-section {
+    background: rgba(var(--white-rgb), 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(var(--white-rgb), 0.6);
+    margin-left: 8.33%;
+    margin-right: 8.33%;
+    margin-bottom: 6rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-standard);
+}
+
+/* Hover effects para secciones glassmorphism */
+.profile-header:hover,
+.about-section:hover,
+.experience-section:hover,
+.mountaineering-section:hover {
+    background: rgba(var(--white-rgb), 0.5);
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Márgenes superiores específicos - IGUAL QUE NOSOTROS */
+.profile-header {
+    margin-top: 6rem;
+}
+
+.mountaineering-section {
+    margin-top: 6rem;
+}
+
+/* ======================================
+   TIMELINE EXPERIENCE - SIMPLIFICADO
+   ====================================== */
+
+.timeline {
+    position: relative;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--primary);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-year {
+    padding: 0.5rem 1rem;
+    background-color: var(--accent);
+    color: var(--black);
+    font-weight: 600;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.timeline-content {
+    padding: var(--card-padding-medium);
+    background-color: var(--white);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+}
+
+.timeline-content:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-medium);
+}
+
+.timeline-content h3 {
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* ======================================
+   PHILOSOPHY SECTION
+   ====================================== */
+
+/* Philosophy grid ya está definido en components/grids.css */
+/* Philosophy card ya está definido en components/cards.css */
+
+
+
+.mountaineering-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+}
+
+.mountaineering-intro p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--black);
+}
+
+/* ======================================
+   RESPONSIVE DESIGN
+   ====================================== */
+
+/* ======================================
+   RESPONSIVE ESPECÍFICO DE FUNDADOR - BASADO EN NOSOTROS
+   ====================================== */
+
+/* ======================================
+   RESPONSIVE ESPECÍFICO DE FUNDADOR - CORREGIDO
+   ====================================== */
+
+/* Tablet: 848px - 1312px (82rem y 53rem) */
+@media (max-width: 82rem) and (min-width: 53rem) {
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    }
+
+    /* Profile contact grid centrado en tablet */
+    .profile-contact-items {
+        justify-items: center;
+    }
+
+    .profile-contact-item {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    /* Timeline en tablet */
+    .timeline {
+        max-width: 90%;
+    }
+    
+    .timeline-item {
+        width: 45%;
+    }
+    
+    .timeline-content {
+        padding: 1.2rem;
+    }
+}
+
+/* Mobile: Hasta 848px (53rem) */
+@media (max-width: 53rem) {
+    .hero .hero-text-content h1 {
+        font-size: clamp(1.2rem, 5vw, 2rem);
+        line-height: 1.1;
+        text-align: center;
+    }
+    
+    .hero .hero-subtitle {
+        font-size: clamp(0.85rem, 3vw, 1rem);
+        text-align: center;
+    }
+
+    /* Profile header específico */
+    .profile-header {
+        padding: 6rem 0 3rem;
+        min-height: auto;
+    }
+
+    /* Profile card mobile: imagen centrada arriba, texto y botones abajo */
+    .profile-image {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+    }
+
+    .profile-name {
+        font-size: 2rem;
+    }
+
+    .profile-title {
+        font-size: 1.2rem;
+    }
+
+    /* Profile contact grid en mobile */
+    .profile-contact-items {
+        justify-items: center;
+    }
+
+    .profile-contact-item {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Márgenes móviles específicos */
+    .profile-header,
+    .about-section,
+    .experience-section,
+    .mountaineering-section {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 3rem;
+    }
+
+    .profile-header {
+        margin-top: 3rem;
+    }
+
+    .mountaineering-section {
+        margin-top: 3rem;
+    }
+
+    /* Timeline mobile: convertir a lista simple */
+    .timeline {
+        max-width: 100%;
+        margin: 0;
+        padding: 1rem 0;
+    }
+
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding: 0 0 2rem 0;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .timeline-year {
+        display: block;
+        text-align: center;
+        margin: 0 auto 1rem auto;
+        width: fit-content;
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+        margin: 0;
+    }
+
+    .timeline-content h3 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-content p {
+        text-align: center;
+    }
+
+    /* Hero mobile: mantener distribución 2x1 igual que desktop */
+    .hero-split-container {
+        padding: 0 1.5rem;
+    }
+
+    .hero-text-content {
+        padding-right: 2rem;
+    }
+
+    /* Mountaineering gallery */
+    .mountaineering-intro {
+        padding: 0 1rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* ======================================
+   GALLERY LOADING & ERROR STATES
+   ====================================== */
+
+.gallery-loading,
+.gallery-error {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(var(--white-rgb), 0.9);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    margin: 2rem 0;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--gray-200);
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.error-message h3 {
+    color: var(--accent-red);
+    margin-bottom: 1rem;
+}
+
+.error-message p {
+    color: var(--black);
+    margin-bottom: 2rem;
+}

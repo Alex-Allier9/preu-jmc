@@ -1,0 +1,386 @@
+/* ======================================
+   ICONS.CSS - SISTEMA UNIVERSAL OPTIMIZADO DRY
+   ====================================== */
+
+/* ======================================
+   1. MATERIAL SYMBOLS BASE UNIVERSAL
+   ====================================== */
+
+/* Base universal para TODOS los iconos Material Symbols */
+.material-symbols-rounded {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Default - se sobreescribe por clases de tamaño */
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-variation-settings: 
+        'FILL' 0, 
+        'wght' 400, 
+        'GRAD' 0, 
+        'opsz' 48;
+    -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: var(--transition-standard);
+    color: var(--primary); /* Color por defecto */
+}
+
+/* ======================================
+   2. CONTENEDORES UNIVERSALES
+   ====================================== */
+
+/* Contenedores principales */
+.main-icon-container {
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-standard);
+    margin: 0 auto 1.5rem auto;
+    text-align: center;
+}
+
+.secondary-icon-container {
+    height: 7.5rem;
+    width: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-standard);
+    margin: 0 auto 1.5rem auto;
+    text-align: center;
+}
+
+.card-icon {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-icon .material-symbols-rounded {
+    font-size: 4.5rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+/* ======================================
+   3. SISTEMA DE TAMAÑOS UNIFICADO
+   ====================================== */
+
+/* Iconos principales */
+.main-icon,
+.main-icon .material-symbols-rounded {
+    font-size: 6rem;
+    color: var(--primary);
+}
+
+.secondary-icon,
+.secondary-icon .material-symbols-rounded {
+    font-size: 4.5rem;
+    color: var(--primary);
+}
+
+/* Tamaños para cards - UNIFICADOS */
+.icon-large,
+.icon-large .material-symbols-rounded {
+    font-size: 3rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+.icon-medium,
+.icon-medium .material-symbols-rounded {
+    font-size: 2.5rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+.icon-small,
+.icon-small .material-symbols-rounded {
+    font-size: 2rem;
+    color: var(--primary);
+    transition: var(--transition-standard);
+}
+
+/* Contenedores para tamaños específicos */
+.icon-large,
+.icon-medium,
+.icon-small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: var(--transition-standard);
+}
+
+/* Footer y meta */
+.footer-icon {
+    font-size: 1.2rem;
+    color: var(--primary);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.meta-icon {
+    font-size: 1rem;
+    color: var(--black);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ======================================
+   4. ICONOS ESPECÍFICOS
+   ====================================== */
+
+/* Iconos circulares con fondo */
+.table-icon {
+    min-width: 60px;
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+    flex-shrink: 0; /* AÑADIDO: Evita que el icono se encoja */
+}
+
+.table-icon .material-symbols-rounded {
+    font-size: 2rem;
+    color: var(--white);
+    transition: var(--transition-standard); /* AÑADIDO: Transición para hover */
+}
+
+.process-step-icon {
+    min-width: 80px;
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+}
+
+.process-step-icon .process-icon {
+    font-size: 2.5rem;
+    color: var(--white);
+    transition: var(--transition-standard);
+}
+
+/* Hover effects para process-step-icon - Igualado con table-icon */
+.process-card-full:hover .process-step-icon {
+    background: var(--accent-green);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Iconos de páginas específicas */
+.achievement-icon {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.achievement-icon .material-symbols-rounded {
+    font-size: 3rem;
+    color: var(--primary);
+}
+
+.profile-contact-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    color: var(--primary);
+}
+
+.value-icon {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.value-icon .secondary-icon {
+    color: var(--primary);
+}
+
+.meta-item .meta-icon {
+    color: var(--primary);
+}
+
+/* ======================================
+   5. COLORES ESPECÍFICOS POR CONTEXTO
+   ====================================== */
+
+/* Glass Cards - Color amarillo para contraste */
+.glass-card .material-symbols-rounded,
+.glass-card-light .material-symbols-rounded,
+.glass-card-dark .material-symbols-rounded,
+.glass-card .icon-large,
+.glass-card .icon-large .material-symbols-rounded,
+.glass-card .icon-medium,
+.glass-card .icon-medium .material-symbols-rounded,
+.glass-card .icon-small,
+.glass-card .icon-small .material-symbols-rounded,
+.glass-card-light .icon-large,
+.glass-card-light .icon-large .material-symbols-rounded,
+.glass-card-light .icon-medium,
+.glass-card-light .icon-medium .material-symbols-rounded,
+.glass-card-light .icon-small,
+.glass-card-light .icon-small .material-symbols-rounded,
+.glass-card-dark .icon-large,
+.glass-card-dark .icon-large .material-symbols-rounded,
+.glass-card-dark .icon-medium,
+.glass-card-dark .icon-medium .material-symbols-rounded,
+.glass-card-dark .icon-small,
+.glass-card-dark .icon-small .material-symbols-rounded {
+    color: var(--accent) !important;
+}
+
+/* Basic Cards - Color azul primary */
+.basic-card .material-symbols-rounded {
+    color: var(--primary);
+}
+
+/* ======================================
+   6. RESPONSIVE UNIVERSAL
+   ====================================== */
+
+/* Tablet - 82rem (1312px) */
+@media (max-width: 82rem) {
+    /* Contenedores principales */
+    .main-icon-container {
+        height: 8.75rem;
+        width: 8.75rem;
+    }
+    
+    .main-icon,
+    .main-icon .material-symbols-rounded {
+        font-size: 5rem;
+    }
+    
+    .secondary-icon-container {
+        height: 6.25rem;
+        width: 6.25rem;
+    }
+    
+    .secondary-icon,
+    .secondary-icon .material-symbols-rounded {
+        font-size: 3.5rem;
+    }
+    
+    /* Card Icons */
+    .card-icon .material-symbols-rounded {
+        font-size: 3.5rem;
+    }
+    
+    .icon-large,
+    .icon-large .material-symbols-rounded {
+        font-size: 2.5rem;
+    }
+    
+    .icon-medium,
+    .icon-medium .material-symbols-rounded {
+        font-size: 2rem;
+    }
+    
+    .icon-small,
+    .icon-small .material-symbols-rounded {
+        font-size: 1.8rem;
+    }
+    
+    /* Iconos específicos */
+    .table-icon {
+        min-width: 50px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .table-icon .material-symbols-rounded {
+        font-size: 1.5rem;
+    }
+    
+    .process-step-icon {
+        min-width: 70px;
+        width: 70px;
+        height: 70px;
+    }
+    
+    .process-step-icon .process-icon {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile - 53rem (848px) */
+@media (max-width: 53rem) {
+    /* Contenedores principales */
+    .main-icon-container {
+        height: 5rem;
+        width: 5rem;
+    }
+    
+    .main-icon,
+    .main-icon .material-symbols-rounded {
+        font-size: 2.5rem;
+    }
+    
+    .secondary-icon-container {
+        height: 3.75rem;
+        width: 3.75rem;
+    }
+    
+    .secondary-icon,
+    .secondary-icon .material-symbols-rounded {
+        font-size: 2rem;
+    }
+    
+    /* Card Icons */
+    .card-icon .material-symbols-rounded {
+        font-size: 3rem;
+    }
+    
+    .icon-large,
+    .icon-large .material-symbols-rounded {
+        font-size: 2rem;
+    }
+    
+    .icon-medium,
+    .icon-medium .material-symbols-rounded {
+        font-size: 1.8rem;
+    }
+    
+    .icon-small,
+    .icon-small .material-symbols-rounded {
+        font-size: 1.5rem;
+    }
+    
+    /* Iconos específicos */
+    .table-icon {
+        min-width: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .table-icon .material-symbols-rounded {
+        font-size: 1.2rem;
+    }
+    
+    .process-step-icon {
+        min-width: 60px;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+    
+    .process-step-icon .process-icon {
+        font-size: 1.8rem;
+    }
+}
