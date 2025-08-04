@@ -62,11 +62,26 @@ const handleHeaderScroll = debounce(() => {
 // ======================================
 
 function setActiveNavLink() {
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    
+    let currentPath = window.location.pathname;
+    // Normalizar: quitar slash final excepto si es solo '/'
+    if (currentPath.length > 1 && currentPath.endsWith('/')) {
+        currentPath = currentPath.slice(0, -1);
+    }
+
     document.querySelectorAll('.nav-link').forEach(link => {
-        const linkPath = link.getAttribute('href').split('/').pop();
-        link.classList.toggle('active', linkPath === currentPath);
+        let linkHref = link.getAttribute('href');
+        // Normalizar href: quitar slash final excepto si es solo '/'
+        if (linkHref.length > 1 && linkHref.endsWith('/')) {
+            linkHref = linkHref.slice(0, -1);
+        }
+        // Si es root (inicio)
+        if (linkHref === '/' && currentPath === '/') {
+            link.classList.add('active');
+        } else if (linkHref !== '/' && currentPath.includes(linkHref)) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
     });
 }
 
