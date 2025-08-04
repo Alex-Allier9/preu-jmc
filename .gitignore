@@ -86,3 +86,4 @@ unoptimized/
 # Archivos de configuración específicos del proyecto
 config.local.js
 settings.local.json
+/dev-server
