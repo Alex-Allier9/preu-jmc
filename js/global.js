@@ -62,26 +62,32 @@ const handleHeaderScroll = debounce(() => {
 // ======================================
 
 function setActiveNavLink() {
-    let currentPath = window.location.pathname;
-    // Normalizar: quitar slash final excepto si es solo '/'
-    if (currentPath.length > 1 && currentPath.endsWith('/')) {
-        currentPath = currentPath.slice(0, -1);
+    // Obtener página actual - funciona en root y subdirectorios
+    const currentPath = window.location.pathname;
+    let currentPage = currentPath.split('/').pop() || 'index.html';
+    
+    // Remover extensión (.html, .php, etc.)
+    currentPage = currentPage.replace(/\.[^.]*$/, '') || 'index';
+    
+    // Si estamos en root (/, /subdirectorio/), tratar como index
+    if (currentPage === '' || currentPath === '/' || currentPath.endsWith('/')) {
+        currentPage = 'index';
     }
-
+    
     document.querySelectorAll('.nav-link').forEach(link => {
-        let linkHref = link.getAttribute('href');
-        // Normalizar href: quitar slash final excepto si es solo '/'
-        if (linkHref.length > 1 && linkHref.endsWith('/')) {
-            linkHref = linkHref.slice(0, -1);
-        }
-        // Si es root (inicio)
-        if (linkHref === '/' && currentPath === '/') {
-            link.classList.add('active');
-        } else if (linkHref !== '/' && currentPath.includes(linkHref)) {
-            link.classList.add('active');
+        const href = link.getAttribute('href') || '';
+        let linkPage = '';
+        
+        // Manejar diferentes tipos de enlaces
+        if (href === '/' || href === '' || href === './' || href === 'index' || href === 'index.html') {
+            linkPage = 'index';
         } else {
-            link.classList.remove('active');
+            // Extraer página del href
+            linkPage = href.split('/').pop().replace(/\.[^.]*$/, '') || 'index';
         }
+        
+        // Aplicar clase active si coinciden
+        link.classList.toggle('active', linkPage === currentPage);
     });
 }
 
