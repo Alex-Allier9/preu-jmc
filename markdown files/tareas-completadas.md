@@ -25,7 +25,7 @@
 
 ### **4. ✅ URLs Limpias Sin "index"**
 - **Archivos**: Todas las páginas HTML
-- **Implementación**: Reemplazó `href="index"` por `href="/"`
+- **Implementación**: Reemplazó `href="index"` por `href="index"`
 - **Resultado**: Los botones de inicio ya no muestran "index" en la barra de búsqueda
 
 ---
