@@ -24,6 +24,9 @@
 
 .hero {
     background-image: url('../media/images/servicios/gaetan-meyer-WemqIKiduMo-unsplash.jpg');
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
 }
 /* ======================================
    CTA SECTION BACKGROUND - ESPECÍFICO DE SERVICIOS

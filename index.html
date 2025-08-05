@@ -96,6 +96,48 @@
                 <li><a href="/testimonios" class="nav-link">Testimonios</a></li>
                 <li><a href="/contacto" class="nav-link">Contacto</a></li>
             </ul>
+            <!-- NUEVO: Botón Hamburguesa -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menú">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Menú Móvil -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="/" class="logo">
+                <img src="media/logos/logo_web.svg" alt="JMC" style="height: 1.8rem;">
+            </a>
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Cerrar menú">
+                <span class="close-line"></span>
+                <span class="close-line"></span>
+            </button>
+        </div>
+        <ul class="mobile-nav-menu">
+            <li class="mobile-nav-item">
+                <a href="/" class="mobile-nav-link">Inicio</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/nosotros" class="mobile-nav-link">Nosotros</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/fundador" class="mobile-nav-link">Fundador</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/servicios" class="mobile-nav-link">Servicios</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/testimonios" class="mobile-nav-link">Testimonios</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/contacto" class="mobile-nav-link">Contacto</a>
+            </li>
+        </ul>
+    </div>
+            </ul>
         </nav>
     </header>
 
@@ -478,6 +520,7 @@
         </div>
     </footer>
 
+    <script src="js/mobile-menu.js"></script>
     <script src="js/global.js"></script>
 </body>
 

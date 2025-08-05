@@ -14,6 +14,18 @@
 /* Hero section background - ESPECÍFICO DE NOSOTROS */
 .hero {
     background-image: url('../media/images/nosotros/redd-francisco-gdQnsMbhkUs-unsplash.jpg');
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
 }
 /* CTA section background - ESPECÍFICO DE NOSOTROS */
 .cta {
@@ -68,7 +80,7 @@
 
 .program {
     background: linear-gradient(rgba(var(--white-rgb), 0.4), rgba(var(--white-rgb), 0.4)),
-        url('../media/images/nosotros/annie-spratt-R2OQShb3nmk-unsplash.jpg') center/cover;
+        url('../media/images/nosotros/alessio-soggetti-PdGBci-4jR8-unsplash.jpg') center/cover;
     color: var(--black);
 }
 
