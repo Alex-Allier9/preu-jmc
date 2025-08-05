@@ -80,35 +80,50 @@ function setActiveNavLink() {
     // Remover extensión .html si existe
     currentPage = currentPage.replace(/\.html$/, '');
     
+    // Normalizar para comparación - convertir 'index' a varias formas posibles
+    const normalizePageName = (pageName) => {
+        if (pageName === 'index' || pageName === '' || pageName === '/') {
+            return 'inicio'; // Tu enlace dice "Inicio" pero apunta a "/"
+        }
+        return pageName.toLowerCase();
+    };
+    
+    const normalizedCurrentPage = normalizePageName(currentPage);
+    
     document.querySelectorAll('.nav-link').forEach(link => {
-        const linkHref = link.getAttribute('href');
-        
-        // Procesar el href del enlace
+        const linkHref = link.getAttribute('href').trim();
         let linkPage;
         
-        if (linkHref === '/' || linkHref === './') {
+        if (linkHref === '/' || linkHref === './' || linkHref === '') {
             // Enlaces a la página principal
-            linkPage = 'index';
+            linkPage = 'inicio';
         } else {
-            // Extraer la última parte del href
-            const hrefSegments = linkHref.split('/');
-            linkPage = hrefSegments[hrefSegments.length - 1];
-            
-            // Remover trailing slash y extensión .html
-            linkPage = linkPage.replace(/\/$/, '').replace(/\.html$/, '');
-            
-            // Si queda vacío después de limpiar, es index
-            if (!linkPage) {
-                linkPage = 'index';
+            // Para enlaces relativos como "nosotros", "fundador", etc.
+            if (!linkHref.includes('/')) {
+                // Es un enlace relativo simple
+                linkPage = linkHref.replace(/\.html$/, '').toLowerCase();
+            } else {
+                // Extraer la última parte del href
+                const hrefSegments = linkHref.split('/');
+                linkPage = hrefSegments[hrefSegments.length - 1];
+                linkPage = linkPage.replace(/\/$/, '').replace(/\.html$/, '').toLowerCase();
+                
+                // Si queda vacío después de limpiar, es inicio
+                if (!linkPage) {
+                    linkPage = 'inicio';
+                }
             }
         }
         
         // Comparar y activar
-        const isActive = currentPage === linkPage;
+        const isActive = normalizedCurrentPage === linkPage;
         link.classList.toggle('active', isActive);
         
-        // Debug opcional - puedes comentar estas líneas en producción
-        console.log(`Comparando: "${currentPage}" con "${linkPage}" = ${isActive}`);
+        // Debug - muestra la comparación
+        console.log(`URL actual: "${currentPath}" → "${normalizedCurrentPage}"`);
+        console.log(`Enlace: "${linkHref}" → "${linkPage}"`);
+        console.log(`¿Activo?: ${isActive}`);
+        console.log('---');
     });
 }
 
@@ -279,7 +294,6 @@ function animateCountersUniversal() {
         '.achievement-stats .stat-number', // Achievement numbers
         '.stat-card .stat-number', // Stat cards
         '.achievement-card .stat-number', // Achievement cards
-        '[data-count]',           // Elementos con data-count
         '.counter',               // Clase general counter
         '.animate-number'         // Clase específica para animación
     ];
@@ -358,28 +372,6 @@ function animateCountersUniversal() {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             animateValueWithText(counter, 0, numberPart, 1600, originalText);
-                            counterObserver.unobserve(counter);
-                        }
-                    });
-                });
-
-                counterObserver.observe(counter);
-                return;
-            }
-        }
-
-        // 4. VERIFICAR SI TIENE data-count ATTRIBUTE
-        if (counter.hasAttribute('data-count')) {
-            const dataCount = parseInt(counter.getAttribute('data-count'));
-            if (!isNaN(dataCount)) {
-                counter.textContent = '0';
-
-                const counterObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            animateValue(counter, 0, dataCount, 1600, {
-                                originalText: target
-                            });
                             counterObserver.unobserve(counter);
                         }
                     });
