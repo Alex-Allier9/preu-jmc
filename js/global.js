@@ -62,13 +62,79 @@ const handleHeaderScroll = debounce(() => {
 // ======================================
 
 function setActiveNavLink() {
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    // Obtener la ruta actual y limpiarla
+    let currentPath = window.location.pathname;
+    
+    // Remover trailing slash si existe
+    currentPath = currentPath.replace(/\/$/, '');
+    
+    // Extraer la última parte de la ruta (el nombre de la página)
+    const pathSegments = currentPath.split('/');
+    let currentPage = pathSegments[pathSegments.length - 1];
+    
+    // Si está vacío o es el directorio raíz, es la página principal
+    if (!currentPage || currentPage === '') {
+        currentPage = 'index';
+    }
+    
+    // Remover extensión .html si existe
+    currentPage = currentPage.replace(/\.html$/, '');
     
     document.querySelectorAll('.nav-link').forEach(link => {
-        const linkPath = link.getAttribute('href').split('/').pop();
-        link.classList.toggle('active', linkPath === currentPath);
+        const linkHref = link.getAttribute('href');
+        
+        // Procesar el href del enlace
+        let linkPage;
+        
+        if (linkHref === '/' || linkHref === './') {
+            // Enlaces a la página principal
+            linkPage = 'index';
+        } else {
+            // Extraer la última parte del href
+            const hrefSegments = linkHref.split('/');
+            linkPage = hrefSegments[hrefSegments.length - 1];
+            
+            // Remover trailing slash y extensión .html
+            linkPage = linkPage.replace(/\/$/, '').replace(/\.html$/, '');
+            
+            // Si queda vacío después de limpiar, es index
+            if (!linkPage) {
+                linkPage = 'index';
+            }
+        }
+        
+        // Comparar y activar
+        const isActive = currentPage === linkPage;
+        link.classList.toggle('active', isActive);
+        
+        // Debug opcional - puedes comentar estas líneas en producción
+        console.log(`Comparando: "${currentPage}" con "${linkPage}" = ${isActive}`);
     });
 }
+
+// Versión alternativa más compacta
+function setActiveNavLinkCompact() {
+    const getCurrentPage = (path) => {
+        const cleaned = path.replace(/\/$/, '').split('/').pop() || 'index';
+        return cleaned.replace(/\.html$/, '') || 'index';
+    };
+    
+    const currentPage = getCurrentPage(window.location.pathname);
+    
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        const linkPage = linkHref === '/' || linkHref === './' ? 
+            'index' : getCurrentPage(linkHref);
+        
+        link.classList.toggle('active', currentPage === linkPage);
+    });
+}
+
+// Llamar la función cuando se carga la página
+document.addEventListener('DOMContentLoaded', setActiveNavLink);
+
+// También llamarla si cambias de página con JavaScript (SPA)
+window.addEventListener('popstate', setActiveNavLink);
 
 // ======================================
 // SISTEMA UNIVERSAL DE ANIMACIÓN DE VALORES - CORREGIDO COMPLETO
