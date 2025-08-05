@@ -62,32 +62,11 @@ const handleHeaderScroll = debounce(() => {
 // ======================================
 
 function setActiveNavLink() {
-    // Obtener página actual - funciona en root y subdirectorios
-    const currentPath = window.location.pathname;
-    let currentPage = currentPath.split('/').pop() || 'index.html';
-    
-    // Remover extensión (.html, .php, etc.)
-    currentPage = currentPage.replace(/\.[^.]*$/, '') || 'index';
-    
-    // Si estamos en root (/, /subdirectorio/), tratar como index
-    if (currentPage === '' || currentPath === '/' || currentPath.endsWith('/')) {
-        currentPage = 'index';
-    }
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     
     document.querySelectorAll('.nav-link').forEach(link => {
-        const href = link.getAttribute('href') || '';
-        let linkPage = '';
-        
-        // Manejar diferentes tipos de enlaces
-        if (href === '/' || href === '' || href === './' || href === 'index' || href === 'index.html') {
-            linkPage = 'index';
-        } else {
-            // Extraer página del href
-            linkPage = href.split('/').pop().replace(/\.[^.]*$/, '') || 'index';
-        }
-        
-        // Aplicar clase active si coinciden
-        link.classList.toggle('active', linkPage === currentPage);
+        const linkPath = link.getAttribute('href').split('/').pop();
+        link.classList.toggle('active', linkPath === currentPath);
     });
 }
 
