@@ -343,8 +343,7 @@ class GalleryCards {
                 
                 <img src="${window.galleryConfig.basePath}${expedition.id}/${expedition.coverImage}" 
                      alt="${expedition.name}" 
-                     class="expedition-image"
-                     onerror="this.src='https://images.unsplash.com/photo-1464822759844-d150df1ca4b8?w=600&h=400&fit=crop'">
+                     class="expedition-image">
                 
                 <div class="expedition-content">
                     <h3 class="expedition-title">${expedition.name}</h3>

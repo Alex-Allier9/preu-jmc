@@ -16,17 +16,23 @@
 /* Hero section background - ESPECÍFICO DE FUNDADOR */
 .hero {
     background-image: url('../media/images/fundador/ojos-salado_0002.jpg');
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
 }
 
 .hero h1 {
     font-family: var(--font-title);
     font-size: clamp(2.5rem, 6vw, 4.5rem);
-.hero {
-    background-image: url('../media/images/fundador/ojos-salado_0002.jpg');
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: center;
-}
     margin-bottom: var(--gap-medium);
     letter-spacing: var(--title-letter-spacing);
     line-height: 1.2;
