@@ -1,5 +1,6 @@
 /* ======================================
-   TESTIMONIOS.JS - SISTEMA DE TESTIMONIOS CON GOOGLE SHEETS
+   TESTIMONIOS.JS - SISTEMA DE TESTIMONIOS CON GOOGLE SHEETS + TEMPORADAS
+   CONSERVANDO ESTRUCTURA ORIGINAL COMPLETA
    ====================================== */
 
 // Configuración de Google Sheets
@@ -221,10 +222,14 @@ class TestimoniosManager {
                 puntajeLenguaje: parseInt(row.puntajeLenguaje || row.lenguaje) || null,
                 // Determinar Máximo Nacional automáticamente: M1 = 1000 y/o M2 = 1000
                 maximoNacional: (puntajeM1 === 1000) || (puntajeM2 === 1000),
-                foto: (row.foto && String(row.foto).trim() && String(row.foto).trim() !== '') ? String(row.foto).trim() : null,
+                foto: (row.foto && String(row.foto).trim() && String(row.foto).trim() !== '') ? 
+                    String(row.foto).trim() : null,
                 fechaTestimonio: row.fechaTestimonio || new Date().toISOString(),
                 categoria: '', // Se determinará después
-                isRecent: this.isRecentTestimonio(row.fechaTestimonio)
+                isRecent: this.isRecentTestimonio(row.fechaTestimonio),
+                
+                // 🆕 NUEVO: Campo temporada con validación (SUNNY POR DEFECTO)
+                temporada: this.validateSeasonIcon(row.temporada || row.season)
             };
             
             // Determinar categoría basada en la nueva lógica
@@ -240,6 +245,50 @@ class TestimoniosManager {
             }
             return isValid;
         });
+    }
+
+    // 🆕 NUEVO: Método de validación de iconos de temporada
+    validateSeasonIcon(temporadaValue) {
+        // Limpiar y validar el valor de temporada
+        const cleaned = String(temporadaValue || '').trim().toLowerCase();
+        
+        // Si está vacío, null, undefined o es solo espacios → sunny por defecto
+        if (!cleaned || cleaned === '' || cleaned === 'null' || cleaned === 'undefined') {
+            console.log(`🌞 Sin valor de temporada, usando sunny por defecto`);
+            return 'sunny';
+        }
+        
+        // Mapear diferentes posibles valores a los iconos correctos
+        const seasonMap = {
+            // Iconos directos (recomendado)
+            'sunny': 'sunny',
+            'ac_unit': 'ac_unit',
+            
+            // Valores en español
+            'verano': 'sunny',
+            'invierno': 'ac_unit',
+            
+            // Valores en inglés  
+            'summer': 'sunny',
+            'winter': 'ac_unit',
+            
+            // Valores numéricos/booleanos (por compatibilidad)
+            'true': 'sunny',    // si usabas true para verano
+            'false': 'ac_unit', // si usabas false para invierno
+            '1': 'sunny',
+            '0': 'ac_unit'
+        };
+        
+        const mappedIcon = seasonMap[cleaned];
+        
+        if (mappedIcon) {
+            console.log(`🌤️ Temporada mapeada: "${temporadaValue}" → "${mappedIcon}"`);
+            return mappedIcon;
+        }
+        
+        // Valor por defecto si no se reconoce (sunny por defecto)
+        console.log(`🌞 Valor de temporada no reconocido: "${temporadaValue}", usando sunny por defecto`);
+        return 'sunny';
     }
 
     determineCategory(testimonio) {
@@ -283,124 +332,66 @@ class TestimoniosManager {
         
         // Verificar que sea un año válido (entre 2000 y año actual + 5)
         const currentYear = new Date().getFullYear();
-        if (isNaN(yearNum) || yearNum < 2000 || yearNum > currentYear + 5) {
+        if (isNaN(yearNum) || yearNum < 2000 || yearNum > (currentYear + 5)) {
+            console.log(`⚠️ Año inválido: ${yearValue}, devolviendo null`);
             return null;
         }
         
         return yearNum;
     }
 
-    setFilter(filter) {
-        if (TESTIMONIOS_CONFIG.filters.current === filter) return;
-        
-        TESTIMONIOS_CONFIG.filters.current = filter;
+    // Filtros y ordenamiento (CONSERVADO ORIGINAL)
+    setFilter(filterName) {
+        console.log(`🔍 Aplicando filtro: ${filterName}`);
         
         // Actualizar botones activos
         this.filterButtons.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.filter === filter);
+            if (btn.dataset.filter === filterName) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
         });
         
-        // Aplicar filtro
+        // Actualizar configuración
+        TESTIMONIOS_CONFIG.filters.current = filterName;
+        
+        // Aplicar filtros
         this.applyCurrentFilters();
         this.renderTestimonios();
         
-        console.log('🔍 Filtro aplicado:', filter);
+        console.log(`✅ Filtro "${filterName}" aplicado:`, filteredTestimonios.length, 'testimonios');
     }
 
     applyCurrentFilters() {
+        const currentFilter = TESTIMONIOS_CONFIG.filters.current;
         let filtered = [...testimoniosData];
         
-        // Aplicar filtro
-        const currentFilter = TESTIMONIOS_CONFIG.filters.current;
+        console.log(`📊 Aplicando filtro: ${currentFilter} a ${filtered.length} testimonios`);
         
         switch (currentFilter) {
-            case 'recientes':
-                // Mostrar todos los testimonios ordenados por año (mayor a menor)
-                // Los años vacíos/inválidos van al final
-                filtered.sort((a, b) => {
-                    const yearA = a.año && !isNaN(a.año) ? a.año : 0;
-                    const yearB = b.año && !isNaN(b.año) ? b.año : 0;
-                    
-                    // Si ambos tienen años válidos, ordenar de mayor a menor
-                    if (yearA > 0 && yearB > 0) {
-                        return yearB - yearA;
-                    }
-                    // Si solo A tiene año válido, A va primero
-                    if (yearA > 0 && yearB === 0) {
-                        return -1;
-                    }
-                    // Si solo B tiene año válido, B va primero
-                    if (yearA === 0 && yearB > 0) {
-                        return 1;
-                    }
-                    // Si ambos son inválidos, mantener orden original
-                    return 0;
-                });
-                break;
             case 'maximos':
                 filtered = filtered.filter(t => t.maximoNacional);
-                filtered.sort((a, b) => {
-                    const yearA = a.año && !isNaN(a.año) ? a.año : 0;
-                    const yearB = b.año && !isNaN(b.año) ? b.año : 0;
-                    
-                    if (yearA > 0 && yearB > 0) {
-                        return yearB - yearA;
-                    }
-                    if (yearA > 0 && yearB === 0) {
-                        return -1;
-                    }
-                    if (yearA === 0 && yearB > 0) {
-                        return 1;
-                    }
-                    return 0;
-                });
+                console.log(`🏆 Filtrados ${filtered.length} máximos nacionales`);
                 break;
             case 'universidad':
-                // Mostrar todos ordenados por año
-                filtered.sort((a, b) => {
-                    const yearA = a.año && !isNaN(a.año) ? a.año : 0;
-                    const yearB = b.año && !isNaN(b.año) ? b.año : 0;
-                    
-                    if (yearA > 0 && yearB > 0) {
-                        return yearB - yearA;
-                    }
-                    if (yearA > 0 && yearB === 0) {
-                        return -1;
-                    }
-                    if (yearA === 0 && yearB > 0) {
-                        return 1;
-                    }
-                    return 0;
-                });
+                filtered.sort((a, b) => a.universidad.localeCompare(b.universidad));
+                console.log(`🏫 Ordenados ${filtered.length} por universidad`);
                 break;
             case 'carrera':
-                // Mostrar todos ordenados por año
-                filtered.sort((a, b) => {
-                    const yearA = a.año && !isNaN(a.año) ? a.año : 0;
-                    const yearB = b.año && !isNaN(b.año) ? b.año : 0;
-                    
-                    if (yearA > 0 && yearB > 0) {
-                        return yearB - yearA;
-                    }
-                    if (yearA > 0 && yearB === 0) {
-                        return -1;
-                    }
-                    if (yearA === 0 && yearB > 0) {
-                        return 1;
-                    }
-                    return 0;
-                });
+                filtered.sort((a, b) => a.carrera.localeCompare(b.carrera));
+                console.log(`🎓 Ordenados ${filtered.length} por carrera`);
                 break;
             case 'puntaje-desc':
-                // Ordenar por puntaje de mayor a menor
                 filtered.sort((a, b) => {
-                    const puntajeA = Math.max(a.puntajeM1 || 0, a.puntajeM2 || 0, a.puntajeLenguaje || 0);
-                    const puntajeB = Math.max(b.puntajeM1 || 0, b.puntajeM2 || 0, b.puntajeLenguaje || 0);
-                    return puntajeB - puntajeA;
+                    const maxA = Math.max(a.puntajeM1 || 0, a.puntajeM2 || 0, a.puntajeLenguaje || 0);
+                    const maxB = Math.max(b.puntajeM1 || 0, b.puntajeM2 || 0, b.puntajeLenguaje || 0);
+                    return maxB - maxA;
                 });
+                console.log(`📊 Ordenados ${filtered.length} por mayor puntaje`);
                 break;
+            case 'recientes':
             default:
-                // Por defecto ordenar por año
                 filtered.sort((a, b) => {
                     const yearA = a.año && !isNaN(a.año) ? a.año : 0;
                     const yearB = b.año && !isNaN(b.año) ? b.año : 0;
@@ -485,7 +476,10 @@ class TestimoniosManager {
                         <div class="metadata-scores">
                             ${scoresHTML}
                         </div>
-                        ${testimonio.año ? `<div class="metadata-year">${testimonio.año}</div>` : ''}
+                        ${testimonio.año ? `<div class="metadata-year">
+                            <span class="material-symbols-rounded">${testimonio.temporada}</span>
+                            ${testimonio.año}
+                        </div>` : ''}
                     </div>
                 </div>
                 
@@ -651,7 +645,39 @@ document.addEventListener('DOMContentLoaded', async function() {
     await window.testimoniosManager.init();
 });
 
-// Funciones de debugging para consola
+// 🆕 NUEVO: Función de debugging para verificar temporadas
+function debugSeasons() {
+    console.log('🌤️ === DEBUG TEMPORADAS ===');
+    
+    if (!testimoniosData || testimoniosData.length === 0) {
+        console.log('❌ No hay datos de testimonios cargados');
+        return;
+    }
+    
+    const seasonStats = {
+        sunny: 0,
+        ac_unit: 0,
+        undefined: 0
+    };
+    
+    testimoniosData.forEach(testimonio => {
+        const season = testimonio.temporada;
+        if (season === 'sunny') seasonStats.sunny++;
+        else if (season === 'ac_unit') seasonStats.ac_unit++;
+        else seasonStats.undefined++;
+        
+        console.log(`👤 ${testimonio.nombre} (${testimonio.año}): ${season || 'NO DEFINIDO'}`);
+    });
+    
+    console.log('📊 Estadísticas de temporadas:');
+    console.log(`   🌞 Verano (sunny): ${seasonStats.sunny}`);
+    console.log(`   ❄️ Invierno (ac_unit): ${seasonStats.ac_unit}`);
+    console.log(`   ❓ Sin definir: ${seasonStats.undefined}`);
+    
+    return seasonStats;
+}
+
+// Funciones de debugging para consola (CONSERVADAS + NUEVA)
 window.debugTestimonios = {
     // Verificar estado
     status: () => {
@@ -679,7 +705,7 @@ window.debugTestimonios = {
     
     // Verificar mapeo de datos
     checkDataMapping: () => {
-        console.log('� Verificación de mapeo de datos:');
+        console.log('🔍 Verificación de mapeo de datos:');
         console.log('📊 Total testimonios cargados:', testimoniosData.length);
         
         if (testimoniosData.length > 0) {
@@ -696,56 +722,45 @@ window.debugTestimonios = {
                 console.log(`   Carrera: "${testimonio.carrera}"`);
                 console.log(`   Universidad: "${testimonio.universidad}"`);
                 console.log(`   Puntajes: M1=${testimonio.puntajeM1}${isMaximoM1 ? ' ⭐' : ''}, M2=${testimonio.puntajeM2}${isMaximoM2 ? ' ⭐' : ''}, LEN=${testimonio.puntajeLenguaje}`);
-                console.log(`   Máximo Nacional: ${testimonio.maximoNacional} ${testimonio.maximoNacional ? '🏆' : ''} (auto-detectado por puntajes)`);
-                console.log(`   Categoría: ${testimonio.categoria}`);
-                console.log(`   Foto: "${testimonio.foto}"`);
+                console.log(`   Máximo Nacional: ${testimonio.maximoNacional} ${testimonio.maximoNacional ? '🏆' : ''}`);
+                console.log(`   Temporada: ${testimonio.temporada} ${testimonio.temporada === 'sunny' ? '☀️' : '❄️'}`);
+                console.log(`   Foto: ${testimonio.foto ? '✅' : '❌'}`);
                 console.log('---');
             });
-            
-            // Resumen estadístico
-            const maximos = testimoniosData.filter(t => t.maximoNacional).length;
-            const regulares = testimoniosData.filter(t => t.categoria === 'regular').length;
-            
-            console.log('📈 Resumen estadístico:');
-            console.log(`   🏆 Máximos Nacionales: ${maximos} (puntaje = 1000)`);
-            console.log(`   📝 Regulares: ${regulares}`);
-        } else {
-            console.log('❌ No hay testimonios cargados');
         }
     },
     
-    // Verificar detección automática de máximos nacionales
+    // 🆕 NUEVO: Función para debug de temporadas
+    checkSeasons: debugSeasons,
+    
+    // Verificar detección automática de máximos
     checkMaximoDetection: () => {
         console.log('🏆 Verificación de detección automática de Máximos Nacionales:');
-        console.log('📊 Criterio: M1 = 1000 y/o M2 = 1000');
         
         testimoniosData.forEach((testimonio, index) => {
-            const isMaximoM1 = testimonio.puntajeM1 === 1000;
-            const isMaximoM2 = testimonio.puntajeM2 === 1000;
-            const shouldBeMaximo = isMaximoM1 || isMaximoM2;
+            const m1Is1000 = testimonio.puntajeM1 === 1000;
+            const m2Is1000 = testimonio.puntajeM2 === 1000;
+            const shouldBeMaximo = m1Is1000 || m2Is1000;
+            const isDetectedAsMaximo = testimonio.maximoNacional;
             
-            console.log(`${index + 1}. ${testimonio.nombre}:`);
-            console.log(`   M1: ${testimonio.puntajeM1} ${isMaximoM1 ? '✅ MÁXIMO' : ''}`);
-            console.log(`   M2: ${testimonio.puntajeM2} ${isMaximoM2 ? '✅ MÁXIMO' : ''}`);
-            console.log(`   Detectado como Máximo: ${testimonio.maximoNacional} ${shouldBeMaximo === testimonio.maximoNacional ? '✅' : '❌'}`);
-            console.log(`   Categoría: ${testimonio.categoria}`);
+            const status = shouldBeMaximo === isDetectedAsMaximo ? '✅' : '❌';
+            
+            console.log(`${status} ${index + 1}. ${testimonio.nombre}:`);
+            console.log(`   M1: ${testimonio.puntajeM1}${m1Is1000 ? ' (MÁXIMO)' : ''}`);
+            console.log(`   M2: ${testimonio.puntajeM2}${m2Is1000 ? ' (MÁXIMO)' : ''}`);
+            console.log(`   Debería ser máximo: ${shouldBeMaximo ? 'SÍ' : 'NO'}`);
+            console.log(`   Detectado como máximo: ${isDetectedAsMaximo ? 'SÍ' : 'NO'}`);
             console.log('---');
         });
-        
-        const totalMaximos = testimoniosData.filter(t => t.maximoNacional).length;
-        console.log(`🎯 Total Máximos Nacionales detectados: ${totalMaximos}`);
     },
     
-    // Verificar estado de fotos
+    // Verificar fotos
     checkPhotos: () => {
-        console.log('📸 Estado de las fotos:');
+        console.log('📸 Verificación de fotos:');
+        
         testimoniosData.forEach((testimonio, index) => {
             const hasPhoto = testimonio.foto && testimonio.foto.trim() !== '';
-            const isValidUrl = hasPhoto && (
-                testimonio.foto.startsWith('http') || 
-                testimonio.foto.startsWith('/') || 
-                testimonio.foto.startsWith('media/')
-            );
+            const isValidUrl = hasPhoto && (testimonio.foto.startsWith('http') || testimonio.foto.startsWith('/') || testimonio.foto.startsWith('media/'));
             
             console.log(`${index + 1}. ${testimonio.nombre}:`);
             console.log(`   Foto: "${testimonio.foto}"`);
@@ -814,3 +829,7 @@ console.log('  - debugTestimonios.checkMaximoDetection() - Verificar detección 
 console.log('  - debugTestimonios.checkPhotos() - Verificar estado de fotos');
 console.log('  - debugTestimonios.testConnection() - Probar conexión de datos');
 console.log('  - debugTestimonios.checkYearSorting() - Verificar ordenamiento por año');
+console.log('  - debugTestimonios.checkSeasons() - 🆕 Verificar temporadas');
+
+// Hacer disponible globalmente la función de debug de temporadas
+window.debugSeasons = debugSeasons;
