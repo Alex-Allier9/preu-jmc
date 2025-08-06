@@ -13,7 +13,7 @@ class GalleryCards {
 
     init() {
         console.log('🎴 Inicializando generador de cards...');
-        
+
         // Encontrar contenedor principal
         this.container = document.querySelector('#mountaineering-gallery');
         if (!this.container) {
@@ -23,13 +23,13 @@ class GalleryCards {
 
         // Generar estructura completa
         this.generateGalleryStructure();
-        
+
         // Configurar eventos
         this.setupEvents();
-        
+
         // Generar cards iniciales
         this.renderExpeditions();
-        
+
         console.log('✅ Generador de cards inicializado');
     }
 
@@ -37,15 +37,15 @@ class GalleryCards {
         // Ocultar elementos de loading y error
         const loadingElement = document.querySelector('#galleryLoading');
         const errorElement = document.querySelector('#galleryError');
-        
+
         if (loadingElement) {
             loadingElement.style.display = 'none';
         }
-        
+
         if (errorElement) {
             errorElement.style.display = 'none';
         }
-        
+
         this.container.innerHTML = `
             <!-- Header de la galería -->
             <div class="gallery-header">
@@ -127,10 +127,10 @@ class GalleryCards {
                 this.setFilter(filter);
             });
         });
-        
+
         // Eventos de dropdown de ordenamiento
         this.setupDropdownEvents();
-        
+
         // Eventos de ordenamiento
         this.sortItems.forEach(item => {
             item.addEventListener('click', (e) => {
@@ -146,12 +146,12 @@ class GalleryCards {
             e.stopPropagation();
             this.toggleDropdown();
         });
-        
+
         // Cerrar dropdown al hacer clic fuera
         document.addEventListener('click', () => {
             this.closeDropdown();
         });
-        
+
         // Prevenir que el menú se cierre al hacer clic dentro
         this.sortMenu.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -176,34 +176,34 @@ class GalleryCards {
 
     setFilter(filter) {
         if (this.currentFilter === filter) return;
-        
+
         this.currentFilter = filter;
-        
+
         // Actualizar botones activos
         this.filterButtons.forEach(btn => {
             btn.classList.toggle('active', btn.dataset.filter === filter);
         });
-        
+
         // Re-renderizar expediciones
         this.renderExpeditions();
     }
-    
+
     setSort(sort) {
         if (this.currentSort === sort) return;
-        
+
         this.currentSort = sort;
-        
+
         // Actualizar items activos en dropdown
         this.sortItems.forEach(item => {
             item.classList.toggle('active', item.dataset.sort === sort);
         });
-        
+
         // Actualizar texto del dropdown - extraer solo el texto visible
         const activeItem = this.container.querySelector(`[data-sort="${sort}"]`);
         const sortToggle = this.sortDropdown.querySelector('.dropdown-text');
         if (activeItem && sortToggle) {
             const icon = activeItem.querySelector('.material-symbols-rounded');
-            
+
             // Obtener solo el texto visible (no el contenido del ícono)
             let text = '';
             activeItem.childNodes.forEach(node => {
@@ -211,66 +211,66 @@ class GalleryCards {
                     text += node.textContent.trim();
                 }
             });
-            
+
             // Si no hay texto directo, usar textContent y limpiar
             if (!text) {
                 text = activeItem.textContent.trim();
                 // Remover texto de iconos material symbols comunes
                 text = text.replace(/^(trending_up|trending_down|emergency|hiking|sort_by_alpha|photo_library)\s*/, '');
             }
-            
+
             // Limpiar el contenido anterior
             sortToggle.innerHTML = '';
-            
+
             // Agregar icono clonado
             if (icon) {
                 const newIcon = icon.cloneNode(true);
                 sortToggle.appendChild(newIcon);
             }
-            
+
             // Agregar texto limpio
             const textNode = document.createTextNode(text);
             sortToggle.appendChild(textNode);
         }
-        
+
         // Cerrar dropdown
         this.closeDropdown();
-        
+
         // Re-renderizar expediciones
         this.renderExpeditions();
     }
 
     renderExpeditions() {
         const expeditions = this.getFilteredExpeditions();
-        const expeditionsHTML = expeditions.map(expedition => 
+        const expeditionsHTML = expeditions.map(expedition =>
             this.generateExpeditionCard(expedition)
         ).join('');
-        
+
         this.expeditionsGrid.innerHTML = expeditionsHTML;
-        
+
         // Configurar eventos de cards
         this.setupCardEvents();
     }
 
     getFilteredExpeditions() {
         let expeditions = Object.values(window.expeditionsData);
-        
+
         // Filtrar por categoría
         if (this.currentFilter !== 'all') {
             expeditions = expeditions.filter(exp => exp.category === this.currentFilter);
         }
-        
+
         // Ordenar según el criterio seleccionado
         expeditions.sort((a, b) => {
             switch (this.currentSort) {
                 case 'altitude-desc':
                     // Mayor altitud primero
                     return b.altitude - a.altitude;
-                
+
                 case 'altitude-asc':
                     // Menor altitud primero
                     return a.altitude - b.altitude;
-                
+
                 case 'difficulty-desc':
                     // Más difícil primero
                     const diffA = this.getDifficultyLevel(a.difficulty.grade);
@@ -280,7 +280,7 @@ class GalleryCards {
                     }
                     // En caso de empate, ordenar por altitud descendente
                     return b.altitude - a.altitude;
-                
+
                 case 'difficulty-asc':
                     // Más fácil primero
                     const diffAsc_A = this.getDifficultyLevel(a.difficulty.grade);
@@ -290,18 +290,18 @@ class GalleryCards {
                     }
                     // En caso de empate, ordenar por altitud descendente
                     return b.altitude - a.altitude;
-                
+
                 case 'name':
                     // Orden alfabético
                     return a.name.localeCompare(b.name, 'es', { sensitivity: 'base' });
-                
+
                 // Caso 'photos' removido ya que no se muestra el contador de fotos
-                
+
                 default:
                     return 0;
             }
         });
-        
+
         return expeditions;
     }
 
@@ -323,7 +323,7 @@ class GalleryCards {
         const isNew = window.isNewItem(expedition.lastUpdate);
         const difficulty = expedition.difficulty;
         const achievements = expedition.achievements || [];
-        
+
         // Generar badges de logros
         const achievementBadges = achievements.slice(0, 2).map(achievement => `
             <span class="achievement-badge material-symbols-rounded" title="${achievement.description}">
@@ -388,11 +388,11 @@ class GalleryCards {
 
     setupCardEvents() {
         const cards = this.expeditionsGrid.querySelectorAll('.expedition-card');
-        
+
         cards.forEach(card => {
             const expeditionId = card.dataset.expedition;
             const photoCount = parseInt(card.dataset.photos);
-            
+
             // Click en la card
             card.addEventListener('click', () => {
                 if (photoCount > 0) {
@@ -405,12 +405,12 @@ class GalleryCards {
                     this.showNoPhotosMessage(expeditionId);
                 }
             });
-            
+
             // Hover effects adicionales
             card.addEventListener('mouseenter', () => {
                 this.handleCardHover(card, true);
             });
-            
+
             card.addEventListener('mouseleave', () => {
                 this.handleCardHover(card, false);
             });
@@ -441,7 +441,7 @@ class GalleryCards {
         const expeditions = Object.values(window.expeditionsData);
         const totalPhotos = Object.values(this.detectedPhotos)
             .reduce((total, photos) => total + photos.length, 0);
-        
+
         return {
             totalExpeditions: expeditions.length,
             totalPhotos: totalPhotos,
