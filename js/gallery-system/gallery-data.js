@@ -304,16 +304,15 @@ class GalleryDataManager {
         // Procesar badges desde Google Sheets
         if (badgesStr && badgesStr.trim() !== '') {
             try {
-                // Los badges vienen como JSON string: [{"icon":"trophy","name":"Cumbre","description":"Descripción"}]
-                const parsedBadges = JSON.parse(badgesStr);
-                
-                if (Array.isArray(parsedBadges)) {
-                    badges = parsedBadges.map(badge => ({
-                        icon: badge.icon || 'star',
-                        name: badge.name || badge.nombre || 'Logro',
-                        description: badge.description || badge.descripcion || ''
-                    }));
-                }
+                // Formato: "trophy:Cumbre:Descripción;star:Logro:Otra descripción"
+                badges = badgesStr.split(';').map(badgeStr => {
+                    const parts = badgeStr.split(':');
+                    return {
+                        icon: parts[0]?.trim() || 'star',
+                        name: parts[1]?.trim() || 'Logro',
+                        description: parts[2]?.trim() || ''
+                    };
+                });
             } catch (error) {
                 console.log('⚠️ Error parseando badges para expedición, usando formato simple:', badgesStr);
                 
