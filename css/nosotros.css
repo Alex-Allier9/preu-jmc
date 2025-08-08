@@ -79,7 +79,7 @@
    ====================================== */
 
 .program {
-    background: linear-gradient(rgba(var(--white-rgb), 0.4), rgba(var(--white-rgb), 0.4)),
+    background: linear-gradient(rgba(var(--white-rgb), 0.6), rgba(var(--white-rgb), 0.6)),
         url('../media/images/nosotros/alessio-soggetti-PdGBci-4jR8-unsplash.jpg') center/cover;
     color: var(--black);
 }
