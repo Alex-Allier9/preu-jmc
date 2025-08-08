@@ -267,6 +267,11 @@
 .testimonio-card.maximo-nacional .metadata-year {
     color: var(--accent);
     font-weight: 600;
+    background: rgba(var(--accent-rgb), 0.15);
+}
+
+.testimonio-card.maximo-nacional .metadata-year .material-symbols-rounded {
+    color: var(--accent);
 }
 
 .testimonio-card.maximo-nacional .student-photo {
@@ -437,6 +442,15 @@
     padding: 0.5rem 1rem;
     border-radius: 20px;
     color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.metadata-year .material-symbols-rounded {
+    font-size: 1.2rem;
+    line-height: 1;
 }
 
 /* Contenido del testimonio */
