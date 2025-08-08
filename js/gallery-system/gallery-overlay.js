@@ -5,7 +5,7 @@ class GalleryOverlay {
     constructor(detectedPhotos) {
         console.log('🏗️ CONSTRUCTOR GALLERY OVERLAY - Iniciando');
         console.log('📊 Fotos detectadas recibidas:', detectedPhotos?.length || 0);
-        
+
         this.detectedPhotos = detectedPhotos;
         this.isOpen = false;
         this.currentExpedition = null;
@@ -13,18 +13,18 @@ class GalleryOverlay {
         this.currentPhotoIndex = 0;
         this.overlay = null;
         this.isMobile = window.GalleryUtils.isMobile();
-        
+
         // Touch handling
         this.touchStart = { x: 0, y: 0 };
         this.touchEnd = { x: 0, y: 0 };
         this.isUIVisible = true;
         this.hideUITimeout = null;
-        
+
         // Bind del método handleKeyPress para poder removerlo después
         this.boundHandleKeyPress = this.handleKeyPress.bind(this);
         this.keyboardListenerActive = false;
         this.processingKeyEvent = false;
-        
+
         console.log('✅ Constructor completado - Estado inicial:', {
             detectedPhotosCount: this.detectedPhotos?.length || 0,
             isOpen: this.isOpen,
@@ -35,57 +35,57 @@ class GalleryOverlay {
 
     init() {
         console.log('🖼️ Inicializando sistema de overlay...');
-        
+
         // Limpiar overlay existente si ya existe
         this.cleanup();
-        
+
         this.createOverlayStructure();
         console.log('✅ Sistema de overlay inicializado');
     }
 
     cleanup() {
         console.log('🧹 LIMPIEZA DE OVERLAY - Removiendo instancias anteriores');
-        
+
         // Remover overlay existente del DOM si existe
         const existingOverlay = document.querySelector('.gallery-lightbox');
         if (existingOverlay) {
             console.log('🗑️ Removiendo overlay existente del DOM');
             existingOverlay.remove();
         }
-        
+
         // Remover event listener de teclado
         if (this.boundHandleKeyPress && this.keyboardListenerActive) {
             console.log('⌨️ Removiendo event listener de teclado anterior');
             document.removeEventListener('keydown', this.boundHandleKeyPress);
             this.keyboardListenerActive = false;
         }
-        
+
         // Limpiar timeouts
         if (this.hideUITimeout) {
             clearTimeout(this.hideUITimeout);
             this.hideUITimeout = null;
         }
-        
+
         // Reset estado
         this.overlay = null;
         this.isOpen = false;
-        
+
         console.log('✅ Limpieza completada');
     }
 
     createOverlayStructure() {
         console.log('🏗️ CREANDO ESTRUCTURA DEL OVERLAY - Inicio');
-        
+
         // Crear overlay en el DOM
         this.overlay = document.createElement('div');
         this.overlay.className = 'gallery-lightbox';
         this.overlay.style.display = 'none';
-        
+
         console.log('📦 Elemento overlay creado:', {
             className: this.overlay.className,
             display: this.overlay.style.display
         });
-        
+
         console.log('🔨 Construyendo HTML interno del overlay...');
         this.overlay.innerHTML = `
             <!-- Botón cerrar -->
@@ -135,16 +135,16 @@ class GalleryOverlay {
 
         console.log('🌐 Añadiendo overlay al DOM...');
         document.body.appendChild(this.overlay);
-        
+
         console.log('🎯 Configurando eventos del overlay...');
         this.setupOverlayEvents();
-        
+
         console.log('✅ Estructura del overlay creada exitosamente');
     }
 
     setupOverlayEvents() {
         console.log('🎯 CONFIGURANDO EVENTOS DEL OVERLAY - Inicio');
-        
+
         try {
             // Botón cerrar
             const closeButton = this.overlay.querySelector('.overlay-close');
@@ -161,7 +161,7 @@ class GalleryOverlay {
             // Botones de navegación
             const prevButton = this.overlay.querySelector('.nav-button.prev');
             const nextButton = this.overlay.querySelector('.nav-button.next');
-            
+
             if (prevButton && nextButton) {
                 prevButton.addEventListener('click', () => {
                     console.log('🖱️ Click en botón anterior');
@@ -187,22 +187,22 @@ class GalleryOverlay {
             // Touch events para móviles
             console.log('📱 Configurando eventos táctiles...');
             this.setupTouchEvents();
-            
+
             // Eventos de teclado - Remover listener anterior si existe
             console.log('⌨️ Configurando eventos de teclado...');
-            
+
             // Verificar si ya existe el listener
             if (this.keyboardListenerActive) {
                 console.log('⚠️ Listener de teclado ya activo, removiendo anterior...');
                 document.removeEventListener('keydown', this.boundHandleKeyPress);
             }
-            
+
             document.addEventListener('keydown', this.boundHandleKeyPress);
             this.keyboardListenerActive = true;
             console.log('✅ Event listener de teclado configurado (único)');
-            
+
             console.log('✅ Todos los eventos del overlay configurados exitosamente');
-            
+
         } catch (error) {
             console.error('❌ Error configurando eventos del overlay:', error);
             console.error('📊 Stack trace:', error.stack);
@@ -211,23 +211,23 @@ class GalleryOverlay {
 
     handleKeyPress(event) {
         if (!this.isOpen) return;
-        
+
         // Prevenir procesamiento múltiple del mismo evento
         if (this.processingKeyEvent) {
             console.log('⚠️ Evento de teclado ya siendo procesado, ignorando duplicado');
             return;
         }
-        
+
         this.processingKeyEvent = true;
-        
+
         console.log('⌨️ TECLA PRESIONADA:', {
             key: event.key,
             code: event.code,
             overlayAbierto: this.isOpen,
             timestamp: Date.now()
         });
-        
-        switch(event.key) {
+
+        switch (event.key) {
             case 'Escape':
                 console.log('🚪 Tecla Escape - Cerrando overlay');
                 this.close();
@@ -243,7 +243,7 @@ class GalleryOverlay {
             default:
                 console.log('ℹ️ Tecla no manejada:', event.key);
         }
-        
+
         // Limpiar flag después de un breve delay
         setTimeout(() => {
             this.processingKeyEvent = false;
@@ -252,7 +252,7 @@ class GalleryOverlay {
 
     setupTouchEvents() {
         console.log('📱 CONFIGURANDO EVENTOS TÁCTILES - Inicio');
-        
+
         const photoContainer = this.overlay.querySelector('.main-photo-container');
         const mainPhoto = this.overlay.querySelector('.main-photo');
 
@@ -299,7 +299,7 @@ class GalleryOverlay {
         mainPhoto.addEventListener('touchend', (e) => {
             tapCount++;
             console.log('👆 Touch en foto principal - Tap count:', tapCount);
-            
+
             if (tapCount === 1) {
                 setTimeout(() => {
                     if (tapCount === 1) {
@@ -315,13 +315,13 @@ class GalleryOverlay {
                 }, 300);
             }
         }, { passive: true });
-        
+
         console.log('✅ Eventos táctiles configurados exitosamente');
     }
 
     handleTouchGesture() {
         console.log('🤏 PROCESANDO GESTO TÁCTIL - Analizando movimiento');
-        
+
         const deltaX = this.touchEnd.x - this.touchStart.x;
         const deltaY = this.touchEnd.y - this.touchStart.y;
         const minSwipeDistance = 50;
@@ -337,7 +337,7 @@ class GalleryOverlay {
         // Swipe horizontal (cambiar foto)
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
             console.log('↔️ Gesto horizontal detectado');
-            
+
             if (Math.abs(deltaX) > minSwipeDistance) {
                 if (deltaX > 0) {
                     console.log('➡️ Swipe derecha - Foto anterior');
@@ -353,7 +353,7 @@ class GalleryOverlay {
         // Swipe vertical
         else if (Math.abs(deltaY) > minSwipeDistance) {
             console.log('↕️ Gesto vertical detectado');
-            
+
             if (deltaY > 0) {
                 // Swipe hacia abajo - scroll hacia información
                 console.log('⬇️ Swipe hacia abajo - Scroll a información');
@@ -371,12 +371,12 @@ class GalleryOverlay {
     toggleUI() {
         console.log('🎮 TOGGLE UI - Cambiar visibilidad de controles');
         console.log('📊 Estado actual UI:', this.isUIVisible);
-        
+
         this.isUIVisible = !this.isUIVisible;
         const uiElements = this.overlay.querySelectorAll('.nav-button, .photo-counter, .thumbnails-container');
-        
+
         console.log('🎯 Elementos UI encontrados:', uiElements.length);
-        
+
         uiElements.forEach((el, index) => {
             el.style.opacity = this.isUIVisible ? '1' : '0';
             el.style.pointerEvents = this.isUIVisible ? 'auto' : 'none';
@@ -410,16 +410,16 @@ class GalleryOverlay {
 
     toggleZoom() {
         console.log('🔍 TOGGLE ZOOM - Cambiar zoom de la foto');
-        
+
         const mainPhoto = this.overlay.querySelector('.main-photo');
         if (!mainPhoto) {
             console.error('❌ No se encontró la foto principal para zoom');
             return;
         }
-        
+
         const isZoomed = mainPhoto.style.transform.includes('scale');
         console.log('📊 Estado actual zoom:', isZoomed);
-        
+
         if (isZoomed) {
             console.log('🔍 Removiendo zoom...');
             mainPhoto.style.transform = '';
@@ -429,17 +429,17 @@ class GalleryOverlay {
             mainPhoto.style.transform = 'scale(1.5)';
             mainPhoto.style.cursor = 'zoom-out';
         }
-        
+
         console.log('✅ Zoom actualizado - Nuevo estado:', !isZoomed);
     }
 
     scrollToInfo() {
         console.log('📜 SCROLL TO INFO - Scroll hacia información');
-        
+
         if (this.isMobile) {
             console.log('📱 Dispositivo móvil detectado - Ejecutando scroll');
             const infoPanel = this.overlay.querySelector('.info-panel');
-            
+
             if (infoPanel) {
                 infoPanel.scrollIntoView({ behavior: 'smooth' });
                 console.log('✅ Scroll hacia información ejecutado');
@@ -491,13 +491,13 @@ class GalleryOverlay {
         // Precargar próxima imagen
         console.log('🔄 Precargando siguiente imagen...');
         this.preloadNextImage();
-        
+
         console.log('✅ OVERLAY ABIERTO COMPLETAMENTE');
     }
 
     close() {
         console.log('🔒 CERRANDO OVERLAY - Inicio del proceso');
-        
+
         if (!this.isOpen) {
             console.log('⚠️ Overlay ya estaba cerrado, cancelando operación');
             return;
@@ -505,16 +505,16 @@ class GalleryOverlay {
 
         console.log('🎬 Iniciando animación de cierre...');
         this.isOpen = false;
-        
+
         if (this.overlay) {
             this.overlay.classList.remove('show');
-            
+
             setTimeout(() => {
                 if (this.overlay) {
                     console.log('👁️ Ocultando overlay del DOM...');
                     this.overlay.style.display = 'none';
                     document.body.style.overflow = '';
-                    
+
                     // Limpiar zoom si existe
                     const mainPhoto = this.overlay.querySelector('.main-photo');
                     if (mainPhoto && mainPhoto.style.transform) {
@@ -522,7 +522,7 @@ class GalleryOverlay {
                         mainPhoto.style.transform = '';
                         mainPhoto.style.cursor = '';
                     }
-                    
+
                     console.log('✅ OVERLAY CERRADO COMPLETAMENTE');
                 }
             }, 300);
@@ -535,7 +535,7 @@ class GalleryOverlay {
 
     renderExpeditionInfo() {
         console.log('📝 RENDERIZANDO INFORMACIÓN DE EXPEDICIÓN - Inicio');
-        
+
         const infoContent = this.overlay.querySelector('.info-panel');
         if (!infoContent) {
             console.error('❌ No se encontró el panel de información (.info-panel)');
@@ -558,78 +558,82 @@ class GalleryOverlay {
         const achievementBadges = expedition.achievements.map((achievement, index) => {
             console.log(`🎖️ Badge ${index + 1}:`, achievement);
             return `
-            <div class="achievement-badge">
-                <span class="material-symbols-rounded gallery-badge-icon">${achievement.icon}</span>
-                ${achievement.name}
-            </div>
-        `;
+        <div class="achievement-badge">
+            <span class="material-symbols-rounded gallery-badge-icon">${achievement.icon}</span>
+            ${achievement.name}
+        </div>
+    `;
         }).join('');
+
+        // NUEVO: Validaciones condicionales para el overlay
+        const hasValidAltitude = expedition.altitude && expedition.altitude > 0;
+        const hasValidDifficulty = expedition.difficulty && expedition.difficulty.grade && expedition.difficulty.grade.trim() !== '';
 
         console.log('🏗️ Construyendo HTML del panel de información...');
         infoContent.innerHTML = `
-            <!-- Header de la expedición -->
-            <div class="expedition-header">
-                <h1 class="expedition-title">${expedition.name}</h1>
-                <p class="expedition-location">${expedition.location.fullLocation}</p>
-                <p class="expedition-coordinates">
-                    <span class="material-symbols-rounded">globe_location_pin</span>
-                    ${expedition.location.coordinates}
-                </p>
-            </div>
+        <!-- Header de la expedición -->
+        <div class="expedition-header">
+            <h1 class="expedition-title">${expedition.name}</h1>
+            <p class="expedition-location">${expedition.location.fullLocation}</p>
+            <p class="expedition-coordinates">
+                <span class="material-symbols-rounded">globe_location_pin</span>
+                ${expedition.location.coordinates}
+            </p>
+        </div>
 
-            <!-- Metadatos principales -->
-            <div class="gallery-main-metadata">
-                <div class="gallery-metadata-item">
-                    <div class="metadata-label">Altitud</div>
-                    <div class="metadata-value">${window.GalleryUtils.formatNumber(expedition.altitude)} ${expedition.altitudeUnit}</div>
-                </div>
-                <div class="gallery-metadata-item">
-                    <div class="metadata-label">Fotos</div>
-                    <div class="metadata-value">${photoCount} imágenes</div>
-                </div>
-            </div>
-
-            <!-- Dificultad -->
-            <div class="difficulty-display difficulty-${expedition.difficulty.grade}">
-                <div class="difficulty-grade">${expedition.difficulty.grade} - ${expedition.difficulty.name}</div>
-                <div class="difficulty-description">${expedition.difficulty.system}</div>
-            </div>
-
-            ${expedition.achievements.length > 0 ? `
-            <!-- Logros especiales -->
-            <div class="achievements-section">
-                <h3 class="gallery-section-title">
-                    <span class="material-symbols-rounded">trophy</span>
-                    Logros Destacados
-                </h3>
-                <div class="achievements-list">
-                    ${achievementBadges}
-                </div>
+        <!-- Metadatos principales -->
+        <div class="gallery-main-metadata">
+            ${hasValidAltitude ? `
+            <div class="gallery-metadata-item">
+                <div class="metadata-label">Altitud</div>
+                <div class="metadata-value">${window.GalleryUtils.formatNumber(expedition.altitude)} ${expedition.altitudeUnit}</div>
             </div>
             ` : ''}
+        </div>
 
-            <!-- Descripción -->
-            <div class="description-section">
-                <h3 class="gallery-section-title">
-                    <span class="material-symbols-rounded">description</span>
-                    Descripción
-                </h3>
-                <div class="description-text">${this.formatDescription(expedition.longDescription)}</div>
+        ${hasValidDifficulty ? `
+        <!-- Dificultad -->
+        <div class="difficulty-display difficulty-${expedition.difficulty.grade}">
+            <div class="difficulty-grade">${expedition.difficulty.grade} - ${expedition.difficulty.name}</div>
+            <div class="difficulty-description">${expedition.difficulty.system}</div>
+        </div>
+        ` : ''}
+
+        ${expedition.achievements.length > 0 ? `
+        <!-- Logros especiales -->
+        <div class="achievements-section">
+            <h3 class="gallery-section-title">
+                <span class="material-symbols-rounded">trophy</span>
+                Logros Destacados
+            </h3>
+            <div class="achievements-list">
+                ${achievementBadges}
             </div>
+        </div>
+        ` : ''}
 
-            <!-- Botón Google Maps -->
-            <button class="maps-button" onclick="window.open('${expedition.location.mapsUrl}', '_blank')">
-                <span class="material-symbols-rounded">location_on</span>
-                Ver en Google Maps
-            </button>
-        `;
-        
+        <!-- Descripción -->
+        <div class="description-section">
+            <h3 class="gallery-section-title">
+                <span class="material-symbols-rounded">description</span>
+                Descripción
+            </h3>
+            <div class="description-text">${this.formatDescription(expedition.longDescription)}</div>
+        </div>
+
+        <!-- Botón Google Maps -->
+        <button class="maps-button" onclick="window.open('${expedition.location.mapsUrl}', '_blank')">
+            <span class="material-symbols-rounded">location_on</span>
+            Ver en Google Maps
+        </button>
+    `;
+
         console.log('✅ Información de expedición renderizada exitosamente');
     }
 
     renderThumbnails() {
         console.log('🖼️ RENDERIZANDO THUMBNAILS - Inicio');
-        
+
         const container = this.overlay.querySelector('.thumbnails-container');
         if (!container) {
             console.error('❌ No se encontró el contenedor de thumbnails (.thumbnails-container)');
@@ -645,7 +649,7 @@ class GalleryOverlay {
                 path: photo.path,
                 isActive: isActive
             });
-            
+
             return `
             <img src="${photo.path}" 
                  alt="Foto ${index + 1}" 
@@ -726,9 +730,9 @@ class GalleryOverlay {
             thumbnails.forEach((thumb, i) => {
                 const wasActive = thumb.classList.contains('active');
                 const shouldBeActive = i === index;
-                
+
                 thumb.classList.toggle('active', shouldBeActive);
-                
+
                 if (wasActive !== shouldBeActive) {
                     console.log(`🔄 Thumbnail ${i + 1} cambió estado:`, {
                         wasActive: wasActive,
@@ -745,7 +749,7 @@ class GalleryOverlay {
         console.log('🎮 Verificando botones de navegación...');
         const prevButton = this.overlay.querySelector('.nav-button.prev');
         const nextButton = this.overlay.querySelector('.nav-button.next');
-        
+
         if (prevButton && nextButton) {
             // Los botones siempre están activos en carrusel infinito
             prevButton.style.opacity = '1';
@@ -769,7 +773,7 @@ class GalleryOverlay {
     scrollThumbnailIntoView(index) {
         console.log('📜 SCROLL THUMBNAIL - Haciendo scroll al thumbnail activo');
         console.log('🎯 Thumbnail objetivo:', index + 1);
-        
+
         const container = this.overlay.querySelector('.thumbnails-container');
         if (!container) {
             console.error('❌ No se encontró el contenedor de thumbnails');
@@ -777,7 +781,7 @@ class GalleryOverlay {
         }
 
         const activeThumb = container.querySelector('.thumbnail.active');
-        
+
         if (activeThumb) {
             console.log('✅ Thumbnail activo encontrado, haciendo scroll...');
             activeThumb.scrollIntoView({
@@ -832,7 +836,7 @@ class GalleryOverlay {
 
     preloadNextImage() {
         console.log('🔄 PRECARGA - Iniciando precarga de imágenes');
-        
+
         // Precargar siguiente imagen para navegación más fluida
         const nextIndex = this.currentPhotoIndex + 1;
         if (nextIndex < this.currentPhotos.length) {
@@ -841,7 +845,7 @@ class GalleryOverlay {
                 index: nextIndex + 1,
                 path: nextPhoto.path
             });
-            
+
             const img = new Image();
             img.onload = () => console.log('✅ Siguiente imagen precargada exitosamente');
             img.onerror = () => console.error('❌ Error precargando siguiente imagen:', nextPhoto.path);
@@ -858,7 +862,7 @@ class GalleryOverlay {
                 index: prevIndex + 1,
                 path: prevPhoto.path
             });
-            
+
             const img = new Image();
             img.onload = () => console.log('✅ Imagen anterior precargada exitosamente');
             img.onerror = () => console.error('❌ Error precargando imagen anterior:', prevPhoto.path);
@@ -866,7 +870,7 @@ class GalleryOverlay {
         } else {
             console.log('ℹ️ No hay imagen anterior para precargar (primera foto)');
         }
-        
+
         console.log('✅ Proceso de precarga completado');
     }
 
@@ -879,36 +883,36 @@ class GalleryOverlay {
                 return `<p>${formattedParagraph}</p>`;
             }).join('');
         }
-        
+
         // Si no hay saltos dobles, dividir automáticamente por oraciones
         // Buscar puntos seguidos de espacios y mayúsculas para crear párrafos lógicos
         const sentences = description.split(/\. (?=[A-Z])/);
         const paragraphs = [];
         let currentParagraph = [];
-        
+
         sentences.forEach((sentence, index) => {
             // Agregar el punto de vuelta excepto en la última oración
             const fullSentence = index < sentences.length - 1 ? sentence + '.' : sentence;
             currentParagraph.push(fullSentence);
-            
+
             // Crear nuevo párrafo cada 2-3 oraciones o cuando la longitud sea considerable
             if (currentParagraph.length >= 2 && currentParagraph.join(' ').length > 200) {
                 paragraphs.push(currentParagraph.join(' '));
                 currentParagraph = [];
             }
         });
-        
+
         // Agregar el último párrafo si tiene contenido
         if (currentParagraph.length > 0) {
             paragraphs.push(currentParagraph.join(' '));
         }
-        
+
         // Si solo hay un párrafo muy largo, dividirlo por la mitad aproximadamente
         if (paragraphs.length === 1 && paragraphs[0].length > 400) {
             const text = paragraphs[0];
             const midPoint = Math.floor(text.length / 2);
             const splitPoint = text.indexOf('. ', midPoint);
-            
+
             if (splitPoint !== -1) {
                 paragraphs = [
                     text.substring(0, splitPoint + 1),
@@ -916,7 +920,7 @@ class GalleryOverlay {
                 ];
             }
         }
-        
+
         return paragraphs.map(paragraph => `<p>${paragraph.trim()}</p>`).join('');
     }
 
@@ -932,7 +936,7 @@ class GalleryOverlay {
             overlayExists: !!this.overlay,
             overlayVisible: this.overlay?.style.display !== 'none'
         };
-        
+
         console.log('🐛 DEBUG INFO OVERLAY:', debugInfo);
         return debugInfo;
     }
@@ -940,15 +944,15 @@ class GalleryOverlay {
     // Método para destruir completamente la instancia
     destroy() {
         console.log('💥 DESTRUYENDO OVERLAY - Limpieza completa');
-        
+
         // Cerrar si está abierto
         if (this.isOpen) {
             this.close();
         }
-        
+
         // Limpiar completamente
         this.cleanup();
-        
+
         console.log('✅ Overlay destruido completamente');
     }
 }

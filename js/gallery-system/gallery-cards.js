@@ -326,52 +326,66 @@ class GalleryCards {
 
         // Generar badges de logros
         const achievementBadges = achievements.slice(0, 2).map(achievement => `
-            <span class="achievement-badge material-symbols-rounded" title="${achievement.description}">
-                ${achievement.icon}
-            </span>
-        `).join('');
+        <span class="achievement-badge material-symbols-rounded" title="${achievement.description}">
+            ${achievement.icon}
+        </span>
+    `).join('');
+
+        // NUEVO: Validaciones condicionales para campos
+        const hasValidAltitude = expedition.altitude && expedition.altitude > 0;
+        const hasValidDifficulty = difficulty && difficulty.grade && difficulty.grade.trim() !== '';
+        const hasValidAscents = expedition.ascents &&
+            expedition.ascents !== '' &&
+            expedition.ascents !== 0 &&
+            expedition.ascents !== '0';
 
         return `
-            <div class="expedition-card" 
-                 data-category="${expedition.category}" 
-                 data-expedition="${expedition.id}"
-                 data-photos="${photoCount}">
+        <div class="expedition-card" 
+             data-category="${expedition.category}" 
+             data-expedition="${expedition.id}"
+             data-photos="${photoCount}">
+            
+            ${isNew ? '<div class="new-badge">NUEVO</div>' : ''}
+            
+            ${achievementBadges ? `<div class="achievement-badges">${achievementBadges}</div>` : ''}
+            
+            <img src="${window.galleryConfig.basePath}${expedition.id}/${expedition.coverImage}" 
+                 alt="${expedition.name}" 
+                 class="expedition-image">
+            
+            <div class="expedition-content">
+                <h3 class="expedition-title">${expedition.name}</h3>
+                <p class="expedition-description">${expedition.shortDescription}</p>
                 
-                ${isNew ? '<div class="new-badge">NUEVO</div>' : ''}
-                
-                ${achievementBadges ? `<div class="achievement-badges">${achievementBadges}</div>` : ''}
-                
-                <img src="${window.galleryConfig.basePath}${expedition.id}/${expedition.coverImage}" 
-                     alt="${expedition.name}" 
-                     class="expedition-image">
-                
-                <div class="expedition-content">
-                    <h3 class="expedition-title">${expedition.name}</h3>
-                    <p class="expedition-description">${expedition.shortDescription}</p>
-                    
-                    <div class="expedition-meta">
-                        <div class="expedition-difficulty difficulty-${difficulty.grade}">
-                            <span class="difficulty-icon">${this.getDifficultyIcon(difficulty.grade)}</span>
-                            ${difficulty.grade} - ${difficulty.name}
-                        </div>
-                        <span class="expedition-altitude">${window.GalleryUtils.formatNumber(expedition.altitude)} ${expedition.altitudeUnit}</span>
+                ${(hasValidDifficulty || hasValidAltitude) ? `
+                <div class="expedition-meta">
+                    ${hasValidDifficulty ? `
+                    <div class="expedition-difficulty difficulty-${difficulty.grade}">
+                        <span class="difficulty-icon">${this.getDifficultyIcon(difficulty.grade)}</span>
+                        ${difficulty.grade} - ${difficulty.name}
                     </div>
-                    
-                    <div class="expedition-stats">
-                        <div class="stat-item">
-                            <span class="material-symbols-rounded stat-icon">location_on</span>
-                            <span>${expedition.location.country}</span>
-                        </div>
-                        ${expedition.ascents >= 1 ? `
-                        <div class="stat-item">
-                            <span class="material-symbols-rounded stat-icon">flag</span>
-                            <span>${expedition.ascents} ${expedition.ascents === 1 ? 'ascenso' : 'ascensos'}</span>
-                        </div>
-                        ` : ''}
+                    ` : ''}
+                    ${hasValidAltitude ? `
+                    <span class="expedition-altitude">${window.GalleryUtils.formatNumber(expedition.altitude)} ${expedition.altitudeUnit}</span>
+                    ` : ''}
+                </div>
+                ` : ''}
+                
+                <div class="expedition-stats">
+                    <div class="stat-item">
+                        <span class="material-symbols-rounded stat-icon">location_on</span>
+                        <span>${expedition.location.country}</span>
                     </div>
+                    ${hasValidAscents ? `
+                    <div class="stat-item">
+                        <span class="material-symbols-rounded stat-icon">flag</span>
+                        <span>${expedition.ascents} ${(expedition.ascents === 1 || expedition.ascents === '1') ? 'ascenso' : 'ascensos'}</span>
+                    </div>
+                    ` : ''}
                 </div>
             </div>
-        `;
+        </div>
+    `;
     }
 
     getDifficultyIcon(grade) {
