@@ -4,18 +4,18 @@
 
 /* Background images - ESPECÍFICO DE FUNDADOR */
 .mountain-background {
-    background-image: url('../media/images/fundador/daniel-roe-lpjb_UMOyx8-unsplash.jpg');
+    background-image: url('/media/images/j-cartes/daniel-roe-lpjb_UMOyx8-unsplash.jpg');
 }
 
 .secondary-background {
-    background-image: url('../media/images/fundador/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg');
+    background-image: url('/media/images/j-cartes/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg');
 }
 
 /* Hero section background - ESPECÍFICO DE FUNDADOR */
 /* Hero Section - Versión corregida */
 /* Hero section background - ESPECÍFICO DE FUNDADOR */
 .hero {
-    background-image: url('../media/images/fundador/ojos-salado_0002.jpg');
+    background-image: url('/media/images/j-cartes/ojos-salado_0002.jpg');
     background-attachment: scroll;
     background-size: cover;
     background-position: center;
@@ -51,7 +51,7 @@
 /* CTA section background - ESPECÍFICO DE FUNDADOR */
 .cta {
     background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
-        url('../media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
+        url('/media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
 }
 
 /* ======================================
