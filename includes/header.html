@@ -1,0 +1,67 @@
+<header class="header" id="header">
+    <nav class="nav-container">
+        <a href="/" class="logo">
+            <img src="media/logos/logo_web.svg" alt="JMC" style="height: 1.8rem;">
+        </a>
+        <ul class="nav-menu">
+            <li><a href="/" class="nav-link" data-page="index">Inicio</a></li>
+            <li><a href="/nosotros" class="nav-link" data-page="nosotros">Nosotros</a></li>
+            <li class="nav-dropdown">
+                <a href="/equipo/j-cartes" class="nav-link" data-page="equipo">Equipo</a>
+                <ul class="nav-submenu">
+                    <li><a href="/equipo/j-cartes" class="nav-sublink" data-page="j-cartes">José Manuel Cartes</a></li>
+                    <li><a href="/equipo/m-suazo" class="nav-sublink" data-page="m-suazo">Mariela Suazo</a></li>
+                </ul>
+            </li>
+            <li><a href="/servicios" class="nav-link" data-page="servicios">Servicios</a></li>
+            <li><a href="/testimonios" class="nav-link" data-page="testimonios">Testimonios</a></li>
+            <li><a href="/contacto" class="nav-link" data-page="contacto">Contacto</a></li>
+        </ul>
+
+        <!-- Botón Hamburguesa -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menú">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </nav>
+
+    <!-- Menú Móvil -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="/" class="logo">
+                <img src="/media/logos/logo_web.svg" alt="JMC" style="height: 1.8rem;">
+            </a>
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Cerrar menú">
+                <span class="close-line"></span>
+                <span class="close-line"></span>
+            </button>
+        </div>
+        <ul class="mobile-nav-menu">
+            <li class="mobile-nav-item">
+                <a href="/" class="mobile-nav-link" data-page="index">Inicio</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/nosotros" class="mobile-nav-link" data-page="nosotros">Nosotros</a>
+            </li>
+            <!-- Sección Equipo en móvil -->
+            <li class="mobile-nav-item mobile-nav-dropdown">
+                <a href="/equipo/j-cartes" class="mobile-nav-link" data-page="equipo">Equipo</a>
+                <ul class="mobile-nav-submenu">
+                    <li><a href="/equipo/j-cartes" class="mobile-nav-sublink" data-page="j-cartes">José Manuel Cartes</a>
+                    </li>
+                    <li><a href="/equipo/m-suazo" class="mobile-nav-sublink" data-page="m-suazo">Mariela Suazo</a></li>
+                </ul>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/servicios" class="mobile-nav-link" data-page="servicios">Servicios</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/testimonios" class="mobile-nav-link" data-page="testimonios">Testimonios</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/contacto" class="mobile-nav-link" data-page="contacto">Contacto</a>
+            </li>
+        </ul>
+    </div>
+</header>
