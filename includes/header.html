@@ -1,7 +1,7 @@
 <header class="header" id="header">
     <nav class="nav-container">
         <a href="/" class="logo">
-            <img src="media/logos/logo_web.svg" alt="JMC" style="height: 1.8rem;">
+            <img src="/media/logos/logo_web.svg" alt="JMC" style="height: 1.8rem;">
         </a>
         <ul class="nav-menu">
             <li><a href="/" class="nav-link" data-page="index">Inicio</a></li>
@@ -9,6 +9,7 @@
             <li class="nav-dropdown">
                 <a href="/equipo/j-cartes" class="nav-link" data-page="equipo">Equipo</a>
                 <ul class="nav-submenu">
+                    <div class="nav-submenu-title">Nuestro Equipo</div>
                     <li><a href="/equipo/j-cartes" class="nav-sublink" data-page="j-cartes">José Manuel Cartes</a></li>
                     <li><a href="/equipo/m-suazo" class="nav-sublink" data-page="m-suazo">Mariela Suazo</a></li>
                 </ul>
@@ -28,15 +29,6 @@
 
     <!-- Menú Móvil -->
     <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <a href="/" class="logo">
-                <img src="/media/logos/logo_web.svg" alt="JMC" style="height: 1.8rem;">
-            </a>
-            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Cerrar menú">
-                <span class="close-line"></span>
-                <span class="close-line"></span>
-            </button>
-        </div>
         <ul class="mobile-nav-menu">
             <li class="mobile-nav-item">
                 <a href="/" class="mobile-nav-link" data-page="index">Inicio</a>
@@ -44,15 +36,18 @@
             <li class="mobile-nav-item">
                 <a href="/nosotros" class="mobile-nav-link" data-page="nosotros">Nosotros</a>
             </li>
-            <!-- Sección Equipo en móvil -->
-            <li class="mobile-nav-item mobile-nav-dropdown">
-                <a href="/equipo/j-cartes" class="mobile-nav-link" data-page="equipo">Equipo</a>
-                <ul class="mobile-nav-submenu">
-                    <li><a href="/equipo/j-cartes" class="mobile-nav-sublink" data-page="j-cartes">José Manuel Cartes</a>
-                    </li>
-                    <li><a href="/equipo/m-suazo" class="mobile-nav-sublink" data-page="m-suazo">Mariela Suazo</a></li>
-                </ul>
+
+            <!-- Sección Equipo con estructura vertical -->
+            <li class="mobile-nav-item">
+                    <div class="mobile-nav-submenu-title">Nuestro Equipo</div>
             </li>
+            <li class="mobile-nav-item">
+                <a href="/equipo/j-cartes" class="mobile-nav-sublink" data-page="j-cartes">José Manuel Cartes</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/equipo/m-suazo" class="mobile-nav-sublink" data-page="m-suazo">Mariela Suazo</a>
+            </li>
+
             <li class="mobile-nav-item">
                 <a href="/servicios" class="mobile-nav-link" data-page="servicios">Servicios</a>
             </li>
@@ -61,6 +56,11 @@
             </li>
             <li class="mobile-nav-item">
                 <a href="/contacto" class="mobile-nav-link" data-page="contacto">Contacto</a>
+            </li>
+
+            <!-- CAMBIO: Agregar Recursos si está en el footer -->
+            <li class="mobile-nav-item">
+                <a href="/recursos" class="mobile-nav-link" data-page="recursos">Recursos</a>
             </li>
         </ul>
     </div>

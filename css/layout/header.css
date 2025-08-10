@@ -80,7 +80,7 @@
     width: 100%;
     height: 2px;
     background: var(--accent);
-    border-radius: 1px; /* Bordes redondeados para las líneas de navegación */
+    border-radius: 1px;
     transform: scaleX(0);
     transition: var(--transition-transform);
 }
@@ -96,6 +96,93 @@
 
 .nav-link.active {
     color: var(--primary);
+}
+
+/* ======================================
+   SISTEMA DE SUBMENU DESKTOP - AGREGADO
+   ====================================== */
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-submenu {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: var(--blur-standard);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-10px);
+    transition: var(--transition-standard);
+    z-index: 1001;
+    list-style: none;
+    border-bottom: 1px solid rgba(65, 182, 230, 0.1);
+    min-width: 280px;
+    text-align: center;
+}
+
+.nav-dropdown:hover .nav-submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-submenu-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-radius: 1px;
+    border-bottom: 2px solid rgba(var(--accent-rgb));
+}
+
+.nav-sublink {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+    transition: var(--transition-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-small);
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    width: auto;
+}
+
+.nav-sublink:last-child {
+    margin-bottom: 0;
+}
+
+.nav-sublink:hover,
+.nav-sublink.active {
+    color: var(--primary);
+}
+
+.nav-sublink::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 1rem;
+    width: calc(100% - 2rem);
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+.nav-sublink:hover::after,
+.nav-sublink.active::after {
+    transform: scaleX(1);
 }
 
 /* ======================================
@@ -119,7 +206,7 @@
 .hamburger-line {
     width: 1.5rem;
     height: 2px;
-    background: var(--black);
+    background: var(--primary);
     border-radius: 1px;
     transition: var(--transition-standard);
     transform-origin: center;
@@ -257,6 +344,64 @@
     transform: scaleX(1);
 }
 
+/* ======================================
+   SUBMENU MÓVIL - AGREGADO
+   ====================================== */
+
+.mobile-nav-dropdown .mobile-nav-submenu {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-standard);
+    backdrop-filter: var(--blur-standard);
+}
+
+.mobile-nav-submenu-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-radius: 1px;
+    border-bottom: 2px solid rgba(var(--accent-rgb));
+}
+
+.mobile-nav-sublink {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    transition: var(--transition-color);
+    padding: 0.2rem 0;
+    margin-bottom: 0.2rem;
+}
+
+.mobile-nav-sublink:hover,
+.mobile-nav-sublink.active {
+    color: var(--primary);
+}
+
+.mobile-nav-sublink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: var(--transition-transform);
+}
+
+.mobile-nav-sublink:hover::after,
+.mobile-nav-sublink.active::after {
+    transform: scaleX(1);
+}
+
 /* Responsive Updates */
 @media (min-width: 53.0625rem) {
     .mobile-menu-toggle,
@@ -275,6 +420,11 @@
     }
 
     .nav-menu {
+        display: none;
+    }
+    
+    /* Ocultar submenu desktop en móvil */
+    .nav-submenu {
         display: none;
     }
 }
