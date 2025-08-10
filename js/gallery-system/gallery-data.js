@@ -19,7 +19,7 @@ const galleryConfig = {
     SHEET_URL: 'https://docs.google.com/spreadsheets/d/1VScYoDebC_kz_NXGObJWjYki5VQvKCnHbAXbO9yEr2M/export?format=csv&gid=0',
 
     // Configuración de sistema
-    basePath: './media/images/j-cartes/gallery/',
+    basePath: '/media/images/j-cartes/gallery/',
     newItemDuration: 4, // semanas para mostrar etiqueta "NUEVO"
     maxPhotosToDetect: 50,
     photoFormat: 'jpg',
