@@ -83,7 +83,7 @@ function setActiveNavLink() {
     // Normalizar para comparación - convertir 'index' a varias formas posibles
     const normalizePageName = (pageName) => {
         if (pageName === 'index' || pageName === '' || pageName === '/') {
-            return 'inicio'; // Tu enlace dice "Inicio" pero apunta a "/"
+            return 'inicio'; // Tu enlace dice "Inicio" pero apunta a "./"
         }
         return pageName.toLowerCase();
     };
