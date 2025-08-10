@@ -92,12 +92,12 @@
 .experience-section,
 .mountaineering-section {
     background: rgba(var(--white-rgb), 0.4);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(var(--blur-strong));
     border: 1px solid rgba(var(--white-rgb), 0.6);
     margin-left: 8.33%;
     margin-right: 8.33%;
     margin-bottom: 6rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-medium);
     box-shadow: var(--shadow-medium);
     position: relative;
     z-index: 2;
@@ -166,7 +166,7 @@
     background-color: var(--accent);
     color: var(--black);
     font-weight: 600;
-    border-radius: 20px;
+    border-radius: var(--border-radius-badge);
     display: inline-block;
     margin-bottom: 1rem;
 }

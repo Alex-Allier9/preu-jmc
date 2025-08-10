@@ -38,7 +38,7 @@
     border: 2px solid var(--primary);
     background: transparent;
     color: var(--primary);
-    border-radius: 50px;
+    border-radius: var(--border-radius-pill);
     cursor: pointer;
     font-weight: 600;
     transition: var(--transition-standard);
@@ -95,7 +95,7 @@
     background: var(--accent-red);
     color: var(--white);
     padding: 0.4rem 0.8rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-medium);
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -118,7 +118,7 @@
     color: var(--black);
     width: 2rem;
     height: 2rem;
-    border-radius: 50%;
+    border-radius: var(--border-radius-circle);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,14 +154,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: var(--gap-standard);
     margin-bottom: 0.5rem;
 }
 
 .expedition-difficulty {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--gap-small);
     padding: 0.4rem 0.8rem;
     background: rgba(var(--primary-rgb), 0.1);
     border-radius: 20px;

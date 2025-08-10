@@ -258,7 +258,7 @@ python server.py
 --primary-dark: #426DA9;
 
 /* Colores de Acento */
---accent-yellow: #F4DA40;
+--accent: #F4DA40;
 --accent-red: #C8102E;
 --accent-green: #47D7AC;
 --accent-orange: #D69A2D;

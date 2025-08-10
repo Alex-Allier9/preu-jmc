@@ -67,7 +67,7 @@
 .first-section,
 .filtros-section {
     background: rgba(var(--white-rgb), 0.4);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(var(--blur-strong));
     border: 1px solid rgba(var(--white-rgb), 0.6);
     margin-left: var(--section-margin-horizontal);
     margin-right: var(--section-margin-horizontal);
@@ -120,7 +120,7 @@
     border: 2px solid var(--primary);
     background: transparent;
     color: var(--primary);
-    border-radius: 25px;
+    border-radius: var(--border-radius-badge);
     cursor: pointer;
     font-weight: 600;
     transition: var(--transition-standard);
@@ -145,7 +145,7 @@
 .sort-select {
     padding: 0.75rem 1rem;
     border: 2px solid var(--primary);
-    border-radius: 25px;
+    border-radius: var(--border-radius-badge);
     background: var(--white);
     color: var(--primary-dark);
     font-family: var(--font-body);
@@ -242,12 +242,12 @@
     background: linear-gradient(135deg, var(--black), var(--gray-900));
     color: var(--accent);
     border: 2px solid var(--accent);
-    box-shadow: 0 8px 32px rgba(var(--accent-rgb), 0.2);
+    box-shadow: var(--shadow-accent);
 }
 
 .testimonio-card.maximo-nacional:hover {
     transform: var(--hover-lift-medium);
-    box-shadow: 0 16px 48px rgba(var(--accent-rgb), 0.4);
+    box-shadow: var(--shadow-accent-strong);
 }
 
 .testimonio-card.maximo-nacional .student-name {
@@ -285,7 +285,7 @@
     top: 1rem;
     right: 1rem;
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-medium);
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -343,7 +343,7 @@
 .student-photo {
     width: 160px;
     height: 160px;
-    border-radius: 50%;
+    border-radius: var(--border-radius-circle);
     object-fit: cover;
     margin: 0 auto 1.5rem auto;
     border: 3px solid var(--primary);
@@ -396,7 +396,7 @@
 .student-photo img {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: var(--border-radius-circle);
     object-fit: cover;
 }
 
@@ -440,7 +440,7 @@
     font-weight: 600;
     background: rgba(var(--primary-rgb), 0.1);
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-medium);
     color: var(--primary-dark);
     display: flex;
     align-items: center;

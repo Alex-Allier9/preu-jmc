@@ -86,7 +86,7 @@
 
 .footer-nav-link:hover {
     color: var(--accent);
-    background: rgba(244, 218, 64, 0.1);
+    background: rgba(var(--accent-rgb), 0.1);
     transform: translateX(0.3125rem);
     padding-left: 0.5rem;
 }

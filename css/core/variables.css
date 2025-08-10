@@ -122,6 +122,10 @@
     --border-radius-small: 8px;      /* Radio pequeño */
     --border-radius-standard: 15px;  /* Radio estándar de cards */
     --border-radius-large: 20px;     /* Radio grande de secciones */
+    --border-radius-circle: 50%;     /* Para avatares y fotos circulares */
+    --border-radius-pill: 25px;      /* Para botones y selects redondeados */
+    --border-radius-medium: 12px;    /* Usado en algunos cards y badges */
+    --border-radius-badge: 20px;     /* Usado en badges */
     
     /* ===== SOMBRAS ===== */
     --shadow-light: 0 10px 30px rgba(var(--black-rgb), 0.1);      /* Sombra ligera - MÁS USADA */
@@ -129,6 +133,8 @@
     --shadow-heavy: 0 25px 70px rgba(var(--black-rgb), 0.15);     /* Sombra pesada */
     --shadow-strong: 0 20px 50px rgba(var(--black-rgb), 0.25);    /* Sombra fuerte para hover */
     --shadow-header: 0 4px 20px rgba(var(--black-rgb), 0.1);      /* Sombra del header */
+    --shadow-accent: 0 8px 32px rgba(var(--accent-rgb), 0.2);     /* Sombra especial para cards destacados */
+    --shadow-accent-strong: 0 16px 48px rgba(var(--accent-rgb), 0.4); /* Sombra fuerte para hover en cards destacados */
     
     /* ===== TRANSICIONES ===== */
     --transition-standard: all 0.3s ease;         /* Transición estándar - MÁS USADA */
@@ -148,4 +154,6 @@
     /* ===== BLUR Y EFECTOS ===== */
     --blur-standard: blur(10px);         /* Blur estándar */
     --blur-heavy: blur(15px);            /* Blur pesado */
+    --blur-medium: blur(18px);           /* Blur mediano, usado en glassmorphism */
+    --blur-strong: blur(20px);           /* Blur fuerte, usado en glassmorphism */
 }

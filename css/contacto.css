@@ -56,7 +56,7 @@
     width: 100%;
     padding: 1rem;
     border: 2px solid var(--gray-200);
-    border-radius: 12px;
+    border-radius: var(--border-radius-standard);
     font-size: 1rem;
     font-family: var(--font-body);
     transition: var(--transition-standard);
@@ -179,7 +179,7 @@
     background: rgba(var(--white-rgb), 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(var(--white-rgb), 0.2);
-    border-radius: 16px;
+    border-radius: var(--border-radius-medium);
     padding: 2rem;
     box-shadow: var(--shadow-soft);
     transition: var(--transition-standard);
@@ -209,7 +209,7 @@
     color: var(--primary);
     background: rgba(var(--primary-rgb), 0.1);
     padding: 0.5rem;
-    border-radius: 50%;
+    border-radius: var(--border-radius-circle);
 }
 
 .transport-icon {
@@ -227,7 +227,7 @@
 .address-card {
     background: rgba(var(--primary-light-rgb), 0.15);
     border: 2px solid rgba(var(--primary-rgb), 0.2);
-    border-radius: 12px;
+    border-radius: var(--border-radius-standard);
     padding: 1.5rem;
     margin-bottom: 2rem;
     transition: var(--transition-standard);
@@ -280,7 +280,7 @@
     padding: 1.25rem;
     background: rgba(var(--primary-light-rgb), 0.05);
     border: 2px solid rgba(var(--primary-rgb), 0.2);
-    border-radius: 12px;
+    border-radius: var(--border-radius-standard);
     transition: var(--transition-standard);
     margin-bottom: 0.75rem;
 }
@@ -316,7 +316,7 @@
 
 .transport-option {
     border: 2px solid rgba(var(--accent-red-rgb), 0.2);
-    border-radius: 12px;
+    border-radius: var(--border-radius-standard);
     padding: 1.5rem;
     background: rgba(var(--accent-red-rgb), 0.05);
     transition: var(--transition-standard);

@@ -136,7 +136,7 @@
 
 .basic-card:hover,
 .stat-card:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(var(--white-rgb), 0.95);
 }
 
 .universal-card:hover .card-icon .material-symbols-rounded,
@@ -186,7 +186,7 @@
    ====================================== */
 
 .basic-card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(var(--white-rgb), 0.9);
     padding: 2rem;
     text-align: center;
 }
@@ -209,7 +209,7 @@
    ====================================== */
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(var(--white-rgb), 0.9);
     padding: 2.5rem;
     text-align: center;
     backdrop-filter: blur(10px);
@@ -254,7 +254,7 @@
    ====================================== */
 
 .achievement-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(var(--white-rgb), 0.95);
     border-radius: var(--border-radius-standard);
     padding: var(--card-padding);
     text-align: center;
@@ -496,7 +496,7 @@
    ====================================== */
 
 .quote-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(var(--white-rgb), 0.1);
     backdrop-filter: var(--blur-standard);
     border-radius: var(--border-radius-standard);
     box-shadow: var(--shadow-light);
@@ -511,7 +511,7 @@
 .quote-card:hover {
     transform: var(--hover-lift-medium);
     box-shadow: var(--shadow-medium);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(var(--white-rgb), 0.15);
 }
 
 .quote-text {

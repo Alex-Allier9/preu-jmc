@@ -47,20 +47,6 @@
     text-shadow: 1px 1px 2px rgba(var(--black-rgb), 0.5);
 }
 
-/* Contenedor de cards - Ahora usa glass-section */
-/*
-.cards-container {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--border-radius-large);
-    padding: 3rem;
-    margin: 0 auto;
-    max-width: 1200px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-*/
-
 /* Resources Grid */
 .resources-grid {
     display: grid;
@@ -228,7 +214,7 @@
 .skeleton-icon {
     width: 3rem;
     height: 3rem;
-    border-radius: 50%;
+    border-radius: var(--border-radius-circle);
     margin-bottom: 1rem;
 }
 

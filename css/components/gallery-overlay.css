@@ -29,7 +29,7 @@
     height: 3rem;
     background: rgba(var(--black-rgb), 0.8);
     border: none;
-    border-radius: 50%;
+    border-radius: var(--border-radius-circle);
     color: var(--primary) !important;
     cursor: pointer;
     display: flex;
@@ -68,7 +68,7 @@
 .info-panel {
     width: 33.333%;
     background: rgba(var(--white-rgb), 0.95);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(var(--blur-strong));
     padding: 2rem;
     overflow-y: auto;
     border-right: 1px solid rgba(var(--white-rgb), 0.2);
@@ -228,7 +228,7 @@
     background: var(--accent);
     color: var(--black);
     padding: 0.5rem 1rem;
-    border-radius: 50px;
+    border-radius: var(--border-radius-standard);
     font-size: 1rem;
     font-weight: 600;
     width: auto !important;
