@@ -153,7 +153,7 @@
 @media (prefers-contrast: high) {
     .glass-card,
     .glass-section {
-        background: rgba(255, 255, 255, 0.95) !important;
+    background: rgba(var(--white-rgb), 0.95) !important;
         border: 2px solid var(--primary) !important;
     }
 }

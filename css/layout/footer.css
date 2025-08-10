@@ -47,7 +47,7 @@
 }
 
 .contact-item:hover {
-    background: rgba(244, 218, 64, 0.1);
+    background: rgba(var(--accent-rgb), 0.1);
     transform: translateX(5px);
 }
 
