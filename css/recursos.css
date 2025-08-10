@@ -154,7 +154,7 @@
 
 /* Download Button */
 .download-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     background: var(--primary);
@@ -168,6 +168,12 @@
     cursor: pointer;
     width: 100%;
     justify-content: center;
+}
+
+.download-btn .material-symbols-rounded {
+    color: var(--white);
+    font-size: 1.3em;
+    vertical-align: middle;
 }
 
 .download-btn:hover {

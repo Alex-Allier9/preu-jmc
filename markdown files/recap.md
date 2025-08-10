@@ -27,9 +27,9 @@
 - 🟡 **Accent Light:**          `#F2F0A1` - Yellow 0131 C
 - 🟡 **Accent Dark:**           `#A28E2A` - 456 C
 
-- 🔴 **Accent Red:**            `#C8102E` - 186 C
+- 🔴 **Accent Red:**            `#EF3340` - Red 032 C
 - 🔴 **Accent Red Light:**      `#FCAEBB` - Red 0331 C
-- 🔴 **Accent Red Dark:**       `#7C2529` - 1815 C
+- 🔴 **Accent Red Dark:**       `#AF272F` - 1805 C
 
 - 🟠 **Accent Orange:**         `#D69A2D` - 7563 C
 - 🟠 **Accent Orange Light:**   `#EFBE7D` - 156 C

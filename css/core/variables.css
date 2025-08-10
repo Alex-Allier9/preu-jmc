@@ -30,14 +30,14 @@
     --accent-dark: #A28E2A;       /* Color oscuro del acento - Elementos destacados */
     --accent-dark-rgb: 162, 142, 42;
 
-    --accent-red: #C8102E;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
-    --accent-red-rgb: 200, 16, 46;
+    --accent-red: #EF3340;        /* Color de acento secundario - Estadísticas destacadas, animaciones */
+    --accent-red-rgb: 239, 68, 68;
 
     --accent-red-light: #FCAEBB;  /* Color claro del acento rojo */
     --accent-red-light-rgb: 252, 174, 187;
 
-    --accent-red-dark: #7C2529;   /* Color oscuro del acento rojo */
-    --accent-red-dark-rgb: 124, 37, 41;
+    --accent-red-dark: #AF272F;   /* Color oscuro del acento rojo */
+    --accent-red-dark-rgb: 175, 39, 47;
 
     --accent-orange: #D69A2D;     /* Color de acento secundario - Estadísticas destacadas, animaciones */
     --accent-orange-rgb: 214, 154, 45;
