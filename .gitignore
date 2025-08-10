@@ -87,3 +87,4 @@ unoptimized/
 config.local.js
 settings.local.json
 /dev-server
+web.config
