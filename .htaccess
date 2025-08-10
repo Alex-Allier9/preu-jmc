@@ -17,17 +17,26 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^$ index.html [L]
 
-# Permitir acceso a archivos HTML sin extensión
+# NUEVO: Routing para equipo (subcarpeta)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^.]+)$ $1.html [L]
+RewriteRule ^equipo/([^.]+)$ equipo/$1.html [L]
 
-# Redirigir de .html a sin extensión (opcional, para URLs limpias)
+# Permitir acceso a archivos HTML sin extensión (páginas raíz)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^./]+)$ $1.html [L]
+
+# Redirigir de .html a sin extensión (URLs limpias)
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+([^.]+)\.html[\s?] [NC]
 RewriteRule ^ /%1? [R=301,L]
 
+# NUEVO: Redirigir equipo/*.html a equipo/*
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+equipo/([^.]+)\.html[\s?] [NC]
+RewriteRule ^ /equipo/%1? [R=301,L]
+
 # ========================================
-# HEADERS DE SEGURIDAD
+# HEADERS DE SEGURIDAD Y CACHÉ
 # ========================================
 
 # Prevenir clickjacking
@@ -39,48 +48,14 @@ Header always set X-Content-Type-Options nosniff
 # XSS Protection
 Header always set X-XSS-Protection "1; mode=block"
 
-# ========================================
-# COMPRESIÓN Y CACHÉ
-# ========================================
-
-# Habilitar compresión GZIP
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
-</IfModule>
-
 # Configuración de caché
 <IfModule mod_expires.c>
     ExpiresActive On
-    
-    # Imágenes y media
-    ExpiresByType image/jpg "access plus 1 month"
-    ExpiresByType image/jpeg "access plus 1 month"
-    ExpiresByType image/gif "access plus 1 month"
-    ExpiresByType image/png "access plus 1 month"
-    ExpiresByType image/svg+xml "access plus 1 month"
-    ExpiresByType image/webp "access plus 1 month"
-    
-    # CSS y JavaScript
+    ExpiresByType text/html "access plus 1 day"
     ExpiresByType text/css "access plus 1 week"
     ExpiresByType application/javascript "access plus 1 week"
-    ExpiresByType text/javascript "access plus 1 week"
-    
-    # Fuentes
-    ExpiresByType font/woff "access plus 1 month"
-    ExpiresByType font/woff2 "access plus 1 month"
-    ExpiresByType application/font-woff "access plus 1 month"
-    
-    # HTML
-    ExpiresByType text/html "access plus 1 day"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
 </IfModule>
-
-# ========================================
-# TIPOS MIME ADICIONALES
-# ========================================
-
-# Webmanifest
-AddType application/manifest+json .webmanifest
-
-# Fuentes web
-AddType font/woff .woff
-AddType font/woff2 .woff2
