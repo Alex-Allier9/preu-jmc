@@ -5,7 +5,7 @@
 class IncludeSystem {
     constructor() {
         this.currentPage = this.detectCurrentPage();
-        this.isInSubfolder = window.location.pathname.includes('/equipo/');
+        this.isInSubfolder = window.location.pathname.includes('./equipo/');
         this.init();
     }
 

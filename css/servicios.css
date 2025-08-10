@@ -8,13 +8,13 @@
 
 /* Fondo principal con montañas para las primeras secciones */
 .mountain-background {
-    background-image: url('/media/images/servicios/thomas-griesbeck-Y2aNc1X7xLg-unsplash.jpg');
+    background-image: url('./media/images/servicios/thomas-griesbeck-Y2aNc1X7xLg-unsplash.jpg');
     background-size: auto !important;
 }
 
 /* Fondo secundario para secciones posteriores */
 .secondary-background {
-    background-image: url('/media/images/servicios/alessio-soggetti-cfKC0UOZHJo-unsplash.jpg');
+    background-image: url('./media/images/servicios/alessio-soggetti-cfKC0UOZHJo-unsplash.jpg');
     background-size: auto !important;
 }
 
@@ -23,7 +23,7 @@
    ====================================== */
 
 .hero {
-    background-image: url('/media/images/servicios/gaetan-meyer-WemqIKiduMo-unsplash.jpg');
+    background-image: url('./media/images/servicios/gaetan-meyer-WemqIKiduMo-unsplash.jpg');
     background-attachment: scroll;
     background-size: cover;
     background-position: center;
@@ -34,7 +34,7 @@
 
 .cta {
     background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
-        url('/media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
+        url('./media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
 }
 
 /* ======================================

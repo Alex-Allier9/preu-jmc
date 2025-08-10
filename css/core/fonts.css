@@ -8,7 +8,7 @@
     font-style: normal;
     font-weight: 100 700;
     font-display: swap;
-    src: url('/media/fonts/material-symbols/MaterialSymbolsRounded.woff2') format('woff2');
+    src: url('./media/fonts/material-symbols/MaterialSymbolsRounded.woff2') format('woff2');
 }
 
 /* ===== DM SERIF TEXT ===== */
@@ -17,7 +17,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('/media/fonts/dm-serif-text/DMSerifText-Regular.ttf') format('truetype');
+    src: url('./media/fonts/dm-serif-text/DMSerifText-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -25,7 +25,7 @@
     font-style: italic;
     font-weight: 400;
     font-display: swap;
-    src: url('/media/fonts/dm-serif-text/DMSerifText-Italic.ttf') format('truetype');
+    src: url('./media/fonts/dm-serif-text/DMSerifText-Italic.ttf') format('truetype');
 }
 
 /* ===== RALEWAY VARIABLE ===== */
@@ -35,7 +35,7 @@
     font-style: normal;
     font-weight: 100 900;
     font-display: swap;
-    src: url('/media/fonts/raleway/Raleway-Variable.ttf') format('truetype-variations');
+    src: url('./media/fonts/raleway/Raleway-Variable.ttf') format('truetype-variations');
 }
 
 @font-face {
@@ -43,7 +43,7 @@
     font-style: italic;
     font-weight: 100 900;
     font-display: swap;
-    src: url('/media/fonts/raleway/Raleway-Italic-Variable.ttf') format('truetype-variations');
+    src: url('./media/fonts/raleway/Raleway-Italic-Variable.ttf') format('truetype-variations');
 }
 
 /* ===== OPTIMIZACIONES UNIVERSALES ===== */

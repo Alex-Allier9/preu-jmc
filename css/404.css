@@ -6,7 +6,7 @@
 .error-404.grid-2-2-2 {
     height: 100vh;
     background: linear-gradient(rgba(var(--accent-rgb), 0.3), rgba(var(--accent-rgb), 0.3)),
-        url('/media/images/404/daniel-hohe-1VgmgXW3Yuk-unsplash.jpg') center/cover;
+        url('./media/images/404/daniel-hohe-1VgmgXW3Yuk-unsplash.jpg') center/cover;
     position: relative;
     overflow: hidden;
     align-items: center; /* Centrar verticalmente el contenido */

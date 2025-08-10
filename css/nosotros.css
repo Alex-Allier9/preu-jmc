@@ -4,16 +4,16 @@
 
 /* Background images - ESPECÍFICO DE NOSOTROS */
 .mountain-background {
-    background-image: url('/media/images/nosotros/cristina-gottardi-9TaYFMMapbA-unsplash.jpg');
+    background-image: url('./media/images/nosotros/cristina-gottardi-9TaYFMMapbA-unsplash.jpg');
 }
 
 .secondary-background {
-    background-image: url('/media/images/nosotros/annie-spratt-R2OQShb3nmk-unsplash.jpg');
+    background-image: url('./media/images/nosotros/annie-spratt-R2OQShb3nmk-unsplash.jpg');
 }
 
 /* Hero section background - ESPECÍFICO DE NOSOTROS */
 .hero {
-    background-image: url('/media/images/nosotros/redd-francisco-gdQnsMbhkUs-unsplash.jpg');
+    background-image: url('./media/images/nosotros/redd-francisco-gdQnsMbhkUs-unsplash.jpg');
     background-attachment: scroll;
     background-size: cover;
     background-position: center;
@@ -30,7 +30,7 @@
 /* CTA section background - ESPECÍFICO DE NOSOTROS */
 .cta {
     background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
-        url('/media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
+        url('./media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
 }
 
 /* ======================================
@@ -80,7 +80,7 @@
 
 .program {
     background: linear-gradient(rgba(var(--white-rgb), 0.6), rgba(var(--white-rgb), 0.6)),
-        url('/media/images/nosotros/alessio-soggetti-PdGBci-4jR8-unsplash.jpg') center/cover;
+        url('./media/images/nosotros/alessio-soggetti-PdGBci-4jR8-unsplash.jpg') center/cover;
     color: var(--black);
 }
 

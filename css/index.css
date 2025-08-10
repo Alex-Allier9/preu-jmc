@@ -8,17 +8,17 @@
 
 /* Fondo principal con montañas para las primeras secciones */
 .mountain-background {
-    background-image: url('/media/images/index/alessio-soggetti-cfKC0UOZHJo-unsplash.jpg');
+    background-image: url('./media/images/index/alessio-soggetti-cfKC0UOZHJo-unsplash.jpg');
 }
 
 /* Fondo secundario para secciones posteriores */
 .secondary-background {
-    background-image: url('/media/images/index/will-li-KnLPEWBGNwY-unsplash.jpg');
+    background-image: url('./media/images/index/will-li-KnLPEWBGNwY-unsplash.jpg');
 }
 
 /* Hero section background - ESPECÍFICO DE INDEX */
 .hero {
-    background-image: url('/media/images/index/gaetan-meyer-WemqIKiduMo-unsplash.jpg');
+    background-image: url('./media/images/index/gaetan-meyer-WemqIKiduMo-unsplash.jpg');
     background-attachment: scroll;
     background-size: cover;
     background-position: center;
@@ -27,7 +27,7 @@
 /* CTA section background - ESPECÍFICO DE INDEX */
 .cta {
     background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
-        url('/media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
+        url('./media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
 }
 
 /* ======================================
@@ -221,7 +221,7 @@
 
 .founder-preview-section {
     background: linear-gradient(rgba(var(--black-rgb), 0.4), rgba(var(--black-rgb), 0.4)),
-        url('/media/images/index/daniel-leone-g30P1zcOzXo-unsplash.jpg') center/cover;
+        url('./media/images/index/daniel-leone-g30P1zcOzXo-unsplash.jpg') center/cover;
     margin-bottom: var(--section-margin-bottom);
     box-shadow: var(--shadow-medium);
     position: relative;

@@ -8,7 +8,7 @@
 
 /* Fondo principal con montañas para las primeras secciones */
 .mountain-background {
-    background-image: url('/media/images/testimonios/thomas-griesbeck-Y2aNc1X7xLg-unsplash.jpg');
+    background-image: url('./media/images/testimonios/thomas-griesbeck-Y2aNc1X7xLg-unsplash.jpg');
     background-repeat: repeat !important;
     background-size: auto !important;
     background-attachment: fixed;
@@ -38,7 +38,7 @@
 
 /* Hero section background - ESPECÍFICO DE TESTIMONIOS */
 .hero {
-    background-image: url('/media/images/testimonios/ben-lowe-sqdY_rJg8wg-unsplash.jpg');
+    background-image: url('./media/images/testimonios/ben-lowe-sqdY_rJg8wg-unsplash.jpg');
     background-attachment: scroll;
     background-size: cover;
     background-position: center;
@@ -56,7 +56,7 @@
 /* CTA section background - ESPECÍFICO DE TESTIMONIOS */
 .cta {
     background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
-        url('/media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
+        url('./media/images/cta/joshua-sortino-CTVGEm6V8qI-unsplash.jpg') center/cover;
 }
 
 /* ======================================
