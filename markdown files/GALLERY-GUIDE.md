@@ -61,7 +61,7 @@ Los badges se configuran en la columna `badges` usando formato JSON:
 Las imágenes deben estar organizadas de la siguiente manera:
 
 ```
-media/images/fundador/gallery/
+/media/images/j-cartes/gallery/
 ├── aconcagua/
 │   ├── aconcagua_cover.jpg    (imagen principal)
 │   ├── foto1.jpg
@@ -148,7 +148,7 @@ debugGallerySystem.forceRestart()
 
 ### Para Añadir una Nueva Expedición:
 
-1. **Crear carpeta de imágenes** en `media/images/fundador/gallery/[id]/`
+1. **Crear carpeta de imágenes** en `/media/images/j-cartes/gallery/[id]/`
 2. **Subir fotos** incluyendo `[id]_cover.jpg`
 3. **Añadir fila** en Google Sheet con todos los datos
 4. **Usar formato JSON** para badges personalizados

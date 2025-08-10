@@ -238,7 +238,7 @@ preu-jmc/
   - 🎯 Ordenamiento por dificultad y altura con controles inline
   - 🎨 6 niveles de dificultad con colores automáticos (F→PD→AD→D→TD→ED)
   - 📱 Responsive completo con breakpoints optimizados
-  - 📂 **Ubicación fotos:** `media/images/fundador/gallery/[montaña]/[foto].jpg`
+  - 📂 **Ubicación fotos:** `/media/images/j-cartes/gallery/[montaña]/[foto].jpg`
   - 🏔️ **Montañas incluidas:** Aconcagua, El Plomo, Cerro Provincia, Nevado de Longaví, 
     Volcán Antuco, Cerro El Roble, Alto del Naranjo, Cerro Manquehue, y más
 - ✅ Estadísticas montañísticas actualizadas
