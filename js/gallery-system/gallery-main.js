@@ -572,7 +572,7 @@ window.GalleryUtils = {
     
     // Detectar dispositivo móvil
     isMobile: () => {
-        return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        return window.innerWidth <= 848 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     },
     
     // Throttle para eventos

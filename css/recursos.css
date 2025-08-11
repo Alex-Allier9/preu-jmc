@@ -47,14 +47,6 @@
     text-shadow: 1px 1px 2px rgba(var(--black-rgb), 0.5);
 }
 
-/* Resources Grid */
-.resources-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
 /* Resource Card */
 .resource-card {
     background: rgba(var(--white-rgb), 0.95);
@@ -275,7 +267,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 53rem) {
+@media (max-width: 82rem) {
     .recursos-main {
         padding: 2rem 0;
     }
@@ -290,18 +282,13 @@
         padding: 2rem;
         margin: 0 1rem;
     }
-    
-    .resources-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
+
     .resource-card {
         padding: 1.5rem;
     }
 }
 
-@media (max-width: 30rem) {
+@media (max-width: 53rem) {
     .recursos-main {
         padding: 1rem 0;
     }

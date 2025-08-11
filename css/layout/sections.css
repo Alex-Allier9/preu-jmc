@@ -255,7 +255,7 @@
    ====================================== */
 
 /* Tablets y pantallas medianas */
-@media (max-width: 768px) {
+@media (max-width: 82rem) {
     .hero {
         background-attachment: scroll !important;
         background-size: cover !important;
@@ -272,7 +272,7 @@
 }
 
 /* Móviles */
-@media (max-width: 480px) {
+@media (max-width: 53rem) {
     .hero {
         background-attachment: scroll !important;
         background-size: cover !important;
@@ -295,7 +295,7 @@
    ====================================== */
 
 /* Tablets y pantallas medianas */
-@media (max-width: 768px) {
+@media (max-width: 82rem) {
     .hero {
         background-attachment: scroll !important;
         background-size: cover !important;
@@ -312,7 +312,7 @@
 }
 
 /* Móviles */
-@media (max-width: 480px) {
+@media (max-width: 53rem) {
     .hero {
         background-attachment: scroll !important;
         background-size: cover !important;
