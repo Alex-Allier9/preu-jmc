@@ -115,7 +115,6 @@
 .d-none { display: none; }
 .d-block { display: block; }
 .d-flex { display: flex; }
-.d-grid { display: grid; }
 
 .flex-column { flex-direction: column; }
 .justify-center { justify-content: center; }

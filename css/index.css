@@ -645,13 +645,6 @@
    PROCESS STEPS
    ====================================== */
 
-.process-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--gap-standard);
-    margin-top: 3rem;
-}
-
 .process-step {
     text-align: center;
     padding: var(--card-padding);
@@ -711,21 +704,6 @@
 .contact-preview-section {
     background: rgba(var(--white-rgb), 0.95);
     padding: 5rem 0;
-}
-
-.contact-preview-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.location-info h2,
-.contact-info h2 {
-    color: var(--primary-dark);
-    margin-bottom: 2rem;
-    font-size: 2rem;
 }
 
 .location-details,
@@ -857,11 +835,7 @@
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
-    .contact-preview-grid {
-        gap: 3rem;
-    }
-    
+
     .achievement-highlight {
         grid-template-columns: 1fr;
         text-align: center;
@@ -932,16 +906,7 @@
     .testimonials-preview-grid {
         grid-template-columns: 1fr;
     }
-    
-    .process-steps {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-preview-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
+
     .achievement-highlight {
         grid-template-columns: 1fr;
         text-align: center;
