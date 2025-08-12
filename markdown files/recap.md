@@ -128,7 +128,7 @@
 **Archivos:** `index.html` (vacío), `css/inicio.css` (vacío), `js/inicio.js` (vacío)
 **Contenido planificado:**
 - Hero section con propuesta de valor
-- Resumen de servicios y experiencia (18+ años)
+- Resumen de servicios y experiencia (+18 años)
 - Testimonios destacados (3-4 breves)
 - Call-to-action principal de contacto
 

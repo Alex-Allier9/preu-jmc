@@ -154,8 +154,8 @@ preu-jmc/
 - **7 páginas** completamente funcionales
 - **50+ imágenes** optimizadas
 - **4 testimonios** máximos nacionales destacados
-- **200+ estudiantes** exitosos documentados
-- **18+ años** experiencia educativa
+- **+200 estudiantes** exitosos documentados
+- **+18 años** experiencia educativa
 
 ### **🔧 Código**
 - **~15,000 líneas** CSS modular

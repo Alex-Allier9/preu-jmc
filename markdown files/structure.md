@@ -180,21 +180,15 @@ preu-jmc/
 
 #### **Hero Section Principal**
 - Título impactante con propuesta de valor clara
-- Subtítulo: "18+ años formando estudiantes exitosos"
+- Subtítulo: "+18 años formando estudiantes exitosos"
 - Call-to-action principal: "Inscríbete Ahora" / "Conoce Más"
 - Imagen/video de fondo representativa
 
 #### **Propuesta de Valor Rápida**
-- 🎯 **18+ años de experiencia** en educación preuniversitaria
+- 🎯 **+18 años de experiencia** en educación preuniversitaria
 - 👥 **Grupos pequeños** (máximo 10 estudiantes) 
 - 🏆 **Resultados comprobados** (múltiples máximos nacionales)
 - 🎓 **Metodología personalizada** basada en filosofía Montessori
-
-#### **Testimonios Destacados (3-4 breves)**
-- Beltrán Llaneza - Ingeniería Comercial UAI
-- Belén Becerra - Enfermería Universidad de los Andes
-- Lucas Cano - Ingeniería Comercial Universidad de Chile
-- Enlaces a página completa de testimonios
 
 #### **Servicios Principales (Resumen)**
 - Preuniversitario anual completo
@@ -215,7 +209,7 @@ preu-jmc/
 #### **Contenido Implementado:**
 - ✅ Introducción institucional completa
 - ✅ Misión, Visión y Propósito declarados
-- ✅ 18+ años de experiencia destacados
+- ✅ +18 años de experiencia destacados
 - ✅ Metodología Montessori explicada
 - ✅ 9 valores fundamentales listados
 - ✅ Filosofía educativa integral
