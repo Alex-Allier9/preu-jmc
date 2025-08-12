@@ -4,28 +4,17 @@ Creado por: Jose Manuel Cartes
 Preuniversitario JMC se funda con la misión de contribuir con las futuras generaciones en su preparación académica y formación personal, entregando herramientas sólidas para construir un proyecto de vida valioso.
 Estamos convencidos de que todo ser humano cuenta con un potencial enorme para crecer, contribuir y por supuesto ser feliz. Sin embargo, para aprovechar y desarrollar ese potencial, se hace imprescindible contar con el apoyo y guía en momentos claves de la vida, desafío que como institución educativa hemos querido emprender, por medio de nuestro trabajo, compromiso profundo, amor por la vida y fe en el ser humano.
 Si bien nuestro mayor objetivo es que cada estudiante se supere y alcance su máximo potencial, independientemente de su nivel inicial en el área matemáticas, les contamos que durante el 2023 tuvimos un estudiante con máximo nacional en la prueba M1, mientras que el año 2022 ya tres estudiantes alcanzaron ese logro. Además, muchos otros jóvenes lograron avanzar enormemente y emprender un proyecto de vida con excelentes perspectivas.
-Les aprovechamos de compartir algunos testimonios de jóvenes que han estudiado con nosotros, y les deseamos también a ustedes el mayor de los éxitos en todos sus proyectos, metas y desafíos. 
-
-Testimonios:
-
-Beltrán Llaneza, estudiante Ingeniería Comercial UAI
-“Para mí este preuniversitario no fue solamente ir a la clase, ejercitar y evolucionar, también tuve el momento para compartir con amigos y compañeros, para aprender personalmente diferentes cosas sobre la vida.
-Me ayudó a subir mis puntajes para poder dar ensayos que me sirvieron para medir mis tiempos y controlar mis pensamientos. Además de todo lo aprendido me voy contento por mis resultados y por el tiempo compartido, y por llevarme conocimientos y aprendizajes de todos los que me acompañaron durante todo el año.”
-
-Belén Becerra, estudiante Enfermería Universidad de los Andes
-Estuve en preu con Cartes durante el año 2023 y sin duda me dio la mejor preparación para mi prueba de matemáticas. Es un profesor muy motivador, que te ayuda a mantener el foco y subir los ánimos si es necesario. Siempre me dio las mejores explicaciones para entender al máximo la materia y su material fue muy completo, ofreciendo guías extra de querer realizar más ejercicios. Creo que además se enfoca mucho en cada uno de sus alumnos, logrando que sus clases sean muy personalizadas y centradas en que todos vayan entendiendo y aprendiendo. Estoy muy agradecida de haber tomado clases con él y de haber obtenido mi mejor prueba gracias a su preparación.
-Lucas Cano, estudiante Ingeniería Comercial, Universidad de Chile.
-El preuniversitario JMC entrega una formación personalizada, su sistema basado en grupos pequeños permite que el profesor se centre más en las necesidades y dudas de cada estudiante. José Manuel es un docente con experiencia preparando a estudiantes para la prueba y eso se nota en la calidad de sus clases, además, se atreve a dar un paso más allá, entregando material extra si los estudiantes lo piden, algo que les permite a aquellos que quieran desafiarse tener la oportunidad de hacerlo. Valoro mucho la experiencia que tuve en JMC y lo dejo más que recomendado a estudiantes que quieran prepararse para dar la PAES.
+Les aprovechamos de compartir algunos testimonios de jóvenes que han estudiado con nosotros, y les deseamos también a ustedes el mayor de los éxitos en todos sus proyectos, metas y desafíos.
 
 
 Acerca de su Fundador:
-
 Mi nombre es José Manuel Cartes Urzúa, soy profesor, ingeniero Civil UC y montañista, además de un ser humano creyente en Dios. Cuento con más de 18 años de experiencia en Aula como profesor del Colegio Epullay Montessori y de mi preuniversitario. He sido presidente de la fundación educacional CEN y del Club Deportivo Viverunning, trabajado en programas de TV educativos, y creado mi propio texto de estudio el año 2009 (Matemáticas Enseñanza Media). 
 Dentro de mis años en el mundo de la educación, he sido testigo de que el ser humano tiene un potencial infinito para crecer, aprender y contribuir a los demás. Cada persona, si desarrolla con perseverancia y amor sus talentos únicos, puede construir un proyecto de vida realmente valioso y aportar en la creación de un mundo mejor. "El niño, guiado por un maestro interior, trabaja infatigablemente con alegría para construir al hombre." decía María Montessori, señalando que cada niño tiene una motivación intrínseca para crecer y desarrollarse.
 Sin embargo, para desarrollar esos talentos se necesita trabajo de largo plazo, disciplina, valores, amor por la vida, desarrollo de un carácter sólido, visión, autoconfianza, entre otras aptitudes claves. 
 Para esto, el contar con referentes valiosos y una adecuada guía es fundamental, especialmente en edades más tempranas. Posiblemente los primeros modelos son los padres y la familia, quienes transmiten los principales valores a sus hijos. Luego los docentes, pueden cumplir un rol muy importante para complementar el trabajo familiar y con ello hacer un trabajo en equipo óptimo.
 María Montessori nos decía: “Si existe para la humanidad una esperanza de salvación y ayuda, ésta no podrá venir más que del Niño, porque en él se construye el Hombre“.  Y bajo esa premisa, es que considero que mi aporte al mundo es tratar de formar mejores seres humanos. Dentro de mis fortalezas y limitaciones, estoy constantemente aprendiendo y trabajando por superarme, con la esperanza de que es posible lograr ese cambio positivo no solo en nosotros, sino que en el mundo. Es un camino largo, para nada fácil, pero con trabajo duro y alegre, junto con amor por lo que hacemos, sumado a la fe, al final la vida nos entrega lo que buscamos.
 Mi compromiso es dar lo mejor que tengo como persona y como profesional, para que cada estudiante que trabaje conmigo desarrolle su máximo potencial en el área matemática, pero también potencie su disciplina, autoconfianza y valores que le permitan convertirse en un mejor ser humano. “La alegría, sentir la propia valía, ser apreciado y amado por otros, sentirse útil y capaz de producir, son factores de gran valor para el alma humana.” Decía María Montessori.
+
 
 2.- Acerca del Preuniversitario
 Se trata de un preuniversitario Personalizado, con grupos de máximo 10 estudiantes, que se reúne presencialmente 2 veces por semana en clases de 2 horas de duración. 
@@ -39,35 +28,36 @@ Inicio de Clases: primera semana de marzo.
 Término de Clases: última semana de noviembre. 
 Consulta por valores y planes.
 
-Acá podría haber un link para descargar el texto de estudio “Matemáticas Enseñanza Media” 
 
 3.- Acerca de nuestros valores:
 Para contribuir con la formación de un mejor ser humano, que por un lado cuente con las herramientas y el conocimiento para tener la libertad de elegir su mejor camino, pero que también tenga la impronta valórica que le permita dejar una huella positiva en el mundo, consideramos fundamental trabajar y promover las siguientes características humanas.
-Trabajo constante y disciplinado.
-Resiliencia y espíritu de superación.
-Autoestima y autoconocimiento.
-Amor por la vida.
-Solidaridad y deseo genuino por contribuir con los demás.
-Honestidad.
-Confianza en que cuentan con un propósito único y valioso.
-Visión crítica y optimista acerca del mundo.
-Autonomía y libertad.
+-	Trabajo constante y disciplinado.
+-	Resiliencia y espíritu de superación.
+-	Autoestima y autoconocimiento.
+-	Amor por la vida.
+-	Solidaridad y deseo genuino por contribuir con los demás.
+-	Honestidad.
+-	Confianza en que cuentan con un propósito único y valioso.
+-	Visión crítica y optimista acerca del mundo.
+-	Autonomía y libertad.
+
 
 4.- Clases Particulares y talleres de verano:
 Además del trabajo formal de preuniversitario, realizamos clases particulares tanto en nuestra sede como a domicilio a estudiantes de enseñanza media y primeros años de universidad. Si necesitas una nivelación, ya sea durante el año académico, o bien durante el verano, escríbenos para analizar la mejor alternativa.
 
+
 5.- Contacto:
-Correo: jcartes@uc.cl
+Correo: jcartes@preujmc.cl
 Instagram: @josemanuelcartes
 
 6.- Acerca de mi vida como montañista
 Si bien, el mundo de la educación es mi trabajo y vocación, lo cual realizo con mucho cariño e ilusión, también he encontrado en el mundo de la montaña, una manera de conectarme con maravilla de la creación, visitar lugares maravillosos, crecer como ser humano y entender de que, si bien nuestro paso es breve, podemos experimentar momentos realmente sublimes y dejar un valioso aporte para las futuras generaciones.
 
 Les comparto algunas de mis experiencias como montañista a julio de 2025 (acá tengo que actualizar los datos a fin de mes):
-xx cumbres cerro el Plomo, varias invernales y una de ellas trotando desde Plaza de Armas en 13horas y 39 minutos.
-1x cumbres Volcán San José y récord de ascenso en 5h48min y récord global con 9h37min
-3 Cumbres Cerro Marmolejo, con récord de ascenso en 11h51min
-Múltiples ascensiones invernales a la Sierra de Ramón, Sierra Ortiga, Cordón de los Españoles, entre otras, junto con unificación de rutas de Trail y montañismo.
+•	xx cumbres cerro el Plomo, varias invernales y una de ellas trotando desde Plaza de Armas en 13horas y 39 minutos.
+•	1x cumbres Volcán San José y récord de ascenso en 5h48min y récord global con 9h37min
+•	3 Cumbres Cerro Marmolejo, con récord de ascenso en 11h51min
+•	Múltiples ascensiones invernales a la Sierra de Ramón, Sierra Ortiga, Cordón de los Españoles, entre otras, junto con unificación de rutas de Trail y montañismo.
 Les dejo algunas imágenes y los invito también adentrarse en este maravilloso mundo de las montañas que nos regala nuestro país.
 
 
