@@ -351,7 +351,8 @@ class GalleryCards {
             
             <img src="${window.galleryConfig.basePath}${expedition.id}/${expedition.coverImage}" 
                  alt="${expedition.name}" 
-                 class="expedition-image">
+                 class="expedition-image"
+                 onerror="this.src='/media/icons/mountain-placeholder.svg'">
             
             <div class="expedition-content">
                 <h3 class="expedition-title">${expedition.name}</h3>
@@ -464,7 +465,6 @@ class GalleryCards {
                 volcanes: expeditions.filter(e => e.category === 'volcanes').length,
                 sierras: expeditions.filter(e => e.category === 'sierras').length
             },
-            featured: expeditions.filter(e => e.featured).length,
             newItems: expeditions.filter(e => window.isNewItem(e.lastUpdate)).length
         };
     }

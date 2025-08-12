@@ -202,7 +202,6 @@ class GalleryDataManager {
                 // Metadatos
                 coverImage: this.generateCoverImageName(row.id || row.ID || ''),
                 lastUpdate: row.fechaActualizacion || row.lastUpdate || new Date().toISOString(),
-                featured: this.parseBoolean(row.destacado || row.featured || false),
                 status: row.estado || row.status || 'active'
             };
 
@@ -546,7 +545,6 @@ window.debugGallery = {
                 console.log(`   Ubicación: "${expedition.location.fullLocation}"`);
                 console.log(`   Ascensiones: ${expedition.ascents}`);
                 console.log(`   Badges: ${expedition.achievements.length}`);
-                console.log(`   Destacado: ${expedition.featured}`);
                 console.log('---');
             });
 
