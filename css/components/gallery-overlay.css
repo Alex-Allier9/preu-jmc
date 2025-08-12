@@ -10,7 +10,7 @@
     height: 100vh;
     background: rgba(var(--black-rgb), 0.95);
     backdrop-filter: blur(10px);
-    z-index: 15000;
+    z-index: 9000;
     display: flex;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    z-index: 15001;
+    z-index: 9001;
     transition: var(--transition-standard);
     backdrop-filter: blur(10px);
 }
@@ -906,7 +906,7 @@
     visibility: hidden;
     transform: var(--hover-lift-medium);
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 110;
     overflow: hidden;
 }
 

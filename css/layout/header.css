@@ -120,7 +120,7 @@
     visibility: hidden;
     transform: translateX(-50%) translateY(-10px);
     transition: var(--transition-standard);
-    z-index: 1001;
+    z-index: 1010;
     list-style: none;
     border-bottom: 1px solid rgba(var(--primary-rgb), 0.1);
     min-width: 280px;
@@ -200,7 +200,7 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1001;
+    z-index: 1110;
 }
 
 .hamburger-line {
@@ -234,7 +234,7 @@
     height: 100vh;
     background: rgba(var(--white-rgb), 0.95);
     backdrop-filter: var(--blur-standard);
-    z-index: 1000;
+    z-index: 1100;
     display: flex;
     align-items: center;
     justify-content: center;
