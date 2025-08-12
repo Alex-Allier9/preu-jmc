@@ -40,7 +40,17 @@
 - 🟢 **Accent Green Dark:**     `#279989` - 7473 C
 
 - ⚫ **Black:**                 `#101820` - Black 6 C
-- ⚪ **Gray Light:**            `#F4F4F4`
+
+#### Escala de grises:
+- ⚪ **Gray 100:**   `#F4F4F4`
+- ⚪ **Gray 200:**   `#F0F0F0`
+- ⚪ **Gray 300:**   `#E6E6E6`
+- ⚪ **Gray 400:**   `#CCCCCC`
+- ⚪ **Gray 500:**   `#888888`
+- ⚪ **Gray 600:**   `#666666`
+- ⚪ **Gray 700:**   `#4A4A4A`
+- ⚪ **Gray 800:**   `#333333`
+- ⚪ **Gray 900:**   `#2D2D2D`
 
 ### **✅ MIGRACIÓN CSS COMPLETADA (Julio 26-27, 2025):**
 - ✅ **Sistema de variables 100% unificado** (129 referencias activas)
