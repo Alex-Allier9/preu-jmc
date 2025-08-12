@@ -18,24 +18,6 @@
     background-image: url('/media/images/j-cartes/ojos-salado_0002.jpg');
 }
 
-.hero h1 {
-    font-family: var(--font-title);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    margin-bottom: var(--gap-medium);
-    letter-spacing: var(--title-letter-spacing);
-    line-height: 1.2;
-    color: var(--white);
-}
-
-.hero-subtitle {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    font-style: italic;
-    color: var(--white);
-    opacity: 0.9;
-    max-width: 100%;
-    align-self: flex-start;
-}
-
 /* CTA section background - ESPECÍFICO DE FUNDADOR */
 .cta {
     background: linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.6)),
