@@ -19,9 +19,6 @@
 /* Hero section background - ESPECÍFICO DE INDEX */
 .hero {
     background-image: url('/media/images/index/gaetan-meyer-WemqIKiduMo-unsplash.jpg');
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: center;
 }
 
 /* CTA section background - ESPECÍFICO DE INDEX */

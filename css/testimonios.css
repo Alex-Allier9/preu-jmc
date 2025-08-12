@@ -39,18 +39,6 @@
 /* Hero section background - ESPECÍFICO DE TESTIMONIOS */
 .hero {
     background-image: url('/media/images/testimonios/ben-lowe-sqdY_rJg8wg-unsplash.jpg');
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: center;
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
 }
 
 /* CTA section background - ESPECÍFICO DE TESTIMONIOS */
