@@ -115,7 +115,7 @@
     backdrop-filter: var(--blur-standard);
     border-radius: var(--border-radius-standard);
     box-shadow: var(--shadow-light);
-    padding: 1.5rem;
+    padding: var(--card-padding-medium);
     opacity: 0;
     visibility: hidden;
     transform: translateX(-50%) translateY(-10px);
@@ -138,7 +138,7 @@
     font-weight: 700;
     font-size: 1.2rem;
     color: var(--primary-dark);
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     padding-bottom: 0.5rem;
     border-radius: 1px;
     border-bottom: 2px solid rgba(var(--accent-rgb));
@@ -361,7 +361,7 @@
     font-weight: 700;
     font-size: 1.2rem;
     color: var(--primary-dark);
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     padding-bottom: 0.5rem;
     border-radius: 1px;
     border-bottom: 2px solid rgba(var(--accent-rgb));

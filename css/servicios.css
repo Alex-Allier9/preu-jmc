@@ -129,7 +129,7 @@
 .table-header {
     background: var(--accent-green);
     color: var(--white);
-    padding: 1.5rem;
+    padding: var(--card-padding-medium);
     text-align: center;
 }
 
@@ -137,7 +137,7 @@
     margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
-    font-family: 'DM Serif Text', serif;
+    font-family: var(--font-title);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,7 +205,7 @@
 /* Content Intro - Para textos introductorios */
 .content-intro {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: var(--margin-bottom-standard);
     padding: 0;
 }
 
@@ -240,7 +240,7 @@
 }
 
 .card-content h3 {
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.6rem;
     color: var(--primary-dark);
     margin-bottom: 1.5rem;

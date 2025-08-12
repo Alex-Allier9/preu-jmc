@@ -167,7 +167,7 @@
 .gradient-border-card h3 {
     color: var(--primary-dark);
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     font-size: 1.3rem;
     position: relative;
     z-index: 1;
@@ -187,7 +187,7 @@
 
 .basic-card {
     background: rgba(var(--white-rgb), 0.9);
-    padding: 2rem;
+    padding: var(--card-padding);
     text-align: center;
 }
 
@@ -195,7 +195,7 @@
     color: var(--primary);
     font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
 }
 
 .basic-card p {
@@ -227,11 +227,11 @@
 }
 
 .stat-number {
-    font-family: 'DM Serif Text', serif;
+    font-family: var(--font-title);
     font-size: clamp(2.5rem, 8vw, 4.5rem);
     color: var(--primary);
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     line-height: 1;
     letter-spacing: var(--title-letter-spacing);
     transition: var(--transition-standard);
@@ -361,7 +361,7 @@
 .glass-card h3 {
     color: var(--accent);
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     font-size: 1.3rem;
 }
 
@@ -380,7 +380,7 @@
     box-shadow: var(--shadow-light);
     position: relative;
     z-index: 2;
-    padding: 1.5rem;
+    padding: var(--card-padding-medium);
     transition: all 0.3s ease;
     text-align: center;
     margin-bottom: var(--margin-bottom-standard);
@@ -396,7 +396,7 @@
 .glass-card-light h3 {
     color: var(--primary-dark);
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     font-size: 1.3rem;
 }
 
@@ -414,7 +414,7 @@
     box-shadow: var(--shadow-medium);
     position: relative;
     z-index: 2;
-    padding: 1.5rem;
+    padding: var(--card-padding-medium);
     color: white;
     transition: all 0.3s ease;
     text-align: center;
@@ -432,7 +432,7 @@
 .glass-card-dark .card-title {
     color: white;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     font-size: 1.3rem;
 }
 
@@ -480,7 +480,7 @@
 .icon-card h3 {
     color: var(--primary-dark);
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     font-size: 1.3rem;
     line-height: 1.3;
 }

@@ -4,14 +4,14 @@
 /* ===== HEADER DE LA GALERÍA ===== */
 .gallery-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: var(--margin-bottom-large);
 }
 
 .gallery-main-title {
     font-family: var(--font-title);
     font-size: clamp(2rem, 4vw, 3rem);
     color: var(--primary-dark);
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     font-weight: 600;
 }
 
@@ -30,7 +30,7 @@
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: var(--margin-bottom-standard);
 }
 
 .filter-btn {
@@ -128,7 +128,7 @@
 
 /* ===== CONTENIDO DE LA CARD ===== */
 .expedition-content {
-    padding: 1.5rem;
+    padding: var(--card-padding-medium);
     height: 150px;
     display: flex;
     flex-direction: column;
@@ -140,7 +140,7 @@
     font-size: 0.95rem;
     line-height: 1.5;
     opacity: 0.8;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     flex-grow: 1;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -164,7 +164,7 @@
     gap: var(--gap-small);
     padding: 0.4rem 0.8rem;
     background: rgba(var(--primary-rgb), 0.1);
-    border-radius: 20px;
+    border-radius: var(--border-radius-large);
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--primary-dark);

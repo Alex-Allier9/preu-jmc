@@ -15,7 +15,7 @@
 /* Contenido del error */
 .error-content {
     max-width: 800px;
-    padding: 2rem;
+    padding: var(--card-padding);
     z-index: 2;
     text-align: center;
     width: 100%;
@@ -25,12 +25,12 @@
 .glitch {
     position: relative;
     color: var(--black);
-    font-family: 'DM Serif Text', serif;
+    font-family: var(--font-title);
     font-size: clamp(16rem, 30vw, 40rem);
     font-weight: 400;
     line-height: 1;
     letter-spacing: var(--title-letter-spacing);
-    margin-bottom: 2rem;
+    margin-bottom: var(--margin-bottom-standard);
     animation: glitchItalic 8s infinite ease-in-out;
 }
 
@@ -266,7 +266,7 @@
 
 /* Mensaje de error con efecto italic sutil */
 .error-message {
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1.2rem, 3vw, 1.8rem);
     color: var(--black);
     margin-bottom: 2.5rem;

@@ -85,29 +85,6 @@
 .text-right { text-align: right; }
 .text-justify { text-align: justify; }
 
-.fw-normal { font-weight: 400; }
-.fw-medium { font-weight: 500; }
-.fw-semibold { font-weight: 600; }
-.fw-bold { font-weight: 700; }
-
-/* ======================================
-   UTILIDADES DE ESPACIADO
-   ====================================== */
-
-/* Margins */
-.m-0 { margin: 0; }
-.mt-0 { margin-top: 0; }
-.mb-0 { margin-bottom: 0; }
-.mb-1 { margin-bottom: var(--margin-bottom-small); }
-.mb-2 { margin-bottom: var(--margin-bottom-standard); }
-.mb-3 { margin-bottom: var(--margin-bottom-large); }
-.mx-auto { margin-left: auto; margin-right: auto; }
-
-/* Padding */
-.p-0 { padding: 0; }
-.p-1 { padding: 1rem; }
-.p-2 { padding: 2rem; }
-
 /* ======================================
    UTILIDADES DE DISPLAY Y FLEXBOX
    ====================================== */
@@ -135,14 +112,6 @@
 
 .position-relative { position: relative; }
 .position-absolute { position: absolute; }
-
-/* ======================================
-   UTILIDADES DE SOMBRAS
-   ====================================== */
-
-.shadow-none { box-shadow: none; }
-.shadow { box-shadow: var(--shadow-light); }
-.shadow-lg { box-shadow: var(--shadow-medium); }
 
 /* ======================================
    UTILIDADES DE COLOR

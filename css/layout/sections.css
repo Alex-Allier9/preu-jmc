@@ -201,14 +201,14 @@
 .cta h2 {
     font-family: var(--font-title);
     font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     color: white;
     letter-spacing: var(--title-letter-spacing);
 }
 
 .cta p {
     font-size: 1.2rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--margin-bottom-standard);
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;

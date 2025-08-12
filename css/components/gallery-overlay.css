@@ -69,7 +69,7 @@
     width: 33.333%;
     background: rgba(var(--white-rgb), 0.95);
     backdrop-filter: blur(var(--blur-strong));
-    padding: 2rem;
+    padding: var(--card-padding);
     overflow-y: auto;
     border-right: 1px solid rgba(var(--white-rgb), 0.2);
 }
@@ -78,7 +78,7 @@
 .expedition-header {
     border-bottom: 2px solid var(--primary-dark);
     padding-bottom: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--margin-bottom-standard);
 }
 
 .expedition-title {
@@ -93,14 +93,14 @@
     color: var(--primary);
     font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
 }
 
 .expedition-coordinates {
     color: var(--primary-dark);
     font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -269,7 +269,7 @@
 }
 
 .description-text p {
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
 }
 
 .description-text p:last-child {
@@ -279,7 +279,7 @@
 /* Información técnica */
 .technical-info {
     background: rgba(var(--gray-200-rgb), 0.5);
-    padding: 1.5rem;
+    padding: var(--card-padding-medium);
     border-radius: var(--border-radius-standard);
     margin-bottom: 1.5rem;
 }
@@ -344,7 +344,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: var(--card-padding);
     height: calc(100vh - 100px); /* Alto fijo: altura total menos espacio para thumbnails */
     max-height: calc(100vh - 100px);
     overflow: hidden;
@@ -419,7 +419,7 @@
     background: rgba(var(--black-rgb), 0.8);
     color: white;
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-large);
     font-size: 0.9rem;
     backdrop-filter: blur(10px);
     z-index: 100;
@@ -736,14 +736,14 @@
 /* ===== HEADER DE LA GALERÍA ===== */
 .gallery-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: var(--margin-bottom-large);
 }
 
 .gallery-main-title {
     font-family: var(--font-title);
     font-size: clamp(2rem, 4vw, 3rem);
     color: var(--primary-dark);
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     font-weight: 600;
 }
 
@@ -762,7 +762,7 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: var(--margin-bottom-large);
     flex-wrap: wrap;
 }
 
@@ -789,7 +789,7 @@
 .filter-btn {
     /* Usar estilos base de buttons.css con ajustes para tamaño compacto */
     padding: 0.6rem 1.2rem;
-    border-radius: 25px;
+    border-radius: var(--border-radius-pill);
     font-size: 0.9rem;
     font-weight: 600;
     font-family: var(--font-body);
@@ -837,7 +837,7 @@
 .dropdown-toggle {
     /* Usar estilos base de buttons.css con ajustes para dropdown */
     padding: 0.6rem 1rem;
-    border-radius: 25px;
+    border-radius: var(--border-radius-pill);
     font-size: 0.9rem;
     font-weight: 500;
     font-family: var(--font-body);
@@ -998,7 +998,7 @@
     background: var(--accent-red);
     color: white;
     padding: 0.4rem 0.8rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-large);
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -1031,7 +1031,7 @@
 
 /* ===== CONTENIDO DE LA CARD ===== */
 .expedition-content {
-    padding: 1.5rem;
+    padding: var(--card-padding-medium);
     display: flex;
     flex-direction: column;
 }
@@ -1051,7 +1051,7 @@
     font-size: 0.95rem;
     line-height: 1.5;
     opacity: 0.8;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
     /* Mostrar toda la descripción sin truncar */
 }
 
@@ -1070,7 +1070,7 @@
     gap: 0.5rem;
     padding: 0.4rem 0.8rem;
     background: rgba(var(--primary-rgb), 0.1);
-    border-radius: 20px;
+    border-radius: var(--border-radius-large);
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--primary-dark);

@@ -120,7 +120,7 @@
     position: relative;
     width: 50%;
     box-sizing: border-box;
-    margin-bottom: 2rem;
+    margin-bottom: var(--margin-bottom-standard);
 }
 
 .timeline-item:nth-child(odd) {
@@ -138,7 +138,7 @@
     font-weight: 600;
     border-radius: var(--border-radius-badge);
     display: inline-block;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
 }
 
 .timeline-content {
@@ -171,7 +171,7 @@
 
 .mountaineering-intro {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: var(--margin-bottom-large);
     padding: 0 2rem;
 }
 
@@ -385,10 +385,10 @@
 
 .error-message h3 {
     color: var(--accent-red);
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
 }
 
 .error-message p {
     color: var(--black);
-    margin-bottom: 2rem;
+    margin-bottom: var(--margin-bottom-standard);
 }

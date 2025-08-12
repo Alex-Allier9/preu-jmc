@@ -88,8 +88,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3rem;
-    padding: 2rem;
+    margin-bottom: var(--margin-bottom-large);
+    padding: var(--card-padding);
     background: rgba(var(--white-rgb), 0.8);
     border-radius: var(--border-radius-standard);
     box-shadow: var(--shadow-light);
@@ -191,12 +191,12 @@
 
 .error-message h3 {
     color: var(--accent-red);
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
 }
 
 .error-message p {
     color: var(--black);
-    margin-bottom: 2rem;
+    margin-bottom: var(--margin-bottom-standard);
 }
 
 /* ======================================
@@ -206,7 +206,7 @@
 .testimonio-card {
     background: var(--white);
     border-radius: var(--border-radius-large);
-    padding: 2rem;
+    padding: var(--card-padding);
     box-shadow: var(--shadow-light);
     transition: var(--transition-standard);
     position: relative;
@@ -419,7 +419,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-bottom-small);
 }
 
 .header-metadata .metadata-year {
@@ -456,7 +456,7 @@
     color: var(--black);
     text-align: left;
     position: relative;
-    padding: 1.5rem;
+    padding: var(--card-padding-medium);
     background: rgba(var(--primary-rgb), 0.05);
     border-radius: var(--border-radius-standard);
     border-left: 4px solid var(--primary);
