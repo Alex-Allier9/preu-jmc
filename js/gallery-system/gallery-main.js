@@ -502,7 +502,7 @@ class GallerySystem {
                         <div class="error-message">
                             <h3>⚠️ Error del Sistema</h3>
                             <p>${message}</p>
-                            <button onclick="location.reload()" class="btn-primary">Recargar Página</button>
+                            <button onclick="location.reload()" class="btn btn-primary">Recargar Página</button>
                         </div>
                     </div>
                 `;
