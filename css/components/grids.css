@@ -3,18 +3,7 @@
    ====================================== */
 
 /* ======================================
-   1. BASE UNIVERSAL PARA TODOS LOS GRIDS
-   ====================================== */
-
-/* Estilos base compartidos por TODOS los grids */
-.grid-base {
-    display: grid;
-    gap: var(--gap-standard);
-    margin-top: 0;
-}
-
-/* ======================================
-   2. GRIDS SISTEMÁTICOS - SOLO COLUMNAS ESPECÍFICAS
+   1. GRIDS SISTEMÁTICOS - SOLO COLUMNAS ESPECÍFICAS
    ====================================== */
 
 .grid-1-1-1 {
@@ -76,7 +65,7 @@
 }
 
 /* ======================================
-   4. APLICACIÓN DE BASE UNIVERSAL
+   2. APLICACIÓN DE BASE UNIVERSAL
    ====================================== */
 
 /* Aplicar estilos base automáticamente a grids sistemáticos */
@@ -97,7 +86,7 @@
 }
 
 /* ======================================
-   5. RESPONSIVE UNIVERSAL - CENTRALIZADO
+   3. RESPONSIVE UNIVERSAL - CENTRALIZADO
    ====================================== */
 
 /* Tablet - 82rem (1312px) */
