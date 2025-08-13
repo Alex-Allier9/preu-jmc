@@ -1,13 +1,13 @@
 /* ======================================
-   BUTTONS.CSS - SISTEMA UNIVERSAL OPTIMIZADO DRY
+   BUTTONS.CSS - SISTEMA OPTIMIZADO DRY
    ====================================== */
 
 /* ======================================
-   1. BASE UNIVERSAL PARA TODOS LOS BOTONES
+   1. BASE UNIVERSAL - UNA SOLA DEFINICIÓN
    ====================================== */
 
-/* Estilos base compartidos por TODOS los botones */
-.btn-base {
+.btn {
+    /* TODAS las propiedades comunes */
     padding: 1rem var(--gap-standard);
     border-radius: 3.125rem;
     font-size: 1.1rem;
@@ -19,51 +19,17 @@
     display: inline-block;
     letter-spacing: 0.5px;
     box-shadow: var(--shadow-light);
-    border: none; /* Default - se sobreescribe en outlined */
-}
-
-/* Hover effect universal para botones sólidos */
-.btn-hover:hover {
-    transform: var(--hover-lift-button);
-    box-shadow: var(--shadow-medium);
-}
-
-/* ======================================
-   2. TIPOS DE BOTONES BASE
-   ====================================== */
-
-/* Botones sólidos - sin border */
-.btn-solid {
     border: none;
+    text-align: center;
 }
 
-/* Botones outlined - con border */
-.btn-outlined {
-    background: transparent;
-    border: 2px solid; /* Color se define en cada variante */
-}
-
-.btn-outlined:hover {
+.btn:hover {
     transform: var(--hover-lift-button);
     box-shadow: var(--shadow-medium);
-}
-
-/* Botones glass - efectos especiales */
-.btn-glass {
-    backdrop-filter: blur(15px);
-    border: 1px solid; /* Color se define en cada variante */
-    position: relative;
-    transition: var(--transition-standard);
-}
-
-.btn-glass:hover {
-    transform: var(--hover-lift-button);
-    box-shadow: var(--shadow-medium);
-    backdrop-filter: blur(20px);
 }
 
 /* ======================================
-   3. COLORES ESPECÍFICOS - SOLO LO ÚNICO
+   2. VARIANTES DE COLOR - SOLO COLORES
    ====================================== */
 
 /* PRIMARY FAMILY */
@@ -74,6 +40,7 @@
 
 .btn-primary:hover {
     background: var(--primary-dark);
+    color: var(--white);
 }
 
 .btn-primary-dark {
@@ -83,26 +50,6 @@
 
 .btn-primary-dark:hover {
     background: var(--primary-darker);
-}
-
-/* PRIMARY OUTLINED */
-.btn-primary-outlined {
-    color: var(--primary);
-    border-color: var(--primary);
-}
-
-.btn-primary-outlined:hover {
-    background: var(--primary);
-    color: var(--white);
-}
-
-.btn-primary-dark-outlined {
-    color: var(--primary-dark);
-    border-color: var(--primary-dark);
-}
-
-.btn-primary-dark-outlined:hover {
-    background: var(--primary-dark);
     color: var(--white);
 }
 
@@ -127,204 +74,74 @@
     color: var(--black);
 }
 
-/* ACCENT OUTLINED */
-.btn-accent-outlined {
+/* ======================================
+   3. MODIFICADOR OUTLINED - UNIVERSAL
+   ====================================== */
+
+.btn--outlined {
+    background: transparent !important;
+    border: 2px solid currentColor;
+    box-shadow: none;
+}
+
+.btn--outlined:hover {
+    background: currentColor !important;
+    box-shadow: var(--shadow-medium);
+}
+
+/* Ajustes específicos para colores claros */
+.btn-primary.btn--outlined {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary.btn--outlined:hover {
+    background: var(--primary) !important;
+    color: var(--white) !important;
+}
+
+.btn-primary-dark.btn--outlined {
+    color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-primary-dark.btn--outlined:hover {
+    background: var(--primary-dark) !important;
+    color: var(--white) !important;
+}
+
+.btn-accent.btn--outlined {
     color: var(--accent);
     border-color: var(--accent);
 }
 
-.btn-accent-outlined:hover {
-    background: var(--accent);
-    color: var(--black);
+.btn-accent.btn--outlined:hover {
+    background: var(--accent) !important;
+    color: var(--black) !important;
 }
 
-.btn-accent-inverse-outlined {
+.btn-accent-inverse.btn--outlined {
     color: var(--black);
     border-color: var(--black);
 }
 
-.btn-accent-inverse-outlined:hover {
-    background: var(--black);
-    color: var(--accent);
-}
-
-/* GLASS FAMILY */
-.btn-glass-primary {
-    background: rgba(var(--primary-rgb), 0.5);
-    border-color: rgba(var(--white-rgb), 0.2);
-    color: white;
-}
-
-.btn-glass-primary:hover {
-    background: rgba(var(--primary-rgb), 0.65);
-}
-
-.btn-glass-white {
-    background: rgba(var(--white-rgb), 0.5);
-    border-color: rgba(var(--white-rgb), 0.3);
-    color: var(--primary-dark);
-}
-
-.btn-glass-white:hover {
-    background: rgba(var(--white-rgb), 0.7);
-}
-
-.btn-glass-dark {
-    background: rgba(var(--black-rgb), 0.4);
-    border-color: rgba(var(--white-rgb), 0.15);
-    color: white;
-}
-
-.btn-glass-dark:hover {
-    background: rgba(var(--black-rgb), 0.55);
+.btn-accent-inverse.btn--outlined:hover {
+    background: var(--black) !important;
+    color: var(--accent) !important;
 }
 
 /* ======================================
-   4. APLICACIÓN DE ESTILOS BASE
+   4. BOTÓN ESPECIAL - CONTACTO
    ====================================== */
 
-/* BOTONES SÓLIDOS */
-.btn-primary,
-.btn-primary-dark,
-.btn-accent,
-.btn-accent-inverse {
-    /* Base universal */
-    padding: 1rem var(--gap-standard);
-    border-radius: 3.125rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-family: var(--font-body);
-    cursor: pointer;
-    transition: var(--transition-standard);
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: 0.5px;
-    box-shadow: var(--shadow-light);
-    border: none;
-}
-
-.btn-primary:hover,
-.btn-primary-dark:hover,
-.btn-accent:hover,
-.btn-accent-inverse:hover {
-    transform: var(--hover-lift-button);
-    box-shadow: var(--shadow-medium);
-}
-
-/* BOTONES OUTLINED */
-.btn-primary-outlined,
-.btn-primary-dark-outlined,
-.btn-accent-outlined,
-.btn-accent-inverse-outlined {
-    /* Base universal */
-    padding: 1rem var(--gap-standard);
-    border-radius: 3.125rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-family: var(--font-body);
-    cursor: pointer;
-    transition: var(--transition-standard);
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: 0.5px;
-    /* Específico outlined */
-    background: transparent;
-    border: 2px solid;
-}
-
-.btn-primary-outlined:hover,
-.btn-primary-dark-outlined:hover,
-.btn-accent-outlined:hover,
-.btn-accent-inverse-outlined:hover {
-    transform: var(--hover-lift-button);
-    box-shadow: var(--shadow-medium);
-}
-
-/* BOTONES GLASS */
-.btn-glass-primary,
-.btn-glass-white,
-.btn-glass-dark {
-    /* Base universal */
-    padding: 1rem var(--gap-standard);
-    border-radius: 3.125rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-family: var(--font-body);
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: 0.5px;
-    box-shadow: var(--shadow-light);
-    /* Específico glass */
-    backdrop-filter: blur(15px);
-    border: 1px solid;
-    position: relative;
-    transition: var(--transition-standard);
-}
-
-.btn-glass-primary:hover,
-.btn-glass-white:hover,
-.btn-glass-dark:hover {
-    transform: var(--hover-lift-button);
-    box-shadow: var(--shadow-medium);
-    backdrop-filter: blur(20px);
-}
-
-/* ======================================
-   5. RESPONSIVE UNIVERSAL - UNA SOLA DEFINICIÓN
-   ====================================== */
-
-/* Tablet */
-@media (max-width: 82rem) and (min-width: 53rem) {
-    .btn-primary,
-    .btn-primary-dark,
-    .btn-primary-outlined,
-    .btn-primary-dark-outlined,
-    .btn-accent,
-    .btn-accent-inverse,
-    .btn-accent-outlined,
-    .btn-accent-inverse-outlined,
-    .btn-glass-primary,
-    .btn-glass-white,
-    .btn-glass-dark {
-        padding: 0.875rem 1.75rem;
-        font-size: 1.05rem;
-    }
-}
-
-/* Mobile */
-@media (max-width: 53rem) {
-    .btn-primary,
-    .btn-primary-dark,
-    .btn-primary-outlined,
-    .btn-primary-dark-outlined,
-    .btn-accent,
-    .btn-accent-inverse,
-    .btn-accent-outlined,
-    .btn-accent-inverse-outlined,
-    .btn-glass-primary,
-    .btn-glass-white,
-    .btn-glass-dark {
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-}
-
-/* ======================================
-   BOTONES DE CONTACTO ESPECIALES
-   ====================================== */
-
-/* Botón de contacto tipo card - con icono y texto */
 .btn-contact {
+    /* Diseño completamente diferente - tipo card */
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: white;
-    border-radius: 10px;
+    background: var(--white);
+    border-radius: var(--border-radius-standard);
     border: none;
     transition: var(--transition-standard);
     text-decoration: none;
@@ -332,11 +149,14 @@
     cursor: pointer;
     box-shadow: var(--shadow-light);
     position: relative;
+    text-align: left;
 }
 
 .btn-contact:hover {
     transform: var(--hover-lift-button);
     box-shadow: var(--shadow-medium);
+    background: var(--white);
+    color: var(--black);
 }
 
 .btn-contact:active {
@@ -378,4 +198,34 @@
 .btn-contact-text {
     font-size: 1rem;
     color: var(--black);
+}
+
+/* ======================================
+   5. RESPONSIVE UNIVERSAL - SIMPLIFICADO
+   ====================================== */
+
+/* Tablet */
+@media (max-width: 82rem) and (min-width: 53rem) {
+    .btn {
+        padding: 0.875rem 1.75rem;
+        font-size: 1.05rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 53rem) {
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    /* Ajustes específicos para btn-contact */
+    .btn-contact {
+        padding: 0.875rem;
+        flex-direction: row;
+        align-items: flex-start;
+    }
 }

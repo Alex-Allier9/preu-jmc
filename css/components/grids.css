@@ -17,39 +17,19 @@
    2. GRIDS SISTEMÁTICOS - SOLO COLUMNAS ESPECÍFICAS
    ====================================== */
 
-/* Grid 1-1-1 - Una columna en todos los dispositivos */
 .grid-1-1-1 {
     grid-template-columns: 1fr;
 }
 
-/* Grid 2-1-1 - 2 columnas desktop, 1 tablet, 1 mobile */
+.grid-2-2-2,
+.grid-2-2-1,
 .grid-2-1-1 {
     grid-template-columns: repeat(2, 1fr);
 }
 
-/* Grid 2-2-1 - 2 columnas desktop, 2 tablet, 1 mobile */
-.grid-2-2-1 {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-/* Grid 2-2-2 - 2 columnas en todos los dispositivos */
-.grid-2-2-2 {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-/* Grid 3-1-1 - 3 columnas desktop, 1 tablet, 1 mobile */
+.grid-3-3-1,
+.grid-3-2-1,
 .grid-3-1-1 {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-/* Grid 3-2-1 - 3 columnas desktop, 2 tablet, 1 mobile */
-.grid-3-2-1 {
-    grid-template-columns: repeat(3, 1fr);
-    padding: var(--container-padding) var(--gap-standard) var(--gap-standard);
-}
-
-/* Grid 3-3-1 - 3 columnas desktop, 3 tablet, 1 mobile */
-.grid-3-3-1 {
     grid-template-columns: repeat(3, 1fr);
 }
 
@@ -58,7 +38,6 @@
     grid-template-columns: repeat(4, 1fr);
 }
 
-/* Grid 5-2-1 - 5 columnas desktop, 2 tablet, 1 mobile */
 .grid-5-2-1 {
     grid-template-columns: repeat(5, 1fr);
 }
@@ -109,13 +88,7 @@
 .grid-3-2-1,
 .grid-3-3-1,
 .grid-4-2-1,
-.grid-5-2-1 {
-    display: grid;
-    gap: var(--gap-standard);
-    margin-top: 0;
-}
-
-/* Aplicar estilos base a grids especiales */
+.grid-5-2-1,
 .footer-grid,
 .grid-profile {
     display: grid;
@@ -129,12 +102,13 @@
 
 /* Tablet - 82rem (1312px) */
 @media (max-width: 82rem) {
+
     /* Grids que van a 1 columna en tablet */
     .grid-2-1-1,
     .grid-3-1-1 {
         grid-template-columns: 1fr !important;
     }
-    
+
     /* Grids que van a 2 columnas en tablet */
     .grid-2-2-1,
     .grid-3-2-1,
@@ -142,26 +116,26 @@
     .grid-5-2-1 {
         grid-template-columns: repeat(2, 1fr) !important;
     }
-    
+
     /* Grid que mantiene 3 columnas en tablet */
     .grid-3-3-1 {
         grid-template-columns: repeat(3, 1fr) !important;
     }
-    
+
     /* Comportamiento especial: elemento impar al final ocupa todo el ancho */
-    .grid-3-2-1 > *:nth-child(odd):last-child,
-    .grid-5-2-1 > *:nth-child(odd):last-child {
+    .grid-3-2-1>*:nth-child(odd):last-child,
+    .grid-5-2-1>*:nth-child(odd):last-child {
         grid-column: span 2;
         max-width: 80%;
         margin: 0 auto;
     }
-    
+
     /* Profile grid ajustes */
     .grid-profile {
         grid-template-columns: 1fr 1fr !important;
         gap: var(--gap-medium);
     }
-    
+
     /* Footer grid simplificado */
     .footer-grid {
         grid-template-columns: 1fr;
@@ -170,6 +144,7 @@
 
 /* Mobile - 53rem (848px) */
 @media (max-width: 53rem) {
+
     /* TODOS los grids sistemáticos van a 1 columna en mobile */
     .grid-1-1-1,
     .grid-2-1-1,
@@ -181,32 +156,33 @@
     .grid-5-2-1 {
         grid-template-columns: 1fr !important;
     }
-    
+
     /* Reset comportamientos especiales en mobile */
-    .grid-3-2-1 > *:nth-child(odd):last-child,
-    .grid-5-2-1 > *:nth-child(odd):last-child {
+    .grid-3-2-1>*:nth-child(odd):last-child,
+    .grid-5-2-1>*:nth-child(odd):last-child {
         grid-column: auto;
         max-width: 100%;
         margin: 0;
     }
-    
+
     /* Grid 2-2-2 mantiene 2 columnas en mobile */
     .grid-2-2-2 {
         grid-template-columns: repeat(2, 1fr) !important;
     }
-    
+
     /* Profile grid específico para mobile */
     .grid-profile {
         grid-template-columns: 1fr !important;
         gap: var(--gap-standard);
         text-align: center;
     }
-    
+
     .profile-image-container {
-        order: -1; /* Imagen primero en mobile */
+        order: -1;
+        /* Imagen primero en mobile */
         margin-bottom: 1rem;
     }
-    
+
     .profile-content-container {
         gap: 1.5rem;
     }

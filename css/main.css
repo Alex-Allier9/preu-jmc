@@ -25,9 +25,3 @@
 /* ===== UTILITIES - UTILIDADES ===== */
 @import url('./utilities/responsive.css'); /* Media queries */
 @import url('./utilities/helpers.css');    /* Clases utilitarias */
-
-/* ===== NOTA: UTILIDADES MOVIDAS A HELPERS.CSS =====
- * Todas las utilidades (.text-center, .mb-*, .p-*, etc.) 
- * han sido movidas a utilities/helpers.css para evitar duplicación
- * y mantener el principio DRY
- */
