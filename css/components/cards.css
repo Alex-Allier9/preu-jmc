@@ -98,6 +98,33 @@
     text-align: justify;
 }
 
+/* ======================================
+   ICONOS ESPECÍFICOS DE CARDS
+   ====================================== */
+
+.achievement-icon {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.achievement-icon .material-symbols-rounded {
+    font-size: 3rem;
+    color: var(--primary);
+}
+
+.profile-contact-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    color: var(--primary);
+}
+
+@media (max-width: 53rem) {
+    .achievement-icon .material-symbols-rounded {
+        font-size: 3rem;
+    }
+}
+
 /* Modificador para servicios técnicos */
 .universal-card.technical h3 {
     font-size: 1.5rem;

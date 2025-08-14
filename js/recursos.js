@@ -105,13 +105,13 @@ class RecursosManager {
 
     createFileCard(file) {
         const card = document.createElement('div');
-        card.className = 'resource-card fade-in';
+    card.className = 'recursos-glass-card recursos-glass-card--resource fade-in';
 
         const fileType = this.getFileType(file.name);
         const fileIcon = this.getFileIcon(fileType);
 
         card.innerHTML = `
-            <span class="material-symbols-rounded file-icon ${fileType}">${fileIcon}</span>
+            <span class="material-symbols-rounded file-icon-base file-icon-base--${fileType}">${fileIcon}</span>
             <div class="file-info">
                 <h3 class="file-name">${file.name}</h3>
                 <span class="file-type">${fileType.toUpperCase()}</span>
@@ -197,7 +197,7 @@ class RecursosManager {
         
         // Inicializar animaciones fade-in para los recursos con stagger
         setTimeout(() => {
-            const resourceCards = resourcesSection.querySelectorAll('.resource-card');
+            const resourceCards = resourcesSection.querySelectorAll('.recursos-glass-card--resource');
             console.log(`🎨 Activando animaciones para ${resourceCards.length} cards`);
             
             resourceCards.forEach((card, index) => {
@@ -241,7 +241,7 @@ class RecursosManager {
         
         // Activar animación fade-in para el error
         setTimeout(() => {
-            const errorCard = errorSection.querySelector('.error-card');
+            const errorCard = errorSection.querySelector('.recursos-glass-card--error');
             if (errorCard && !errorCard.classList.contains('visible')) {
                 errorCard.classList.add('fade-in', 'visible');
             }
@@ -257,7 +257,7 @@ class RecursosManager {
         
         // Activar animación fade-in para el estado vacío
         setTimeout(() => {
-            const emptyCard = emptySection.querySelector('.empty-card');
+            const emptyCard = emptySection.querySelector('.recursos-glass-card--empty');
             if (emptyCard && !emptyCard.classList.contains('visible')) {
                 emptyCard.classList.add('fade-in', 'visible');
             }

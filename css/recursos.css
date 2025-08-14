@@ -38,6 +38,24 @@
     text-shadow: 2px 2px 4px rgba(var(--black-rgb), 0.5);
 }
 
+/* ======================================
+   ICONOS ESPECÍFICOS DE RECURSOS
+   ====================================== */
+
+.file-icon {
+    font-size: 3rem;
+    margin-bottom: var(--margin-bottom-small);
+    color: var(--primary);
+}
+
+.file-icon.pdf { color: var(--accent-red); }
+.file-icon.doc { color: var(--primary); }
+.file-icon.image { color: var(--accent); }
+.file-icon.zip { color: var(--accent-green-light); }
+.file-icon.excel { color: var(--accent-green); }
+.file-icon.powerpoint { color: var(--accent-orange); }
+.file-icon.text { color: var(--primary-light); }
+
 .page-description {
     font-size: clamp(1.1rem, 2.5vw, 1.4rem);
     color: rgba(var(--white-rgb), 0.9);

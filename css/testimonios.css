@@ -21,7 +21,6 @@
 @media (max-width: 82rem) {
     .mountain-background {
         background-attachment: scroll !important;
-        background-repeat: repeat !important;
         background-size: contain !important;
         min-height: 120vh !important;
     }
@@ -30,7 +29,6 @@
 @media (max-width: 53rem) {
     .mountain-background {
         background-attachment: scroll !important;
-        background-repeat: repeat !important;
         background-size: auto !important;
         min-height: 150vh !important;
     }
@@ -52,8 +50,9 @@
    ====================================== */
 
 /* Secciones con efecto glassmorphism */
-.first-section,
-.filtros-section {
+
+/* SISTEMA BASE UNIFICADO GLASSMORPHISM */
+.testimonios-glass-section {
     background: rgba(var(--white-rgb), 0.4);
     backdrop-filter: blur(var(--blur-strong));
     border: 1px solid rgba(var(--white-rgb), 0.6);
@@ -67,16 +66,13 @@
     transition: var(--transition-standard);
 }
 
-/* Hover effects para secciones glassmorphism */
-.first-section:hover,
-.filtros-section:hover {
+.testimonios-glass-section:hover {
     background: rgba(var(--white-rgb), 0.5);
     transform: var(--hover-lift-medium);
     box-shadow: var(--shadow-heavy);
 }
 
-/* Márgenes superiores específicos */
-.first-section {
+.testimonios-glass-section--first {
     margin-top: var(--section-margin-bottom);
 }
 

@@ -1,9 +1,9 @@
 /* ======================================
-   BUTTONS.CSS - SISTEMA OPTIMIZADO DRY
+   BUTTONS.CSS - SISTEMA OPTIMIZADO DRY (CONSERVADOR)
    ====================================== */
 
 /* ======================================
-   1. BASE UNIVERSAL - UNA SOLA DEFINICIÓN
+   1. BASE UNIVERSAL - TU VERSIÓN (INTACTA)
    ====================================== */
 
 .btn {
@@ -29,7 +29,7 @@
 }
 
 /* ======================================
-   2. VARIANTES DE COLOR - SOLO COLORES
+   2. COLORES - TU VERSIÓN (INTACTA)
    ====================================== */
 
 /* PRIMARY FAMILY */
@@ -38,11 +38,7 @@
     color: var(--white);
 }
 
-.btn-primary:hover {
-    background: var(--primary-dark);
-    color: var(--white);
-}
-
+.btn-primary:hover,
 .btn-primary-dark {
     background: var(--primary-dark);
     color: var(--white);
@@ -53,29 +49,21 @@
     color: var(--white);
 }
 
-/* ACCENT FAMILY */
-.btn-accent {
-    background: var(--accent);
-    color: var(--black);
-}
-
-.btn-accent:hover {
-    background: var(--black);
-    color: var(--accent);
-}
-
-.btn-accent-inverse {
-    background: var(--black);
-    color: var(--accent);
-}
-
+/* ACCENT FAMILY - TU AGRUPACIÓN INTELIGENTE (INTACTA) */
+.btn-accent,
 .btn-accent-inverse:hover {
     background: var(--accent);
     color: var(--black);
 }
 
+.btn-accent:hover,
+.btn-accent-inverse {
+    background: var(--black);
+    color: var(--accent);
+}
+
 /* ======================================
-   3. MODIFICADOR OUTLINED - UNIVERSAL
+   3. OUTLINED - SOLO MEJORA DRY MÍNIMA
    ====================================== */
 
 .btn--outlined {
@@ -95,19 +83,9 @@
     border-color: var(--primary);
 }
 
-.btn-primary.btn--outlined:hover {
-    background: var(--primary) !important;
-    color: var(--white) !important;
-}
-
 .btn-primary-dark.btn--outlined {
     color: var(--primary-dark);
     border-color: var(--primary-dark);
-}
-
-.btn-primary-dark.btn--outlined:hover {
-    background: var(--primary-dark) !important;
-    color: var(--white) !important;
 }
 
 .btn-accent.btn--outlined {
@@ -115,14 +93,28 @@
     border-color: var(--accent);
 }
 
-.btn-accent.btn--outlined:hover {
-    background: var(--accent) !important;
-    color: var(--black) !important;
-}
-
 .btn-accent-inverse.btn--outlined {
     color: var(--black);
     border-color: var(--black);
+}
+
+/* ÚNICO CAMBIO: Agrupar color: white común */
+.btn-primary.btn--outlined:hover,
+.btn-primary-dark.btn--outlined:hover {
+    color: var(--white) !important;
+}
+
+.btn-primary.btn--outlined:hover {
+    background: var(--primary) !important;
+}
+
+.btn-primary-dark.btn--outlined:hover {
+    background: var(--primary-dark) !important;
+}
+
+.btn-accent.btn--outlined:hover {
+    background: var(--accent) !important;
+    color: var(--black) !important;
 }
 
 .btn-accent-inverse.btn--outlined:hover {
@@ -131,11 +123,43 @@
 }
 
 /* ======================================
-   4. BOTÓN ESPECIAL - CONTACTO
+   4. FILTROS - UNIFICA LAS 3 DEFINICIONES DUPLICADAS
+   ====================================== */
+
+.btn-filter {
+    /* Hereda de .btn + modificaciones específicas */
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    box-shadow: none;
+}
+
+.btn-filter:hover,
+.btn-filter.active {
+    background: var(--primary);
+    color: var(--white);
+    transform: var(--hover-lift-button);
+}
+
+/* Modificadores para las 2 versiones existentes */
+.btn-filter--compact {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: var(--border-radius-pill);
+}
+
+.btn-filter--standard {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    border-radius: var(--border-radius-badge);
+}
+
+/* ======================================
+   5. CONTACTO - TU VERSIÓN (100% INTACTA)
    ====================================== */
 
 .btn-contact {
-    /* Diseño completamente diferente - tipo card */
+    /* Tu diseño original - NO MODIFICADO */
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -201,7 +225,7 @@
 }
 
 /* ======================================
-   5. RESPONSIVE UNIVERSAL - SIMPLIFICADO
+   6. RESPONSIVE - TU VERSIÓN (INTACTA)
    ====================================== */
 
 /* Tablet */
@@ -209,6 +233,17 @@
     .btn {
         padding: 0.875rem 1.75rem;
         font-size: 1.05rem;
+    }
+
+    /* Solo agregar responsive para filtros */
+    .btn-filter--compact {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .btn-filter--standard {
+        padding: 0.6rem 1.3rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -221,11 +256,22 @@
         max-width: 300px;
         margin: 0 auto;
     }
-    
-    /* Ajustes específicos para btn-contact */
+
+    /* Ajustes específicos para btn-contact - INTACTOS */
     .btn-contact {
         padding: 0.875rem;
         flex-direction: row;
         align-items: flex-start;
+    }
+
+    /* Filter buttons responsive */
+    .btn-filter--compact {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .btn-filter--standard {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
     }
 }

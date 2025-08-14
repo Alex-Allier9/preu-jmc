@@ -100,6 +100,27 @@
 }
 
 /* ======================================
+   ICONOS ESPECÍFICOS DE CONTACTO
+   ====================================== */
+
+.location-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-right: 0.5rem;
+}
+
+.transport-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-right: 0.5rem;
+}
+
+.reference-item .material-symbols-rounded {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+/* ======================================
    SECCIÓN DEL MAPA Y UBICACIÓN
    ====================================== */
 
@@ -115,8 +136,9 @@
 }
 
 /* Cards de ubicación y transporte */
-.location-card,
-.transport-card {
+
+/* SISTEMA BASE GLASSMORPHISM (SOLO PROPIEDADES COMUNES) */
+.contacto-glass-card {
     background: rgba(var(--white-rgb), 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(var(--white-rgb), 0.2);
@@ -124,15 +146,22 @@
     padding: var(--card-padding);
     box-shadow: var(--shadow-soft);
     transition: var(--transition-standard);
+}
+
+.contacto-glass-card--location {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+.contacto-glass-card--transport {
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.location-card:hover,
-.transport-card:hover {
+.contacto-glass-card:hover {
     transform: var(--hover-lift-medium);
     box-shadow: var(--shadow-heavy);
+}
 }
 
 /* Headers de las cards */
