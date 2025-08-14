@@ -127,7 +127,7 @@
    ====================================== */
 
 /* Tablet: 848px - 1312px (82rem y 53rem) */
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (hover: none) and (pointer: coarse) {
     /* Stats responsive - ya definido en components/grids.css */
     
     /* Basic cards en tablet */
@@ -137,7 +137,7 @@
 }
 
 /* Mobile: Hasta 848px (53rem) */
-@media (max-width: 480px) {
+@media (hover: hover) and (pointer: fine) {
     /* Márgenes móviles específicos */
     .about,
     .mvp-section,

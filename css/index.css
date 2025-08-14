@@ -682,7 +682,7 @@
    ====================================== */
 
 /* Tablet */
-@media (max-width: 82rem) and (min-width: 53rem) {
+@media (hover: none) and (pointer: coarse) {
     .hero .hero-content {
         text-align: left;
         padding-left: 6%;
@@ -713,7 +713,7 @@
 }
 
 /* Mobile */
-@media (max-width: 53rem) {
+@media (hover: hover) and (pointer: fine) {
     .hero .hero-content {
         text-align: left;
         padding-left: 1rem;

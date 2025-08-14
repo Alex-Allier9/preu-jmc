@@ -285,7 +285,7 @@
 }
 
 /* Responsive Design */
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (hover: none) and (pointer: coarse) {
     .recursos-main {
         padding: 2rem 0;
     }
@@ -306,7 +306,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (hover: hover) and (pointer: fine) {
     .recursos-main {
         padding: 1rem 0;
     }

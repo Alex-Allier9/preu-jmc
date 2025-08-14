@@ -18,7 +18,7 @@
 }
 
 /* Ajustes responsive para testimonios */
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (hover: none) and (pointer: coarse) {
     .mountain-background {
         background-attachment: scroll !important;
         background-size: contain !important;
@@ -26,7 +26,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (hover: hover) and (pointer: fine) {
     .mountain-background {
         background-attachment: scroll !important;
         background-size: auto !important;
