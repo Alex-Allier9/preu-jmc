@@ -285,7 +285,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 82rem) {
+@media (min-width: 481px) and (max-width: 1024px) {
     .recursos-main {
         padding: 2rem 0;
     }
@@ -306,7 +306,7 @@
     }
 }
 
-@media (max-width: 53rem) {
+@media (max-width: 480px) {
     .recursos-main {
         padding: 1rem 0;
     }

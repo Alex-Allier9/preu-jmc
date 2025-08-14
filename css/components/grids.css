@@ -90,7 +90,7 @@
    ====================================== */
 
 /* Tablet - 82rem (1312px) */
-@media (max-width: 82rem) {
+@media (min-width: 481px) and (max-width: 1024px) {
 
     /* Grids que van a 1 columna en tablet */
     .grid-2-1-1,
@@ -132,7 +132,7 @@
 }
 
 /* Mobile - 53rem (848px) */
-@media (max-width: 53rem) {
+@media (max-width: 480px) {
 
     /* TODOS los grids sistemáticos van a 1 columna en mobile */
     .grid-1-1-1,

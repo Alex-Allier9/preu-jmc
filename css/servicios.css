@@ -259,7 +259,7 @@
    ====================================== */
 
 /* Tablet: 848px - 1312px (82rem y 53rem) */
-@media (max-width: 82rem) and (min-width: 53rem) {
+@media (min-width: 481px) and (max-width: 1024px) {
     /* Secciones en tablet */
     .first-section,
     .second-section,
@@ -283,7 +283,7 @@
 }
 
 /* Mobile: Hasta 848px (53rem) */
-@media (max-width: 53rem) {
+@media (max-width: 480px) {
     /* Márgenes móviles específicos */
     .first-section,
     .second-section,

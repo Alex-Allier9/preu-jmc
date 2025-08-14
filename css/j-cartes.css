@@ -194,7 +194,7 @@
    ====================================== */
 
 /* Tablet: 848px - 1312px (82rem y 53rem) */
-@media (max-width: 82rem) and (min-width: 53rem) {
+@media (min-width: 481px) and (max-width: 1024px) {
     .profile-image {
         width: 150px;
         height: 150px;
@@ -228,7 +228,7 @@
 }
 
 /* Mobile: Hasta 848px (53rem) */
-@media (max-width: 53rem) {
+@media (max-width: 480px) {
     .hero .hero-text-content h1 {
         font-size: clamp(1.2rem, 5vw, 2rem);
         line-height: 1.1;

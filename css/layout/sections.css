@@ -220,7 +220,7 @@
    ====================================== */
 
 /* Tablet */
-@media (max-width: 82rem) {
+@media (min-width: 481px) and (max-width: 1024px) {
     .glass-section {
         margin: 1.5rem 5%;
     }
@@ -231,7 +231,7 @@
 }
 
 /* Mobile */
-@media (max-width: 53rem) {
+@media (max-width: 480px) {
     .glass-section {
         margin: 1rem 2%;
     }
