@@ -58,7 +58,7 @@
 }
 
 /* ===== CARD DE EXPEDICIÓN ===== */
-.expedition-card {
+.gallery-card {
     position: relative;
     background: var(--white);
     border-radius: var(--border-radius-large);
@@ -69,20 +69,20 @@
     height: 400px;
 }
 
-.expedition-card:hover {
+.gallery-card:hover {
     transform: var(--hover-lift-medium);
     box-shadow: var(--shadow-heavy);
 }
 
 /* Imagen cover */
-.expedition-image {
+.gallery-image {
     width: 100%;
     height: 250px;
     object-fit: cover;
     transition: var(--transition-standard);
 }
 
-.expedition-card:hover .expedition-image {
+.gallery-card:hover .gallery-image {
     transform: scale(1.05);
 }
 
@@ -104,7 +104,7 @@
 }
 
 /* Logros especiales en las tarjetas (SOLO para cards, NO overlay) */
-.expedition-card .achievement-badges {
+.gallery-card .achievement-badges {
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -113,7 +113,7 @@
     z-index: 10;
 }
 
-.expedition-card .achievement-badges .achievement-badge {
+.gallery-card .achievement-badges .achievement-badge {
     background: rgba(var(--accent-rgb), 0.9);
     color: var(--black);
     width: 2rem;
@@ -127,7 +127,7 @@
 }
 
 /* ===== CONTENIDO DE LA CARD ===== */
-.expedition-content {
+.gallery-content {
     padding: var(--card-padding-medium);
     height: 150px;
     display: flex;
@@ -135,7 +135,7 @@
     justify-content: space-between;
 }
 
-.expedition-description {
+.gallery-description {
     color: var(--black);
     font-size: 0.95rem;
     line-height: 1.5;
@@ -150,7 +150,7 @@
 }
 
 /* ===== METADATOS ===== */
-.expedition-meta {
+.gallery-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -158,7 +158,7 @@
     margin-bottom: 0.5rem;
 }
 
-.expedition-difficulty {
+.gallery-difficulty {
     display: flex;
     align-items: center;
     gap: var(--gap-small);
@@ -175,7 +175,7 @@
     font-size: 1rem;
 }
 
-.expedition-altitude {
+.gallery-altitude {
     font-size: 0.9rem;
     color: var(--black);
     opacity: 0.7;
@@ -183,7 +183,7 @@
 }
 
 /* ===== STATS RÁPIDAS ===== */
-.expedition-stats {
+.gallery-stats {
     display: flex;
     gap: 1rem;
     font-size: 0.85rem;
@@ -201,28 +201,4 @@
 .stat-icon {
     font-size: 0.9rem;
     color: var(--primary);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 53rem) {
-    .expedition-card {
-        height: auto;
-    }
-    
-    .expedition-image {
-        height: 200px;
-    }
-    
-    .gallery-filters {
-        gap: 0.5rem;
-    }
-    
-    .filter-btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-    }
-    
-    .expedition-stats {
-        justify-content: space-between;
-    }
 }

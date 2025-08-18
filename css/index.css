@@ -7,12 +7,12 @@
    ====================================== */
 
 /* Fondo principal con montañas para las primeras secciones */
-.mountain-background {
-    background-image: url('/media/images/index/alessio-soggetti-cfKC0UOZHJo-unsplash.jpg');
+.first-background {
+    background-image: url('/media/images/index/alessio-soggetti-gdE-5Oui1Y0-unsplash.jpg');
 }
 
 /* Fondo secundario para secciones posteriores */
-.secondary-background {
+.second-background {
     background-image: url('/media/images/index/will-li-KnLPEWBGNwY-unsplash.jpg');
 }
 
@@ -199,10 +199,10 @@
    FOUNDER PREVIEW SECTION
    ====================================== */
 
-.founder-preview-section {
+/* Founder section - restored to original */
+.founder-section {
     background: linear-gradient(rgba(var(--black-rgb), 0.4), rgba(var(--black-rgb), 0.4)),
         url('/media/images/index/daniel-leone-g30P1zcOzXo-unsplash.jpg') center/cover;
-    margin-bottom: var(--section-margin-bottom);
     box-shadow: var(--shadow-medium);
     position: relative;
     z-index: 2;
@@ -261,14 +261,19 @@
 }
 
 .founder-badge:hover {
-    background: var(--accent-dark);
-    transform: var(--hover-lift-medium);
-    box-shadow: var(--shadow-medium);
+    background: var(--black);
+    color: var(--accent);
+    transform: var(--effect-hover-lift-md);
+    box-shadow: var(--shadow-md);
 }
 
 .founder-badge .material-symbols-rounded {
     font-size: 1.2rem;
     color: var(--gray-800);
+}
+
+.founder-badge:hover .material-symbols-rounded {
+    color: var(--gray-200);
 }
 
 .founder-content h2 {
@@ -675,121 +680,4 @@
     border-radius: var(--border-radius-large);
     font-size: 0.85rem;
     font-weight: 600;
-}
-
-/* ======================================
-   RESPONSIVE DESIGN ESPECÍFICO DE INDEX
-   ====================================== */
-
-/* Tablet */
-@media (hover: none) and (pointer: coarse) {
-    .hero .hero-content {
-        text-align: left;
-        padding-left: 6%;
-        align-items: flex-start;
-        padding-top: 15vh;
-    }
-
-    .founder-preview {
-        gap: 3rem;
-    }
-
-    .founder-photo {
-        width: 250px;
-        height: 250px;
-    }
-
-    .services-grid,
-    .testimonials-preview-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .achievement-highlight {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-}
-
-/* Mobile */
-@media (hover: hover) and (pointer: fine) {
-    .hero .hero-content {
-        text-align: left;
-        padding-left: 1rem;
-        align-items: flex-start;
-        height: 100vh;
-        padding-top: 25vh;
-    }
-
-    .hero .hero-content h1 {
-        font-size: clamp(2.5rem, 10vw, 4rem);
-        margin-bottom: 1.5rem;
-    }
-
-    .hero .hero-subtitle {
-        font-size: clamp(1.1rem, 5vw, 1.6rem);
-        margin-bottom: 3rem;
-        max-width: 90%;
-    }
-
-    .services-hero-section {
-        height: 40vh;
-    }
-
-    .hero-subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .founder-preview {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-    }
-
-    .founder-photo {
-        width: 200px;
-        height: 200px;
-    }
-
-    .founder-content h2 {
-        font-size: 2rem;
-    }
-
-    .services-grid,
-    .testimonials-preview-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .achievement-highlight {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 2rem;
-    }
-
-    .trophy-icon {
-        width: 80px;
-        height: 80px;
-    }
-
-    .trophy-icon .material-symbols-rounded {
-        font-size: 2.5rem;
-    }
-
-    .footer-stats {
-        gap: 1rem;
-        justify-content: center;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
 }

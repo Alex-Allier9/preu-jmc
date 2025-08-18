@@ -24,10 +24,3 @@
     transition: width 0.1s ease-out;
     will-change: width;
 }
-
-/* Responsive */
-@media (max-width: 53rem) {
-    #scroll-progress-bar {
-        height: 4px;
-    }
-}

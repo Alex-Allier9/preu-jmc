@@ -3,11 +3,11 @@
    ====================================== */
 
 /* Background images - ESPECÍFICO DE NOSOTROS */
-.mountain-background {
+.first-background {
     background-image: url('/media/images/nosotros/cristina-gottardi-9TaYFMMapbA-unsplash.jpg');
 }
 
-.secondary-background {
+.second-background {
     background-image: url('/media/images/nosotros/annie-spratt-R2OQShb3nmk-unsplash.jpg');
 }
 
@@ -120,53 +120,4 @@
 
 .values-section {
     margin-top: 6rem;
-}
-
-/* ======================================
-   RESPONSIVE ESPECÍFICO DE NOSOTROS - CORREGIDO
-   ====================================== */
-
-/* Tablet: 848px - 1312px (82rem y 53rem) */
-@media (hover: none) and (pointer: coarse) {
-    /* Stats responsive - ya definido en components/grids.css */
-    
-    /* Basic cards en tablet */
-    .basic-card h3 {
-        font-size: 1.5rem;
-    }
-}
-
-/* Mobile: Hasta 848px (53rem) */
-@media (hover: hover) and (pointer: fine) {
-    /* Márgenes móviles específicos */
-    .about,
-    .mvp-section,
-    .stats,
-    .results,
-    .values-section,
-    .commitment-section {
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-bottom: 3rem;
-    }
-
-    .values-section,
-    .about {
-        margin-top: 3rem;
-    }
-
-    /* Ajustar padding de cards en móvil */
-    .basic-card {
-        padding: 1.5rem !important;
-    }
-    
-    /* Quote card mobile */
-    .quote-text {
-        font-size: 1.5rem;
-    }
-    
-    .quote-text::before,
-    .quote-text::after {
-        font-size: 3rem;
-    }
 }

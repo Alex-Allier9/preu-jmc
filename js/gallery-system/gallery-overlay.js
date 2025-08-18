@@ -572,10 +572,10 @@ class GalleryOverlay {
         console.log('🏗️ Construyendo HTML del panel de información...');
         infoContent.innerHTML = `
         <!-- Header de la expedición -->
-        <div class="expedition-header">
-            <h1 class="expedition-title">${expedition.name}</h1>
-            <p class="expedition-location">${expedition.location.fullLocation}</p>
-            <p class="expedition-coordinates">
+        <div class="gallery-header">
+            <h1 class="gallery-title">${expedition.name}</h1>
+            <p class="gallery-location">${expedition.location.fullLocation}</p>
+            <p class="gallery-coordinates">
                 <span class="material-symbols-rounded">globe_location_pin</span>
                 ${expedition.location.coordinates}
             </p>

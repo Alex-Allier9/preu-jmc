@@ -7,7 +7,7 @@
    ====================================== */
 
 /* Fondo principal con montañas para las primeras secciones */
-.mountain-background {
+.first-background {
     background-image: url('/media/images/testimonios/thomas-griesbeck-Y2aNc1X7xLg-unsplash.jpg');
     background-repeat: repeat !important;
     background-size: auto !important;
@@ -15,23 +15,6 @@
     width: 100% !important;
     height: 100% !important;
     min-height: 100vh !important;
-}
-
-/* Ajustes responsive para testimonios */
-@media (hover: none) and (pointer: coarse) {
-    .mountain-background {
-        background-attachment: scroll !important;
-        background-size: contain !important;
-        min-height: 120vh !important;
-    }
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .mountain-background {
-        background-attachment: scroll !important;
-        background-size: auto !important;
-        min-height: 150vh !important;
-    }
 }
 
 /* Hero section background - ESPECÍFICO DE TESTIMONIOS */
@@ -171,13 +154,23 @@
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes goldGlow {
-    0% { box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.4); }
-    100% { box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.7); }
+    0% {
+        box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.4);
+    }
+
+    100% {
+        box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.7);
+    }
 }
 
 .error-message {
@@ -199,7 +192,7 @@
    CARDS DE TESTIMONIOS
    ====================================== */
 
-.testimonio-card {
+.testimonial-card {
     background: var(--white);
     border-radius: var(--border-radius-large);
     padding: var(--card-padding);
@@ -207,7 +200,7 @@
     transition: var(--transition-standard);
     position: relative;
     overflow: hidden;
-    
+
     /* Layout horizontal por defecto (desktop) */
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -216,55 +209,55 @@
     min-height: auto;
 }
 
-.testimonio-card:hover {
+.testimonial-card:hover {
     transform: var(--hover-lift-medium);
     box-shadow: var(--shadow-heavy);
 }
 
 /* Card especial para máximos nacionales */
-.testimonio-card.maximo-nacional {
+.testimonial-card.featured {
     background: linear-gradient(135deg, var(--black), var(--gray-900));
     color: var(--accent);
     border: 2px solid var(--accent);
     box-shadow: var(--shadow-accent);
 }
 
-.testimonio-card.maximo-nacional:hover {
+.testimonial-card.featured:hover {
     transform: var(--hover-lift-medium);
     box-shadow: var(--shadow-accent-strong);
 }
 
-.testimonio-card.maximo-nacional .student-name {
+.testimonial-card.featured .student-name {
     color: var(--accent);
     text-shadow: 0 2px 4px rgba(var(--black-rgb), 0.5);
 }
 
-.testimonio-card.maximo-nacional .student-info,
-.testimonio-card.maximo-nacional .student-university {
+.testimonial-card.featured .student-info,
+.testimonial-card.featured .student-university {
     color: var(--gray-200);
 }
 
-.testimonio-card.maximo-nacional .testimonio-text {
+.testimonial-card.featured .testimonial-text {
     color: var(--gray-200);
 }
 
-.testimonio-card.maximo-nacional .metadata-year {
+.testimonial-card.featured .metadata-year {
     color: var(--accent);
     font-weight: 600;
     background: rgba(var(--accent-rgb), 0.15);
 }
 
-.testimonio-card.maximo-nacional .metadata-year .material-symbols-rounded {
+.testimonial-card.featured .metadata-year .material-symbols-rounded {
     color: var(--accent);
 }
 
-.testimonio-card.maximo-nacional .student-photo {
+.testimonial-card.featured .student-photo {
     border: 3px solid var(--accent);
     box-shadow: 0 4px 16px rgba(var(--accent-dark-rgb), 0.3);
 }
 
 /* Badge superior */
-.testimonio-badge {
+.testimonial-badge {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -274,23 +267,24 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    z-index: 10; /* Asegurar que esté por encima */
+    z-index: 10;
+    /* Asegurar que esté por encima */
 }
 
 /* Margen para badges en desktop */
-.testimonio-card:has(.testimonio-badge) .testimonio-content {
+.testimonial-card:has(.testimonial-badge) .testimonial-content {
     margin-top: 3.5rem;
 }
 
-.testimonio-card.has-badge .testimonio-content {
+.testimonial-card.has-badge .testimonial-content {
     margin-top: 3.5rem;
 }
 
-.testimonio-spacer {
+.testimonial-spacer {
     display: none;
 }
 
-.badge-maximo-nacional {
+.badge-featured {
     background: linear-gradient(135deg, var(--accent), var(--accent-orange));
     color: var(--black);
     font-weight: 600;
@@ -302,7 +296,7 @@
     animation: goldGlow 2s ease-in-out infinite alternate;
 }
 
-.badge-maximo-nacional .trophy-icon {
+.badge-featured .trophy-icon {
     color: var(--black);
     font-size: 1.4rem;
     font-weight: 700;
@@ -314,7 +308,7 @@
 }
 
 /* Header del testimonio */
-.testimonio-header {
+.testimonial-header {
     margin-bottom: 1.5rem;
     text-align: center;
     display: flex;
@@ -340,7 +334,8 @@
     color: var(--white);
     text-transform: uppercase;
     font-family: var(--font-body);
-    background: var(--primary); /* Fallback */
+    background: var(--primary);
+    /* Fallback */
 }
 
 /* Avatares con iniciales - gradientes aleatorios usando colores light */
@@ -438,7 +433,7 @@
 }
 
 /* Contenido del testimonio */
-.testimonio-content {
+.testimonial-content {
     margin-bottom: 0;
     width: 100%;
     display: flex;
@@ -446,7 +441,7 @@
     height: auto;
 }
 
-.testimonio-text {
+.testimonial-text {
     font-size: 1rem;
     line-height: 1.6;
     color: var(--black);
@@ -464,12 +459,12 @@
 }
 
 /* Franja dorada para máximos nacionales */
-.testimonio-card.maximo-nacional .testimonio-text {
+.testimonial-card.featured .testimonial-text {
     border-left: 4px solid var(--accent);
     background: rgba(var(--accent-rgb), 0.1);
 }
 
-.testimonio-text::before {
+.testimonial-text::before {
     content: '"';
     font-family: var(--font-title);
     font-size: 3rem;
@@ -482,7 +477,7 @@
 }
 
 /* Metadatos del testimonio - ocultos por defecto en desktop */
-.testimonio-metadata {
+.testimonial-metadata {
     display: none;
 }
 
@@ -509,13 +504,13 @@
 }
 
 /* Estilos especiales para scores en cards de máximos nacionales */
-.testimonio-card.maximo-nacional .score-item {
+.testimonial-card.featured .score-item {
     background: rgba(var(--accent-rgb), 0.2);
     border: 1px solid rgba(var(--accent-rgb), 0.3);
     color: var(--accent);
 }
 
-.testimonio-card.maximo-nacional .score-icon {
+.testimonial-card.featured .score-icon {
     color: var(--accent);
 }
 
@@ -524,181 +519,4 @@
     font-size: 0.9rem;
     opacity: 0.7;
     font-weight: 500;
-}
-
-/* ======================================
-   ANIMACIONES ESPECÍFICAS
-   ====================================== */
-
-/* Las tarjetas de testimonio ahora usan el sistema fade-in universal */
-/* Los transition-delay se eliminaron para evitar conflictos con hover effects */
-
-/* ======================================
-   MEDIA QUERIES CONSOLIDADAS
-   ====================================== */
-
-/* TABLET Y DESKTOP: min-width: 53rem */
-@media (min-width: 53rem) {
-    /* Controles de testimonios */
-    .testimonios-controls {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1.5rem;
-    }
-    
-    .filter-buttons {
-        justify-content: center;
-    }
-    
-    .sort-controls {
-        justify-content: center;
-    }
-}
-
-/* MOBILE: max-width: 53rem */
-@media (max-width: 53rem) {
-    /* Cards de testimonio - layout vertical en móvil */
-    .testimonio-card {
-        display: flex;
-        flex-direction: column;
-        padding: 1.5rem;
-    }
-    
-    .testimonio-header {
-        margin-bottom: 1.5rem;
-        text-align: center;
-        display: block;
-    }
-    
-    /* Contenido del testimonio en móvil */
-    .testimonio-content {
-        margin-bottom: 1.5rem;
-        display: block;
-    }
-    
-    /* Foto más pequeña en móvil */
-    .student-photo {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 1rem auto;
-        font-size: 1.4rem;
-    }
-    
-    /* Tipografía reducida en móvil */
-    .student-name {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .student-info {
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .student-university {
-        font-size: 0.9rem;
-        margin-bottom: 0;
-    }
-    
-    /* Texto del testimonio en móvil */
-    .testimonio-text {
-        font-size: 1rem;
-        line-height: 1.7;
-        text-align: justify;
-        padding: 1rem;
-    }
-    
-    /* Mostrar metadata original en móvil */
-    .testimonio-metadata {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 1rem;
-        border-top: 1px solid var(--gray-200);
-        flex-wrap: wrap;
-        gap: 1rem;
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .metadata-scores {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .metadata-year {
-        text-align: center;
-        color: var(--black);
-        font-size: 0.9rem;
-        opacity: 0.7;
-        font-weight: 500;
-    }
-    
-    /* Ocultar header metadata en móvil */
-    .header-metadata {
-        padding-top: 1rem;
-        border-top: 1px solid var(--gray-200);
-        margin-top: 1rem;
-    }
-    
-    .header-metadata .metadata-scores {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-bottom: 1rem;
-    }
-    
-    .header-metadata .metadata-year {
-        text-align: center;
-        font-size: 0.9rem;
-        font-weight: 500;
-        opacity: 0.7;
-        background: none;
-        padding: 0;
-        border-radius: 0;
-        color: var(--black);
-    }
-    
-    /* Márgenes móviles específicos */
-    .first-section,
-    .filtros-section {
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-bottom: 3rem;
-    }
-
-    .first-section {
-        margin-top: 3rem;
-    }
-
-    /* Controles en mobile */
-    .testimonios-controls {
-        flex-direction: column;
-        padding: 1.5rem;
-        gap: 1rem;
-    }
-
-    .filter-buttons {
-        justify-content: center;
-        gap: 0.5rem;
-    }
-
-    .filter-btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-    }
-
-    .sort-select {
-        width: 100%;
-        min-width: auto;
-    }
-
-    /* Deshabilitar márgenes para badges en móvil */
-    .testimonio-card:has(.testimonio-badge) .testimonio-content,
-    .testimonio-card.has-badge .testimonio-content {
-        margin-top: 0;
-    }
 }

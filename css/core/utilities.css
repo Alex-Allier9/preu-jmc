@@ -1,0 +1,139 @@
+/* ======================================
+   UTILITIES.CSS - CORE UTILITY CLASSES
+   ====================================== */
+
+/* ======================================
+   LAYOUT UTILITIES
+   ====================================== */
+
+/* Flex center - most common pattern */
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-center-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Text center utility */
+.text-center {
+    text-align: center;
+}
+
+/* ======================================
+   GLOBAL CARD SYSTEM
+   ====================================== */
+
+/* Standard card base - foundation for all cards */
+.card-base {
+    border-radius: var(--border-radius-large);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+}
+
+/* Individual component systems */
+/* - testimonial-card (testimonios.css) with .featured variant */
+/* - testimonial-preview-card (index.css) with .featured variant */
+/* - service-card (index.css) with .main-service variant */
+/* - resource-card (recursos.css) standalone component */
+
+
+/* Standard card background */
+.card-bg {
+    background: var(--bg-white-light);
+}
+
+/* Universal hover effects */
+.hover-lift:hover {
+    transform: var(--hover-lift-medium);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* ======================================
+   BACKGROUND UTILITIES
+   ====================================== */
+
+
+/* ======================================
+   LOADING STATES
+   ====================================== */
+
+.skeleton-loading {
+    background: linear-gradient(90deg,
+            rgba(var(--white-rgb), 0.3) 25%,
+            rgba(var(--white-rgb), 0.5) 50%,
+            rgba(var(--white-rgb), 0.3) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* ======================================
+   UTILITY HELPERS
+   ====================================== */
+
+/* Text utilities for glassmorphism contexts */
+.text-glass {
+    color: var(--glass-text-color, var(--black));
+}
+
+.text-glass-inverse {
+    color: var(--glass-text-inverse, var(--white));
+}
+
+/* Z-index utilities */
+.z-overlay {
+    z-index: 2;
+}
+
+.z-content {
+    z-index: 1;
+}
+
+.z-background {
+    z-index: -1;
+}
+
+/* ======================================
+   ANIMATION UTILITIES
+   ====================================== */
+
+/* Keyframes universales */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Intersection Observer animations - UNIVERSAL */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

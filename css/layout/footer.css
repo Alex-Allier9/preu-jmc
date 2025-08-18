@@ -109,27 +109,3 @@
 .footer-author:hover {
     color: var(--primary);
 }
-
-/* Footer Responsive */
-@media (max-width: 53rem) {
-    /* Footer grid responsivo ya está en components/grids.css */
-    
-    .footer-section {
-        text-align: center;
-    }
-    
-    /* CORREGIDO - Contact items centrados en mobile */
-    .contact-item {
-        justify-content: center;
-    }
-    
-    .footer-nav-link {
-        text-align: center;
-        justify-content: center;
-    }
-    
-    .footer-nav-link:hover {
-        transform: translateX(0);
-        padding-left: 0.3rem;
-    }
-}

@@ -401,30 +401,3 @@
 .mobile-nav-sublink.active::after {
     transform: scaleX(1);
 }
-
-/* Responsive Updates */
-@media (min-width: 53.0625rem) {
-    .mobile-menu-toggle,
-    .mobile-menu {
-        display: none !important;
-    }
-}
-
-@media (max-width: 53rem) {
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    .mobile-nav-link {
-        font-size: 1.2rem;
-    }
-
-    .nav-menu {
-        display: none;
-    }
-    
-    /* Ocultar submenu desktop en móvil */
-    .nav-submenu {
-        display: none;
-    }
-}

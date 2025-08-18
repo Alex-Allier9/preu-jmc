@@ -3,14 +3,14 @@
    ====================================== */
 
 /* Background wrappers - GLOBAL */
-.background-wrapper-primary,
-.background-wrapper-secondary {
+.first-background-wrapper,
+.second-background-wrapper {
     position: relative;
     overflow: hidden;
 }
 
 /* Background images - BASE (sin imágenes específicas) */
-.mountain-background {
+.first-background {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,7 +25,7 @@
     will-change: transform;
 }
 
-.secondary-background {
+.second-background {
     position: absolute;
     top: 0;
     left: 0;
@@ -38,24 +38,4 @@
     background-attachment: fixed;
     z-index: -1;
     will-change: transform;
-}
-
-/* Ajustes responsive para backgrounds */
-@media (max-width: 82rem) {
-    .mountain-background,
-    .secondary-background {
-        background-attachment: scroll !important;
-        background-size: cover !important;
-        min-height: 100vh;
-    }
-}
-
-@media (max-width: 53rem) {
-    .mountain-background,
-    .secondary-background {
-        background-attachment: scroll !important;
-        background-size: cover !important;
-        background-position: center top !important;
-        min-height: 120vh;
-    }
 }

@@ -7,13 +7,13 @@
    ====================================== */
 
 /* Fondo principal con montañas para las primeras secciones */
-.mountain-background {
+.first-background {
     background-image: url('/media/images/servicios/thomas-griesbeck-Y2aNc1X7xLg-unsplash.jpg');
     background-size: auto !important;
 }
 
 /* Fondo secundario para secciones posteriores */
-.secondary-background {
+.second-background {
     background-image: url('/media/images/servicios/alessio-soggetti-cfKC0UOZHJo-unsplash.jpg');
     background-size: auto !important;
 }
@@ -252,109 +252,4 @@
 
 .meta-item .meta-icon {
     color: var(--primary);
-}
-
-/* ======================================
-   RESPONSIVE ESPECÍFICO DE SERVICIOS - CORREGIDO
-   ====================================== */
-
-/* Tablet: 848px - 1312px (82rem y 53rem) */
-@media (hover: none) and (pointer: coarse) {
-    /* Secciones en tablet */
-    .first-section,
-    .second-section,
-    .third-section,
-    .fourth-section {
-        padding: 2.5rem;
-    }
-    
-    /* Tabla moderna en tablet */
-    .table-row {
-        padding: 1rem 1.2rem;
-    }
-    
-    .table-icon .material-symbols-rounded {
-        font-size: 1.8rem;
-    }
-    
-    .table-content strong {
-        font-size: 1rem;
-    }
-}
-
-/* Mobile: Hasta 848px (53rem) */
-@media (hover: hover) and (pointer: fine) {
-    /* Márgenes móviles específicos */
-    .first-section,
-    .second-section,
-    .third-section,
-    .fourth-section {
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-bottom: 3rem;
-        padding: 2rem;
-    }
-
-    .first-section {
-        margin-top: 3rem;
-    }
-
-    .third-section,
-    .fourth-section {
-        margin-top: 3rem;
-    }
-
-    /* Tabla moderna en móvil */
-    .table-row {
-        padding: 1rem;
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .table-icon {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-    }
-    
-    .table-content strong {
-        font-size: 1rem;
-        margin-bottom: 0.2rem;
-    }
-    
-    .table-content span {
-        font-size: 0.9rem;
-    }
-
-    /* Cards responsive - ya centralizadas en components/cards.css */
-    .content-intro {
-        padding: 0;
-    }
-
-    .process-step-icon {
-        min-width: 60px;
-        width: 60px;
-        height: 60px;
-        margin: 0 auto;
-    }
-
-    .process-step-icon .process-icon {
-        font-size: 2rem;
-    }
-
-    .card-content h3 {
-        font-size: 1.3rem;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-
-    .card-content p {
-        text-align: center;
-        font-size: 1rem;
-    }
-
-    .card-meta {
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
 }

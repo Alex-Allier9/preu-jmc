@@ -89,6 +89,13 @@
     --white: #ffffff;             /* Blanco puro para fondos y texto claro */
     --white-rgb: 255, 255, 255;   /* RGB del blanco para rgba() */
     
+    /* ===== COLORES DE ESTADO ===== */
+    --danger: #EF4444;            /* Color de error - equivale a var(--accent-red) */
+    --danger-rgb: 239, 68, 68;    /* RGB del color de error para rgba() */
+    
+    --success: #10B981;           /* Color de éxito - equivale a var(--accent-green) */
+    --success-rgb: 16, 185, 129;  /* RGB del color de éxito para rgba() */
+    
     /* ===== TIPOGRAFÍA ===== */
     --title-letter-spacing: 0.2rem;  /* Usado en títulos principales (7 usos) */
     --font-title: 'DM Serif Text', serif;   /* Fuente para títulos */

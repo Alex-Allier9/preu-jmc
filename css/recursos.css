@@ -41,20 +41,40 @@
 /* ======================================
    ICONOS ESPECÍFICOS DE RECURSOS
    ====================================== */
-
+/* File Icon */
 .file-icon {
     font-size: 3rem;
     margin-bottom: var(--margin-bottom-small);
     color: var(--primary);
 }
 
-.file-icon.pdf { color: var(--accent-red); }
-.file-icon.doc { color: var(--primary); }
-.file-icon.image { color: var(--accent); }
-.file-icon.zip { color: var(--accent-green-light); }
-.file-icon.excel { color: var(--accent-green); }
-.file-icon.powerpoint { color: var(--accent-orange); }
-.file-icon.text { color: var(--primary-light); }
+.file-icon--pdf {
+    color: var(--accent-red); /* Usa el rojo del sistema */
+}
+
+.file-icon--doc {
+    color: var(--primary); /* Usa el azul del sistema */
+}
+
+.file-icon--image {
+    color: var(--accent); /* Usa el amarillo del sistema */
+}
+
+.file-icon--zip {
+    color: var(--accent-green-light); /* Usa el verde claro del sistema */
+}
+
+.file-icon--excel {
+    color: var(--accent-green); /* Usa el verde del sistema */
+}
+
+.file-icon--powerpoint {
+    color: var(--accent-orange); /* Usa el naranja del sistema */
+}
+
+.file-icon--text {
+    color: var(--primary-light); /* Usa el azul claro del sistema */
+}
 
 .page-description {
     font-size: clamp(1.1rem, 2.5vw, 1.4rem);
@@ -99,41 +119,6 @@
     transform: var(--hover-lift-medium);
     box-shadow: var(--shadow-heavy);
     background: rgba(var(--white-rgb), 0.98);
-}
-
-/* File Icon */
-.file-icon {
-    font-size: 3rem;
-    margin-bottom: var(--margin-bottom-small);
-    color: var(--primary);
-}
-
-.file-icon.pdf {
-    color: var(--accent-red); /* Usa el rojo del sistema */
-}
-
-.file-icon.doc {
-    color: var(--primary); /* Usa el azul del sistema */
-}
-
-.file-icon.image {
-    color: var(--accent); /* Usa el amarillo del sistema */
-}
-
-.file-icon.zip {
-    color: var(--accent-green-light); /* Usa el verde claro del sistema */
-}
-
-.file-icon.excel {
-    color: var(--accent-green); /* Usa el verde del sistema */
-}
-
-.file-icon.powerpoint {
-    color: var(--accent-orange); /* Usa el naranja del sistema */
-}
-
-.file-icon.text {
-    color: var(--primary-light); /* Usa el azul claro del sistema */
 }
 
 /* File Info */
@@ -282,50 +267,4 @@
 .empty-card p {
     color: var(--primary-darker); /* Usa color del sistema para mejor contraste */
     margin-bottom: var(--margin-bottom-standard);
-}
-
-/* Responsive Design */
-@media (hover: none) and (pointer: coarse) {
-    .recursos-main {
-        padding: 2rem 0;
-    }
-    
-    .page-header {
-        margin-bottom: var(--margin-bottom-large);
-        padding: 3rem 0 1rem 0;
-        margin-top: 1rem;
-    }
-    
-    .cards-container {
-        padding: var(--card-padding);
-        margin: 0 1rem;
-    }
-
-    .resource-card {
-        padding: var(--card-padding-medium);
-    }
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .recursos-main {
-        padding: 1rem 0;
-    }
-    
-    .page-header {
-        padding: 2rem 0 1rem 0;
-        margin-bottom: var(--margin-bottom-standard);
-    }
-    
-    .cards-container {
-        padding: var(--card-padding-medium);
-        margin: 0 0.5rem;
-    }
-    
-    .resource-card {
-        padding: 1.25rem;
-    }
-    
-    .file-icon {
-        font-size: 2.5rem;
-    }
 }
