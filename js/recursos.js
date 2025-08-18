@@ -2,19 +2,15 @@
    RECURSOS.JS - SISTEMA DE DESCARGA SIMPLIFICADO
    ====================================== */
 
-// Configuración
 const RECURSOS_CONFIG = {
     downloadsPath: 'media/downloads/',
-    loadingDelay: 1200 // Tiempo de skeleton loading
+    loadingDelay: 1200
 };
 
-// Estado global
 let filesData = [];
 
-// Elementos DOM
 let loadingSection, errorSection, resourcesSection, emptySection, resourcesGrid;
 
-// Clase principal para manejar recursos
 class RecursosManager {
     constructor() {
         this.init();
@@ -24,7 +20,6 @@ class RecursosManager {
         try {
             console.log('📁 Inicializando recursos...');
             
-            // Obtener referencias DOM
             this.getDOMReferences();
             
             // Mostrar loading
@@ -105,13 +100,13 @@ class RecursosManager {
 
     createFileCard(file) {
         const card = document.createElement('div');
-    card.className = 'recursos-glass-card recursos-glass-card--resource fade-in';
+    card.className = 'resource-card fade-in';
 
         const fileType = this.getFileType(file.name);
         const fileIcon = this.getFileIcon(fileType);
 
         card.innerHTML = `
-            <span class="material-symbols-rounded file-icon-base file-icon-base--${fileType}">${fileIcon}</span>
+            <span class="material-symbols-rounded file-icon file-icon--${fileType}">${fileIcon}</span>
             <div class="file-info">
                 <h3 class="file-name">${file.name}</h3>
                 <span class="file-type">${fileType.toUpperCase()}</span>
@@ -197,7 +192,7 @@ class RecursosManager {
         
         // Inicializar animaciones fade-in para los recursos con stagger
         setTimeout(() => {
-            const resourceCards = resourcesSection.querySelectorAll('.recursos-glass-card--resource');
+            const resourceCards = resourcesSection.querySelectorAll('.resource-card');
             console.log(`🎨 Activando animaciones para ${resourceCards.length} cards`);
             
             resourceCards.forEach((card, index) => {

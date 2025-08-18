@@ -6,7 +6,6 @@
 // UTILIDADES UNIVERSALES
 // ======================================
 
-// Debounce universal para optimización de performance
 const debounce = (func, wait) => {
     let timeout;
     return (...args) => {
@@ -15,7 +14,6 @@ const debounce = (func, wait) => {
     };
 };
 
-// Configuraciones universales (DRY)
 const GLOBAL_CONFIG = {
     observer: {
         threshold: 0.1,
@@ -405,7 +403,7 @@ const CARD_CONFIGS = [
     { selector: '.glass-card-dark', hasIcon: true,
       hover: 'rgba(16, 24, 32, 0.4)',
       restore: 'rgba(16, 24, 32, 0.6)' },
-    { selector: '.icon-card', hasIcon: true, // AGREGADO - ICON CARDS
+    { selector: '.icon-card', hasIcon: true,
       hover: 'rgba(255, 255, 255, 0.15)', 
       restore: 'rgba(255, 255, 255, 0.1)' },
     { selector: '.service-feature-card', hasIcon: true },

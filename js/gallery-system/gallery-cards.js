@@ -1,11 +1,10 @@
 // 🏔️ SISTEMA DE GALERÍA DINÁMICO - PREUNIVERSITARIO JMC
-// Generador dinámico de cards y sistema de filtros
 
 class GalleryCards {
     constructor(detectedPhotos) {
         this.detectedPhotos = detectedPhotos;
         this.currentFilter = 'all';
-        this.currentSort = 'name'; // Cambiar default a orden alfabético
+        this.currentSort = 'name';
         this.container = null;
         this.filterButtons = null;
         this.expeditionsGrid = null;
@@ -14,27 +13,23 @@ class GalleryCards {
     init() {
         console.log('🎴 Inicializando generador de cards...');
 
-        // Encontrar contenedor principal
         this.container = document.querySelector('#mountaineering-gallery');
         if (!this.container) {
             console.error('❌ Error: No se encontró el contenedor de la galería');
             return;
         }
 
-        // Generar estructura completa
         this.generateGalleryStructure();
 
         // Configurar eventos
         this.setupEvents();
 
-        // Generar cards iniciales
         this.renderExpeditions();
 
         console.log('✅ Generador de cards inicializado');
     }
 
     generateGalleryStructure() {
-        // Ocultar elementos de loading y error
         const loadingElement = document.querySelector('#galleryLoading');
         const errorElement = document.querySelector('#galleryError');
 
@@ -340,7 +335,7 @@ class GalleryCards {
             expedition.ascents !== '0';
 
         return `
-        <div class="expedition-card" 
+        <div class="gallery-card" 
              data-category="${expedition.category}" 
              data-expedition="${expedition.id}"
              data-photos="${photoCount}">
@@ -351,28 +346,28 @@ class GalleryCards {
             
             <img src="${window.galleryConfig.basePath}${expedition.id}/${expedition.coverImage}" 
                  alt="${expedition.name}" 
-                 class="expedition-image"
+                 class="gallery-image"
                  onerror="this.src='/media/icons/mountain-placeholder.svg'">
             
-            <div class="expedition-content">
-                <h3 class="expedition-title">${expedition.name}</h3>
-                <p class="expedition-description">${expedition.shortDescription}</p>
+            <div class="gallery-content">
+                <h3 class="gallery-title">${expedition.name}</h3>
+                <p class="gallery-description">${expedition.shortDescription}</p>
                 
                 ${(hasValidDifficulty || hasValidAltitude) ? `
-                <div class="expedition-meta">
+                <div class="gallery-meta">
                     ${hasValidDifficulty ? `
-                    <div class="expedition-difficulty difficulty-${difficulty.grade}">
+                    <div class="gallery-difficulty difficulty-${difficulty.grade}">
                         <span class="difficulty-icon">${this.getDifficultyIcon(difficulty.grade)}</span>
                         ${difficulty.grade} - ${difficulty.name}
                     </div>
                     ` : ''}
                     ${hasValidAltitude ? `
-                    <span class="expedition-altitude">${window.GalleryUtils.formatNumber(expedition.altitude)} ${expedition.altitudeUnit}</span>
+                    <span class="gallery-altitude">${window.GalleryUtils.formatNumber(expedition.altitude)} ${expedition.altitudeUnit}</span>
                     ` : ''}
                 </div>
                 ` : ''}
                 
-                <div class="expedition-stats">
+                <div class="gallery-stats">
                     <div class="stat-item">
                         <span class="material-symbols-rounded stat-icon">location_on</span>
                         <span>${expedition.location.country}</span>
@@ -402,7 +397,7 @@ class GalleryCards {
     }
 
     setupCardEvents() {
-        const cards = this.expeditionsGrid.querySelectorAll('.expedition-card');
+        const cards = this.expeditionsGrid.querySelectorAll('.gallery-card');
 
         cards.forEach(card => {
             const expeditionId = card.dataset.expedition;

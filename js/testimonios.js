@@ -3,38 +3,30 @@
    CONSERVANDO ESTRUCTURA ORIGINAL COMPLETA
    ====================================== */
 
-// Configuración de Google Sheets
 const TESTIMONIOS_CONFIG = {
-    // URL del Google Sheet público en formato CSV
-    // Cambiar SHEET_ID por el ID real del Google Sheet
     SHEET_ID: '1Wxd2scUSncOjcP-ONMaK2VsaRxVYYh3uuOavUKsq_5c',
     SHEET_URL: 'https://docs.google.com/spreadsheets/d/1Wxd2scUSncOjcP-ONMaK2VsaRxVYYh3uuOavUKsq_5c/export?format=csv&gid=0',
     
-    // Configuración de filtros
     filters: {
         current: 'recientes',
         available: ['recientes', 'maximos', 'universidad', 'carrera', 'puntaje-desc']
     }
 };
 
-// Estado global de testimonios
 let testimoniosData = [];
 let filteredTestimonios = [];
 
-// Clase principal para manejar testimonios
 class TestimoniosManager {
     constructor() {
         this.initialized = false;
         this.loading = false;
         this.error = null;
         
-        // Referencias DOM
         this.loadingElement = null;
         this.errorElement = null;
         this.gridElement = null;
         this.filterButtons = null;
         
-        // Bind de métodos
         this.init = this.init.bind(this);
         this.loadTestimonios = this.loadTestimonios.bind(this);
         this.renderTestimonios = this.renderTestimonios.bind(this);
@@ -44,13 +36,10 @@ class TestimoniosManager {
         try {
             console.log('🎓 Inicializando sistema de testimonios...');
             
-            // Obtener referencias DOM
             this.getDOMReferences();
             
-            // Configurar eventos
             this.setupEvents();
             
-            // Cargar testimonios desde Google Sheets
             await this.loadTestimonios();
             
             this.initialized = true;
@@ -68,14 +57,12 @@ class TestimoniosManager {
         this.gridElement = document.getElementById('testimoniosGrid');
         this.filterButtons = document.querySelectorAll('.filter-btn');
         
-        // Verificar que existen los elementos necesarios
         if (!this.gridElement) {
             throw new Error('No se encontró el contenedor de testimonios');
         }
     }
 
     setupEvents() {
-        // Eventos de filtros
         this.filterButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 const filter = e.target.dataset.filter;
@@ -91,7 +78,6 @@ class TestimoniosManager {
             this.showLoading();
             console.log('📊 Cargando testimonios...');
             
-            // Cargar datos desde Google Sheets
             const response = await fetch(TESTIMONIOS_CONFIG.SHEET_URL);
             
             if (!response.ok) {
@@ -101,17 +87,13 @@ class TestimoniosManager {
             const csvText = await response.text();
             console.log('✅ Datos CSV recibidos:', csvText.substring(0, 200) + '...');
             
-            // Parsear CSV usando Papa Parse (si está disponible) o método manual
             const parsedData = this.parseCSV(csvText);
             console.log('📋 Datos parseados:', parsedData.length, 'testimonios');
             
-            // Procesar y validar datos
             testimoniosData = this.processTestimoniosData(parsedData);
             
-            // Aplicar filtros iniciales (esto ordenará los datos por defecto)
             this.applyCurrentFilters();
             
-            // Renderizar testimonios
             this.hideLoading();
             this.renderTestimonios();
             
@@ -124,7 +106,6 @@ class TestimoniosManager {
     }
 
     parseCSV(csvText) {
-        // Usar Papa Parse si está disponible, sino usar método manual
         if (typeof Papa !== 'undefined') {
             const result = Papa.parse(csvText, {
                 header: true,
@@ -133,7 +114,6 @@ class TestimoniosManager {
             });
             return result.data;
         } else {
-            // Método manual de parseo CSV
             return this.parseCSVManual(csvText);
         }
     }
@@ -147,7 +127,6 @@ class TestimoniosManager {
             return [];
         }
         
-        // Parsear headers
         const headers = this.parseCSVLine(lines[0]);
         console.log('📋 Headers encontrados:', headers);
         
@@ -158,7 +137,6 @@ class TestimoniosManager {
             
             const values = this.parseCSVLine(lines[i]);
             
-            // Asegurar que tenemos el mismo número de valores que headers
             while (values.length < headers.length) {
                 values.push('');
             }
@@ -175,7 +153,6 @@ class TestimoniosManager {
         return data;
     }
 
-    // Nuevo método para parsear líneas CSV respetando comillas
     parseCSVLine(line) {
         const result = [];
         let current = '';
@@ -205,7 +182,6 @@ class TestimoniosManager {
         return rawData.map(row => {
             console.log('📝 Procesando fila:', row);
             
-            // Procesar y validar cada testimonio
             const puntajeM1 = parseInt(row.puntajeM1) || null;
             const puntajeM2 = parseInt(row.puntajeM2) || null;
             
@@ -214,21 +190,18 @@ class TestimoniosManager {
                 nombre: row.nombre || '',
                 carrera: row.carrera || '',
                 universidad: row.universidad || '',
-                año: this.parseYear(row.año || row.ano), // Maneja tanto 'año' como 'ano' y limpia valores nulos
+                año: this.parseYear(row.año || row.ano),
                 testimonio: row.testimonio || '',
                 puntajeM1: puntajeM1,
                 puntajeM2: puntajeM2,
-                // Verificar si existe puntajeLenguaje o usar un campo alternativo
                 puntajeLenguaje: parseInt(row.puntajeLenguaje || row.lenguaje) || null,
-                // Determinar Máximo Nacional automáticamente: M1 = 1000 y/o M2 = 1000
                 maximoNacional: (puntajeM1 === 1000) || (puntajeM2 === 1000),
                 foto: (row.foto && String(row.foto).trim() && String(row.foto).trim() !== '') ? 
                     String(row.foto).trim() : null,
                 fechaTestimonio: row.fechaTestimonio || new Date().toISOString(),
-                categoria: '', // Se determinará después
+                categoria: '',
                 isRecent: this.isRecentTestimonio(row.fechaTestimonio),
                 
-                // 🆕 NUEVO: Campo temporada con validación (SUNNY POR DEFECTO)
                 temporada: this.validateSeasonIcon(row.temporada || row.season)
             };
             
@@ -340,7 +313,7 @@ class TestimoniosManager {
         return yearNum;
     }
 
-    // Filtros y ordenamiento (CONSERVADO ORIGINAL)
+    // Filtros y ordenamiento
     setFilter(filterName) {
         console.log(`🔍 Aplicando filtro: ${filterName}`);
         
@@ -439,35 +412,33 @@ class TestimoniosManager {
     }
 
     generateTestimonioHTML(testimonio) {
-        const badgeClass = testimonio.maximoNacional ? 'badge-maximo-nacional' : 
-                          testimonio.isRecent ? 'badge-reciente' : '';
+        const badgeClass = testimonio.maximoNacional ? 'badge-featured' : 
+                          testimonio.isRecent ? 'badge-recent' : '';
         
         const badgeText = testimonio.maximoNacional ? 
             '<span class="material-symbols-rounded trophy-icon">trophy</span>Máximo Nacional' : 
-            testimonio.isRecent ? 'Reciente' : '';
+            testimonio.isRecent ? 'Recent' : '';
         
-        // Determinar si hay una foto válida
-        const hasValidPhoto = testimonio.foto && 
-                             testimonio.foto.trim() !== '' && 
-                             (testimonio.foto.startsWith('http') || testimonio.foto.startsWith('/') || testimonio.foto.startsWith('media/'));
-        
-        const photoHTML = hasValidPhoto ? 
-            `<img src="${testimonio.foto}" alt="${testimonio.nombre}" class="student-photo" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.avatar-fallback').style.display='flex';">
-             <div class="student-photo avatar-fallback ${this.getRandomAvatarClass(testimonio.nombre)}" style="display: none;">
-                ${this.generateInitials(testimonio.nombre)}
-             </div>` :
-            `<div class="student-photo ${this.getRandomAvatarClass(testimonio.nombre)}">
-                ${this.generateInitials(testimonio.nombre)}
-            </div>`;
+            // Todas las fotos usan la ruta fija y solo el nombre del archivo
+            const hasValidPhoto = testimonio.foto && testimonio.foto.trim() !== '';
+            let fotoSrc = hasValidPhoto ? `media/images/testimonios/profile-picture/${testimonio.foto}` : '';
+            const photoHTML = hasValidPhoto ? 
+                `<img src="${fotoSrc}" alt="${testimonio.nombre}" class="student-photo" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.avatar-fallback').style.display='flex';">
+                 <div class="student-photo avatar-fallback ${this.getRandomAvatarClass(testimonio.nombre)}" style="display: none;">
+                    ${this.generateInitials(testimonio.nombre)}
+                 </div>` :
+                `<div class="student-photo ${this.getRandomAvatarClass(testimonio.nombre)}">
+                    ${this.generateInitials(testimonio.nombre)}
+                </div>`;
         
         const scoresHTML = this.generateScoresHTML(testimonio);
         
         return `
-            <div class="testimonio-card fade-in ${testimonio.maximoNacional ? 'maximo-nacional' : ''} ${badgeText ? 'has-badge' : ''}" data-categoria="${testimonio.categoria}" data-universidad="${testimonio.universidad}" data-carrera="${testimonio.carrera}">
-                ${badgeText ? `<div class="testimonio-badge ${badgeClass}">${badgeText}</div>` : ''}
+            <div class="testimonial-card fade-in ${testimonio.maximoNacional ? 'featured' : ''} ${badgeText ? 'has-badge' : ''}" data-categoria="${testimonio.categoria}" data-universidad="${testimonio.universidad}" data-carrera="${testimonio.carrera}">
+                ${badgeText ? `<div class="testimonial-badge ${badgeClass}">${badgeText}</div>` : ''}
                 
-                <div class="testimonio-header">
+                <div class="testimonial-header">
                     ${photoHTML}
                     <h3 class="student-name">${testimonio.nombre}</h3>
                     <p class="student-info">${testimonio.carrera}</p>
@@ -483,9 +454,9 @@ class TestimoniosManager {
                     </div>
                 </div>
                 
-                <div class="testimonio-content">
-                    <div class="testimonio-text">
-                        ${this.formatTestimonioText(testimonio.testimonio)}
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        ${this.formatTestimonialText(testimonio.testimonio)}
                     </div>
                 </div>
             </div>
@@ -525,7 +496,7 @@ class TestimoniosManager {
         return scores.join('');
     }
 
-    formatTestimonioText(text) {
+    formatTestimonialText(text) {
         // Agregar saltos de línea y formato básico
         return text
             .replace(/\n/g, '<br>')
@@ -569,7 +540,7 @@ class TestimoniosManager {
 
     setupCardAnimations() {
         // Usar intersection observer para animaciones con el sistema universal
-        const cards = this.gridElement.querySelectorAll('.testimonio-card');
+        const cards = this.gridElement.querySelectorAll('.testimonial-card');
         
         cards.forEach((card) => {
             // Usar el observer universal para fade-in

@@ -13,10 +13,8 @@ class ContactManager {
     init() {
         console.log('📞 Inicializando página de contacto...');
         
-        // Configurar formulario
         this.setupContactForm();
         
-        // Configurar animaciones con Intersection Observer (heredado del sistema global)
         this.setupAnimations();
         
         console.log('✅ Página de contacto inicializada');
@@ -34,10 +32,8 @@ class ContactManager {
             this.originalButtonText = this.submitButton.innerHTML;
         }
 
-        // Event listener para el envío del formulario
         this.form.addEventListener('submit', (e) => this.handleFormSubmit(e));
 
-        // Validación en tiempo real
         this.setupRealTimeValidation();
 
         console.log('📝 Formulario de contacto configurado');
