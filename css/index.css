@@ -626,6 +626,86 @@
     text-align: center;
 }
 
+.testimonials-loading-placeholder {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background: rgba(var(--white-rgb), 0.9);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-standard);
+}
+
+.testimonials-loading-placeholder:hover {
+    background: rgba(var(--white-rgb), 0.95);
+    box-shadow: var(--shadow-medium);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--gray-300);
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.testimonials-loading-placeholder p {
+    color: var(--gray-800);
+    font-style: italic;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* ======================================
+   MEJORAS ADICIONALES PARA FEATURED LOGIC
+   ====================================== */
+
+/* Asegurar que el efecto featured sea más prominente */
+.testimonial-preview-card.featured {
+    /* Aumentar el contraste visual */
+    background: linear-gradient(135deg, var(--black), var(--gray-900)) !important;
+    color: var(--accent) !important;
+    border: 2px solid var(--accent) !important;
+    box-shadow: 0 8px 32px rgba(var(--accent-rgb), 0.3) !important;
+    
+    /* Efecto de resplandor sutil */
+    position: relative;
+    overflow: visible;
+}
+
+.testimonial-preview-card.featured::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--border-radius-standard);
+    padding: 2px;
+    background: linear-gradient(45deg, var(--accent), transparent, var(--accent));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: subtract;
+    opacity: 0.6;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Asegurar que el badge sea visible en featured */
+.testimonial-preview-card.featured .testimonial-badge {
+    background: var(--accent) !important;
+    color: var(--black) !important;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(var(--accent-rgb), 0.4);
+}
+
 /* ======================================
    PROCESS STEPS
    ====================================== */
