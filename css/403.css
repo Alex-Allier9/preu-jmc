@@ -1,0 +1,219 @@
+/* ======================================
+   403.CSS - ESTILOS ESPECÍFICOS DE LA PÁGINA 403
+   ====================================== */
+
+/* Sección principal 403 - CENTRADA CON MARGEN DEL HEADER */
+.error-403 {
+    min-height: 100vh;
+    background: linear-gradient(rgba(220, 53, 69, 0.15), rgba(220, 53, 69, 0.15)),
+        url('/media/images/404/daniel-hohe-1VgmgXW3Yuk-unsplash.jpg') center/cover;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem 2rem 2rem; /* Top padding para evitar el header */
+}
+
+/* Card principal del error 403 - Override universal card defaults */
+.error-card.universal-card {
+    max-width: 650px;
+    padding: 3rem 2rem;
+    z-index: 2;
+    text-align: center; /* Override universal card left alignment */
+    width: 100%;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s ease-out;
+    margin-bottom: 0; /* Remove universal card margin */
+}
+
+/* ======================================
+   ICONO DE CANDADO
+   ====================================== */
+
+.lock-icon {
+    margin-bottom: 2rem;
+}
+
+.lock-icon .material-symbols-rounded {
+    font-size: clamp(4rem, 8vw, 6rem);
+    color: var(--accent-red);
+    display: block;
+    animation: lockPulse 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(220, 53, 69, 0.3));
+}
+
+/* Animación de pulso para el candado */
+@keyframes lockPulse {
+    0%, 100% { 
+        transform: scale(1);
+        filter: drop-shadow(0 4px 8px rgba(220, 53, 69, 0.3));
+    }
+    50% { 
+        transform: scale(1.05);
+        filter: drop-shadow(0 6px 12px rgba(220, 53, 69, 0.4));
+    }
+}
+
+/* ======================================
+   CÓDIGO DE ERROR 403
+   ====================================== */
+
+.error-code {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: bold;
+    color: var(--accent-red);
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 4px rgba(220, 53, 69, 0.2);
+    animation: codeGlow 4s ease-in-out infinite;
+    margin-bottom: 1.5rem;
+}
+
+/* Animación de brillo para el código */
+@keyframes codeGlow {
+    0%, 100% { 
+        text-shadow: 2px 2px 4px rgba(220, 53, 69, 0.2);
+    }
+    50% { 
+        text-shadow: 2px 2px 8px rgba(220, 53, 69, 0.4),
+                     0 0 20px rgba(220, 53, 69, 0.2);
+    }
+}
+
+/* ======================================
+   TÍTULO PRINCIPAL
+   ====================================== */
+
+.error-card.universal-card .error-title {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    color: var(--black);
+    margin: 0 0 1.5rem 0;
+    letter-spacing: var(--title-letter-spacing);
+    text-align: center; /* Override universal card h3 styles */
+}
+
+/* ======================================
+   MENSAJE EXPLICATIVO
+   ====================================== */
+
+.error-card.universal-card .error-message {
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: var(--gray-700);
+    line-height: 1.6;
+    margin: 0 0 2.5rem 0;
+    text-align: center; /* Override universal card p styles */
+}
+
+/* ======================================
+   BOTÓN PRINCIPAL
+   ====================================== */
+
+.error-card .btn {
+    margin-bottom: 2rem;
+}
+
+/* ======================================
+   INFORMACIÓN DE CONTACTO
+   ====================================== */
+
+.error-card.universal-card .contact-text {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.5;
+    text-align: center; /* Override universal card p styles */
+}
+
+/* ======================================
+   ANIMACIONES DE ENTRADA
+   ====================================== */
+
+/* Animaciones siempre activas */
+.error-card .lock-icon .material-symbols-rounded,
+.error-card .error-code {
+    animation-play-state: running;
+}
+
+/* ======================================
+   OPTIMIZACIONES DE PERFORMANCE
+   ====================================== */
+
+/* Usar will-change para optimizar animaciones */
+.lock-icon .material-symbols-rounded, 
+.error-code {
+    will-change: transform, filter, text-shadow;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* ======================================
+   MEJORAS VISUALES
+   ====================================== */
+
+/* Sombra suave para el contenido */
+.error-content::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    right: -20%;
+    bottom: -20%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+/* Asegurar que el footer no se superponga */
+.error-403 + .footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* ======================================
+   RESPONSIVE DESIGN
+   ====================================== */
+
+@media (max-width: 768px) {
+    .error-403 {
+        padding: 5rem 1.5rem 2rem 1.5rem;
+    }
+    
+    .error-card.universal-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .error-card.universal-card .contact-text {
+        font-size: 0.85rem;
+    }
+    
+    .contact-link {
+        display: inline-block;
+        margin: 0.2rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-403 {
+        padding: 4rem 1rem 2rem 1rem;
+    }
+    
+    .error-card.universal-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .error-code {
+        letter-spacing: 0.05em;
+    }
+    
+    .error-card.universal-card .contact-text {
+        line-height: 1.8;
+    }
+}
