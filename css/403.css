@@ -61,7 +61,7 @@
    ====================================== */
 
 .error-code {
-    font-family: 'Courier New', monospace;
+    font-family: var(--font-title);
     font-size: clamp(4rem, 12vw, 8rem);
     font-weight: bold;
     color: var(--accent-red);
@@ -88,10 +88,10 @@
    ====================================== */
 
 .error-card.universal-card .error-title {
-    font-family: var(--font-title);
+    font-family: var(--font-body);
     font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 400;
-    color: var(--black);
+    font-weight: 700;
+    color: var(--primary-dark);
     margin: 0 0 1.5rem 0;
     letter-spacing: var(--title-letter-spacing);
     text-align: center; /* Override universal card h3 styles */
